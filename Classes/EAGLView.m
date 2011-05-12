@@ -79,12 +79,29 @@
     glFrustumf(-size, size, -size / (rect.size.width / rect.size.height), size / (rect.size.width / rect.size.height), zNear, zFar);
     glViewport(0, 0, rect.size.width, rect.size.height);
 	NSLog(@"View port %f,%f",rect.size.width,rect.size.height);
-    glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+- (void)drawLine:(float)x1 y1:(float)y1  z1:(float)z1 x2:(float)x2 y2:(float)y2 z2:(float)z2 {
+	const GLfloat lineVertices[] = {
+        x1, y1, z1,                  
+        x2, y2, z2,                  
+    };
+	NSLog(@"line %f,%f,%f %f,%f,%f",lineVertices[0],lineVertices[1],lineVertices[2],lineVertices[3],lineVertices[4],lineVertices[5]);	
+	
+	// line
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	glVertexPointer(3, GL_FLOAT, 0, lineVertices);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glDrawArrays(GL_LINES, 0, 2);
+	
 }
 
 
-
 - (void)drawView {
+	
+		
+	
 	
 	// Def de notre triangle
 	const GLfloat triangleVertices[] = {
@@ -93,10 +110,11 @@
         2.0, -2.0, -5.0                    // bas droit
     };
 	
+	
     [EAGLContext setCurrentContext:context];    
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
     glViewport(0, 0, backingWidth, backingHeight);
-	
+	NSLog(@"View port %f,%f",backingWidth,backingHeight);
 	/*************** Debut du nouveau code ******************/
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
@@ -107,6 +125,19 @@
 	
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
+	
+	/**
+	glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+	glVertexPointer(3, GL_FLOAT, 0, lineVertices2);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glDrawArrays(GL_LINES, 0, 2);
+	**/
+	 
+	 
+	
+	[self drawLine:0.0 y1:-4.0 z1:0.0 x2:0.0  y2:4.0  z2:-1.0];
+	[self drawLine:-4.0 y1:0.0 z1:0.0 x2:4.0  y2:0.0  z2:-1.0];
+
 	
 	/*************** Fin du nouveau code ********************/ 
 	
