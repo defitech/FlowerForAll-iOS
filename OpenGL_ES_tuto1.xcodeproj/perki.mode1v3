@@ -299,7 +299,7 @@
 							<real>353</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>545 150 1379 815 0 0 1680 1028 </string>
+						<string>358 205 1379 815 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4E9EF37D137C3C5500CCFF2C</string>
+										<string>4E180FB1139E230000A6CFF4</string>
 										<key>history</key>
 										<array>
 											<string>4EDEF3EF137AF0B80077413E</string>
@@ -338,8 +338,8 @@
 											<string>4E9EF301137C36CF00CCFF2C</string>
 											<string>4E9EF302137C36CF00CCFF2C</string>
 											<string>4E9EF303137C36CF00CCFF2C</string>
-											<string>4E9EF304137C36CF00CCFF2C</string>
-											<string>4E9EF305137C36CF00CCFF2C</string>
+											<string>4EC3E960139E20A10028B193</string>
+											<string>4E180F97139E20C100A6CFF4</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -351,14 +351,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1004, 562}}</string>
+								<string>{{0, 0}, {1004, 538}}</string>
 								<key>RubberWindowFrame</key>
-								<string>545 150 1379 815 0 0 1680 1028 </string>
+								<string>358 205 1379 815 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>562pt</string>
+							<string>538pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -371,14 +371,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 567}, {1004, 207}}</string>
+								<string>{{0, 543}, {1004, 231}}</string>
 								<key>RubberWindowFrame</key>
-								<string>545 150 1379 815 0 0 1680 1028 </string>
+								<string>358 205 1379 815 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>207pt</string>
+							<string>231pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -397,9 +397,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>4E9EF2B7137C2D8B00CCFF2C</string>
+				<string>4E180F99139E20C100A6CFF4</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>4E9EF2B8137C2D8B00CCFF2C</string>
+				<string>4E180F9A139E20C100A6CFF4</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -537,14 +537,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>4E9EF2DF137C340600CCFF2C</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>4EDEF3B2137AE6D90077413E</string>
 		<string>/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/OpenGL_ES_tuto1.xcodeproj</string>
-		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
-	<string>545 150 1379 815 0 0 1680 1028 </string>
+	<string>358 205 1379 815 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -621,7 +620,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>4EDEF3B2137AE6D90077413E</string>
-				<string>4E9EF2B9137C2D8B00CCFF2C</string>
+				<string>4E180F9B139E20C100A6CFF4</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -665,8 +664,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {316, 202}}</string>
-											<string>{{316, 0}, {378, 202}}</string>
+											<string>{{0, 0}, {316, 203}}</string>
+											<string>{{316, 0}, {378, 203}}</string>
 										</array>
 									</dict>
 									<key>VerticalSplitView</key>
@@ -681,8 +680,8 @@
 										<string>yes</string>
 										<key>sizes</key>
 										<array>
-											<string>{{0, 0}, {694, 202}}</string>
-											<string>{{0, 202}, {694, 179}}</string>
+											<string>{{0, 0}, {694, 203}}</string>
+											<string>{{0, 203}, {694, 178}}</string>
 										</array>
 									</dict>
 								</dict>
@@ -715,7 +714,7 @@
 										<real>148</real>
 									</array>
 									<key>Frame</key>
-									<string>{{316, 0}, {378, 202}}</string>
+									<string>{{316, 0}, {378, 203}}</string>
 									<key>RubberWindowFrame</key>
 									<string>140 550 694 422 0 0 1680 1028 </string>
 								</dict>
@@ -743,13 +742,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>4E9EF2D8137C340600CCFF2C</string>
+				<string>4E180F9C139E20C100A6CFF4</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>4E9EF2D9137C340600CCFF2C</string>
-				<string>4E9EF2DA137C340600CCFF2C</string>
-				<string>4E9EF2DB137C340600CCFF2C</string>
-				<string>4E9EF2DC137C340600CCFF2C</string>
-				<string>4E9EF2DD137C340600CCFF2C</string>
+				<string>4E180F9D139E20C100A6CFF4</string>
+				<string>4E180F9E139E20C100A6CFF4</string>
+				<string>4E180F9F139E20C100A6CFF4</string>
+				<string>4E180FA0139E20C100A6CFF4</string>
+				<string>4E180FA1139E20C100A6CFF4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -868,8 +867,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -905,7 +902,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>4E9EF2DE137C340600CCFF2C</string>
+				<string>4E180FA2139E20C100A6CFF4</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -915,7 +912,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

@@ -61,6 +61,7 @@
         
         animationInterval = 1.0 / 60.0;
 		[self setupView];
+		[self startAnimation];
     }
     return self;
 }
@@ -120,6 +121,11 @@
 	
 	
 	 glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+	
+	 static float transY = 0.0f;
+	
+	glRotatef(transY, 0.0f, 0.0f, 1.0f);
+	transY += 0.075f;
 	
 	glVertexPointer(3, GL_FLOAT, 0, triangleVertices);
 	

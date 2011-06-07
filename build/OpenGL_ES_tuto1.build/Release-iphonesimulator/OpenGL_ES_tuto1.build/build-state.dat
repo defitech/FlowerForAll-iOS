@@ -1,7 +1,7 @@
 TOpenGL_ES_tuto1
 v7
 r0
-t326909013.202467
+t329130524.104748
 cCheck dependencies
 cProcessInfoPlistFile /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/Info.plist Info.plist
 cCompileXIB /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/MainWindow.xib
@@ -85,9 +85,9 @@ i<OpenGLES/ES1/gl.h>
 i<OpenGLES/ES1/glext.h>
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/EAGLView.m
-c000000004DCC04D40000000000001DE6
-t1305216212
-s7654
+c000000004DEDEA970000000000001E5A
+t1307437719
+s7770
 i<QuartzCore/QuartzCore.h>
 i<OpenGLES/EAGLDrawable.h>
 i"EAGLView.h"
@@ -107,9 +107,9 @@ i"MController.h"
 i"EAGLView.h"
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/MController.xib
-c000000004DCC00B30000000000004E55
-t1305215155
-s20053
+c000000004DEDE9930000000000004E58
+t1307437459
+s20056
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/OpenGL_ES_tuto1AppDelegate.h
 c000000004DCBA53200000000000001EF
@@ -138,8 +138,8 @@ i<Foundation/Foundation.h>
 i<UIKit/UIKit.h>
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/Objects-normal/i386/EAGLView.o
-t1305216213
-s55052
+t1307437723
+s55332
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/Objects-normal/i386/MController.o
 t1305214698
@@ -159,11 +159,11 @@ t1305214698
 s6324
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app
-t1305216213
+t1307437724
 s238
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app.dSYM
-t1305216213
+t1307437724
 s102
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/Info.plist
@@ -171,7 +171,7 @@ t1305214695
 s629
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/MController.nib
-t1305215162
+t1307437463
 s1453
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/MainWindow.nib
@@ -179,8 +179,8 @@ t1305214696
 s1119
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1
-t1305216213
-s26368
+t1307437724
+s26472
 
 N/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/PkgInfo
 t1305214695
@@ -333,11 +333,11 @@ s902
 
 CCheck dependencies
 r0
-lSLF07#2@18"Check dependencies326909012#326909012#0(0"0(0#1#0"8603617568#0"0#
+lSLF07#2@18"Check dependencies329130523#329130523#0(0"0(0#1#0"8614628064#0"0#
 
 CCompileC build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/Objects-normal/i386/EAGLView.o /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/EAGLView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s326909012.708011
-e326909013.150609
+s329130523.554662
+e329130523.890933
 r1
 xCompileC
 xbuild/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/Objects-normal/i386/EAGLView.o
@@ -346,7 +346,7 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.gcc.4_2
-lSLF07#2@73"Compile /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/EAGLView.m326909012#326909013#0(0"0(0#0#65"/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/EAGLView.m8619789280#2233"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv LANG en_US.US-ASCII    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-generated-files.hmap -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-own-target-headers.hmap -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-all-target-headers.hmap -iquote /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-project-headers.hmap -F/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/include -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/DerivedSources/i386 -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/DerivedSources -include /var/folders/0V/0VMrTwmeHzG-GAqzZ56A4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OpenGL_ES_tuto1_Prefix-gmmtpsmpedflryhclzqxahvifxuk/OpenGL_ES_tuto1_Prefix.pch -c /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/EAGLView.m -o /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/Objects-normal/i386/EAGLView.o0#
+lSLF07#2@73"Compile /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/EAGLView.m329130523#329130523#0(0"0(0#0#65"/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/EAGLView.m8614768896#2233"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv LANG en_US.US-ASCII    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-generated-files.hmap -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-own-target-headers.hmap -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-all-target-headers.hmap -iquote /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-project-headers.hmap -F/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/include -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/DerivedSources/i386 -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/DerivedSources -include /var/folders/0V/0VMrTwmeHzG-GAqzZ56A4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OpenGL_ES_tuto1_Prefix-gmmtpsmpedflryhclzqxahvifxuk/OpenGL_ES_tuto1_Prefix.pch -c /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/EAGLView.m -o /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/Objects-normal/i386/EAGLView.o0#
 
 CCompileC build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/Objects-normal/i386/EAGLView.o /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/Classes/EAGLView.m normal i386 objective-c com.apple.compilers.gcc.4_2
 s326885876.110668
@@ -444,12 +444,12 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@60"Compile /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/main.m326877313#326877313#0(0"0(0#0#52"/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/main.m8598914464#2206"    cd /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1    setenv LANG en_US.US-ASCII    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-generated-files.hmap -I/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-own-target-headers.hmap -I/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-all-target-headers.hmap -iquote /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-project-headers.hmap -F/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Release-iphonesimulator -I/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Release-iphonesimulator/include -I/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/DerivedSources/i386 -I/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/DerivedSources -include /var/folders/0V/0VMrTwmeHzG-GAqzZ56A4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OpenGL_ES_tuto1_Prefix-eeonszwlwuxvptdfzjkqtnegcpbx/OpenGL_ES_tuto1_Prefix.pch -c /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/main.m -o /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/Objects-normal/i386/main.o0#
 
 CCompileXIB /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/MController.xib
-s326907961.730307
-e326907962.129820
+s329130262.615841
+e329130263.139988
 r1
 xCompileXIB
 x/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/MController.xib
-lSLF07#2@34"CompileXIB Classes/MController.xib326907961#326907962#0(0"0(0#0#70"/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/MController.xib8619126144#634"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/MController.nib /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/MController.xib --sdk /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
+lSLF07#2@34"CompileXIB Classes/MController.xib329130262#329130263#0(0"0(0#0#70"/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/MController.xib31244147624509488#634"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.2    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/MController.nib /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/Classes/MController.xib --sdk /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk0#
 
 CCompileXIB /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/MainWindow.xib
 s326907495.385030
@@ -479,13 +479,13 @@ CCompileXIB /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/MyController.xib
 r0
 
 CGenerateDSYMFile /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app.dSYM /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1
-s326909013.174715
-e326909013.196490
+s329130524.068689
+e329130524.100254
 r1
 xGenerateDSYMFile
 x/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app.dSYM
 x/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1
-lSLF07#2@137"GenerateDSYMFile build/Release-iphonesimulator/OpenGL_ES_tuto1.app.dSYM build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1326909013#326909013#0(0"0(0#0#112"/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto18599526816#450"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/usr/bin/dsymutil /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1 -o /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app.dSYM0#
+lSLF07#2@137"GenerateDSYMFile build/Release-iphonesimulator/OpenGL_ES_tuto1.app.dSYM build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1329130524#329130524#0(0"0(0#0#112"/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto18614731552#450"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/usr/bin/dsymutil /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1 -o /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app.dSYM0#
 
 CGenerateDSYMFile /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app.dSYM /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1
 s326885876.354056
@@ -497,14 +497,14 @@ x/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Release-iphonesimulator/Ope
 lSLF07#2@137"GenerateDSYMFile build/Release-iphonesimulator/OpenGL_ES_tuto1.app.dSYM build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1326885876#326885876#0(0"0(0#0#111"/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto18620951136#447"    cd /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/usr/bin/dsymutil /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1 -o /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app.dSYM0#
 
 CLd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1 normal i386
-s326909013.150702
-e326909013.174586
+s329130523.891055
+e329130524.068531
 r1
 xLd
 x/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1
 xnormal
 xi386
-lSLF07#2@117"Link /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1326909013#326909013#0(0"0(0#0#0"8602336544#1026"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -L/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator -F/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator -filelist /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/Objects-normal/i386/OpenGL_ES_tuto1.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework OpenGLES -framework QuartzCore -o /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto10#
+lSLF07#2@117"Link /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1329130523#329130524#0(0"0(0#0#0"8614458880#1026"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -L/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator -F/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator -filelist /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/Objects-normal/i386/OpenGL_ES_tuto1.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework OpenGLES -framework QuartzCore -o /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto10#
 
 CLd /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app/OpenGL_ES_tuto1 normal i386
 s326885876.327288
@@ -561,12 +561,12 @@ xcom.apple.compilers.gcc.4_2
 lSLF07#2@37"Precompile OpenGL_ES_tuto1_Prefix.pch326907496#326907498#0(0"0(0#0#73"/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/OpenGL_ES_tuto1_Prefix.pch8598806496#2091"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv LANG en_US.US-ASCII    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-generated-files.hmap -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-own-target-headers.hmap -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-all-target-headers.hmap -iquote /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/OpenGL_ES_tuto1-project-headers.hmap -F/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/include -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/DerivedSources/i386 -I/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/OpenGL_ES_tuto1.build/Release-iphonesimulator/OpenGL_ES_tuto1.build/DerivedSources -c /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/OpenGL_ES_tuto1_Prefix.pch -o /var/folders/0V/0VMrTwmeHzG-GAqzZ56A4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OpenGL_ES_tuto1_Prefix-gmmtpsmpedflryhclzqxahvifxuk/OpenGL_ES_tuto1_Prefix.pch.gch0#
 
 CTouch /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app
-s326909013.196604
-e326909013.202407
+s329130524.100398
+e329130524.104680
 r1
 xTouch
 x/Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app
-lSLF07#2@102"Touch /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app326909013#326909013#0(0"0(0#0#0"8594862528#314"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app0#
+lSLF07#2@102"Touch /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app329130524#329130524#0(0"0(0#0#0"8614632992#314"    cd /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1    setenv PATH "/Developer3.2.5/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer3.2.5/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Dropbox/perki/Documents/xcode/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app0#
 
 CTouch /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Release-iphonesimulator/OpenGL_ES_tuto1.app
 s326885876.386989
