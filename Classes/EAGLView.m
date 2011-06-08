@@ -33,6 +33,7 @@
 @synthesize context;
 @synthesize animationTimer;
 @synthesize animationInterval;
+@synthesize flapix;
 
 
 // You must implement this method
@@ -63,6 +64,13 @@
 		[self setupView];
 		[self startAnimation];
     }
+    
+    if(!flapix) {
+        flapix = [FLAPIX new];
+        [flapix SetTargetFrequency:20 frequency_tolerance:10];
+        [flapix Start];
+    }
+    
     return self;
 }
 
@@ -88,7 +96,7 @@
         x1, y1, z1,                  
         x2, y2, z2,                  
     };
-	NSLog(@"line %f,%f,%f %f,%f,%f",lineVertices[0],lineVertices[1],lineVertices[2],lineVertices[3],lineVertices[4],lineVertices[5]);	
+//	NSLog(@"line %f,%f,%f %f,%f,%f",lineVertices[0],lineVertices[1],lineVertices[2],lineVertices[3],lineVertices[4],lineVertices[5]);	
 	
 	// line
 	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
@@ -101,50 +109,68 @@
 
 - (void)drawView {
 	
-		
-	
-	
-	// Def de notre triangle
-	const GLfloat triangleVertices[] = {
-        0.0, 2.0, -5.0,                    // Haut du triangle
-        -2.0, -2.0, -5.0,                  // bas gauche
-        2.0, -2.0, -5.0                    // bas droit
+//	// Def de notre triangle
+//	const GLfloat triangleVertices[] = {
+//        1.0, 1.0, -5.0,                    // base droite
+//        -3.0, 0.0, -5.0,                   // pointe
+//        1.0, -1.0, -5.0                    // base gauche
+//    };
+    
+	// Def needle
+	const GLfloat quadVertices[] = {
+        0.0, 0.5, -5.0,                     // right
+        -2.0, 0.0, -5.0,                    // head
+        0.0, -0.5, -5.0,                    // left
+        0.5, 0.0, -5.0                      // queue
     };
-	
 	
     [EAGLContext setCurrentContext:context];    
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
     glViewport(0, 0, backingWidth, backingHeight);
-	NSLog(@"View port %f,%f",backingWidth,backingHeight);
+//	NSLog(@"View port %d,%d",backingWidth,backingHeight);
+    
 	/*************** Debut du nouveau code ******************/
+    
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
+    glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
 	
-	 glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
-	
-	 static float transY = 0.0f;
-	
+    static float transY = 0.0f;     // rotation angle
+    static float target = 90 / 15;  // the target is to keep the arrow at 90 degrees for a frequency of 15
+    static int freq = 0;            // current frequency
+    static int prev = 0;            // previous frequency
+    /*
+     * TODO:
+     * 1. Change color in relation with the distance to the target.
+     *    Green for 15 Hz and increasingly red with farther.
+     *
+     * 2. Improve the needle move sensitivity.
+     */
+    
+    freq = flapix.frequency;
+    NSLog(@"freq = %i \n", freq);
+    
+    if (freq != prev) {
+        transY = (prev * target) - (freq * target);
+    } else {
+        transY = 0.0f;
+    }
+    
+    prev = freq;
+    
 	glRotatef(transY, 0.0f, 0.0f, 1.0f);
-	transY += 0.075f;
 	
-	glVertexPointer(3, GL_FLOAT, 0, triangleVertices);
+//	glVertexPointer(3, GL_FLOAT, 0, triangleVertices);
+	glVertexPointer(3, GL_FLOAT, 0, quadVertices);
 	
 	glEnableClientState(GL_VERTEX_ARRAY);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-	
-	/**
-	glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-	glVertexPointer(3, GL_FLOAT, 0, lineVertices2);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glDrawArrays(GL_LINES, 0, 2);
-	**/
+//	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    
 	 
-	 
-	
 	[self drawLine:0.0 y1:-4.0 z1:0.0 x2:0.0  y2:4.0  z2:-1.0];
 	[self drawLine:-4.0 y1:0.0 z1:0.0 x2:4.0  y2:0.0  z2:-1.0];
 
-	
 	/*************** Fin du nouveau code ********************/ 
 	
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);

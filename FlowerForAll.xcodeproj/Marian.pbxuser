@@ -1,0 +1,153 @@
+// !$*UTF8*$!
+{
+	1D6058900D05DD3D006BFB54 /* OpenGL_ES_tuto1 */ = {
+		activeExec = 0;
+		executables = (
+			566E6A7B0F9B61C700ED2ABC /* OpenGL_ES_tuto1 */,
+		);
+	};
+	28FD14FC0DC6FC130079059D /* EAGLView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {912, 672}}";
+			sepNavSelRange = "{1236, 0}";
+			sepNavVisRange = "{0, 1065}";
+		};
+	};
+	28FD14FD0DC6FC130079059D /* EAGLView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1032, 3416}}";
+			sepNavSelRange = "{2435, 0}";
+			sepNavVisRange = "{1889, 1188}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 566E6A7B0F9B61C700ED2ABC /* OpenGL_ES_tuto1 */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* OpenGL_ES_tuto1 */;
+		codeSenseManager = 566E6A8A0F9B61CA00ED2ABC /* Code sense */;
+		executables = (
+			566E6A7B0F9B61C700ED2ABC /* OpenGL_ES_tuto1 */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					734,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 261845960;
+			PBXWorkspaceStateSaveDate = 261845960;
+		};
+		perUserProjectItems = {
+			566E6A990F9B73C400ED2ABC /* PBXTextBookmark */ = 566E6A990F9B73C400ED2ABC /* PBXTextBookmark */;
+			566E6A9B0F9B73C400ED2ABC /* PBXTextBookmark */ = 566E6A9B0F9B73C400ED2ABC /* PBXTextBookmark */;
+			566E6A9C0F9B73C400ED2ABC /* PBXTextBookmark */ = 566E6A9C0F9B73C400ED2ABC /* PBXTextBookmark */;
+			566E6A9E0F9B73C400ED2ABC /* PBXTextBookmark */ = 566E6A9E0F9B73C400ED2ABC /* PBXTextBookmark */;
+			566E6ACA0F9B80B400ED2ABC /* PBXTextBookmark */ = 566E6ACA0F9B80B400ED2ABC /* PBXTextBookmark */;
+		};
+		sourceControlManager = 566E6A890F9B61CA00ED2ABC /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	566E6A7B0F9B61C700ED2ABC /* OpenGL_ES_tuto1 */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = OpenGL_ES_tuto1;
+		sourceDirectories = (
+		);
+	};
+	566E6A890F9B61CA00ED2ABC /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	566E6A8A0F9B61CA00ED2ABC /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	566E6A990F9B73C400ED2ABC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FD14FC0DC6FC130079059D /* EAGLView.h */;
+		name = "EAGLView.h: 46";
+		rLen = 0;
+		rLoc = 1236;
+		rType = 0;
+		vrLen = 1065;
+		vrLoc = 0;
+	};
+	566E6A9B0F9B73C400ED2ABC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FD14FC0DC6FC130079059D /* EAGLView.h */;
+		name = "EAGLView.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1065;
+		vrLoc = 0;
+	};
+	566E6A9C0F9B73C400ED2ABC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */;
+		name = "EAGLView.m: 63";
+		rLen = 0;
+		rLoc = 1618;
+		rType = 0;
+		vrLen = 1048;
+		vrLoc = 715;
+	};
+	566E6A9E0F9B73C400ED2ABC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */;
+		name = "EAGLView.m: 63";
+		rLen = 0;
+		rLoc = 1618;
+		rType = 0;
+		vrLen = 1145;
+		vrLoc = 680;
+	};
+	566E6ACA0F9B80B400ED2ABC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */;
+		name = "EAGLView.m: 93";
+		rLen = 0;
+		rLoc = 2435;
+		rType = 0;
+		vrLen = 1188;
+		vrLoc = 1889;
+	};
+}
