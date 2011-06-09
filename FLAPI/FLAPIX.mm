@@ -13,7 +13,7 @@
 
 @implementation FLAPIX
 
-@synthesize running, frequency;
+@synthesize running, frequency, blowing;
 
 /**
  * init 
@@ -72,11 +72,13 @@
 }
 
 - (void) EventBlowStart:(double)timestamp {
-    NSLog(@"Start Blow %f ",timestamp);
+//    NSLog(@"Start Blow %f ",timestamp);
+    blowing = true;
 }
 
 - (void) EventBlowEnd:(double)timestamp duration:(double)length in_range_duration:(double)ir_length {
-     NSLog(@"End Blow %f %f %f",timestamp,length,ir_length);
+//     NSLog(@"End Blow %f %f %f",timestamp,length,ir_length);
+    blowing = false;
 }
 
 // --------------- Dealloc 

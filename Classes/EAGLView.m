@@ -131,42 +131,48 @@
     
 	/*************** Debut du nouveau code ******************/
     
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-    glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
-	
-    static float transY = 0.0f;     // rotation angle
-    static float target = 90 / 15;  // the target is to keep the arrow at 90 degrees for a frequency of 15
-    static int freq = 0;            // current frequency
-    static int prev = 0;            // previous frequency
     /*
      * TODO:
      * 1. Change color in relation with the distance to the target.
      *    Green for 15 Hz and increasingly red with farther.
-     *
-     * 2. Improve the needle move sensitivity.
      */
+    static float target = - 90 / 15;    // the target is to keep the needle at 90 degrees for a frequency of 15
+    static float transY = 0.0f;         // effective rotation angle in degrees
+    static int freq = 0;                // current frequency
+    static float degree = 0.0f;         // current angle
+    static float prev = 0.0f;           // previous angle
+    static float speed = 0.0f;          // rotation speed
     
-    freq = flapix.frequency;
-    NSLog(@"freq = %i \n", freq);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    if (freq != prev) {
-        transY = (prev * target) - (freq * target);
+    if(!flapix.blowing) {
+        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
     } else {
-        transY = 0.0f;
+        glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+        
+        freq = flapix.frequency;
+        NSLog(@"freq = %i \n", freq);
+        degree = (freq * target); // to reach
+        speed = fabs((degree - prev) / 10);
+        NSLog(@"speed = %f \n", speed);
+    
+        if(degree > prev) {
+            transY = speed;
+        } else {
+            transY = - speed;
+        }
+    
+        prev = prev + transY;
+
+        glRotatef(transY, 0.0f, 0.0f, 1.0f);
     }
-    
-    prev = freq;
-    
-	glRotatef(transY, 0.0f, 0.0f, 1.0f);
 	
 //	glVertexPointer(3, GL_FLOAT, 0, triangleVertices);
 	glVertexPointer(3, GL_FLOAT, 0, quadVertices);
 	
 	glEnableClientState(GL_VERTEX_ARRAY);
-//	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-    
+    //	glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 	 
 	[self drawLine:0.0 y1:-4.0 z1:0.0 x2:0.0  y2:4.0  z2:-1.0];
 	[self drawLine:-4.0 y1:0.0 z1:0.0 x2:4.0  y2:0.0  z2:-1.0];
