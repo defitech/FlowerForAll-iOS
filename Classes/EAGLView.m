@@ -145,6 +145,9 @@
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
     if(!flapix.blowing) {
         glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
     } else {
@@ -157,15 +160,15 @@
         NSLog(@"speed = %f \n", speed);
     
         if(degree > prev) {
-            transY = speed;
+            transY = prev + speed;
         } else {
-            transY = - speed;
+            transY = prev - speed;
         }
     
-        prev = prev + transY;
-
-        glRotatef(transY, 0.0f, 0.0f, 1.0f);
+        prev = transY;
     }
+    glRotatef(transY, 0.0f, 0.0f, 1.0f);
+    
 	
 //	glVertexPointer(3, GL_FLOAT, 0, triangleVertices);
 	glVertexPointer(3, GL_FLOAT, 0, quadVertices);
@@ -174,6 +177,10 @@
     //	glDrawArrays(GL_TRIANGLES, 0, 3);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 	 
+    
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
 	[self drawLine:0.0 y1:-4.0 z1:0.0 x2:0.0  y2:4.0  z2:-1.0];
 	[self drawLine:-4.0 y1:0.0 z1:0.0 x2:4.0  y2:0.0  z2:-1.0];
 

@@ -14,7 +14,7 @@
 			sepNavVisRange = "{3, 744}";
 		};
 	};
-	1D6058900D05DD3D006BFB54 /* OpenGL_ES_tuto1 */ = {
+	1D6058900D05DD3D006BFB54 /* FlowerForAll */ = {
 		activeExec = 0;
 		executables = (
 			4EDEF3A3137AE6BE0077413E /* OpenGL_ES_tuto1 */,
@@ -29,18 +29,18 @@
 	};
 	28FD14FD0DC6FC130079059D /* EAGLView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1202, 3601}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1202, 3913}}";
 			sepNavSelRange = "{1653, 0}";
-			sepNavVisRange = "{3081, 1086}";
+			sepNavVisRange = "{328, 1190}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Release;
 		activeExecutable = 4EDEF3A3137AE6BE0077413E /* OpenGL_ES_tuto1 */;
 		activeSDKPreference = iphonesimulator4.2;
-		activeTarget = 1D6058900D05DD3D006BFB54 /* OpenGL_ES_tuto1 */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* FlowerForAll */;
 		addToTargets = (
-			1D6058900D05DD3D006BFB54 /* OpenGL_ES_tuto1 */,
+			1D6058900D05DD3D006BFB54 /* FlowerForAll */,
 		);
 		breakpoints = (
 			4E9EF2D4137C340200CCFF2C /* EAGLView.m:86 */,
@@ -96,12 +96,12 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 329130174;
-			PBXWorkspaceStateSaveDate = 329130174;
+			PBXPerProjectTemplateStateSaveDate = 329234339;
+			PBXWorkspaceStateSaveDate = 329234339;
 		};
 		perUserProjectItems = {
-			4E180F97139E20C100A6CFF4 /* PBXTextBookmark */ = 4E180F97139E20C100A6CFF4 /* PBXTextBookmark */;
 			4E180FB1139E230000A6CFF4 /* PBXTextBookmark */ = 4E180FB1139E230000A6CFF4 /* PBXTextBookmark */;
+			4E5BA1BA139FB7AE00A65944 /* PBXTextBookmark */ = 4E5BA1BA139FB7AE00A65944 /* PBXTextBookmark */;
 			4E9EF2FF137C36CF00CCFF2C /* PBXTextBookmark */ = 4E9EF2FF137C36CF00CCFF2C /* PBXTextBookmark */;
 			4E9EF300137C36CF00CCFF2C /* PBXTextBookmark */ = 4E9EF300137C36CF00CCFF2C /* PBXTextBookmark */;
 			4E9EF301137C36CF00CCFF2C /* PBXTextBookmark */ = 4E9EF301137C36CF00CCFF2C /* PBXTextBookmark */;
@@ -121,22 +121,12 @@
 			sepNavVisRange = "{0, 369}";
 		};
 	};
-	32CA4F630368D1EE00C91783 /* OpenGL_ES_tuto1_Prefix.pch */ = {
+	32CA4F630368D1EE00C91783 /* FlowerForAll_Prefix.pch */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {943, 530}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 191}";
 		};
-	};
-	4E180F97139E20C100A6CFF4 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */;
-		name = "EAGLView.m: 119";
-		rLen = 94;
-		rLoc = 3365;
-		rType = 0;
-		vrLen = 1319;
-		vrLoc = 3572;
 	};
 	4E180FB1139E230000A6CFF4 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -147,6 +137,16 @@
 		rType = 0;
 		vrLen = 1086;
 		vrLoc = 3081;
+	};
+	4E5BA1BA139FB7AE00A65944 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */;
+		name = "EAGLView.m: 65";
+		rLen = 0;
+		rLoc = 1653;
+		rType = 0;
+		vrLen = 1190;
+		vrLoc = 328;
 	};
 	4E9EF2D4137C340200CCFF2C /* EAGLView.m:86 */ = {
 		isa = PBXFileBreakpoint;
@@ -166,7 +166,7 @@
 	};
 	4E9EF2FF137C36CF00CCFF2C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 32CA4F630368D1EE00C91783 /* OpenGL_ES_tuto1_Prefix.pch */;
+		fRef = 32CA4F630368D1EE00C91783 /* FlowerForAll_Prefix.pch */;
 		name = "OpenGL_ES_tuto1_Prefix.pch: 1";
 		rLen = 0;
 		rLoc = 0;
