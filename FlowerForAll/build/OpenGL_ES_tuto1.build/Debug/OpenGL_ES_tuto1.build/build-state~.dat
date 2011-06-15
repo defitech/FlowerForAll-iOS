@@ -1,0 +1,39 @@
+TOpenGL_ES_tuto1
+v7
+r1
+
+N/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/MainWindow.xib
+c0000000049EB2A4700000000000023AE
+t1240148551
+s9134
+
+N/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Debug/OpenGL_ES_tuto1.app
+t2
+s0
+
+N/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Debug/OpenGL_ES_tuto1.app/Contents/Info.plist
+t2
+s0
+
+N/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Debug/OpenGL_ES_tuto1.app/Contents/PkgInfo
+t2
+s0
+
+N/Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Debug/OpenGL_ES_tuto1.app/Contents/Resources/MainWindow.nib
+t2
+s0
+
+NInfo.plist
+c0000000049EB2A470000000000000386
+t1240148551
+s902
+
+CCompileXIB /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/MainWindow.xib
+r0
+
+CProcessInfoPlistFile /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Debug/OpenGL_ES_tuto1.app/Contents/Info.plist Info.plist
+r0
+
+CTouch /Volumes/Temp/perki/Downloads/OpenGL_ES_tuto1/build/Debug/OpenGL_ES_tuto1.app
+r0
+

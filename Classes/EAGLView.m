@@ -12,6 +12,7 @@
 #import <OpenGLES/EAGLDrawable.h>
 
 #import "EAGLView.h"
+#import "FlowerController.h"
 
 #define USE_DEPTH_BUFFER 1
 #define DEGREES_TO_RADIANS(__ANGLE) ((__ANGLE) / 180.0 * M_PI)
@@ -299,6 +300,13 @@
             break;
     }
 }
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Touched");
+    [FlowerController showNav];
+}
+
 
 - (void)dealloc {
     
