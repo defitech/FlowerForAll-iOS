@@ -39,6 +39,10 @@
 	gParams.frequency_tolerance	= tolerance;
 }
 
+- (int) frequenceTolerance { return gParams.frequency_tolerance; }
+
+- (int) frequenceTarget { return gParams.target_frequency; }
+
 - (BOOL) Start {
     if (self.running) return NO;
     // debug -- read from file

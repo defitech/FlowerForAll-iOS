@@ -68,7 +68,7 @@
     
     if(!flapix) {
         flapix = [FLAPIX new];
-        [flapix SetTargetFrequency:20 frequency_tolerance:10];
+        [flapix SetTargetFrequency:15 frequency_tolerance:7];
         [flapix Start];
     }
     
@@ -137,7 +137,7 @@
      * 1. Change color in relation with the distance to the target.
      *    Green for 15 Hz and increasingly red with farther.
      */
-    static float target = - 90 / 15;    // the target is to keep the needle at 90 degrees for a frequency of 15
+    float target = - 90 /[flapix frequenceTarget];// the target is to keep the needle at 90 degrees for a frequency of x
     static float transY = 0.0f;         // effective rotation angle in degrees
     static int freq = 0;                // current frequency
     static float degree = 0.0f;         // current angle
@@ -152,7 +152,12 @@
     if(!flapix.blowing) {
         glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
     } else {
-        glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+        if ((([flapix frequenceTarget] - [flapix frequenceTolerance]) < flapix.frequency) && 
+            (([flapix frequenceTarget] + [flapix frequenceTolerance]) > flapix.frequency)) { // Good
+              glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+        } else { // Bad
+            glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+        }
         
         freq = flapix.frequency;
         NSLog(@"freq = %i \n", freq);
@@ -181,9 +186,10 @@
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    
+
 	[self drawLine:0.0 y1:-4.0 z1:0.0 x2:0.0  y2:4.0  z2:-1.0];
-	[self drawLine:-4.0 y1:0.0 z1:0.0 x2:4.0  y2:0.0  z2:-1.0];
+
+	//[self drawLine:-4.0 y1:0.0 z1:0.0 x2:4.0  y2:0.0  z2:-1.0];
 
 	/*************** Fin du nouveau code ********************/ 
 	

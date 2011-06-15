@@ -26,6 +26,12 @@
 
 - (void) SetTargetFrequency:(int)target_frequency frequency_tolerance:(int)tolerance;
 
+// return actual frequence Target
+- (int) frequenceTarget;
+
+// return actual frequency Tolerance value
+- (int) frequenceTolerance;
+
 // EVENTS
 - (void) EventLevel:(float) level;
 - (void) EventFrequency:(int) frequency;
