@@ -21,7 +21,9 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self == ([super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
+    
+/**    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code.
     }
@@ -34,7 +36,8 @@
 //Add the widgets to the cell
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
 	
-	if (self == ([super initWithFrame:frame reuseIdentifier:reuseIdentifier])) {
+	if (self == ([super initWithFrame:frame reuseIdentifier:reuseIdentifier])) {**/
+    
 
 		// Initialization code
 		primaryLabel = [[UILabel alloc]init];

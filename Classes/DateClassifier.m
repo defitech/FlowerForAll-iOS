@@ -38,7 +38,7 @@ static NSMutableArray *pastMonths;
 //Returns the current month in MM format (example: 7 = July)
 +(NSInteger) getCurrentMonth {
 	
-	NSDate *now = [NSDate date];
+	//NSDate *now = [NSDate date];
 	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
 	[formatter setDateFormat:@"MM"];
 	//return [[formatter stringFromDate:now] intValue];

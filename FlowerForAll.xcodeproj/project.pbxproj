@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* OpenGL_ES_tuto1AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* OpenGL_ES_tuto1AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -41,7 +40,6 @@
 		4E8F594C13A7AF9800D9D3A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594A13A7AF9800D9D3A7 /* Localizable.strings */; };
 		4E8F595713A7AFA900D9D3A7 /* GameParametersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594D13A7AFA900D9D3A7 /* GameParametersView.xib */; };
 		4E8F595813A7AFA900D9D3A7 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594E13A7AFA900D9D3A7 /* GameView.xib */; };
-		4E8F595913A7AFA900D9D3A7 /* MyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594F13A7AFA900D9D3A7 /* MyController.xib */; };
 		4E8F595A13A7AFA900D9D3A7 /* SettingChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595013A7AFA900D9D3A7 /* SettingChoiceView.xib */; };
 		4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */; };
 		4E8F595C13A7AFA900D9D3A7 /* StatisticDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595313A7AFA900D9D3A7 /* StatisticDetailView.xib */; };
@@ -50,7 +48,6 @@
 		4E8F595F13A7AFA900D9D3A7 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595613A7AFA900D9D3A7 /* UserListView.xib */; };
 		4E8F596513A7B67D00D9D3A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */; };
 		4E8F596713A7B6FF00D9D3A7 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */; };
-		4EDEF3C8137AE7ED0077413E /* MController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDEF3C6137AE7ED0077413E /* MController.xib */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
 		D72E028F139E448200F3687C /* libFLAPISP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP.a */; };
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
@@ -60,8 +57,6 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* OpenGL_ES_tuto1AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGL_ES_tuto1AppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* OpenGL_ES_tuto1AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGL_ES_tuto1AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* FlowerForAll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowerForAll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -85,7 +80,7 @@
 		4E8F590C13A7AF6B00D9D3A7 /* Expiration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expiration.m; sourceTree = "<group>"; };
 		4E8F590F13A7AF6B00D9D3A7 /* FlowerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerController.h; sourceTree = "<group>"; };
 		4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerController.m; sourceTree = "<group>"; };
-		4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FlowerController.xib; path = Classes/FlowerController.xib; sourceTree = "<group>"; };
+		4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerController.xib; sourceTree = "<group>"; };
 		4E8F591213A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlutterApp2AppDelegate.h; sourceTree = "<group>"; };
 		4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlutterApp2AppDelegate.m; sourceTree = "<group>"; };
 		4E8F591413A7AF6B00D9D3A7 /* GameParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameParametersViewController.h; sourceTree = "<group>"; };
@@ -116,19 +111,16 @@
 		4E8F592D13A7AF6B00D9D3A7 /* YearStatisticListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearStatisticListViewController.m; sourceTree = "<group>"; };
 		4E8F594713A7AF8B00D9D3A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		4E8F594B13A7AF9800D9D3A7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
-		4E8F594D13A7AFA900D9D3A7 /* GameParametersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameParametersView.xib; sourceTree = "<group>"; };
-		4E8F594E13A7AFA900D9D3A7 /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
-		4E8F594F13A7AFA900D9D3A7 /* MyController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyController.xib; sourceTree = "<group>"; };
-		4E8F595013A7AFA900D9D3A7 /* SettingChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingChoiceView.xib; sourceTree = "<group>"; };
+		4E8F594D13A7AFA900D9D3A7 /* GameParametersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameParametersView.xib; path = ../GameParametersView.xib; sourceTree = "<group>"; };
+		4E8F594E13A7AFA900D9D3A7 /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameView.xib; path = ../GameView.xib; sourceTree = "<group>"; };
+		4E8F595013A7AFA900D9D3A7 /* SettingChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingChoiceView.xib; path = ../SettingChoiceView.xib; sourceTree = "<group>"; };
 		4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlutterApp2Database.sql; sourceTree = "<group>"; };
-		4E8F595313A7AFA900D9D3A7 /* StatisticDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticDetailView.xib; sourceTree = "<group>"; };
-		4E8F595413A7AFA900D9D3A7 /* StatisticListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticListView.xib; sourceTree = "<group>"; };
-		4E8F595513A7AFA900D9D3A7 /* UserDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailView.xib; sourceTree = "<group>"; };
-		4E8F595613A7AFA900D9D3A7 /* UserListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListView.xib; sourceTree = "<group>"; };
-		4E8F596213A7B63700D9D3A7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4E8F595313A7AFA900D9D3A7 /* StatisticDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatisticDetailView.xib; path = ../StatisticDetailView.xib; sourceTree = "<group>"; };
+		4E8F595413A7AFA900D9D3A7 /* StatisticListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatisticListView.xib; path = ../StatisticListView.xib; sourceTree = "<group>"; };
+		4E8F595513A7AFA900D9D3A7 /* UserDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserDetailView.xib; path = ../UserDetailView.xib; sourceTree = "<group>"; };
+		4E8F595613A7AFA900D9D3A7 /* UserListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserListView.xib; path = ../UserListView.xib; sourceTree = "<group>"; };
 		4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		4EDEF3C6137AE7ED0077413E /* MController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MController.xib; path = Classes/MController.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D72E0286139E448200F3687C /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		D72E0287139E448200F3687C /* filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filter.h; sourceTree = "<group>"; };
@@ -164,15 +156,17 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* OpenGL_ES_tuto1AppDelegate.h */,
-				1D3623250D0F684500981E51 /* OpenGL_ES_tuto1AppDelegate.m */,
-				4E8F596813A7B7E800D9D3A7 /* Secondary */,
+				4E57A86513A8F19900910E4D /* Data */,
+				4E57A86413A8F16A00910E4D /* Statistics */,
+				4E57A86313A8F12500910E4D /* Activities */,
+				4E57A86213A8F11A00910E4D /* Settings */,
 				4E8F590F13A7AF6B00D9D3A7 /* FlowerController.h */,
 				4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */,
 				4E8F591213A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.h */,
 				4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */,
 				28FD14FC0DC6FC130079059D /* EAGLView.h */,
 				28FD14FD0DC6FC130079059D /* EAGLView.m */,
+				4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -188,8 +182,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */,
-				4E8F595113A7AFA900D9D3A7 /* sqlite_database */,
 				D72E0285139E448200F3687C /* FLAPI */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -212,19 +204,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */,
-				4E8F594D13A7AFA900D9D3A7 /* GameParametersView.xib */,
-				4E8F594E13A7AFA900D9D3A7 /* GameView.xib */,
-				4E8F594F13A7AFA900D9D3A7 /* MyController.xib */,
-				4E8F595013A7AFA900D9D3A7 /* SettingChoiceView.xib */,
-				4E8F595313A7AFA900D9D3A7 /* StatisticDetailView.xib */,
-				4E8F595413A7AFA900D9D3A7 /* StatisticListView.xib */,
-				4E8F595513A7AFA900D9D3A7 /* UserDetailView.xib */,
-				4E8F595613A7AFA900D9D3A7 /* UserListView.xib */,
+				4E8F595113A7AFA900D9D3A7 /* sqlite_database */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				4E8F594913A7AF9800D9D3A7 /* fr.lproj */,
 				4E8F594513A7AF8B00D9D3A7 /* en.lproj */,
-				4EDEF3C6137AE7ED0077413E /* MController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 			);
 			name = Resources;
@@ -234,7 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */,
-				4E8F596213A7B63700D9D3A7 /* libsqlite3.dylib */,
+				4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */,
 				D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */,
 				28FD15070DC6FC5B0079059D /* QuartzCore.framework */,
 				28FD14FF0DC6FC520079059D /* OpenGLES.framework */,
@@ -242,6 +225,79 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4E57A86213A8F11A00910E4D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4E8F595513A7AFA900D9D3A7 /* UserDetailView.xib */,
+				4E8F592813A7AF6B00D9D3A7 /* UserDetailViewController.h */,
+				4E8F592913A7AF6B00D9D3A7 /* UserDetailViewController.m */,
+				4E8F595613A7AFA900D9D3A7 /* UserListView.xib */,
+				4E8F592A13A7AF6B00D9D3A7 /* UserListViewController.h */,
+				4E8F592B13A7AF6B00D9D3A7 /* UserListViewController.m */,
+				4E8F595013A7AFA900D9D3A7 /* SettingChoiceView.xib */,
+				4E8F591A13A7AF6B00D9D3A7 /* SettingChoiceViewController.h */,
+				4E8F591B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m */,
+				4E8F591C13A7AF6B00D9D3A7 /* SettingsViewController.h */,
+				4E8F591D13A7AF6B00D9D3A7 /* SettingsViewController.m */,
+				4E8F594D13A7AFA900D9D3A7 /* GameParametersView.xib */,
+				4E8F591413A7AF6B00D9D3A7 /* GameParametersViewController.h */,
+				4E8F591513A7AF6B00D9D3A7 /* GameParametersViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		4E57A86313A8F12500910E4D /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				4E8F594E13A7AFA900D9D3A7 /* GameView.xib */,
+				4E8F591613A7AF6B00D9D3A7 /* GameViewController.h */,
+				4E8F591713A7AF6B00D9D3A7 /* GameViewController.m */,
+			);
+			name = Activities;
+			sourceTree = "<group>";
+		};
+		4E57A86413A8F16A00910E4D /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				4E8F595313A7AFA900D9D3A7 /* StatisticDetailView.xib */,
+				4E8F595413A7AFA900D9D3A7 /* StatisticListView.xib */,
+				4E8F591E13A7AF6B00D9D3A7 /* StatisticCell.h */,
+				4E8F591F13A7AF6B00D9D3A7 /* StatisticCell.m */,
+				4E8F592013A7AF6B00D9D3A7 /* StatisticDetailViewController.h */,
+				4E8F592113A7AF6B00D9D3A7 /* StatisticDetailViewController.m */,
+				4E8F592213A7AF6B00D9D3A7 /* StatisticListViewController.h */,
+				4E8F592313A7AF6B00D9D3A7 /* StatisticListViewController.m */,
+				4E8F592413A7AF6B00D9D3A7 /* StatisticsViewController.h */,
+				4E8F592513A7AF6B00D9D3A7 /* StatisticsViewController.m */,
+				4E8F592C13A7AF6B00D9D3A7 /* YearStatisticListViewController.h */,
+				4E8F592D13A7AF6B00D9D3A7 /* YearStatisticListViewController.m */,
+				4E8F591813A7AF6B00D9D3A7 /* MonthStatisticListViewController.h */,
+				4E8F591913A7AF6B00D9D3A7 /* MonthStatisticListViewController.m */,
+			);
+			name = Statistics;
+			sourceTree = "<group>";
+		};
+		4E57A86513A8F19900910E4D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */,
+				4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */,
+				4E8F590313A7AF6B00D9D3A7 /* DataAccessDB.h */,
+				4E8F590413A7AF6B00D9D3A7 /* DataAccessDB.m */,
+				4E8F590513A7AF6B00D9D3A7 /* DateClassificationResult.h */,
+				4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */,
+				4E8F590713A7AF6B00D9D3A7 /* DateClassifier.h */,
+				4E8F590813A7AF6B00D9D3A7 /* DateClassifier.m */,
+				4E8F590913A7AF6B00D9D3A7 /* Exercise.h */,
+				4E8F590A13A7AF6B00D9D3A7 /* Exercise.m */,
+				4E8F590B13A7AF6B00D9D3A7 /* Expiration.h */,
+				4E8F590C13A7AF6B00D9D3A7 /* Expiration.m */,
+				4E8F592613A7AF6B00D9D3A7 /* User.h */,
+				4E8F592713A7AF6B00D9D3A7 /* User.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		4E8F594513A7AF8B00D9D3A7 /* en.lproj */ = {
@@ -266,51 +322,6 @@
 				4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */,
 			);
 			path = sqlite_database;
-			sourceTree = "<group>";
-		};
-		4E8F596813A7B7E800D9D3A7 /* Secondary */ = {
-			isa = PBXGroup;
-			children = (
-				4E8F591413A7AF6B00D9D3A7 /* GameParametersViewController.h */,
-				4E8F591513A7AF6B00D9D3A7 /* GameParametersViewController.m */,
-				4E8F591613A7AF6B00D9D3A7 /* GameViewController.h */,
-				4E8F591713A7AF6B00D9D3A7 /* GameViewController.m */,
-				4E8F591813A7AF6B00D9D3A7 /* MonthStatisticListViewController.h */,
-				4E8F591913A7AF6B00D9D3A7 /* MonthStatisticListViewController.m */,
-				4E8F591A13A7AF6B00D9D3A7 /* SettingChoiceViewController.h */,
-				4E8F591B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m */,
-				4E8F591C13A7AF6B00D9D3A7 /* SettingsViewController.h */,
-				4E8F591D13A7AF6B00D9D3A7 /* SettingsViewController.m */,
-				4E8F591E13A7AF6B00D9D3A7 /* StatisticCell.h */,
-				4E8F591F13A7AF6B00D9D3A7 /* StatisticCell.m */,
-				4E8F592013A7AF6B00D9D3A7 /* StatisticDetailViewController.h */,
-				4E8F592113A7AF6B00D9D3A7 /* StatisticDetailViewController.m */,
-				4E8F592213A7AF6B00D9D3A7 /* StatisticListViewController.h */,
-				4E8F592313A7AF6B00D9D3A7 /* StatisticListViewController.m */,
-				4E8F592413A7AF6B00D9D3A7 /* StatisticsViewController.h */,
-				4E8F592513A7AF6B00D9D3A7 /* StatisticsViewController.m */,
-				4E8F592613A7AF6B00D9D3A7 /* User.h */,
-				4E8F592713A7AF6B00D9D3A7 /* User.m */,
-				4E8F592813A7AF6B00D9D3A7 /* UserDetailViewController.h */,
-				4E8F592913A7AF6B00D9D3A7 /* UserDetailViewController.m */,
-				4E8F592A13A7AF6B00D9D3A7 /* UserListViewController.h */,
-				4E8F592B13A7AF6B00D9D3A7 /* UserListViewController.m */,
-				4E8F592C13A7AF6B00D9D3A7 /* YearStatisticListViewController.h */,
-				4E8F592D13A7AF6B00D9D3A7 /* YearStatisticListViewController.m */,
-				4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */,
-				4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */,
-				4E8F590313A7AF6B00D9D3A7 /* DataAccessDB.h */,
-				4E8F590413A7AF6B00D9D3A7 /* DataAccessDB.m */,
-				4E8F590513A7AF6B00D9D3A7 /* DateClassificationResult.h */,
-				4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */,
-				4E8F590713A7AF6B00D9D3A7 /* DateClassifier.h */,
-				4E8F590813A7AF6B00D9D3A7 /* DateClassifier.m */,
-				4E8F590913A7AF6B00D9D3A7 /* Exercise.h */,
-				4E8F590A13A7AF6B00D9D3A7 /* Exercise.m */,
-				4E8F590B13A7AF6B00D9D3A7 /* Expiration.h */,
-				4E8F590C13A7AF6B00D9D3A7 /* Expiration.m */,
-			);
-			name = Secondary;
 			sourceTree = "<group>";
 		};
 		D72E0285139E448200F3687C /* FLAPI */ = {
@@ -381,14 +392,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				4EDEF3C8137AE7ED0077413E /* MController.xib in Resources */,
 				D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */,
 				4E8F593613A7AF6B00D9D3A7 /* FlowerController.xib in Resources */,
 				4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */,
 				4E8F594C13A7AF9800D9D3A7 /* Localizable.strings in Resources */,
 				4E8F595713A7AFA900D9D3A7 /* GameParametersView.xib in Resources */,
 				4E8F595813A7AFA900D9D3A7 /* GameView.xib in Resources */,
-				4E8F595913A7AFA900D9D3A7 /* MyController.xib in Resources */,
 				4E8F595A13A7AFA900D9D3A7 /* SettingChoiceView.xib in Resources */,
 				4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */,
 				4E8F595C13A7AFA900D9D3A7 /* StatisticDetailView.xib in Resources */,
@@ -406,7 +415,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* OpenGL_ES_tuto1AppDelegate.m in Sources */,
 				28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */,
 				D72E028E139E448200F3687C /* FLAPIX.mm in Sources */,
 				D72E0290139E448200F3687C /* subsys_ios.mm in Sources */,
@@ -505,7 +513,11 @@
 				HEADER_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/include/CorePlot";
 				LIBRARY_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/lib";
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-lCorePlot";
+				OTHER_LDFLAGS = (
+					"-lCorePlot",
+					"-all_load",
+					"-ObjC",
+				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
@@ -522,7 +534,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/include/CorePlot";
 				LIBRARY_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/lib";
-				OTHER_LDFLAGS = "-lCorePlot";
+				OTHER_LDFLAGS = (
+					"-lCorePlot",
+					"-all_load",
+					"-ObjC",
+				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
