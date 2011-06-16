@@ -10,13 +10,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CorePlot-CocoaTouch.h"
 
 @class StatisticDetailViewController;
 @class MonthStatisticListViewController;
 @class YearStatisticListViewController;
 
 
-@interface StatisticListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
+@interface StatisticListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, CPLineStyleDelegate> {
 	
 	//The table view
 	IBOutlet UITableView *statisticListTableView;
@@ -69,6 +70,7 @@
 @property (nonatomic, retain) MonthStatisticListViewController *monthStatisticListViewController;
 @property (nonatomic, retain) YearStatisticListViewController *yearStatisticListViewController;
 
+//-(void)lineStyleDidChange:(CPLineStyle *)lineStyle; 
 
 
 @end

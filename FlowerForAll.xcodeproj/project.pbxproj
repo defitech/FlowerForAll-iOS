@@ -48,8 +48,9 @@
 		4E8F595F13A7AFA900D9D3A7 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595613A7AFA900D9D3A7 /* UserListView.xib */; };
 		4E8F596513A7B67D00D9D3A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */; };
 		4E8F596713A7B6FF00D9D3A7 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */; };
+		4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
-		D72E028F139E448200F3687C /* libFLAPISP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP.a */; };
+		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; };
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
 		D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */ = {isa = PBXBuildFile; fileRef = D72E02AC139E500800F3687C /* FLAPIrecorded.raw */; };
@@ -121,13 +122,14 @@
 		4E8F595613A7AFA900D9D3A7 /* UserListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserListView.xib; path = ../UserListView.xib; sourceTree = "<group>"; };
 		4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-ios.a"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D72E0286139E448200F3687C /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		D72E0287139E448200F3687C /* filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filter.h; sourceTree = "<group>"; };
 		D72E0288139E448200F3687C /* flapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flapi.h; sourceTree = "<group>"; };
 		D72E0289139E448200F3687C /* FLAPIX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAPIX.h; sourceTree = "<group>"; };
 		D72E028A139E448200F3687C /* FLAPIX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FLAPIX.mm; sourceTree = "<group>"; };
-		D72E028B139E448200F3687C /* libFLAPISP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFLAPISP.a; sourceTree = "<group>"; };
+		D72E028B139E448200F3687C /* libFLAPISP-simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-simulator.a"; sourceTree = "<group>"; };
 		D72E028C139E448200F3687C /* subsys_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subsys_ios.h; sourceTree = "<group>"; };
 		D72E028D139E448200F3687C /* subsys_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = subsys_ios.mm; sourceTree = "<group>"; };
 		D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
@@ -146,7 +148,8 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */,
 				28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */,
-				D72E028F139E448200F3687C /* libFLAPISP.a in Frameworks */,
+				D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */,
+				4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,12 +330,13 @@
 		D72E0285139E448200F3687C /* FLAPI */ = {
 			isa = PBXGroup;
 			children = (
+				4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */,
+				D72E028B139E448200F3687C /* libFLAPISP-simulator.a */,
 				D72E0286139E448200F3687C /* common.h */,
 				D72E0287139E448200F3687C /* filter.h */,
 				D72E0288139E448200F3687C /* flapi.h */,
 				D72E0289139E448200F3687C /* FLAPIX.h */,
 				D72E028A139E448200F3687C /* FLAPIX.mm */,
-				D72E028B139E448200F3687C /* libFLAPISP.a */,
 				D72E028C139E448200F3687C /* subsys_ios.h */,
 				D72E028D139E448200F3687C /* subsys_ios.mm */,
 				D72E02AC139E500800F3687C /* FLAPIrecorded.raw */,

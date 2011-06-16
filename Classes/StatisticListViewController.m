@@ -529,7 +529,9 @@
 }
 
 
-
+-(void)lineStyleDidChange:(CPLineStyle *)lineStyle {
+    NSLog(@"StatDetailView lineStyleDidChange.. what does this stand for??");
+}
 
 
 

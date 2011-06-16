@@ -90,9 +90,12 @@ static NSMutableArray *pastMonths;
 //current year, but to a past year)
 +(void) classifyYear:(NSDate *)date:(NSInteger)year {
 
-	NSString *beginningOfYearString = [[NSString stringWithFormat:@"%i", year] stringByAppendingString:@"-01-01 00:00:00 +0100"];
-	//NSLog(@"beginningOfYearString: %@", beginningOfYearString);
-	NSDate *beginningOfYearDate = [NSDate dateWithString:beginningOfYearString];
+	NSString *beginningOfYearString = [[NSString stringWithFormat:@"%i", year] stringByAppendingString:@"-01-01"];
+	
+    NSLog(@"beginningOfYearString: %@", beginningOfYearString);
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease]; 
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+	NSDate *beginningOfYearDate =  [dateFormatter dateFromString:beginningOfYearString];
 	
 	NSComparisonResult result = [beginningOfYearDate compare:date];
 	
@@ -123,10 +126,13 @@ static NSMutableArray *pastMonths;
 	
 	NSString *beginningOfMonthString = [[NSString stringWithFormat:@"%i", [DateClassifier getCurrentYear]] stringByAppendingString:@"-"];
 	beginningOfMonthString = [beginningOfMonthString stringByAppendingString:[NSString stringWithFormat:@"%i", month]];
-	beginningOfMonthString = [beginningOfMonthString stringByAppendingString:@"-01 00:00:00 +0100"];
+	beginningOfMonthString = [beginningOfMonthString stringByAppendingString:@"-01"];
 	
-	//NSLog(@"beginningOfMonthString: %@", beginningOfMonthString);
-	NSDate *beginningOfMonthDate = [NSDate dateWithString:beginningOfMonthString];
+	NSLog(@"beginningOfMonthString: %@", beginningOfMonthString);
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease]; 
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+
+	NSDate *beginningOfMonthDate = [dateFormatter dateFromString:beginningOfMonthString];
 	
 	NSComparisonResult result = [beginningOfMonthDate compare:date];
 	

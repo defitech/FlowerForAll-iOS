@@ -33,7 +33,7 @@
 
 @synthesize context;
 @synthesize animationTimer;
-@synthesize animationInterval;
+//@synthesize animationInterval;
 @synthesize flapix;
 
 
@@ -68,7 +68,7 @@
     
     if(!flapix) {
         flapix = [FLAPIX new];
-        [flapix SetTargetFrequency:15 frequency_tolerance:7];
+        [flapix SetTargetFrequency:10 frequency_tolerance:5];
         [flapix Start];
     }
     
@@ -160,10 +160,10 @@
         }
         
         freq = flapix.frequency;
-        NSLog(@"freq = %i \n", freq);
+       // NSLog(@"freq = %i \n", freq);
         degree = (freq * target); // to reach
         speed = fabs((degree - prev) / 10);
-        NSLog(@"speed = %f \n", speed);
+       // NSLog(@"speed = %f \n", speed);
     
         if(degree > prev) {
             transY = prev + speed;
@@ -264,6 +264,9 @@
     animationTimer = newTimer;
 }
 
+- (NSTimeInterval)animationInterval {
+    return animationInterval;
+}
 
 - (void)setAnimationInterval:(NSTimeInterval)interval {
     
