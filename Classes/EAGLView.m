@@ -68,7 +68,7 @@
     
     if(!flapix) {
         flapix = [FLAPIX new];
-        [flapix SetTargetFrequency:10 frequency_tolerance:5];
+        [flapix SetTargetFrequency:15 frequency_tolerance:5];
         [flapix Start];
     }
     
@@ -77,19 +77,20 @@
 
 - (void)setupView {
 	
-    const GLfloat zNear = 0.1, zFar = 1000.0, fieldOfView = 60.0;
+    const GLfloat zNear = 0.1, zFar = 1000.0, fieldOfView = 120.0;
     GLfloat size;
 	
     glEnable(GL_DEPTH_TEST);
     glMatrixMode(GL_PROJECTION);
     size = zNear * tanf(DEGREES_TO_RADIANS(fieldOfView) / 2.0);
 	
-	// Nous donne la taille de l'écran de l'iPhone
+	// The size of the UIView
     CGRect rect = self.bounds;
     glFrustumf(-size, size, -size / (rect.size.width / rect.size.height), size / (rect.size.width / rect.size.height), zNear, zFar);
     glViewport(0, 0, rect.size.width, rect.size.height);
 	NSLog(@"View port %f,%f",rect.size.width,rect.size.height);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+      
 }
 
 - (void)drawLine:(float)x1 y1:(float)y1  z1:(float)z1 x2:(float)x2 y2:(float)y2 z2:(float)z2 {
@@ -148,16 +149,12 @@
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    glTranslatef(-6.0f, -0.8f, 0.0f);
     
     if(!flapix.blowing) {
         glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
     } else {
-        if ((([flapix frequenceTarget] - [flapix frequenceTolerance]) < flapix.frequency) && 
-            (([flapix frequenceTarget] + [flapix frequenceTolerance]) > flapix.frequency)) { // Good
-              glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
-        } else { // Bad
-            glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
-        }
+       
         
         freq = flapix.frequency;
        // NSLog(@"freq = %i \n", freq);
@@ -170,6 +167,15 @@
         } else {
             transY = prev - speed;
         }
+        
+        NSLog(@"%f %f",([flapix frequenceTarget] - [flapix frequenceTolerance])*target,transY);
+        if ((([flapix frequenceTarget] - [flapix frequenceTolerance])*target > transY) && 
+            (([flapix frequenceTarget] + [flapix frequenceTolerance])*target < transY)) { // Good
+            glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+        } else { // Bad
+            glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+        }
+        
     
         prev = transY;
     }
@@ -182,13 +188,20 @@
 	glEnableClientState(GL_VERTEX_ARRAY);
     //	glDrawArrays(GL_TRIANGLES, 0, 3);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-	 
+    
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+   glTranslatef(-6.0f, -0.8f, 0.0f);
+    glRotatef([flapix frequenceTolerance] * target, 0.0f, 0.0f, 1.0f);
+	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
 
-	[self drawLine:0.0 y1:-4.0 z1:0.0 x2:0.0  y2:4.0  z2:-1.0];
-
+    glLoadIdentity();
+    glTranslatef(-6.0f, -0.8f, 0.0f);
+    
+    glRotatef([flapix frequenceTolerance] * target, 0.0f, 0.0f, -1.0f);
+	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
+    
 	//[self drawLine:-4.0 y1:0.0 z1:0.0 x2:4.0  y2:0.0  z2:-1.0];
 
 	/*************** Fin du nouveau code ********************/ 
