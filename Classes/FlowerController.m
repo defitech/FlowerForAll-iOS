@@ -47,6 +47,13 @@ static StatisticsViewController *statisticsViewController;
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+// get the currentFlapix Controller
++ (FLAPIX*) currentFlapix {
+    return [[singleton flapiView] flapix];
+}
+
+
 // get Settings View Controller
 + (SettingsViewController*) getSettingsViewController
 {
@@ -69,11 +76,15 @@ static StatisticsViewController *statisticsViewController;
 // show navigation action sheet
 + (void) showNav
 {
+    
+    NSString *startstop =  [[FlowerController currentFlapix] running] ? NSLocalizedString(@"Stop Exercice", @"Stop Action") :
+                NSLocalizedString(@"Start Exercice", @"Start Action") ;
+    
     UIActionSheet *actionSheet = [[UIActionSheet alloc] 
                                   initWithTitle:@"Jump to" 
                                   delegate:singleton 
         cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel Button") 
-                                  destructiveButtonTitle:nil 
+                                  destructiveButtonTitle:startstop
                                   otherButtonTitles: nil];
     
     
@@ -93,11 +104,20 @@ static StatisticsViewController *statisticsViewController;
     NSLog(@"actionSheet %i", buttonIndex);
     UIViewController *previousViewController = currentMainController;
     switch (buttonIndex) {
-        case 0:
+        case 0: // Start / Stop
+            NSLog(@"Start / Stop");
+            if ( [[FlowerController currentFlapix] running]) {
+                [[FlowerController currentFlapix] Stop];
+            } else {
+                 [[FlowerController currentFlapix] Start];
+            }
+            return;
+            break;
+        case 1:
             NSLog(@"Cancel");
             return;
             break;
-        case 1: // Activities
+        case 2: // Activities
             if ([currentMainController isKindOfClass:[GameViewController class]]) {
                 NSLog(@"Skip");
                 return;
@@ -106,7 +126,7 @@ static StatisticsViewController *statisticsViewController;
             
             break;
 			
-        case 2: // Settings
+        case 3: // Settings
             if ([currentMainController isKindOfClass:[SettingsViewController class]]) {
                 NSLog(@"Skip");
                 return;
@@ -115,7 +135,7 @@ static StatisticsViewController *statisticsViewController;
             currentMainController = [FlowerController getSettingsViewController];
             
             break;
-        case 3: // Statistics
+        case 4: // Statistics
             if ([currentMainController isKindOfClass:[StatisticsViewController class]]) {
                 NSLog(@"Skip");
                 return;
@@ -124,7 +144,6 @@ static StatisticsViewController *statisticsViewController;
             
             break;
 
-            break;
     }
     [self.mainView addSubview:currentMainController.view];
     [previousViewController.view removeFromSuperview];

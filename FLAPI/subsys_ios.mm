@@ -119,7 +119,8 @@ void AudioInputCallback (
 		}
 		if (feof(filedev)) {
 			printf("EOF\n");
-			SubSys_Stop();
+            rewind(filedev);
+			//SubSys_Stop();
 		}
 		
 	} else { // normal 

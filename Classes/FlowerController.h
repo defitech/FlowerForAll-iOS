@@ -11,6 +11,7 @@
 #import "EAGLView.h"
 #import "SettingsViewController.h"
 #import "StatisticsViewController.h";
+#import "FLAPIX.h"
 
 @interface FlowerController : UIViewController <UIActionSheetDelegate> {
     UIView *mainView;
@@ -23,7 +24,7 @@
 // show navigation action sheet
 + (void) showNav;
 
-
++ (FLAPIX*) currentFlapix;
 
 // get Settings view Controller
 + (SettingsViewController*) getSettingsViewController;

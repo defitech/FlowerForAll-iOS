@@ -147,6 +147,9 @@
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    
+    
+    
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glTranslatef(-6.0f, -0.8f, 0.0f);
@@ -168,7 +171,7 @@
             transY = prev - speed;
         }
         
-        NSLog(@"%f %f",([flapix frequenceTarget] - [flapix frequenceTolerance])*target,transY);
+        
         if ((([flapix frequenceTarget] - [flapix frequenceTolerance])*target > transY) && 
             (([flapix frequenceTarget] + [flapix frequenceTolerance])*target < transY)) { // Good
             glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
@@ -187,7 +190,11 @@
 	
 	glEnableClientState(GL_VERTEX_ARRAY);
     //	glDrawArrays(GL_TRIANGLES, 0, 3);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    
+    if ([flapix running])
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    
+    
     
     
     glMatrixMode(GL_MODELVIEW);
