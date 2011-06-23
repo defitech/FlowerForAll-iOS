@@ -13,12 +13,15 @@
 @interface FLAPIX : NSObject {    
     BOOL running;
     int frequency;
+    float lastlevel;
     BOOL blowing;
 }
 
 
 @property (nonatomic) BOOL running;
 @property (nonatomic) int frequency;
+
+@property (nonatomic) float lastlevel;
 @property (nonatomic) BOOL blowing;
 
 - (BOOL) Start;

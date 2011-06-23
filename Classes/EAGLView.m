@@ -68,7 +68,7 @@
     
     if(!flapix) {
         flapix = [FLAPIX new];
-        [flapix SetTargetFrequency:15 frequency_tolerance:5];
+        [flapix SetTargetFrequency:20 frequency_tolerance:5];
         [flapix Start];
     }
     
@@ -155,7 +155,8 @@
     glTranslatef(-6.0f, -0.8f, 0.0f);
     
     if(!flapix.blowing) {
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+        
+        glColor4f(0.f, 0.0f, 0.5f+[flapix lastlevel]/2, 1.0f);
     } else {
        
         
@@ -174,8 +175,16 @@
         
         if ((([flapix frequenceTarget] - [flapix frequenceTolerance])*target > transY) && 
             (([flapix frequenceTarget] + [flapix frequenceTolerance])*target < transY)) { // Good
-            glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+            
+           
+            
+            glColor4f(0.0f,  1.0f, 0.0f, 1.0f);
+            
+            
+            
+            
         } else { // Bad
+            //NSLog(@"LEVL %f",);
             glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
         }
         

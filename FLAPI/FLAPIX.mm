@@ -13,7 +13,7 @@
 
 @implementation FLAPIX
 
-@synthesize running, frequency, blowing;
+@synthesize running, frequency, blowing, lastlevel;
 
 /**
  * init 
@@ -68,6 +68,7 @@
 
 - (void) EventLevel:(float) level {
    // NSLog(@"New Level %f",level);
+    lastlevel = level / gParams.mic_calibration ;
 }
 
 - (void) EventFrequency:(int) freq {
