@@ -24,6 +24,7 @@ static UIViewController *currentMainController ;
 
 static SettingsViewController *settingsViewController ;
 static StatisticsViewController *statisticsViewController;
+static GameViewController* activitiesViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,11 +55,21 @@ static StatisticsViewController *statisticsViewController;
 }
 
 
+// get Activities View Controller
++ (GameViewController*) getActivitiesViewController
+{
+    if (activitiesViewController == nil) {
+        activitiesViewController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:[NSBundle mainBundle]];
+    }
+    return activitiesViewController;
+}
+
 // get Settings View Controller
 + (SettingsViewController*) getSettingsViewController
 {
     if (settingsViewController == nil) {
-        settingsViewController = [[SettingsViewController alloc] init];
+        settingsViewController = [[SettingsViewController alloc] init ];
+        settingsViewController.view.frame = CGRectMake( 0, -20, 320, 480); // XXX Why??? mérite une question sur stackoverflow
     }
     return settingsViewController;
 }
@@ -67,7 +78,8 @@ static StatisticsViewController *statisticsViewController;
 + (StatisticsViewController*) getStatisticsViewController
 {
     if (statisticsViewController == nil) {
-        statisticsViewController = [[StatisticsViewController alloc] init];
+        statisticsViewController = [[GameViewController alloc] init];
+        statisticsViewController.view.frame = CGRectMake( 0, -20, 320, 480); // XXX Why???
     }
     return statisticsViewController;
 }
@@ -122,7 +134,7 @@ static StatisticsViewController *statisticsViewController;
                 NSLog(@"Skip");
                 return;
             }
-            currentMainController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:[NSBundle mainBundle]];
+            currentMainController = [FlowerController getActivitiesViewController];
             
             break;
 			
@@ -145,6 +157,7 @@ static StatisticsViewController *statisticsViewController;
             break;
 
     }
+    
     [self.mainView addSubview:currentMainController.view];
     [previousViewController.view removeFromSuperview];
     [self.mainView setNeedsLayout];
@@ -159,7 +172,7 @@ static StatisticsViewController *statisticsViewController;
         singleton = self;
     }
     
-    currentMainController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:[NSBundle mainBundle]];
+    currentMainController = [FlowerController getSettingsViewController];
     [self.mainView addSubview:currentMainController.view];
     
      NSLog(@"FlowerController viewDidLoad");

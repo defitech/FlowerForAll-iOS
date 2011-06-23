@@ -47,10 +47,12 @@
 						<string key="NSFrame">{{0, 410}, {320, 50}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC43NDA3NDA3NDA3IDEgMQA</bytes>
 						</object>
+						<bool key="IBUIClipsSubviews">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<object class="IBUIView" id="1026269626">
@@ -65,7 +67,6 @@
 							<bytes key="NSRGB">MC4yMDg5MTI2MjUgMSAwLjY5NzIyNzQ4NDIAA</bytes>
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">5</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
@@ -80,6 +81,7 @@
 						<int key="NSID">2</int>
 					</object>
 				</object>
+				<bool key="IBUIClipsSubviews">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</object>
@@ -148,11 +150,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 						</object>
 						<reference key="parent" ref="191373211"/>
+						<string key="objectName">FLAPIView</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5</int>
 						<reference key="object" ref="1026269626"/>
 						<reference key="parent" ref="191373211"/>
+						<string key="objectName">mainView</string>
 					</object>
 				</object>
 			</object>

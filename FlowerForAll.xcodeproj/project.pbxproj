@@ -20,6 +20,7 @@
 		4E141B0F13B35F1900698F53 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0913B35F1900698F53 /* Icon.png */; };
 		4E141B1013B35F1900698F53 /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0A13B35F1900698F53 /* Icon-iPad.png */; };
 		4E141B1113B35F1900698F53 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0B13B35F1900698F53 /* Icon@2x.png */; };
+		4E141B1713B3769200698F53 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B1613B3769200698F53 /* SettingsView.xib */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
 		4E8F592F13A7AF6B00D9D3A7 /* DataAccessDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DataAccessDB.m */; };
 		4E8F593013A7AF6B00D9D3A7 /* DateClassificationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */; };
@@ -79,6 +80,7 @@
 		4E141B0913B35F1900698F53 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4E141B0A13B35F1900698F53 /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad.png"; sourceTree = "<group>"; };
 		4E141B0B13B35F1900698F53 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		4E141B1613B3769200698F53 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccess.h; sourceTree = "<group>"; };
 		4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccess.m; sourceTree = "<group>"; };
 		4E8F590313A7AF6B00D9D3A7 /* DataAccessDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccessDB.h; sourceTree = "<group>"; };
@@ -177,11 +179,11 @@
 				4E57A86213A8F11A00910E4D /* Settings */,
 				4E8F590F13A7AF6B00D9D3A7 /* FlowerController.h */,
 				4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */,
+				4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */,
 				4E8F591213A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.h */,
 				4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */,
 				28FD14FC0DC6FC130079059D /* EAGLView.h */,
 				28FD14FD0DC6FC130079059D /* EAGLView.m */,
-				4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -273,6 +275,7 @@
 				4E8F594D13A7AFA900D9D3A7 /* GameParametersView.xib */,
 				4E8F591413A7AF6B00D9D3A7 /* GameParametersViewController.h */,
 				4E8F591513A7AF6B00D9D3A7 /* GameParametersViewController.m */,
+				4E141B1613B3769200698F53 /* SettingsView.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -290,14 +293,14 @@
 		4E57A86413A8F16A00910E4D /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
-				4E8F595313A7AFA900D9D3A7 /* StatisticDetailView.xib */,
-				4E8F595413A7AFA900D9D3A7 /* StatisticListView.xib */,
 				4E8F591E13A7AF6B00D9D3A7 /* StatisticCell.h */,
 				4E8F591F13A7AF6B00D9D3A7 /* StatisticCell.m */,
+				4E8F595313A7AFA900D9D3A7 /* StatisticDetailView.xib */,
 				4E8F592013A7AF6B00D9D3A7 /* StatisticDetailViewController.h */,
 				4E8F592113A7AF6B00D9D3A7 /* StatisticDetailViewController.m */,
 				4E8F592213A7AF6B00D9D3A7 /* StatisticListViewController.h */,
 				4E8F592313A7AF6B00D9D3A7 /* StatisticListViewController.m */,
+				4E8F595413A7AFA900D9D3A7 /* StatisticListView.xib */,
 				4E8F592413A7AF6B00D9D3A7 /* StatisticsViewController.h */,
 				4E8F592513A7AF6B00D9D3A7 /* StatisticsViewController.m */,
 				4E8F592C13A7AF6B00D9D3A7 /* YearStatisticListViewController.h */,
@@ -440,6 +443,7 @@
 				4E141B0F13B35F1900698F53 /* Icon.png in Resources */,
 				4E141B1013B35F1900698F53 /* Icon-iPad.png in Resources */,
 				4E141B1113B35F1900698F53 /* Icon@2x.png in Resources */,
+				4E141B1713B3769200698F53 /* SettingsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

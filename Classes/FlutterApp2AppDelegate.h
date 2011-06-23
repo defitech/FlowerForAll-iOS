@@ -22,7 +22,7 @@
     UIWindow *window;
 	
 	//View controllers
-    IBOutlet UIViewController *flowerController;
+    IBOutlet UIViewController *viewController;
 	
 	//Store the ID of the user who is actually using the application
 	//Can be accessed from other classes in the program (used like a global variable)
@@ -41,7 +41,7 @@
 
 //Properties
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UIViewController *flowerController;
+@property (nonatomic, retain) IBOutlet UIViewController *viewController;
 
 @property NSInteger currentUserID;
 

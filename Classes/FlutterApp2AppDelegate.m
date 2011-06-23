@@ -18,7 +18,7 @@
 @implementation FlutterApp2AppDelegate
 
 
-@synthesize window, flowerController,  currentUserID, databaseName, databasePath;
+@synthesize window, viewController,  currentUserID, databaseName, databasePath;
 
 
 
@@ -68,7 +68,7 @@
 
     
 	//Add the tab bar controller, which is the top level controller, to the window, and display the window.
-	[self.window addSubview:flowerController.view];
+	[self.window addSubview:viewController.view];
     
     [self.window makeKeyAndVisible];
 	
@@ -185,7 +185,7 @@
 
 
 - (void)dealloc {
-    [flowerController release];
+    [viewController release];
     [window release];
     [super dealloc];
 }

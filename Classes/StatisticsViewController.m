@@ -17,21 +17,23 @@
     self = [super init];
     if (self) {
         [self pushViewController:[[StatisticListViewController alloc] initWithNibName:@"StatisticListView" bundle:[NSBundle mainBundle]] animated:YES];
-    }
+
+            }
     return self;
 }
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization.
+        [self pushViewController:[[StatisticListViewController alloc] initWithNibName:@"StatisticListView" bundle:[NSBundle mainBundle]] animated:YES];
+
     }
     return self;
 }
-*/
+
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
