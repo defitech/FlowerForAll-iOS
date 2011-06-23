@@ -96,7 +96,8 @@
 	//Construct an array of user names based on the array of user IDs, and store into instance variables
 	self.userIDsArray = [DataAccessDB listOfAllUserIDs];
 	
-	NSMutableArray *users = [[NSMutableArray alloc] init];
+    NSMutableArray *users = [[NSMutableArray alloc] init];
+    [users addObject:[NSString string]]; //Add an empty row
 	
 	for (NSInteger i=0; i < [self.userIDsArray count]; i++ ) {
 		//NSLog(@"test: %@", [DataAccessDB getUserName:[[self.userIDsArray objectAtIndex:i] intValue]]);
@@ -176,19 +177,19 @@
 
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component { // And now the final part of the UIPickerView, what happens when a row is selected.
+	if(row != 0) { //Disabled for the first empty row
+        //Stores the currently selected row in self.selectedRow
+        self.selectedRow = row;
 	
-	//Stores the currently selected row in self.selectedRow
-	self.selectedRow = row;
-	
-	//Creates an alert for the user to enter his password
-	UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PasswordAlertLabel", @"Label of the password alert") message:@"this gets covered" delegate:self cancelButtonTitle:NSLocalizedString(@"PasswordAlertCancelButtonLabel", @"Label of the cancel button label on the password alert") otherButtonTitles:NSLocalizedString(@"PasswordAlertOKButtonLabel", @"Label of the OK button label on the password alert"), nil];
-	self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 45.0, 260.0, 25.0)];
-	[self.passwordTextField setBackgroundColor:[UIColor whiteColor]];
-	self.passwordTextField.secureTextEntry = YES;
-	[myAlertView addSubview:self.passwordTextField];
-	[myAlertView show];
-	[myAlertView release];
-	
+        //Creates an alert for the user to enter his password
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PasswordAlertLabel", @"Label of the password alert") message:@"this gets covered" delegate:self cancelButtonTitle:NSLocalizedString(@"PasswordAlertCancelButtonLabel", @"Label of the cancel button label on the password alert") otherButtonTitles:NSLocalizedString(@"PasswordAlertOKButtonLabel", @"Label of the OK button label on the password alert"), nil];
+        self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 45.0, 260.0, 25.0)];
+        [self.passwordTextField setBackgroundColor:[UIColor whiteColor]];
+            self.passwordTextField.secureTextEntry = YES;
+        [myAlertView addSubview:self.passwordTextField];
+        [myAlertView show];
+        [myAlertView release];
+	}
 }
 
 
