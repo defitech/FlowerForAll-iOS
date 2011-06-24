@@ -114,7 +114,7 @@ static GameViewController* activitiesViewController;
 // get action sheet answers
 -(void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
     NSLog(@"actionSheet %i", buttonIndex);
-    UIViewController *previousViewController = currentMainController;
+    
     switch (buttonIndex) {
         case 0: // Start / Stop
             NSLog(@"Start / Stop");
@@ -134,7 +134,7 @@ static GameViewController* activitiesViewController;
                 NSLog(@"Skip");
                 return;
             }
-            currentMainController = [FlowerController getActivitiesViewController];
+            [FlowerController setCurrentMainController:[FlowerController getActivitiesViewController]];
             
             break;
 			
@@ -144,7 +144,7 @@ static GameViewController* activitiesViewController;
                 return;
             }
              
-            currentMainController = [FlowerController getSettingsViewController];
+            [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
             
             break;
         case 4: // Statistics
@@ -152,15 +152,23 @@ static GameViewController* activitiesViewController;
                 NSLog(@"Skip");
                 return;
             }
-            currentMainController = [FlowerController getStatisticsViewController];
+            [FlowerController setCurrentMainController:[FlowerController getStatisticsViewController]];
             
             break;
 
     }
     
-    [self.mainView addSubview:currentMainController.view];
+    
+}
+
++(void)setCurrentMainController:(UIViewController*)thisController {
+    NSLog(@"setCurrentMainController");
+    UIViewController *previousViewController = currentMainController;
+    currentMainController = thisController;
+    
+    [singleton.mainView addSubview:currentMainController.view];
     [previousViewController.view removeFromSuperview];
-    [self.mainView setNeedsLayout];
+    [singleton.mainView setNeedsLayout];
 }
 
 #pragma mark - View lifecycle
@@ -172,7 +180,7 @@ static GameViewController* activitiesViewController;
         singleton = self;
     }
     
-    currentMainController = [FlowerController getSettingsViewController];
+    currentMainController = [FlowerController getActivitiesViewController];
     [self.mainView addSubview:currentMainController.view];
     
      NSLog(@"FlowerController viewDidLoad");
@@ -184,9 +192,10 @@ static GameViewController* activitiesViewController;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    [currentMainController dealloc];
-    [settingsViewController dealloc];
-    [statisticsViewController dealloc];
+    [currentMainController release];
+    [settingsViewController release];
+    [statisticsViewController release];
+    [activitiesViewController release];
     [singleton release];
 }
 

@@ -32,5 +32,6 @@
 // get Statistics view Controller
 + (StatisticsViewController*) getStatisticsViewController;
 
++(void)setCurrentMainController:(UIViewController*)thisController;
 
 @end

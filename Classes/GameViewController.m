@@ -15,6 +15,8 @@
 #import "DataAccess.h"
 #import "DataAccessDB.h"
 
+#import "FlowerController.h"
+#import "AWebController.h"
 
 #define kDatePickerOffScreen CGRectMake(0, 416, 325, 250)
 #define kDatePickerOnScreen CGRectMake(0, 170, 325, 250)
@@ -46,8 +48,15 @@
 }
 */
 
+AWebController *webController;
 
-
+- (IBAction) game1Touch:(id) sender {
+    if (webController == nil) {
+        webController = [[AWebController alloc] initWithNibName:@"AWebController" bundle:[NSBundle mainBundle]];
+    }
+    [FlowerController setCurrentMainController:webController];
+}
+     
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -255,6 +264,7 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+    [webController release];
 }
 
 
