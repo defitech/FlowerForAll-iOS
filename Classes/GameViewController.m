@@ -212,8 +212,8 @@ AWebController *webController;
 	if (buttonIndex == 1){
 		
 		if ( self.passwordTextField.text.length != 0 ) {
-			
-			NSInteger userID = [[self.userIDsArray objectAtIndex:self.selectedRow] intValue];
+			// -1 to remove the empty row
+			NSInteger userID = [[self.userIDsArray objectAtIndex:self.selectedRow] intValue] - 1;
 			NSString *password = [DataAccessDB getUserPassword:userID];
 			
 			if ([password isEqualToString:self.passwordTextField.text]) {
