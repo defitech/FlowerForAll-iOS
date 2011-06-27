@@ -13,8 +13,6 @@
 
 #import "FLAPIX.h"
 
-#include <AVFoundation/AVAudioSession.h>
-
 RecordState recordState;
 
 // use to read / write data used in developppement stages
@@ -49,41 +47,6 @@ void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read){
 
 void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     flapix = owner;
-    
-    // -- set the audio session for playback and recording
-    NSError *myErr;
-    BOOL    bSuccess = FALSE;
-    BOOL    bAudioInputAvailable = FALSE;
-    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-    bAudioInputAvailable= [audioSession inputIsAvailable];
-    
-    if( bAudioInputAvailable)
-    {
-        [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&myErr];
-    }
-    else {
-        NSLog(@"FLAPI_SUBSYS_IOS_init_and_registerFLAPIX: Cannot init AudioSession");
-    }
-    bSuccess= [audioSession setActive: YES error: &myErr];  
-    
-    if(!bSuccess)
-    {
-        NSLog(@"Unable to Start Audio Session. Terminate Application.");
-        NSLog(@"%@",[myErr localizedDescription]);
-        NSLog(@"%@",[myErr localizedFailureReason]);
-        NSLog(@"%@",[myErr localizedRecoverySuggestion]);
-    }
-    
-    // mix with others
-    UInt32 doSetProperty = 1;
-    AudioSessionSetProperty (
-                             kAudioSessionProperty_OverrideCategoryMixWithOthers,
-                             sizeof (doSetProperty),
-                             &doSetProperty
-                             );
-    //-- end of AudioSession 
-    
-    
     FLAPI_SetMode(1); // send winMSG
     FLAPI_Init();
     
@@ -93,7 +56,6 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
 
 int	SubSys_Start(){
 	bool run = true;
-       
 	//Update AudioInfo
 	if (run && (UpdateAudioInfo()!=FLAPI_SUCCESS))
 		run=false;		
@@ -157,8 +119,7 @@ void AudioInputCallback (
 		}
 		if (feof(filedev)) {
 			printf("EOF\n");
-            rewind(filedev);
-			//SubSys_Stop();
+			SubSys_Stop();
 		}
 		
 	} else { // normal 

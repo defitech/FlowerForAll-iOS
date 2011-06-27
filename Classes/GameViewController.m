@@ -17,6 +17,7 @@
 
 #import "FlowerController.h"
 #import "AWebController.h"
+#import "AVideoPlayer.h"
 
 #define kDatePickerOffScreen CGRectMake(0, 416, 325, 250)
 #define kDatePickerOnScreen CGRectMake(0, 170, 325, 250)
@@ -55,6 +56,15 @@ AWebController *webController;
         webController = [[AWebController alloc] initWithNibName:@"AWebController" bundle:[NSBundle mainBundle]];
     }
     [FlowerController setCurrentMainController:webController];
+}
+
+AVideoPlayer *videoPlayer;
+
+- (IBAction) game2Touch:(id) sender {
+    if (videoPlayer == nil) {
+        videoPlayer = [[AVideoPlayer alloc] initWithNibName:@"AVideoPlayer" bundle:[NSBundle mainBundle]];
+    }
+    [FlowerController setCurrentMainController:videoPlayer];
 }
      
 
@@ -265,6 +275,7 @@ AWebController *webController;
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
     [webController release];
+    [videoPlayer release];
 }
 
 

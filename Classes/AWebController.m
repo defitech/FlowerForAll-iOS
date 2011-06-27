@@ -41,7 +41,7 @@ int nextAction = 0; // used for modalTextfield
 
 -(void) modalTextfield:(NSString*)title message:(NSString*)message nextAction:(int)actionID {
     nextAction = actionID;
-    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") otherButtonTitles:NSLocalizedString(@"OK", @"OK"), nil]; 
+    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:title message:@"Dummy" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") otherButtonTitles:NSLocalizedString(@"OK", @"OK"), nil]; 
     myTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 45.0, 260.0, 25.0)];
     CGAffineTransform myTransform = CGAffineTransformMakeTranslation(00.0, 0.0); 
     [myAlertView setTransform:myTransform]; 

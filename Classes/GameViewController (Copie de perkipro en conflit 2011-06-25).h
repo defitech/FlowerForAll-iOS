@@ -43,7 +43,7 @@
 	//The password text field
 	UITextField *passwordTextField;
 	
-    }
+}
 
 
 //Properties
@@ -67,8 +67,6 @@
 @property NSInteger selectedRow;
 @property (nonatomic, retain) UITextField *passwordTextField;
 
-- (IBAction) game1Touch:(id) sender;
-- (IBAction) game2Touch:(id) sender;
 
 
 @end
