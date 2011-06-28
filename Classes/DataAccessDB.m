@@ -20,39 +20,68 @@
 
 
 
-//Static variables to store database name and path on the device file system
-static NSString *databaseName;
-static NSString *databasePath;
-
-
-
 @implementation DataAccessDB
 
 
+static sqlite3 *database;
 
 
-//Initializes the static variables
-+(void)initDBParameters{
-	
-	//This code is redundant with the code in the app delegate, but it is necessary because the commented code below do not always work, for a reason that is unknown yet
-	databaseName = @"FlutterApp2Database.sql";
-	
-	// Get the path to the documents directory and append the databaseName
-	NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDir = [documentPaths objectAtIndex:0];
-	databasePath = [documentsDir stringByAppendingPathComponent:databaseName];
-	
-	
-	/*FlutterApp2AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-	 
-	 NSLog(@"init delegate databaseName: %@", delegate.databaseName);
-	 NSLog(@"init delegate databasePath: %@", delegate.databasePath);
-	 
-	 databaseName = delegate.databaseName;
-	 databasePath = delegate.databasePath;*/
++(sqlite3*) db {
+    if (database == nil) {
+        NSString* databasePath = [[NSBundle mainBundle] pathForResource:@"FlutterApp2Database" ofType:@"sql"] ;
+        if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
+            NSLog(@"DB OPEN %@", databasePath);
+        } else {
+            NSLog(@"** FAILED ** DB OPEN %@", databasePath);
+        }
+    }
+    return database;
 }
 
++(void) close {
+    if (database != nil) {
+        sqlite3_close(database);
+    }
+}
 
+//Execute a statement 
++(void)execute:(NSString*)sqlStatement {
+    sqlite3_stmt  *statement;
+    const char *insert_stmt = [sqlStatement UTF8String];
+    
+    sqlite3_prepare_v2(database, insert_stmt, -1, &statement, NULL);
+    if (sqlite3_step(statement) == SQLITE_DONE)
+    {
+        NSLog( @"**ERROR*DB:Execute: %@\n\r\t%s", sqlStatement, sqlite3_errmsg(database) );
+    } 
+    sqlite3_finalize(statement);
+}
+
+/**
+ * Create Statement from NSTRing
+ * !! don't forget to finalize it!
+ */
++(sqlite3_stmt*) genCompiledStatement:(NSString*)sqlStatement {
+    const char *sqlStatementC = [sqlStatement UTF8String];
+    sqlite3_stmt *compiledStatement;
+    if(sqlite3_prepare_v2(database, sqlStatementC, -1, &compiledStatement, NULL) == SQLITE_OK) {
+        return compiledStatement;
+    }
+    return NULL;
+}
+
+/**
+ * Usefull to check an ID or if stuff exists in a DB
+ */
++ (BOOL)checkIfStatementReturnRows:(NSString*)sqlStatement {
+
+    sqlite3_stmt *compiledStatement = [DataAccessDB genCompiledStatement:sqlStatement];
+    if (sqlite3_step(compiledStatement) == SQLITE_ROW) { // at least one row
+        return YES;
+    }
+    sqlite3_finalize(compiledStatement);
+	return NO;
+}
 
 
 
@@ -64,28 +93,20 @@ static NSString *databasePath;
 
 //Generates a user ID
 + (NSInteger)generateUserID {
+    NSMutableArray *userIDs = [[NSMutableArray alloc] init];
 	
-	sqlite3 *database;
-	NSMutableArray *userIDs = [[NSMutableArray alloc] init];
+    const char *sqlStatement = "select id from users";
+    
+    sqlite3_stmt *compiledStatement;
+    if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+            // Read the data from the result row
+            NSString *aID = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)];
+            [userIDs addObject:aID];
+        }
+    }
+    sqlite3_finalize(compiledStatement);
 	
-	[DataAccessDB initDBParameters];
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "select id from users";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-				// Read the data from the result row
-				NSString *aID = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)];
-				
-				//NSLog(@"ID: %@",aID);
-				
-				[userIDs addObject:aID];
-			}
-		}
-		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
 	
 	
 	NSInteger max = 0;
@@ -113,11 +134,8 @@ static NSString *databasePath;
 
 //Creates a user
 + (void)createUser:(NSInteger)ID:(NSString *)name:(NSString *)password {
-	sqlite3 *database;
 	
-	[DataAccessDB initDBParameters];
 	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
 		const char *sqlStatement = "insert into users (id, name, password) values (?, ?, ?)";
 		sqlite3_stmt *compiledStatement;
 		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
@@ -131,44 +149,21 @@ static NSString *databasePath;
 			NSLog( @"Error: %s", sqlite3_errmsg(database) );
 		}
 		else {
-			NSLog( @"Insert into row id = %d", sqlite3_last_insert_rowid(database));
+			NSLog( @"Insert into row id = %lld", sqlite3_last_insert_rowid(database));
 		}		
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
+	
 }
-
-
 
 
 
 //Checks if a user already exists
 + (BOOL)checkIfUserAlreadyExists:(NSInteger)ID {
 	
-	sqlite3 *database;
-	NSMutableArray *userIDs = [[NSMutableArray alloc] init];
- 
-	[DataAccessDB initDBParameters];
 	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "select id from users";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-				// Read the data from the result row
-				NSString *aID = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)];
+	NSArray *userIDs = [DataAccessDB listOfAllUserIDs];
  
-				//NSLog(@"ID: %@",aID);
- 
-				[userIDs addObject:aID];
-			}
-		}
-		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
- 
- 
-	for (int i=0; i < [userIDs count]; i++ ) {
+		for (int i=0; i < [userIDs count]; i++ ) {
 		NSInteger currentElement = [[userIDs objectAtIndex:i] intValue];
  
 		if (currentElement == ID) {
@@ -187,12 +182,8 @@ static NSString *databasePath;
 
 //Lists all user IDs
 +(NSArray*)listOfAllUserIDs {
-	sqlite3 *database;
-	NSMutableArray *userIDs = [[NSMutableArray alloc] init];
+    NSMutableArray *userIDs = [[NSMutableArray alloc] init];
 	
-	[DataAccessDB initDBParameters];
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
 		const char *sqlStatement = "select id from users";
 		sqlite3_stmt *compiledStatement;
 		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
@@ -206,8 +197,6 @@ static NSString *databasePath;
 			}
 		}
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
 	
 	return [userIDs autorelease];
 }
@@ -218,17 +207,8 @@ static NSString *databasePath;
 //Get a user name besed on its ID
 +(NSString*)getUserName:(NSInteger)ID {
 	
-	sqlite3 *database;
-	
 	NSString *name = nil;
-	
-	[DataAccessDB initDBParameters];
-	
-	/*NSLog(@"1 databaseName: %@", databaseName);
-	NSLog(@"1 databasePath: %@", databasePath);*/
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "select name from users where id = ?";
+			const char *sqlStatement = "select name from users where id = ?";
 		sqlite3_stmt *compiledStatement;
 		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
 			sqlite3_bind_int( compiledStatement, 1, ID);
@@ -241,8 +221,6 @@ static NSString *databasePath;
 			}
 		}
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
 	
 	return name;
 }
@@ -252,15 +230,8 @@ static NSString *databasePath;
 
 //Get a user password besed on its ID
 +(NSString*)getUserPassword:(NSInteger)ID {
-	
-	sqlite3 *database;
-	
 	NSString *password = nil;
-	
-	[DataAccessDB initDBParameters];
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "select password from users where id = ?";
+			const char *sqlStatement = "select password from users where id = ?";
 		sqlite3_stmt *compiledStatement;
 		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
 			sqlite3_bind_int( compiledStatement, 1, ID);
@@ -273,10 +244,7 @@ static NSString *databasePath;
 			}
 		}
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
-	
-	return password;
+		return password;
 }
 
 
@@ -285,11 +253,7 @@ static NSString *databasePath;
 
 //Set a new name to a user
 +(void)setUserName:(NSInteger)ID:(NSString *)newName {
-	sqlite3 *database;
 	
-	[DataAccessDB initDBParameters];
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
 		const char *sqlStatement = "update users set name=? where id=?";
 		sqlite3_stmt *compiledStatement;
 		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
@@ -302,11 +266,9 @@ static NSString *databasePath;
 			NSLog( @"Error: %s", sqlite3_errmsg(database) );
 		}
 		else {
-			NSLog( @"Insert into row id = %d", sqlite3_last_insert_rowid(database));
+			NSLog( @"Insert into row id = %lld", sqlite3_last_insert_rowid(database));
 		}		
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
 }
 
 
@@ -315,12 +277,7 @@ static NSString *databasePath;
 
 //Set a new password to a user
 +(void)setUserPassword:(NSInteger)ID:(NSString *)newPassword {
-	sqlite3 *database;
-	
-	[DataAccessDB initDBParameters];
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "update users set password=? where id=?";
+			const char *sqlStatement = "update users set password=? where id=?";
 		sqlite3_stmt *compiledStatement;
 		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
 			
@@ -335,8 +292,6 @@ static NSString *databasePath;
 			NSLog( @"Insert into row id = %d", sqlite3_last_insert_rowid(database));
 		}		
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
 }
 
 
@@ -345,12 +300,7 @@ static NSString *databasePath;
 
 //Deletes a user
 +(void)deleteUser:(NSInteger)ID {
-	sqlite3 *database;
-	
-	[DataAccessDB initDBParameters];
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "delete from users where id=?";
+			const char *sqlStatement = "delete from users where id=?";
 		sqlite3_stmt *compiledStatement;
 		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
 			
@@ -364,8 +314,6 @@ static NSString *databasePath;
 			NSLog( @"Insert into row id = %d", sqlite3_last_insert_rowid(database));
 		}		
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
 }
 
 
