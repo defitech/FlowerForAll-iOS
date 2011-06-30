@@ -55,6 +55,7 @@
 - (void)viewDidLoad {
 	
     [super viewDidLoad];
+    NSLog(@"StatListViewController didload");
 	
 	//Set title, disable scrolling (at least for the moment)
 	self.title = NSLocalizedString(@"StatisticListViewTitle", @"Title of the statistic list view");

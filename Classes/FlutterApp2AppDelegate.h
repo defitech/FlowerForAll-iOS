@@ -28,12 +28,7 @@
 	//Can be accessed from other classes in the program (used like a global variable)
 	NSInteger currentUserID;
 	
-	//Variables to store the name and the path of the database on the device filesystem
-	//Can be accessed from other classes in the program (used like global variables)
-	NSString *databaseName;
-	NSString *databasePath;
-	
-	//Array to store the users objects
+    //Array to store the users objects
 	NSMutableArray *users;
 	
 }
@@ -45,14 +40,6 @@
 
 @property NSInteger currentUserID;
 
-@property (nonatomic, retain) NSString *databaseName;
-@property (nonatomic, retain) NSString *databasePath;
-
-
-
-//This method checks if the database already exists on the device file system (in the documents directory of the application).
-//If it is not the case, it copies the database there from the application bundle.
--(void) checkAndCreateDatabase;
 
 
 @end

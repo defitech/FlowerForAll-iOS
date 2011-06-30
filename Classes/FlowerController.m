@@ -78,7 +78,7 @@ static GameViewController* activitiesViewController;
 + (StatisticsViewController*) getStatisticsViewController
 {
     if (statisticsViewController == nil) {
-        statisticsViewController = [[GameViewController alloc] init];
+        statisticsViewController = [[StatisticsViewController alloc] init];
         statisticsViewController.view.frame = CGRectMake( 0, -20, 320, 480); // XXX Why???
     }
     return statisticsViewController;

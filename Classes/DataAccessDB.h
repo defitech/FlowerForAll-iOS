@@ -19,10 +19,36 @@
 
 
 
-//Initializes the static variables
-+(void)initDBParameters;
 
++(sqlite3*) db;
 
++(void) close;
+
+//Execute a statement 
++(void)execute:(NSString*)sqlStatement;
+
+//Execute a statement With text FOrmat
++(void)executeWithFormat:(NSString*)sqlStatement, ... NS_FORMAT_FUNCTION(1,2);
+
+/**
+ * Create Statement from NSTRing
+ * !! don't forget to finalize it!
+ */
++(sqlite3_stmt*) genCompiledStatement:(NSString*)sqlStatement;
+
+/**
+ * Usefull to check an ID or if stuff exists in a DB
+ */
++ (BOOL)checkIfStatementReturnRows:(NSString*)sqlStatement;
+
+/**
+ * shortcut to get a single value
+ * ex: "SELECT value FROM infos WHERE key = 'db_version'";
+ */
++(NSString*) getSingletValue:(NSString*)sqlStatement ;
+
+/** get values from the db info table **/
++(NSString*) getInfoValueForKey:(NSString*)key;
 
 /*************************************************** USERS ***************************************************/
 
@@ -33,9 +59,6 @@
 
 //Creates a user
 + (void)createUser:(NSInteger)ID:(NSString *)name:(NSString *)password;
-
-//Checks if a user already exists
-+ (BOOL)checkIfUserAlreadyExists:(NSInteger)ID;
 
 //Lists all user IDs
 +(NSArray*)listOfAllUserIDs;

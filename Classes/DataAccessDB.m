@@ -25,14 +25,48 @@
 
 static sqlite3 *database;
 
-
+// open an initialize Db if needed
 +(sqlite3*) db {
     if (database == nil) {
-        NSString* databasePath = [[NSBundle mainBundle] pathForResource:@"FlutterApp2Database" ofType:@"sql"] ;
-        if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-            NSLog(@"DB OPEN %@", databasePath);
+        // Get path to db File file.
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *dbFilePath = [documentsDirectory stringByAppendingPathComponent:@"FlutterApp2Database.sql"];
+        
+        // Get pointer to file manager.
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        // If the file does not exist, copy it from the app bundle.
+        if(![fileManager fileExistsAtPath:dbFilePath])
+        {
+            NSString* initDbFilePath = [[NSBundle mainBundle] pathForResource:@"FlutterApp2Database" ofType:@"sql"];
+            NSError *error;
+            if (! [fileManager copyItemAtPath:initDbFilePath toPath:dbFilePath error:&error]) {
+                NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
+            }
+             NSLog(@"DB INITIALIZED");
+        }
+        
+        if(![fileManager fileExistsAtPath:dbFilePath])
+        {
+            NSAssert1(0, @"cannot find database '%@'.", dbFilePath);
+        }
+       
+        if(sqlite3_open([dbFilePath UTF8String], &database) == SQLITE_OK){
+            NSLog(@"DB OPEN %@", dbFilePath);
+            NSLog(@"DB VERSION: %@", [DataAccessDB getInfoValueForKey:@"db_version"] );
+            NSLog(@"MAX USER ID: %@", [DataAccessDB getSingletValue:@"SELECT MAX(id) FROM users"] );
         } else {
-            NSLog(@"** FAILED ** DB OPEN %@", databasePath);
+            NSAssert1(0, @"** FAILED ** DB OPEN %@", dbFilePath);
+        }
+        [fileManager release];
+        
+        
+        //Create the main user (with ID 0) if it does not already exist
+        if ([DataAccessDB getUserName:0] == nil) {
+            NSString *ownerName = NSLocalizedString(@"OwnerUserName", @"Name of the owner user");
+            NSString *ownerPassword = NSLocalizedString(@"OwnerUserPassword", @"Password of the owner user");
+            [DataAccessDB createUser:0:ownerName:ownerPassword];
         }
     }
     return database;
@@ -41,31 +75,42 @@ static sqlite3 *database;
 +(void) close {
     if (database != nil) {
         sqlite3_close(database);
+        NSLog(@"close database");
     }
 }
 
 //Execute a statement 
 +(void)execute:(NSString*)sqlStatement {
-    sqlite3_stmt  *statement;
-    const char *insert_stmt = [sqlStatement UTF8String];
-    
-    sqlite3_prepare_v2(database, insert_stmt, -1, &statement, NULL);
-    if (sqlite3_step(statement) == SQLITE_DONE)
+    NSLog(@"execute: %@",sqlStatement);
+    sqlite3_stmt *statement = [DataAccessDB genCompiledStatement:sqlStatement];
+    if (sqlite3_step(statement) != SQLITE_DONE)
     {
         NSLog( @"**ERROR*DB:Execute: %@\n\r\t%s", sqlStatement, sqlite3_errmsg(database) );
     } 
     sqlite3_finalize(statement);
 }
 
++(void)executeWithFormat:(NSString*)sqlStatementFormat, ... {
+    va_list ap;
+    va_start(ap, sqlStatementFormat);
+    NSString *sqlStatement = [[[NSString alloc] initWithFormat:sqlStatementFormat arguments:ap] autorelease];
+    va_end(ap);
+    [DataAccessDB execute:sqlStatement];
+}
+
+
 /**
  * Create Statement from NSTRing
  * !! don't forget to finalize it!
  */
 +(sqlite3_stmt*) genCompiledStatement:(NSString*)sqlStatement {
-    const char *sqlStatementC = [sqlStatement UTF8String];
+    NSLog(@"genCompiledStatement: %@",sqlStatement);
     sqlite3_stmt *compiledStatement;
-    if(sqlite3_prepare_v2(database, sqlStatementC, -1, &compiledStatement, NULL) == SQLITE_OK) {
+    int res = sqlite3_prepare_v2([DataAccessDB db], [sqlStatement UTF8String], -1, &compiledStatement, NULL);
+    if(res == SQLITE_OK) {
         return compiledStatement;
+    } else {
+        NSLog( @"**ERROR %i *DB:genCompiledStatement: %@\n\r\t%s",res, sqlStatement, sqlite3_errmsg(database) );
     }
     return NULL;
 }
@@ -74,273 +119,105 @@ static sqlite3 *database;
  * Usefull to check an ID or if stuff exists in a DB
  */
 + (BOOL)checkIfStatementReturnRows:(NSString*)sqlStatement {
-
     sqlite3_stmt *compiledStatement = [DataAccessDB genCompiledStatement:sqlStatement];
     if (sqlite3_step(compiledStatement) == SQLITE_ROW) { // at least one row
+        sqlite3_finalize(compiledStatement); 
         return YES;
     }
     sqlite3_finalize(compiledStatement);
 	return NO;
 }
 
+/**
+ * shortcut to get a single value
+ * ex: "SELECT value FROM infos WHERE key = 'db_version'";
+ */
++(NSString*) getSingletValue:(NSString*)sqlStatement {
+    NSString *result = nil;
+    sqlite3_stmt *compiledStatement = [DataAccessDB genCompiledStatement:sqlStatement];
+    if (sqlite3_step(compiledStatement) == SQLITE_ROW) { // at least one row
+        result = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)];
+    }
+    sqlite3_finalize(compiledStatement);
+	return result;
+}
 
++(NSString*) getInfoValueForKey:(NSString*)key {
+    return [DataAccessDB getSingletValue:[NSString stringWithFormat:@"SELECT value FROM infos WHERE key = '%@'",key]];
+}
 
 /*************************************************** USERS ***************************************************/
 
 
-
-
-
 //Generates a user ID
 + (NSInteger)generateUserID {
-    NSMutableArray *userIDs = [[NSMutableArray alloc] init];
-	
-    const char *sqlStatement = "select id from users";
-    
-    sqlite3_stmt *compiledStatement;
-    if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-        while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-            // Read the data from the result row
-            NSString *aID = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)];
-            [userIDs addObject:aID];
-        }
+    NSString *maxId = [DataAccessDB getSingletValue:@"SELECT MAX(id) FROM users"] ;
+    NSInteger nextId = 0;
+    if (maxId != nil) {
+        nextId = [maxId intValue] + 1;
     }
-    sqlite3_finalize(compiledStatement);
-	
-	
-	
-	NSInteger max = 0;
-	
-	for (int i=0; i < [userIDs count]; i++ ) {
-		NSInteger currentElement = [[userIDs objectAtIndex:i] intValue];
-		NSLog(@" max :%d", max);
-
-		if (currentElement > max) {
-			max = currentElement;
-		}
-	}
-	
-	[userIDs release];
-	
-	max++;
-	
-	NSLog(@"NSInteger max :%d", max);
-	return max;
+    return  nextId;
 }
-
-
-
-
 
 //Creates a user
 + (void)createUser:(NSInteger)ID:(NSString *)name:(NSString *)password {
-	
-	
-		const char *sqlStatement = "insert into users (id, name, password) values (?, ?, ?)";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-
-			sqlite3_bind_int( compiledStatement, 1, ID);
-			sqlite3_bind_text( compiledStatement, 2, [name UTF8String], -1, SQLITE_TRANSIENT);
-			sqlite3_bind_text( compiledStatement, 3, [password UTF8String], -1, SQLITE_TRANSIENT);
-				
-		}
-		if(sqlite3_step(compiledStatement) != SQLITE_DONE ) {
-			NSLog( @"Error: %s", sqlite3_errmsg(database) );
-		}
-		else {
-			NSLog( @"Insert into row id = %lld", sqlite3_last_insert_rowid(database));
-		}		
-		sqlite3_finalize(compiledStatement);
-	
+    [DataAccessDB executeWithFormat:@"insert into users (id, name, password) values (%i, '%@', '%@')",ID,name,password];
+    
 }
-
-
-
-//Checks if a user already exists
-+ (BOOL)checkIfUserAlreadyExists:(NSInteger)ID {
-	
-	
-	NSArray *userIDs = [DataAccessDB listOfAllUserIDs];
- 
-		for (int i=0; i < [userIDs count]; i++ ) {
-		NSInteger currentElement = [[userIDs objectAtIndex:i] intValue];
- 
-		if (currentElement == ID) {
-			[userIDs release];
-			return YES;
-		}
-	}
- 
-	[userIDs release];
-	return NO;
-}
-
-
-
-
 
 //Lists all user IDs
 +(NSArray*)listOfAllUserIDs {
     NSMutableArray *userIDs = [[NSMutableArray alloc] init];
-	
-		const char *sqlStatement = "select id from users";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-				// Read the data from the result row
-				NSString *aID = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)];
-				
-				//NSLog(@"ID: %@",aID);
-				
-				[userIDs addObject:aID];
-			}
-		}
-		sqlite3_finalize(compiledStatement);
+
+    sqlite3_stmt *compiledStatement = [DataAccessDB genCompiledStatement:@"SELECT id FROM users"];
+        while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+            [userIDs addObject:[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)]];
+        }
+    sqlite3_finalize(compiledStatement);
 	
 	return [userIDs autorelease];
 }
 
-
-
-
 //Get a user name besed on its ID
 +(NSString*)getUserName:(NSInteger)ID {
-	
-	NSString *name = nil;
-			const char *sqlStatement = "select name from users where id = ?";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			sqlite3_bind_int( compiledStatement, 1, ID);
-			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-				// Read the data from the result row
-				name = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)];
-				
-				//NSLog(@"ID: %@",aID);
-				
-			}
-		}
-		sqlite3_finalize(compiledStatement);
-	
-	return name;
+	return [DataAccessDB getSingletValue:[NSString stringWithFormat:@"select name from users where id = %i",ID]];
 }
-
-
-
 
 //Get a user password besed on its ID
 +(NSString*)getUserPassword:(NSInteger)ID {
-	NSString *password = nil;
-			const char *sqlStatement = "select password from users where id = ?";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			sqlite3_bind_int( compiledStatement, 1, ID);
-			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
-				// Read the data from the result row
-				password = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)];
-				
-				//NSLog(@"ID: %@",aID);
-				
-			}
-		}
-		sqlite3_finalize(compiledStatement);
-		return password;
+    return [DataAccessDB getSingletValue:[NSString stringWithFormat:@"select password from users where id = %i",ID]];
 }
-
-
-
-
 
 //Set a new name to a user
 +(void)setUserName:(NSInteger)ID:(NSString *)newName {
-	
-		const char *sqlStatement = "update users set name=? where id=?";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			
-			sqlite3_bind_text( compiledStatement, 1, [newName UTF8String], -1, SQLITE_TRANSIENT);
-			sqlite3_bind_int( compiledStatement, 2, ID);
-			
-		}
-		if(sqlite3_step(compiledStatement) != SQLITE_DONE ) {
-			NSLog( @"Error: %s", sqlite3_errmsg(database) );
-		}
-		else {
-			NSLog( @"Insert into row id = %lld", sqlite3_last_insert_rowid(database));
-		}		
-		sqlite3_finalize(compiledStatement);
+	[DataAccessDB executeWithFormat:@"UPDATE users SET NAME='%@' WHERE id=%i",newName,ID];
 }
-
-
-
-
 
 //Set a new password to a user
 +(void)setUserPassword:(NSInteger)ID:(NSString *)newPassword {
-			const char *sqlStatement = "update users set password=? where id=?";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			
-			sqlite3_bind_text( compiledStatement, 1, [newPassword UTF8String], -1, SQLITE_TRANSIENT);
-			sqlite3_bind_int( compiledStatement, 2, ID);
-			
-		}
-		if(sqlite3_step(compiledStatement) != SQLITE_DONE ) {
-			NSLog( @"Error: %s", sqlite3_errmsg(database) );
-		}
-		else {
-			NSLog( @"Insert into row id = %d", sqlite3_last_insert_rowid(database));
-		}		
-		sqlite3_finalize(compiledStatement);
+    [DataAccessDB executeWithFormat:@"update users set password='%@' where id=%i",newPassword,ID] ;
 }
-
-
-
-
 
 //Deletes a user
 +(void)deleteUser:(NSInteger)ID {
-			const char *sqlStatement = "delete from users where id=?";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			
-			sqlite3_bind_int( compiledStatement, 1, ID);
-			
-		}
-		if(sqlite3_step(compiledStatement) != SQLITE_DONE ) {
-			NSLog( @"Error: %s", sqlite3_errmsg(database) );
-		}
-		else {
-			NSLog( @"Insert into row id = %d", sqlite3_last_insert_rowid(database));
-		}		
-		sqlite3_finalize(compiledStatement);
+    [DataAccessDB executeWithFormat:@"delete from users where id=%i",ID];
 }
-
-
- 
-
-
 
 
 /*************************************************** EXERCISES ***************************************************/
 
 
-
-
-
-
 //Lists all the exercises of a user based on its ID
 +(NSArray*)listOfUserExercises:(NSInteger)ID {
-	sqlite3 *database;
+	NSLog(@"listOfUserExercises");
 	NSMutableArray *exercises = [[NSMutableArray alloc] init];
-	
-	[DataAccessDB initDBParameters];
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "select * from exercises where localUserId =? order by dateTime desc";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+
+		sqlite3_stmt *compiledStatement = 
+        [DataAccessDB genCompiledStatement:@"select * from exercises where localUserId =? order by dateTime desc"];
+
 			sqlite3_bind_int( compiledStatement, 1, ID);
+    
+    
 			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
 				// Read the data from the result row
 				NSInteger aID = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)] intValue];
@@ -366,12 +243,10 @@ static sqlite3 *database;
 				
 				[exercise release];
 			}
-		}
+		
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
-	
-	return [exercises autorelease];
+
+    return [exercises autorelease];
 }
 
 
@@ -380,10 +255,8 @@ static sqlite3 *database;
 
 //Lists all the exercises of a user (based on its ID) for the specified month and year
 +(NSArray*)listOfUserExercisesInMonthAndYear:(NSInteger)ID:(NSInteger)month:(NSInteger)year {
-	sqlite3 *database;
+    NSLog(@"listOfUserExercisesInMonthAndYear");
 	NSMutableArray *exercises = [[NSMutableArray alloc] init];
-	
-	[DataAccessDB initDBParameters];
 	
 	
 	//Get current month beginning as an integer (in seconds)
@@ -413,10 +286,9 @@ static sqlite3 *database;
 	NSInteger endOfMonthInt = ((NSInteger)[endOfMonthDate timeIntervalSince1970]);
 	
 	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "select * from exercises where (localUserId =? and dateTime >=? and dateTime <?) order by dateTime desc";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+	
+		sqlite3_stmt *compiledStatement = [DataAccessDB genCompiledStatement:@"select * from exercises where (localUserId =? and dateTime >=? and dateTime <?) order by dateTime desc"];
+
 			sqlite3_bind_int( compiledStatement, 1, ID);
 			sqlite3_bind_int( compiledStatement, 2, beginningOfMonthInt);
 			sqlite3_bind_int( compiledStatement, 3, endOfMonthInt);
@@ -445,10 +317,9 @@ static sqlite3 *database;
 				
 				[exercise release];
 			}
-		}
+		
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
+
 	
 	return [exercises autorelease];
 }
@@ -465,16 +336,11 @@ static sqlite3 *database;
 //depending on when the exercises have been done. See the classes StatisticListViewController, MonthStatisticListViewController
 //and YearStatisticListViewController.)
 +(NSArray*)listOfUserExerciseDates:(NSInteger)ID {
-	sqlite3 *database;
+    NSLog(@"listOfUserExerciseDates");
 	NSMutableArray *dateTimes = [[NSMutableArray alloc] init];
 	
-	[DataAccessDB initDBParameters];
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "select dateTime from exercises where localUserId =? order by dateTime desc";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			sqlite3_bind_int( compiledStatement, 1, ID);
+
+     sqlite3_stmt *compiledStatement = [DataAccessDB genCompiledStatement:@"select dateTime from exercises where localUserId =? order by dateTime desc"];
 			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
 				// Read the data from the result row
 				NSString *dateTime = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)];
@@ -484,10 +350,9 @@ static sqlite3 *database;
 				[dateTimes addObject:dateTime];
 			
 			}
-		}
+		
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
+
 	
 	return [dateTimes autorelease];
 }
@@ -499,11 +364,8 @@ static sqlite3 *database;
 //Lists all dateTimes of a user's exercise (based on its ID) for the specified year
 //This is used by the class YearStatisticListViewController
 +(NSArray*)listOfUserExerciseDatesInYear:(NSInteger)ID:(NSInteger)year {
-	sqlite3 *database;
-	NSMutableArray *dateTimes = [[NSMutableArray alloc] init];
-	
-	[DataAccessDB initDBParameters];
-	
+    NSLog(@"listOfUserExerciseDatesInYear");
+		NSMutableArray *dateTimes = [[NSMutableArray alloc] init];
 	
 	//Get current year beginning as an integer (in seconds)
 	NSString *beginningOfYearString = [[NSString stringWithFormat:@"%i", year] stringByAppendingString:@"-"];
@@ -518,11 +380,8 @@ static sqlite3 *database;
 	NSDate *endOfYearDate = [NSDate dateWithString:endOfYearString];
 	NSInteger endOfYearInt = ((NSInteger)[endOfYearDate timeIntervalSince1970]);
 	
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "select dateTime from exercises where (localUserId =? and dateTime >=? and dateTime <=?) order by dateTime desc";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+
+    sqlite3_stmt *compiledStatement = [DataAccessDB genCompiledStatement:@"select dateTime from exercises where (localUserId =? and dateTime >=? and dateTime <=?) order by dateTime desc"];
 			sqlite3_bind_int( compiledStatement, 1, ID);
 			sqlite3_bind_int( compiledStatement, 2, beginningOfYearInt);
 			sqlite3_bind_int( compiledStatement, 3, endOfYearInt);
@@ -535,10 +394,9 @@ static sqlite3 *database;
 				[dateTimes addObject:dateTime];
 				
 			}
-		}
+		
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
+
 	
 	return [dateTimes autorelease];
 }
@@ -550,27 +408,8 @@ static sqlite3 *database;
 
 //Deletes an exercise
 +(void)deleteExercise:(NSInteger)exerciseID {
-	sqlite3 *database;
-	
-	[DataAccessDB initDBParameters];
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "delete from exercises where id=?";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			
-			sqlite3_bind_int( compiledStatement, 1, exerciseID);
-			
-		}
-		if(sqlite3_step(compiledStatement) != SQLITE_DONE ) {
-			NSLog( @"Error: %s", sqlite3_errmsg(database) );
-		}
-		else {
-			NSLog( @"Insert into row id = %d", sqlite3_last_insert_rowid(database));
-		}		
-		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
+    NSLog(@"deleteExercise");
+    [DataAccessDB execute:[NSString stringWithFormat:@"delete from exercises where id=%i",exerciseID]];
 }
 
 
@@ -580,12 +419,8 @@ static sqlite3 *database;
 
 //Delete all exercises of a user for the specified month and year
 +(void)deleteUserExercisesInMonthAndYear:(NSInteger)userID:(NSInteger)month:(NSInteger)year {
-	sqlite3 *database;
-	
-	[DataAccessDB initDBParameters];
-	
-	
-	//Get current month beginning as an integer (in seconds)
+    NSLog(@"deleteUserExercisesInMonthAndYear");
+    //Get current month beginning as an integer (in seconds)
 	NSString *beginningOfMonthString = [[NSString stringWithFormat:@"%i", year] stringByAppendingString:@"-"];
 	beginningOfMonthString = [beginningOfMonthString stringByAppendingString:[NSString stringWithFormat:@"%i", month]];
 	beginningOfMonthString = [beginningOfMonthString stringByAppendingString:@"-01 00:00:00 +0100"];
@@ -611,27 +446,8 @@ static sqlite3 *database;
 	NSDate *endOfMonthDate = [NSDate dateWithString:endOfMonthString];
 	NSInteger endOfMonthInt = ((NSInteger)[endOfMonthDate timeIntervalSince1970]);
 	
-	
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "delete from exercises where (localUserId =? and dateTime >=? and dateTime <?)";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			
-			sqlite3_bind_int(compiledStatement, 1, userID);
-			sqlite3_bind_int(compiledStatement, 2, beginningOfMonthInt);
-			sqlite3_bind_int(compiledStatement, 3, endOfMonthInt);
-			
-		}
-		if(sqlite3_step(compiledStatement) != SQLITE_DONE ) {
-			NSLog( @"Error: %s", sqlite3_errmsg(database) );
-		}
-		else {
-			NSLog( @"Insert into row id = %d", sqlite3_last_insert_rowid(database));
-		}		
-		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
+     [DataAccessDB execute:
+      [NSString stringWithFormat:@"delete from exercises where (localUserId =%i and dateTime >=%i and dateTime <%i)",userID,beginningOfMonthInt,endOfMonthInt]];
 }
 
 
@@ -641,11 +457,7 @@ static sqlite3 *database;
 
 //Delete all exercises of a user for the specified year
 +(void)deleteUserExercisesInYear:(NSInteger)userID:(NSInteger)year {
-	sqlite3 *database;
-	
-	[DataAccessDB initDBParameters];
-	
-	
+	NSLog(@"deleteUserExercisesInYear");
 	//Get current year beginning as an integer (in seconds)
 	NSString *beginningOfYearString = [[NSString stringWithFormat:@"%i", year] stringByAppendingString:@"-"];
 	beginningOfYearString = [beginningOfYearString stringByAppendingString:@"01-01 00:00:00 +0100"];
@@ -659,27 +471,8 @@ static sqlite3 *database;
 	NSDate *endOfYearDate = [NSDate dateWithString:endOfYearString];
 	NSInteger endOfYearInt = ((NSInteger)[endOfYearDate timeIntervalSince1970]);
 	
-	
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "delete from exercises where (localUserId =? and dateTime >=? and dateTime <=?)";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
-			
-			sqlite3_bind_int(compiledStatement, 1, userID);
-			sqlite3_bind_int(compiledStatement, 2, beginningOfYearInt);
-			sqlite3_bind_int(compiledStatement, 3, endOfYearInt);
-			
-		}
-		if(sqlite3_step(compiledStatement) != SQLITE_DONE ) {
-			NSLog( @"Error: %s", sqlite3_errmsg(database) );
-		}
-		else {
-			NSLog( @"Insert into row id = %d", sqlite3_last_insert_rowid(database));
-		}		
-		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
+    [DataAccessDB execute:
+     [NSString stringWithFormat:@"delete from exercises where (localUserId =%i and dateTime >=%i and dateTime <=%i)",userID,beginningOfYearInt,endOfYearInt]];
 }
 
 
@@ -696,15 +489,12 @@ static sqlite3 *database;
 
 //List all expirations of an exercise based on its ID
 +(NSArray*)listOfExerciseExpirations:(NSInteger)ID {
-	sqlite3 *database;
+    NSLog(@"listOfExerciseExpirations");
 	NSMutableArray *expirations = [[NSMutableArray alloc] init];
 	
-	[DataAccessDB initDBParameters];
-	
-	if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK){
-		const char *sqlStatement = "select inTargetDuration, outOfTargetDuration from expirations where exerciseId =? order by deltaTime asc";
-		sqlite3_stmt *compiledStatement;
-		if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+		
+		sqlite3_stmt *compiledStatement = [DataAccessDB genCompiledStatement:@"select inTargetDuration, outOfTargetDuration from expirations where exerciseId =? order by deltaTime asc"];
+		
 			sqlite3_bind_int( compiledStatement, 1, ID);
 			while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
 				// Read the data from the result row
@@ -720,10 +510,9 @@ static sqlite3 *database;
 				
 				[expiration release];
 			}
-		}
+		
 		sqlite3_finalize(compiledStatement);
-	}
-	sqlite3_close(database);
+	
 	
 	return [expirations autorelease];
 }

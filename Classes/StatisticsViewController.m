@@ -15,6 +15,7 @@
 
 - (id)init {
     self = [super init];
+     NSLog(@"StatViewController init");
     if (self) {
         [self pushViewController:[[StatisticListViewController alloc] initWithNibName:@"StatisticListView" bundle:[NSBundle mainBundle]] animated:YES];
 

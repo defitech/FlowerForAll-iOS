@@ -18,7 +18,7 @@
 @implementation FlutterApp2AppDelegate
 
 
-@synthesize window, viewController,  currentUserID, databaseName, databasePath;
+@synthesize window, viewController,  currentUserID;
 
 
 
@@ -32,81 +32,20 @@
 // - Creates the main user (with ID 0) if it does not already exist
 // - Then adds the tab bar controller view to the main window
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	
-	
-	//Setup some global variable: databaseName and databasePath
-	databaseName = @"FlutterApp2Database.sql";
-	//Get the path to the documents directory and append the databaseName
-	NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDir = [documentPaths objectAtIndex:0];
-	databasePath = [documentsDir stringByAppendingPathComponent:databaseName];
-	
-	
-	//Execute the checkAndCreateDatabase function
-	[self checkAndCreateDatabase];
-	
-	
-	//Create the main user (with ID 0) if it does not already exist
-	NSInteger ownerID = 0;
-	NSString *ownerName = NSLocalizedString(@"OwnerUserName", @"Name of the owner user");
-	NSString *ownerPassword = NSLocalizedString(@"OwnerUserPassword", @"Password of the owner user");
-	
-	if (![DataAccessDB checkIfUserAlreadyExists:ownerID]) {
-		[DataAccessDB createUser:ownerID:ownerName:ownerPassword];
-	}
-	
-	/**
-	//Set the title of all tab bar items
-	UITabBarItem *item1 = [tabBarController.tabBar.items objectAtIndex:0];
-	item1.title = NSLocalizedString(@"TabBarItem1", @"Title of the first tab bar item");
-	UITabBarItem *item2 = [tabBarController.tabBar.items objectAtIndex:1];
-	item2.title = NSLocalizedString(@"TabBarItem2", @"Title of the second tab bar item");
-	UITabBarItem *item3 = [tabBarController.tabBar.items objectAtIndex:2];
-	item3.title = NSLocalizedString(@"TabBarItem3", @"Title of the thirs tab bar item");
-	**/
+	[DataAccessDB db]; // init and open the database
 
+	NSLog(@"there");
+	
+	
 
-    
-	//Add the tab bar controller, which is the top level controller, to the window, and display the window.
-	[self.window addSubview:viewController.view];
-    
+   	[self.window addSubview:viewController.view];
     [self.window makeKeyAndVisible];
-	
 	
     return YES;
 }
 
 
 
-
-
-//This method checks if the database already exists on the device file system (in the documents directory of the application).
-//If it is not the case, it copies the database there from the application bundle.
--(void) checkAndCreateDatabase{
-	
-	//Check if the SQL database has already been saved to the users phone, if not then copy it over
-	BOOL success;
-	
-	//Create a FileManager object, we will use this to check the status
-	//of the database and to copy it over if required
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	
-	//Check if the database has already been created in the users filesystem
-	success = [fileManager fileExistsAtPath:databasePath];
-	
-	//If the database already exists then return without doing anything
-	if(success) return;
-	
-	//If not then proceed to copy the database from the application to the users filesystem
-	
-	//Get the path to the database in the application package (since the DB is in the Resource dir of the app bundle)
-	NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
-	
-	//Copy the database from the package to the users filesystem
-	[fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
-	
-	[fileManager release];
-}
 
 
 
@@ -187,6 +126,7 @@
 - (void)dealloc {
     [viewController release];
     [window release];
+    [DataAccessDB close];
     [super dealloc];
 }
 

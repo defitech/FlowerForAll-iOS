@@ -14,6 +14,7 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		4E018F7813BB2D6B00333528 /* AVideoPlayer-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E018F7713BB2D6B00333528 /* AVideoPlayer-icon.png */; };
 		4E141B0C13B35F1900698F53 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0613B35F1900698F53 /* Default-Portrait.png */; };
 		4E141B0D13B35F1900698F53 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0713B35F1900698F53 /* Default.png */; };
 		4E141B0E13B35F1900698F53 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0813B35F1900698F53 /* Default@2x.png */; };
@@ -25,7 +26,6 @@
 		4E3A7A7B13B8777D00853344 /* AVideoPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7913B8777D00853344 /* AVideoPlayer.xib */; };
 		4E3A7A7D13B877DD00853344 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */; };
 		4E3A7A7F13B8783D00853344 /* Hamdoulila.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7E13B8783D00853344 /* Hamdoulila.m4v */; };
-		4E3A7A8113B87CAF00853344 /* AVideoPlayer-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A8013B87CAF00853344 /* AVideoPlayer-icon.png */; };
 		4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A8213B884FD00853344 /* AVFoundation.framework */; };
 		4E4BA6BC13B4926900B2BAE6 /* AWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4BA6BA13B4926900B2BAE6 /* AWebController.m */; };
 		4E4BA6BD13B4926900B2BAE6 /* AWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E4BA6BB13B4926900B2BAE6 /* AWebController.xib */; };
@@ -83,6 +83,7 @@
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* FlowerForAll_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerForAll_Prefix.pch; sourceTree = "<group>"; };
+		4E018F7713BB2D6B00333528 /* AVideoPlayer-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AVideoPlayer-icon.png"; sourceTree = "<group>"; };
 		4E141B0613B35F1900698F53 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		4E141B0713B35F1900698F53 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4E141B0813B35F1900698F53 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		4E3A7A7913B8777D00853344 /* AVideoPlayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVideoPlayer.xib; sourceTree = "<group>"; };
 		4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4E3A7A7E13B8783D00853344 /* Hamdoulila.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = Hamdoulila.m4v; path = ../../../../../../Volumes/Temp/perki/Downloads/Hamdoulila.m4v; sourceTree = "<group>"; };
-		4E3A7A8013B87CAF00853344 /* AVideoPlayer-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AVideoPlayer-icon.png"; path = "../../../../Bureau/AVideoPlayer-icon.png"; sourceTree = "<group>"; };
 		4E3A7A8213B884FD00853344 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4E4BA6B913B4926900B2BAE6 /* AWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWebController.h; sourceTree = "<group>"; };
 		4E4BA6BA13B4926900B2BAE6 /* AWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWebController.m; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 		4E3A7A7613B8766900853344 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				4E3A7A8013B87CAF00853344 /* AVideoPlayer-icon.png */,
+				4E018F7713BB2D6B00333528 /* AVideoPlayer-icon.png */,
 				4E3A7A7E13B8783D00853344 /* Hamdoulila.m4v */,
 				4E3A7A7713B8777D00853344 /* AVideoPlayer.h */,
 				4E3A7A7813B8777D00853344 /* AVideoPlayer.m */,
@@ -447,7 +447,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FlowerForAll" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "flowerforall" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -497,7 +497,7 @@
 				4E4BA6BF13B4977300B2BAE6 /* apple_safari.png in Resources */,
 				4E3A7A7B13B8777D00853344 /* AVideoPlayer.xib in Resources */,
 				4E3A7A7F13B8783D00853344 /* Hamdoulila.m4v in Resources */,
-				4E3A7A8113B87CAF00853344 /* AVideoPlayer-icon.png in Resources */,
+				4E018F7813BB2D6B00333528 /* AVideoPlayer-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,7 +652,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FlowerForAll" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "flowerforall" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
