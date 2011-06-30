@@ -15,7 +15,7 @@
 #import "StatisticsViewController.h"
 #import "FlowerController.h"
 
-#import "DataAccessDB.h"
+#import "DB.h"
 
 #import "DateClassifier.h"
 #import "DateClassificationResult.h"
@@ -87,7 +87,7 @@
 	
 	
 	//Get the list of all exercises for the current user and for the current month and year
-	NSArray *exercises = [DataAccessDB listOfUserExercisesInMonthAndYear:currentUserID:self.currentMonth:self.currentYear];
+	NSArray *exercises = [DB listOfUserExercisesInMonthAndYear:currentUserID:self.currentMonth:self.currentYear];
 
 	
 	//Pop the actual view controller if all rows have been deleted
@@ -395,7 +395,7 @@
 		//Delete the exercise
 		NSInteger exerciseId = [[exercisesIDArray objectAtIndex:self.currentlySelectedRow] intValue];
 		
-		[DataAccessDB deleteExercise:exerciseId];
+		[DB deleteExercise:exerciseId];
 		
 		[self viewDidLoad];
 		[self.statisticListTableView reloadData];

@@ -14,7 +14,7 @@
 #import "MonthStatisticListViewController.h"
 #import "StatisticCell.h"
 
-#import "DataAccessDB.h"
+#import "DB.h"
 
 #import "DateClassifier.h"
 #import "DateClassificationResult.h"
@@ -82,7 +82,7 @@
 	
 	
 	//Get the dateTimes of all user exercises in the current year
-	self.dateTimes = [DataAccessDB listOfUserExerciseDatesInYear:self.currentUserID:self.currentYear];
+	self.dateTimes = [DB listOfUserExerciseDatesInYear:self.currentUserID:self.currentYear];
 	
 	
 	//Pop the actual view controller if all rows have been deleted
@@ -163,7 +163,7 @@
 
  /*- (void)viewDidAppear:(BOOL)animated {
 	 [super viewDidAppear:animated];
-	 self.dateTimes = [DataAccessDB listOfUserExerciseDatesInYear:self.currentUserID:self.currentYear];
+	 self.dateTimes = [DB listOfUserExerciseDatesInYear:self.currentUserID:self.currentYear];
 	 NSLog(@"yeahyeahyeah1111111111");
 	 NSLog(@"self date times count: %i", [self.dateTimes count]);
 	 if ([self.dateTimes count] == 0) {
@@ -363,7 +363,7 @@
 	
 	if (buttonIndex == 1){
 		
-		[DataAccessDB deleteUserExercisesInMonthAndYear:self.currentUserID:[[self.months objectAtIndex:(self.currentlySelectedRow)] intValue]:self.currentYear ];
+		[DB deleteUserExercisesInMonthAndYear:self.currentUserID:[[self.months objectAtIndex:(self.currentlySelectedRow)] intValue]:self.currentYear ];
 		
 		[self viewDidLoad];
 		[self.statisticListTableView reloadData];

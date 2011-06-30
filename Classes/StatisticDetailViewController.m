@@ -10,7 +10,7 @@
 
 #import "StatisticDetailViewController.h"
 
-#import "DataAccessDB.h"
+#import "DB.h"
 
 #import "CPPlotRange.h"
 #import "CPPlotSpace.h"
@@ -49,8 +49,8 @@
 	
 	
 	//Fetch expirations for the exercise self.currentExerciseID. 
-	//See class DataAccessDB: only columns inTargetDuration and outOfTargetDuration are fetched
-	NSArray *expirations = [DataAccessDB listOfExerciseExpirations:self.currentExerciseID];
+	//See class DB: only columns inTargetDuration and outOfTargetDuration are fetched
+	NSArray *expirations = [DB listOfExerciseExpirations:self.currentExerciseID];
 	
 	
 	//Fill arrays with exercise data just obtained from the DB

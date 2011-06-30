@@ -10,7 +10,7 @@
 
 #import "FlutterApp2AppDelegate.h"
 
-#import "DataAccessDB.h"
+#import "DB.h"
 
 #import "User.h"
 
@@ -32,7 +32,7 @@
 // - Creates the main user (with ID 0) if it does not already exist
 // - Then adds the tab bar controller view to the main window
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	[DataAccessDB db]; // init and open the database
+	[DB db]; // init and open the database
 
 	NSLog(@"there");
 	
@@ -126,7 +126,7 @@
 - (void)dealloc {
     [viewController release];
     [window release];
-    [DataAccessDB close];
+    [DB close];
     [super dealloc];
 }
 

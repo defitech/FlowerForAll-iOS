@@ -12,7 +12,7 @@
 
 #import "UserDetailViewController.h"
 
-#import "DataAccessDB.h"
+#import "DB.h"
 
 
 @implementation UserDetailViewController
@@ -99,8 +99,8 @@
 	
 	
 	//Set the text of the username and password fields
-	usernameField.text = [DataAccessDB getUserName:self.userID];
-	passwordField.text = [DataAccessDB getUserPassword:self.userID];
+	usernameField.text = [DB getUserName:self.userID];
+	passwordField.text = [DB getUserPassword:self.userID];
 		
 }
 
@@ -127,7 +127,7 @@
 	if (buttonIndex == 1){
 		
 		//Delete the user
-		[DataAccessDB deleteUser:self.userID];
+		[DB deleteUser:self.userID];
 			
 		[[FlowerController getSettingsViewController] popViewControllerAnimated:YES];
 		
@@ -144,8 +144,8 @@
 	
 	if ( self.usernameField.text.length != 0 && self.passwordField.text.length != 0) {
 		
-		[DataAccessDB setUserName:self.userID:self.usernameField.text];
-		[DataAccessDB setUserPassword:self.userID:self.passwordField.text];
+		[DB setUserName:self.userID:self.usernameField.text];
+		[DB setUserPassword:self.userID:self.passwordField.text];
 	
 		UIAlertView *alert;	
 		alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UserPasswordChangedAlertLabel", @"Label of the user or password changed alert") message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"UserPasswordChangedAlertOKButtonLabel", @"Label of the OK button label on the user or password changed alert") otherButtonTitles:nil] autorelease];

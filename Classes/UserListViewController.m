@@ -13,7 +13,7 @@
 #import "UserListViewController.h"
 #import "UserDetailViewController.h"
 
-#import "DataAccessDB.h"
+#import "DB.h"
 
 
 @implementation UserListViewController
@@ -56,14 +56,14 @@
 	
 	
 	//Get an array of all user IDs from the DB, and assign it to self.usersIDArray
-	self.usersIDArray = [DataAccessDB listOfAllUserIDs];
+	self.usersIDArray = [DB listOfAllUserIDs];
 	
 	
 	//Construct an array of user names based on the array of user IDs (by querying them in the DB), and assign it to self.usersArray
 	NSMutableArray *users = [[NSMutableArray alloc] init];
 
 	for (NSInteger i=0; i < [self.usersIDArray count]; i++ ) {
-		[users addObject:[DataAccessDB getUserName:[[self.usersIDArray objectAtIndex:i] intValue]]];
+		[users addObject:[DB getUserName:[[self.usersIDArray objectAtIndex:i] intValue]]];
 	}
 	
 	self.usersArray = users;
@@ -109,9 +109,9 @@
 
 		if ( self.newUserTextField.text.length != 0 ) {
 		
-			NSInteger newID = [DataAccessDB generateUserID];
+			NSInteger newID = [DB generateUserID];
 			//NSLog(@"NSInteger value userlist ctrl :%i", newID);
-			[DataAccessDB createUser:newID:self.newUserTextField.text:self.newUserTextField.text];
+			[DB createUser:newID:self.newUserTextField.text:self.newUserTextField.text];
 		
 			[self viewDidLoad];
 			[self.userListTableView reloadData];

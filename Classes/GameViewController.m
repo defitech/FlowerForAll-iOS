@@ -13,7 +13,7 @@
 #import "GameViewController.h"
 
 #import "DataAccess.h"
-#import "DataAccessDB.h"
+#import "DB.h"
 
 #import "FlowerController.h"
 #import "AWebController.h"
@@ -113,14 +113,14 @@ AVideoPlayer *videoPlayer;
 	
 	
 	//Construct an array of user names based on the array of user IDs, and store into instance variables
-	self.userIDsArray = [DataAccessDB listOfAllUserIDs];
+	self.userIDsArray = [DB listOfAllUserIDs];
 	
     NSMutableArray *users = [[NSMutableArray alloc] init];
     [users addObject:[NSString string]]; //Add an empty row
 	
 	for (NSInteger i=0; i < [self.userIDsArray count]; i++ ) {
-		//NSLog(@"test: %@", [DataAccessDB getUserName:[[self.userIDsArray objectAtIndex:i] intValue]]);
-		[users addObject:[DataAccessDB getUserName:[[self.userIDsArray objectAtIndex:i] intValue]]];
+		//NSLog(@"test: %@", [DB getUserName:[[self.userIDsArray objectAtIndex:i] intValue]]);
+		[users addObject:[DB getUserName:[[self.userIDsArray objectAtIndex:i] intValue]]];
 	}
 	
 	self.usernamesArray = users;
@@ -224,7 +224,7 @@ AVideoPlayer *videoPlayer;
 		if ( self.passwordTextField.text.length != 0 ) {
 			// -1 to remove the empty row
 			NSInteger userID = [[self.userIDsArray objectAtIndex:self.selectedRow] intValue] - 1;
-			NSString *password = [DataAccessDB getUserPassword:userID];
+			NSString *password = [DB getUserPassword:userID];
 			
 			if ([password isEqualToString:self.passwordTextField.text]) {
 				

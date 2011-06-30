@@ -7,7 +7,7 @@
 //
 //  This class defines an interface for accessing data on the device file system.
 //  It will NOT be used in the final version of the app, since all data will be stored in an SQLite database.
-//  It fact this class is already no longer in use, and should not be used any more. The class DataAccessDB
+//  It fact this class is already no longer in use, and should not be used any more. The class DB
 //  has been created to interact with the SQLite database, and should be used instead. 
 
 

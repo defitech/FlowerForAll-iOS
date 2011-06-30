@@ -13,39 +13,34 @@
 #import <sqlite3.h>
 
 
-@interface DataAccessDB : NSObject {
+@interface DB : NSObject {
 	
 }
-
-
-
-
+/** return an open db.. and initialize it if needed **/
 +(sqlite3*) db;
 
 +(void) close;
 
 //Execute a statement 
 +(void)execute:(NSString*)sqlStatement;
-
-//Execute a statement With text FOrmat
-+(void)executeWithFormat:(NSString*)sqlStatement, ... NS_FORMAT_FUNCTION(1,2);
+/** execute With Format **/
++(void)executeWF:(NSString*)sqlStatementFormat, ... NS_FORMAT_FUNCTION(1,2);  // sugar implementation
 
 /**
  * Create Statement from NSTRing
  * !! don't forget to finalize it!
  */
-+(sqlite3_stmt*) genCompiledStatement:(NSString*)sqlStatement;
-
-/**
- * Usefull to check an ID or if stuff exists in a DB
- */
-+ (BOOL)checkIfStatementReturnRows:(NSString*)sqlStatement;
++(sqlite3_stmt*) genCStatement:(NSString*)sqlStatement;
+/** genCStatement With Format **/
++(sqlite3_stmt*) genCStatementWF:(NSString*)sqlStatementFormat, ... NS_FORMAT_FUNCTION(1,2); // sugar implementation
 
 /**
  * shortcut to get a single value
  * ex: "SELECT value FROM infos WHERE key = 'db_version'";
  */
-+(NSString*) getSingletValue:(NSString*)sqlStatement ;
++(NSString*) getSingleValue:(NSString*)sqlStatement;
+/** getSingleValue With Format **/
++(NSString*) getSingleValueWF:(NSString*)sqlStatementFormat, ... NS_FORMAT_FUNCTION(1,2); // sugar implementation
 
 /** get values from the db info table **/
 +(NSString*) getInfoValueForKey:(NSString*)key;

@@ -31,7 +31,7 @@
 		4E4BA6BD13B4926900B2BAE6 /* AWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E4BA6BB13B4926900B2BAE6 /* AWebController.xib */; };
 		4E4BA6BF13B4977300B2BAE6 /* apple_safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E4BA6BE13B4977300B2BAE6 /* apple_safari.png */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
-		4E8F592F13A7AF6B00D9D3A7 /* DataAccessDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DataAccessDB.m */; };
+		4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DB.m */; };
 		4E8F593013A7AF6B00D9D3A7 /* DateClassificationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */; };
 		4E8F593113A7AF6B00D9D3A7 /* DateClassifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590813A7AF6B00D9D3A7 /* DateClassifier.m */; };
 		4E8F593213A7AF6B00D9D3A7 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590A13A7AF6B00D9D3A7 /* Exercise.m */; };
@@ -103,8 +103,8 @@
 		4E4BA6BE13B4977300B2BAE6 /* apple_safari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple_safari.png; sourceTree = "<group>"; };
 		4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccess.h; sourceTree = "<group>"; };
 		4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccess.m; sourceTree = "<group>"; };
-		4E8F590313A7AF6B00D9D3A7 /* DataAccessDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccessDB.h; sourceTree = "<group>"; };
-		4E8F590413A7AF6B00D9D3A7 /* DataAccessDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccessDB.m; sourceTree = "<group>"; };
+		4E8F590313A7AF6B00D9D3A7 /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DB.h; sourceTree = "<group>"; };
+		4E8F590413A7AF6B00D9D3A7 /* DB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DB.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4E8F590513A7AF6B00D9D3A7 /* DateClassificationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateClassificationResult.h; sourceTree = "<group>"; };
 		4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateClassificationResult.m; sourceTree = "<group>"; };
 		4E8F590713A7AF6B00D9D3A7 /* DateClassifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateClassifier.h; sourceTree = "<group>"; };
@@ -365,8 +365,8 @@
 			children = (
 				4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */,
 				4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */,
-				4E8F590313A7AF6B00D9D3A7 /* DataAccessDB.h */,
-				4E8F590413A7AF6B00D9D3A7 /* DataAccessDB.m */,
+				4E8F590313A7AF6B00D9D3A7 /* DB.h */,
+				4E8F590413A7AF6B00D9D3A7 /* DB.m */,
 				4E8F590513A7AF6B00D9D3A7 /* DateClassificationResult.h */,
 				4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */,
 				4E8F590713A7AF6B00D9D3A7 /* DateClassifier.h */,
@@ -447,7 +447,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "flowerforall" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FlowerForAll" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -513,7 +513,7 @@
 				D72E028E139E448200F3687C /* FLAPIX.mm in Sources */,
 				D72E0290139E448200F3687C /* subsys_ios.mm in Sources */,
 				4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */,
-				4E8F592F13A7AF6B00D9D3A7 /* DataAccessDB.m in Sources */,
+				4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */,
 				4E8F593013A7AF6B00D9D3A7 /* DateClassificationResult.m in Sources */,
 				4E8F593113A7AF6B00D9D3A7 /* DateClassifier.m in Sources */,
 				4E8F593213A7AF6B00D9D3A7 /* Exercise.m in Sources */,
@@ -652,7 +652,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "flowerforall" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FlowerForAll" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

@@ -15,7 +15,7 @@
 #import "MonthStatisticListViewController.h"
 #import "YearStatisticListViewController.h"
 
-#import "DataAccessDB.h"
+#import "DB.h"
 #import "DateClassifier.h"
 #import "DateClassificationResult.h"
 
@@ -69,14 +69,14 @@
 	
 	
 	//Get all dateTimes in order to organize them hierarchically
-	NSArray *dateTimes = [DataAccessDB listOfUserExerciseDates:self.currentUserID];
+	NSArray *dateTimes = [DB listOfUserExerciseDates:self.currentUserID];
 	DateClassificationResult *dateClassificationResult = [DateClassifier classifyDates:dateTimes];
 	self.pastYears = dateClassificationResult.pastYears;
 	self.pastMonths = dateClassificationResult.pastMonths;
 	
 	
 	//Get the list of all exercises for the current user FOR THE CURRENT MONTH AND YEAR, in order to display them (because the others have been classified in past months and past years, and will be displayed by child controllers, not here).
-	NSArray *exercises = [DataAccessDB listOfUserExercisesInMonthAndYear:self.currentUserID:[DateClassifier getCurrentMonth]:[DateClassifier getCurrentYear]];
+	NSArray *exercises = [DB listOfUserExercisesInMonthAndYear:self.currentUserID:[DateClassifier getCurrentMonth]:[DateClassifier getCurrentYear]];
 	
 	
 	//Fill arrays with exercise data just obtained from the DB (for current month and year only)
@@ -498,7 +498,7 @@
 			//Delete the exercise
 			NSInteger exerciseId = [[exercisesIDArray objectAtIndex:self.currentlySelectedRow] intValue];
 		
-			[DataAccessDB deleteExercise:exerciseId];
+			[DB deleteExercise:exerciseId];
 		
 			[self viewDidLoad];
 			[self.statisticListTableView reloadData];
@@ -508,7 +508,7 @@
 		//Past months
 		else if(self.currentlySelectedRow < [self.datesArray count] + [self.pastMonths count]){
 			
-			[DataAccessDB deleteUserExercisesInMonthAndYear:self.currentUserID:[[self.pastMonths objectAtIndex:(self.currentlySelectedRow - [self.datesArray count])] intValue]:[DateClassifier getCurrentYear] ];
+			[DB deleteUserExercisesInMonthAndYear:self.currentUserID:[[self.pastMonths objectAtIndex:(self.currentlySelectedRow - [self.datesArray count])] intValue]:[DateClassifier getCurrentYear] ];
 			
 			[self viewDidLoad];
 			[self.statisticListTableView reloadData];
@@ -518,7 +518,7 @@
 		//Past years
 		else if(self.currentlySelectedRow < [self.datesArray count] + [self.pastMonths count] + [self.pastYears count]){
 			
-			[DataAccessDB deleteUserExercisesInYear:self.currentUserID:[[self.pastYears objectAtIndex:(self.currentlySelectedRow - [self.datesArray count] - [self.pastMonths count])] intValue] ];
+			[DB deleteUserExercisesInYear:self.currentUserID:[[self.pastYears objectAtIndex:(self.currentlySelectedRow - [self.datesArray count] - [self.pastMonths count])] intValue] ];
 			
 			[self viewDidLoad];
 			[self.statisticListTableView reloadData];
