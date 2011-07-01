@@ -217,6 +217,8 @@ double blow_in_range_duration = 0.0f; // duration of in-range blowing
 double blow_timestamp = 0.0f; // temporary timestamp for work on
 int blow_frequency_trigger = 5;
 
+// break blowing if too long
+double blow_max_duration = 7.0f; //(seconds) when a blowing is declared as invalid because too long
 
 // Internal Subsystem function
 // ===========================
@@ -269,15 +271,17 @@ int SendWinMsg( int msg, int lparam, int hparam ){
                 } else { // stop blowing
                     [flapix EventBlowEnd:blow_last_start duration:(blow_last_freq - blow_last_start) in_range_duration:blow_in_range_duration];
                     blow_last_start = 0.0f;
-                    blow_in_range_duration = 0.0f;
                 }
                 
                 
                 
-            } else { // not blowing
+            } else { // not blowing (blow_last_start == 0)
                 if (FLAPI_GetFrequency() > blow_frequency_trigger) { // start blowing
                     blow_last_start = blow_timestamp;
                     [flapix EventBlowStart:blow_last_start];
+                    // init blowing vars
+                    blow_last_freq = 0.0f;
+                    blow_in_range_duration = 0.0f;
                 } else { // continue
                     //.. not blowing
                 }
@@ -293,6 +297,18 @@ int SendWinMsg( int msg, int lparam, int hparam ){
 		case FLAPI_WINMSG_ON_SIGNAL_BUFFER:
 			//NSLog(@"FLAPI_WINMSG_ON_SIGNAL_BUFFER \t%i \t%f", FLAPI_GetFrequency(), FLAPI_GetLevel());
 			
+            // break a blowing session if too long
+            if (blow_last_start > 0.0f) { // blowing
+                if ((CFAbsoluteTimeGetCurrent() - blow_last_start) > blow_max_duration) {
+                    // force stop blowing
+                    blow_last_start = 0.0f;
+                    // Throw a frequency change to 0.. to 
+                    [flapix EventFrequency:0];
+                }
+                
+            }
+            
+            
 			break;
 
 		case FLAPI_WINMSG_ON_DETECTION_BUFFER:
