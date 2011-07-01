@@ -45,6 +45,16 @@
 /** get values from the db info table **/
 +(NSString*) getInfoValueForKey:(NSString*)key;
 
+
+/** convenience shortcut to get a String at a defined index in a row **/
++(NSString*) colS:(sqlite3_stmt*)cStatement index:(int)index;
+
+/** convenience shortcut to get an integer at a defined index in a row **/
++(int) colI:(sqlite3_stmt*)cStatement index:(int)index;
+
+/** convenience shortcut to get a double at a defined index in a row **/
++(double) colD:(sqlite3_stmt*)cStatement index:(int)index;
+
 /*************************************************** USERS ***************************************************/
 
 

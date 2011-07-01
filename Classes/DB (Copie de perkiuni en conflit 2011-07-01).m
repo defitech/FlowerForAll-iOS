@@ -233,7 +233,7 @@ static sqlite3 *database;
     
 			while(sqlite3_step(cStatement) == SQLITE_ROW) {
 				// Read the data from the result row
-				NSInteger aID = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(cStatement, 0)] intValue];
+				NSInteger aID = [DB colI:cStatement index:0];
 				NSInteger dateTime = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(cStatement, 1)] intValue];
 				NSString *appVersion = [NSString stringWithUTF8String:(char *)sqlite3_column_text(cStatement, 2)];
 				NSInteger localUserId = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(cStatement, 3)] intValue];
