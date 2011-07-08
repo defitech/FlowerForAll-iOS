@@ -11,6 +11,7 @@
 #import "FlutterApp2AppDelegate.h"
 
 #import "DB.h"
+#import "ConnectionManager.h"
 
 #import "User.h"
 
@@ -77,9 +78,16 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
+    // ping server
+    ConnectionManager *cm = [[ConnectionManager alloc] init]; 
+        
+        NSMutableDictionary *infos = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"applicationDidBecomeActive",@"event",nil];
+        
+        //[infos addEntriesFromDictionary:[EasyMemoryCommon getInfos]];
+        //[infos setObject:[EasyMemoryCommon getSrcTitle] forKey:@"srcTitle"] ;
+        [cm ping:infos];  // advertise presence
+        [cm release];
+        NSLog(@"applicationDidBecomeActive");
 }
 
 
