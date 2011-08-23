@@ -25,7 +25,6 @@
 		4E3A7A7A13B8777D00853344 /* AVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7813B8777D00853344 /* AVideoPlayer.m */; };
 		4E3A7A7B13B8777D00853344 /* AVideoPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7913B8777D00853344 /* AVideoPlayer.xib */; };
 		4E3A7A7D13B877DD00853344 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */; };
-		4E3A7A7F13B8783D00853344 /* Hamdoulila.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7E13B8783D00853344 /* Hamdoulila.m4v */; };
 		4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A8213B884FD00853344 /* AVFoundation.framework */; };
 		4E4BA6BC13B4926900B2BAE6 /* AWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4BA6BA13B4926900B2BAE6 /* AWebController.m */; };
 		4E4BA6BD13B4926900B2BAE6 /* AWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E4BA6BB13B4926900B2BAE6 /* AWebController.xib */; };
@@ -77,6 +76,7 @@
 		4E92E74913C72C9C0060FBF6 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E73C13C72C9C0060FBF6 /* SBJsonUTF8Stream.m */; };
 		4E92E74A13C72C9C0060FBF6 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E73E13C72C9C0060FBF6 /* SBJsonWriter.m */; };
 		4E92E74D13C72D3A0060FBF6 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */; };
+		4ECC6CA61403FDDD005519C7 /* Hamdoulila.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4ECC6CA51403FDDD005519C7 /* Hamdoulila.m4v */; };
 		4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
 		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; };
@@ -108,7 +108,6 @@
 		4E3A7A7813B8777D00853344 /* AVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVideoPlayer.m; sourceTree = "<group>"; };
 		4E3A7A7913B8777D00853344 /* AVideoPlayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AVideoPlayer.xib; sourceTree = "<group>"; };
 		4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		4E3A7A7E13B8783D00853344 /* Hamdoulila.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; name = Hamdoulila.m4v; path = ../../../../../../Volumes/Temp/perki/Downloads/Hamdoulila.m4v; sourceTree = "<group>"; };
 		4E3A7A8213B884FD00853344 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4E4BA6B913B4926900B2BAE6 /* AWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWebController.h; sourceTree = "<group>"; };
 		4E4BA6BA13B4926900B2BAE6 /* AWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWebController.m; sourceTree = "<group>"; };
@@ -197,6 +196,7 @@
 		4E92E73E13C72C9C0060FBF6 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = Classes/SBJsonWriter.m; sourceTree = "<group>"; };
 		4E92E74B13C72D3A0060FBF6 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
+		4ECC6CA51403FDDD005519C7 /* Hamdoulila.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamdoulila.m4v; sourceTree = "<group>"; };
 		4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-ios.a"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D72E0286139E448200F3687C /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
@@ -327,8 +327,8 @@
 		4E3A7A7613B8766900853344 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				4ECC6CA51403FDDD005519C7 /* Hamdoulila.m4v */,
 				4E018F7713BB2D6B00333528 /* AVideoPlayer-icon.png */,
-				4E3A7A7E13B8783D00853344 /* Hamdoulila.m4v */,
 				4E3A7A7713B8777D00853344 /* AVideoPlayer.h */,
 				4E3A7A7813B8777D00853344 /* AVideoPlayer.m */,
 				4E3A7A7913B8777D00853344 /* AVideoPlayer.xib */,
@@ -581,8 +581,8 @@
 				4E4BA6BD13B4926900B2BAE6 /* AWebController.xib in Resources */,
 				4E4BA6BF13B4977300B2BAE6 /* apple_safari.png in Resources */,
 				4E3A7A7B13B8777D00853344 /* AVideoPlayer.xib in Resources */,
-				4E3A7A7F13B8783D00853344 /* Hamdoulila.m4v in Resources */,
 				4E018F7813BB2D6B00333528 /* AVideoPlayer-icon.png in Resources */,
+				4ECC6CA61403FDDD005519C7 /* Hamdoulila.m4v in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
