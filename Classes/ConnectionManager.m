@@ -63,8 +63,8 @@ BOOL pinger = NO;
 	NSString *bundleID = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleIdentifier"];
 	NSString *bundleV = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleVersion"];
 	
-	NSLog(@"idis:%@",udid);
-	NSLog(@"system nameis :%@",sysname);
+	NSLog(@"id is:%@",udid);
+	NSLog(@"system name is :%@",sysname);
 	NSLog(@"System version is:%@",sysver);
 	NSLog(@"System model is:%@",model);
 	NSLog(@"Bundle ID:%@",bundleID);
@@ -77,7 +77,7 @@ BOOL pinger = NO;
 		post = [post stringByAppendingFormat:@"&%@=%@",key,(NSString*)[infos objectForKey:key]];
 	}
 	
-	[self sendPostRequest:@"http://easymem.simpledata.ch/ping.php" postString:post];
+	[self sendPostRequest:@"http://flower.simpledata.ch/ping.php" postString:post];
 }
 
 //this is used to post the data to web server database through HTTP POST method
