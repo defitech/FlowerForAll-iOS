@@ -77,6 +77,7 @@
 		4E92E74A13C72C9C0060FBF6 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E73E13C72C9C0060FBF6 /* SBJsonWriter.m */; };
 		4E92E74D13C72D3A0060FBF6 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */; };
 		4ECC6CA61403FDDD005519C7 /* Hamdoulila.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4ECC6CA51403FDDD005519C7 /* Hamdoulila.m4v */; };
+		4ECC6CAE1404E171005519C7 /* UserPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CAD1404E171005519C7 /* UserPicker.m */; };
 		4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
 		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; };
@@ -197,6 +198,8 @@
 		4E92E74B13C72D3A0060FBF6 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		4ECC6CA51403FDDD005519C7 /* Hamdoulila.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hamdoulila.m4v; sourceTree = "<group>"; };
+		4ECC6CAC1404E171005519C7 /* UserPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPicker.h; sourceTree = "<group>"; };
+		4ECC6CAD1404E171005519C7 /* UserPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPicker.m; sourceTree = "<group>"; };
 		4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-ios.a"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D72E0286139E448200F3687C /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
@@ -236,6 +239,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4ECC6CAB1404E150005519C7 /* UI */,
 				4E92E72213C72C630060FBF6 /* Net */,
 				4E57A86513A8F19900910E4D /* Data */,
 				4E57A86413A8F16A00910E4D /* Statistics */,
@@ -490,6 +494,15 @@
 			name = SBJSON;
 			sourceTree = "<group>";
 		};
+		4ECC6CAB1404E150005519C7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4ECC6CAC1404E171005519C7 /* UserPicker.h */,
+				4ECC6CAD1404E171005519C7 /* UserPicker.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		D72E0285139E448200F3687C /* FLAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +646,7 @@
 				4E92E74913C72C9C0060FBF6 /* SBJsonUTF8Stream.m in Sources */,
 				4E92E74A13C72C9C0060FBF6 /* SBJsonWriter.m in Sources */,
 				4E92E74D13C72D3A0060FBF6 /* ConnectionManager.m in Sources */,
+				4ECC6CAE1404E171005519C7 /* UserPicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
