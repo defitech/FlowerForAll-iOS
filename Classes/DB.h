@@ -45,6 +45,9 @@
 /** get values from the db info table **/
 +(NSString*) getInfoValueForKey:(NSString*)key;
 
+/** set info value for this (unique) key*/
++(void) setInfoValueForKey:(NSString*)key value:(NSString*)value;
+
 
 /** convenience shortcut to get a String at a defined index in a row **/
 +(NSString*) colS:(sqlite3_stmt*)cStatement index:(int)index;
@@ -84,6 +87,8 @@
 +(void)deleteUser:(NSInteger)ID;
 
 
+/*************************************************** BLOWS *******************************************************/
++ (void) saveBlow:(double)timestamp duration:(double)length in_range_duration:(double)ir_length;    
 
 /*************************************************** EXERCISES ***************************************************/
 

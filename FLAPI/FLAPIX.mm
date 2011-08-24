@@ -10,6 +10,7 @@
 
 #include "flapi.h"
 #include "subsys_ios.h"
+#import "DB.h"
 
 @implementation FLAPIX
 
@@ -82,7 +83,15 @@
 }
 
 - (void) EventBlowEnd:(double)timestamp duration:(double)length in_range_duration:(double)ir_length {
-//     NSLog(@"End Blow %f %f %f",timestamp,length,ir_length);
+    // NSLog(@"End Blow %f %f %f",timestamp,length,ir_length);
+    // Seems there is no pool for this thread.. (I must read more about this)
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    
+    [DB saveBlow:timestamp duration:length in_range_duration:ir_length];
+    
+    
+    [pool drain]; 
     blowing = false;
 }
 

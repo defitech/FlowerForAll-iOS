@@ -39,42 +39,22 @@ static sqlite3 *database;
         NSString *dbFilePath = [NSString stringWithFormat:@"%@/%@/db.sql",
             [DataAccess docDirectory],
             [UserManager uDir:[[UserManager currentUser] uid]]];
-        NSLog(@"dbFilePath %@",dbFilePath);
-        // Get pointer to file manager.
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        
-        // If the file does not exist, copy it from the app bundle.
-        if(![fileManager fileExistsAtPath:dbFilePath])
-        {
-            NSString* initDbFilePath = [[NSBundle mainBundle] pathForResource:@"FlutterApp2Database" 
-                                                ofType:@"sql"];
-            NSLog(@"initDbFilePath %@",initDbFilePath);
-            NSError *error;
-            if (! [fileManager copyItemAtPath:initDbFilePath toPath:dbFilePath error:&error]) {
-                NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
-            }
-            // Check DB
-            if(![fileManager fileExistsAtPath:dbFilePath])
-            {
-                NSAssert1(0, @"cannot find database '%@'.", dbFilePath);
-            }
-             NSLog(@"DB INITIALIZED");
-        }
-        [fileManager release];
-        
+      
+                
         // Open the database
         if(sqlite3_open([dbFilePath UTF8String], &database) == SQLITE_OK){
             NSLog(@"DB OPEN %@", dbFilePath);
+            
+            if ([DB getInfoValueForKey:@"db_version"] == nil) {
+                [DB execute:@"CREATE TABLE infos(key TEXT PRIMARY KEY, VALUE TEXT);"];
+                [DB execute:@"CREATE TABLE expiration(key TEXT PRIMARY KEY, VALUE TEXT);"];
+                [DB execute:@"CREATE TABLE blows(timestamp NUM, duration NUM, ir_duration NUM) ;"];
+                [DB setInfoValueForKey:@"db_version" value:@"1"];
+            }
+            
             NSLog(@"DB VERSION: %@", [DB getInfoValueForKey:@"db_version"] );
         } else {
             NSAssert1(0, @"** FAILED ** DB OPEN %@", dbFilePath);
-        }
-
-        //Create the main user (with ID 0) if it does not already exist
-        if ([DB getUserName:0] == nil) {
-            NSString *ownerName = NSLocalizedString(@"OwnerUserName", @"Name of the owner user");
-            NSString *ownerPassword = NSLocalizedString(@"OwnerUserPassword", @"Password of the owner user");
-            [DB createUser:0:ownerName:ownerPassword];
         }
     }
     return database;
@@ -158,6 +138,10 @@ static sqlite3 *database;
     return [DB getSingleValueWF:@"SELECT value FROM infos WHERE key = '%@'",key];
 }
 
++(void) setInfoValueForKey:(NSString*)key value:(NSString*)value {
+   [DB executeWF:@"REPLACE INTO infos (key, value) VALUES ('%@', '%@')",key,value];
+}
+
 // convenience shortcut to get a String at a defined index in a row
 +(NSString*) colS:(sqlite3_stmt*)cStatement index:(int)index {
     return [NSString stringWithUTF8String:(char *)sqlite3_column_text(cStatement, index)];
@@ -170,6 +154,14 @@ static sqlite3 *database;
 +(double) colD:(sqlite3_stmt*)cStatement index:(int)index {
     return sqlite3_column_double(cStatement, index);
 }
+
+/*************************************************** BLOWS ***************************************************/
+
++ (void) saveBlow:(double)timestamp duration:(double)length in_range_duration:(double)ir_length {
+    [DB executeWF:@"INSERT INTO blows (timestamp, duration, ir_duration) VALUES ('%f', '%f', '%f')",
+        timestamp,length,ir_length];
+}
+
 
 /*************************************************** USERS ***************************************************/
 
