@@ -1,34 +1,26 @@
 //
 //  User.h
-//  FlutterApp2
+//  FlowerForAll
 //
-//  Created by Dev on 17.01.11.
-//  Copyright 2011 Defitech. All rights reserved.
+//  Created by Pierre-Mikael Legris on 24.08.11.
+//  Copyright 2011 fondation Defitech All rights reserved.
 //
-//  This class defines fields that mapps whith the column of the database table 'users'.
-//  The role of this class is to map with the database table in order to easily fetch data from this table.
-
+// Vehicule for UserDara
 
 #import <Foundation/Foundation.h>
 
-
-@interface User : NSObject {
-	
-	//User attributes
-	NSInteger userId;
-	NSString *name;
-	NSString *password;
-	
+@interface User : NSObject  {
+	NSInteger uid;
+	NSString* name;
+	NSString* password;
 }
 
-//Used to initialize a User object. Simply copies the values passed as parameters to the instance fields
--(id)initWithName:(NSInteger)_userId description:(NSString *)_name url:(NSString *)_password;
 
 //Properties
-@property  NSInteger userId;
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *password;
+@property NSInteger uid;
+@property (nonatomic, retain) NSString* name;
+@property (nonatomic, retain) NSString* password;
 
-
+- (id)initWithId:(int)_uid;
 
 @end

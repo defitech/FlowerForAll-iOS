@@ -1,29 +1,31 @@
 //
 //  User.m
-//  FlutterApp2
+//  FlowerForAll
 //
-//  Created by Dev on 17.01.11.
-//  Copyright 2011 Defitech. All rights reserved.
+//  Created by Pierre-Mikael Legris on 24.08.11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-//  Implements the User class
-
 
 #import "User.h"
 
+#import "UserManager.h"
 
 @implementation User
 
+@synthesize uid,name,password;
 
-@synthesize userId, name, password;
-
-
-//Used to initialize a User object. Simply copies the values passed as parameters to the instance fields
--(id)initWithName:(NSInteger)_userId description:(NSString *)_name url:(NSString *)_password {
-	self.userId = _userId;
-	self.name = _name;
-	self.password = _password;
-	return self;
+- (id)initWithId:(int)_uid
+{
+    self = [super init];
+    if (self) {
+        [self setUid:_uid];
+        [self setName:[UserManager getUserInfo:_uid key:@"username"]];
+        [self setPassword:[UserManager getUserInfo:_uid key:@"password"]];
+    }
+    
+    return self;
 }
+
 
 
 @end

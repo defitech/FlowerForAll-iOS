@@ -11,6 +11,8 @@
 #import "FlutterApp2AppDelegate.h"
 
 #import "DB.h"
+#import "UserManager.h"
+#import "DataAccess.h"
 
 #import "DateClassifier.h"
 
@@ -28,10 +30,15 @@ static sqlite3 *database;
 // open an initialize Db if needed
 +(sqlite3*) db {
     if (database == nil) {
+        if ([UserManager currentUser] == nil) {
+            NSLog(@"DB CANNOT BE INITIALIZED UNTIL A USER IS SET");
+            return nil;
+        }
+        
         // Get path to db File file.
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *dbFilePath = [documentsDirectory stringByAppendingPathComponent:@"FlutterApp2Database.sql"];
+        NSString *dbFilePath = [NSString stringWithFormat:@"%@/%@/db.sql",
+            [DataAccess docDirectory],
+            [UserManager uDir:[[UserManager currentUser] uid]]];
         
         // Get pointer to file manager.
         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -39,7 +46,8 @@ static sqlite3 *database;
         // If the file does not exist, copy it from the app bundle.
         if(![fileManager fileExistsAtPath:dbFilePath])
         {
-            NSString* initDbFilePath = [[NSBundle mainBundle] pathForResource:@"FlutterApp2Database" ofType:@"sql"];
+            NSString* initDbFilePath = [[NSBundle mainBundle] pathForResource:@"FlutterApp2Database" 
+                                                ofType:@"sql" inDirectory:@"sqlite_database"];
             NSError *error;
             if (! [fileManager copyItemAtPath:initDbFilePath toPath:dbFilePath error:&error]) {
                 NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
