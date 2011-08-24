@@ -39,7 +39,7 @@ static sqlite3 *database;
         NSString *dbFilePath = [NSString stringWithFormat:@"%@/%@/db.sql",
             [DataAccess docDirectory],
             [UserManager uDir:[[UserManager currentUser] uid]]];
-        
+        NSLog(@"dbFilePath %@",dbFilePath);
         // Get pointer to file manager.
         NSFileManager *fileManager = [NSFileManager defaultManager];
         
@@ -47,7 +47,8 @@ static sqlite3 *database;
         if(![fileManager fileExistsAtPath:dbFilePath])
         {
             NSString* initDbFilePath = [[NSBundle mainBundle] pathForResource:@"FlutterApp2Database" 
-                                                ofType:@"sql" inDirectory:@"sqlite_database"];
+                                                ofType:@"sql"];
+            NSLog(@"initDbFilePath %@",initDbFilePath);
             NSError *error;
             if (! [fileManager copyItemAtPath:initDbFilePath toPath:dbFilePath error:&error]) {
                 NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);

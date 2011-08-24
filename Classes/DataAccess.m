@@ -27,7 +27,7 @@ static NSString* dd;
 
 // return current directory
 +(NSString*) docDirectoryWithPath:(NSString*)path {
-    return [[self docDirectory] stringByAppendingString:path];
+    return [NSString stringWithFormat:@"%@/%@",[self docDirectory],path];
 }
 
 
@@ -43,6 +43,7 @@ static NSString* dd;
 
 //Check if the file given by filePath
 + (BOOL)fileExists:(NSString *)filePath {
+    NSLog(@"fileExists %@",[self docDirectoryWithPath:filePath]);
     return [[NSFileManager defaultManager] 
             fileExistsAtPath:[self docDirectoryWithPath:filePath]];
 }
