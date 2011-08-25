@@ -35,14 +35,14 @@
 }
 
 
-- (void) SetTargetFrequency:(int)target_frequency frequency_tolerance:(int)tolerance {
+- (void) SetTargetFrequency:(double)target_frequency frequency_tolerance:(double)tolerance {
     gParams.target_frequency	= target_frequency;
 	gParams.frequency_tolerance	= tolerance;
 }
 
-- (int) frequenceTolerance { return gParams.frequency_tolerance; }
+- (double) frequenceTolerance { return gParams.frequency_tolerance; }
 
-- (int) frequenceTarget { return gParams.target_frequency; }
+- (double) frequenceTarget { return gParams.target_frequency; }
 
 - (BOOL) Start {
     if (self.running) return NO;
@@ -69,10 +69,10 @@
 
 - (void) EventLevel:(float) level {
    // NSLog(@"New Level %f",level);
-    lastlevel = level / gParams.mic_calibration ;
+     lastlevel = level / gParams.mic_calibration ;
 }
 
-- (void) EventFrequency:(int) freq {
+- (void) EventFrequency:(double) freq {
 //    NSLog(@"New Frequency %i",freq);
     frequency = freq;
 }

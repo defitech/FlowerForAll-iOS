@@ -240,8 +240,8 @@ int		FLAPI_SetBlowCount( int count );
 int		FLAPI_GetBlowCount();
 
 int		FLAPI_SetTargetFrequency( int freq, int tolerance );
-int		FLAPI_GetTargetFrequency();
-int		FLAPI_GetFrequencyTolerance();
+double		FLAPI_GetTargetFrequency();
+double		FLAPI_GetFrequencyTolerance();
 
 int		FLAPI_SetTargetBlowingDuration( int duration );
 int		FLAPI_GetTargetBlowingDuration();
@@ -251,7 +251,7 @@ bool	FLAPI_IsBlowing();
 
 int		FLAPI_GetBlowingDuration();
 int		FLAPI_GetBlowingStatus();
-int		FLAPI_GetFrequency();
+double		FLAPI_GetFrequency();
 double	FLAPI_GetLevel();
 double	FLAPI_GetLevelMax();
 

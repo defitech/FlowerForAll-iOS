@@ -100,7 +100,7 @@ int OnSubSystemProcess(short *buffer);
 double ComputePreviousLta(double *sta_lin, long sta_count, long idx, long count);	
 double ComputeMaxPreviousLta(double *lta_lin, long sta_count, long idx, long count);
 
-int SmoothFrequency(int freq);
+double SmoothFrequency(double freq);
 
 // Windows 32
 #ifdef		WIN32

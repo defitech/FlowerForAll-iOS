@@ -12,14 +12,14 @@
 
 @interface FLAPIX : NSObject {    
     BOOL running;
-    int frequency;
+    double frequency;
     float lastlevel;
     BOOL blowing;
 }
 
 
 @property (nonatomic) BOOL running;
-@property (nonatomic) int frequency;
+@property (nonatomic) double frequency;
 
 @property (nonatomic) float lastlevel;
 @property (nonatomic) BOOL blowing;
@@ -27,17 +27,17 @@
 - (BOOL) Start;
 - (BOOL) Stop;
 
-- (void) SetTargetFrequency:(int)target_frequency frequency_tolerance:(int)tolerance;
+- (void) SetTargetFrequency:(double)target_frequency frequency_tolerance:(double)tolerance;
 
 // return actual frequence Target
-- (int) frequenceTarget;
+- (double) frequenceTarget;
 
 // return actual frequency Tolerance value
-- (int) frequenceTolerance;
+- (double) frequenceTolerance;
 
 // EVENTS
 - (void) EventLevel:(float) level;
-- (void) EventFrequency:(int) frequency;
+- (void) EventFrequency:(double) frequency;
 
 - (void) EventBlowStart:(double)timestamp;
 - (void) EventBlowEnd:(double)timestamp duration:(double)length in_range_duration:(double)ir_length;

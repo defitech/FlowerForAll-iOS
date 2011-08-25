@@ -82,6 +82,7 @@
 		4EFC3EBB14064911002F0BF7 /* DoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB814064911002F0BF7 /* DoubleSlider.m */; };
 		4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB914064911002F0BF7 /* handle_highlight.png */; };
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
+		4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */; };
 		4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
 		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; };
@@ -210,6 +211,8 @@
 		4EFC3EB814064911002F0BF7 /* DoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleSlider.m; sourceTree = "<group>"; };
 		4EFC3EB914064911002F0BF7 /* handle_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle_highlight.png; sourceTree = "<group>"; };
 		4EFC3EBA14064911002F0BF7 /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle.png; sourceTree = "<group>"; };
+		4EFC3EBE1406837D002F0BF7 /* ParametersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersManager.h; sourceTree = "<group>"; };
+		4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersManager.m; sourceTree = "<group>"; };
 		4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-ios.a"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D72E0286139E448200F3687C /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
@@ -435,6 +438,8 @@
 				4ECC6CB01404E5F7005519C7 /* UserManager.m */,
 				4ECC6CB214053744005519C7 /* User.h */,
 				4ECC6CB314053744005519C7 /* User.m */,
+				4EFC3EBE1406837D002F0BF7 /* ParametersManager.h */,
+				4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -678,6 +683,7 @@
 				4ECC6CB11404E5F7005519C7 /* UserManager.m in Sources */,
 				4ECC6CB414053744005519C7 /* User.m in Sources */,
 				4EFC3EBB14064911002F0BF7 /* DoubleSlider.m in Sources */,
+				4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
