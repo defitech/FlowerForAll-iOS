@@ -97,6 +97,7 @@ static const CGFloat innerColors [] = {
     sliderBarWidth = self.frame.size.width / self.transform.a;  //calculate the actual bar width by dividing with the cos of the view's angle
     
     self.minHandle = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"handle.png"] highlightedImage:[UIImage imageNamed:@"handle_highlight.png"]] autorelease];
+    
     self.minHandle.center = CGPointMake(sliderBarWidth * 0.2, sliderBarHeight * 0.5);
     [self addSubview:self.minHandle];
     
@@ -165,6 +166,7 @@ static const CGFloat innerColors [] = {
 
 -(void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    [self sendActionsForControlEvents:UIControlEventEditingDidEnd];
     latchMin = NO;
     latchMax = NO;
     [self updateHandleImages];

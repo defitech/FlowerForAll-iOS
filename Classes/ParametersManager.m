@@ -8,19 +8,17 @@
 
 #import "ParametersManager.h"
 #import "DB.h"
-#import "FLAPIX.h"
 
 @implementation ParametersManager
 
-+(void) saveFrequency:(int)target tolerance:(int)tolerance {
-    [DB setInfoValueForKey:@"frequencyTarget" value:[NSString stringWithFormat:@"%i",target]];
-    [DB setInfoValueForKey:@"frequencyTolerance" value:[NSString stringWithFormat:@"%i",tolerance]];
++(void) saveFrequency:(double)target tolerance:(double)tolerance {
+    [DB setInfoValueForKey:@"frequencyTarget" value:[NSString stringWithFormat:@"%1.1f",target]];
+    [DB setInfoValueForKey:@"frequencyTolerance" value:[NSString stringWithFormat:@"%1.1f",tolerance]];
 }
 
 +(void) loadFrequency:(FLAPIX*)flapix  {
-    
-    float target=[[DB getInfoValueForKey:@"frequencyTarget"] intValue];
-    float tolerance=[[DB getInfoValueForKey:@"frequencyTolerance"] intValue];
+    double target=[[DB getInfoValueForKey:@"frequencyTarget"] doubleValue];
+    double tolerance=[[DB getInfoValueForKey:@"frequencyTolerance"] doubleValue];
     if (target > 0 && tolerance > 0 ) {
           
     }

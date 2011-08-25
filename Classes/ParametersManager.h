@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FLAPIX.h"
 
 @interface ParametersManager : NSObject
 
++(void) saveFrequency:(double)target tolerance:(double)tolerance;
 
-+(void) saveFrequency:(float)target tolerance:(float)tolerance;
++(void) loadFrequency:(FLAPIX*)flapix;
 
 @end
