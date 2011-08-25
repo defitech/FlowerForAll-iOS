@@ -9,13 +9,18 @@
 
 
 #import "GameParametersViewController.h"
+#import "DoubleSlider.h"
+#import "FlowerController.h"
+
+@interface GameParametersViewController (PrivateMethods)
+- (void)valueChangedForDoubleSlider:(DoubleSlider *)slider;
+@end
 
 
 @implementation GameParametersViewController
 
 
 @synthesize mainLabel, minLabel, maxLabel, exerciseTimeLabel, expirationTimeLabel, hoursLabel, minutesLabel, secondsLabel, personalValuesButton;
-
 
 
 
@@ -44,9 +49,7 @@
     [super viewDidLoad];
 	
 	mainLabel.text = NSLocalizedString(@"MainLabel", @"Main label of the game parameters view");
-	minLabel.text = NSLocalizedString(@"MinLabel", @"Min label of the game parameters view");
-	maxLabel.text = NSLocalizedString(@"MaxLabel", @"Max label of the game parameters view");
-	exerciseTimeLabel.text = NSLocalizedString(@"ExerciseTimeLabel", @"Exercise time label");
+    exerciseTimeLabel.text = NSLocalizedString(@"ExerciseTimeLabel", @"Exercise time label");
 	expirationTimeLabel.text = NSLocalizedString(@"ExpirationTimeLabel", @"Expiration time label");
 	hoursLabel.text = NSLocalizedString(@"HoursLabel", @"Hours label");
 	minutesLabel.text = NSLocalizedString(@"MinutesLabel", @"Minutes label");
@@ -55,7 +58,21 @@
 	[personalValuesButton setTitle:NSLocalizedString(@"PersonalValuesButton1Text", @"Text of the personal values button") forState:UIControlStateHighlighted];
 	[personalValuesButton setTitle:NSLocalizedString(@"PersonalValuesButton1Text", @"Text of the personal values button") forState:UIControlStateDisabled];
 	[personalValuesButton setTitle:NSLocalizedString(@"PersonalValuesButton1Text", @"Text of the personal values button") forState:UIControlStateSelected];
+    
+    
+    
+	//DoubleSlider setup
 	
+	[slider addTarget:self action:@selector(valueChangedForDoubleSlider:) forControlEvents:UIControlEventValueChanged];
+    
+    double target = [[FlowerController currentFlapix] frequenceTarget];
+    double toleranceH =  [[FlowerController currentFlapix] frequenceTolerance] / 2;
+    
+	[slider setSelectedValues:(target - toleranceH) maxValue:(target+ toleranceH)];
+	
+	//get the initial values
+    //slider.transform = CGAffineTransformRotate(slider.transform, 90.0/180*M_PI);      //make it vertical
+	[self valueChangedForDoubleSlider:slider];
 }
 
 
@@ -70,6 +87,19 @@
 
 
 
+#pragma mark Control Event Handlers
+
+- (void)valueChangedForDoubleSlider:(DoubleSlider *)aSlider
+{
+	minLabel.text = [NSString stringWithFormat:@"%i Hz", (int) aSlider.minSelectedValue];
+	maxLabel.text = [NSString stringWithFormat:@"%i Hz", (int) aSlider.maxSelectedValue];
+    
+    double target = (aSlider.minSelectedValue + aSlider.maxSelectedValue) / 2;
+    double tolerance =  aSlider.maxSelectedValue - aSlider.minSelectedValue;
+    
+    [[FlowerController currentFlapix] SetTargetFrequency:target frequency_tolerance:tolerance];
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

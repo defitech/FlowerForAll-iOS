@@ -9,7 +9,7 @@
 
 
 #import <UIKit/UIKit.h>
-
+#import "DoubleSlider.h"
 
 @interface GameParametersViewController : UIViewController {
 	
@@ -23,6 +23,13 @@
 	IBOutlet UILabel *minutesLabel;
 	IBOutlet UILabel *secondsLabel;
 	IBOutlet UIButton *personalValuesButton;
+    
+    //double Slide
+    IBOutlet DoubleSlider *slider;
+    
+    //two labels to show the currently selected values
+	UILabel *leftLabel;
+	UILabel *rightLabel;
 	
 }
 
