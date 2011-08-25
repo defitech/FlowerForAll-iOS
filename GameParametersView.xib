@@ -72,7 +72,7 @@
 					<object class="IBUILabel" id="272939840">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{15, 103}, {73, 21}}</string>
+						<string key="NSFrame">{{15, 103}, {98, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -90,7 +90,7 @@
 					<object class="IBUILabel" id="373372633">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{220, 103}, {78, 21}}</string>
+						<string key="NSFrame">{{208, 103}, {90, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -104,6 +104,7 @@
 						<reference key="IBUIHighlightedColor" ref="488792289"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
+						<int key="IBUITextAlignment">2</int>
 					</object>
 					<object class="IBUILabel" id="365159950">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -260,7 +261,7 @@
 						<string key="NSFrame">{{220, 281}, {18, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="774507527"/>
+						<reference key="NSNextKeyView" ref="1001328164"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -301,7 +302,7 @@
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
 					</object>
-					<object class="IBUIView" id="774507527">
+					<object class="IBUIView" id="1001328164">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{15, 132}, {283, 16}}</string>
@@ -413,7 +414,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">slider</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="774507527"/>
+						<reference key="destination" ref="1001328164"/>
 					</object>
 					<int key="connectionID">28</int>
 				</object>
@@ -455,13 +456,13 @@
 							<reference ref="66054085"/>
 							<reference ref="647141689"/>
 							<reference ref="373372633"/>
-							<reference ref="774507527"/>
+							<reference ref="1001328164"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
-						<reference key="object" ref="774507527"/>
+						<reference key="object" ref="1001328164"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Double Slider</string>
 					</object>

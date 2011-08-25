@@ -13,9 +13,15 @@
 
 //create the gradient
 static const CGFloat colors [] = { 
-	0.6, 0.6, 1.0, 1.0, 
-	0.0, 0.0, 1.0, 1.0
+	1.0, 0.6, 0.6, 1.0, 
+	0.8, 0.0, 0.0, 1.0
 };
+//create the gradient
+static const CGFloat innerColors [] = { 
+	0.1, 0.8, 0.3, 1.0, 
+	0.0, 0.6, 0.0, 1.0
+};
+
 
 //define private methods
 @interface DoubleSlider (PrivateMethods)
@@ -98,7 +104,7 @@ static const CGFloat colors [] = {
     self.maxHandle.center = CGPointMake(sliderBarWidth * 0.8, sliderBarHeight * 0.5);
     [self addSubview:self.maxHandle];
     
-    bgColor = CGColorRetain([UIColor darkGrayColor].CGColor);
+    bgColor = CGColorRetain([UIColor greenColor].CGColor);
     self.backgroundColor = [UIColor clearColor];
 
 }
@@ -172,6 +178,7 @@ static const CGFloat colors [] = {
 	
     CGColorSpaceRef baseSpace = CGColorSpaceCreateDeviceRGB();
     CGGradientRef gradient = CGGradientCreateWithColorComponents(baseSpace, colors, NULL, 2);
+    CGGradientRef innerGradient = CGGradientCreateWithColorComponents(baseSpace, innerColors, NULL, 2);
     CGColorSpaceRelease(baseSpace), baseSpace = NULL;
 	
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -192,15 +199,27 @@ static const CGFloat colors [] = {
 	[self addToContext:context roundRect:rect1 withRoundedCorner1:YES corner2:NO corner3:NO corner4:YES radius:5.0f];
 	
     CGContextClip(context);
-    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
-	
-	CGGradientRelease(gradient), gradient = NULL;
-	
-	//draw middle rect
-    CGContextRestoreGState(context);
-	CGContextSetFillColorWithColor(context, bgColor);
-	CGContextFillRect(context, rect2);
-		
+    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);    
+    CGGradientRelease(gradient), gradient = NULL;
+    
+    
+     //draw middle rect
+	CGContextRestoreGState(context);
+    
+    [self addToContext:context roundRect:rect2 withRoundedCorner1:NO corner2:NO corner3:NO corner4:NO radius:5.0f];
+    CGContextClip(context);
+    CGContextDrawLinearGradient(context, innerGradient, startPoint, endPoint, 0);
+    CGGradientRelease(innerGradient), innerGradient = NULL;
+
+    
+   
+    //CGContextRestoreGState(context);
+    
+	//CGContextSetFillColorWithColor(context, bgColor);
+	//CGContextFillRect(context, rect2);
+   	
+    
+    
 	[super drawRect:rect];
 }
 

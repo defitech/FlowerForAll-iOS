@@ -26,13 +26,7 @@
 "ModifyButtonText" = "Modify";
 
 /* Main label of the game parameters view */
-"MainLabel" = "Choose a minimal and a maximal ball oscillation frequency, on a 1 to 10 scale.";
-
-/* Min label of the game parameters view */
-"MinLabel" = "Minimal:";
-
-/* Max label of the game parameters view */
-"MaxLabel" = "Maximal:";
+"MainLabel" = "Choose the targeted range of frequency";
 
 /* Exercise time label */
 "ExerciseTimeLabel" = "Exercise duration:";
