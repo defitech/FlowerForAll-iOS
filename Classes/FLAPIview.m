@@ -10,6 +10,8 @@
 #import "FLAPIBlow.h"
 #import "FLAPIX.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @implementation FLAPIview
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,20 +36,39 @@
     }
     return self;
 }
-
+double pfreq = 0;
 
 - (void)flapixEventFrequency:(NSNotification *)notification {
 	FLAPIX* flapix = (FLAPIX*)[notification object];
     NSLog(@"******Frequency %f",[flapix frequency]);
-    logo.transform = CGAffineTransformMakeRotation(3.14*([flapix frequency]/20)-1.6);
-    [self.view setNeedsDisplay];
+  
+       // logo.transform = CGAffineTransformMakeRotation();
+          
+    CABasicAnimation *spinAnimation = [CABasicAnimation
+                                       animationWithKeyPath:@"transform.rotation.z"];
+    spinAnimation.fromValue = [NSNumber numberWithFloat:pfreq];
+    pfreq = 3.14*([flapix frequency]/20)-1.6;
+    spinAnimation.toValue = [NSNumber numberWithFloat:pfreq];
+    spinAnimation.duration = 100;  
+    [logo.layer addAnimation:spinAnimation forKey:@"spinAnimation"];
+    
+    //[self.view setNeedsDisplay];
 	//do stuff
 }
 
 - (void)flapixEventEndBlow:(NSNotification *)notification {
 	FLAPIBlow* fb = (FLAPIBlow*)[notification object];
     NSLog(@"******flapixEventEndBlow %f",[fb timestamp]);
-    logo.transform = CGAffineTransformMakeRotation(0);
+    //logo.transform = CGAffineTransformMakeRotation(0);
+    CABasicAnimation *spinAnimation = [CABasicAnimation
+                                       animationWithKeyPath:@"transform.rotation.z"];
+    spinAnimation.fromValue = [NSNumber numberWithFloat:pfreq];
+    pfreq = 0;
+    spinAnimation.duration = 100;  
+    spinAnimation.toValue = [NSNumber numberWithFloat:pfreq];
+    //spinAnimation.duration = 0.10;  
+    [logo.layer addAnimation:spinAnimation forKey:@"spinAnimation"];
+    
     [self.view setNeedsDisplay];
 	//do stuff
 }
