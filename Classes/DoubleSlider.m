@@ -7,6 +7,8 @@
 //
 
 #import "DoubleSlider.h"
+#import "FLAPIX.h"
+#import "FlowerController.h"
 
 #define kMinHandleDistance          10.0
 #define kBoundaryValueThreshold     0.01
@@ -53,7 +55,8 @@ static const CGFloat innerColors [] = {
     NSLog(@"init with coder before super width %f",super.frame.size.width); 
     if (self)
 	{
-       [self initValues:5.0f maxValue:25.0f ];
+       [self initValues:(float)[[FlowerController currentFlapix] frequenceMin] 
+               maxValue:[[FlowerController currentFlapix] frequenceMax] ];
        [self initView:self.frame.size.height];
     }
     return self;

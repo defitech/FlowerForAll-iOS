@@ -40,6 +40,27 @@
 	gParams.frequency_tolerance	= tolerance;
 }
 
+
+- (void) SetTargetBlowingDuration:(float)durations_s {
+    gParams.target_duration = (int) durations_s * 1000;
+}
+
+// return durationTarget(s)
+- (double) durationTarget {
+    return (float)gParams.target_duration / 1000.0f;
+}
+
+// return maxFrequence
+- (double) frequenceMax {
+    return (double) gParams.frequency_max;
+}
+// return minFrequence
+- (double) frequenceMin {
+    return (double) gParams.frequency_min;
+}
+
+
+
 - (double) frequenceTolerance { return gParams.frequency_tolerance; }
 
 - (double) frequenceTarget { return gParams.target_frequency; }

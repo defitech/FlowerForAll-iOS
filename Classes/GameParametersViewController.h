@@ -14,15 +14,14 @@
 @interface GameParametersViewController : UIViewController {
 	
 	//Widgets
-	IBOutlet UILabel *mainLabel;
+	IBOutlet UILabel *targetFrequencyRangeLabel;
 	IBOutlet UILabel *minLabel;
 	IBOutlet UILabel *maxLabel;
-	IBOutlet UILabel *exerciseTimeLabel;
+    
+	IBOutlet UILabel *expirationLabel;
 	IBOutlet UILabel *expirationTimeLabel;
-	IBOutlet UILabel *hoursLabel;
-	IBOutlet UILabel *minutesLabel;
-	IBOutlet UILabel *secondsLabel;
-	IBOutlet UIButton *personalValuesButton;
+    
+    IBOutlet UISlider *durationSlider;
     
     //double Slide
     IBOutlet DoubleSlider *slider;
@@ -34,16 +33,15 @@
 }
 
 
+
 //Properties
-@property (nonatomic, retain) UILabel *mainLabel;
+@property (nonatomic, retain) UISlider *durationSlider;
+@property (nonatomic, retain) UILabel *targetFrequencyRangeLabel;
 @property (nonatomic, retain) UILabel *minLabel;
 @property (nonatomic, retain) UILabel *maxLabel;
-@property (nonatomic, retain) UILabel *exerciseTimeLabel;
+@property (nonatomic, retain) UILabel *expirationLabel;
 @property (nonatomic, retain) UILabel *expirationTimeLabel;
-@property (nonatomic, retain) UILabel *hoursLabel;
-@property (nonatomic, retain) UILabel *minutesLabel;
-@property (nonatomic, retain) UILabel *secondsLabel;
-@property (nonatomic, retain) UIButton *personalValuesButton;
+
 
 
 @end

@@ -26,18 +26,18 @@
 "ModifyButtonText" = "Modifier";
 
 /* Main label of the game parameters view */
-"MainLabel" = "Intervale de fréquence";
+"TargetFrequencyRangeLabel" = "Intervale de fréquence";
 
 
 /* Expiration time label */
-"ExpirationTimeLabel" = "Temps d'expiration";
+"ExpirationLabel" = "Temps d'expiration";
 
 /* Name of the owner user */
 "OwnerUserName" = "Propriétaire";
 
 
 /* Title of the setting choice view */
-"SettingChoiceViewTitle" = "Paramètres";
+"SettingChoiceViewTitle" = "Objectifs d'expiration";
 
 /* Title of the statistic list view */
 "StatisticListViewTitle" = "Statistiques";

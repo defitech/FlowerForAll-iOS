@@ -28,6 +28,16 @@
 - (BOOL) Stop;
 
 - (void) SetTargetFrequency:(double)target_frequency frequency_tolerance:(double)tolerance;
+- (void) SetTargetBlowingDuration:(float)durations_s;
+
+// return durationTarget(s)
+- (double) durationTarget;
+
+// return maxFrequence
+- (double) frequenceMax;
+// return minFrequence
+- (double) frequenceMin;
+
 
 // return actual frequence Target
 - (double) frequenceTarget;

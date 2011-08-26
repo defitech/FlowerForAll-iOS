@@ -26,11 +26,11 @@
 "ModifyButtonText" = "Modify";
 
 /* Main label of the game parameters view */
-"MainLabel" = "Targeted range of frequency";
+"TargetFrequencyRangeLabel" = "Range of frequency";
 
 
 /* Expiration time label */
-"ExpirationTimeLabel" = "Breathing duration";
+"ExpirationLabel" = "Breathing duration";
 
 /* Name of the owner user */
 "OwnerUserName" = "Owner";
@@ -52,7 +52,7 @@
 "UsersEntryLabel" = "Users";
 
 /* Label of the Parameters entry in the settings table */
-"ParametersEntryLabel" = "Parameters";
+"ParametersEntryLabel" = "Blowing targets";
 
 /* Label of the add user button */
 "AddUserbuttonLabel" = "Add";

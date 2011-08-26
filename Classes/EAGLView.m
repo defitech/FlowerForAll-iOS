@@ -13,6 +13,7 @@
 
 #import "EAGLView.h"
 #import "FlowerController.h"
+#import "ParametersManager.h"
 
 #define USE_DEPTH_BUFFER 1
 #define DEGREES_TO_RADIANS(__ANGLE) ((__ANGLE) / 180.0 * M_PI)
@@ -68,7 +69,7 @@
     
     if(!flapix) {
         flapix = [FLAPIX new];
-        [flapix SetTargetFrequency:20 frequency_tolerance:5];
+        [ParametersManager loadParameters:flapix];
         [flapix Start];
     }
     

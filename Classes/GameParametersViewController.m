@@ -16,13 +16,15 @@
 @interface GameParametersViewController (PrivateMethods)
 - (void)valueChangedForDoubleSlider:(DoubleSlider *)slider;
 - (void)editingEndForDoubleSlider:(DoubleSlider *)slider;
+- (void)valueChangedForDurationSlider:(UISlider *)slider;
+- (void)editingEndForDurationSlider:(UISlider *)slider;
 @end
 
 
 @implementation GameParametersViewController
 
 
-@synthesize mainLabel, minLabel, maxLabel, exerciseTimeLabel, expirationTimeLabel, hoursLabel, minutesLabel, secondsLabel, personalValuesButton;
+@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, expirationLabel, expirationTimeLabel, durationSlider;
 
 
 
@@ -50,28 +52,38 @@
 	
     [super viewDidLoad];
 	
-	mainLabel.text = NSLocalizedString(@"MainLabel", @"Main label of the game parameters view");
-    exerciseTimeLabel.text = NSLocalizedString(@"ExerciseTimeLabel", @"Exercise time label");
-	expirationTimeLabel.text = NSLocalizedString(@"ExpirationTimeLabel", @"Expiration time label");
-	hoursLabel.text = NSLocalizedString(@"HoursLabel", @"Hours label");
-	minutesLabel.text = NSLocalizedString(@"MinutesLabel", @"Minutes label");
-	secondsLabel.text = NSLocalizedString(@"SecondsLabel", @"Seconds label");
-	[personalValuesButton setTitle:NSLocalizedString(@"PersonalValuesButton1Text", @"Text of the personal values button") forState:UIControlStateNormal];
-	[personalValuesButton setTitle:NSLocalizedString(@"PersonalValuesButton1Text", @"Text of the personal values button") forState:UIControlStateHighlighted];
-	[personalValuesButton setTitle:NSLocalizedString(@"PersonalValuesButton1Text", @"Text of the personal values button") forState:UIControlStateDisabled];
-	[personalValuesButton setTitle:NSLocalizedString(@"PersonalValuesButton1Text", @"Text of the personal values button") forState:UIControlStateSelected];
+	targetFrequencyRangeLabel.text = NSLocalizedString(@"TargetFrequencyRangeLabel", @"Target Frequency Range");
+	expirationLabel.text = NSLocalizedString(@"ExpirationLabel", @"Expiration duration target");
+	
     
+    //Duration slider
+    [durationSlider addTarget:self action:@selector(valueChangedForDurationSlider:) 
+             forControlEvents:UIControlEventValueChanged];
+    
+    [durationSlider addTarget:self action:@selector(editingEndForDurationSlider:) 
+             forControlEvents:UIControlEventTouchUpInside];
+    
+    [durationSlider setMinimumValue:1.0f];
+    [durationSlider setMaximumValue:10.0f];
+    [durationSlider setValue:[[FlowerController currentFlapix] durationTarget]];
+    
+    [self  valueChangedForDurationSlider:durationSlider];
     
     
 	//DoubleSlider setup
-	
-	[slider addTarget:self action:@selector(valueChangedForDoubleSlider:) forControlEvents:UIControlEventValueChanged];
-    [slider addTarget:self action:@selector(editingEndForDoubleSlider:) forControlEvents:UIControlEventEditingDidEnd];
+	[slider addTarget:self action:@selector(valueChangedForDoubleSlider:) 
+            forControlEvents:UIControlEventValueChanged];
+    
+    [slider addTarget:self action:@selector(editingEndForDoubleSlider:) 
+            forControlEvents:UIControlEventEditingDidEnd];
+    
+   
     
     double target = [[FlowerController currentFlapix] frequenceTarget];
     double toleranceH =  [[FlowerController currentFlapix] frequenceTolerance] / 2;
     
 	[slider setSelectedValues:(target - toleranceH) maxValue:(target+ toleranceH)];
+    
 	
 	//get the initial values
     //slider.transform = CGAffineTransformRotate(slider.transform, 90.0/180*M_PI);      //make it vertical
@@ -105,6 +117,7 @@
 }
 
 
+
 - (void)editingEndForDoubleSlider:(DoubleSlider *)aSlider
 {
 	[self valueChangedForDoubleSlider:aSlider];
@@ -113,6 +126,21 @@
     double tolerance =  aSlider.maxSelectedValue - aSlider.minSelectedValue;
     
     [ParametersManager saveFrequency:target tolerance:tolerance];
+}
+
+- (void)valueChangedForDurationSlider:(UISlider *)aSlider
+{
+    
+    expirationTimeLabel.text = [NSString stringWithFormat:@"%1.1f s", aSlider.value];
+    
+}
+
+- (void)editingEndForDurationSlider:(UISlider *)aSlider
+{
+    [self   valueChangedForDurationSlider:aSlider];
+    float duration =  aSlider.value;
+    [ParametersManager saveDuration:duration];
+    
 }
 
 
