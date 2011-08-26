@@ -27,7 +27,17 @@
     {
         self.running = NO; // set the running flag to STOPPED
         FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(self); // register this object for events callbacks
+       
+        // Init Values
+        gParams.frequency_max				= 27;
+        gParams.frequency_min				= 10;
+        gParams.target_frequency			= 18.0f;
+        gParams.frequency_tolerance			= 4.0f;
+        gParams.target_duration				= 1500;
         
+        UpdateAudioInfo();
+        
+        printf("gParams frequency_max:%i frequency_min:%i\n",gParams.frequency_max,gParams.frequency_min);
         // -- write your own code here to do some more init stuff
         
     }
@@ -56,6 +66,7 @@
 }
 // return minFrequence
 - (double) frequenceMin {
+    NSLog(@"FLAPIX frequenceMin: %i",gParams.frequency_min);
     return (double) gParams.frequency_min;
 }
 
@@ -74,6 +85,7 @@
     // end of debug
     
     if (FLAPI_SUCCESS != FLAPI_Start()) return NO; // This does start the sound recording and processing
+    
     self.running = YES;
     return YES;
 }

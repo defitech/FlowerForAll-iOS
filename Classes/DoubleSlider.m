@@ -10,7 +10,7 @@
 #import "FLAPIX.h"
 #import "FlowerController.h"
 
-#define kMinHandleDistance          10.0
+#define kMinHandleDistance          22.0
 #define kBoundaryValueThreshold     0.01
 
 //create the gradient
@@ -56,14 +56,15 @@ static const CGFloat innerColors [] = {
     if (self)
 	{
        [self initValues:(float)[[FlowerController currentFlapix] frequenceMin] 
-               maxValue:[[FlowerController currentFlapix] frequenceMax] ];
-       [self initView:self.frame.size.height];
+               maxValue:(float)[[FlowerController currentFlapix] frequenceMax] ];
+       [self initView:10.0f];
     }
     return self;
     
 }
 
 -(void) initValues:(float)aMinValue maxValue:(float)aMaxValue  {
+    NSLog(@"DoubleSlider: initWithValue%f %f",aMinValue,aMaxValue);
     if (aMinValue < aMaxValue) {
         minValue = aMinValue;
         maxValue = aMaxValue;
@@ -90,22 +91,24 @@ static const CGFloat innerColors [] = {
     if  (aMaxValue > maxValue) {
         aMaxValue = maxValue;
     }
-    self.minHandle.center = CGPointMake(sliderBarWidth * (aMinValue - minValue) / (maxValue - minValue) , sliderBarHeight * 0.5);
-    self.maxHandle.center = CGPointMake(sliderBarWidth * (aMaxValue - minValue) / (maxValue - minValue) , sliderBarHeight * 0.5);
+    self.minHandle.center = CGPointMake(sliderBarWidth * (aMinValue - minValue) / (maxValue - minValue) , sliderBarHeight * 0.5+sliderBarDeltaY);
+    self.maxHandle.center = CGPointMake(sliderBarWidth * (aMaxValue - minValue) / (maxValue - minValue) , sliderBarHeight * 0.5+sliderBarDeltaY);
     [self updateValues];
 }
 
 -(void) initView:(float)height {
+    
+    sliderBarDeltaY = (self.frame.size.height - height) / 2;
     sliderBarHeight = height;
     sliderBarWidth = self.frame.size.width / self.transform.a;  //calculate the actual bar width by dividing with the cos of the view's angle
     
     self.minHandle = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"handle.png"] highlightedImage:[UIImage imageNamed:@"handle_highlight.png"]] autorelease];
     
-    self.minHandle.center = CGPointMake(sliderBarWidth * 0.2, sliderBarHeight * 0.5);
+    self.minHandle.center = CGPointMake(sliderBarWidth * 0.2, sliderBarHeight * 0.5 + sliderBarDeltaY);
     [self addSubview:self.minHandle];
     
     self.maxHandle = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"handle.png"] highlightedImage:[UIImage imageNamed:@"handle_highlight.png"]] autorelease];
-    self.maxHandle.center = CGPointMake(sliderBarWidth * 0.8, sliderBarHeight * 0.5);
+    self.maxHandle.center = CGPointMake(sliderBarWidth * 0.8, sliderBarHeight * 0.5 + sliderBarDeltaY);
     [self addSubview:self.maxHandle];
     
     bgColor = CGColorRetain([UIColor greenColor].CGColor);
@@ -134,10 +137,14 @@ static const CGFloat innerColors [] = {
 -(BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint touchPoint = [touch locationInView:self];
-    if ( CGRectContainsPoint(self.minHandle.frame, touchPoint) ) {
+    CGRect detectMin = CGRectMake(self.minHandle.frame.origin.x-5, self.minHandle.frame.origin.y-5, 
+                                  self.minHandle.frame.size.width+10, self.minHandle.frame.size.height+10);
+    CGRect detectMax = CGRectMake(self.maxHandle.frame.origin.x-5, self.maxHandle.frame.origin.y-5, 
+                                  self.maxHandle.frame.size.width+10, self.maxHandle.frame.size.height+10);
+    if ( CGRectContainsPoint(detectMin, touchPoint) ) {
 		latchMin = YES;
 	}
-	else if ( CGRectContainsPoint(self.maxHandle.frame, touchPoint) ) {
+	else if ( CGRectContainsPoint(detectMax, touchPoint) ) {
 		latchMax = YES;
 	}
     [self updateHandleImages];
@@ -147,6 +154,10 @@ static const CGFloat innerColors [] = {
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
 	CGPoint touchPoint = [touch locationInView:self];
+    CGRect detectMin = CGRectMake(self.minHandle.center.x, self.minHandle.center.y, 
+                                   self.minHandle.frame.size.width, self.minHandle.frame.size.height);
+    CGRect detectMax = CGRectMake(self.maxHandle.center.x, self.maxHandle.center.y, 
+                                  self.maxHandle.frame.size.width, self.maxHandle.frame.size.height);
 	if ( latchMin || CGRectContainsPoint(self.minHandle.frame, touchPoint) ) {
 		if (touchPoint.x < self.maxHandle.center.x - kMinHandleDistance && touchPoint.x > 0.0) {
 			self.minHandle.center = CGPointMake(touchPoint.x, self.minHandle.center.y);
@@ -180,7 +191,7 @@ static const CGFloat innerColors [] = {
 - (void) drawRect:(CGRect)rect
 {
 	//FIX: optimise and save some reusable stuff
-	
+    
     CGColorSpaceRef baseSpace = CGColorSpaceCreateDeviceRGB();
     CGGradientRef gradient = CGGradientCreateWithColorComponents(baseSpace, colors, NULL, 2);
     CGGradientRef innerGradient = CGGradientCreateWithColorComponents(baseSpace, innerColors, NULL, 2);
@@ -189,14 +200,14 @@ static const CGFloat innerColors [] = {
     CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextClearRect(context, rect);
 	
-	CGRect rect1 = CGRectMake(0.0, 0.0, self.minHandle.center.x, sliderBarHeight);
-	CGRect rect2 = CGRectMake(self.minHandle.center.x, 0.0, self.maxHandle.center.x - self.minHandle.center.x, sliderBarHeight);
-	CGRect rect3 = CGRectMake(self.maxHandle.center.x, 0.0, sliderBarWidth - self.maxHandle.center.x, sliderBarHeight);
+	CGRect rect1 = CGRectMake(0.0, sliderBarDeltaY, self.minHandle.center.x, sliderBarHeight );
+	CGRect rect2 = CGRectMake(self.minHandle.center.x, sliderBarDeltaY, self.maxHandle.center.x - self.minHandle.center.x, sliderBarHeight );
+	CGRect rect3 = CGRectMake(self.maxHandle.center.x, sliderBarDeltaY, sliderBarWidth - self.maxHandle.center.x, sliderBarHeight );
     	
     CGContextSaveGState(context);
 	
-    CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect));
-    CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
+    CGPoint startPoint = CGPointMake(CGRectGetMidX(rect2), CGRectGetMinY(rect2));
+    CGPoint endPoint = CGPointMake(CGRectGetMidX(rect2), CGRectGetMaxY(rect2));
 	
 	//add the right rect
 	[self addToContext:context roundRect:rect3 withRoundedCorner1:NO corner2:YES corner3:YES corner4:NO radius:5.0f];

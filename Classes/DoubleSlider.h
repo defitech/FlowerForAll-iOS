@@ -21,6 +21,7 @@
 	
 	float sliderBarHeight;
     float sliderBarWidth;
+    float sliderBarDeltaY;
 	
 	CGColorRef bgColor;
 }
