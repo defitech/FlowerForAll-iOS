@@ -154,11 +154,7 @@ static const CGFloat innerColors [] = {
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
 	CGPoint touchPoint = [touch locationInView:self];
-    CGRect detectMin = CGRectMake(self.minHandle.center.x, self.minHandle.center.y, 
-                                   self.minHandle.frame.size.width, self.minHandle.frame.size.height);
-    CGRect detectMax = CGRectMake(self.maxHandle.center.x, self.maxHandle.center.y, 
-                                  self.maxHandle.frame.size.width, self.maxHandle.frame.size.height);
-	if ( latchMin || CGRectContainsPoint(self.minHandle.frame, touchPoint) ) {
+   	if ( latchMin || CGRectContainsPoint(self.minHandle.frame, touchPoint) ) {
 		if (touchPoint.x < self.maxHandle.center.x - kMinHandleDistance && touchPoint.x > 0.0) {
 			self.minHandle.center = CGPointMake(touchPoint.x, self.minHandle.center.y);
 			[self updateValues];

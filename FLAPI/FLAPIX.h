@@ -39,6 +39,7 @@
 - (double) frequenceMin;
 
 
+
 // return actual frequence Target
 - (double) frequenceTarget;
 

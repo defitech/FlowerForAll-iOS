@@ -22,7 +22,7 @@
 @implementation GameViewController
 
 
-@synthesize scrollView, game1ChoiceView, game2ChoiceView, game1Button, game2Button, navigationBar, pageControl;
+@synthesize scrollView, flapiView, game1ChoiceView, game2ChoiceView, game1Button, game2Button, navigationBar, pageControl;
 
 
 
@@ -62,8 +62,7 @@ AVideoPlayer *videoPlayer;
     }
     [FlowerController setCurrentMainController:videoPlayer];
 }
-     
-
+ 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -86,11 +85,16 @@ AVideoPlayer *videoPlayer;
 	[game2Button setTitle:NSLocalizedString(@"GameButton2Text", @"Text of the second game button") forState:UIControlStateSelected];
 	
 	//Add games views inside the scroll view
-	game1ChoiceView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 367.0f);
-	game2ChoiceView.frame = CGRectMake(320.0f, 0.0f, 320.0f, 367.0f);
+    
+    flapiView = [[FLAPIview alloc] initWithNibName:@"FLAPIview" bundle:[NSBundle mainBundle]];
+    flapiView.view.frame = CGRectMake(0.0f, 0.0f, 320.0f, 367.0f);
+    
 	
+	game1ChoiceView.frame = CGRectMake(320.0f, 0.0f, 320.0f, 367.0f);
+	game2ChoiceView.frame = CGRectMake(640.0f, 0.0f, 320.0f, 367.0f);
+    
 	//Set scroll view content size
-	scrollView.contentSize = CGSizeMake(640.0,0.0);
+	scrollView.contentSize = CGSizeMake(960.0,0.0);
 	
 	//Set scroll view zoom scale
 	scrollView.maximumZoomScale = 3.0;
@@ -103,6 +107,9 @@ AVideoPlayer *videoPlayer;
 	scrollView.pagingEnabled = YES;
 	
 	//Add game1ChoiceView and game2ChoiceView inside the scroll view
+    
+    
+    [scrollView addSubview:flapiView.view];
 	[scrollView addSubview:game1ChoiceView];
 	[scrollView addSubview:game2ChoiceView];
 	
@@ -157,7 +164,7 @@ AVideoPlayer *videoPlayer;
 
 - (void)dealloc {
 	[scrollView release];
-	//[loginView release];
+	
 	[game1ChoiceView release];
 	[game2ChoiceView release];
     [super dealloc];

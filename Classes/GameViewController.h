@@ -9,17 +9,19 @@
 
 
 #import <UIKit/UIKit.h>
+#import "FLAPIview.h"
 
 
 @interface GameViewController : UIViewController <UIScrollViewDelegate>{
 
 	//The sub views include mainly the scroll view, which will include game1ChoiceView and game2ChoiceView (for the moment there are 2 games)
 	IBOutlet UIScrollView *scrollView;
-	IBOutlet UIView *game1ChoiceView;
+    FLAPIview *flapiView;
+	IBOutlet UIView *game1ChoiceView; // WebBrowser
 	IBOutlet UIView *game2ChoiceView;
 	
 	//The buttons inside each of the game sub views
-	IBOutlet UIButton *game1Button;
+	IBOutlet UIButton *game1Button; // WebBrowser
 	IBOutlet UIButton *game2Button;
 	
 	
@@ -35,6 +37,7 @@
 
 //Properties
 @property(nonatomic,retain) UIScrollView *scrollView;
+@property(nonatomic,retain) FLAPIview *flapiView;
 @property(nonatomic,retain) UIView *game1ChoiceView;
 @property(nonatomic,retain) UIView *game2ChoiceView;
 

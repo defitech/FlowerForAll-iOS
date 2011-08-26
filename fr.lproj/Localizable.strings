@@ -52,7 +52,7 @@
 "UsersEntryLabel" = "Utilisateurs";
 
 /* Label of the Parameters entry in the settings table */
-"ParametersEntryLabel" = "Paramètres";
+"ParametersEntryLabel" = "Objectifs d'expiration";
 
 /* Label of the add user button */
 "AddUserbuttonLabel" = "Ajouter";
