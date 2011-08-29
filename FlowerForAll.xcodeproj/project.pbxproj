@@ -92,6 +92,8 @@
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
 		D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */ = {isa = PBXBuildFile; fileRef = D72E02AC139E500800F3687C /* FLAPIrecorded.raw */; };
+		D7ABFF87140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF84140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.m */; };
+		D7ABFF88140B8227003B9F08 /* CorePlot_GeckoGeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF86140B8227003B9F08 /* CorePlot_GeckoGeekViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -233,6 +235,10 @@
 		D72E028D139E448200F3687C /* subsys_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = subsys_ios.mm; sourceTree = "<group>"; };
 		D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		D72E02AC139E500800F3687C /* FLAPIrecorded.raw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FLAPIrecorded.raw; sourceTree = "<group>"; };
+		D7ABFF83140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePlot_GeckoGeekAppDelegate.h; sourceTree = "<group>"; };
+		D7ABFF84140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePlot_GeckoGeekAppDelegate.m; sourceTree = "<group>"; };
+		D7ABFF85140B8227003B9F08 /* CorePlot_GeckoGeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePlot_GeckoGeekViewController.h; sourceTree = "<group>"; };
+		D7ABFF86140B8227003B9F08 /* CorePlot_GeckoGeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePlot_GeckoGeekViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,11 +266,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D7ABFF7C140B75A1003B9F08 /* Activities */,
 				4ECC6CAB1404E150005519C7 /* UI */,
 				4E92E72213C72C630060FBF6 /* Net */,
 				4E57A86513A8F19900910E4D /* Data */,
 				4E57A86413A8F16A00910E4D /* Statistics */,
-				4E57A86313A8F12500910E4D /* Activities */,
+				4E57A86313A8F12500910E4D /* Entertainments */,
 				4E57A86213A8F11A00910E4D /* Settings */,
 				4E8F590F13A7AF6B00D9D3A7 /* FlowerController.h */,
 				4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */,
@@ -404,7 +411,7 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
-		4E57A86313A8F12500910E4D /* Activities */ = {
+		4E57A86313A8F12500910E4D /* Entertainments */ = {
 			isa = PBXGroup;
 			children = (
 				4E2F4FFC1407D1B100C4C00C /* FLAPIView */,
@@ -414,7 +421,7 @@
 				4E8F591613A7AF6B00D9D3A7 /* GameViewController.h */,
 				4E8F591713A7AF6B00D9D3A7 /* GameViewController.m */,
 			);
-			name = Activities;
+			name = Entertainments;
 			sourceTree = "<group>";
 		};
 		4E57A86413A8F16A00910E4D /* Statistics */ = {
@@ -570,6 +577,17 @@
 			path = FLAPI;
 			sourceTree = "<group>";
 		};
+		D7ABFF7C140B75A1003B9F08 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				D7ABFF83140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.h */,
+				D7ABFF84140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.m */,
+				D7ABFF85140B8227003B9F08 /* CorePlot_GeckoGeekViewController.h */,
+				D7ABFF86140B8227003B9F08 /* CorePlot_GeckoGeekViewController.m */,
+			);
+			name = Activities;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -708,6 +726,8 @@
 				4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */,
 				4E2F50001407D1F900C4C00C /* FLAPIview.m in Sources */,
 				4E2F50071407DF8200C4C00C /* FLAPIBlow.m in Sources */,
+				D7ABFF87140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.m in Sources */,
+				D7ABFF88140B8227003B9F08 /* CorePlot_GeckoGeekViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
