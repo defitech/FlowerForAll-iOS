@@ -1,25 +1,24 @@
 //
-//  CorePlot_GeckoGeekViewController.m
-//  CorePlot-GeckoGeek
+//  HistoryViewController.m
 //
-//  Created by Vincent on 06/09/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Jerome on 29/08/11.
+//  Copyright 2010 Defitech. All rights reserved.
 //
 
-#import "CorePlot_GeckoGeekViewController.h"
+#import "HistoryViewController.h"
 
-@implementation CorePlot_GeckoGeekViewController
+@implementation HistoryViewController
 
 - (void)loadView {
-	
+	NSLog(@"HistoryViewController: loadView");
 	// Alloc & Init Main View
 	UIView *tmpView = [ [ UIView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0-20.0) ];
 	[ tmpView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
-	[ tmpView setBackgroundColor:[ UIColor whiteColor ] ];
+	[ tmpView setBackgroundColor:[ UIColor clearColor ] ];
 	[ self setView:[ tmpView autorelease ] ];
 	
 	// Alloc Graph View
-	graphView = [ [ CPLayerHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0-20.0) ];
+	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0-20.0) ];
 	[ self.view addSubview:[ graphView autorelease ] ];
 	
 }
@@ -27,6 +26,7 @@
 
 - (void)viewDidLoad {
 	
+	NSLog(@"HistoryViewController: viewDidLoad");
     [ super viewDidLoad ];
 	
 	/*
@@ -35,7 +35,7 @@
 	// Alloc CPXYGraph
 	graph = [ [ CPXYGraph alloc ] initWithFrame: self.view.bounds ];
 	// Link between the view and the Layer
-	graphView.hostedLayer = graph;
+	graphView.hostedGraph = graph;
 	// Init Padding to 0
 	graph.paddingLeft = 0.0;
 	graph.paddingTop = 0.0;

@@ -63,7 +63,6 @@
 		4E8F595D13A7AFA900D9D3A7 /* StatisticListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595413A7AFA900D9D3A7 /* StatisticListView.xib */; };
 		4E8F595E13A7AFA900D9D3A7 /* UserDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595513A7AFA900D9D3A7 /* UserDetailView.xib */; };
 		4E8F595F13A7AFA900D9D3A7 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595613A7AFA900D9D3A7 /* UserListView.xib */; };
-		4E8F596513A7B67D00D9D3A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */; };
 		4E8F596713A7B6FF00D9D3A7 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */; };
 		4E92E73F13C72C9C0060FBF6 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E72713C72C9C0060FBF6 /* NSObject+SBJson.m */; };
 		4E92E74013C72C9C0060FBF6 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E72A13C72C9C0060FBF6 /* SBJsonParser.m */; };
@@ -92,8 +91,8 @@
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
 		D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */ = {isa = PBXBuildFile; fileRef = D72E02AC139E500800F3687C /* FLAPIrecorded.raw */; };
-		D7ABFF87140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF84140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.m */; };
-		D7ABFF88140B8227003B9F08 /* CorePlot_GeckoGeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF86140B8227003B9F08 /* CorePlot_GeckoGeekViewController.m */; };
+		D7ABFF88140B8227003B9F08 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF86140B8227003B9F08 /* HistoryViewController.m */; };
+		D7ABFF8D140BB471003B9F08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7ABFF8C140BB471003B9F08 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -235,10 +234,10 @@
 		D72E028D139E448200F3687C /* subsys_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = subsys_ios.mm; sourceTree = "<group>"; };
 		D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		D72E02AC139E500800F3687C /* FLAPIrecorded.raw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FLAPIrecorded.raw; sourceTree = "<group>"; };
-		D7ABFF83140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePlot_GeckoGeekAppDelegate.h; sourceTree = "<group>"; };
-		D7ABFF84140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePlot_GeckoGeekAppDelegate.m; sourceTree = "<group>"; };
-		D7ABFF85140B8227003B9F08 /* CorePlot_GeckoGeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePlot_GeckoGeekViewController.h; sourceTree = "<group>"; };
-		D7ABFF86140B8227003B9F08 /* CorePlot_GeckoGeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePlot_GeckoGeekViewController.m; sourceTree = "<group>"; };
+		D7ABFF85140B8227003B9F08 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		D7ABFF86140B8227003B9F08 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		D7ABFF89140B8560003B9F08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D7ABFF8C140BB471003B9F08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,10 +245,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7ABFF8D140BB471003B9F08 /* CoreGraphics.framework in Frameworks */,
 				4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */,
 				4E3A7A7D13B877DD00853344 /* MediaPlayer.framework in Frameworks */,
 				4E8F596713A7B6FF00D9D3A7 /* libsqlite3.0.dylib in Frameworks */,
-				4E8F596513A7B67D00D9D3A7 /* CoreGraphics.framework in Frameworks */,
 				D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -295,6 +294,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D7ABFF8C140BB471003B9F08 /* CoreGraphics.framework */,
+				D7ABFF89140B8560003B9F08 /* CoreGraphics.framework */,
 				4E141B0513B35EC100698F53 /* Visual */,
 				D72E0285139E448200F3687C /* FLAPI */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -580,10 +581,8 @@
 		D7ABFF7C140B75A1003B9F08 /* Activities */ = {
 			isa = PBXGroup;
 			children = (
-				D7ABFF83140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.h */,
-				D7ABFF84140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.m */,
-				D7ABFF85140B8227003B9F08 /* CorePlot_GeckoGeekViewController.h */,
-				D7ABFF86140B8227003B9F08 /* CorePlot_GeckoGeekViewController.m */,
+				D7ABFF85140B8227003B9F08 /* HistoryViewController.h */,
+				D7ABFF86140B8227003B9F08 /* HistoryViewController.m */,
 			);
 			name = Activities;
 			sourceTree = "<group>";
@@ -726,8 +725,7 @@
 				4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */,
 				4E2F50001407D1F900C4C00C /* FLAPIview.m in Sources */,
 				4E2F50071407DF8200C4C00C /* FLAPIBlow.m in Sources */,
-				D7ABFF87140B8227003B9F08 /* CorePlot_GeckoGeekAppDelegate.m in Sources */,
-				D7ABFF88140B8227003B9F08 /* CorePlot_GeckoGeekViewController.m in Sources */,
+				D7ABFF88140B8227003B9F08 /* HistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

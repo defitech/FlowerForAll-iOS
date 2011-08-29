@@ -17,7 +17,8 @@
 
 @implementation FlowerController
 
-@synthesize mainView, flapiView;
+//@synthesize mainView, flapiView;
+@synthesize mainView, historyViewController;
 
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
@@ -32,11 +33,13 @@ static GameViewController* activitiesViewController;
     if (self) {
         NSLog(@"Init With Nib");
     }
+    
     return self;
 }
 
 - (void)dealloc
 {
+    [historyViewController release];
     [super dealloc];
 }
 
@@ -181,6 +184,10 @@ static GameViewController* activitiesViewController;
     }
     
     currentMainController = [FlowerController getActivitiesViewController];
+    
+    historyViewController = [ [ HistoryViewController alloc ] init ];
+    [currentMainController.view addSubview:historyViewController.view];
+    
     [self.mainView addSubview:currentMainController.view];
     
      NSLog(@"FlowerController viewDidLoad");
