@@ -103,24 +103,29 @@
 
 - (void) EventLevel:(float) level {
    // NSLog(@"New Level %f",level);
+     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
      lastlevel = level / gParams.mic_calibration ;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventLevel"  object:self];
+    [pool drain]; 
 }
 
 - (void) EventFrequency:(double) freq {
 //    NSLog(@"New Frequency %i",freq);
     
     frequency = freq;
-    
+     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventFrequency"  object:self];
+    
+    [pool drain]; 
 }
 
 - (void) EventBlowStart:(double)timestamp {
 //    NSLog(@"Start Blow %f ",timestamp);
-    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     blowing = true;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventBlowStart"  object:self];
+    [pool drain]; 
 }
 
 - (void) EventBlowEnd:(double)timestamp duration:(double)length in_range_duration:(double)ir_length {
@@ -128,14 +133,15 @@
     // NSLog(@"End Blow %f %f %f",timestamp,length,ir_length);
     // Seems there is no pool for this thread.. (I must read more about this)
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    BOOL goal = ir_length >= [self durationTarget];
     
-    [DB saveBlow:timestamp duration:length in_range_duration:ir_length];
+    [DB saveBlow:timestamp duration:length in_range_duration:ir_length goal:goal];
     
     blowing = false;
     
     // send messages
     FLAPIBlow* message = 
-    [[[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length] autorelease];
+    [[[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal] autorelease];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventBlowEnd" object:message];
     

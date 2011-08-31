@@ -20,6 +20,8 @@
 #import "Exercise.h"
 #import "Expiration.h"
 
+#import "FLAPIBlow.h"
+#import "ParametersManager.h"
 
 
 @implementation DB
@@ -45,12 +47,25 @@ static sqlite3 *database;
         if(sqlite3_open([dbFilePath UTF8String], &database) == SQLITE_OK){
             NSLog(@"DB OPEN %@", dbFilePath);
             
-            if ([DB getInfoValueForKey:@"db_version"] == nil) {
+            NSString* actualVersion = [DB getInfoValueForKey:@"db_version"];
+            
+            if (actualVersion == nil) {
                 [DB execute:@"CREATE TABLE infos(key TEXT PRIMARY KEY, VALUE TEXT);"];
                 [DB execute:@"CREATE TABLE expiration(key TEXT PRIMARY KEY, VALUE TEXT);"];
-                [DB execute:@"CREATE TABLE blows(timestamp NUM, duration NUM, ir_duration NUM) ;"];
-                [DB setInfoValueForKey:@"db_version" value:@"1"];
+                [DB execute:@"CREATE TABLE blows(timestamp NUM, duration NUM, ir_duration NUM, goal INTEGER DEFAULT 0) ;"];
+                
+                actualVersion = @"2";
+                [DB setInfoValueForKey:@"db_version" value:actualVersion];
+            } 
+            
+            // update from 1 to 2
+            if ([actualVersion isEqualToString:@"1"]) {
+                [DB execute:@"ALTER TABLE blows ADD COLUMN goal INTEGER DEFAULT 0;"];
+                [DB execute:@"UPDATE  blows SET goal = 0;"];
+                [DB executeWF:@"UPDATE blows SET goal = 1 WHERE ir_duration >= %f;",1.1f ];
+                [DB setInfoValueForKey:@"db_version" value:@"2"];
             }
+            
             
             NSLog(@"DB VERSION: %@", [DB getInfoValueForKey:@"db_version"] );
         } else {
@@ -155,11 +170,27 @@ static sqlite3 *database;
     return sqlite3_column_double(cStatement, index);
 }
 
+
++(BOOL) colB:(sqlite3_stmt*)cStatement index:(int)index {
+    return (sqlite3_column_int(cStatement, index) != 0);
+}
+
 /*************************************************** BLOWS ***************************************************/
 
-+ (void) saveBlow:(double)timestamp duration:(double)length in_range_duration:(double)ir_length {
-    [DB executeWF:@"INSERT INTO blows (timestamp, duration, ir_duration) VALUES ('%f', '%f', '%f')",
-        timestamp,length,ir_length];
++ (void) saveBlow:(double)timestamp duration:(double)length in_range_duration:(double)ir_length goal:(BOOL)good {
+    [DB executeWF:@"INSERT INTO blows (timestamp, duration, ir_duration, goal) VALUES ('%f', '%f', '%f', '%i')",
+        timestamp,length,ir_length,good];
+}
+
+/** fill **/
++ (void) fillWithBlows:(NSMutableArray*)history fromTimestamp:(double)timestamp {
+    
+    sqlite3_stmt *cStatement = 
+    [DB genCStatementWF:@"SELECT timestamp, duration, ir_duration, goal FROM blows WHERE timestamp >= %f",timestamp];
+    while(sqlite3_step(cStatement) == SQLITE_ROW) {
+        [history addObject: [[FLAPIBlow alloc] initWith:[DB colD:cStatement index:0] duration:[DB colD:cStatement index:1] in_range_duration:[DB colD:cStatement index:2] goal:[DB colB:cStatement index:3]]];
+    }
+    sqlite3_finalize(cStatement);
 }
 
 

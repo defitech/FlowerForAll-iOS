@@ -32,6 +32,7 @@
 		4E4BA6BC13B4926900B2BAE6 /* AWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4BA6BA13B4926900B2BAE6 /* AWebController.m */; };
 		4E4BA6BD13B4926900B2BAE6 /* AWebController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E4BA6BB13B4926900B2BAE6 /* AWebController.xib */; };
 		4E4BA6BF13B4977300B2BAE6 /* apple_safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E4BA6BE13B4977300B2BAE6 /* apple_safari.png */; };
+		4E584855140E61CC003892DA /* BlowHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E584854140E61CC003892DA /* BlowHistory.m */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
 		4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DB.m */; };
 		4E8F593013A7AF6B00D9D3A7 /* DateClassificationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */; };
@@ -128,6 +129,8 @@
 		4E4BA6BA13B4926900B2BAE6 /* AWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWebController.m; sourceTree = "<group>"; };
 		4E4BA6BB13B4926900B2BAE6 /* AWebController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AWebController.xib; sourceTree = "<group>"; };
 		4E4BA6BE13B4977300B2BAE6 /* apple_safari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple_safari.png; sourceTree = "<group>"; };
+		4E584853140E61CC003892DA /* BlowHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlowHistory.h; sourceTree = "<group>"; };
+		4E584854140E61CC003892DA /* BlowHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlowHistory.m; sourceTree = "<group>"; };
 		4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccess.h; sourceTree = "<group>"; };
 		4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccess.m; sourceTree = "<group>"; };
 		4E8F590313A7AF6B00D9D3A7 /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
@@ -467,6 +470,8 @@
 				4ECC6CB314053744005519C7 /* User.m */,
 				4EFC3EBE1406837D002F0BF7 /* ParametersManager.h */,
 				4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */,
+				4E584853140E61CC003892DA /* BlowHistory.h */,
+				4E584854140E61CC003892DA /* BlowHistory.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -726,6 +731,7 @@
 				4E2F50001407D1F900C4C00C /* FLAPIview.m in Sources */,
 				4E2F50071407DF8200C4C00C /* FLAPIBlow.m in Sources */,
 				D7ABFF88140B8227003B9F08 /* HistoryViewController.m in Sources */,
+				4E584855140E61CC003892DA /* BlowHistory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

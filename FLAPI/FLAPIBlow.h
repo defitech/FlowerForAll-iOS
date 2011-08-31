@@ -12,12 +12,14 @@
     double timestamp;
     double duration;
     double in_range_duration; 
+    BOOL goal;
 }
 
-@property (nonatomic) double timestamp;
+@property (readwrite) double timestamp;
 @property (nonatomic) double duration;
 @property (nonatomic) double in_range_duration;
+@property (nonatomic) BOOL goal;
 
-- (id)initWith:(double)atimestamp duration:(double)alength in_range_duration:(double)air_length;
+- (id)initWith:(double)atimestamp duration:(double)alength in_range_duration:(double)air_length goal:(BOOL)good;
 
 @end

@@ -16,8 +16,10 @@
 
 @interface FlowerController : UIViewController <UIActionSheetDelegate> {
     UIView *mainView;
-//    EAGLView *flapiView;
     HistoryViewController *historyViewController;
+    
+   
+
 }
 
 @property (nonatomic, retain) IBOutlet UIView *mainView;

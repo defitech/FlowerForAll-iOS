@@ -13,6 +13,8 @@
 #import "GameParametersViewController.h"
 #import "StatisticsViewController.h"
 #import "FlutterApp2AppDelegate.h"
+#import "ParametersManager.h"
+#import "BlowHistory.h"
 
 
 @implementation FlowerController
@@ -27,6 +29,9 @@ static SettingsViewController *settingsViewController ;
 static StatisticsViewController *statisticsViewController;
 static GameViewController* activitiesViewController;
 
+
+ static FLAPIX* flapix;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,6 +44,7 @@ static GameViewController* activitiesViewController;
 
 - (void)dealloc
 {
+    [flapix release];
     [historyViewController release];
     [super dealloc];
 }
@@ -54,7 +60,13 @@ static GameViewController* activitiesViewController;
 
 // get the currentFlapix Controller
 + (FLAPIX*) currentFlapix {
-    return [[singleton flapiView] flapix];
+    if (flapix == nil) {
+        flapix = [FLAPIX new];
+        [ParametersManager loadParameters:flapix];
+        [flapix Start];
+    }
+    
+    return flapix;
 }
 
 
@@ -179,9 +191,8 @@ static GameViewController* activitiesViewController;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (singleton == nil) {
-        singleton = self;
-    }
+    if (singleton != nil)  return ;
+    singleton = self;
     
     currentMainController = [FlowerController getActivitiesViewController];
     
@@ -192,6 +203,9 @@ static GameViewController* activitiesViewController;
     
      NSLog(@"FlowerController viewDidLoad");
     // Do any additional setup after loading the view from its nib.
+    [FlowerController currentFlapix];
+    
+    
 }
 
 - (void)viewDidUnload

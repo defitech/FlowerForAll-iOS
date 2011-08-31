@@ -58,6 +58,9 @@
 /** convenience shortcut to get a double at a defined index in a row **/
 +(double) colD:(sqlite3_stmt*)cStatement index:(int)index;
 
+/** convenience shortcut to get a BOOLEAN at a defined index in a row  (test if == 0 )**/
++(BOOL) colB:(sqlite3_stmt*)cStatement index:(int)index ;
+
 /*************************************************** USERS ***************************************************/
 
 
@@ -88,7 +91,10 @@
 
 
 /*************************************************** BLOWS *******************************************************/
-+ (void) saveBlow:(double)timestamp duration:(double)length in_range_duration:(double)ir_length;    
++ (void) saveBlow:(double)timestamp duration:(double)length in_range_duration:(double)ir_length goal:(BOOL)good;  
+
+/** fill **/
++ (void) fillWithBlows:(NSMutableArray*)history fromTimestamp:(double)timestamp;
 
 /*************************************************** EXERCISES ***************************************************/
 

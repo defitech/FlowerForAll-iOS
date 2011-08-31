@@ -7,17 +7,17 @@
 
 #import <UIKit/UIKit.h>
 #import "CorePlot-CocoaTouch.h"
-#import "FLAPIX.h"
+#import "BlowHistory.h"
 
-@interface HistoryViewController : UIViewController <CPPlotDataSource> {
+@interface HistoryViewController : UIViewController <CPPlotDataSource,BlowHistoryDelegate> {
 
 	CPGraphHostingView *graphView;
 	CPXYGraph *graph;
-    FLAPIX *flapix;
-
+ 
+    BlowHistory *history;
 }
 
-@property (nonatomic, retain) FLAPIX *flapix;
+-(void) historyChange:(id*) history;
 
 @end
 

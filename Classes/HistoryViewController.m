@@ -10,8 +10,6 @@
 
 @implementation HistoryViewController
 
-@synthesize flapix;
-
 - (void)loadView {
 	// Alloc & Init Main View
 	UIView *tmpView = [ [ UIView alloc ] initWithFrame:CGRectMake(0.0, 420.0, 320.0, 40.0) ];
@@ -23,12 +21,9 @@
 	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 40.0) ];
 	[ self.view addSubview:[ graphView autorelease ] ];
     
-    if(!flapix) {
-        flapix = [FLAPIX new];
-        [ParametersManager loadParameters:flapix];
-        [flapix Start];
-    }
-	
+   
+	// Alloc History
+    history = [[BlowHistory alloc] initWithDuration:1 delegate:self];
 }
 
 
@@ -162,6 +157,10 @@
 	
 }
 
+-(void) historyChange:(id*) history_id {
+    NSLog(@"History change %i",[[(BlowHistory*)history_id getHistoryArray] count]);
+}
+
 - (void)addValues {
     //store new data
     
@@ -172,7 +171,7 @@
 }
 
 - (void)dealloc {
-	
+	[history release];
     [super dealloc];
 	
 }

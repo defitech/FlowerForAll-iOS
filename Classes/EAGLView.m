@@ -35,8 +35,6 @@
 @synthesize context;
 @synthesize animationTimer;
 //@synthesize animationInterval;
-@synthesize flapix;
-
 
 // You must implement this method
 + (Class)layerClass {
@@ -65,12 +63,6 @@
         animationInterval = 1.0 / 60.0;
 		[self setupView];
 		[self startAnimation];
-    }
-    
-    if(!flapix) {
-        flapix = [FLAPIX new];
-        [ParametersManager loadParameters:flapix];
-        [flapix Start];
     }
     
     return self;
@@ -111,6 +103,8 @@
 
 
 - (void)drawView {
+    FLAPIX* flapix = [FlowerController currentFlapix];
+    if (flapix == nil) return;
 	
 //	// Def de notre triangle
 //	const GLfloat triangleVertices[] = {
