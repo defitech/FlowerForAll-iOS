@@ -6,27 +6,34 @@
 //
 
 #import "HistoryViewController.h"
+#import "ParametersManager.h"
 
 @implementation HistoryViewController
 
+@synthesize flapix;
+
 - (void)loadView {
-	NSLog(@"HistoryViewController: loadView");
 	// Alloc & Init Main View
-	UIView *tmpView = [ [ UIView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0-20.0) ];
+	UIView *tmpView = [ [ UIView alloc ] initWithFrame:CGRectMake(0.0, 420.0, 320.0, 40.0) ];
 	[ tmpView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
-	[ tmpView setBackgroundColor:[ UIColor clearColor ] ];
+	[ tmpView setBackgroundColor:[ UIColor lightGrayColor ] ]; //clearColor = transparent
 	[ self setView:[ tmpView autorelease ] ];
 	
 	// Alloc Graph View
-	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0-20.0) ];
+	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 40.0) ];
 	[ self.view addSubview:[ graphView autorelease ] ];
+    
+    if(!flapix) {
+        flapix = [FLAPIX new];
+        [ParametersManager loadParameters:flapix];
+        [flapix Start];
+    }
 	
 }
 
 
 - (void)viewDidLoad {
-	
-	NSLog(@"HistoryViewController: viewDidLoad");
+    
     [ super viewDidLoad ];
 	
 	/*
@@ -37,35 +44,10 @@
 	// Link between the view and the Layer
 	graphView.hostedGraph = graph;
 	// Init Padding to 0
-	graph.paddingLeft = 0.0;
-	graph.paddingTop = 0.0;
-	graph.paddingRight = 0.0;
-	graph.paddingBottom = 0.0;
-	
-	/*
-	 *	PLOTS
-	 */
-	// Plot 1 - Alloc
-	CPScatterPlot *plot1 = [[[CPScatterPlot alloc]initWithFrame:self.view.bounds] autorelease];
-	// Plot 1 - Set ID
-	plot1.identifier = @"Plot 1";
-	// Plot 1 - Set Line Width
-	plot1.dataLineStyle.lineWidth = 1.0f;
-	// Plot 1 - Set Line Color
-	plot1.dataLineStyle.lineColor = [CPColor colorWithComponentRed:255.0/255.0 green:0.0 blue:0.0 alpha:1.0];
-	// Plot 1 - Set Data Source Object
-	plot1.dataSource = self;
-	// Plot 1 - Add Plot to the graph layer
-	[ graph addPlot:plot1 ];
-	
-	// Plots 2 - Same Things
-	CPScatterPlot *plot2 = [[[CPScatterPlot alloc]initWithFrame:self.view.bounds] autorelease];
-	plot2.identifier = @"Plot 2";
-	plot2.dataLineStyle.lineWidth = 1.0f;
-	plot2.dataLineStyle.lineColor = [CPColor colorWithComponentRed:0.0 green:0.0 blue:205.0/255.0 alpha:1.0];
-	plot2.dataSource = self;
-	[graph addPlot:plot2];
-	
+	graph.paddingLeft = 10.0;
+	graph.paddingTop = 10.0;
+	graph.paddingRight = 10.0;
+	graph.paddingBottom = 10.0;
 	
 	/*
 	 *	Graph Prefs
@@ -74,10 +56,10 @@
 	// Get Default Plot Space
 	CPXYPlotSpace *plotSpace = (CPXYPlotSpace *)graph.defaultPlotSpace;
 	// Set X Range from -10 to 10 (length = 20)
-	plotSpace.xRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromInteger(-10) length:CPDecimalFromInteger(20)];
+	plotSpace.xRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(0.0) length:CPDecimalFromFloat(20.0)];
 	// Set Y Range from -5 to 5 (length = 10)
-	plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-5.0) length:CPDecimalFromFloat(10.0)];
-		
+	plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(0.0) length:CPDecimalFromFloat(20.0)];
+    
 	/*
 	 *	Axis X & Y Prefs
 	 */
@@ -91,7 +73,7 @@
 	// Set the "major" interval length
 	axisSet.xAxis.majorIntervalLength = [ [ NSDecimalNumber decimalNumberWithString:@"5.0" ] decimalValue ];
 	// Set the number of ticks per interval
-	axisSet.xAxis.minorTicksPerInterval = 4;
+	axisSet.xAxis.minorTicksPerInterval = 1;
 	// Set major & minor line style
 	axisSet.xAxis.majorTickLineStyle = lineStyle;
 	axisSet.xAxis.minorTickLineStyle = lineStyle;
@@ -103,27 +85,51 @@
 	axisSet.xAxis.majorTickLength = 10.0f;
 	// Set the offset of the label (beside the X axis)
 	axisSet.xAxis.labelOffset = 3.0f;
-
+    
 	// Axis Y Prefs (same things)
-	axisSet.yAxis.majorIntervalLength = [ [ NSDecimalNumber decimalNumberWithString:@"2.0" ] decimalValue ];
+	axisSet.yAxis.majorIntervalLength = [ [ NSDecimalNumber decimalNumberWithString:@"5.0" ] decimalValue ];
 	axisSet.yAxis.minorTicksPerInterval = 1;
 	axisSet.yAxis.majorTickLineStyle = lineStyle;
 	axisSet.yAxis.minorTickLineStyle = lineStyle;
 	axisSet.yAxis.axisLineStyle = lineStyle;
 	axisSet.yAxis.minorTickLength = 5.0f;
 	axisSet.yAxis.majorTickLength = 10.0f;
-	axisSet.yAxis.labelOffset = 3.0f;	
+	axisSet.yAxis.labelOffset = 3.0f;
+	
+	/*
+	 *	PLOTS
+	 */
+	// Plot 1 - Alloc
+	CPScatterPlot *plot1 = [[[CPScatterPlot alloc]initWithFrame:self.view.bounds] autorelease];
+	// Plot 1 - Set ID
+	plot1.identifier = @"inRange";
+	// Plot 1 - Set Line Width
+	plot1.dataLineStyle.lineWidth = 1.0f;
+	// Plot 1 - Set Line Color
+	plot1.dataLineStyle.lineColor = [CPColor greenColor];
+	// Plot 1 - Set Data Source Object
+	plot1.dataSource = self;
+	// Plot 1 - Add Plot to the graph layer
+	[ graph addPlot:plot1 ];
+	
+	// Plots 2 - Same Things
+	CPScatterPlot *plot2 = [[[CPScatterPlot alloc]initWithFrame:self.view.bounds] autorelease];
+	plot2.identifier = @"total";
+	plot2.dataLineStyle.lineWidth = 1.0f;
+	plot2.dataLineStyle.lineColor = [CPColor redColor];
+	plot2.dataSource = self;
+	[graph addPlot:plot2];
 	
 }
 
 - (NSUInteger)numberOfRecordsForPlot:(CPPlot *)plot {
 	
 	// If Plot 1
-	if (plot.identifier == @"Plot 1")
-		return 21;
+	if (plot.identifier == @"inRange")
+		return 10;
 	
 	// If Plot 2
-	return 11;
+	return 10;
 	
 }
 
@@ -133,27 +139,36 @@
 	if (fieldEnum == CPScatterPlotFieldX) {
 		
 		// Return -10, -9, -8, ... 8, 9, 10
-		if (plot.identifier == @"Plot 1")
-			return [ NSNumber numberWithInteger:-10.0+index ];
+		if (plot.identifier == @"inRange")
+			return [ NSNumber numberWithInteger:index ];
 		// Return -5, -4, ..., 4, 5
-		else if (plot.identifier == @"Plot 2")
-			return [ NSNumber numberWithInteger:-5.0+index ];
+		else if (plot.identifier == @"total")
+			return [ NSNumber numberWithInteger:index ];
 		
 	// Number of the Y axis asked
 	} else if (fieldEnum == CPScatterPlotFieldY) { 
 		
 		// Return -10, -9, -8, ... 8, 9, 10
-		if (plot.identifier == @"Plot 1")
-			return [ NSNumber numberWithFloat:(-10.0+index)/2.0 ];
+		if (plot.identifier == @"inRange")
+			return [ NSNumber numberWithInteger:index ];
 		// Return -5, -4, ..., 4, 5
-		else if (plot.identifier == @"Plot 2")
-			return [ NSNumber numberWithInteger:-5.0+index ];
+		else if (plot.identifier == @"total")
+			return [ NSNumber numberWithInteger:index+1 ];
 		
 	}
 	
 	// Return a default value, shouldn't be returned
-	return [ NSNumber numberWithFloat:0.0 ];
+	return nil;
 	
+}
+
+- (void)addValues {
+    //store new data
+    
+    //resize axis
+    
+    //redraw the graph
+    [graph reloadData];
 }
 
 - (void)dealloc {
