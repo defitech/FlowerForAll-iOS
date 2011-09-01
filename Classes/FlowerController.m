@@ -197,7 +197,7 @@ static GameViewController* activitiesViewController;
     currentMainController = [FlowerController getActivitiesViewController];
     
     historyViewController = [ [ HistoryViewController alloc ] init ];
-    [currentMainController.view addSubview:historyViewController.view];
+    [self.view addSubview:historyViewController.view];
     
     [self.mainView addSubview:currentMainController.view];
     

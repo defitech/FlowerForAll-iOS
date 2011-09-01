@@ -12,7 +12,7 @@
 
 - (void)loadView {
 	// Alloc & Init Main View
-	UIView *tmpView = [ [ UIView alloc ] initWithFrame:CGRectMake(0.0, 420.0, 320.0, 40.0) ];
+	UIView *tmpView = [ [ UIView alloc ] initWithFrame:CGRectMake(40.0, 420.0, 280.0, 40.0) ];
 	[ tmpView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
 	[ tmpView setBackgroundColor:[ UIColor lightGrayColor ] ]; //clearColor = transparent
 	[ self setView:[ tmpView autorelease ] ];
