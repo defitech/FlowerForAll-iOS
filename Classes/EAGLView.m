@@ -68,9 +68,12 @@
     return self;
 }
 
+const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
+
 - (void)setupView {
 	
-    const GLfloat zNear = 0.1, zFar = 1000.0, fieldOfView = 120.0;
+    const GLfloat zNear = 0.1, zFar = 1000.0, fieldOfView = 35.0;
+    
     GLfloat size;
 	
     glEnable(GL_DEPTH_TEST);
@@ -147,7 +150,7 @@
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glTranslatef(-6.0f, -0.8f, 0.0f);
+    glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
     if(!flapix.blowing) {
         
@@ -170,20 +173,14 @@
         
         if ((([flapix frequenceTarget] - [flapix frequenceTolerance])*target > transY) && 
             (([flapix frequenceTarget] + [flapix frequenceTolerance])*target < transY)) { // Good
-            
-           
-            
+  
             glColor4f(0.0f,  1.0f, 0.0f, 1.0f);
-            
-            
-            
             
         } else { // Bad
             //NSLog(@"LEVL %f",);
             glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
         }
         
-    
         prev = transY;
     }
     glRotatef(transY, 0.0f, 0.0f, 1.0f);
@@ -203,12 +200,14 @@
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-   glTranslatef(-6.0f, -0.8f, 0.0f);
+    
+     glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
+    
     glRotatef([flapix frequenceTolerance] * target, 0.0f, 0.0f, 1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
 
     glLoadIdentity();
-    glTranslatef(-6.0f, -0.8f, 0.0f);
+     glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
     glRotatef([flapix frequenceTolerance] * target, 0.0f, 0.0f, -1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
