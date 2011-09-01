@@ -92,6 +92,9 @@
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
 		D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */ = {isa = PBXBuildFile; fileRef = D72E02AC139E500800F3687C /* FLAPIrecorded.raw */; };
+		D77B109A140FC5A600897203 /* icon_contents_page_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1096140FC5A600897203 /* icon_contents_page_selected.png */; };
+		D77B109B140FC5A600897203 /* icon_contents_page_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */; };
+		D77B109C140FC5A600897203 /* RSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D77B1099140FC5A600897203 /* RSPageControl.m */; };
 		D7ABFF88140B8227003B9F08 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF86140B8227003B9F08 /* HistoryViewController.m */; };
 		D7ABFF8D140BB471003B9F08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7ABFF8C140BB471003B9F08 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
@@ -237,6 +240,10 @@
 		D72E028D139E448200F3687C /* subsys_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = subsys_ios.mm; sourceTree = "<group>"; };
 		D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		D72E02AC139E500800F3687C /* FLAPIrecorded.raw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FLAPIrecorded.raw; sourceTree = "<group>"; };
+		D77B1096140FC5A600897203 /* icon_contents_page_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contents_page_selected.png; sourceTree = "<group>"; };
+		D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contents_page_unselected.png; sourceTree = "<group>"; };
+		D77B1098140FC5A600897203 /* RSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPageControl.h; sourceTree = "<group>"; };
+		D77B1099140FC5A600897203 /* RSPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPageControl.m; sourceTree = "<group>"; };
 		D7ABFF85140B8227003B9F08 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		D7ABFF86140B8227003B9F08 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		D7ABFF89140B8560003B9F08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -546,6 +553,10 @@
 		4ECC6CAB1404E150005519C7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D77B1096140FC5A600897203 /* icon_contents_page_selected.png */,
+				D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */,
+				D77B1098140FC5A600897203 /* RSPageControl.h */,
+				D77B1099140FC5A600897203 /* RSPageControl.m */,
 				4EFC3EB6140648C8002F0BF7 /* DoubleSlider */,
 				4ECC6CAC1404E171005519C7 /* UserPicker.h */,
 				4ECC6CAD1404E171005519C7 /* UserPicker.m */,
@@ -674,6 +685,8 @@
 				4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */,
 				4EFC3EBD14064911002F0BF7 /* handle.png in Resources */,
 				4E2F50011407D1F900C4C00C /* FLAPIview.xib in Resources */,
+				D77B109A140FC5A600897203 /* icon_contents_page_selected.png in Resources */,
+				D77B109B140FC5A600897203 /* icon_contents_page_unselected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +745,7 @@
 				4E2F50071407DF8200C4C00C /* FLAPIBlow.m in Sources */,
 				D7ABFF88140B8227003B9F08 /* HistoryViewController.m in Sources */,
 				4E584855140E61CC003892DA /* BlowHistory.m in Sources */,
+				D77B109C140FC5A600897203 /* RSPageControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -94,7 +94,9 @@ AVideoPlayer *videoPlayer;
 	game2ChoiceView.frame = CGRectMake(640.0f, 0.0f, 320.0f, 367.0f);
     
 	//Set scroll view content size
-	scrollView.contentSize = CGSizeMake(960.0,0.0);
+    //Warning: to be able to scroll the view by touching the PageContol (see method pageControlDidChangeValue), both dimensions of the content size of the scrollview have to be nonzero.
+	//scrollView.contentSize = CGSizeMake(960.0,0.0);
+    [scrollView setContentSize:CGSizeMake(960.0,335.0)];
 	
 	//Set scroll view zoom scale
 	scrollView.maximumZoomScale = 3.0;
@@ -155,8 +157,31 @@ AVideoPlayer *videoPlayer;
     CGFloat pageWidth = 320.0f;
     int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth)+1;
     pageControl.currentPage = page;
-	//[pageControl updateCurrentPageDisplay];
+	[pageControl updateCurrentPageDisplay];
 	
+}
+
+
+
+//Called when the user touches the PageControl, so that its value changes, to scroll the ScrollView
+- (IBAction) pageControlDidChangeValue:(id) sender{
+    [self.pageControl drawFancyPageIcon];
+    
+    int page = pageControl.currentPage;
+    
+    //From Apple's PageControl example, to fix the "flashing" of the PageControl
+    //However, seems that we must extend the ContentController to use this code
+    /*[self loadScrollViewWithPage:page - 1];
+    [self loadScrollViewWithPage:page];
+    [self loadScrollViewWithPage:page + 1];*/
+    
+    // update the scroll view to the appropriate page
+    CGRect frame = scrollView.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0;
+    
+    [scrollView scrollRectToVisible:frame animated:YES];
+    
 }
 
 

@@ -11,6 +11,8 @@
 #import <UIKit/UIKit.h>
 #import "FLAPIview.h"
 
+#import "RSPageControl.h"
+
 
 @interface GameViewController : UIViewController <UIScrollViewDelegate>{
 
@@ -30,7 +32,7 @@
 	IBOutlet UINavigationBar *navigationBar;
 	
 	//Page control for the ScrollView
-	IBOutlet UIPageControl *pageControl;
+	IBOutlet RSPageControl *pageControl;
 	
 }
 
@@ -47,10 +49,12 @@
 
 @property (nonatomic, retain) UINavigationBar *navigationBar;
 
-@property (nonatomic, retain) UIPageControl *pageControl;
+@property (nonatomic, retain) RSPageControl *pageControl;
 
 - (IBAction) game1Touch:(id) sender;
 - (IBAction) game2Touch:(id) sender;
+
+- (IBAction) pageControlDidChangeValue:(id) sender;
 
 
 @end
