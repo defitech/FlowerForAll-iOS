@@ -19,8 +19,16 @@
 	[ self setView:[ tmpView autorelease ] ];
 	
 	// Alloc Graph View
-	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 280.0, 40.0) ];
+	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 230.0, 40.0) ];
 	[ self.view addSubview:[ graphView autorelease ] ];
+    
+    // Alloc Label View
+    labelView = [ [ UITextView alloc ] initWithFrame:CGRectMake(230.0, 0.0, 50.0, 40.0) ];
+    [labelView setBackgroundColor:[UIColor blackColor]];
+    [labelView setTextColor:[UIColor whiteColor]];
+    [labelView setFont:[UIFont systemFontOfSize:8.0]];
+    [labelView setText:@"Label 1\nLabel 2\nLabel 3"];
+    [ self.view addSubview:[ labelView autorelease ] ];
     
     historyDuration = 2; // 2 minutes
     graphPadding = 2; // 2 pixels

@@ -14,6 +14,8 @@
 	CPGraphHostingView *graphView;
 	CPXYGraph *graph;
     
+    UITextView *labelView;
+    
     BlowHistory *history;
     int historyDuration;
     int graphPadding;
