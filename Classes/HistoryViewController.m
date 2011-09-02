@@ -28,6 +28,7 @@
     [labelView setTextColor:[UIColor whiteColor]];
     [labelView setFont:[UIFont systemFontOfSize:8.0]];
     [labelView setText:@"Label 1\nLabel 2\nLabel 3"];
+    [labelView setEditable:FALSE];
     [ self.view addSubview:[ labelView autorelease ] ];
     
     historyDuration = 2; // 2 minutes
@@ -98,7 +99,7 @@
 	goodPlot.dataLineStyle.lineWidth = 1.0f;
 	goodPlot.dataLineStyle.lineColor = [CPColor blackColor];
 	goodPlot.dataSource = self;
-	[graph addPlot:goodPlot];
+	[ graph addPlot:[goodPlot autorelease] ];
     
     // blow duration plot
     CPBarPlot* blowPlot = [[[CPBarPlot alloc] initWithFrame:self.view.bounds] autorelease];
@@ -107,7 +108,7 @@
     blowPlot.barWidth = 5;
     blowPlot.barOffset = 0;  
     blowPlot.fill = [[CPFill alloc] initWithColor:[CPColor redColor]];;
-    [ graph addPlot:blowPlot ];
+    [ graph addPlot:[blowPlot autorelease] ];
     
     // in range duration
     CPBarPlot* inRangePlot = [[[CPBarPlot alloc] initWithFrame:self.view.bounds] autorelease];
@@ -116,7 +117,7 @@
     inRangePlot.barWidth = 5;
     inRangePlot.barOffset = 0;
     inRangePlot.fill = [[CPFill alloc] initWithColor:[CPColor greenColor]];
-    [ graph addPlot:inRangePlot ];
+    [ graph addPlot:[inRangePlot autorelease] ];
 	
 }
 
@@ -174,6 +175,7 @@
 
 - (void)dealloc {
 	[history release];
+    [graph release];
     [super dealloc];
 	
 }
