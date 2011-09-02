@@ -7,6 +7,7 @@
 
 #import "HistoryViewController.h"
 #import "ParametersManager.h"
+#import "FLAPIBlow.h"
 
 @implementation HistoryViewController
 
@@ -14,16 +15,18 @@
 	// Alloc & Init Main View
 	UIView *tmpView = [ [ UIView alloc ] initWithFrame:CGRectMake(40.0, 420.0, 280.0, 40.0) ];
 	[ tmpView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
-	[ tmpView setBackgroundColor:[ UIColor lightGrayColor ] ]; //clearColor = transparent
+	[ tmpView setBackgroundColor:[ UIColor blackColor ] ];
 	[ self setView:[ tmpView autorelease ] ];
 	
 	// Alloc Graph View
-	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 40.0) ];
+	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 280.0, 40.0) ];
 	[ self.view addSubview:[ graphView autorelease ] ];
     
-   
-	// Alloc History
-    history = [[BlowHistory alloc] initWithDuration:1 delegate:self];
+    historyDuration = 2; // 2 minutes
+    graphPadding = 2; // 2 pixels
+    blowDuration = 4; // 4 secondes
+    
+    history = [[BlowHistory alloc] initWithDuration:historyDuration delegate:self];
 }
 
 
@@ -38,58 +41,66 @@
 	graph = [ [ CPXYGraph alloc ] initWithFrame: self.view.bounds ];
 	// Link between the view and the Layer
 	graphView.hostedGraph = graph;
-	// Init Padding to 0
-	graph.paddingLeft = 10.0;
-	graph.paddingTop = 10.0;
-	graph.paddingRight = 10.0;
-	graph.paddingBottom = 10.0;
+	// Init Padding to 2
+	graph.paddingLeft = graphPadding;
+	graph.paddingTop = graphPadding;
+	graph.paddingRight = graphPadding;
+	graph.paddingBottom = graphPadding;
 	
 	/*
 	 *	Graph Prefs
 	 */
-	// X & Y Range
-	// Get Default Plot Space
+	// Default X & Y Range for Plot Space
 	CPXYPlotSpace *plotSpace = (CPXYPlotSpace *)graph.defaultPlotSpace;
-	// Set X Range from -10 to 10 (length = 20)
-	plotSpace.xRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(0.0) length:CPDecimalFromFloat(20.0)];
-	// Set Y Range from -5 to 5 (length = 10)
-	plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(0.0) length:CPDecimalFromFloat(20.0)];
+	// Set X Range from -45 minutes to now
+	plotSpace.xRange = [CPPlotRange
+                        plotRangeWithLocation:CPDecimalFromDouble(-(historyDuration * 60))
+                        length:CPDecimalFromDouble(historyDuration * 60 + 1)];
+	// Set Y Range from 0 to 4 secondes
+	plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromInt(0) length:CPDecimalFromInt(blowDuration)];
     
 	/*
-	 *	Axis X & Y Prefs
+	 *	Axis Prefs
 	 */
 	// Line Style
 	CPLineStyle *lineStyle = [CPLineStyle lineStyle];
-	lineStyle.lineColor = [CPColor blackColor];
+	lineStyle.lineColor = [CPColor whiteColor];
 	lineStyle.lineWidth = 1.0f;
 	
 	// Axis X Prefs
 	CPXYAxisSet *axisSet = (CPXYAxisSet *)graph.axisSet;
-	// Set the "major" interval length
-	axisSet.xAxis.majorIntervalLength = [ [ NSDecimalNumber decimalNumberWithString:@"5.0" ] decimalValue ];
-	// Set the number of ticks per interval
-	axisSet.xAxis.minorTicksPerInterval = 1;
-	// Set major & minor line style
-	axisSet.xAxis.majorTickLineStyle = lineStyle;
-	axisSet.xAxis.minorTickLineStyle = lineStyle;
+    //	// Set the "major" interval length to 5 minutes
+    //	axisSet.xAxis.majorIntervalLength = [ [ NSDecimalNumber decimalNumberWithString:@"60.0" ] decimalValue ];
+    //	// Set the number of ticks per interval
+    //	axisSet.xAxis.minorTicksPerInterval = 30;
+    //	// Set major & minor line style
+    //	axisSet.xAxis.majorTickLineStyle = lineStyle;
+    //	axisSet.xAxis.minorTickLineStyle = lineStyle;
 	// Set axis line style
 	axisSet.xAxis.axisLineStyle = lineStyle;
-	// Set length of the minor tick
-	axisSet.xAxis.minorTickLength = 5.0f;
-	// Set length of the major tick
-	axisSet.xAxis.majorTickLength = 10.0f;
-	// Set the offset of the label (beside the X axis)
-	axisSet.xAxis.labelOffset = 3.0f;
+    //	// Set length of the minor tick
+    //	axisSet.xAxis.minorTickLength = 5.0f;
+    //	// Set length of the major tick
+    //	axisSet.xAxis.majorTickLength = 10.0f;
+    //	// Set the offset of the label (beside the X axis)
+    //	axisSet.xAxis.labelOffset = 3.0f;
+    // Set the exclusion ranges where no axis label will be drawn
+    axisSet.xAxis.labelExclusionRanges = [NSArray arrayWithObjects:
+                                          [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-200) 
+                                                                      length:CPDecimalFromFloat(250)], nil];
     
 	// Axis Y Prefs (same things)
-	axisSet.yAxis.majorIntervalLength = [ [ NSDecimalNumber decimalNumberWithString:@"5.0" ] decimalValue ];
-	axisSet.yAxis.minorTicksPerInterval = 1;
-	axisSet.yAxis.majorTickLineStyle = lineStyle;
-	axisSet.yAxis.minorTickLineStyle = lineStyle;
+    //	axisSet.yAxis.majorIntervalLength = [ [ NSDecimalNumber decimalNumberWithString:@"2.0" ] decimalValue ];
+    //	axisSet.yAxis.minorTicksPerInterval = 1;
+    //	axisSet.yAxis.majorTickLineStyle = lineStyle;
+    //	axisSet.yAxis.minorTickLineStyle = lineStyle;
 	axisSet.yAxis.axisLineStyle = lineStyle;
-	axisSet.yAxis.minorTickLength = 5.0f;
-	axisSet.yAxis.majorTickLength = 10.0f;
-	axisSet.yAxis.labelOffset = 3.0f;
+    //	axisSet.yAxis.minorTickLength = 5.0f;
+    //	axisSet.yAxis.majorTickLength = 10.0f;
+    //	axisSet.yAxis.labelOffset = 3.0f;
+    axisSet.yAxis.labelExclusionRanges = [NSArray arrayWithObjects:
+                                          [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-10) 
+                                                                      length:CPDecimalFromFloat(20)], nil];
 	
 	/*
 	 *	PLOTS
@@ -118,38 +129,32 @@
 }
 
 - (NSUInteger)numberOfRecordsForPlot:(CPPlot *)plot {
-	
-	// If Plot 1
-	if (plot.identifier == @"inRange")
-		return 10;
-	
-	// If Plot 2
-	return 10;
-	
+    
+    return [[history getHistoryArray] count];
+    
 }
 
 - (NSNumber *)numberForPlot:(CPPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
 	
+    FLAPIBlow* current = [[history getHistoryArray] objectAtIndex:index];
+    
 	// Number of the X axis asked
 	if (fieldEnum == CPScatterPlotFieldX) {
+        double xVal = current.timestamp - CFAbsoluteTimeGetCurrent();
+        NSLog(@"xVal = %f", xVal);
+		return [ NSNumber numberWithDouble:xVal ];
 		
-		// Return -10, -9, -8, ... 8, 9, 10
-		if (plot.identifier == @"inRange")
-			return [ NSNumber numberWithInteger:index ];
-		// Return -5, -4, ..., 4, 5
-		else if (plot.identifier == @"total")
-			return [ NSNumber numberWithInteger:index ];
-		
-	// Number of the Y axis asked
+        // Number of the Y axis asked
 	} else if (fieldEnum == CPScatterPlotFieldY) { 
 		
-		// Return -10, -9, -8, ... 8, 9, 10
-		if (plot.identifier == @"inRange")
-			return [ NSNumber numberWithInteger:index ];
-		// Return -5, -4, ..., 4, 5
-		else if (plot.identifier == @"total")
-			return [ NSNumber numberWithInteger:index+1 ];
-		
+		if (plot.identifier == @"inRange") {
+            NSLog(@"inRange = %f", current.in_range_duration);
+            return [ NSNumber numberWithDouble:current.in_range_duration ];
+            
+        } else if (plot.identifier == @"total") {
+            NSLog(@"duration = %f", current.duration);
+            return [ NSNumber numberWithDouble:current.duration ];
+        }
 	}
 	
 	// Return a default value, shouldn't be returned
@@ -158,14 +163,7 @@
 }
 
 -(void) historyChange:(id*) history_id {
-    NSLog(@"History change %i",[[(BlowHistory*)history_id getHistoryArray] count]);
-}
-
-- (void)addValues {
-    //store new data
-    
-    //resize axis
-    
+    //    NSLog(@"History change %i",[[(BlowHistory*)history_id getHistoryArray] count]);
     //redraw the graph
     [graph reloadData];
 }

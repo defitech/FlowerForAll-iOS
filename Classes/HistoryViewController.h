@@ -10,14 +10,16 @@
 #import "BlowHistory.h"
 
 @interface HistoryViewController : UIViewController <CPPlotDataSource,BlowHistoryDelegate> {
-
+    
 	CPGraphHostingView *graphView;
 	CPXYGraph *graph;
- 
+    
     BlowHistory *history;
+    int historyDuration;
+    int graphPadding;
+    int blowDuration;
 }
 
 -(void) historyChange:(id*) history;
 
 @end
-
