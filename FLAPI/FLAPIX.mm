@@ -52,13 +52,26 @@
 }
 
 
-- (void) SetTargetBlowingDuration:(float)durations_s {
+- (void) SetTargetExpirationDuration:(float)durations_s {
     gParams.target_duration = (int) durations_s * 1000;
 }
 
+
+// duration of an exerice
+double exerice_duration_s = 50.0f;
+
+- (void) SetTargetExerciceDuration:(float)durations_s {
+    exerice_duration_s = (double) durations_s;
+}
+
 // return durationTarget(s)
-- (double) durationTarget {
-    return (float)gParams.target_duration / 1000.0f;
+- (double) expirationDurationTarget {
+    return (double)gParams.target_duration / 1000.0f;
+}
+
+// return durationTarget(s)
+- (double) exerciceDurationTarget {
+    return (double) exerice_duration_s;
 }
 
 // return maxFrequence
@@ -67,7 +80,6 @@
 }
 // return minFrequence
 - (double) frequenceMin {
-    NSLog(@"FLAPIX frequenceMin: %i",gParams.frequency_min);
     return (double) gParams.frequency_min;
 }
 
@@ -133,7 +145,7 @@
     // NSLog(@"End Blow %f %f %f",timestamp,length,ir_length);
     // Seems there is no pool for this thread.. (I must read more about this)
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    BOOL goal = ir_length >= [self durationTarget];
+    BOOL goal = ir_length >= [self expirationDurationTarget];
     
     [DB saveBlow:timestamp duration:length in_range_duration:ir_length goal:goal];
     

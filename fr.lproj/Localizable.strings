@@ -29,8 +29,13 @@
 "TargetFrequencyRangeLabel" = "Intervale de fréquence";
 
 
+"DurationLabel" = "Durées: periodes pendant lesquelles le Flutter® vibre dans l'interval de fréquences choisit.";
+
+"ExerciceLabel" = "Durée totale pour un exerice";
+
 /* Expiration time label */
-"ExpirationLabel" = "Temps d'expiration";
+"ExpirationLabel" = "Durée pour une expiration";
+
 
 /* Name of the owner user */
 "OwnerUserName" = "Propriétaire";

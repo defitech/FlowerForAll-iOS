@@ -24,7 +24,9 @@
 @implementation GameParametersViewController
 
 
-@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, expirationLabel, expirationTimeLabel, durationSlider;
+@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, durationLabel,
+expirationLabel, expirationTimeLabel, expirationSlider,
+exerciceLabel, exerciceTimeLabel, exerciceSlider;
 
 
 
@@ -53,21 +55,37 @@
     [super viewDidLoad];
 	
 	targetFrequencyRangeLabel.text = NSLocalizedString(@"TargetFrequencyRangeLabel", @"Target Frequency Range");
-	expirationLabel.text = NSLocalizedString(@"ExpirationLabel", @"Expiration duration target");
+	durationLabel.text = NSLocalizedString(@"DurationLabel", @"DurationExplanantion");
 	
     
-    //Duration slider
-    [durationSlider addTarget:self action:@selector(valueChangedForDurationSlider:) 
+    //Expiration slider
+    expirationLabel.text = NSLocalizedString(@"ExpirationLabel", @"Expiration duration target");
+    [expirationSlider addTarget:self action:@selector(valueChangedForExpirationSlider:) 
              forControlEvents:UIControlEventValueChanged];
     
-    [durationSlider addTarget:self action:@selector(editingEndForDurationSlider:) 
+    [expirationSlider addTarget:self action:@selector(editingEndForExpirationSlider:) 
              forControlEvents:UIControlEventTouchUpInside];
     
-    [durationSlider setMinimumValue:1.0f];
-    [durationSlider setMaximumValue:10.0f];
-    [durationSlider setValue:[[FlowerController currentFlapix] durationTarget]];
+    [expirationSlider setMinimumValue:0.2f];
+    [expirationSlider setMaximumValue:5.0f];
+    [expirationSlider setValue:[[FlowerController currentFlapix] expirationDurationTarget]];
     
-    [self  valueChangedForDurationSlider:durationSlider];
+    
+    //Exercice slider
+     exerciceLabel.text = NSLocalizedString(@"ExerciceLabel", @"Exerice duration target");
+    [exerciceSlider addTarget:self action:@selector(valueChangedForExericeSlider:) 
+               forControlEvents:UIControlEventValueChanged];
+    
+    [exerciceSlider addTarget:self action:@selector(editingEndForExericeSlider:) 
+               forControlEvents:UIControlEventTouchUpInside];
+    
+    [exerciceSlider setMinimumValue:0.2f];
+    [exerciceSlider setMaximumValue:5.0f];
+    [exerciceSlider setValue:[[FlowerController currentFlapix] expirationDurationTarget]];
+    
+    
+    [self  valueChangedForExpirationSlider:expirationSlider];
+    [self  valueChangedForExericeSlider:exerciceSlider];
     
     
 	//DoubleSlider setup
@@ -128,18 +146,33 @@
     [ParametersManager saveFrequency:target tolerance:tolerance];
 }
 
-- (void)valueChangedForDurationSlider:(UISlider *)aSlider
+- (void)valueChangedForExpirationSlider:(UISlider *)aSlider
 {
     
     expirationTimeLabel.text = [NSString stringWithFormat:@"%1.1f s", aSlider.value];
     
 }
 
-- (void)editingEndForDurationSlider:(UISlider *)aSlider
+- (void)editingEndForExpirationSlider:(UISlider *)aSlider
 {
-    [self   valueChangedForDurationSlider:aSlider];
+    [self   valueChangedForExpirationSlider:aSlider];
     float duration =  aSlider.value;
-    [ParametersManager saveDuration:duration];
+    [ParametersManager saveExpirationDuration:duration];
+    
+}
+
+- (void)valueChangedForExericeSlider:(UISlider *)aSlider
+{
+    int duration = 10 + (int) (110*aSlider.value);
+    exerciceTimeLabel.text = [NSString stringWithFormat:@"%i s", duration];
+    
+}
+
+- (void)editingEndForExericeSlider:(UISlider *)aSlider
+{
+    [self   valueChangedForExericeSlider:aSlider];
+     int duration = 10 + (int)110* aSlider.value;
+    [ParametersManager saveExerciceDuration:(float)duration];
     
 }
 

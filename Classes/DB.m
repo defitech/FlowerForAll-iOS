@@ -107,7 +107,7 @@ static sqlite3 *database;
  * !! don't forget to finalize it!
  */
 +(sqlite3_stmt*) genCStatement:(NSString*)sqlStatement {
-    NSLog(@"genCStatement: %@",sqlStatement);
+    //NSLog(@"genCStatement: %@",sqlStatement);
     sqlite3_stmt *cStatement;
     int res = sqlite3_prepare_v2([DB db], [sqlStatement UTF8String], -1, &cStatement, NULL);
     if(res == SQLITE_OK) {

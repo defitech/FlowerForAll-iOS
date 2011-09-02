@@ -12,7 +12,8 @@
 @interface ParametersManager : NSObject
 
 +(void) saveFrequency:(double)target tolerance:(double)tolerance;
-+(void) saveDuration:(float)duration;
++(void) saveExpirationDuration:(float)duration;
++(void) saveExerciceDuration:(float)duration;
 
 +(void) loadParameters:(FLAPIX*)flapix;
 

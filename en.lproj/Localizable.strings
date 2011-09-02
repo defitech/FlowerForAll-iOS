@@ -28,9 +28,14 @@
 /* Main label of the game parameters view */
 "TargetFrequencyRangeLabel" = "Range of frequency";
 
+"DurationLabel" = "Durations: period of time where the Flutter® vibrates in the targeted frequency range.";
+
+"ExerciceLabel" = "Duration for one exercice";
 
 /* Expiration time label */
-"ExpirationLabel" = "Breathing duration";
+"ExpirationLabel" = "Duration for one expiration";
+
+
 
 /* Name of the owner user */
 "OwnerUserName" = "Owner";

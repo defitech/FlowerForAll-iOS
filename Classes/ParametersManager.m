@@ -9,6 +9,7 @@
 #import "ParametersManager.h"
 #import "DB.h"
 #import "FLAPIX.h"
+#import "FlowerController.h"
 
 @implementation ParametersManager
 
@@ -28,17 +29,34 @@
        
     }
     [flapix SetTargetFrequency:target frequency_tolerance:tolerance];
-     float duration = [[DB getInfoValueForKey:@"expirationDuration"] floatValue];
+    
+    
+    float duration = [[DB getInfoValueForKey:@"expirationDuration"] floatValue];
     if (duration < 0.5f || duration > 12.0f) {
-         NSLog(@"loadParameters: invalid duration:%f parameter reseting to defaults",duration );
+         NSLog(@"loadParameters: invalid expiration duration:%f parameter reseting to defaults",duration );
         duration = 2.0f;
         
     }
-    [flapix SetTargetBlowingDuration:duration];
+    [flapix SetTargetExpirationDuration:duration];
+    
+    
+    duration = [[DB getInfoValueForKey:@"exerciceDuration"] floatValue];
+    if (duration < 5.0f || duration > 1000.0f) {
+        NSLog(@"loadParameters: invalid exerice duration:%f parameter reseting to defaults",duration );
+        duration = 50.0f;
+        
+    }
+    [flapix SetTargetExerciceDuration:duration];
 }
 
-+(void) saveDuration:(float)duration {
++(void) saveExpirationDuration:(float)duration {
     [DB setInfoValueForKey:@"expirationDuration" value:[NSString stringWithFormat:@"%1.1f",duration]];
+    [[FlowerController currentFlapix] SetTargetExpirationDuration:duration];
+}
+
++(void) saveExerciceDuration:(float)duration {
+    [DB setInfoValueForKey:@"exerciceDuration" value:[NSString stringWithFormat:@"%1.1f",duration]];
+    [[FlowerController currentFlapix] SetTargetExerciceDuration:duration];
 }
 
 @end

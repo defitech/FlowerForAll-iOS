@@ -18,10 +18,16 @@
 	IBOutlet UILabel *minLabel;
 	IBOutlet UILabel *maxLabel;
     
+    
+    IBOutlet UILabel *durationLabel;
+    
 	IBOutlet UILabel *expirationLabel;
 	IBOutlet UILabel *expirationTimeLabel;
+    IBOutlet UISlider *expirationSlider;
     
-    IBOutlet UISlider *durationSlider;
+    IBOutlet UILabel *exerciceLabel;
+	IBOutlet UILabel *exerciceTimeLabel;
+    IBOutlet UISlider *exerciceSlider;
     
     //double Slide
     IBOutlet DoubleSlider *slider;
@@ -35,13 +41,25 @@
 
 
 //Properties
-@property (nonatomic, retain) UISlider *durationSlider;
+
 @property (nonatomic, retain) UILabel *targetFrequencyRangeLabel;
 @property (nonatomic, retain) UILabel *minLabel;
 @property (nonatomic, retain) UILabel *maxLabel;
+
+@property (nonatomic, retain) UILabel *durationLabel;
+
 @property (nonatomic, retain) UILabel *expirationLabel;
 @property (nonatomic, retain) UILabel *expirationTimeLabel;
+@property (nonatomic, retain) UISlider *expirationSlider;
 
 
+@property (nonatomic, retain) UILabel *exerciceLabel;
+@property (nonatomic, retain) UILabel *exerciceTimeLabel;
+@property (nonatomic, retain) UISlider *exerciceSlider;
+
+
+
+- (void)valueChangedForExpirationSlider:(UISlider *)aSlider;
+- (void)valueChangedForExericeSlider:(UISlider *)aSlider;
 
 @end

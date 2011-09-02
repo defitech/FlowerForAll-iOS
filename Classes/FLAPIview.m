@@ -40,7 +40,7 @@ double pfreq = 0;
 
 - (void)flapixEventFrequency:(NSNotification *)notification {
 	FLAPIX* flapix = (FLAPIX*)[notification object];
-    NSLog(@"******Frequency %f",[flapix frequency]);
+    //NSLog(@"******Frequency %f",[flapix frequency]);
   
        // logo.transform = CGAffineTransformMakeRotation();
           
