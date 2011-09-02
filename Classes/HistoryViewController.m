@@ -92,6 +92,15 @@
 	/*
 	 *	PLOTS
 	 */
+	// isGood plot
+	CPScatterPlot *goodPlot = [[[CPScatterPlot alloc]initWithFrame:self.view.bounds] autorelease];
+    goodPlot.identifier = @"isGood";
+	goodPlot.dataLineStyle.lineWidth = 1.0f;
+	goodPlot.dataLineStyle.lineColor = [CPColor blackColor];
+	goodPlot.dataSource = self;
+	[graph addPlot:goodPlot];
+    
+    // blow duration plot
     CPBarPlot* blowPlot = [[[CPBarPlot alloc] initWithFrame:self.view.bounds] autorelease];
     blowPlot.identifier = @"blow";
     blowPlot.dataSource = self;
@@ -100,6 +109,7 @@
     blowPlot.fill = [[CPFill alloc] initWithColor:[CPColor redColor]];;
     [ graph addPlot:blowPlot ];
     
+    // in range duration
     CPBarPlot* inRangePlot = [[[CPBarPlot alloc] initWithFrame:self.view.bounds] autorelease];
     inRangePlot.identifier = @"inRange";
     inRangePlot.dataSource = self;
@@ -120,28 +130,40 @@
 	
     FLAPIBlow* current = [[history getHistoryArray] objectAtIndex:index];
     
-	// X axis
-	if (fieldEnum == CPBarPlotFieldBarLocation) {
-        double xVal = current.timestamp - CFAbsoluteTimeGetCurrent();
-        NSLog(@"xVal = %f", xVal);
-		return [ NSNumber numberWithDouble:xVal ];
-		
-        // Y axis
-	} else if (fieldEnum == CPBarPlotFieldBarLength) {
-		
-		if (plot.identifier == @"inRange") {
-            NSLog(@"inRange = %f", current.in_range_duration);
-            return [ NSNumber numberWithDouble:current.in_range_duration ];
+//    NSLog(@"timestamp = %f", current.timestamp);
+//    NSLog(@"in_range_duration = %f", current.in_range_duration);
+//    NSLog(@"duration = %f", current.duration);
+//    NSLog(@"goal = %@", (current.goal ? @"YES" : @"NO"));
+    
+    switch ( fieldEnum ) {
+        case CPScatterPlotFieldY:
+            if (current.goal)
+                return [ NSNumber numberWithInt:3 ];
+            break;
+        case CPBarPlotFieldBarLength:
+            if (plot.identifier == @"inRange")
+                return [ NSNumber numberWithDouble:current.in_range_duration ];
+                
+            else if (plot.identifier == @"blow")
+                return [ NSNumber numberWithDouble:current.duration ];
             
-        } else if (plot.identifier == @"blow") {
-            NSLog(@"duration = %f", current.duration);
-            return [ NSNumber numberWithDouble:current.duration ];
-        }
-	}
+            break;
+        default:
+            return [ NSNumber numberWithDouble:current.timestamp - CFAbsoluteTimeGetCurrent() ];
+            break;
+    }
 	
 	// Return a default value, shouldn't be returned
 	return nil;
 	
+}
+
+-(CPPlotSymbol *)symbolForScatterPlot:(CPScatterPlot *)plot recordIndex:(NSUInteger)index {
+    CPPlotSymbol *symbol = [[CPPlotSymbol alloc] init];
+    symbol.symbolType = CPPlotSymbolTypeStar;
+    symbol.size = CGSizeMake(10.0, 10.0);
+    symbol.fill = [CPFill fillWithColor:[CPColor whiteColor]];
+    return symbol;
 }
 
 -(void) historyChange:(id*) history_id {
