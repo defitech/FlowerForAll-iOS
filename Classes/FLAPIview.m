@@ -72,7 +72,7 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(flapixEventExerciceStart:)
-                                                     name:@"flapixEventExerciceStart" object:nil];
+                                                     name:@"FlapixEventExerciceStart" object:nil];
         
     }
     
