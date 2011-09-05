@@ -39,6 +39,8 @@ void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read);
 // Custom  (Differ from windows FLAPI) Register the FLAPIX Controller instance
 void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *flapix);
 
+int FLAPI_SUBSYS_IOS_SubSys_Stop_Force();
+
 // Standard Subsystem function
 // ===========================
 

@@ -8,6 +8,7 @@
 //  Simple Interface to 
 
 #import <Foundation/Foundation.h>
+#import "FLAPIExercice.h"
 
 
 @interface FLAPIX : NSObject {    
@@ -15,6 +16,7 @@
     double frequency;
     float lastlevel;
     BOOL blowing;
+    FLAPIExercice* current_exercice;
 }
 
 
@@ -37,7 +39,7 @@
 // return durationTarget(s)
 - (double) expirationDurationTarget;
 // return durationTarget(s)
-- (double) exericeDurationTarget;
+- (double) exerciceDurationTarget;
 
 // return maxFrequence
 - (double) frequenceMax;
@@ -58,5 +60,14 @@
 
 - (void) EventBlowStart:(double)timestamp;
 - (void) EventBlowEnd:(double)timestamp duration:(double)length in_range_duration:(double)ir_length;
+
+
+
+// EXERCICES
+- (void)exerciceStop;
+/** Current Exercice Start if needed? **/
+- (FLAPIExercice*)exerciceInCourse;
+
+
 
 @end

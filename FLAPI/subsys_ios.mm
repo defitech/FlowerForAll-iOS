@@ -28,6 +28,9 @@ short *myBuff;
 // reference to pass events
 FLAPIX *flapix;
 
+bool stop_request = false; // we are waiting for a stop
+bool stop_possible = true; // flag passed to true when OnSubSystemProcess
+
 // Standard Subsystem function
 // ===========================
 
@@ -126,11 +129,30 @@ int	SubSys_Start(){
 		printf("Error Starting AudioQueue\n");
 		return false;	
 	}
+    
+    stop_possible = true;
+    stop_request = false;
+    
 	printf("Started\n");
 	return FLAPI_SUCCESS;
 }
 
-int	SubSys_Stop(){
+
+
+int SubSys_Stop(){
+    stop_request = true;
+    if (stop_possible) {
+        return FLAPI_SUBSYS_IOS_SubSys_Stop_Force();
+    } 
+    
+    // we have to wait until the end of OnSubSystemProcess
+    NSLog(@"Waiting the end of OnSubSystemProcess to stop FLAPI");
+
+    
+    return FLAPI_SUCCESS;
+}
+
+int FLAPI_SUBSYS_IOS_SubSys_Stop_Force() {
 	if (filedevtag != 0) fclose(filedev); // close file read / saving for devel
 	
 	OSStatus status = AudioQueueStop(recordState.queue,true);
@@ -140,7 +162,6 @@ int	SubSys_Stop(){
 	}
 	
 	OnSubSystemStop(); // tell the subsys we stopped
-	
 	printf("SubSys_Stop\n");
 	return FLAPI_SUCCESS;
 }
@@ -155,7 +176,8 @@ void AudioInputCallback (
 						UInt32 inNumberPacketDescriptions, // The number of packet descriptions in next parameter (inPacketDescs)
 						const AudioStreamPacketDescription *inPacketDescs) // An array of packet descriptions
 {
-	
+    
+    
 
 	short buffSize = 0; 
 	
@@ -181,11 +203,18 @@ void AudioInputCallback (
 		fflush(filedev);
 	}
 
-	
-	if (FLAPI_SUCCESS != OnSubSystemProcess(myBuff)) {
-		printf("AudioInputCallback: OnSubSystemProcess failed \n");
-	}
-	
+	//we cannot stop during process
+    if ((! stop_request) && stop_possible) {
+        stop_possible = false;
+        if (FLAPI_SUCCESS != OnSubSystemProcess(myBuff)) {
+            printf("AudioInputCallback: OnSubSystemProcess failed \n");
+        }
+        if (stop_request) {
+            FLAPI_SUBSYS_IOS_SubSys_Stop_Force();
+        }
+        stop_possible = true;
+    }
+    	
 	// switch the buffers
 	RecordState* recordState = (RecordState*)inUserData;
 	AudioQueueEnqueueBuffer(recordState->queue, inBuffer, 0, NULL);

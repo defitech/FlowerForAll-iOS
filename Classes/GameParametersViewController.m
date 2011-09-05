@@ -164,6 +164,7 @@ exerciceLabel, exerciceTimeLabel, exerciceSlider;
 - (void)valueChangedForExericeSlider:(UISlider *)aSlider
 {
     int duration = 10 + (int) (110*aSlider.value);
+    NSLog("valueChangedForExericeSlider %f",aSlider.value);
     exerciceTimeLabel.text = [NSString stringWithFormat:@"%i s", duration];
     
 }

@@ -17,6 +17,8 @@
 
 @synthesize running, frequency, blowing, lastlevel;
 
+
+
 /**
  * init 
  */ 
@@ -40,6 +42,8 @@
         
         printf("gParams frequency_max:%i frequency_min:%i\n",gParams.frequency_max,gParams.frequency_min);
         // -- write your own code here to do some more init stuff
+        
+        current_exercice = nil;
         
     }
     return self;
@@ -92,6 +96,7 @@ double exerice_duration_s = 50.0f;
 
 BOOL demo_mode = NO;
 - (void) SetDemo:(BOOL)on {
+    if (! self.running) [self Start];
     if (demo_mode == on) return;
     
     // debug -- read from file
@@ -110,16 +115,16 @@ BOOL demo_mode = NO;
 
 - (BOOL) Start {
     if (self.running) return NO;
-    
-    
+    [self exerciceStop];
     if (FLAPI_SUCCESS != FLAPI_Start()) return NO; // This does start the sound recording and processing
-    
     self.running = YES;
     return YES;
 }
 
 - (BOOL) Stop {
     NSLog(@"Stop");
+    [self SetDemo:NO]; // we must quit Demo before we stop;
+    [self exerciceStop];
     if (! self.running) return NO;
     if (FLAPI_SUCCESS != FLAPI_Stop()) return NO; // This does stop the sound recording and processing
     self.running = NO;
@@ -167,13 +172,41 @@ BOOL demo_mode = NO;
     blowing = false;
     
     // send messages
-    FLAPIBlow* message = 
-    [[[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal] autorelease];
+    FLAPIBlow* message = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventBlowEnd" object:message];
     
+    
+    // exercice management
+    [[self exerciceInCourse] addBlow:message];
+    if ([[self exerciceInCourse] percent_done] >= 1) {
+        [self Stop];
+    }
+    [message release];
+    
     [pool drain]; 
 }
+
+
+
+// --------------- Exercice Logic
+- (void)exerciceStop {
+    if (current_exercice == nil) return;
+    if ([current_exercice inCourse])  [current_exercice stop:self];
+    [current_exercice release];
+    current_exercice = nil;
+}
+
+/** get current FLAPIExercice, start it if needed **/
+- (FLAPIExercice*)exerciceInCourse {
+    NSLog(@"exerciceInCourse called");
+    if ((current_exercice == nil) || (! [current_exercice inCourse])) {
+        NSLog(@"exerciceInCourse create");
+         current_exercice = [[FLAPIExercice alloc] initWithFlapix:self];
+    }
+    return current_exercice;
+}
+
 
 // --------------- Dealloc 
 
