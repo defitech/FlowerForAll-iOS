@@ -89,13 +89,28 @@ double exerice_duration_s = 50.0f;
 
 - (double) frequenceTarget { return gParams.target_frequency; }
 
+
+BOOL demo_mode = NO;
+- (void) SetDemo:(BOOL)on {
+    if (demo_mode == on) return;
+    
+    // debug -- read from file
+    const char* toread = nil;
+    
+    if (on) { toread = [[[[NSBundle mainBundle] resourcePath] 
+                         stringByAppendingPathComponent: @"FLAPIrecorded.raw"] UTF8String]; }
+
+    FLAPI_SUBSYS_IOS_file_dev(toread,true);
+    demo_mode = on;
+}
+
+- (BOOL) IsDemo {
+    return demo_mode;
+}
+
 - (BOOL) Start {
     if (self.running) return NO;
-    // debug -- read from file
-    const char* toread = [[[[NSBundle mainBundle] resourcePath] 
-                                stringByAppendingPathComponent: @"FLAPIrecorded.raw"] UTF8String];
-    FLAPI_SUBSYS_IOS_file_dev(toread,true);
-    // end of debug
+    
     
     if (FLAPI_SUCCESS != FLAPI_Start()) return NO; // This does start the sound recording and processing
     
@@ -142,7 +157,7 @@ double exerice_duration_s = 50.0f;
 
 - (void) EventBlowEnd:(double)timestamp duration:(double)length in_range_duration:(double)ir_length {
     
-    // NSLog(@"End Blow %f %f %f",timestamp,length,ir_length);
+    NSLog(@"End Blow timestamp:%f length:%f ir_length:%f target:%f",timestamp,length,ir_length,[self expirationDurationTarget]);
     // Seems there is no pool for this thread.. (I must read more about this)
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     BOOL goal = ir_length >= [self expirationDurationTarget];

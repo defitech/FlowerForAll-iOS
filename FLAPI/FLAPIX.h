@@ -31,6 +31,9 @@
 - (void) SetTargetExpirationDuration:(float)durations_s;
 - (void) SetTargetExerciceDuration:(float)durations_s;
 
+- (void) SetDemo:(BOOL)on;
+- (BOOL) IsDemo;
+
 // return durationTarget(s)
 - (double) expirationDurationTarget;
 // return durationTarget(s)

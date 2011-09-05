@@ -38,8 +38,18 @@ FLAPIX *flapix;
  * const char* torecord = [[NSTemporaryDirectory() stringByAppendingPathComponent: @"FLAPIrecord.raw"] UTF8String];
  * const char* toread = [[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"FLAPIrecorded.raw"] UTF8String];
  *
+ * To stop, call  FLAPI_SUBSYS_IOS_file_dev(nil,true);
+ *
  */
 void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read){
+    if (filepath == nil) {
+        if (filedevtag != 0) fclose(filedev); // close file read / saving for devel
+        filedevtag = 0;
+        printf("FLAPI out of dev mode");
+        return;
+    }
+    
+    
 	filedev = fopen(filepath, read ? "rb" : "wb");
 	if (read) myBuff = (short*) malloc (sizeof(short)*gAudioInfo.buffer_sample);
 	filedevtag = read ? 1 : -1;

@@ -121,6 +121,12 @@ static GameViewController* activitiesViewController;
 
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Satistics", @"Title of the third tab bar item")];
     
+    if (![[self currentFlapix] IsDemo]) {
+         [actionSheet addButtonWithTitle:NSLocalizedString(@"Start Demo Mode", @"Enable Demo Mode")];
+    } else {
+        [actionSheet addButtonWithTitle:NSLocalizedString(@"Stop Demo Mode", @"Enable Demo Mode")];
+    }
+    
     
     [actionSheet showInView:singleton.view];
     [actionSheet release];
@@ -168,8 +174,9 @@ static GameViewController* activitiesViewController;
                 return;
             }
             [FlowerController setCurrentMainController:[FlowerController getStatisticsViewController]];
-            
-            break;
+        case 5: // Enable DemoMode
+            [[FlowerController currentFlapix] SetDemo:![[FlowerController currentFlapix] IsDemo]];
+        break;
 
     }
     
