@@ -167,22 +167,23 @@ BOOL demo_mode = NO;
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     BOOL goal = ir_length >= [self expirationDurationTarget];
     
-    [DB saveBlow:timestamp duration:length in_range_duration:ir_length goal:goal];
+   
     
     blowing = false;
     
     // send messages
-    FLAPIBlow* message = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventBlowEnd" object:message];
-    
+    FLAPIBlow* blow = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal];
+     [DB saveBlow:blow];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventBlowEnd" object:blow];
     
     // exercice management
-    [[self exerciceInCourse] addBlow:message];
+    [[self exerciceInCourse] addBlow:blow];
+    
+
     if ([[self exerciceInCourse] percent_done] >= 1) {
         [self Stop];
     }
-    [message release];
+    [blow release];
     
     [pool drain]; 
 }
@@ -193,15 +194,14 @@ BOOL demo_mode = NO;
 - (void)exerciceStop {
     if (current_exercice == nil) return;
     if ([current_exercice inCourse])  [current_exercice stop:self];
+    [DB saveExercice:current_exercice];
     [current_exercice release];
     current_exercice = nil;
 }
 
 /** get current FLAPIExercice, start it if needed **/
 - (FLAPIExercice*)exerciceInCourse {
-    NSLog(@"exerciceInCourse called");
     if ((current_exercice == nil) || (! [current_exercice inCourse])) {
-        NSLog(@"exerciceInCourse create");
          current_exercice = [[FLAPIExercice alloc] initWithFlapix:self];
     }
     return current_exercice;

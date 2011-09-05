@@ -11,6 +11,8 @@
 #import <Foundation/Foundation.h>
 
 #import <sqlite3.h>
+#import "FLAPIBlow.h"
+#import "FLAPIExercice.h"
 
 
 @interface DB : NSObject {
@@ -90,8 +92,11 @@
 +(void)deleteUser:(NSInteger)ID;
 
 
+/*************************************************** Exercice *******************************************************/
++ (void) saveExercice:(FLAPIExercice*)exercice;  
+
 /*************************************************** BLOWS *******************************************************/
-+ (void) saveBlow:(double)timestamp duration:(double)length in_range_duration:(double)ir_length goal:(BOOL)good;  
++ (void) saveBlow:(FLAPIBlow*)blow;  
 
 /** fill **/
 + (void) fillWithBlows:(NSMutableArray*)history fromTimestamp:(double)timestamp;

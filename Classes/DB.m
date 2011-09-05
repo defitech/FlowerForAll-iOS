@@ -21,6 +21,7 @@
 #import "Expiration.h"
 
 #import "FLAPIBlow.h"
+#import "FLAPIExercice.h"
 #import "ParametersManager.h"
 
 
@@ -51,10 +52,12 @@ static sqlite3 *database;
             
             if (actualVersion == nil) {
                 [DB execute:@"CREATE TABLE infos(key TEXT PRIMARY KEY, VALUE TEXT);"];
-                [DB execute:@"CREATE TABLE expiration(key TEXT PRIMARY KEY, VALUE TEXT);"];
-                [DB execute:@"CREATE TABLE blows(timestamp NUM, duration NUM, ir_duration NUM, goal INTEGER DEFAULT 0) ;"];
-                
-                actualVersion = @"2";
+                [DB execute:@"CREATE TABLE blows(timestamp NUM PRIMARY KEY, duration NUM, ir_duration NUM, goal INTEGER DEFAULT 0) ;"];
+                [DB execute:@"CREATE TABLE exercices(start_ts NUM PRIMARY KEY, stop_ts NUM, \
+                                    frequency_target_hz NUM, frequency_tolerance_hz NUM, \
+                                    duration_expiration_s NUM, duration_exercice_s NUM, \
+                                    duration_exercice_done_p NUM, blow_count NUM, blow_star_count NUM) ;"];
+                actualVersion = @"3";
                 [DB setInfoValueForKey:@"db_version" value:actualVersion];
             } 
             
@@ -64,6 +67,15 @@ static sqlite3 *database;
                 [DB execute:@"UPDATE  blows SET goal = 0;"];
                 [DB executeWF:@"UPDATE blows SET goal = 1 WHERE ir_duration >= %f;",1.1f ];
                 [DB setInfoValueForKey:@"db_version" value:@"2"];
+            }
+            
+            // update from 2 to 3
+            if ([actualVersion isEqualToString:@"2"]) {
+                [DB execute:@"CREATE TABLE exercices(start_ts NUM PRIMARY KEY, stop_ts NUM, \
+                                                    frequency_target_hz NUM, frequency_tolerance_hz NUM, \
+                                                    duration_expiration_s NUM, duration_exercice_s NUM, \
+                                                    duration_exercice_done_p NUM, blow_count NUM, blow_star_count NUM) ;"];
+                [DB setInfoValueForKey:@"db_version" value:@"3"];
             }
             
             
@@ -175,12 +187,22 @@ static sqlite3 *database;
     return (sqlite3_column_int(cStatement, index) != 0);
 }
 
+/******************************************** EXERCICES ****************************************************/
+
++ (void) saveExercice:(FLAPIExercice*)e {
+    [DB executeWF:@"INSERT INTO exercices (start_ts,stop_ts,frequency_target_hz, frequency_tolerance_hz, \
+     duration_expiration_s, duration_exercice_s, duration_exercice_done_p , blow_count, blow_star_count ) \
+        VALUES ('%f', '%f', '%f', '%f', '%f', '%f','%f','%i','%i')",
+        e.start_ts, e.stop_ts, e.frequency_target_hz, e.frequency_tolerance_hz, e.duration_expiration_s, e.duration_exercice_s, e.duration_exercice_done_s, e.blow_count, e.blow_star_count];
+}
+
 /*************************************************** BLOWS ***************************************************/
 
-+ (void) saveBlow:(double)timestamp duration:(double)length in_range_duration:(double)ir_length goal:(BOOL)good {
++ (void) saveBlow:(FLAPIBlow*)blow {
     [DB executeWF:@"INSERT INTO blows (timestamp, duration, ir_duration, goal) VALUES ('%f', '%f', '%f', '%i')",
-        timestamp,length,ir_length,good];
+     blow.timestamp,blow.duration,blow.in_range_duration,blow.goal];
 }
+
 
 /** fill **/
 + (void) fillWithBlows:(NSMutableArray*)history fromTimestamp:(double)timestamp {
