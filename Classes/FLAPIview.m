@@ -14,63 +14,107 @@
 
 @implementation FLAPIview
 
+
+- (void)initVariables {
+    
+    lavaWidth = 22; // depending of the image
+    lavaHeight = volcano.frame.size.height;
+    
+    lavaSmooth = 0;
+    lavaReverse = 1;
+    
+    int mainWidth = self.view.frame.size.width;
+    volcano.center = CGPointMake(mainWidth / 2, 334);
+    burst.center = CGPointMake(mainWidth / 2, 201);
+    burst.hidden = true;
+    lavaHidder.frame = CGRectMake(mainWidth / 2 - lavaWidth / 2, 264, lavaWidth, lavaHeight);
+    lavaHidder.hidden = false;
+    
+    lavaFrame = lavaHidder.frame;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        logo = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Icon@2x.png"] ] autorelease];
-        logo.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
-        [self.view addSubview:logo];
+        
+        volcano = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"volcano.png"] ] autorelease];
+        [self.view addSubview:volcano];
+        
+        burst = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"burst.png"] ] autorelease];
+        [self.view addSubview:burst];        
+        
+//        lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(
+//                                    self.view.frame.size.width / 2 - lavaWidth / 2,
+//                                    self.view.frame.size.height / 2 - lavaHeight / 2,
+//                                    lavaWidth, lavaHeight)];
+        lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(
+                                                             self.view.frame.size.width / 2 - lavaWidth / 2,
+                                                             264,
+                                                             lavaWidth, lavaHeight)];
+        lavaHidder.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:lavaHidder];
+        
+        [self initVariables];
         
         // Listen to FLAPIX blowEvents
-        [[NSNotificationCenter defaultCenter] 
-                                    addObserver:self 
-                                    selector:@selector(flapixEventEndBlow:) 
-                                    name:@"FlapixEventBlowEnd" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(flapixEventEndBlow:)
+                                                     name:@"FlapixEventBlowEnd" object:nil];
         
-        [[NSNotificationCenter defaultCenter] 
-                                    addObserver:self 
-                                    selector:@selector(flapixEventFrequency:) 
-                                    name:@"FlapixEventFrequency" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(flapixEventFrequency:)
+                                                     name:@"FlapixEventFrequency" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(flapixEventExerciceStop:)
+                                                     name:@"FlapixEventExerciceStop" object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(flapixEventExerciceStart:)
+                                                     name:@"flapixEventExerciceStart" object:nil];
         
     }
+    
     return self;
 }
-double pfreq = 0;
 
 - (void)flapixEventFrequency:(NSNotification *)notification {
-	FLAPIX* flapix = (FLAPIX*)[notification object];
-    //NSLog(@"******Frequency %f",[flapix frequency]);
-  
-       // logo.transform = CGAffineTransformMakeRotation();
-          
-    CABasicAnimation *spinAnimation = [CABasicAnimation
-                                       animationWithKeyPath:@"transform.rotation.z"];
-    spinAnimation.fromValue = [NSNumber numberWithFloat:pfreq];
-    pfreq = 3.14*([flapix frequency]/20)-1.6;
-    spinAnimation.toValue = [NSNumber numberWithFloat:pfreq];
-    spinAnimation.duration = 100;  
-    [logo.layer addAnimation:spinAnimation forKey:@"spinAnimation"];
+    lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaReverse);
     
-    //[self.view setNeedsDisplay];
-	//do stuff
+    // oscillates between 1/4 and 3/4 of lavaUp
+    if ((lavaReverse < 0 && lavaSmooth <= 7) ||
+        (lavaReverse > 0 && lavaSmooth >= 2)) {
+        
+        lavaReverse = -1 * lavaReverse;
+    }
+    
+    lavaSmooth = lavaSmooth + lavaReverse;
 }
 
 - (void)flapixEventEndBlow:(NSNotification *)notification {
-	FLAPIBlow* fb = (FLAPIBlow*)[notification object];
-    NSLog(@"******flapixEventEndBlow %f",[fb timestamp]);
-    //logo.transform = CGAffineTransformMakeRotation(0);
-    CABasicAnimation *spinAnimation = [CABasicAnimation
-                                       animationWithKeyPath:@"transform.rotation.z"];
-    spinAnimation.fromValue = [NSNumber numberWithFloat:pfreq];
-    pfreq = 0;
-    spinAnimation.duration = 100;  
-    spinAnimation.toValue = [NSNumber numberWithFloat:pfreq];
-    //spinAnimation.duration = 0.10;  
-    [logo.layer addAnimation:spinAnimation forKey:@"spinAnimation"];
+	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
     
-    [self.view setNeedsDisplay];
-	//do stuff
+    lavaHidder.frame = lavaFrame;
+    
+    if (blow.goal) {
+        lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaHeight * [currentExercice percent_done]);
+        NSLog(@"Blow end: %1.1f", [currentExercice percent_done]);
+        lavaFrame = lavaHidder.frame;
+    }
+    
+    lavaSmooth = 0;
+    lavaReverse = 1;
+}
+
+- (void)flapixEventExerciceStop:(NSNotification *)notification {
+    lavaHidder.hidden = true;
+    burst.hidden = false;
+}
+
+- (void)flapixEventExerciceStart:(NSNotification *)notification {
+    currentExercice = (FLAPIExercice*)[notification object];
+    [self initVariables];
 }
 
 
@@ -102,6 +146,14 @@ double pfreq = 0;
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)dealloc {
+	[volcano release];
+	[burst release];
+	[lavaHidder release];
+	
+    [super dealloc];
 }
 
 @end

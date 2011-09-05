@@ -93,6 +93,8 @@
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
 		D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */ = {isa = PBXBuildFile; fileRef = D72E02AC139E500800F3687C /* FLAPIrecorded.raw */; };
+		D763176C1414B24700337550 /* volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D763176B1414B24700337550 /* volcano.png */; };
+		D76317711414E9FE00337550 /* burst.png in Resources */ = {isa = PBXBuildFile; fileRef = D76317701414E9FE00337550 /* burst.png */; };
 		D77B109A140FC5A600897203 /* icon_contents_page_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1096140FC5A600897203 /* icon_contents_page_selected.png */; };
 		D77B109B140FC5A600897203 /* icon_contents_page_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */; };
 		D77B109C140FC5A600897203 /* RSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D77B1099140FC5A600897203 /* RSPageControl.m */; };
@@ -243,6 +245,8 @@
 		D72E028D139E448200F3687C /* subsys_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = subsys_ios.mm; sourceTree = "<group>"; };
 		D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		D72E02AC139E500800F3687C /* FLAPIrecorded.raw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FLAPIrecorded.raw; sourceTree = "<group>"; };
+		D763176B1414B24700337550 /* volcano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volcano.png; sourceTree = "<group>"; };
+		D76317701414E9FE00337550 /* burst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burst.png; sourceTree = "<group>"; };
 		D77B1096140FC5A600897203 /* icon_contents_page_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contents_page_selected.png; sourceTree = "<group>"; };
 		D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contents_page_unselected.png; sourceTree = "<group>"; };
 		D77B1098140FC5A600897203 /* RSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPageControl.h; sourceTree = "<group>"; };
@@ -360,6 +364,8 @@
 		4E141B0513B35EC100698F53 /* Visual */ = {
 			isa = PBXGroup;
 			children = (
+				D76317701414E9FE00337550 /* burst.png */,
+				D763176B1414B24700337550 /* volcano.png */,
 				4E141B0613B35F1900698F53 /* Default-Portrait.png */,
 				4E141B0713B35F1900698F53 /* Default.png */,
 				4E141B0813B35F1900698F53 /* Default@2x.png */,
@@ -692,6 +698,8 @@
 				4E2F50011407D1F900C4C00C /* FLAPIview.xib in Resources */,
 				D77B109A140FC5A600897203 /* icon_contents_page_selected.png in Resources */,
 				D77B109B140FC5A600897203 /* icon_contents_page_unselected.png in Resources */,
+				D763176C1414B24700337550 /* volcano.png in Resources */,
+				D76317711414E9FE00337550 /* burst.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
