@@ -1,5 +1,5 @@
 /* Title of the game view */
-"GameViewTitle" = "Choisir une activitée";
+"GameViewTitle" = "Choisir une activité";
 
 /* Text of the first game button */
 "GameButton1Text" = "Jeu 1";
@@ -8,7 +8,7 @@
 "GameButton2Text" = "Jeu 2";
 
 /* Title of the first tab bar item */
-"Activities" = "Activitées";
+"Activities" = "Activités";
 
 /* Title of the second tab bar item */
 "Statistics" = "Statistiques";
