@@ -294,8 +294,6 @@
 				4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */,
 				4E8F591213A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.h */,
 				4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */,
-				28FD14FC0DC6FC130079059D /* EAGLView.h */,
-				28FD14FD0DC6FC130079059D /* EAGLView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -608,6 +606,8 @@
 		D7ABFF7C140B75A1003B9F08 /* Activities */ = {
 			isa = PBXGroup;
 			children = (
+				28FD14FC0DC6FC130079059D /* EAGLView.h */,
+				28FD14FD0DC6FC130079059D /* EAGLView.m */,
 				D7ABFF85140B8227003B9F08 /* HistoryViewController.h */,
 				D7ABFF86140B8227003B9F08 /* HistoryViewController.m */,
 			);

@@ -8,6 +8,7 @@
 #import "HistoryViewController.h"
 #import "ParametersManager.h"
 #import "FLAPIBlow.h"
+#import "FlowerController.h"
 
 @implementation HistoryViewController
 
@@ -17,6 +18,15 @@
 	[ tmpView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
 	[ tmpView setBackgroundColor:[ UIColor blackColor ] ];
 	[ self setView:[ tmpView autorelease ] ];
+    
+    // Add Touch
+    UITapGestureRecognizer *singleFingerTap = 
+    [[UITapGestureRecognizer alloc] initWithTarget:self 
+                                            action:@selector(handleSingleTap:)];
+    [self.view addGestureRecognizer:singleFingerTap];
+    [singleFingerTap release];
+
+    
 	
 	// Alloc Graph View
 	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 230.0, 40.0) ];
@@ -171,6 +181,14 @@
     //    NSLog(@"History change %i",[[(BlowHistory*)history_id getHistoryArray] count]);
     //redraw the graph
     [graph reloadData];
+}
+
+
+//The event handling method
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    [FlowerController showNav];
+     NSLog(@"Graph Touched");
+    //Do stuff here...
 }
 
 - (void)dealloc {
