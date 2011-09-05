@@ -79,8 +79,8 @@ exerciceLabel, exerciceTimeLabel, exerciceSlider;
     [exerciceSlider addTarget:self action:@selector(editingEndForExericeSlider:) 
                forControlEvents:UIControlEventTouchUpInside];
     
-    [exerciceSlider setMinimumValue:0.2f];
-    [exerciceSlider setMaximumValue:5.0f];
+    [exerciceSlider setMinimumValue:0.0f];
+    [exerciceSlider setMaximumValue:1.0f];
     [exerciceSlider setValue:[[FlowerController currentFlapix] expirationDurationTarget]];
     
     
@@ -163,8 +163,7 @@ exerciceLabel, exerciceTimeLabel, exerciceSlider;
 
 - (void)valueChangedForExericeSlider:(UISlider *)aSlider
 {
-    int duration = 10 + (int) (110*aSlider.value);
-    NSLog("valueChangedForExericeSlider %f",aSlider.value);
+    int duration = 10 + (int)70* aSlider.value;
     exerciceTimeLabel.text = [NSString stringWithFormat:@"%i s", duration];
     
 }
@@ -172,7 +171,7 @@ exerciceLabel, exerciceTimeLabel, exerciceSlider;
 - (void)editingEndForExericeSlider:(UISlider *)aSlider
 {
     [self   valueChangedForExericeSlider:aSlider];
-     int duration = 10 + (int)110* aSlider.value;
+     int duration = 10 + (int)70* aSlider.value;
     [ParametersManager saveExerciceDuration:(float)duration];
     
 }
