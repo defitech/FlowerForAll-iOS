@@ -105,23 +105,24 @@ static GameViewController* activitiesViewController;
 + (void) showNav
 {
     
-    NSString *startstop =  [[FlowerController currentFlapix] running] ? NSLocalizedString(@"Stop Exercice", @"Stop Action") :
-                NSLocalizedString(@"Start Exercice", @"Start Action") ;
-    
+      
     UIActionSheet *actionSheet = [[UIActionSheet alloc] 
-                                  initWithTitle:@"Jump to" 
+                                  initWithTitle:@"Choose an action" 
                                   delegate:singleton 
         cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel Button") 
-                                  destructiveButtonTitle:startstop
+                                  destructiveButtonTitle:NSLocalizedString(@"Go to menu", @"Title of the first tab bar item")
                                   otherButtonTitles: nil];
     
     
-        [actionSheet addButtonWithTitle:NSLocalizedString(@"Activities", @"Title of the first tab bar item")];
+        
     
-        [actionSheet addButtonWithTitle:NSLocalizedString(@"Settings", @"Title of the second tab bar item")];
+        // [actionSheet addButtonWithTitle:NSLocalizedString(@"Settings", @"Title of the second tab bar item")];
 
        // [actionSheet addButtonWithTitle:NSLocalizedString(@"Satistics", @"Title of the third tab bar item")];
-    
+    NSString *startstop =  [[FlowerController currentFlapix] running] ? NSLocalizedString(@"Stop Exercice", @"Stop Action") :
+    NSLocalizedString(@"Start Exercice", @"Start Action") ;
+
+    [actionSheet addButtonWithTitle:startstop];
     if (![[self currentFlapix] IsDemo]) {
          [actionSheet addButtonWithTitle:NSLocalizedString(@"Start Demo Mode", @"Enable Demo Mode")];
     } else {
@@ -138,29 +139,31 @@ static GameViewController* activitiesViewController;
     NSLog(@"actionSheet %i", buttonIndex);
     
     switch (buttonIndex) {
-        case 0: // Start / Stop
-            NSLog(@"Start / Stop");
-            if ( [[FlowerController currentFlapix] running]) {
-                [[FlowerController currentFlapix] Stop];
-            } else {
-                 [[FlowerController currentFlapix] Start];
-            }
-            return;
+        case 0: // Menu
+            [FlowerController setCurrentMainController:[FlowerController getActivitiesViewController]];
             break;
         case 1:
             NSLog(@"Cancel");
             return;
             break;
-        case 2: // Activities
-            [FlowerController setCurrentMainController:[FlowerController getActivitiesViewController]];
-            break;
+       
 			
-        case 3: // Settings
-            [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
-            break;
+        //case 3: // Settings
+          //  [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
+           // break;
         //case 4: // Statistics
          //   [FlowerController setCurrentMainController:[FlowerController getStatisticsViewController]];
-        case 4: // Enable DemoMode
+        case 2: // Start / Stop
+            NSLog(@"Start / Stop");
+            if ( [[FlowerController currentFlapix] running]) {
+                [[FlowerController currentFlapix] Stop];
+            } else {
+                [[FlowerController currentFlapix] Start];
+            }
+            return;
+            break;
+
+        case 3: // Enable DemoMode
             [[FlowerController currentFlapix] SetDemo:![[FlowerController currentFlapix] IsDemo]];
         break;
 

@@ -3,9 +3,9 @@
 "Web Browser" = "Browser web";
 "Game Volcano" = "Jeux du volcan";
 
+"Choose an action" = "Choisir une action";
 
-/* Title of the first tab bar item */
-"Activities" = "Activités";
+"Go to menu" = "Aller au menu";
 
 /* Title of the second tab bar item */
 "Statistics" = "Statistiques";
