@@ -95,16 +95,28 @@
 - (void)flapixEventEndBlow:(NSNotification *)notification {
 	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
     
-    lavaHidder.frame = lavaFrame;
+    [self.view setNeedsDisplay];
+	//do stuff
     
-    if (blow.goal) {
-        lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaHeight * [currentExercice percent_done]);
-        NSLog(@"Blow end: %1.1f", [currentExercice percent_done]);
-        lavaFrame = lavaHidder.frame;
+    //Add sound when the goal has been reached for the last blow
+    if (blow.goal){
+        //Get the filename of the sound file:
+        NSString *path = [NSString stringWithFormat:@"%@%@", 
+                          [[NSBundle mainBundle] resourcePath],
+                          @"/goal.wav"];
+        
+        //declare a system sound id
+        SystemSoundID soundID;
+        
+        //Get a URL for the sound file
+        NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
+        
+        //Use audio sevices to create the sound
+        AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
+        
+        //Use audio services to play the sound
+        AudioServicesPlaySystemSound(soundID);
     }
-    
-    lavaSmooth = 0;
-    lavaReverse = 1;
 }
 
 - (void)flapixEventExerciceStop:(NSNotification *)notification {

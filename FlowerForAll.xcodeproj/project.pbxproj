@@ -88,13 +88,14 @@
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
 		4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */; };
 		4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */; };
+		D701908B141618510072D020 /* goal.wav in Resources */ = {isa = PBXBuildFile; fileRef = D701908A141618510072D020 /* goal.wav */; };
+		D702D18B14152C5D005A1764 /* burst.png in Resources */ = {isa = PBXBuildFile; fileRef = D702D18A14152C5D005A1764 /* burst.png */; };
+		D702D18E14152C69005A1764 /* volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D702D18D14152C69005A1764 /* volcano.png */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
 		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; };
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
 		D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */ = {isa = PBXBuildFile; fileRef = D72E02AC139E500800F3687C /* FLAPIrecorded.raw */; };
-		D763176C1414B24700337550 /* volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D763176B1414B24700337550 /* volcano.png */; };
-		D76317711414E9FE00337550 /* burst.png in Resources */ = {isa = PBXBuildFile; fileRef = D76317701414E9FE00337550 /* burst.png */; };
 		D77B109A140FC5A600897203 /* icon_contents_page_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1096140FC5A600897203 /* icon_contents_page_selected.png */; };
 		D77B109B140FC5A600897203 /* icon_contents_page_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */; };
 		D77B109C140FC5A600897203 /* RSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D77B1099140FC5A600897203 /* RSPageControl.m */; };
@@ -235,6 +236,9 @@
 		4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersManager.m; sourceTree = "<group>"; };
 		4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-ios.a"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D701908A141618510072D020 /* goal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = goal.wav; sourceTree = "<group>"; };
+		D702D18A14152C5D005A1764 /* burst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burst.png; sourceTree = "<group>"; };
+		D702D18D14152C69005A1764 /* volcano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volcano.png; sourceTree = "<group>"; };
 		D72E0286139E448200F3687C /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		D72E0287139E448200F3687C /* filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filter.h; sourceTree = "<group>"; };
 		D72E0288139E448200F3687C /* flapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flapi.h; sourceTree = "<group>"; };
@@ -245,8 +249,6 @@
 		D72E028D139E448200F3687C /* subsys_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = subsys_ios.mm; sourceTree = "<group>"; };
 		D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		D72E02AC139E500800F3687C /* FLAPIrecorded.raw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FLAPIrecorded.raw; sourceTree = "<group>"; };
-		D763176B1414B24700337550 /* volcano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volcano.png; sourceTree = "<group>"; };
-		D76317701414E9FE00337550 /* burst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burst.png; sourceTree = "<group>"; };
 		D77B1096140FC5A600897203 /* icon_contents_page_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contents_page_selected.png; sourceTree = "<group>"; };
 		D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contents_page_unselected.png; sourceTree = "<group>"; };
 		D77B1098140FC5A600897203 /* RSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPageControl.h; sourceTree = "<group>"; };
@@ -334,6 +336,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D701908A141618510072D020 /* goal.wav */,
+				D702D18D14152C69005A1764 /* volcano.png */,
+				D702D18A14152C5D005A1764 /* burst.png */,
 				4E8F595113A7AFA900D9D3A7 /* sqlite_database */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				4E8F594913A7AF9800D9D3A7 /* fr.lproj */,
@@ -362,8 +367,6 @@
 		4E141B0513B35EC100698F53 /* Visual */ = {
 			isa = PBXGroup;
 			children = (
-				D76317701414E9FE00337550 /* burst.png */,
-				D763176B1414B24700337550 /* volcano.png */,
 				4E141B0613B35F1900698F53 /* Default-Portrait.png */,
 				4E141B0713B35F1900698F53 /* Default.png */,
 				4E141B0813B35F1900698F53 /* Default@2x.png */,
@@ -698,8 +701,9 @@
 				4E2F50011407D1F900C4C00C /* FLAPIview.xib in Resources */,
 				D77B109A140FC5A600897203 /* icon_contents_page_selected.png in Resources */,
 				D77B109B140FC5A600897203 /* icon_contents_page_unselected.png in Resources */,
-				D763176C1414B24700337550 /* volcano.png in Resources */,
-				D76317711414E9FE00337550 /* burst.png in Resources */,
+				D702D18B14152C5D005A1764 /* burst.png in Resources */,
+				D702D18E14152C69005A1764 /* volcano.png in Resources */,
+				D701908B141618510072D020 /* goal.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
