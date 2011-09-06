@@ -18,15 +18,15 @@
 
 	//The sub views include mainly the scroll view, which will include game1ChoiceView and game2ChoiceView (for the moment there are 2 games)
 	IBOutlet UIScrollView *scrollView;
-    FLAPIview *flapiView;
-	IBOutlet UIView *game1ChoiceView; // WebBrowser
-	IBOutlet UIView *game2ChoiceView;
+    
+    // Activities
+    FLAPIview *volcanoGame;
+    UIView *webBrowserView; 
+    UIView *videoPlayerView;
 	
 	//The buttons inside each of the game sub views
-	IBOutlet UIButton *game1Button; // WebBrowser
-	IBOutlet UIButton *game2Button;
-	
-	
+    IBOutlet UILabel *volcanoLabel, *webBrowserLabel, *videoPlayerLabel, *settingsLabel;
+
 	
 	//There is no navigation controller here. So we add a navigation bar individually.
 	IBOutlet UINavigationBar *navigationBar;
@@ -39,20 +39,18 @@
 
 //Properties
 @property(nonatomic,retain) UIScrollView *scrollView;
-@property(nonatomic,retain) FLAPIview *flapiView;
-@property(nonatomic,retain) UIView *game1ChoiceView;
-@property(nonatomic,retain) UIView *game2ChoiceView;
-
-@property(nonatomic,retain) UIButton *game1Button;
-@property(nonatomic,retain) UIButton *game2Button;
-
 
 @property (nonatomic, retain) UINavigationBar *navigationBar;
-
 @property (nonatomic, retain) RSPageControl *pageControl;
 
-- (IBAction) game1Touch:(id) sender;
-- (IBAction) game2Touch:(id) sender;
+//Activities Properties
+
+@property(nonatomic,retain) UILabel *volcanoLabel, *webBrowserLabel, *videoPlayerLabel, *settingsLabel;
+
+- (IBAction) volcanoTouch:(id) sender;
+- (IBAction) webBrowserTouch:(id) sender;
+- (IBAction) videoPlayerTouch:(id) sender;
+- (IBAction) settingsTouch:(id) sender;
 
 - (IBAction) pageControlDidChangeValue:(id) sender;
 

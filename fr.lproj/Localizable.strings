@@ -1,11 +1,8 @@
-/* Title of the game view */
-"GameViewTitle" = "Choisir une activité";
+"Menu" = "Menu";
+"Setup Video" = "Préparation du Flutter®";
+"Web Browser" = "Browser web";
+"Game Volcano" = "Jeux du volcan";
 
-/* Text of the first game button */
-"GameButton1Text" = "Jeu 1";
-
-/* Text of the second game button */
-"GameButton2Text" = "Jeu 2";
 
 /* Title of the first tab bar item */
 "Activities" = "Activités";

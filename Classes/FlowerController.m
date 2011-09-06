@@ -73,6 +73,7 @@ static GameViewController* activitiesViewController;
 // get Activities View Controller
 + (GameViewController*) getActivitiesViewController
 {
+    NSLog(@"getActivitiesViewController");
     if (activitiesViewController == nil) {
         activitiesViewController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:[NSBundle mainBundle]];
     }
@@ -119,7 +120,7 @@ static GameViewController* activitiesViewController;
     
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Settings", @"Title of the second tab bar item")];
 
-        [actionSheet addButtonWithTitle:NSLocalizedString(@"Satistics", @"Title of the third tab bar item")];
+       // [actionSheet addButtonWithTitle:NSLocalizedString(@"Satistics", @"Title of the third tab bar item")];
     
     if (![[self currentFlapix] IsDemo]) {
          [actionSheet addButtonWithTitle:NSLocalizedString(@"Start Demo Mode", @"Enable Demo Mode")];
@@ -151,30 +152,15 @@ static GameViewController* activitiesViewController;
             return;
             break;
         case 2: // Activities
-            if ([currentMainController isKindOfClass:[GameViewController class]]) {
-                NSLog(@"Skip");
-                return;
-            }
             [FlowerController setCurrentMainController:[FlowerController getActivitiesViewController]];
-            
             break;
 			
         case 3: // Settings
-            if ([currentMainController isKindOfClass:[SettingsViewController class]]) {
-                NSLog(@"Skip");
-                return;
-            }
-             
             [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
-            
             break;
-        case 4: // Statistics
-            if ([currentMainController isKindOfClass:[StatisticsViewController class]]) {
-                NSLog(@"Skip");
-                return;
-            }
-            [FlowerController setCurrentMainController:[FlowerController getStatisticsViewController]];
-        case 5: // Enable DemoMode
+        //case 4: // Statistics
+         //   [FlowerController setCurrentMainController:[FlowerController getStatisticsViewController]];
+        case 4: // Enable DemoMode
             [[FlowerController currentFlapix] SetDemo:![[FlowerController currentFlapix] IsDemo]];
         break;
 
@@ -184,7 +170,10 @@ static GameViewController* activitiesViewController;
 }
 
 +(void)setCurrentMainController:(UIViewController*)thisController {
-    NSLog(@"setCurrentMainController");
+    if ([currentMainController isKindOfClass:[thisController class]]) {
+         NSLog(@"setCurrentMainController Skip");
+        return;
+    }
     UIViewController *previousViewController = currentMainController;
     currentMainController = thisController;
     

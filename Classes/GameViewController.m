@@ -22,7 +22,7 @@
 @implementation GameViewController
 
 
-@synthesize scrollView, flapiView, game1ChoiceView, game2ChoiceView, game1Button, game2Button, navigationBar, pageControl;
+@synthesize scrollView, navigationBar, pageControl,  volcanoLabel, webBrowserLabel, videoPlayerLabel, settingsLabel;
 
 
 
@@ -45,9 +45,20 @@
 }
 */
 
-AWebController *webController;
+- (IBAction) volcanoTouch:(id) sender {
+    if (volcanoGame == nil) {
+        volcanoGame = [[FLAPIview alloc] initWithNibName:@"FLAPIview" bundle:[NSBundle mainBundle]];
+    }
+    [FlowerController setCurrentMainController:volcanoGame];
+}
 
-- (IBAction) game1Touch:(id) sender {
+- (IBAction) settingsTouch:(id) sender {
+    [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
+}
+
+
+AWebController *webController;
+- (IBAction) webBrowserTouch:(id) sender {
     if (webController == nil) {
         webController = [[AWebController alloc] initWithNibName:@"AWebController" bundle:[NSBundle mainBundle]];
     }
@@ -55,13 +66,15 @@ AWebController *webController;
 }
 
 AVideoPlayer *videoPlayer;
-
-- (IBAction) game2Touch:(id) sender {
+- (IBAction) videoPlayerTouch:(id) sender {
     if (videoPlayer == nil) {
         videoPlayer = [[AVideoPlayer alloc] initWithNibName:@"AVideoPlayer" bundle:[NSBundle mainBundle]];
     }
     [FlowerController setCurrentMainController:videoPlayer];
 }
+
+
+
  
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -70,29 +83,24 @@ AVideoPlayer *videoPlayer;
     [super viewDidLoad];
 
 	//Set title of the navigation bar
-	navigationBar.topItem.title = NSLocalizedString(@"GameViewTitle", @"Title of the game view");
+	navigationBar.topItem.title = NSLocalizedString(@"Menu", @"Menu");
 	
 	//Set title of game buttons for all states
-	[game1Button.titleLabel setTextAlignment:UITextAlignmentCenter];
-	[game2Button.titleLabel setTextAlignment:UITextAlignmentCenter];
-	[game1Button setTitle:NSLocalizedString(@"GameButton1Text", @"Text of the first game button") forState:UIControlStateNormal];
-	[game1Button setTitle:NSLocalizedString(@"GameButton1Text", @"Text of the first game button") forState:UIControlStateHighlighted];
-	[game1Button setTitle:NSLocalizedString(@"GameButton1Text", @"Text of the first game button") forState:UIControlStateDisabled];
-	[game1Button setTitle:NSLocalizedString(@"GameButton1Text", @"Text of the first game button") forState:UIControlStateSelected];
-	[game2Button setTitle:NSLocalizedString(@"GameButton2Text", @"Text of the second game button") forState:UIControlStateNormal];
-	[game2Button setTitle:NSLocalizedString(@"GameButton2Text", @"Text of the second game button") forState:UIControlStateHighlighted];
-	[game2Button setTitle:NSLocalizedString(@"GameButton2Text", @"Text of the second game button") forState:UIControlStateDisabled];
-	[game2Button setTitle:NSLocalizedString(@"GameButton2Text", @"Text of the second game button") forState:UIControlStateSelected];
+    [volcanoLabel setText:NSLocalizedString(@"Game Volcano", @"Icon Title")];
+	[webBrowserLabel setText:NSLocalizedString(@"Web Browser", @"Icon Title")];
+    [videoPlayerLabel setText:NSLocalizedString(@"Setup Video", @"Icon Title")];
+    [settingsLabel setText:NSLocalizedString(@"Settings", @"Icon Title")];
 	
 	//Add games views inside the scroll view
     
-    flapiView = [[FLAPIview alloc] initWithNibName:@"FLAPIview" bundle:[NSBundle mainBundle]];
-    flapiView.view.frame = CGRectMake(0.0f, 0.0f, 320.0f, 367.0f);
+    /**
+    volcanoGame.view.frame = CGRectMake(0.0f, 0.0f, 320.0f, 367.0f);
     
 	
-	game1ChoiceView.frame = CGRectMake(320.0f, 0.0f, 320.0f, 367.0f);
-	game2ChoiceView.frame = CGRectMake(640.0f, 0.0f, 320.0f, 367.0f);
-    
+	webBrowserView.frame = CGRectMake(320.0f, 0.0f, 320.0f, 367.0f);
+	videoPlayerView.frame = CGRectMake(640.0f, 0.0f, 320.0f, 367.0f);
+    **/
+     
 	//Set scroll view content size
     //Warning: to be able to scroll the view by touching the PageContol (see method pageControlDidChangeValue), both dimensions of the content size of the scrollview have to be nonzero.
 	//scrollView.contentSize = CGSizeMake(960.0,0.0);
@@ -110,11 +118,11 @@ AVideoPlayer *videoPlayer;
 	
 	//Add game1ChoiceView and game2ChoiceView inside the scroll view
     
-    
-    [scrollView addSubview:flapiView.view];
-	[scrollView addSubview:game1ChoiceView];
-	[scrollView addSubview:game2ChoiceView];
-	
+    /**
+    [scrollView addSubview:volcanoGame.view];
+	[scrollView addSubview:webBrowserView];
+	[scrollView addSubview:videoPlayerView];
+	**/
 	
 		
 	
@@ -189,9 +197,9 @@ AVideoPlayer *videoPlayer;
 
 - (void)dealloc {
 	[scrollView release];
-	
-	[game1ChoiceView release];
-	[game2ChoiceView release];
+	[volcanoGame release];
+	[webBrowserView release];
+	[videoPlayerView release];
     [super dealloc];
 }
 
