@@ -120,6 +120,7 @@
 }
 
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
+    NSLog(@"FLAPIView flapixEventExerciceStart");
     currentExercice = (FLAPIExercice*)[notification object];
     [self initVariables];
 }

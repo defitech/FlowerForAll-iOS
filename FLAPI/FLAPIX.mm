@@ -140,7 +140,7 @@ BOOL demo_mode = NO;
 
 - (BOOL) Start {
     if (self.running) return NO;
-    [self exerciceStop];
+    [self exerciceStop]; [self exerciceInCourse]; // will start a new exercice
     if (FLAPI_SUCCESS != FLAPI_Start()) return NO; // This does start the sound recording and processing
     self.running = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventStart"  object:self];
@@ -207,7 +207,7 @@ BOOL demo_mode = NO;
     if ([[self exerciceInCourse] percent_done] >= 1) {
         [self Stop];
     }
-    [blow release];
+    [blow autorelease];
     
     [pool drain]; 
 }

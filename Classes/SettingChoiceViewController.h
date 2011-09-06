@@ -35,6 +35,6 @@
 @property (nonatomic, retain) UserListViewController *userListViewController;
 @property (nonatomic, retain) GameParametersViewController *gameParametersViewController;
 
-- (void) pushGameParametersViewController;
+- (void) pushGameParametersViewController:(BOOL)animated;
 
 @end
