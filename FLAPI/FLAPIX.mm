@@ -118,6 +118,7 @@ BOOL demo_mode = NO;
     [self exerciceStop];
     if (FLAPI_SUCCESS != FLAPI_Start()) return NO; // This does start the sound recording and processing
     self.running = YES;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventStart"  object:self];
     return YES;
 }
 
@@ -128,6 +129,7 @@ BOOL demo_mode = NO;
     if (! self.running) return NO;
     if (FLAPI_SUCCESS != FLAPI_Stop()) return NO; // This does stop the sound recording and processing
     self.running = NO;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventStop"  object:self];
     return YES;
 }
 

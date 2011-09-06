@@ -12,6 +12,70 @@
 
 @implementation HistoryViewController
 
+
+
+# pragma mark TIMERS
+NSTimer *repeatingTimer;
+
+- (void) initTimersAndListeners {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification 
+                                               object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification 
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(eventFlapixStarted:)
+                                                 name:@"FlapixEventStart" 
+                                               object:nil];
+
+}
+
+- (void) startReloadTimer {
+    if (! [[FlowerController currentFlapix] running]) return;
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                      target:self selector:@selector(timerFireMethod:)
+                                                    userInfo:nil  repeats:YES];
+    repeatingTimer = timer;
+    
+}
+
+- (void) stopReloadTimer {
+    [repeatingTimer invalidate];
+    repeatingTimer = nil;
+    
+}
+
+- (void) timerFireMethod:(NSTimer*)theTimer {
+    if (! [[FlowerController currentFlapix] running]) [self stopReloadTimer];
+    [graph reloadData];
+}
+
+
+
+- (void)applicationWillResignActive:(NSNotification *)notification {
+    NSLog(@"HISTORY VIEW resign active");
+    [self stopReloadTimer];
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    NSLog(@"HISTORY VIEW become active");
+    [self startReloadTimer];
+}
+
+- (void)eventFlapixStarted:(NSNotification *)notification {
+    NSLog(@"HISTORY VIEW flapix started");
+    [self startReloadTimer];
+}
+
+
+# pragma mark VIEWS LOADING
+
 - (void)loadView {
 	// Alloc & Init Main View
 	UIView *tmpView = [ [ UIView alloc ] initWithFrame:CGRectMake(40.0, 420.0, 280.0, 40.0) ];
@@ -33,13 +97,12 @@
 	[ self.view addSubview:[ graphView autorelease ] ];
     
     // Alloc Label View
-    labelView = [ [ UITextView alloc ] initWithFrame:CGRectMake(230.0, 0.0, 50.0, 40.0) ];
+    labelView = [ [ UILabel alloc ] initWithFrame:CGRectMake(230.0, 0.0, 50.0, 40.0) ];
     [labelView setBackgroundColor:[UIColor blackColor]];
     [labelView setTextColor:[UIColor whiteColor]];
     [labelView setFont:[UIFont systemFontOfSize:8.0]];
     [labelView setText:@"Label 1\nLabel 2\nLabel 3"];
-    [labelView setEditable:FALSE];
-    [ self.view addSubview:[ labelView autorelease ] ];
+    [ self.view addSubview:labelView ];
     
     historyDuration = 2; // 2 minutes
     graphPadding = 2; // 2 pixels
@@ -128,8 +191,17 @@
     inRangePlot.barOffset = 0;
     inRangePlot.fill = [[CPFill alloc] initWithColor:[CPColor greenColor]];
     [ graph addPlot:[inRangePlot autorelease] ];
+    
+    
+    [self initTimersAndListeners];
 	
 }
+
+
+
+
+# pragma mark graph
+
 
 - (NSUInteger)numberOfRecordsForPlot:(CPPlot *)plot {
     
@@ -192,6 +264,7 @@
 }
 
 - (void)dealloc {
+    [labelView release];
 	[history release];
     [graph release];
     [super dealloc];
