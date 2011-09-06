@@ -19,6 +19,8 @@
 	//The sub views include mainly the scroll view, which will include game1ChoiceView and game2ChoiceView (for the moment there are 2 games)
 	IBOutlet UIScrollView *scrollView;
     
+    IBOutlet UIView *page2;
+    
     // Activities
     FLAPIview *volcanoGame;
     UIView *webBrowserView; 
@@ -42,6 +44,7 @@
 
 @property (nonatomic, retain) UINavigationBar *navigationBar;
 @property (nonatomic, retain) RSPageControl *pageControl;
+@property(nonatomic,retain) UIView *page2;
 
 //Activities Properties
 

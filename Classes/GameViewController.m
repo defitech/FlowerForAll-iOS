@@ -22,7 +22,7 @@
 @implementation GameViewController
 
 
-@synthesize scrollView, navigationBar, pageControl,  volcanoLabel, webBrowserLabel, videoPlayerLabel, settingsLabel;
+@synthesize page2, scrollView, navigationBar, pageControl,  volcanoLabel, webBrowserLabel, videoPlayerLabel, settingsLabel;
 
 
 
@@ -91,21 +91,16 @@ AVideoPlayer *videoPlayer;
     [videoPlayerLabel setText:NSLocalizedString(@"Setup Video", @"Icon Title")];
     [settingsLabel setText:NSLocalizedString(@"Settings", @"Icon Title")];
 	
-	//Add games views inside the scroll view
-    
-    /**
-    volcanoGame.view.frame = CGRectMake(0.0f, 0.0f, 320.0f, 367.0f);
-    
-	
-	webBrowserView.frame = CGRectMake(320.0f, 0.0f, 320.0f, 367.0f);
-	videoPlayerView.frame = CGRectMake(640.0f, 0.0f, 320.0f, 367.0f);
-    **/
-     
-	//Set scroll view content size
-    //Warning: to be able to scroll the view by touching the PageContol (see method pageControlDidChangeValue), both dimensions of the content size of the scrollview have to be nonzero.
+    int nb_pages = 2;
 	//scrollView.contentSize = CGSizeMake(960.0,0.0);
-    [scrollView setContentSize:CGSizeMake(960.0,335.0)];
+    [scrollView setContentSize:CGSizeMake(320.0 * nb_pages,335.0)];
 	
+    [pageControl setNumberOfPages:nb_pages];
+    
+    //add pages
+    page2.frame = CGRectMake(320.0f, 0.0f, 320.0f, 367.0f);
+    [scrollView addSubview:page2];
+    
 	//Set scroll view zoom scale
 	scrollView.maximumZoomScale = 3.0;
 	scrollView.minimumZoomScale = 0.2;
@@ -115,16 +110,7 @@ AVideoPlayer *videoPlayer;
 	
 	//Set scroll view paging enabled
 	scrollView.pagingEnabled = YES;
-	
-	//Add game1ChoiceView and game2ChoiceView inside the scroll view
-    
-    /**
-    [scrollView addSubview:volcanoGame.view];
-	[scrollView addSubview:webBrowserView];
-	[scrollView addSubview:videoPlayerView];
-	**/
-	
-		
+
 	
 	//Make the labelAndPickerView appear on screen animatedly as the view loads
 	[UIView beginAnimations:@"Transition" context:nil];
