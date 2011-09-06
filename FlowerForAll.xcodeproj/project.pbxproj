@@ -101,6 +101,7 @@
 		D77B109C140FC5A600897203 /* RSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D77B1099140FC5A600897203 /* RSPageControl.m */; };
 		D7ABFF88140B8227003B9F08 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF86140B8227003B9F08 /* HistoryViewController.m */; };
 		D7ABFF8D140BB471003B9F08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7ABFF8C140BB471003B9F08 /* CoreGraphics.framework */; };
+		D7D64652141659B700F0DE4F /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D64651141659B700F0DE4F /* explosion.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -257,6 +258,7 @@
 		D7ABFF86140B8227003B9F08 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		D7ABFF89140B8560003B9F08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D7ABFF8C140BB471003B9F08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D7D64651141659B700F0DE4F /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +338,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D7D64651141659B700F0DE4F /* explosion.wav */,
 				D701908A141618510072D020 /* goal.wav */,
 				D702D18D14152C69005A1764 /* volcano.png */,
 				D702D18A14152C5D005A1764 /* burst.png */,
@@ -704,6 +707,7 @@
 				D702D18E14152C69005A1764 /* volcano.png in Resources */,
 				D701908B141618510072D020 /* goal.wav in Resources */,
 				4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */,
+				D7D64652141659B700F0DE4F /* explosion.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

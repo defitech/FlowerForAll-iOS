@@ -75,7 +75,7 @@
     lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaReverse);
     
     // oscillates between 1/4 and 3/4 of lavaUp
-    NSLog(@"lavaSmooth: %i", lavaSmooth);
+    //NSLog(@"lavaSmooth: %i", lavaSmooth);
     if ((lavaReverse > 0 && lavaSmooth == 7) ||
         (lavaReverse < 0 && lavaSmooth == 2)) {
         
@@ -92,22 +92,8 @@
     
     //Add sound when the goal has been reached for the last blow
     if (blow.goal){
-        //Get the filename of the sound file:
-        NSString *path = [NSString stringWithFormat:@"%@%@", 
-                          [[NSBundle mainBundle] resourcePath],
-                          @"/goal.wav"];
         
-        //declare a system sound id
-        SystemSoundID soundID;
-        
-        //Get a URL for the sound file
-        NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
-        
-        //Use audio sevices to create the sound
-        AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
-        
-        //Use audio services to play the sound
-        AudioServicesPlaySystemSound(soundID);
+        [self playSystemSound:@"/goal.wav"];
         
         //Raise up lava
         lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * [currentExercice percent_done]);
@@ -117,6 +103,8 @@
 - (void)flapixEventExerciceStop:(NSNotification *)notification {
     lavaHidder.hidden = true;
     burst.hidden = false;
+    
+    [self playSystemSound:@"/explosion.wav"];
 }
 
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
@@ -124,6 +112,28 @@
     currentExercice = (FLAPIExercice*)[notification object];
     [self initVariables];
 }
+
+
+
+- (void)playSystemSound:(NSString *)soundFilename{
+    //Get the filename of the sound file:
+    NSString *path = [NSString stringWithFormat:@"%@%@", 
+                      [[NSBundle mainBundle] resourcePath],
+                      soundFilename];
+    
+    //declare a system sound id
+    SystemSoundID soundID;
+    
+    //Get a URL for the sound file
+    NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
+    
+    //Use audio sevices to create the sound
+    AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
+    
+    //Use audio services to play the sound
+    AudioServicesPlaySystemSound(soundID);
+}
+
 
 
 - (void)didReceiveMemoryWarning

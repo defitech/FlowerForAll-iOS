@@ -27,5 +27,6 @@
     FLAPIExercice *currentExercice;
 }
 
+- (void)playSystemSound:(NSString *)soundFilename;
 
 @end
