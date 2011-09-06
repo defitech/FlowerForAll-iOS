@@ -63,7 +63,7 @@ static GameViewController* activitiesViewController;
     if (flapix == nil) {
         flapix = [FLAPIX new];
         [ParametersManager loadParameters:flapix];
-        [flapix Start];
+        //[flapix Start];
     }
     
     return flapix;

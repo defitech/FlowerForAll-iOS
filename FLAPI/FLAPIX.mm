@@ -166,9 +166,6 @@ BOOL demo_mode = NO;
     // Seems there is no pool for this thread.. (I must read more about this)
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     BOOL goal = ir_length >= [self expirationDurationTarget];
-    
-   
-    
     blowing = false;
     
     // send messages

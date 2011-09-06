@@ -42,6 +42,7 @@
 }
 
 
+
 //The GL view is stored in the nib file. When it's unarchived it's sent -initWithCoder:
 - (id)initWithCoder:(NSCoder*)coder {
     
@@ -60,12 +61,34 @@
             return nil;
         }
         
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationWillResignActive:)
+                                                     name:UIApplicationWillResignActiveNotification 
+                                                   object:nil];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidBecomeActive:)
+                                                     name:UIApplicationDidBecomeActiveNotification 
+                                                   object:nil];
+        
         animationInterval = 1.0 / 60.0;
 		[self setupView];
 		[self startAnimation];
     }
     
     return self;
+}
+
+
+- (void)applicationWillResignActive:(NSNotification *)notification {
+    NSLog(@"EAGLVIEW resign active");
+    [self stopAnimation];
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    NSLog(@"EAGLVIEW become active");
+    [self startAnimation];
 }
 
 const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
