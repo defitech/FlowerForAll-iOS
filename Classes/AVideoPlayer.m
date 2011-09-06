@@ -36,15 +36,16 @@
 
 #pragma mark - View lifecycle
 
+MPMoviePlayerController *player;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     NSString *url = [[NSBundle mainBundle] 
-                     pathForResource:@"Hamdoulila" 
+                     pathForResource:@"FlowerHowTo" 
                      ofType:@"m4v"];
     
-    MPMoviePlayerController *player = 
+    player = 
     [[MPMoviePlayerController alloc] 
      initWithContentURL:[NSURL fileURLWithPath:url]];
     [player setUseApplicationAudioSession:YES];
@@ -78,8 +79,19 @@
      name:MPMoviePlayerPlaybackDidFinishNotification
      object:player];    
     NSLog(@"Finished Playing"); 
-    // switch to Activitiy chooser
-    [player autorelease];    
+  
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [player play];    
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [player pause];    
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidUnload
@@ -87,6 +99,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    // switch to Activitiy chooser
+    [player release];    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

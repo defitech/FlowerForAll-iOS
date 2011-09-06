@@ -177,12 +177,18 @@ static GameViewController* activitiesViewController;
          NSLog(@"setCurrentMainController Skip");
         return;
     }
+    [currentMainController viewWillDisappear:true];
+    [thisController viewWillAppear:true];
+    
     UIViewController *previousViewController = currentMainController;
     currentMainController = thisController;
     
     [singleton.mainView addSubview:currentMainController.view];
+    [previousViewController viewDidDisappear:true];
     [previousViewController.view removeFromSuperview];
     [singleton.mainView setNeedsLayout];
+    [currentMainController viewDidAppear:true];
+    
 }
 
 #pragma mark - View lifecycle
