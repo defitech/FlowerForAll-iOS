@@ -9,6 +9,7 @@
 #import "FLAPIview.h"
 #import "FLAPIBlow.h"
 #import "FLAPIX.h"
+#import "FlowerController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -37,7 +38,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-                
+        
         volcano = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"volcano.png"] ] autorelease];
         burst = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"burst.png"] ] autorelease];     
         lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 22, volcano.frame.size.height)];
@@ -71,11 +72,22 @@
     return self;
 }
 
+- (IBAction) pressStart:(id)sender {
+    NSLog(@"Start / Stop");
+    if ( [[FlowerController currentFlapix] running]) {
+        [[FlowerController currentFlapix] Stop];
+        [start setTitle:@"Start Exercice" forState:UIControlStateNormal];
+    } else {
+        [[FlowerController currentFlapix] Start];
+        [start setTitle:@"Stop Exercice" forState:UIControlStateNormal];
+    }
+    [self.view setNeedsDisplay];
+}
+
 - (void)flapixEventFrequency:(NSNotification *)notification {
     lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaReverse);
     
     // oscillates between 1/4 and 3/4 of lavaUp
-    //NSLog(@"lavaSmooth: %i", lavaSmooth);
     if ((lavaReverse > 0 && lavaSmooth == 7) ||
         (lavaReverse < 0 && lavaSmooth == 2)) {
         
@@ -89,6 +101,8 @@
 	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
     
     [self.view setNeedsDisplay];
+    
+    NSLog(@"percent_done: %f", [currentExercice percent_done]);
     
     //Add sound when the goal has been reached for the last blow
     if (blow.goal){

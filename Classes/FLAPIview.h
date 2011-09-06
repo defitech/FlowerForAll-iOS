@@ -12,6 +12,7 @@
 
 
 @interface FLAPIview : UIViewController {
+    IBOutlet UIButton *start;
     UIImageView *volcano;
     UIImageView *burst;
     UIView *lavaHidder;
@@ -28,5 +29,6 @@
 }
 
 - (void)playSystemSound:(NSString *)soundFilename;
+- (IBAction) pressStart:(id) sender;
 
 @end
