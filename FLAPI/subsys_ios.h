@@ -41,6 +41,11 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *flapix);
 
 int FLAPI_SUBSYS_IOS_SubSys_Stop_Force();
 
+
+#pragma  mark PAUSE / START
+OSStatus FLAPI_SUBSYS_IOS_Pause();
+OSStatus FLAPI_SUBSYS_IOS_UnPause();
+
 // Standard Subsystem function
 // ===========================
 
@@ -54,7 +59,6 @@ int	SubSys_Close();
 // ===========================
 
 int SendWinMsg( int msg, int lparam, int hparam );
-
 
 int	OpenDevice();
 int	CloseDevice();

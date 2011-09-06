@@ -31,6 +31,10 @@ FLAPIX *flapix;
 bool stop_request = false; // we are waiting for a stop
 bool stop_possible = true; // flag passed to true when OnSubSystemProcess
 
+
+bool running = false;
+bool paused = false;
+
 // Standard Subsystem function
 // ===========================
 
@@ -100,6 +104,8 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     FLAPI_SetMode(1); // send winMSG
     FLAPI_Init();
     
+    
+    
 }
 
 
@@ -134,6 +140,7 @@ int	SubSys_Start(){
     stop_request = false;
     
 	printf("Started\n");
+    running = true;
 	return FLAPI_SUCCESS;
 }
 
@@ -163,6 +170,7 @@ int FLAPI_SUBSYS_IOS_SubSys_Stop_Force() {
 	
 	OnSubSystemStop(); // tell the subsys we stopped
 	printf("SubSys_Stop\n");
+    running = false;
 	return FLAPI_SUCCESS;
 }
 
@@ -407,6 +415,21 @@ int OpenDevice(){
 	printf("SubSys_OpenDevice\n");
 	return FLAPI_SUCCESS;
 }
+
+#pragma  mark PAUSE / START
+OSStatus FLAPI_SUBSYS_IOS_Pause() {
+    if (recordState.queue == nil || ! running || paused) { return nil; }
+    paused = true;
+    return AudioQueuePause(recordState.queue );
+}
+
+OSStatus FLAPI_SUBSYS_IOS_UnPause() {
+    if (recordState.queue == nil || ! running || ! paused) { return nil; }
+    printf("FLAPI_SUBSYS_IOS_UnPause\n");
+    paused = false;
+    return AudioQueueStart(recordState.queue , nil);
+}
+
 
 //Close audio device
 int CloseDevice(){

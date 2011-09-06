@@ -45,8 +45,33 @@
         
         current_exercice = nil;
         
+        
+        // register to Active Events
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationWillResignActive:)
+                                                     name:UIApplicationWillResignActiveNotification 
+                                                   object:nil];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidBecomeActive:)
+                                                     name:UIApplicationDidBecomeActiveNotification 
+                                                   object:nil];
+        
     }
     return self;
+}
+
+#pragma mark application activity
+
+- (void)applicationWillResignActive:(NSNotification *)notification {
+    NSLog(@"FLAPIX resign active");
+    FLAPI_SUBSYS_IOS_Pause();
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    NSLog(@"FLAPIX become active");
+    FLAPI_SUBSYS_IOS_UnPause();
 }
 
 
