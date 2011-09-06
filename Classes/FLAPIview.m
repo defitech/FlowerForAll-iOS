@@ -17,45 +17,37 @@
 
 - (void)initVariables {
     
-    lavaWidth = 22; // depending of the image
+    int mainWidth = self.view.frame.size.width;
+    int mainHeight = self.view.frame.size.height - 40 - 20; // 40 for needle + 20 for padding
     lavaHeight = volcano.frame.size.height;
     
-    lavaSmooth = 0;
-    lavaReverse = 1;
-    
-    int mainWidth = self.view.frame.size.width;
-    volcano.center = CGPointMake(mainWidth / 2, 334);
-    burst.center = CGPointMake(mainWidth / 2, 201);
+    volcano.center = CGPointMake(mainWidth / 2, mainHeight - (lavaHeight / 2));
+    burst.center = CGPointMake(mainWidth / 2, mainHeight - lavaHeight - (burst.frame.size.height / 2) + 67);
     burst.hidden = true;
-    lavaHidder.frame = CGRectMake(mainWidth / 2 - lavaWidth / 2, 264, lavaWidth, lavaHeight);
+    lavaHidder.center = CGPointMake(mainWidth / 2, mainHeight - (lavaHeight / 2));
     lavaHidder.hidden = false;
-    
+
     lavaFrame = lavaHidder.frame;
+    
+    lavaSmooth = 1;
+    lavaReverse = 1;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+                
         volcano = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"volcano.png"] ] autorelease];
-        [self.view addSubview:volcano];
-        
-        burst = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"burst.png"] ] autorelease];
-        [self.view addSubview:burst];        
-        
-//        lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(
-//                                    self.view.frame.size.width / 2 - lavaWidth / 2,
-//                                    self.view.frame.size.height / 2 - lavaHeight / 2,
-//                                    lavaWidth, lavaHeight)];
-        lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(
-                                                             self.view.frame.size.width / 2 - lavaWidth / 2,
-                                                             264,
-                                                             lavaWidth, lavaHeight)];
+        burst = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"burst.png"] ] autorelease];     
+        lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 22, volcano.frame.size.height)];
         lavaHidder.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:lavaHidder];
         
         [self initVariables];
+        
+        [self.view addSubview:volcano];
+        [self.view addSubview:burst];
+        [self.view addSubview:lavaHidder];
         
         // Listen to FLAPIX blowEvents
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -83,8 +75,9 @@
     lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaReverse);
     
     // oscillates between 1/4 and 3/4 of lavaUp
-    if ((lavaReverse < 0 && lavaSmooth <= 7) ||
-        (lavaReverse > 0 && lavaSmooth >= 2)) {
+    NSLog(@"lavaSmooth: %i", lavaSmooth);
+    if ((lavaReverse > 0 && lavaSmooth == 7) ||
+        (lavaReverse < 0 && lavaSmooth == 2)) {
         
         lavaReverse = -1 * lavaReverse;
     }
@@ -96,7 +89,6 @@
 	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
     
     [self.view setNeedsDisplay];
-	//do stuff
     
     //Add sound when the goal has been reached for the last blow
     if (blow.goal){
@@ -116,6 +108,9 @@
         
         //Use audio services to play the sound
         AudioServicesPlaySystemSound(soundID);
+        
+        //Raise up lava
+        lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * [currentExercice percent_done]);
     }
 }
 
