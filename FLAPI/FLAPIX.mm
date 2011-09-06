@@ -32,8 +32,8 @@
         FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(self); // register this object for events callbacks
        
         // Init Values
-        gParams.frequency_max				= 27;
-        gParams.frequency_min				= 10;
+        gParams.frequency_max				= 22;
+        gParams.frequency_min				= 7;
         gParams.target_frequency			= 18.0f;
         gParams.frequency_tolerance			= 4.0f;
         gParams.target_duration				= 1500;

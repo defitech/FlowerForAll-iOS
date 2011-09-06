@@ -57,6 +57,7 @@
 	self.settingsArray = array;
 	[array release];
 	
+   [self pushGameParametersViewController];
 }
 
 
@@ -206,19 +207,18 @@
 	
 	//...otherwise if the second row is selected, push a GameParametersViewController.
 	else if (row ==1){
-		
-		if (self.gameParametersViewController == nil){
-			GameParametersViewController *gameParameters = [[GameParametersViewController alloc] initWithNibName:@"GameParametersView" bundle:nil];
-			self.gameParametersViewController = gameParameters;
-			[gameParameters release];
-		}
-		
-		gameParametersViewController.title = [NSString stringWithFormat:@"%@", [settingsArray objectAtIndex:row]];
-		
-		[[FlowerController getSettingsViewController] pushViewController:gameParametersViewController animated:YES];
-		
+		[self pushGameParametersViewController];
 	}
 
+}
+
+- (void) pushGameParametersViewController {
+    if (self.gameParametersViewController == nil){
+        self.gameParametersViewController = [[GameParametersViewController alloc] initWithNibName:@"GameParametersView" bundle:nil];
+        self.gameParametersViewController.title = NSLocalizedString(@"ParametersEntryLabel",@"Label of the Parameters entry in the settings table");
+    }
+    
+    [[FlowerController getSettingsViewController] pushViewController:self.gameParametersViewController animated:YES];
 }
 
 
