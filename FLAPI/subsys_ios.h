@@ -16,6 +16,7 @@
 #include "flapi.h"
 
 #import "FLAPIX.h"
+#import "subsys_ios_AVAudioSessionDelegate.h"
 
 #include <AudioToolbox/AudioToolbox.h>
 #define NUM_BUFFERS 3

@@ -64,6 +64,50 @@ void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read){
 	printf(read ? "Reading data to file %s\n" : "Writing data to file %s\n",filepath);
 }
 
+
+BOOL isMicrophonePluggedIn () {
+    //--check the actual Route
+    CFStringRef state = nil;
+    UInt32 propertySize = sizeof(CFStringRef);
+    OSStatus result = AudioSessionGetProperty( kAudioSessionProperty_AudioRoute, &propertySize, &state);
+    if( result == kAudioSessionNoError)
+    {
+        if( CFStringGetLength(state) > 0)
+        {
+            NSLog(@"SUbsyIOS:Actual ROUTE:%@",(NSString *)state);
+            if ([@"HeadsetInOut" isEqualToString:(NSString *)state]) {
+                NSLog(@"**Yeahh ready to go!");
+                return YES;
+            }
+             return NO;
+        }
+    } NSLog(@"SUbsyIOS:Actual Failed"); 
+    
+    return NO;
+}
+
+void audioRouteChangeListenerCallback (
+                         void                      *inClientData,
+                         AudioSessionPropertyID    inPropertyID,
+                         UInt32                    inDataSize,
+                         const void                *inData
+                         ) {
+    if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return; // 5
+    //MainViewController *controller = (MainViewController *) inUserData; // 6
+    
+    CFDictionaryRef routeChangeDictionary = (CFDictionaryRef)inData;        // 8
+    CFNumberRef routeChangeReasonRef = (CFNumberRef)CFDictionaryGetValue (routeChangeDictionary,
+                                                                          CFSTR (kAudioSession_AudioRouteChangeKey_Reason));
+    
+    SInt32 routeChangeReason;
+    CFNumberGetValue (routeChangeReasonRef, kCFNumberSInt32Type, &routeChangeReason);
+    if ((routeChangeReason == kAudioSessionRouteChangeReason_OldDeviceUnavailable) || 
+        (routeChangeReason == kAudioSessionRouteChangeReason_NewDeviceAvailable)) {  // 9
+            
+    }
+}
+
+
 void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     flapix = owner;
     
@@ -72,6 +116,9 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     BOOL    bSuccess = FALSE;
     BOOL    bAudioInputAvailable = FALSE;
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    
+    
+    
     bAudioInputAvailable= [audioSession inputIsAvailable];
     
     if( bAudioInputAvailable)
@@ -81,6 +128,11 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     else {
         NSLog(@"FLAPI_SUBSYS_IOS_init_and_registerFLAPIX: Cannot init AudioSession");
     }
+    
+    // test
+    isMicrophonePluggedIn();   
+    
+    
     bSuccess= [audioSession setActive: YES error: &myErr];  
     
     if(!bSuccess)
@@ -98,6 +150,12 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
                              sizeof (doSetProperty),
                              &doSetProperty
                              );
+    
+    
+    //Add property listener
+    AudioSessionAddPropertyListener (kAudioSessionProperty_AudioRouteChange,
+                                     audioRouteChangeListenerCallback,
+                                     audioSession);
     //-- end of AudioSession 
     
     

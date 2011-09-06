@@ -31,6 +31,7 @@
 		4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A8213B884FD00853344 /* AVFoundation.framework */; };
 		4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B815A14165374009CC45D /* FlowerHowTo.m4v */; };
 		4E584855140E61CC003892DA /* BlowHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E584854140E61CC003892DA /* BlowHistory.m */; };
+		4E713C2B1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E713C2A1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
 		4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DB.m */; };
 		4E8F593013A7AF6B00D9D3A7 /* DateClassificationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */; };
@@ -136,6 +137,8 @@
 		4E4B815A14165374009CC45D /* FlowerHowTo.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlowerHowTo.m4v; sourceTree = "<group>"; };
 		4E584853140E61CC003892DA /* BlowHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlowHistory.h; sourceTree = "<group>"; };
 		4E584854140E61CC003892DA /* BlowHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlowHistory.m; sourceTree = "<group>"; };
+		4E713C291416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subsys_ios_AVAudioSessionDelegate.h; sourceTree = "<group>"; };
+		4E713C2A1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = subsys_ios_AVAudioSessionDelegate.m; sourceTree = "<group>"; };
 		4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccess.h; sourceTree = "<group>"; };
 		4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccess.m; sourceTree = "<group>"; };
 		4E8F590313A7AF6B00D9D3A7 /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
@@ -595,6 +598,8 @@
 				4E2F50061407DF8200C4C00C /* FLAPIBlow.m */,
 				4EBFFD5F1414CD4300D4BE9C /* FLAPIExercice.h */,
 				4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */,
+				4E713C291416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.h */,
+				4E713C2A1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m */,
 			);
 			path = FLAPI;
 			sourceTree = "<group>";
@@ -758,6 +763,7 @@
 				4E584855140E61CC003892DA /* BlowHistory.m in Sources */,
 				D77B109C140FC5A600897203 /* RSPageControl.m in Sources */,
 				4EBFFD611414CD4300D4BE9C /* FLAPIExercice.m in Sources */,
+				4E713C2B1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
