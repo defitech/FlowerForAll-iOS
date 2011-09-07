@@ -39,7 +39,10 @@ NSTimer *repeatingTimer;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(flapixEventEndBlow:)
                                                  name:@"FlapixEventBlowEnd" object:nil];
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(flapixEventExerciceStart:)
+                                                 name:@"FlapixEventExerciceStart" object:nil];
 }
 
 - (void) startReloadTimer {
@@ -121,9 +124,10 @@ NSTimer *repeatingTimer;
     
     historyDuration = 2; // 2 minutes
     graphPadding = 2; // 2 pixels
-    blowDuration = 4; // 4 secondes
     
     history = [[BlowHistory alloc] initWithDuration:historyDuration delegate:self];
+    
+    higherBar = 0;
 }
 
 
@@ -148,13 +152,13 @@ NSTimer *repeatingTimer;
 	 *	Graph Prefs
 	 */
 	// Default X & Y Range for Plot Space
-	CPXYPlotSpace *plotSpace = (CPXYPlotSpace *)graph.defaultPlotSpace;
+	plotSpace = (CPXYPlotSpace *)graph.defaultPlotSpace;
 	// Set X Range from -45 minutes to now
 	plotSpace.xRange = [CPPlotRange
                         plotRangeWithLocation:CPDecimalFromDouble(-(historyDuration * 60))
                         length:CPDecimalFromDouble(historyDuration * 60 + 1)];
 	// Set Y Range from 0 to 4 secondes
-	plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromInt(0) length:CPDecimalFromInt(blowDuration)];
+	plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromDouble(0) length:CPDecimalFromDouble(higherBar)];
     
 	/*
 	 *	Axis Prefs
@@ -236,7 +240,7 @@ NSTimer *repeatingTimer;
     switch ( fieldEnum ) {
         case CPScatterPlotFieldY:
             if (current.goal)
-                return [ NSNumber numberWithInt:3 ];
+                return [ NSNumber numberWithDouble:(higherBar + higherBar/10) ];
             break;
         case CPBarPlotFieldBarLength:
             if (plot.identifier == @"inRange")
@@ -271,7 +275,6 @@ NSTimer *repeatingTimer;
     [graph reloadData];
     
     // update labels
-     
 }
 
 - (void)flapixEventEndBlow:(NSNotification *)notification {
@@ -279,6 +282,16 @@ NSTimer *repeatingTimer;
     int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
     [labelPercent setText:[NSString stringWithFormat:@"%i %%",p]];
     [labelFrequency setText:[NSString stringWithFormat:@"%i Hz",(int)blow.medianFrequency]];
+    
+    //Resize Y axis if needed
+    if (blow.duration > higherBar) {
+        higherBar = blow.duration;
+        plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromDouble(0) length:CPDecimalFromDouble(higherBar + higherBar/5)];
+    }
+}
+
+- (void)flapixEventExerciceStart:(NSNotification *)notification {
+    higherBar = 0;
 }
 
 

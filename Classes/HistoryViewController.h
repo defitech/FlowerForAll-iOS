@@ -13,6 +13,7 @@
     
 	CPGraphHostingView *graphView;
 	CPXYGraph *graph;
+    CPXYPlotSpace *plotSpace;
     
     UILabel *labelPercent;
     UILabel *labelFrequency;
@@ -20,7 +21,8 @@
     BlowHistory *history;
     int historyDuration;
     int graphPadding;
-    int blowDuration;
+    
+    double higherBar;
 }
 
 -(void) historyChange:(id*) history;
