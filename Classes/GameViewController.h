@@ -23,11 +23,10 @@
     
     // Activities
     FLAPIview *volcanoGame;
-    UIView *webBrowserView; 
     UIView *videoPlayerView;
 	
 	//The buttons inside each of the game sub views
-    IBOutlet UILabel *volcanoLabel, *webBrowserLabel, *videoPlayerLabel, *settingsLabel;
+    IBOutlet UILabel *volcanoLabel, *videoPlayerLabel, *settingsLabel;
 
 	
 	//There is no navigation controller here. So we add a navigation bar individually.
@@ -48,10 +47,9 @@
 
 //Activities Properties
 
-@property(nonatomic,retain) UILabel *volcanoLabel, *webBrowserLabel, *videoPlayerLabel, *settingsLabel;
+@property(nonatomic,retain) UILabel *volcanoLabel, *videoPlayerLabel, *settingsLabel;
 
 - (IBAction) volcanoTouch:(id) sender;
-- (IBAction) webBrowserTouch:(id) sender;
 - (IBAction) videoPlayerTouch:(id) sender;
 - (IBAction) settingsTouch:(id) sender;
 

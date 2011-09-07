@@ -16,13 +16,12 @@
 #import "DB.h"
 
 #import "FlowerController.h"
-#import "AWebController.h"
 #import "AVideoPlayer.h"
 
 @implementation GameViewController
 
 
-@synthesize page2, scrollView, navigationBar, pageControl,  volcanoLabel, webBrowserLabel, videoPlayerLabel, settingsLabel;
+@synthesize page2, scrollView, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel;
 
 
 
@@ -56,15 +55,6 @@
     [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
 }
 
-
-AWebController *webController;
-- (IBAction) webBrowserTouch:(id) sender {
-    if (webController == nil) {
-        webController = [[AWebController alloc] initWithNibName:@"AWebController" bundle:[NSBundle mainBundle]];
-    }
-    [FlowerController setCurrentMainController:webController];
-}
-
 AVideoPlayer *videoPlayer;
 - (IBAction) videoPlayerTouch:(id) sender {
     if (videoPlayer == nil) {
@@ -87,7 +77,6 @@ AVideoPlayer *videoPlayer;
 	
 	//Set title of game buttons for all states
     [volcanoLabel setText:NSLocalizedString(@"Game Volcano", @"Icon Title")];
-	[webBrowserLabel setText:NSLocalizedString(@"Web Browser", @"Icon Title")];
     [videoPlayerLabel setText:NSLocalizedString(@"Setup Video", @"Icon Title")];
     [settingsLabel setText:NSLocalizedString(@"Settings", @"Icon Title")];
 	
@@ -138,7 +127,6 @@ AVideoPlayer *videoPlayer;
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-    [webController release];
     [videoPlayer release];
 }
 
@@ -184,7 +172,6 @@ AVideoPlayer *videoPlayer;
 - (void)dealloc {
 	[scrollView release];
 	[volcanoGame release];
-	[webBrowserView release];
 	[videoPlayerView release];
     [super dealloc];
 }
