@@ -25,7 +25,7 @@
     volcano.center = CGPointMake(mainWidth / 2, mainHeight - (lavaHeight / 2));
     burst.center = CGPointMake(mainWidth / 2, mainHeight - lavaHeight - (burst.frame.size.height / 2) + 67);
     burst.hidden = true;
-    lavaHidder.center = CGPointMake(mainWidth / 2, mainHeight - (lavaHeight / 2));
+    lavaHidder.center = CGPointMake(mainWidth / 2, mainHeight - (lavaHeight / 2) - 10);
     lavaHidder.hidden = false;
 
     lavaFrame = lavaHidder.frame;
@@ -41,7 +41,7 @@
         
         volcano = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"volcano.png"] ] autorelease];
         burst = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"burst.png"] ] autorelease];     
-        lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 22, volcano.frame.size.height)];
+        lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 22, volcano.frame.size.height + 20)];
         lavaHidder.backgroundColor = [UIColor whiteColor];
         
         [self initVariables];
