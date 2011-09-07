@@ -29,45 +29,9 @@ static SettingsViewController *settingsViewController ;
 static StatisticsViewController *statisticsViewController;
 static GameViewController* activitiesViewController;
 
+static FLAPIX* flapix;
 
- static FLAPIX* flapix;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        NSLog(@"Init With Nib");
-    }
-    
-    return self;
-}
-
-- (void)dealloc
-{
-    [flapix release];
-    [historyViewController release];
-    [super dealloc];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-
-// get the currentFlapix Controller
-+ (FLAPIX*) currentFlapix {
-    if (flapix == nil) {
-        flapix = [FLAPIX new];
-        [ParametersManager loadParameters:flapix];
-        //[flapix Start];
-    }
-    
-    return flapix;
-}
+# pragma mark View Control
 
 
 // get Activities View Controller
@@ -100,31 +64,60 @@ static GameViewController* activitiesViewController;
     return statisticsViewController;
 }
 
++(void)setCurrentMainController:(UIViewController*)thisController {
+    if ([currentMainController isKindOfClass:[thisController class]]) {
+         NSLog(@"FLowerController: setCurrentMainController Skip");
+        return;
+    }
+    if (! [singleton isKindOfClass:[FlowerController class]]) {
+        NSLog(@"** Something went bad we've lost FLowerController Singleton");
+        return;
+    }
+    NSLog(@"FLowerController: setCurrentMainController %@",[thisController class]);
+    [currentMainController viewWillDisappear:true];
+    [thisController viewWillAppear:true];
+    
+    UIViewController *previousViewController = currentMainController;
+    currentMainController = thisController;
+    NSLog(@"%f %f %f %f",singleton.mainView.frame.origin.x,singleton.mainView.frame.origin.y,
+            singleton.mainView.frame.size.width, singleton.mainView.frame.size.height);
+    
+    [singleton.mainView addSubview:currentMainController.view];
+    [previousViewController viewDidDisappear:true];
+    [previousViewController.view removeFromSuperview];
+    [singleton.mainView setNeedsLayout];
+    [currentMainController viewDidAppear:true];
+    
+    
+}
+
+
+# pragma mark NAVIGATION ACTION SHEET
 
 // show navigation action sheet
 + (void) showNav
 {
     
-      
+    
     UIActionSheet *actionSheet = [[UIActionSheet alloc] 
                                   initWithTitle:@"Choose an action" 
                                   delegate:singleton 
-        cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel Button") 
+                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel Button") 
                                   destructiveButtonTitle:NSLocalizedString(@"Go to menu", @"Title of the first tab bar item")
                                   otherButtonTitles: nil];
     
     
-        
     
-        // [actionSheet addButtonWithTitle:NSLocalizedString(@"Settings", @"Title of the second tab bar item")];
-
-       // [actionSheet addButtonWithTitle:NSLocalizedString(@"Satistics", @"Title of the third tab bar item")];
+    
+    // [actionSheet addButtonWithTitle:NSLocalizedString(@"Settings", @"Title of the second tab bar item")];
+    
+    // [actionSheet addButtonWithTitle:NSLocalizedString(@"Satistics", @"Title of the third tab bar item")];
     NSString *startstop =  [[FlowerController currentFlapix] running] ? NSLocalizedString(@"Stop Exercice", @"Stop Action") :
     NSLocalizedString(@"Start Exercice", @"Start Action") ;
-
+    
     [actionSheet addButtonWithTitle:startstop];
     if (![[self currentFlapix] IsDemo]) {
-         [actionSheet addButtonWithTitle:NSLocalizedString(@"Start Demo Mode", @"Enable Demo Mode")];
+        [actionSheet addButtonWithTitle:NSLocalizedString(@"Start Demo Mode", @"Enable Demo Mode")];
     } else {
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Stop Demo Mode", @"Enable Demo Mode")];
     }
@@ -133,6 +126,7 @@ static GameViewController* activitiesViewController;
     [actionSheet showInView:singleton.view];
     [actionSheet release];
 }
+
 
 // get action sheet answers
 -(void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
@@ -146,13 +140,13 @@ static GameViewController* activitiesViewController;
             NSLog(@"Cancel");
             return;
             break;
-       
+            
 			
-        //case 3: // Settings
-          //  [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
-           // break;
-        //case 4: // Statistics
-         //   [FlowerController setCurrentMainController:[FlowerController getStatisticsViewController]];
+            //case 3: // Settings
+            //  [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
+            // break;
+            //case 4: // Statistics
+            //   [FlowerController setCurrentMainController:[FlowerController getStatisticsViewController]];
         case 2: // Start / Stop
             NSLog(@"Start / Stop");
             if ( [[FlowerController currentFlapix] running]) {
@@ -162,36 +156,29 @@ static GameViewController* activitiesViewController;
             }
             return;
             break;
-
+            
         case 3: // Enable DemoMode
             [[FlowerController currentFlapix] SetDemo:![[FlowerController currentFlapix] IsDemo]];
-        break;
-
+            break;
+            
     }
     
     
 }
 
-+(void)setCurrentMainController:(UIViewController*)thisController {
-    if ([currentMainController isKindOfClass:[thisController class]]) {
-         NSLog(@"setCurrentMainController Skip");
-        return;
+
+#pragma mark Init
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        NSLog(@"Init With Nib");
     }
-    [currentMainController viewWillDisappear:true];
-    [thisController viewWillAppear:true];
-    
-    UIViewController *previousViewController = currentMainController;
-    currentMainController = thisController;
-    
-    [singleton.mainView addSubview:currentMainController.view];
-    [previousViewController viewDidDisappear:true];
-    [previousViewController.view removeFromSuperview];
-    [singleton.mainView setNeedsLayout];
-    [currentMainController viewDidAppear:true];
-    
+    return self;
 }
 
-#pragma mark - View lifecycle
+
 
 - (void)viewDidLoad
 {
@@ -200,10 +187,8 @@ static GameViewController* activitiesViewController;
     singleton = self;
     
     currentMainController = [FlowerController getActivitiesViewController];
-    
     historyViewController = [ [ HistoryViewController alloc ] init ];
     [self.view addSubview:historyViewController.view];
-    
     [self.mainView addSubview:currentMainController.view];
     
      NSLog(@"FlowerController viewDidLoad");
@@ -213,17 +198,46 @@ static GameViewController* activitiesViewController;
     
 }
 
+
+// get the currentFlapix Controller
++ (FLAPIX*) currentFlapix {
+    if (flapix == nil) {
+        flapix = [FLAPIX new];
+        [ParametersManager loadParameters:flapix];
+        //[flapix Start];
+    }
+    return flapix;
+}
+
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
     [currentMainController release];
     [settingsViewController release];
     [statisticsViewController release];
     [activitiesViewController release];
     [singleton release];
 }
+
+# pragma mark Quit
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    NSLog(@"**** didReceiveMemoryWarning");
+}
+
+
+- (void)dealloc
+{
+    [flapix release];
+    [historyViewController release];
+    [super dealloc];
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

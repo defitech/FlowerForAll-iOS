@@ -57,6 +57,7 @@
 
 AVideoPlayer *videoPlayer;
 - (IBAction) videoPlayerTouch:(id) sender {
+    NSLog(@"videoPlayerTouch: %@",[videoPlayer class]);
     if (videoPlayer == nil) {
         videoPlayer = [[AVideoPlayer alloc] initWithNibName:@"AVideoPlayer" bundle:[NSBundle mainBundle]];
     }

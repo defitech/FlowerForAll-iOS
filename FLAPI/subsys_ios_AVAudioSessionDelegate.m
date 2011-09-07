@@ -20,6 +20,18 @@
     return self;
 }
 
+- (void)beginInterruption {
+    NSLog(@"subsys_ios_AVAudioSessionDelegate beginInterruption");
+}
+
+- (void)endInterruption {
+    NSLog(@"subsys_ios_AVAudioSessionDelegate endInterruption");
+}
+
+- (void)endInterruptionWithFlags:(NSUInteger)flags {
+    NSLog(@"subsys_ios_AVAudioSessionDelegate endInterruptionWF:%i",flags);
+}
+
 
 - (void)inputIsAvailableChanged:(BOOL)isInputAvailable {
     NSLog(@"subsys_ios_AVAudioSessionDelegate isInputAvailable:%i",isInputAvailable);

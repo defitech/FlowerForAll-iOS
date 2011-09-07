@@ -117,6 +117,10 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     BOOL    bAudioInputAvailable = FALSE;
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     
+    [audioSession setDelegate:[[subsys_ios_AVAudioSessionDelegate alloc] init]];
+    AudioSessionAddPropertyListener (kAudioSessionProperty_AudioRouteChange,
+                                     audioRouteChangeListenerCallback,
+                                     [audioSession delegate]);
     
     
     bAudioInputAvailable= [audioSession inputIsAvailable];
@@ -153,9 +157,7 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     
     
     //Add property listener
-    AudioSessionAddPropertyListener (kAudioSessionProperty_AudioRouteChange,
-                                     audioRouteChangeListenerCallback,
-                                     audioSession);
+    
     //-- end of AudioSession 
     
     
