@@ -21,7 +21,7 @@
 @implementation GameViewController
 
 
-@synthesize page2, scrollView, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel;
+@synthesize page2, web, scrollView, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel;
 
 
 
@@ -90,6 +90,7 @@ AVideoPlayer *videoPlayer;
     //add pages
     page2.frame = CGRectMake(320.0f, 0.0f, 320.0f, 367.0f);
     [scrollView addSubview:page2];
+    [web loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"FlowerForAll" ofType:@"html"]isDirectory:NO]]];
     
 	//Set scroll view zoom scale
 	scrollView.maximumZoomScale = 3.0;
@@ -106,7 +107,6 @@ AVideoPlayer *videoPlayer;
 	[UIView beginAnimations:@"Transition" context:nil];
 	[UIView setAnimationDuration:0.3];
 
-	
 
 	[UIView commitAnimations];
 	
@@ -142,6 +142,12 @@ AVideoPlayer *videoPlayer;
     pageControl.currentPage = page;
 	[pageControl updateCurrentPageDisplay];
 	
+    //Set title of the navigation bar
+    if ( page == 1) {
+        navigationBar.topItem.title = NSLocalizedString(@"FFA", @"Flower For All");
+    } else {
+        navigationBar.topItem.title = NSLocalizedString(@"Menu", @"Menu");
+    }
 }
 
 

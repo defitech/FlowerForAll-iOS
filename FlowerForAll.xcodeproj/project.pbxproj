@@ -102,6 +102,8 @@
 		D7ABFF88140B8227003B9F08 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF86140B8227003B9F08 /* HistoryViewController.m */; };
 		D7ABFF8D140BB471003B9F08 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7ABFF8C140BB471003B9F08 /* CoreGraphics.framework */; };
 		D7AD2ADC14174CA2004C6034 /* burst.png in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2ADB14174CA2004C6034 /* burst.png */; };
+		D7AD2AE614176452004C6034 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE414176452004C6034 /* FlowerForAll.html */; };
+		D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE71417645C004C6034 /* FlowerForAll.html */; };
 		D7D64652141659B700F0DE4F /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D64651141659B700F0DE4F /* explosion.wav */; };
 /* End PBXBuildFile section */
 
@@ -260,6 +262,8 @@
 		D7ABFF89140B8560003B9F08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D7ABFF8C140BB471003B9F08 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D7AD2ADB14174CA2004C6034 /* burst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burst.png; sourceTree = "<group>"; };
+		D7AD2AE514176452004C6034 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = FlowerForAll.html; sourceTree = "<group>"; };
+		D7AD2AE81417645C004C6034 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = FlowerForAll.html; sourceTree = "<group>"; };
 		D7D64651141659B700F0DE4F /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -492,6 +496,7 @@
 		4E8F594513A7AF8B00D9D3A7 /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
+				D7AD2AE71417645C004C6034 /* FlowerForAll.html */,
 				4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */,
 			);
 			path = en.lproj;
@@ -500,6 +505,7 @@
 		4E8F594913A7AF9800D9D3A7 /* fr.lproj */ = {
 			isa = PBXGroup;
 			children = (
+				D7AD2AE414176452004C6034 /* FlowerForAll.html */,
 				4E8F594A13A7AF9800D9D3A7 /* Localizable.strings */,
 			);
 			path = fr.lproj;
@@ -704,6 +710,8 @@
 				D7A9942B14165763000AA64A /* volcano-icon.png in Resources */,
 				D7A9942E14165D09000AA64A /* help.png in Resources */,
 				D7AD2ADC14174CA2004C6034 /* burst.png in Resources */,
+				D7AD2AE614176452004C6034 /* FlowerForAll.html in Resources */,
+				D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +792,22 @@
 				4E8F594B13A7AF9800D9D3A7 /* fr */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D7AD2AE414176452004C6034 /* FlowerForAll.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7AD2AE514176452004C6034 /* fr */,
+			);
+			name = FlowerForAll.html;
+			sourceTree = "<group>";
+		};
+		D7AD2AE71417645C004C6034 /* FlowerForAll.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7AD2AE81417645C004C6034 /* en */,
+			);
+			name = FlowerForAll.html;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
