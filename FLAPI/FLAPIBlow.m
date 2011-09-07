@@ -10,9 +10,9 @@
 
 @implementation FLAPIBlow
 
-@synthesize timestamp, duration, in_range_duration, goal;
+@synthesize timestamp, duration, in_range_duration, goal, medianFrequency;
 
-- (id)initWith:(double)atimestamp duration:(double)alength in_range_duration:(double)air_length goal:(BOOL)good
+- (id)initWith:(double)atimestamp duration:(double)alength in_range_duration:(double)air_length goal:(BOOL)good  medianFrequency:(BOOL)median_frequency
 {
     self = [super init];
     if (self) {
@@ -20,6 +20,7 @@
         duration = alength;
         in_range_duration = air_length;
         goal = good;
+        medianFrequency = median_frequency;
     }
     
     return self;

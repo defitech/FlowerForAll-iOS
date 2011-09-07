@@ -12,14 +12,13 @@
     double timestamp;
     double duration;
     double in_range_duration; 
+    double medianFrequency;
     BOOL goal;
 }
 
-@property (readwrite) double timestamp;
-@property (nonatomic) double duration;
-@property (nonatomic) double in_range_duration;
+@property (readwrite) double timestamp, duration, in_range_duration, medianFrequency;
 @property (nonatomic) BOOL goal;
 
-- (id)initWith:(double)atimestamp duration:(double)alength in_range_duration:(double)air_length goal:(BOOL)good;
+- (id)initWith:(double)atimestamp duration:(double)alength in_range_duration:(double)air_length goal:(BOOL)good medianFrequency:(BOOL)median_frequency;
 
 @end

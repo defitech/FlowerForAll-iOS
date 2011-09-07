@@ -210,7 +210,7 @@ static sqlite3 *database;
     sqlite3_stmt *cStatement = 
     [DB genCStatementWF:@"SELECT timestamp, duration, ir_duration, goal FROM blows WHERE timestamp >= %f",timestamp];
     while(sqlite3_step(cStatement) == SQLITE_ROW) {
-        [history addObject: [[FLAPIBlow alloc] initWith:[DB colD:cStatement index:0] duration:[DB colD:cStatement index:1] in_range_duration:[DB colD:cStatement index:2] goal:[DB colB:cStatement index:3]]];
+        [history addObject: [[FLAPIBlow alloc] initWith:[DB colD:cStatement index:0] duration:[DB colD:cStatement index:1] in_range_duration:[DB colD:cStatement index:2] goal:[DB colB:cStatement index:3] medianFrequency:0.0]];
     }
     sqlite3_finalize(cStatement);
 }

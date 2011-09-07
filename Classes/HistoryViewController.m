@@ -40,10 +40,6 @@ NSTimer *repeatingTimer;
                                              selector:@selector(flapixEventEndBlow:)
                                                  name:@"FlapixEventBlowEnd" object:nil];
 
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(flapixEventFrequency:)
-                                                 name:@"FlapixEventFrequency" object:nil];
 }
 
 - (void) startReloadTimer {
@@ -282,11 +278,9 @@ NSTimer *repeatingTimer;
 	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
     int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
     [labelPercent setText:[NSString stringWithFormat:@"%i %%",p]];
+    [labelFrequency setText:[NSString stringWithFormat:@"%i Hz",(int)blow.medianFrequency]];
 }
 
-- (void)flapixEventFrequency:(NSNotification *)notification {
-    [labelFrequency setText:[NSString stringWithFormat:@"%i Hz",[[FlowerController currentFlapix] frequency]]];
-}
 
 
 

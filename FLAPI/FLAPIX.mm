@@ -169,19 +169,29 @@ BOOL demo_mode = NO;
     [pool drain]; 
 }
 
+/** contain the frequencies list of cuurent blow **/
+NSMutableArray *blowFrequencies; 
 - (void) EventFrequency:(double) freq {
 //    NSLog(@"New Frequency %i",freq);
-    
     frequency = freq;
      NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventFrequency"  object:self];
+    
+     if (blowFrequencies != nil) { [blowFrequencies addObject:[NSNumber numberWithDouble:freq]] ; }
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventFrequency"  object:self];
     
     [pool drain]; 
 }
 
+
 - (void) EventBlowStart:(double)timestamp {
+  
+    
 //    NSLog(@"Start Blow %f ",timestamp);
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    if (blowFrequencies != nil) { [blowFrequencies release]; blowFrequencies = nil; }
+    blowFrequencies = [[NSMutableArray alloc] init];
+    
     blowing = true;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventBlowStart"  object:self];
     [pool drain]; 
@@ -192,11 +202,22 @@ BOOL demo_mode = NO;
     NSLog(@"End Blow timestamp:%f length:%f ir_length:%f target:%f",timestamp,length,ir_length,[self expirationDurationTarget]);
     // Seems there is no pool for this thread.. (I must read more about this)
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    
     BOOL goal = ir_length >= [self expirationDurationTarget];
     blowing = false;
     
+    //calculate MedianFrequency
+    double medianFrequency = 0;
+     if (blowFrequencies != nil && [blowFrequencies count] > 0) { 
+         NSArray *sorted = [blowFrequencies sortedArrayUsingSelector:@selector(compare:)];
+         medianFrequency = [(NSNumber*)[sorted objectAtIndex:(int)([sorted count] / 2)] doubleValue];
+     }
     // send messages
-    FLAPIBlow* blow = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal];
+    NSLog(@"Median frequency: %0.1f",medianFrequency);
+    FLAPIBlow* blow = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal medianFrequency:medianFrequency];
+    
+    
      [DB saveBlow:blow];
     
     
