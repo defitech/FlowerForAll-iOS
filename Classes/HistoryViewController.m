@@ -9,6 +9,7 @@
 #import "ParametersManager.h"
 #import "FLAPIBlow.h"
 #import "FlowerController.h"
+#import "FLAPIExercice.h"
 
 @implementation HistoryViewController
 
@@ -33,7 +34,16 @@ NSTimer *repeatingTimer;
                                              selector:@selector(eventFlapixStarted:)
                                                  name:@"FlapixEventStart" 
                                                object:nil];
+    
+    // Listen to FLAPIX blowEvents
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(flapixEventEndBlow:)
+                                                 name:@"FlapixEventBlowEnd" object:nil];
 
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(flapixEventFrequency:)
+                                                 name:@"FlapixEventFrequency" object:nil];
 }
 
 - (void) startReloadTimer {
@@ -97,12 +107,21 @@ NSTimer *repeatingTimer;
 	[ self.view addSubview:[ graphView autorelease ] ];
     
     // Alloc Label View
-    labelView = [ [ UILabel alloc ] initWithFrame:CGRectMake(230.0, 0.0, 50.0, 40.0) ];
-    [labelView setBackgroundColor:[UIColor blackColor]];
-    [labelView setTextColor:[UIColor whiteColor]];
-    [labelView setFont:[UIFont systemFontOfSize:8.0]];
-    [labelView setText:@"Label 1\nLabel 2\nLabel 3"];
-    [ self.view addSubview:labelView ];
+    labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(230.0, 0.0, 50.0, 12.0) ];
+    [labelPercent setBackgroundColor:[UIColor blackColor]];
+    [labelPercent setTextColor:[UIColor whiteColor]];
+    [labelPercent setFont:[UIFont systemFontOfSize:8.0]];
+    [labelPercent setText:@"-"];
+    
+    labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(230.0, 14.0, 50.0, 12.0) ];
+    [labelFrequency setBackgroundColor:[UIColor blackColor]];
+    [labelFrequency setTextColor:[UIColor whiteColor]];
+    [labelFrequency setFont:[UIFont systemFontOfSize:8.0]];
+    [labelFrequency setText:@"-"];
+    
+    
+    [ self.view addSubview:labelPercent ];
+    [ self.view addSubview:labelFrequency ];
     
     historyDuration = 2; // 2 minutes
     graphPadding = 2; // 2 pixels
@@ -249,11 +268,27 @@ NSTimer *repeatingTimer;
     return symbol;
 }
 
+
 -(void) historyChange:(id*) history_id {
     //    NSLog(@"History change %i",[[(BlowHistory*)history_id getHistoryArray] count]);
     //redraw the graph
     [graph reloadData];
+    
+    // update labels
+     
 }
+
+- (void)flapixEventEndBlow:(NSNotification *)notification {
+	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
+    int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
+    [labelPercent setText:[NSString stringWithFormat:@"%i %%",p]];
+}
+
+- (void)flapixEventFrequency:(NSNotification *)notification {
+    [labelFrequency setText:[NSString stringWithFormat:@"%i Hz",[[FlowerController currentFlapix] frequency]]];
+}
+
+
 
 
 //The event handling method
@@ -261,10 +296,11 @@ NSTimer *repeatingTimer;
     [FlowerController showNav];
      NSLog(@"Graph Touched");
     //Do stuff here...
+   
 }
 
 - (void)dealloc {
-    [labelView release];
+    [labelPercent release];
 	[history release];
     [graph release];
     [super dealloc];

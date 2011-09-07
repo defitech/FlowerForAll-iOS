@@ -14,7 +14,8 @@
 	CPGraphHostingView *graphView;
 	CPXYGraph *graph;
     
-    UILabel *labelView;
+    UILabel *labelPercent;
+    UILabel *labelFrequency;
     
     BlowHistory *history;
     int historyDuration;

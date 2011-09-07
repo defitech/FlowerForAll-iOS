@@ -140,7 +140,7 @@ BOOL demo_mode = NO;
 
 - (BOOL) Start {
     if (self.running) return NO;
-    [self exerciceStop]; [self exerciceInCourse]; // will start a new exercice
+    [self exerciceStart]; // will start a new exercice
     if (FLAPI_SUCCESS != FLAPI_Start()) return NO; // This does start the sound recording and processing
     self.running = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventStart"  object:self];
@@ -198,13 +198,15 @@ BOOL demo_mode = NO;
     // send messages
     FLAPIBlow* blow = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal];
      [DB saveBlow:blow];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventBlowEnd" object:blow];
+    
     
     // exercice management
-    [[self exerciceInCourse] addBlow:blow];
+    [[self currentExercice] addBlow:blow];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventBlowEnd" object:blow];
     
 
-    if ([[self exerciceInCourse] percent_done] >= 1) {
+    if ([[self currentExercice] percent_done] >= 1) {
         [self Stop];
     }
     [blow autorelease];
@@ -213,7 +215,7 @@ BOOL demo_mode = NO;
 }
 
 
-
+# pragma mark EXERCICE LOGIC
 // --------------- Exercice Logic
 - (void)exerciceStop {
     if (current_exercice == nil) return;
@@ -223,14 +225,23 @@ BOOL demo_mode = NO;
     current_exercice = nil;
 }
 
-/** get current FLAPIExercice, start it if needed **/
-- (FLAPIExercice*)exerciceInCourse {
+/** start Exercice **/
+- (FLAPIExercice*)exerciceStart {
+    [self exerciceStop];
     if ((current_exercice == nil) || (! [current_exercice inCourse])) {
-         current_exercice = [[FLAPIExercice alloc] initWithFlapix:self];
+        current_exercice = [[FLAPIExercice alloc] initWithFlapix:self];
     }
     return current_exercice;
 }
 
+- (FLAPIExercice*)currentExercice {
+    if (current_exercice == nil) {
+        NSLog(@"currentExerice called and is NULL!!");
+    }
+    return current_exercice;
+}
+
+# pragma mark MEMORY
 
 // --------------- Dealloc 
 

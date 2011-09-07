@@ -65,8 +65,10 @@
 
 // EXERCICES
 - (void)exerciceStop;
-/** Current Exercice Start if needed? **/
-- (FLAPIExercice*)exerciceInCourse;
+- (FLAPIExercice*)exerciceStart;
+
+/** Current Exercice return nil if not in course **/
+- (FLAPIExercice*)currentExercice;
 
 
 

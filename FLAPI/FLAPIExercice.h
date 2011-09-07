@@ -23,7 +23,8 @@
     int blow_star_count;
 }
 
-@property (nonatomic) double start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s,duration_exercice_done_s;
+@property (nonatomic) double start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, 
+                             duration_expiration_s, duration_exercice_s,duration_exercice_done_s;
 @property (nonatomic) int blow_count, blow_star_count;
 
 - (id)initWithFlapix:(FLAPIX*)flapix;
