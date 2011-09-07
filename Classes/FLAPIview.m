@@ -76,10 +76,8 @@
     NSLog(@"Start / Stop");
     if ( [[FlowerController currentFlapix] running]) {
         [[FlowerController currentFlapix] Stop];
-        [start setTitle:@"Start Exercice" forState:UIControlStateNormal];
     } else {
         [[FlowerController currentFlapix] Start];
-        [start setTitle:@"Stop Exercice" forState:UIControlStateNormal];
     }
     [self.view setNeedsDisplay];
 }
@@ -115,6 +113,8 @@
 }
 
 - (void)flapixEventExerciceStop:(NSNotification *)notification {
+    [start setTitle:@"Start Exercice" forState:UIControlStateNormal];
+    
     lavaHidder.hidden = true;
     burst.hidden = false;
     
@@ -122,6 +122,8 @@
 }
 
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
+    [start setTitle:@"Stop Exercice" forState:UIControlStateNormal];
+    
     NSLog(@"FLAPIView flapixEventExerciceStart");
     currentExercice = (FLAPIExercice*)[notification object];
     [self initVariables];
