@@ -191,7 +191,7 @@ NSTimer *repeatingTimer;
 	goodPlot.dataLineStyle.lineWidth = 1.0f;
 	goodPlot.dataLineStyle.lineColor = [CPColor blackColor];
 	goodPlot.dataSource = self;
-	[ graph addPlot:[goodPlot autorelease] ];
+	[ graph addPlot:goodPlot];
     
     // blow duration plot
     CPBarPlot* blowPlot = [[[CPBarPlot alloc] initWithFrame:self.view.bounds] autorelease];
@@ -199,8 +199,8 @@ NSTimer *repeatingTimer;
     blowPlot.dataSource = self;
     blowPlot.barWidth = 5;
     blowPlot.barOffset = 0;  
-    blowPlot.fill = [[CPFill alloc] initWithColor:[CPColor redColor]];;
-    [ graph addPlot:[blowPlot autorelease] ];
+    blowPlot.fill = [[[CPFill alloc] initWithColor:[CPColor redColor]] autorelease];
+    [ graph addPlot:blowPlot ];
     
     // in range duration
     CPBarPlot* inRangePlot = [[[CPBarPlot alloc] initWithFrame:self.view.bounds] autorelease];
@@ -208,8 +208,8 @@ NSTimer *repeatingTimer;
     inRangePlot.dataSource = self;
     inRangePlot.barWidth = 5;
     inRangePlot.barOffset = 0;
-    inRangePlot.fill = [[CPFill alloc] initWithColor:[CPColor greenColor]];
-    [ graph addPlot:[inRangePlot autorelease] ];
+    inRangePlot.fill = [[[CPFill alloc] initWithColor:[CPColor greenColor]] autorelease];
+    [ graph addPlot:inRangePlot ];
     
     
     [self initTimersAndListeners];
@@ -261,7 +261,7 @@ NSTimer *repeatingTimer;
 }
 
 -(CPPlotSymbol *)symbolForScatterPlot:(CPScatterPlot *)plot recordIndex:(NSUInteger)index {
-    CPPlotSymbol *symbol = [[CPPlotSymbol alloc] init];
+    CPPlotSymbol *symbol = [[[CPPlotSymbol alloc] init] autorelease];
     symbol.symbolType = CPPlotSymbolTypeStar;
     symbol.size = CGSizeMake(10.0, 10.0);
     symbol.fill = [CPFill fillWithColor:[CPColor whiteColor]];
@@ -293,10 +293,6 @@ NSTimer *repeatingTimer;
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
     higherBar = 0;
 }
-
-
-
-
 
 //The event handling method
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
