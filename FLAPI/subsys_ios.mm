@@ -35,35 +35,119 @@ bool stop_possible = true; // flag passed to true when OnSubSystemProcess
 bool running = false;
 bool paused = false;
 
+
 // Standard Subsystem function
 // ===========================
 
-/**
- * set the system to read or save a file, used in dev mode
- * you must call FLAPI_Start() after that
- *
- * const char* torecord = [[NSTemporaryDirectory() stringByAppendingPathComponent: @"FLAPIrecord.raw"] UTF8String];
- * const char* toread = [[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"FLAPIrecorded.raw"] UTF8String];
- *
- * To stop, call  FLAPI_SUBSYS_IOS_file_dev(nil,true);
- *
- */
-void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read){
-    if (filepath == nil) {
-        if (filedevtag != 0) fclose(filedev); // close file read / saving for devel
-        filedevtag = 0;
-        printf("FLAPI out of dev mode");
-        return;
-    }
-    
-    
-	filedev = fopen(filepath, read ? "rb" : "wb");
-	if (read) myBuff = (short*) malloc (sizeof(short)*gAudioInfo.buffer_sample);
-	filedevtag = read ? 1 : -1;
-	
-	printf(read ? "Reading data to file %s\n" : "Writing data to file %s\n",filepath);
+
+
+#pragma  mark PAUSE / START
+OSStatus FLAPI_SUBSYS_IOS_Pause() {
+    if (recordState.queue == nil || ! running || paused) { return nil; }
+    paused = true;
+    return AudioQueuePause(recordState.queue );
 }
 
+OSStatus FLAPI_SUBSYS_IOS_UnPause() {
+    if (recordState.queue == nil || ! running || ! paused) { return nil; }
+    printf("FLAPI_SUBSYS_IOS_UnPause\n");
+    paused = false;
+    return AudioQueueStart(recordState.queue , nil);
+}
+
+# pragma mark START / STOP
+
+
+
+// Init subsystem
+int	SubSys_Init(){
+	// FLAPI Init
+	gDevicesCount = 1;
+	gDevicesList = (FLAPI_rDevice *)malloc( gDevicesCount * sizeof(FLAPI_rDevice) ); // just 1 for iOS
+	strcpy(gDevicesList[0].name,"iOS input device");
+	
+	
+	FLAPI_ResetParams(); // Set the Params
+    
+	printf("SubSys_Init\n");
+	return FLAPI_SUCCESS;
+}
+
+
+
+int	SubSys_Start(){
+	bool run = true;
+    
+	//Update AudioInfo
+	if (run && (UpdateAudioInfo()!=FLAPI_SUCCESS))
+		run=false;		
+	//Openning device
+	if (run && (OpenDevice()!=FLAPI_SUCCESS))
+		run=false;	
+	//Common init
+	if (run && (OnSubSystemStart()!=FLAPI_SUCCESS) )
+		run=false;
+	
+	if (! run) {
+		printf("Error Cannot start\n");
+		return false;
+	}
+	
+	
+	//Starting Main loop, called by the AudioQueue		
+	OSStatus status = AudioQueueStart(recordState.queue, NULL);
+	if ( status != noErr ) {
+		printf("Error Starting AudioQueue\n");
+		return false;	
+	}
+    
+    stop_possible = true;
+    stop_request = false;
+    
+	printf("Started\n");
+    running = true;
+	return FLAPI_SUCCESS;
+}
+
+
+/** (internal) really do the stop when possible **/
+int _Stop_Force() {
+	if (filedevtag != 0) fclose(filedev); // close file read / saving for devel
+	
+	OSStatus status = AudioQueueStop(recordState.queue,true);
+	if ( status != noErr ) {
+		printf("Error Stoping AudioQueue\n");
+		return false;	
+	}
+	
+	OnSubSystemStop(); // tell the subsys we stopped
+	printf("SubSys_Stop\n");
+    running = false;
+	return FLAPI_SUCCESS;
+}
+
+
+int SubSys_Stop(){
+    stop_request = true;
+    if (stop_possible) {
+        return _Stop_Force();
+    } 
+    
+    // we have to wait until the end of OnSubSystemProcess
+    NSLog(@"Waiting the end of OnSubSystemProcess to stop FLAPI");
+    
+    return FLAPI_SUCCESS;
+}
+
+
+// Close subsystem
+int	SubSys_Close(){
+	printf("SubSys_Close\n");
+	return FLAPI_SUCCESS;
+}
+
+
+# pragma mark I/O detection and management
 
 BOOL isMicrophonePluggedIn () {
     //--check the actual Route
@@ -107,6 +191,7 @@ void audioRouteChangeListenerCallback (
     }
 }
 
+# pragma mark INIT IOS SPECIFIC CALL
 
 void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     flapix = owner;
@@ -168,90 +253,27 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     
 }
 
+# pragma mark Internal Subsystem functions
 
-
-int	SubSys_Start(){
-	bool run = true;
-       
-	//Update AudioInfo
-	if (run && (UpdateAudioInfo()!=FLAPI_SUCCESS))
-		run=false;		
-	//Openning device
-	if (run && (OpenDevice()!=FLAPI_SUCCESS))
-		run=false;	
-	//Common init
-	if (run && (OnSubSystemStart()!=FLAPI_SUCCESS) )
-		run=false;
-	
-	if (! run) {
-		printf("Error Cannot start\n");
-		return false;
-	}
-	
-	
-	//Starting Main loop, called by the AudioQueue		
-	OSStatus status = AudioQueueStart(recordState.queue, NULL);
-	if ( status != noErr ) {
-		printf("Error Starting AudioQueue\n");
-		return false;	
-	}
-    
-    stop_possible = true;
-    stop_request = false;
-    
-	printf("Started\n");
-    running = true;
-	return FLAPI_SUCCESS;
-}
-
-
-
-int SubSys_Stop(){
-    stop_request = true;
-    if (stop_possible) {
-        return FLAPI_SUBSYS_IOS_SubSys_Stop_Force();
-    } 
-    
-    // we have to wait until the end of OnSubSystemProcess
-    NSLog(@"Waiting the end of OnSubSystemProcess to stop FLAPI");
-
-    
-    return FLAPI_SUCCESS;
-}
-
-int FLAPI_SUBSYS_IOS_SubSys_Stop_Force() {
-	if (filedevtag != 0) fclose(filedev); // close file read / saving for devel
-	
-	OSStatus status = AudioQueueStop(recordState.queue,true);
-	if ( status != noErr ) {
-		printf("Error Stoping AudioQueue\n");
-		return false;	
-	}
-	
-	OnSubSystemStop(); // tell the subsys we stopped
-	printf("SubSys_Stop\n");
-    running = false;
-	return FLAPI_SUCCESS;
-}
 
 // called when AudioBuffer is full
 // http://developer.apple.com/library/ios/documentation/MusicAudio/Reference/AudioQueueReference/Reference/reference.html#//apple_ref/doc/c_ref/AudioQueueBuffer
 void AudioInputCallback (
-						void *inUserData, // The first parameter is a void pointer that will actually point to our RecordState structure that was passed into AudioQueueNewInput
-						AudioQueueRef inAQ, // This is a reference to the audio input queue which is also in our RecordState structure
-						AudioQueueBufferRef inBuffer, // This is the buffer that has just been filled. In our case this will contain 1 second worth of audio
-						const AudioTimeStamp *inStartTime, // is a timestamp value that can be used to syncronize audio
-						UInt32 inNumberPacketDescriptions, // The number of packet descriptions in next parameter (inPacketDescs)
-						const AudioStreamPacketDescription *inPacketDescs) // An array of packet descriptions
+                         void *inUserData, // The first parameter is a void pointer that will actually point to our RecordState structure that was passed into AudioQueueNewInput
+                         AudioQueueRef inAQ, // This is a reference to the audio input queue which is also in our RecordState structure
+                         AudioQueueBufferRef inBuffer, // This is the buffer that has just been filled. In our case this will contain 1 second worth of audio
+                         const AudioTimeStamp *inStartTime, // is a timestamp value that can be used to syncronize audio
+                         UInt32 inNumberPacketDescriptions, // The number of packet descriptions in next parameter (inPacketDescs)
+                         const AudioStreamPacketDescription *inPacketDescs) // An array of packet descriptions
 {
     
     
-
+    
 	short buffSize = 0; 
 	
 	if ( filedevtag > 0) { // replace buffer by file's data
 		buffSize = fread(myBuff,recordState.dataFormat.mBytesPerFrame,gAudioInfo.buffer_sample,filedev);
-	
+        
 		if (buffSize != gAudioInfo.buffer_sample) {
 			printf("BUffsize prob: %i %i\n",buffSize,gAudioInfo.buffer_sample);
 		}
@@ -270,51 +292,23 @@ void AudioInputCallback (
 		fwrite(myBuff, 1,buffSize, filedev);
 		fflush(filedev);
 	}
-
-	//we cannot stop during process
+    
+	//we cannot stop during process, so we have handle stops as soon as their prossible
     if ((! stop_request) && stop_possible) {
         stop_possible = false;
         if (FLAPI_SUCCESS != OnSubSystemProcess(myBuff)) {
             printf("AudioInputCallback: OnSubSystemProcess failed \n");
         }
         if (stop_request) {
-            FLAPI_SUBSYS_IOS_SubSys_Stop_Force();
+            _Stop_Force();
         }
         stop_possible = true;
     }
-    	
+    
 	// switch the buffers
 	RecordState* recordState = (RecordState*)inUserData;
 	AudioQueueEnqueueBuffer(recordState->queue, inBuffer, 0, NULL);
 	
-}
-
-// Init subsystem
-int	SubSys_Init(){
-	// FLAPI Init
-	gDevicesCount = 1;
-	gDevicesList = (FLAPI_rDevice *)malloc( gDevicesCount * sizeof(FLAPI_rDevice) ); // just 1 for iOS
-	strcpy(gDevicesList[0].name,"iOS input device");
-	
-	
-	FLAPI_ResetParams(); // Set the Params
-    
-   
-	
-    
-    
-    
-	printf("SubSys_Init\n");
-	return FLAPI_SUCCESS;
-}
-
-// Close subsystem
-int	SubSys_Close(){
-	printf("SubSys_Close\n");
-    
-    
-    
-	return FLAPI_SUCCESS;
 }
 
 
@@ -432,6 +426,37 @@ int SendWinMsg( int msg, int lparam, int hparam ){
 	return FLAPI_SUCCESS;
 }
 
+# pragma mark DEVEL UTILS
+
+/**
+ * set the system to read or save a file, used in dev mode
+ * you must call FLAPI_Start() after that
+ *
+ * const char* torecord = [[NSTemporaryDirectory() stringByAppendingPathComponent: @"FLAPIrecord.raw"] UTF8String];
+ * const char* toread = [[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"FLAPIrecorded.raw"] UTF8String];
+ *
+ * To stop, call  FLAPI_SUBSYS_IOS_file_dev(nil,true);
+ *
+ */
+void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read){
+    if (filepath == nil) {
+        if (filedevtag != 0) fclose(filedev); // close file read / saving for devel
+        filedevtag = 0;
+        printf("FLAPI out of dev mode");
+        return;
+    }
+    
+    filedev = fopen(filepath, read ? "rb" : "wb");
+    
+	if (read && (myBuff != nil)) myBuff = (short*) malloc (sizeof(short)*gAudioInfo.buffer_sample);
+	filedevtag = read ? 1 : -1;
+	
+	printf(read ? "Reading data to file %s\n" : "Writing data to file %s\n",filepath);
+}
+
+
+
+# pragma mark OPEN / CLOSE
 
 //Open audio device
 int OpenDevice(){
@@ -474,20 +499,6 @@ int OpenDevice(){
 	
 	printf("SubSys_OpenDevice\n");
 	return FLAPI_SUCCESS;
-}
-
-#pragma  mark PAUSE / START
-OSStatus FLAPI_SUBSYS_IOS_Pause() {
-    if (recordState.queue == nil || ! running || paused) { return nil; }
-    paused = true;
-    return AudioQueuePause(recordState.queue );
-}
-
-OSStatus FLAPI_SUBSYS_IOS_UnPause() {
-    if (recordState.queue == nil || ! running || ! paused) { return nil; }
-    printf("FLAPI_SUBSYS_IOS_UnPause\n");
-    paused = false;
-    return AudioQueueStart(recordState.queue , nil);
 }
 
 
