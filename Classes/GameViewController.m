@@ -185,9 +185,9 @@ AVideoPlayer *videoPlayer;
 
 
 
-//Allows view to autorotate in all directions
+//Allows view to autorotate
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-	return YES;
+	return (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
 
