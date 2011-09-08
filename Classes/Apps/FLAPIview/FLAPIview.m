@@ -107,9 +107,11 @@
         
         [self playSystemSound:@"/goal.wav"];
         
-        //Raise up lava
-        lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * [currentExercice percent_done]);
+        
     }
+    
+    //Raise up lava
+    lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * [currentExercice percent_done]);
 }
 
 - (void)flapixEventExerciceStop:(NSNotification *)notification {

@@ -321,7 +321,7 @@ double blow_in_range_duration = 0.0f; // duration of in-range blowing
 
 // for convience
 double blow_timestamp = 0.0f; // temporary timestamp for work on
-int blow_frequency_trigger = 5;
+int blow_frequency_trigger = 4;
 
 // break blowing if too long
 double blow_max_duration = 7.0f; //(seconds) when a blowing is declared as invalid because too long
@@ -372,7 +372,7 @@ int SendWinMsg( int msg, int lparam, int hparam ){
                 }
                 
                 /// -- blow detection, differs from "in-range frequency"
-                if (FLAPI_GetFrequency() > blow_frequency_trigger) { // continue
+                if (FLAPI_GetFrequency() >= blow_frequency_trigger) { // continue
                     //.. blowing
                 } else { // stop blowing
                     [flapix EventBlowEnd:blow_last_start duration:(blow_last_freq - blow_last_start) in_range_duration:blow_in_range_duration];
@@ -382,7 +382,7 @@ int SendWinMsg( int msg, int lparam, int hparam ){
                 
                 
             } else { // not blowing (blow_last_start == 0)
-                if (FLAPI_GetFrequency() > blow_frequency_trigger) { // start blowing
+                if (FLAPI_GetFrequency() >= blow_frequency_trigger) { // start blowing
                     blow_last_start = blow_timestamp;
                     [flapix EventBlowStart:blow_last_start];
                     // init blowing vars

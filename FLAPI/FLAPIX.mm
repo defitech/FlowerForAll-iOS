@@ -33,7 +33,7 @@
        
         // Init Values
         gParams.frequency_max				= 26;
-        gParams.frequency_min				= 6;
+        gParams.frequency_min				= 4;
         gParams.target_frequency			= 18.0f;
         gParams.frequency_tolerance			= 4.0f;
         gParams.target_duration				= 1500;
@@ -82,14 +82,16 @@
 
 
 - (void) SetTargetExpirationDuration:(float)durations_s {
+    NSLog(@"SetTargetExpirationDuration %f",durations_s);
     gParams.target_duration = (int) durations_s * 1000;
 }
 
 
 // duration of an exerice
-double exerice_duration_s = 50.0f;
+double exerice_duration_s = -1.0f;
 
 - (void) SetTargetExerciceDuration:(float)durations_s {
+    NSLog(@"SetTargetExerciceDuration %f",durations_s);
     exerice_duration_s = (double) durations_s;
 }
 
@@ -100,6 +102,7 @@ double exerice_duration_s = 50.0f;
 
 // return durationTarget(s)
 - (double) exerciceDurationTarget {
+    if (exerice_duration_s < -1.0f) exerice_duration_s = 0;
     return (double) exerice_duration_s;
 }
 

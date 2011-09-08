@@ -34,7 +34,7 @@
     float duration = [[DB getInfoValueForKey:@"expirationDuration"] floatValue];
     if (duration < 0.5f || duration > 12.0f) {
          NSLog(@"loadParameters: invalid expiration duration:%f parameter reseting to defaults",duration );
-        duration = 2.0f;
+        duration = 1.0f;
         
     }
     [flapix SetTargetExpirationDuration:duration];
@@ -43,7 +43,7 @@
     duration = [[DB getInfoValueForKey:@"exerciceDuration"] floatValue];
     if (duration < 5.0f || duration > 1000.0f) {
         NSLog(@"loadParameters: invalid exerice duration:%f parameter reseting to defaults",duration );
-        duration = 50.0f;
+        duration = 20.0f;
         
     }
     [flapix SetTargetExerciceDuration:duration];
