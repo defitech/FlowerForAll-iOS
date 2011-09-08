@@ -1,5 +1,5 @@
 //
-//  AVideoPlayer.h
+//  FlowerHowTo.h
 //  FlowerForAll
 //
 //  Created by Pierre-Mikael Legris on 27.06.11.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface AVideoPlayer : UIViewController {
+@interface FlowerHowTo : UIViewController {
     
 }
 

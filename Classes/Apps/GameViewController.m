@@ -16,7 +16,7 @@
 #import "DB.h"
 
 #import "FlowerController.h"
-#import "AVideoPlayer.h"
+#import "FlowerHowTo.h"
 
 @implementation GameViewController
 
@@ -55,13 +55,13 @@
     [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
 }
 
-AVideoPlayer *videoPlayer;
-- (IBAction) videoPlayerTouch:(id) sender {
-    NSLog(@"videoPlayerTouch: %@",[videoPlayer class]);
-    if (videoPlayer == nil) {
-        videoPlayer = [[AVideoPlayer alloc] initWithNibName:@"AVideoPlayer" bundle:[NSBundle mainBundle]];
+FlowerHowTo *flowerHowTo;
+- (IBAction) flowerHowTo:(id) sender {
+    NSLog(@"videoPlayerTouch: %@",[flowerHowTo class]);
+    if (flowerHowTo == nil) {
+        flowerHowTo = [[FlowerHowTo alloc] initWithNibName:@"FlowerHowTo" bundle:[NSBundle mainBundle]];
     }
-    [FlowerController setCurrentMainController:videoPlayer];
+    [FlowerController setCurrentMainController:flowerHowTo];
 }
 
 
@@ -128,7 +128,7 @@ AVideoPlayer *videoPlayer;
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-    [videoPlayer release];
+    [flowerHowTo release];
 }
 
 

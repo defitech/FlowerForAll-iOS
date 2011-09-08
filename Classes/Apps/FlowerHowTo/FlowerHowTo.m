@@ -1,16 +1,16 @@
 //
-//  AVideoPlayer.m
+//  FlowerHowTo.m
 //  FlowerForAll
 //
 //  Created by Pierre-Mikael Legris on 27.06.11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "AVideoPlayer.h"
+#import "FlowerHowTo.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 
-@implementation AVideoPlayer
+@implementation FlowerHowTo
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

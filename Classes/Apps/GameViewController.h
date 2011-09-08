@@ -53,7 +53,7 @@
 @property(nonatomic,retain) UILabel *volcanoLabel, *videoPlayerLabel, *settingsLabel;
 
 - (IBAction) volcanoTouch:(id) sender;
-- (IBAction) videoPlayerTouch:(id) sender;
+- (IBAction) flowerHowTo:(id) sender;
 - (IBAction) settingsTouch:(id) sender;
 
 - (IBAction) pageControlDidChangeValue:(id) sender;
