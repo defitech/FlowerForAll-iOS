@@ -29,6 +29,20 @@ expirationLabel, expirationTimeLabel, expirationSlider,
 exerciceLabel, exerciceTimeLabel, exerciceSlider;
 
 
+# pragma mark utilities for non-linear progression of the exercice duration
+
+float maxExecriceDuration_s = 120.0;
+float minExecriceDuration_s = 7.0;
+
+- (float)exericeDurationSliderToSystem:(float)sliderValue {
+    return sliderValue*sliderValue*(maxExecriceDuration_s-minExecriceDuration_s)+minExecriceDuration_s;
+}
+
+- (float)exericeDurationSystemToSlider:(float)systemValue {
+    return sqrtf((systemValue-minExecriceDuration_s)/(maxExecriceDuration_s-minExecriceDuration_s));
+}
+
+
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -81,7 +95,7 @@ exerciceLabel, exerciceTimeLabel, exerciceSlider;
     
     [exerciceSlider setMinimumValue:0.0f];
     [exerciceSlider setMaximumValue:1.0f];
-    [exerciceSlider setValue:[[FlowerController currentFlapix] expirationDurationTarget]];
+    [exerciceSlider setValue:[self exericeDurationSystemToSlider:[[FlowerController currentFlapix] exerciceDurationTarget]]];
     
     
     [self  valueChangedForExpirationSlider:expirationSlider];
@@ -149,30 +163,27 @@ exerciceLabel, exerciceTimeLabel, exerciceSlider;
 - (void)valueChangedForExpirationSlider:(UISlider *)aSlider
 {
     
-    expirationTimeLabel.text = [NSString stringWithFormat:@"%1.1f s", aSlider.value];
+    expirationTimeLabel.text = [NSString stringWithFormat:@"%1.1f s",(float) aSlider.value];
     
 }
 
 - (void)editingEndForExpirationSlider:(UISlider *)aSlider
 {
     [self   valueChangedForExpirationSlider:aSlider];
-    float duration =  aSlider.value;
-    [ParametersManager saveExpirationDuration:duration];
+    [ParametersManager saveExpirationDuration:(float)aSlider.value];
     
 }
 
 - (void)valueChangedForExericeSlider:(UISlider *)aSlider
 {
-    int duration = 10 + (int)70* aSlider.value;
-    exerciceTimeLabel.text = [NSString stringWithFormat:@"%i s", duration];
+    exerciceTimeLabel.text = [NSString stringWithFormat:@"%1.1f s",[self exericeDurationSliderToSystem:(float) aSlider.value]];
     
 }
 
 - (void)editingEndForExericeSlider:(UISlider *)aSlider
 {
     [self   valueChangedForExericeSlider:aSlider];
-     int duration = 10 + (int)70* aSlider.value;
-    [ParametersManager saveExerciceDuration:(float)duration];
+    [ParametersManager saveExerciceDuration:[self exericeDurationSliderToSystem:(float) aSlider.value]];
     
 }
 

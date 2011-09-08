@@ -82,8 +82,7 @@
 
 
 - (void) SetTargetExpirationDuration:(float)durations_s {
-    NSLog(@"SetTargetExpirationDuration %f",durations_s);
-    gParams.target_duration = (int) durations_s * 1000;
+    gParams.target_duration = (int) (durations_s * 1000);
 }
 
 
@@ -91,7 +90,6 @@
 double exerice_duration_s = -1.0f;
 
 - (void) SetTargetExerciceDuration:(float)durations_s {
-    NSLog(@"SetTargetExerciceDuration %f",durations_s);
     exerice_duration_s = (double) durations_s;
 }
 
@@ -102,7 +100,7 @@ double exerice_duration_s = -1.0f;
 
 // return durationTarget(s)
 - (double) exerciceDurationTarget {
-    if (exerice_duration_s < -1.0f) exerice_duration_s = 0;
+    if (exerice_duration_s < -1.0f) exerice_duration_s = 10.0f;
     return (double) exerice_duration_s;
 }
 
