@@ -210,7 +210,7 @@ static sqlite3 *database;
     sqlite3_stmt *cStatement = 
     [DB genCStatementWF:@"SELECT timestamp, duration, ir_duration, goal FROM blows WHERE timestamp >= %f",timestamp];
     while(sqlite3_step(cStatement) == SQLITE_ROW) {
-        [history addObject: [[FLAPIBlow alloc] initWith:[DB colD:cStatement index:0] duration:[DB colD:cStatement index:1] in_range_duration:[DB colD:cStatement index:2] goal:[DB colB:cStatement index:3] medianFrequency:0.0]];
+        [history addObject:[[[FLAPIBlow alloc] initWith:[DB colD:cStatement index:0] duration:[DB colD:cStatement index:1] in_range_duration:[DB colD:cStatement index:2] goal:[DB colB:cStatement index:3] medianFrequency:0.0] autorelease] ];
     }
     sqlite3_finalize(cStatement);
 }
@@ -303,12 +303,11 @@ static sqlite3 *database;
 				
 				//NSLog(@"ID: %@",aID);
 				
-				Exercise *exercise = [Exercise alloc];
-				[exercise init:aID:dateTime:appVersion:localUserId:globalUserId:gameId:targetFrequency:targetFrequencyTolerance:targetBlowingDuration:targetDuration:goodPercentage:transferStatus];
+				Exercise *exercise = [[[Exercise alloc] init:aID:dateTime:appVersion:localUserId:globalUserId:gameId:targetFrequency:targetFrequencyTolerance:targetBlowingDuration:targetDuration:goodPercentage:transferStatus] autorelease];
 				
 				[exercises addObject:exercise];
 				
-				[exercise release];
+				//[exercise release];
 			}
 		
 		sqlite3_finalize(cStatement);
