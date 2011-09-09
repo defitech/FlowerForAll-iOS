@@ -13,6 +13,11 @@
 #import "DB.h"
 #import "FLAPIBlow.h"
 
+
+
+NSString * const FLAPIX_EVENT_START = @"FlapixEventStart";
+
+
 @implementation FLAPIX
 
 @synthesize running, frequency, blowing, lastlevel;
@@ -144,7 +149,7 @@ BOOL demo_mode = NO;
     [self exerciceStart]; // will start a new exercice
     if (FLAPI_SUCCESS != FLAPI_Start()) return NO; // This does start the sound recording and processing
     self.running = YES;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventStart"  object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_START  object:self];
     return YES;
 }
 

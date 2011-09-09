@@ -17,6 +17,9 @@
 #import "BlowHistory.h"
 
 
+#import "FlowerApp.h"
+#import "VolcanoApp.h"
+
 @implementation FlowerController
 
 @synthesize mainView, historyViewController;
@@ -184,6 +187,10 @@ static FLAPIX* flapix;
     [super viewDidLoad];
     if (singleton != nil)  return ;
     singleton = self;
+    
+    
+    NSLog(@"FlowerApp %@",[FlowerApp AppLabel]);
+    NSLog(@"FlowerApp %@",[VolcanoApp AppLabel]);
     
     currentMainController = [FlowerController getActivitiesViewController];
     historyViewController = [ [ HistoryViewController alloc ] init ];

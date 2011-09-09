@@ -10,6 +10,7 @@
 #import "FLAPIBlow.h"
 #import "FlowerController.h"
 #import "FLAPIExercice.h"
+#import "FLAPIX.h"
 
 @implementation HistoryViewController
 
@@ -32,7 +33,7 @@ NSTimer *repeatingTimer;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(eventFlapixStarted:)
-                                                 name:@"FlapixEventStart" 
+                                                 name:FLAPIX_EVENT_START 
                                                object:nil];
     
     // Listen to FLAPIX blowEvents

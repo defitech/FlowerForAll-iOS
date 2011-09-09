@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FLAPIExercice.h"
 #include <AudioToolbox/AudioToolbox.h>
+#import "FlowerApp.h"
 
-
-@interface VolcanoApp : UIViewController {
+@interface VolcanoApp : FlowerApp {
     IBOutlet UIButton *start;
     UIImageView *volcano;
     UIImageView *burst;

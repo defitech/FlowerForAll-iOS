@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlowerApp.h"
 
 
-@interface FlowerHowTo : UIViewController {
+@interface FlowerHowTo : FlowerApp {
     
 }
 

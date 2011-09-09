@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol FlowerApp <UIViewController>
+@interface FlowerApp : UIViewController 
 
 /** Used to put a button on the App Menu **/
 +(UIImage*)AppIcon;

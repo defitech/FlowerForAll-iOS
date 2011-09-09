@@ -11,12 +11,22 @@
 #import "FLAPIExercice.h"
 
 
+#ifndef __HEADER_H__
+#define __HEADER_H__
+
+extern NSString * const FLAPIX_EVENT_START;
+
+#endif
+
 @interface FLAPIX : NSObject {    
     BOOL running;
     double frequency;
     float lastlevel;
     BOOL blowing;
     FLAPIExercice* current_exercice;
+    
+    
+    
 }
 
 
