@@ -17,7 +17,6 @@
     if (self) {
 
     }
-    
     return self;
 }
 
@@ -40,39 +39,43 @@
 
 
 // Event Observers 
--(void)initEvents:(FlowerApp*)child {   
-    [[NSNotificationCenter defaultCenter] addObserver:child
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventStart:)
                                                  name:FLAPIX_EVENT_START object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:child
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventStop:)
                                                  name:FLAPIX_EVENT_STOP object:nil];    
     
-    [[NSNotificationCenter defaultCenter] addObserver:child
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventLevel:)
                                                  name:FLAPIX_EVENT_LEVEL object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:child
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventFrequency:)
                                                  name:FLAPIX_EVENT_FREQUENCY object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:child
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventBlowStart:)
                                                  name:FLAPIX_EVENT_BLOW_START object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:child
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventBlowStop:)
                                                  name:FLAPIX_EVENT_BLOW_STOP object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:child
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventExerciceStart:)
                                                  name:FLAPIX_EVENT_EXERCICE_START object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:child
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventExerciceStop:)
                                                  name:FLAPIX_EVENT_EXERCICE_STOP object:nil];
 }
+
+
+
 - (void)_flapixEventStart:(NSNotification *)notification {
     [self flapixEventStart:((FLAPIX*)[notification object])];
 }
@@ -99,16 +102,18 @@
 }
 - (void)flapixEventStart:(FLAPIX *)flapix {}
 - (void)flapixEventStop:(FLAPIX *)flapix {}
+
 - (void)flapixEventLevel:(FLAPIX *)flapix {}
 - (void)flapixEventFrequency:(FLAPIX *)flapix {}
+
 - (void)flapixEventBlowStart:(FLAPIBlow *)blow {}
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {}
+
 - (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {}
 - (void)flapixEventExerciceStop:(FLAPIExercice *)exercice {}
 
 
 // View lifecycle
-- (void)viewDidLoad { [super viewDidLoad]; }
 - (void)viewDidUnload { [super viewDidUnload]; }
 - (void)didReceiveMemoryWarning { [super didReceiveMemoryWarning]; }
 

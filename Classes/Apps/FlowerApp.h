@@ -23,8 +23,6 @@
 
 
 
-// Event observer call
--(void)initEvents:(FlowerApp*)child;
 -(void)flapixEventStart:(FLAPIX *)flapix;
 -(void)flapixEventStop:(FLAPIX *)flapix;
 -(void)flapixEventLevel:(FLAPIX *)flapix;

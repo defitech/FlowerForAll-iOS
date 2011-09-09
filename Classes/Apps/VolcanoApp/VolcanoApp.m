@@ -50,8 +50,7 @@
         [self.view addSubview:burst];
         [self.view addSubview:lavaHidder];
         
-        [self initEvents:self]; // Add observers on FLAPIX events
-        
+              
     }
     
     return self;
