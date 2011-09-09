@@ -9,6 +9,7 @@
 #import "BlowHistory.h"
 #import "DB.h"
 #import "FLAPIBlow.h"
+#import "FLAPIX.h"
 
 @implementation BlowHistory
 
@@ -21,7 +22,7 @@
         [[NSNotificationCenter defaultCenter] 
          addObserver:self 
          selector:@selector(flapixEventEndBlow:) 
-         name:@"FlapixEventBlowEnd" object:nil];
+         name:FLAPIX_EVENT_BLOW_STOP object:nil];
         delegate = blowHistoryDelegate;
     }
     

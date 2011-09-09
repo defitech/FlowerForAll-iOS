@@ -16,6 +16,13 @@
 
 
 NSString * const FLAPIX_EVENT_START = @"FlapixEventStart";
+NSString * const FLAPIX_EVENT_STOP = @"FlapixEventStop";
+NSString * const FLAPIX_EVENT_BLOW_START = @"FlapixEventBlowStart";
+NSString * const FLAPIX_EVENT_BLOW_STOP = @"FlapixEventBlowStop";
+NSString * const FLAPIX_EVENT_EXERCICE_START = @"FlapixEventExerciceStart";
+NSString * const FLAPIX_EVENT_EXERCICE_STOP = @"FlapixEventExerciceStop";
+NSString * const FLAPIX_EVENT_LEVEL = @"FlapixEventLevel";
+NSString * const FLAPIX_EVENT_FREQUENCY = @"FlapixEventFrequency";
 
 
 @implementation FLAPIX
@@ -160,7 +167,7 @@ BOOL demo_mode = NO;
     if (! self.running) return NO;
     if (FLAPI_SUCCESS != FLAPI_Stop()) return NO; // This does stop the sound recording and processing
     self.running = NO;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventStop"  object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_STOP  object:self];
     return YES;
 }
 
@@ -171,7 +178,7 @@ BOOL demo_mode = NO;
      NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
      lastlevel = level / gParams.mic_calibration ;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventLevel"  object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_LEVEL  object:self];
     [pool drain]; 
 }
 
@@ -183,7 +190,7 @@ NSMutableArray *blowFrequencies;
      NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
      if (blowFrequencies != nil) { [blowFrequencies addObject:[NSNumber numberWithDouble:freq]] ; }
-     [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventFrequency"  object:self];
+     [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_FREQUENCY  object:self];
     
     [pool drain]; 
 }
@@ -199,7 +206,7 @@ NSMutableArray *blowFrequencies;
     blowFrequencies = [[NSMutableArray alloc] init];
     
     blowing = true;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventBlowStart"  object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_BLOW_START  object:self];
     [pool drain]; 
 }
 
@@ -230,7 +237,7 @@ NSMutableArray *blowFrequencies;
     // exercice management
     [[self currentExercice] addBlow:blow];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"FlapixEventBlowEnd" object:blow];
+    [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_BLOW_STOP object:blow];
     
 
     if ([[self currentExercice] percent_done] >= 1) {

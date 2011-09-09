@@ -39,11 +39,11 @@ NSTimer *repeatingTimer;
     // Listen to FLAPIX blowEvents
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(flapixEventEndBlow:)
-                                                 name:@"FlapixEventBlowEnd" object:nil];
+                                                 name:FLAPIX_EVENT_BLOW_STOP object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(flapixEventExerciceStart:)
-                                                 name:@"FlapixEventExerciceStart" object:nil];
+                                                 name:FLAPIX_EVENT_EXERCICE_START object:nil];
 }
 
 - (void) startReloadTimer {
