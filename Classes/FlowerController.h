@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "EAGLView.h"
+#import "NeedleGL.h"
 #import "SettingsViewController.h"
 #import "StatisticsViewController.h"
 #import "FLAPIX.h"
@@ -23,7 +23,6 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIView *mainView;
-//@property (nonatomic, retain) IBOutlet EAGLView *flapiView;
 @property (nonatomic, assign) HistoryViewController *historyViewController;
 
 // show navigation action sheet

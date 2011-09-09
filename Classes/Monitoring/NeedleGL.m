@@ -1,9 +1,7 @@
 //
-//  EAGLView.m
-//  OpenGL_ES_tuto1
+//  NeedleGL.m
 //
-//  Created by Marian PAUL on 19/04/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright fondation Defitech 20011. All rights reserved.
 //
 
 
@@ -11,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGLDrawable.h>
 
-#import "EAGLView.h"
+#import "NeedleGL.h"
 #import "FlowerController.h"
 #import "ParametersManager.h"
 
@@ -19,7 +17,7 @@
 #define DEGREES_TO_RADIANS(__ANGLE) ((__ANGLE) / 180.0 * M_PI)
 
 // A class extension to declare private methods
-@interface EAGLView ()
+@interface NeedleGL ()
 
 @property (nonatomic, retain) EAGLContext *context;
 @property (nonatomic, assign) NSTimer *animationTimer;
@@ -30,7 +28,7 @@
 @end
 
 
-@implementation EAGLView
+@implementation NeedleGL
 
 @synthesize context;
 @synthesize animationTimer;
@@ -82,12 +80,10 @@
 
 
 - (void)applicationWillResignActive:(NSNotification *)notification {
-    NSLog(@"EAGLVIEW resign active");
     [self stopAnimation];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
-    NSLog(@"EAGLVIEW become active");
     [self startAnimation];
 }
 

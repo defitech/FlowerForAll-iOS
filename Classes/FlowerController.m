@@ -19,7 +19,6 @@
 
 @implementation FlowerController
 
-//@synthesize mainView, flapiView;
 @synthesize mainView, historyViewController;
 
 static FlowerController *singleton;

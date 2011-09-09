@@ -9,7 +9,7 @@
 
 
 #import <UIKit/UIKit.h>
-#import "FLAPIview.h"
+#import "VolcanoApp.h"
 
 #import "RSPageControl.h"
 
@@ -24,7 +24,7 @@
     IBOutlet UIWebView *web;
     
     // Activities
-    FLAPIview *volcanoGame;
+    VolcanoApp *volcanoGame;
     UIView *videoPlayerView;
 	
 	//The buttons inside each of the game sub views

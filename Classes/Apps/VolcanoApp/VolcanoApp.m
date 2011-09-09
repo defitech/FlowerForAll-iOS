@@ -1,19 +1,19 @@
 //
-//  FLAPIview.m
+//  VolcanoApp.m
 //  FlowerForAll
 //
 //  Created by Pierre-Mikael Legris on 26.08.11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "FLAPIview.h"
+#import "VolcanoApp.h"
 #import "FLAPIBlow.h"
 #import "FLAPIX.h"
 #import "FlowerController.h"
 
 #import <QuartzCore/QuartzCore.h>
 
-@implementation FLAPIview
+@implementation VolcanoApp
 
 
 - (void)initVariables {
@@ -39,8 +39,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        volcano = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"volcano.png"] ] autorelease];
-        burst = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"burst.png"] ] autorelease];     
+        volcano = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VolcanoApp_volcano.png"] ] autorelease];
+        burst = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VolcanoApp_burst.png"] ] autorelease];     
         lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 22, volcano.frame.size.height + 20)];
         lavaHidder.backgroundColor = [UIColor whiteColor];
         
@@ -105,7 +105,7 @@
     //Add sound when the goal has been reached for the last blow
     if (blow.goal){
         
-        [self playSystemSound:@"/goal.wav"];
+        [self playSystemSound:@"/VolcanoApp_goal.wav"];
         
         
     }
@@ -120,13 +120,13 @@
     lavaHidder.hidden = true;
     burst.hidden = false;
     
-    [self playSystemSound:@"/explosion.wav"];
+    [self playSystemSound:@"/VolcanoApp_explosion.wav"];
 }
 
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
     [start setTitle:@"Stop Exercice" forState:UIControlStateNormal];
     
-    NSLog(@"FLAPIView flapixEventExerciceStart");
+    NSLog(@"VolcanoApp flapixEventExerciceStart");
     currentExercice = (FLAPIExercice*)[notification object];
     [self initVariables];
 }

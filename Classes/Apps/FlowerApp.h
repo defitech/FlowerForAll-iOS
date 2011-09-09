@@ -14,7 +14,7 @@
 
 @protocol FlowerApp <UIViewController>
 
-/** Used to put in a button on the App Menu **/
+/** Used to put a button on the App Menu **/
 +(UIImage*)AppIcon;
 /** Used to put in as label on the App Menu (Localized)**/
 +(NSString*)AppLabel;

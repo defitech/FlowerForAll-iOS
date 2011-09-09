@@ -46,7 +46,7 @@
 
 - (IBAction) volcanoTouch:(id) sender {
     if (volcanoGame == nil) {
-        volcanoGame = [[FLAPIview alloc] initWithNibName:@"FLAPIview" bundle:[NSBundle mainBundle]];
+        volcanoGame = [[VolcanoApp alloc] initWithNibName:@"VolcanoApp" bundle:[NSBundle mainBundle]];
     }
     [FlowerController setCurrentMainController:volcanoGame];
 }
@@ -57,7 +57,7 @@
 
 FlowerHowTo *flowerHowTo;
 - (IBAction) flowerHowTo:(id) sender {
-    NSLog(@"videoPlayerTouch: %@",[flowerHowTo class]);
+    NSLog(@"flowerHowToTouch: %@",[flowerHowTo class]);
     if (flowerHowTo == nil) {
         flowerHowTo = [[FlowerHowTo alloc] initWithNibName:@"FlowerHowTo" bundle:[NSBundle mainBundle]];
     }

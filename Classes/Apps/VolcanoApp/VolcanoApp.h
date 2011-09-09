@@ -1,5 +1,5 @@
 //
-//  FLAPIview.h
+//  VolcanoApp.h
 //  FlowerForAll
 //
 //  Created by Pierre-Mikael Legris on 26.08.11.
@@ -11,7 +11,7 @@
 #include <AudioToolbox/AudioToolbox.h>
 
 
-@interface FLAPIview : UIViewController {
+@interface VolcanoApp : UIViewController {
     IBOutlet UIButton *start;
     UIImageView *volcano;
     UIImageView *burst;
