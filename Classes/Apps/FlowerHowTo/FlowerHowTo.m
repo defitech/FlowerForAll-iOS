@@ -102,9 +102,4 @@ MPMoviePlayerController *player;
     [player release];    
 }
 
-//Allows view to autorotate
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-	return (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
-}
-
 @end

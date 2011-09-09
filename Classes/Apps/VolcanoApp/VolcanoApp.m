@@ -50,22 +50,7 @@
         [self.view addSubview:burst];
         [self.view addSubview:lavaHidder];
         
-        // Listen to FLAPIX blowEvents
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(flapixEventEndBlow:)
-                                                     name:FLAPIX_EVENT_BLOW_STOP object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(flapixEventFrequency:)
-                                                     name:FLAPIX_EVENT_FREQUENCY object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(flapixEventExerciceStop:)
-                                                     name:FLAPIX_EVENT_BLOW_STOP object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(flapixEventExerciceStart:)
-                                                     name:FLAPIX_EVENT_EXERCICE_START object:nil];
+        [self initEvents:self]; // Add observers on FLAPIX events
         
     }
     
@@ -73,16 +58,16 @@
 }
 
 - (IBAction) pressStart:(id)sender {
-    NSLog(@"Start / Stop");
-    if ( [[FlowerController currentFlapix] running]) {
+    if ([[FlowerController currentFlapix] running])
         [[FlowerController currentFlapix] Stop];
-    } else {
+    else
         [[FlowerController currentFlapix] Start];
-    }
+    
     [self.view setNeedsDisplay];
 }
 
-- (void)flapixEventFrequency:(NSNotification *)notification {
+- (void)flapixEventFrequency:(FLAPIX *)flapix {
+    NSLog(@"Volcano flapixEventFrequency");
     lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaReverse);
     
     // oscillates between 1/4 and 3/4 of lavaUp
@@ -95,40 +80,35 @@
     lavaSmooth = lavaSmooth + lavaReverse;
 }
 
-- (void)flapixEventEndBlow:(NSNotification *)notification {
-	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
+- (void)flapixEventBlowStop:(FLAPIBlow *)blow {
     
     [self.view setNeedsDisplay];
     
     NSLog(@"percent_done: %f", [currentExercice percent_done]);
     
     //Add sound when the goal has been reached for the last blow
-    if (blow.goal){
-        
+    if (blow.goal)
         [self playSystemSound:@"/VolcanoApp_goal.wav"];
-        
-        
-    }
     
     //Raise up lava
     lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * [currentExercice percent_done]);
 }
 
-- (void)flapixEventExerciceStop:(NSNotification *)notification {
+- (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {
+    [start setTitle:@"Stop Exercice" forState:UIControlStateNormal];
+    
+    NSLog(@"VolcanoApp flapixEventExerciceStart");
+    currentExercice = exercice;
+    [self initVariables];
+}
+
+- (void)flapixEventExerciceStop:(FLAPIExercice *)exercice {
     [start setTitle:@"Start Exercice" forState:UIControlStateNormal];
     
     lavaHidder.hidden = true;
     burst.hidden = false;
     
     [self playSystemSound:@"/VolcanoApp_explosion.wav"];
-}
-
-- (void)flapixEventExerciceStart:(NSNotification *)notification {
-    [start setTitle:@"Stop Exercice" forState:UIControlStateNormal];
-    
-    NSLog(@"VolcanoApp flapixEventExerciceStart");
-    currentExercice = (FLAPIExercice*)[notification object];
-    [self initVariables];
 }
 
 
@@ -153,35 +133,6 @@
 }
 
 
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-//Allows view to autorotate
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-	return (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
-}
 
 - (void)dealloc {
 	[volcano release];

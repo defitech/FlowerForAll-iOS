@@ -11,12 +11,27 @@
 //  Translations 
 
 #import <Foundation/Foundation.h>
+#import "FLAPIX.h"
 
-@interface FlowerApp : UIViewController 
+@interface FlowerApp : UIViewController
 
++(NSString*)AppName;
 /** Used to put a button on the App Menu **/
 +(UIImage*)AppIcon;
 /** Used to put in as label on the App Menu (Localized)**/
 +(NSString*)AppLabel;
+
+
+
+// Event observer call
+-(void)initEvents:(FlowerApp*)child;
+-(void)flapixEventStart:(FLAPIX *)flapix;
+-(void)flapixEventStop:(FLAPIX *)flapix;
+-(void)flapixEventLevel:(FLAPIX *)flapix;
+-(void)flapixEventFrequency:(FLAPIX *)flapix;
+-(void)flapixEventBlowStart:(FLAPIBlow *)blow;
+-(void)flapixEventBlowStop:(FLAPIBlow *)blow;
+-(void)flapixEventExerciceStart:(FLAPIExercice *)exercice;
+-(void)flapixEventExerciceStop:(FLAPIExercice *)exercice;
 
 @end
