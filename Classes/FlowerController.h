@@ -23,7 +23,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIView *mainView;
-@property (nonatomic, assign) HistoryViewController *historyViewController;
+@property (nonatomic, retain) HistoryViewController *historyViewController;
 
 // show navigation action sheet
 + (void) showNav;
