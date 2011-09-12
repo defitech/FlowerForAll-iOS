@@ -3,7 +3,7 @@
 //  FlowerForAll
 //
 //  Created by Pierre-Mikael Legris on 09.09.11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 fondationDefitech All rights reserved.
 //
 
 #import "FlowerApp.h"
@@ -11,14 +11,20 @@
 
 @implementation FlowerApp
 
+
 - (id)init
 {
     self = [super init];
     if (self) {
-
+        
     }
     return self;
 }
+
++(FlowerApp*)autoInit {
+    return [[[self class] alloc] initWithNibName:([self appName])  bundle:[NSBundle mainBundle]];
+}
+
 
 /** MyName **/
 +(NSString*)appName {

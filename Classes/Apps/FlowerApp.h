@@ -15,6 +15,12 @@
 
 @interface FlowerApp : UIViewController
 
+/** 
+ * With call initWithName appropriatly 
+ * Override if you need custom loading
+ **/
++(FlowerApp*)autoInit;
+
 /** the AppName (code) not displayed to the user **/
 +(NSString*)appName;
 /** Used to put a button on the App Menu **/

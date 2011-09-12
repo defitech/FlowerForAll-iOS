@@ -23,11 +23,13 @@
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
 
-static ParametersApp* parametersApp;
-static StatisticsViewController *statisticsViewController;
 static GameViewController* activitiesViewController;
 
 static FLAPIX* flapix;
+
+
+/** known application lists **/
+static NSMutableDictionary* appList;
 
 # pragma mark View Control
 
@@ -42,29 +44,32 @@ static FLAPIX* flapix;
     return activitiesViewController;
 }
 
-// get Settings View Controller
-+ (ParametersApp*) getParametersApp
-{
-    if (parametersApp == nil) {
-        parametersApp = [[ParametersApp alloc] init ];
-        parametersApp.view.frame = CGRectMake( 0, -20, 320, 480); // XXX Why??? mérite une question sur stackoverflow
-    }
-    return parametersApp;
-}
-
-// get Statistics View Controller
-+ (StatisticsViewController*) getStatisticsViewController
-{
-    if (statisticsViewController == nil) {
-        statisticsViewController = [[StatisticsViewController alloc] init];
-        statisticsViewController.view.frame = CGRectMake( 0, -20, 320, 480); // XXX Why???
-    }
-    return statisticsViewController;
-}
+# pragma mark App Managements
 
 /** called by Button on the UINavBar **/
 -(void) goToMenu: (id) sender {
     [FlowerController setCurrentMainController:[FlowerController getActivitiesViewController]];
+}
+
+
+/** Promote an App as current Main COntroller **/ 
++ (void) pushApp:(NSString*) flowerApp {
+    if ([appList objectForKey:flowerApp] == nil) {
+        NSLog(@"FlowerController:pushApp unkown app: %@",flowerApp);
+        return;
+    }
+    if ([[[appList objectForKey:flowerApp] class] isSubclassOfClass:[FlowerApp class]]) {
+        NSLog(@"FlowerController:pushApp retrieving %@ from Dictionnary",flowerApp);
+    } else {
+        Class flowerAppClass = NSClassFromString(flowerApp);
+        if (! [flowerAppClass isSubclassOfClass:[FlowerApp class]]) {
+            NSLog(@"FlowerController:pushApp Requesting %@ which is not a FlowerAppClass",flowerApp);
+            return;
+        }
+        NSLog(@"FlowerController:pushApp Init %@",flowerApp);
+        [appList setValue:[flowerAppClass autoInit] forKey:flowerApp];
+    }
+    [FlowerController setCurrentMainController:[appList objectForKey:flowerApp] ];
 }
 
 +(void)setCurrentMainController:(UIViewController*)thisController {
@@ -182,17 +187,28 @@ static FLAPIX* flapix;
 }
 
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     if (singleton != nil)  return ;
     singleton = self;
     
+    
+    // init App list
+    appList = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+               [NSNull alloc], @"VolcanoApp",
+               [NSNull alloc], @"ParametersApp",
+               nil];
+    
     currentMainController = [FlowerController getActivitiesViewController];
     historyViewController = [ [ HistoryViewController alloc ] init ];
     [self.view addSubview:historyViewController.view];
     [self.mainView addSubview:currentMainController.view];
+    
+    [FlowerController pushApp:@"VolcanoApp"];
+    [FlowerController pushApp:@"ParametersApp"];
+    [FlowerController pushApp:@"VolcanoApp"];
+    [FlowerController pushApp:@"VolcanoApp"];
     
      NSLog(@"FlowerController viewDidLoad");
     // Do any additional setup after loading the view from its nib.
@@ -222,9 +238,9 @@ static FLAPIX* flapix;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     [currentMainController release];
-    [parametersApp release];
-    [statisticsViewController release];
     [activitiesViewController release];
+    [appList removeAllObjects];
+     [appList release];
     [singleton release];
 }
 

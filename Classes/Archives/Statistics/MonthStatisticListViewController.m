@@ -103,8 +103,8 @@
 		else {
 			//int count = [delegate.statisticsViewController.viewControllers count];
 			//NSLog(@"view controller count: %i", count);
-			[[FlowerController getStatisticsViewController] 
-                popToViewController:[[FlowerController getStatisticsViewController].viewControllers objectAtIndex:0] animated:YES];
+			/**[[FlowerController getStatisticsViewController] 
+                popToViewController:[[FlowerController getStatisticsViewController].viewControllers objectAtIndex:0] animated:YES];**/
 		}
 
 	}

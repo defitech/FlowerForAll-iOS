@@ -27,14 +27,11 @@
 
 
 - (IBAction) volcanoTouch:(id) sender {
-    if (volcanoGame == nil) {
-        volcanoGame = [[VolcanoApp alloc] initWithNibName:@"VolcanoApp" bundle:[NSBundle mainBundle]];
-    }
-    [FlowerController setCurrentMainController:volcanoGame];
+    [FlowerController pushApp:@"VolcanoApp"];
 }
 
 - (IBAction) settingsTouch:(id) sender {
-    [FlowerController setCurrentMainController:[FlowerController getParametersApp]];
+    [FlowerController pushApp:@"ParametersApp"];
 }
 
 FlowerHowTo *flowerHowTo;

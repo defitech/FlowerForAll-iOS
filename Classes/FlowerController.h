@@ -38,11 +38,8 @@
 
 + (FLAPIX*) currentFlapix;
 
-// get Settings view Controller
-+ (ParametersApp*) getParametersApp;
-
-// get Statistics view Controller
-+ (StatisticsViewController*) getStatisticsViewController;
+/** Promote an App as current Main COntroller **/ 
++ (void) pushApp:(NSString*) flowerApp ;
 
 +(void)setCurrentMainController:(UIViewController*)thisController;
 
