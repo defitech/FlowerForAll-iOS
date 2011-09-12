@@ -32,8 +32,6 @@
 		4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A8213B884FD00853344 /* AVFoundation.framework */; };
 		4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B815A14165374009CC45D /* FlowerHowTo.m4v */; };
 		4E584855140E61CC003892DA /* BlowHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E584854140E61CC003892DA /* BlowHistory.m */; };
-		4E5A4F41141E3A0B002F906B /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5A4F3C141E3A0B002F906B /* VolcanoApp.strings */; };
-		4E5A4F42141E3A0B002F906B /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E5A4F3F141E3A0B002F906B /* VolcanoApp.strings */; };
 		4E713C2B1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E713C2A1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
 		4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DB.m */; };
@@ -86,6 +84,12 @@
 		4ECC6CAE1404E171005519C7 /* UserPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CAD1404E171005519C7 /* UserPicker.m */; };
 		4ECC6CB11404E5F7005519C7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB01404E5F7005519C7 /* UserManager.m */; };
 		4ECC6CB414053744005519C7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB314053744005519C7 /* User.m */; };
+		4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEED18D141E3E3100F56102 /* CalibrationApp.m */; };
+		4EEED190141E3E3100F56102 /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED18E141E3E3100F56102 /* CalibrationApp.xib */; };
+		4EEED193141E3E4500F56102 /* CalibrationApp.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED191141E3E4500F56102 /* CalibrationApp.lproj */; };
+		4EEED195141E3E5700F56102 /* CalibrationApp.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED191141E3E4500F56102 /* CalibrationApp.lproj */; };
+		4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
+		4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
 		4EFC3EBB14064911002F0BF7 /* DoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB814064911002F0BF7 /* DoubleSlider.m */; };
 		4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB914064911002F0BF7 /* handle_highlight.png */; };
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
@@ -142,8 +146,6 @@
 		4E4B815A14165374009CC45D /* FlowerHowTo.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlowerHowTo.m4v; sourceTree = "<group>"; };
 		4E584853140E61CC003892DA /* BlowHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlowHistory.h; path = Data/BlowHistory.h; sourceTree = "<group>"; };
 		4E584854140E61CC003892DA /* BlowHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlowHistory.m; path = Data/BlowHistory.m; sourceTree = "<group>"; };
-		4E5A4F3D141E3A0B002F906B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = VolcanoApp.strings; sourceTree = "<group>"; };
-		4E5A4F40141E3A0B002F906B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = VolcanoApp.strings; sourceTree = "<group>"; };
 		4E713C291416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subsys_ios_AVAudioSessionDelegate.h; sourceTree = "<group>"; };
 		4E713C2A1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = subsys_ios_AVAudioSessionDelegate.m; sourceTree = "<group>"; };
 		4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataAccess.h; path = Data/DataAccess.h; sourceTree = "<group>"; };
@@ -238,6 +240,13 @@
 		4ECC6CB01404E5F7005519C7 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserManager.m; path = Data/UserManager.m; sourceTree = "<group>"; };
 		4ECC6CB214053744005519C7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Data/User.h; sourceTree = "<group>"; };
 		4ECC6CB314053744005519C7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Data/User.m; sourceTree = "<group>"; };
+		4EEED18C141E3E3100F56102 /* CalibrationApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp.h; sourceTree = "<group>"; };
+		4EEED18D141E3E3100F56102 /* CalibrationApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp.m; sourceTree = "<group>"; };
+		4EEED18E141E3E3100F56102 /* CalibrationApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalibrationApp.xib; sourceTree = "<group>"; };
+		4EEED192141E3E4500F56102 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/CalibrationApp.lproj; sourceTree = "<group>"; };
+		4EEED194141E3E5700F56102 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text; name = fr; path = fr.lproj/CalibrationApp.lproj; sourceTree = "<group>"; };
+		4EEED197141E3E7F00F56102 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
+		4EEED199141E3E8700F56102 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
 		4EFC3EB714064911002F0BF7 /* DoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoubleSlider.h; path = UI/DoubleSlider/DoubleSlider.h; sourceTree = "<group>"; };
 		4EFC3EB814064911002F0BF7 /* DoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoubleSlider.m; path = UI/DoubleSlider/DoubleSlider.m; sourceTree = "<group>"; };
 		4EFC3EB914064911002F0BF7 /* handle_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = handle_highlight.png; path = UI/DoubleSlider/handle_highlight.png; sourceTree = "<group>"; };
@@ -384,8 +393,7 @@
 		4E2F4FFC1407D1B100C4C00C /* VolcanoApp */ = {
 			isa = PBXGroup;
 			children = (
-				4E5A4F3B141E3A0B002F906B /* en.lproj */,
-				4E5A4F3E141E3A0B002F906B /* fr.lproj */,
+				4EEED196141E3E7F00F56102 /* VolcanoApp.strings */,
 				D7D64651141659B700F0DE4F /* VolcanoApp_explosion.wav */,
 				D701908A141618510072D020 /* VolcanoApp_goal.wav */,
 				4E141B0513B35EC100698F53 /* Visual */,
@@ -433,6 +441,7 @@
 		4E57A86313A8F12500910E4D /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				4EEED18B141E3D4100F56102 /* CalibrationApp */,
 				4EB510A41418C883008FC46F /* ExempleApp */,
 				4E2F4FFC1407D1B100C4C00C /* VolcanoApp */,
 				4E3A7A7613B8766900853344 /* FlowerHowTo */,
@@ -488,22 +497,6 @@
 				4E584854140E61CC003892DA /* BlowHistory.m */,
 			);
 			name = Data;
-			sourceTree = "<group>";
-		};
-		4E5A4F3B141E3A0B002F906B /* en.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				4E5A4F3C141E3A0B002F906B /* VolcanoApp.strings */,
-			);
-			path = en.lproj;
-			sourceTree = "<group>";
-		};
-		4E5A4F3E141E3A0B002F906B /* fr.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				4E5A4F3F141E3A0B002F906B /* VolcanoApp.strings */,
-			);
-			path = fr.lproj;
 			sourceTree = "<group>";
 		};
 		4E8F594513A7AF8B00D9D3A7 /* en.lproj */ = {
@@ -620,6 +613,17 @@
 				4ECC6CAD1404E171005519C7 /* UserPicker.m */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		4EEED18B141E3D4100F56102 /* CalibrationApp */ = {
+			isa = PBXGroup;
+			children = (
+				4EEED191141E3E4500F56102 /* CalibrationApp.lproj */,
+				4EEED18C141E3E3100F56102 /* CalibrationApp.h */,
+				4EEED18D141E3E3100F56102 /* CalibrationApp.m */,
+				4EEED18E141E3E3100F56102 /* CalibrationApp.xib */,
+			);
+			path = CalibrationApp;
 			sourceTree = "<group>";
 		};
 		4EFC3EB6140648C8002F0BF7 /* DoubleSlider */ = {
@@ -757,8 +761,11 @@
 				D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */,
 				4EB510A81418C883008FC46F /* ExempleApp.strings in Resources */,
 				4E081DCD1419F340003C9178 /* param-icon.png in Resources */,
-				4E5A4F41141E3A0B002F906B /* VolcanoApp.strings in Resources */,
-				4E5A4F42141E3A0B002F906B /* VolcanoApp.strings in Resources */,
+				4EEED190141E3E3100F56102 /* CalibrationApp.xib in Resources */,
+				4EEED193141E3E4500F56102 /* CalibrationApp.lproj in Resources */,
+				4EEED195141E3E5700F56102 /* CalibrationApp.lproj in Resources */,
+				4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */,
+				4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,28 +827,13 @@
 				4EBFFD611414CD4300D4BE9C /* FLAPIExercice.m in Sources */,
 				4E713C2B1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m in Sources */,
 				4E081DD01419F4DD003C9178 /* FlowerApp.m in Sources */,
+				4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4E5A4F3C141E3A0B002F906B /* VolcanoApp.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E5A4F3D141E3A0B002F906B /* en */,
-			);
-			name = VolcanoApp.strings;
-			sourceTree = "<group>";
-		};
-		4E5A4F3F141E3A0B002F906B /* VolcanoApp.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E5A4F40141E3A0B002F906B /* fr */,
-			);
-			name = VolcanoApp.strings;
-			sourceTree = "<group>";
-		};
 		4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -865,6 +857,24 @@
 				4EB510A71418C883008FC46F /* fr */,
 			);
 			name = ExempleApp.strings;
+			sourceTree = "<group>";
+		};
+		4EEED191141E3E4500F56102 /* CalibrationApp.lproj */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EEED192141E3E4500F56102 /* en */,
+				4EEED194141E3E5700F56102 /* fr */,
+			);
+			name = CalibrationApp.lproj;
+			sourceTree = "<group>";
+		};
+		4EEED196141E3E7F00F56102 /* VolcanoApp.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EEED197141E3E7F00F56102 /* en */,
+				4EEED199141E3E8700F56102 /* fr */,
+			);
+			name = VolcanoApp.strings;
 			sourceTree = "<group>";
 		};
 		D7AD2AE414176452004C6034 /* FlowerForAll.html */ = {
