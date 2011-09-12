@@ -58,7 +58,7 @@ FlowerHowTo *flowerHowTo;
 	navigationBar.topItem.title = NSLocalizedString(@"Menu", @"Menu");
 	
 	//Set title of game buttons for all states
-    [volcanoLabel setText:NSLocalizedString(@"Game Volcano", @"Icon Title")];
+    [volcanoLabel setText:[VolcanoApp appTitle]];
     [videoPlayerLabel setText:NSLocalizedString(@"Setup Video", @"Icon Title")];
     [settingsLabel setText:NSLocalizedString(@"Settings", @"Icon Title")];
 	

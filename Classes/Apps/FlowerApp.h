@@ -15,21 +15,47 @@
 
 @interface FlowerApp : UIViewController
 
-+(NSString*)AppName;
+/** the AppName (code) not displayed to the user **/
++(NSString*)appName;
 /** Used to put a button on the App Menu **/
-+(UIImage*)AppIcon;
++(UIImage*)appIcon;
 /** Used to put in as label on the App Menu (Localized)**/
-+(NSString*)AppLabel;
++(NSString*)appTitle;
 
+/** Utility to get translated strings from %lang.lproj%/MyApp.strings**/
++(NSString*)translate:(NSString*)key comment:(NSString*)comment;
 
-
--(void)flapixEventStart:(FLAPIX *)flapix;
--(void)flapixEventStop:(FLAPIX *)flapix;
--(void)flapixEventLevel:(FLAPIX *)flapix;
--(void)flapixEventFrequency:(FLAPIX *)flapix;
--(void)flapixEventBlowStart:(FLAPIBlow *)blow;
--(void)flapixEventBlowStop:(FLAPIBlow *)blow;
+/**  
+ * A new exerice start  
+ * Override this method to catch 
+ **/
 -(void)flapixEventExerciceStart:(FLAPIExercice *)exercice;
+/** 
+ * Exerice did finished  
+ * Override this method to catch 
+ **/
 -(void)flapixEventExerciceStop:(FLAPIExercice *)exercice;
+
+
+/** 
+ * Sound level changes. Value is from 0 to 1, this signal is equivalento a vu-meter 
+ * Override this method to catch 
+ **/
+-(void)flapixEventLevel:(float)soundLevel;
+/**  
+ * return the actual Frequency 
+ * Override this method to catch 
+ **/
+-(void)flapixEventFrequency:(double)ferquency;
+/**  
+ * A blow started  
+ * Override this method to catch 
+ **/
+-(void)flapixEventBlowStart:(FLAPIBlow *)blow;
+/**  
+ * A blow finished  
+ * Override this method to catch 
+ **/
+-(void)flapixEventBlowStop:(FLAPIBlow *)blow;
 
 @end

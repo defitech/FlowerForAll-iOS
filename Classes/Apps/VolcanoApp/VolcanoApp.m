@@ -65,7 +65,7 @@
     [self.view setNeedsDisplay];
 }
 
-- (void)flapixEventFrequency:(FLAPIX *)flapix {
+- (void)flapixEventFrequency:(double)frequency {
     NSLog(@"Volcano flapixEventFrequency");
     lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaReverse);
     

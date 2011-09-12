@@ -21,33 +21,30 @@
 }
 
 /** MyName **/
-+(NSString*)AppName {
++(NSString*)appName {
     return NSStringFromClass([self class]);
 }
 
 /** Used to put a button on the App Menu **/
-+(UIImage*)AppIcon {
-    NSString* iconName = [NSString stringWithFormat:@"%@-Icon.png",[self AppName]];
++(UIImage*)appIcon {
+    NSString* iconName = [NSString stringWithFormat:@"%@-Icon.png",[self appName]];
     return [[[UIImage alloc] initWithContentsOfFile:iconName ] autorelease];
 }
 
 /** Used to put in as label on the App Menu (Localized)**/
-+(NSString*)AppLabel {
-    return [self AppName];
++(NSString*)appTitle {
+    return [self translate:@"AppTitle" comment:@"Will be dispayed behing the icon"];
 }
 
+/** Utility to get translated strings from %lang.lproj%/MyApp.strings**/
++(NSString*)translate:(NSString*)key comment:(NSString*)comment {
+    return NSLocalizedStringFromTable(key,[self appName],comment);
+}
 
 
 // Event Observers 
 -(void)viewDidLoad {
-    [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(_flapixEventStart:)
-                                                 name:FLAPIX_EVENT_START object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(_flapixEventStop:)
-                                                 name:FLAPIX_EVENT_STOP object:nil];    
+    [super viewDidLoad]; 
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventLevel:)
@@ -75,18 +72,11 @@
 }
 
 
-
-- (void)_flapixEventStart:(NSNotification *)notification {
-    [self flapixEventStart:((FLAPIX*)[notification object])];
-}
-- (void)_flapixEventStop:(NSNotification *)notification {
-    [self flapixEventStop:((FLAPIX*)[notification object])];
-}
 - (void)_flapixEventLevel:(NSNotification *)notification {
-    [self flapixEventLevel:((FLAPIX*)[notification object])];
+    [self flapixEventLevel:[((FLAPIX*)[notification object]) lastlevel]];
 }
 - (void)_flapixEventFrequency:(NSNotification *)notification {
-    [self flapixEventFrequency:((FLAPIX*)[notification object])];
+    [self flapixEventFrequency:[((FLAPIX*)[notification object]) frequency]];
 }
 - (void)_flapixEventBlowStart:(NSNotification *)notification {
     [self flapixEventBlowStart:((FLAPIBlow*)[notification object])];
@@ -100,11 +90,9 @@
 - (void)_flapixEventExerciceStop:(NSNotification *)notification {
     [self flapixEventExerciceStop:((FLAPIExercice*)[notification object])];
 }
-- (void)flapixEventStart:(FLAPIX *)flapix {}
-- (void)flapixEventStop:(FLAPIX *)flapix {}
 
-- (void)flapixEventLevel:(FLAPIX *)flapix {}
-- (void)flapixEventFrequency:(FLAPIX *)flapix {}
+- (void)flapixEventLevel:(float)soundLevel {}
+- (void)flapixEventFrequency:(double)frequency {}
 
 - (void)flapixEventBlowStart:(FLAPIBlow *)blow {}
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {}
