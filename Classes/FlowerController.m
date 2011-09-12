@@ -8,9 +8,8 @@
 
 #import "FlowerController.h"
 #import "GameViewController.h"
-#import "SettingChoiceViewController.h"
-#import "SettingsViewController.h"
-#import "GameParametersViewController.h"
+#import "ParametersApp.h"
+#import "ParametersApp.h"
 #import "StatisticsViewController.h"
 #import "FlutterApp2AppDelegate.h"
 #import "ParametersManager.h"
@@ -24,7 +23,7 @@
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
 
-static SettingsViewController *settingsViewController ;
+static ParametersApp* parametersApp;
 static StatisticsViewController *statisticsViewController;
 static GameViewController* activitiesViewController;
 
@@ -44,13 +43,13 @@ static FLAPIX* flapix;
 }
 
 // get Settings View Controller
-+ (SettingsViewController*) getSettingsViewController
++ (ParametersApp*) getParametersApp
 {
-    if (settingsViewController == nil) {
-        settingsViewController = [[SettingsViewController alloc] init ];
-        settingsViewController.view.frame = CGRectMake( 0, -20, 320, 480); // XXX Why??? mérite une question sur stackoverflow
+    if (parametersApp == nil) {
+        parametersApp = [[ParametersApp alloc] init ];
+        parametersApp.view.frame = CGRectMake( 0, -20, 320, 480); // XXX Why??? mérite une question sur stackoverflow
     }
-    return settingsViewController;
+    return parametersApp;
 }
 
 // get Statistics View Controller
@@ -61,6 +60,11 @@ static FLAPIX* flapix;
         statisticsViewController.view.frame = CGRectMake( 0, -20, 320, 480); // XXX Why???
     }
     return statisticsViewController;
+}
+
+/** called by Button on the UINavBar **/
+-(void) goToMenu: (id) sender {
+    [FlowerController setCurrentMainController:[FlowerController getActivitiesViewController]];
 }
 
 +(void)setCurrentMainController:(UIViewController*)thisController {
@@ -142,7 +146,7 @@ static FLAPIX* flapix;
             
 			
             //case 3: // Settings
-            //  [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
+            //  [FlowerController setCurrentMainController:[FlowerController g]];
             // break;
             //case 4: // Statistics
             //   [FlowerController setCurrentMainController:[FlowerController getStatisticsViewController]];
@@ -198,6 +202,10 @@ static FLAPIX* flapix;
 }
 
 
++(FlowerController*) currentFlower {
+    return singleton;
+}
+
 // get the currentFlapix Controller
 + (FLAPIX*) currentFlapix {
     if (flapix == nil) {
@@ -214,7 +222,7 @@ static FLAPIX* flapix;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     [currentMainController release];
-    [settingsViewController release];
+    [parametersApp release];
     [statisticsViewController release];
     [activitiesViewController release];
     [singleton release];

@@ -129,7 +129,7 @@
 		//Delete the user
 		[DB deleteUser:self.userID];
 			
-		[[FlowerController getSettingsViewController] popViewControllerAnimated:YES];
+		[[FlowerController getParametersApp] popViewControllerAnimated:YES];
 		
 	}
 	

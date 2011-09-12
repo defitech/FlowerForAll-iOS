@@ -23,6 +23,9 @@
 		4E141B1013B35F1900698F53 /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0A13B35F1900698F53 /* Icon-iPad.png */; };
 		4E141B1113B35F1900698F53 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0B13B35F1900698F53 /* Icon@2x.png */; };
 		4E141B1713B3769200698F53 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B1613B3769200698F53 /* SettingsView.xib */; };
+		4E1834B3141E4DCE00E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B1141E4DCE00E5AE1F /* ParametersApp.strings */; };
+		4E1834B8141E568100E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B6141E568100E5AE1F /* ParametersApp.strings */; };
+		4E1834BA141E568800E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B6141E568100E5AE1F /* ParametersApp.strings */; };
 		4E2F50001407D1F900C4C00C /* VolcanoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2F4FFE1407D1F900C4C00C /* VolcanoApp.m */; };
 		4E2F50011407D1F900C4C00C /* VolcanoApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E2F4FFF1407D1F900C4C00C /* VolcanoApp.xib */; };
 		4E2F50071407DF8200C4C00C /* FLAPIBlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2F50061407DF8200C4C00C /* FLAPIBlow.m */; };
@@ -42,7 +45,7 @@
 		4E8F593513A7AF6B00D9D3A7 /* FlowerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */; };
 		4E8F593613A7AF6B00D9D3A7 /* FlowerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */; };
 		4E8F593713A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */; };
-		4E8F593813A7AF6B00D9D3A7 /* GameParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591513A7AF6B00D9D3A7 /* GameParametersViewController.m */; };
+		4E8F593813A7AF6B00D9D3A7 /* ParametersApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */; };
 		4E8F593913A7AF6B00D9D3A7 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591713A7AF6B00D9D3A7 /* GameViewController.m */; };
 		4E8F593A13A7AF6B00D9D3A7 /* MonthStatisticListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591913A7AF6B00D9D3A7 /* MonthStatisticListViewController.m */; };
 		4E8F593B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m */; };
@@ -56,7 +59,7 @@
 		4E8F594413A7AF6B00D9D3A7 /* YearStatisticListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F592D13A7AF6B00D9D3A7 /* YearStatisticListViewController.m */; };
 		4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */; };
 		4E8F594C13A7AF9800D9D3A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594A13A7AF9800D9D3A7 /* Localizable.strings */; };
-		4E8F595713A7AFA900D9D3A7 /* GameParametersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594D13A7AFA900D9D3A7 /* GameParametersView.xib */; };
+		4E8F595713A7AFA900D9D3A7 /* ParametersApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594D13A7AFA900D9D3A7 /* ParametersApp.xib */; };
 		4E8F595813A7AFA900D9D3A7 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594E13A7AFA900D9D3A7 /* GameView.xib */; };
 		4E8F595A13A7AFA900D9D3A7 /* SettingChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595013A7AFA900D9D3A7 /* SettingChoiceView.xib */; };
 		4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */; };
@@ -90,6 +93,7 @@
 		4EEED195141E3E5700F56102 /* CalibrationApp.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED191141E3E4500F56102 /* CalibrationApp.lproj */; };
 		4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
 		4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
+		4EEED19E141E488200F56102 /* ParametersApp.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED19C141E488200F56102 /* ParametersApp.lproj */; };
 		4EFC3EBB14064911002F0BF7 /* DoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB814064911002F0BF7 /* DoubleSlider.m */; };
 		4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB914064911002F0BF7 /* handle_highlight.png */; };
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
@@ -133,6 +137,8 @@
 		4E141B0A13B35F1900698F53 /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad.png"; sourceTree = "<group>"; };
 		4E141B0B13B35F1900698F53 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4E141B1613B3769200698F53 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsView.xib; path = Settings/SettingsView.xib; sourceTree = "<group>"; };
+		4E1834B7141E568100E5AE1F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ParametersApp.strings; sourceTree = "<group>"; };
+		4E1834B9141E568800E5AE1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParametersApp.strings; sourceTree = "<group>"; };
 		4E2F4FFD1407D1F900C4C00C /* VolcanoApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolcanoApp.h; sourceTree = "<group>"; };
 		4E2F4FFE1407D1F900C4C00C /* VolcanoApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolcanoApp.m; sourceTree = "<group>"; };
 		4E2F4FFF1407D1F900C4C00C /* VolcanoApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VolcanoApp.xib; sourceTree = "<group>"; };
@@ -165,8 +171,8 @@
 		4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerController.xib; sourceTree = "<group>"; };
 		4E8F591213A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlutterApp2AppDelegate.h; sourceTree = "<group>"; };
 		4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlutterApp2AppDelegate.m; sourceTree = "<group>"; };
-		4E8F591413A7AF6B00D9D3A7 /* GameParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameParametersViewController.h; path = Settings/GameParametersViewController.h; sourceTree = "<group>"; };
-		4E8F591513A7AF6B00D9D3A7 /* GameParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameParametersViewController.m; path = Settings/GameParametersViewController.m; sourceTree = "<group>"; };
+		4E8F591413A7AF6B00D9D3A7 /* ParametersApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersApp.h; sourceTree = "<group>"; };
+		4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersApp.m; sourceTree = "<group>"; };
 		4E8F591613A7AF6B00D9D3A7 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		4E8F591713A7AF6B00D9D3A7 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		4E8F591813A7AF6B00D9D3A7 /* MonthStatisticListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonthStatisticListViewController.h; path = Statistics/MonthStatisticListViewController.h; sourceTree = "<group>"; };
@@ -191,7 +197,7 @@
 		4E8F592D13A7AF6B00D9D3A7 /* YearStatisticListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YearStatisticListViewController.m; path = Statistics/YearStatisticListViewController.m; sourceTree = "<group>"; };
 		4E8F594713A7AF8B00D9D3A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		4E8F594B13A7AF9800D9D3A7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
-		4E8F594D13A7AFA900D9D3A7 /* GameParametersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GameParametersView.xib; path = Settings/GameParametersView.xib; sourceTree = "<group>"; };
+		4E8F594D13A7AFA900D9D3A7 /* ParametersApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParametersApp.xib; sourceTree = "<group>"; };
 		4E8F594E13A7AFA900D9D3A7 /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
 		4E8F595013A7AFA900D9D3A7 /* SettingChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingChoiceView.xib; path = Settings/SettingChoiceView.xib; sourceTree = "<group>"; };
 		4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlutterApp2Database.sql; sourceTree = "<group>"; };
@@ -430,9 +436,6 @@
 				4E8F591B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m */,
 				4E8F591C13A7AF6B00D9D3A7 /* SettingsViewController.h */,
 				4E8F591D13A7AF6B00D9D3A7 /* SettingsViewController.m */,
-				4E8F594D13A7AFA900D9D3A7 /* GameParametersView.xib */,
-				4E8F591413A7AF6B00D9D3A7 /* GameParametersViewController.h */,
-				4E8F591513A7AF6B00D9D3A7 /* GameParametersViewController.m */,
 				4E141B1613B3769200698F53 /* SettingsView.xib */,
 			);
 			name = Settings;
@@ -441,6 +444,7 @@
 		4E57A86313A8F12500910E4D /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				4EEED19B141E474600F56102 /* ParametersApp */,
 				4EEED18B141E3D4100F56102 /* CalibrationApp */,
 				4EB510A41418C883008FC46F /* ExempleApp */,
 				4E2F4FFC1407D1B100C4C00C /* VolcanoApp */,
@@ -626,6 +630,17 @@
 			path = CalibrationApp;
 			sourceTree = "<group>";
 		};
+		4EEED19B141E474600F56102 /* ParametersApp */ = {
+			isa = PBXGroup;
+			children = (
+				4E1834B6141E568100E5AE1F /* ParametersApp.strings */,
+				4E8F594D13A7AFA900D9D3A7 /* ParametersApp.xib */,
+				4E8F591413A7AF6B00D9D3A7 /* ParametersApp.h */,
+				4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */,
+			);
+			path = ParametersApp;
+			sourceTree = "<group>";
+		};
 		4EFC3EB6140648C8002F0BF7 /* DoubleSlider */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,7 +745,7 @@
 				4E8F593613A7AF6B00D9D3A7 /* FlowerController.xib in Resources */,
 				4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */,
 				4E8F594C13A7AF9800D9D3A7 /* Localizable.strings in Resources */,
-				4E8F595713A7AFA900D9D3A7 /* GameParametersView.xib in Resources */,
+				4E8F595713A7AFA900D9D3A7 /* ParametersApp.xib in Resources */,
 				4E8F595813A7AFA900D9D3A7 /* GameView.xib in Resources */,
 				4E8F595A13A7AFA900D9D3A7 /* SettingChoiceView.xib in Resources */,
 				4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */,
@@ -766,6 +781,10 @@
 				4EEED195141E3E5700F56102 /* CalibrationApp.lproj in Resources */,
 				4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */,
 				4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */,
+				4EEED19E141E488200F56102 /* ParametersApp.lproj in Resources */,
+				4E1834B3141E4DCE00E5AE1F /* ParametersApp.strings in Resources */,
+				4E1834B8141E568100E5AE1F /* ParametersApp.strings in Resources */,
+				4E1834BA141E568800E5AE1F /* ParametersApp.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,7 +807,7 @@
 				4E8F593313A7AF6B00D9D3A7 /* Expiration.m in Sources */,
 				4E8F593513A7AF6B00D9D3A7 /* FlowerController.m in Sources */,
 				4E8F593713A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m in Sources */,
-				4E8F593813A7AF6B00D9D3A7 /* GameParametersViewController.m in Sources */,
+				4E8F593813A7AF6B00D9D3A7 /* ParametersApp.m in Sources */,
 				4E8F593913A7AF6B00D9D3A7 /* GameViewController.m in Sources */,
 				4E8F593A13A7AF6B00D9D3A7 /* MonthStatisticListViewController.m in Sources */,
 				4E8F593B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m in Sources */,
@@ -834,6 +853,23 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4E1834B1141E4DCE00E5AE1F /* ParametersApp.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+			);
+			name = ParametersApp.strings;
+			path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Classes/Apps/ParametersApp;
+			sourceTree = "<absolute>";
+		};
+		4E1834B6141E568100E5AE1F /* ParametersApp.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E1834B7141E568100E5AE1F /* fr */,
+				4E1834B9141E568800E5AE1F /* en */,
+			);
+			name = ParametersApp.strings;
+			sourceTree = "<group>";
+		};
 		4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -876,6 +912,14 @@
 			);
 			name = VolcanoApp.strings;
 			sourceTree = "<group>";
+		};
+		4EEED19C141E488200F56102 /* ParametersApp.lproj */ = {
+			isa = PBXVariantGroup;
+			children = (
+			);
+			name = ParametersApp.lproj;
+			path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Classes/Apps;
+			sourceTree = "<absolute>";
 		};
 		D7AD2AE414176452004C6034 /* FlowerForAll.html */ = {
 			isa = PBXVariantGroup;

@@ -1,5 +1,5 @@
 //
-//  GameParametersViewController.h
+//  ParametersApp.h
 //  FlutterApp2
 //
 //  Created by Dev on 27.12.10.
@@ -10,8 +10,9 @@
 
 #import <UIKit/UIKit.h>
 #import "DoubleSlider.h"
+#import "FlowerApp.h"
 
-@interface GameParametersViewController : UIViewController {
+@interface ParametersApp : FlowerApp {
 	
 	//Widgets
 	IBOutlet UILabel *targetFrequencyRangeLabel;

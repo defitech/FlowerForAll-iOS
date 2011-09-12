@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 #import "NeedleGL.h"
-#import "SettingsViewController.h"
 #import "StatisticsViewController.h"
 #import "FLAPIX.h"
 #import "HistoryViewController.h"
+#import "ParametersApp.h"
 
 @interface FlowerController : UIViewController <UIActionSheetDelegate> {
     UIView *mainView;
@@ -28,10 +28,18 @@
 // show navigation action sheet
 + (void) showNav;
 
+
+
+
+/** called by Button on the UINavBar **/
+- (void)goToMenu: (id) sender  ;
+
++ (FlowerController*) currentFlower;
+
 + (FLAPIX*) currentFlapix;
 
 // get Settings view Controller
-+ (SettingsViewController*) getSettingsViewController;
++ (ParametersApp*) getParametersApp;
 
 // get Statistics view Controller
 + (StatisticsViewController*) getStatisticsViewController;

@@ -10,8 +10,6 @@
 /* Title of the second tab bar item */
 "Statistics" = "Statistiques";
 
-/* Title of the third tab bar item */
-"Settings" = "Paramètres";
 
 /* Text of the username label */
 "UsernameLabel" = "Username";
@@ -22,20 +20,13 @@
 /* Text of the modify button */
 "ModifyButtonText" = "Modifier";
 
-/* Main label of the game parameters view */
-"TargetFrequencyRangeLabel" = "Intervale de fréquence";
-
-
-"DurationLabel" = "Durées: periodes pendant lesquelles le Flutter® vibre dans l'interval de fréquences choisit.";
-
-"ExerciceLabel" = "Durée totale pour un exerice";
-
-/* Expiration time label */
-"ExpirationLabel" = "Durée pour une expiration";
-
-
 /* Name of the owner user */
 "OwnerUserName" = "Propriétaire";
+
+
+/* Label of the Parameters entry in the settings table */
+"ParametersEntryLabel" = "Objectifs d'expiration";
+
 
 
 /* Title of the setting choice view */
@@ -53,8 +44,6 @@
 /* Label of the Users entry of the settings table */
 "UsersEntryLabel" = "Utilisateurs";
 
-/* Label of the Parameters entry in the settings table */
-"ParametersEntryLabel" = "Objectifs d'expiration";
 
 /* Label of the add user button */
 "AddUserbuttonLabel" = "Ajouter";

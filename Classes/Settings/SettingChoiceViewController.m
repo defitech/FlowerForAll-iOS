@@ -12,7 +12,7 @@
 
 #import "SettingChoiceViewController.h"
 #import "UserListViewController.h"
-#import "GameParametersViewController.h"
+#import "ParametersApp.h"
 
 #import "FlowerController.h"
 
@@ -52,6 +52,9 @@
 	self.title = NSLocalizedString(@"SettingChoiceViewTitle", @"Title of the setting choice view");
 	settingChoiceTableView.scrollEnabled = NO;
 	
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Menu", @"Menu Button on NavBar") style:UIBarButtonItemStylePlain target:[FlowerController currentFlower] action:@selector(goToMenu:)];
+    
 	//Set self.settingsArray with the different settings
 	NSMutableArray *array = [[NSArray alloc] initWithObjects:NSLocalizedString(@"UsersEntryLabel", @"Label of the Users entry in the settings table"), NSLocalizedString(@"ParametersEntryLabel",@"Label of the Parameters entry in the settings table"), nil];
 	self.settingsArray = array;
@@ -59,9 +62,6 @@
 	
     [self pushGameParametersViewController:NO];
 }
-
-
-
 
 
 /*
@@ -187,7 +187,7 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Setting Choice View Controller row:",indexPath);
+    NSLog(@"Setting Choice View Controller row:%i",[indexPath row]);
 	NSInteger row = [indexPath row];
 	
 	//If the first row is selected, then push a UserListViewController...
@@ -201,7 +201,7 @@
 
 		userListViewController.title = [NSString stringWithFormat:@"%@", [settingsArray objectAtIndex:row]];
 
-		[[FlowerController getSettingsViewController] pushViewController:userListViewController animated:YES];
+		[[FlowerController getParametersApp] pushViewController:userListViewController animated:YES];
 		
 	}
 	
@@ -214,11 +214,11 @@
 
 - (void) pushGameParametersViewController:(BOOL)animated {
     if (self.gameParametersViewController == nil){
-        self.gameParametersViewController = [[GameParametersViewController alloc] initWithNibName:@"GameParametersView" bundle:nil];
+        self.gameParametersViewController = [[ParametersApp alloc] initWithNibName:@"ParametersApp" bundle:nil];
         self.gameParametersViewController.title = NSLocalizedString(@"ParametersEntryLabel",@"Label of the Parameters entry in the settings table");
     }
     
-    [[FlowerController getSettingsViewController] pushViewController:self.gameParametersViewController animated:animated];
+    [[FlowerController getParametersApp] pushViewController:self.gameParametersViewController animated:animated];
 }
 
 

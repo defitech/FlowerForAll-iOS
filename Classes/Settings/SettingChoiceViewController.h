@@ -12,7 +12,7 @@
 
 
 @class UserListViewController;
-@class GameParametersViewController;
+@class ParametersApp;
 
 
 @interface SettingChoiceViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
@@ -25,7 +25,7 @@
 	
 	//Child view controllers
 	UserListViewController *userListViewController;
-	GameParametersViewController *gameParametersViewController;
+	ParametersApp *gameParametersViewController;
 	
 }
 
@@ -33,7 +33,7 @@
 //Properties
 @property (nonatomic, retain) NSMutableArray *settingsArray;
 @property (nonatomic, retain) UserListViewController *userListViewController;
-@property (nonatomic, retain) GameParametersViewController *gameParametersViewController;
+@property (nonatomic, retain) ParametersApp *gameParametersViewController;
 
 - (void) pushGameParametersViewController:(BOOL)animated;
 

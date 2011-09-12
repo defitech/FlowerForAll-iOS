@@ -22,6 +22,9 @@
 
 /** MyName **/
 +(NSString*)appName {
+    if ([[self class] isKindOfClass:[FlowerApp class]]) {
+        NSLog(@"**WARNING!! FlowerApp:appName is called directly - you should do a stack trace to get from where");
+    }
     return NSStringFromClass([self class]);
 }
 

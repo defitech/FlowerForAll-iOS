@@ -17,6 +17,7 @@
 
 #import "FlowerController.h"
 #import "FlowerHowTo.h"
+#import "ParametersApp.h"
 
 @implementation GameViewController
 
@@ -33,7 +34,7 @@
 }
 
 - (IBAction) settingsTouch:(id) sender {
-    [FlowerController setCurrentMainController:[FlowerController getSettingsViewController]];
+    [FlowerController setCurrentMainController:[FlowerController getParametersApp]];
 }
 
 FlowerHowTo *flowerHowTo;
@@ -60,7 +61,7 @@ FlowerHowTo *flowerHowTo;
 	//Set title of game buttons for all states
     [volcanoLabel setText:[VolcanoApp appTitle]];
     [videoPlayerLabel setText:NSLocalizedString(@"Setup Video", @"Icon Title")];
-    [settingsLabel setText:NSLocalizedString(@"Settings", @"Icon Title")];
+    [settingsLabel setText:[ParametersApp appTitle]];
 	
     int nb_pages = 2;
 	//scrollView.contentSize = CGSizeMake(960.0,0.0);

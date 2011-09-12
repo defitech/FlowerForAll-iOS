@@ -1,0 +1,14 @@
+"AppTitle" = "Réglages";
+
+
+/* Main label of the game parameters view */
+"TargetFrequencyRangeLabel" = "Intervale de fréquence";
+
+
+"DurationLabel" = "Durées: periodes pendant lesquelles le Flutter® vibre dans l'interval de fréquences choisit.";
+
+"ExerciceLabel" = "Durée totale pour un exerice";
+
+/* Expiration time label */
+"ExpirationLabel" = "Durée pour une expiration";
+

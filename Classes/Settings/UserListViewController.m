@@ -294,7 +294,7 @@
 	
 	userDetailViewController.title = [NSString stringWithFormat:@"%@", [usersArray objectAtIndex:row]];
 	
-	[[FlowerController getSettingsViewController]  pushViewController:userDetailViewController animated:YES];
+	[[FlowerController getParametersApp]  pushViewController:userDetailViewController animated:YES];
 	
 }
 

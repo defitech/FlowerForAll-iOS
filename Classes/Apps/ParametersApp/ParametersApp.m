@@ -1,19 +1,19 @@
 //
-//  GameParametersViewController.m
+//  ParametersApp.m
 //  FlutterApp2
 //
 //  Created by Dev on 27.12.10.
 //  Copyright 2010 Defitech. All rights reserved.
 //
-//  Implementation of the GameParametersViewController class
+//  Implementation of the ParametersApp class
 
 
-#import "GameParametersViewController.h"
+#import "ParametersApp.h"
 #import "DoubleSlider.h"
 #import "FlowerController.h"
 #import "ParametersManager.h"
 
-@interface GameParametersViewController (PrivateMethods)
+@interface ParametersApp (PrivateMethods)
 - (void)valueChangedForDoubleSlider:(DoubleSlider *)slider;
 - (void)editingEndForDoubleSlider:(DoubleSlider *)slider;
 - (void)valueChangedForDurationSlider:(UISlider *)slider;
@@ -21,7 +21,7 @@
 @end
 
 
-@implementation GameParametersViewController
+@implementation ParametersApp
 
 
 @synthesize targetFrequencyRangeLabel, minLabel, maxLabel, durationLabel,
@@ -35,7 +35,7 @@ float maxExecriceDuration_s = 120.0;
 float minExecriceDuration_s = 7.0;
 
 - (float)exericeDurationSliderToSystem:(float)sliderValue {
-    return sliderValue*sliderValue*(maxExecriceDuration_s-minExecriceDuration_s)+minExecriceDuration_s;
+    return roundf(sliderValue*sliderValue*(maxExecriceDuration_s-minExecriceDuration_s)+minExecriceDuration_s);
 }
 
 - (float)exericeDurationSystemToSlider:(float)systemValue {
@@ -68,12 +68,16 @@ float minExecriceDuration_s = 7.0;
 	
     [super viewDidLoad];
 	
-	targetFrequencyRangeLabel.text = NSLocalizedString(@"TargetFrequencyRangeLabel", @"Target Frequency Range");
-	durationLabel.text = NSLocalizedString(@"DurationLabel", @"DurationExplanantion");
+	targetFrequencyRangeLabel.text = 
+        [ParametersApp translate:@"TargetFrequencyRangeLabel" comment:@"Target Frequency Range"];
+	durationLabel.text = 
+        [ParametersApp translate:@"DurationLabel" comment:@"DurationExplanantion"];
 	
     
     //Expiration slider
-    expirationLabel.text = NSLocalizedString(@"ExpirationLabel", @"Expiration duration target");
+    expirationLabel.text = 
+        [ParametersApp translate:@"ExpirationLabel" comment:@"Expiration duration target"];
+    
     [expirationSlider addTarget:self action:@selector(valueChangedForExpirationSlider:) 
              forControlEvents:UIControlEventValueChanged];
     
@@ -86,7 +90,9 @@ float minExecriceDuration_s = 7.0;
     
     
     //Exercice slider
-     exerciceLabel.text = NSLocalizedString(@"ExerciceLabel", @"Exerice duration target");
+    exerciceLabel.text = 
+        [ParametersApp translate:@"ExerciceLabel" comment:@"Exerice duration target"];
+    
     [exerciceSlider addTarget:self action:@selector(valueChangedForExericeSlider:) 
                forControlEvents:UIControlEventValueChanged];
     

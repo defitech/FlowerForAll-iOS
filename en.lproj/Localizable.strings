@@ -10,9 +10,6 @@
 /* Title of the second tab bar item */
 "Statistics" = "Statistics";
 
-/* Title of the third tab bar item */
-"Settings" = "Settings";
-
 /* Text of the username label */
 "UsernameLabel" = "Username";
 
@@ -21,18 +18,6 @@
 
 /* Text of the modify button */
 "ModifyButtonText" = "Modify";
-
-/* Main label of the game parameters view */
-"TargetFrequencyRangeLabel" = "Range of frequency";
-
-"DurationLabel" = "Durations: period of time where the Flutter® vibrates in the targeted frequency range.";
-
-"ExerciceLabel" = "Duration for one exercice";
-
-/* Expiration time label */
-"ExpirationLabel" = "Duration for one expiration";
-
-
 
 /* Name of the owner user */
 "OwnerUserName" = "Owner";
