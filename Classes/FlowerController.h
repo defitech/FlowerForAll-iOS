@@ -10,19 +10,14 @@
 
 #import "NeedleGL.h"
 #import "FLAPIX.h"
-#import "HistoryViewController.h"
+#import "HistoryView.h"
 #import "ParametersApp.h"
 
 @interface FlowerController : UIViewController <UIActionSheetDelegate> {
     UIView *mainView;
-    HistoryViewController *historyViewController;
-    
-   
-
 }
 
 @property (nonatomic, retain) IBOutlet UIView *mainView;
-@property (nonatomic, retain) HistoryViewController *historyViewController;
 
 // show navigation action sheet
 + (void) showNav;

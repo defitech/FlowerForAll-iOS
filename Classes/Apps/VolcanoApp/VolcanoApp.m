@@ -3,7 +3,7 @@
 //  FlowerForAll
 //
 //  Created by Pierre-Mikael Legris on 26.08.11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 fondation Defitech. All rights reserved.
 //
 
 #import "VolcanoApp.h"
@@ -66,7 +66,6 @@
 }
 
 - (void)flapixEventFrequency:(double)frequency {
-    NSLog(@"Volcano flapixEventFrequency");
     lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaReverse);
     
     // oscillates between 1/4 and 3/4 of lavaUp

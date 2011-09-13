@@ -1,18 +1,18 @@
 //
-//  HistoryViewController.m
+//  HistoryView.m
 //
 //  Created by Jerome on 29/08/11.
 //  Copyright 2010 Defitech. All rights reserved.
 //
 
-#import "HistoryViewController.h"
+#import "HistoryView.h"
 #import "ParametersManager.h"
 #import "FLAPIBlow.h"
 #import "FlowerController.h"
 #import "FLAPIExercice.h"
 #import "FLAPIX.h"
 
-@implementation HistoryViewController
+@implementation HistoryView
 
 
 
@@ -84,27 +84,30 @@ NSTimer *repeatingTimer;
 }
 
 
+
+
+
 # pragma mark VIEWS LOADING
 
-- (void)loadView {
+- (void)loadStep1 {
 	// Alloc & Init Main View
-	UIView *tmpView = [ [ UIView alloc ] initWithFrame:CGRectMake(40.0, 420.0, 280.0, 40.0) ];
-	[ tmpView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
-	[ tmpView setBackgroundColor:[ UIColor blackColor ] ];
-	[ self setView:[ tmpView autorelease ] ];
+	//UIView *tmpView = [ [ UIView alloc ] initWithFrame:CGRectMake(40.0, 420.0, 280.0, 40.0) ];
+	//[ tmpView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
+	[ self setBackgroundColor:[ UIColor blackColor ] ];
+	
     
     // Add Touch
     UITapGestureRecognizer *singleFingerTap = 
     [[UITapGestureRecognizer alloc] initWithTarget:self 
                                             action:@selector(handleSingleTap:)];
-    [self.view addGestureRecognizer:singleFingerTap];
+    [self addGestureRecognizer:singleFingerTap];
     [singleFingerTap release];
 
     
 	
 	// Alloc Graph View
 	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 230.0, 40.0) ];
-	[ self.view addSubview:[ graphView autorelease ] ];
+	[ self addSubview:[ graphView autorelease ] ];
     
     // Alloc Label View
     labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(230.0, 0.0, 50.0, 12.0) ];
@@ -120,8 +123,8 @@ NSTimer *repeatingTimer;
     [labelFrequency setText:@"-"];
     
     
-    [ self.view addSubview:labelPercent ];
-    [ self.view addSubview:labelFrequency ];
+    [ self addSubview:labelPercent ];
+    [ self addSubview:labelFrequency ];
     
     historyDuration = 2; // 2 minutes
     graphPadding = 2; // 2 pixels
@@ -132,15 +135,14 @@ NSTimer *repeatingTimer;
 }
 
 
-- (void)viewDidLoad {
+- (void)loadStep2 {
     
-    [ super viewDidLoad ];
 	
 	/*
 	 *	CPXYGraph Prefs
 	 */
 	// Alloc CPXYGraph
-	graph = [ [ CPXYGraph alloc ] initWithFrame: self.view.bounds ];
+	graph = [ [ CPXYGraph alloc ] initWithFrame: self.bounds ];
 	// Link between the view and the Layer
 	graphView.hostedGraph = graph;
 	// Init Padding to 2
@@ -187,7 +189,7 @@ NSTimer *repeatingTimer;
 	 *	PLOTS
 	 */
 	// isGood plot
-	CPScatterPlot *goodPlot = [[[CPScatterPlot alloc]initWithFrame:self.view.bounds] autorelease];
+	CPScatterPlot *goodPlot = [[[CPScatterPlot alloc]initWithFrame:self.bounds] autorelease];
     goodPlot.identifier = @"isGood";
 	goodPlot.dataLineStyle.lineWidth = 1.0f;
 	goodPlot.dataLineStyle.lineColor = [CPColor blackColor];
@@ -195,7 +197,7 @@ NSTimer *repeatingTimer;
 	[ graph addPlot:goodPlot];
     
     // blow duration plot
-    CPBarPlot* blowPlot = [[[CPBarPlot alloc] initWithFrame:self.view.bounds] autorelease];
+    CPBarPlot* blowPlot = [[[CPBarPlot alloc] initWithFrame:self.bounds] autorelease];
     blowPlot.identifier = @"blow";
     blowPlot.dataSource = self;
     blowPlot.barWidth = 5;
@@ -204,7 +206,7 @@ NSTimer *repeatingTimer;
     [ graph addPlot:blowPlot ];
     
     // in range duration
-    CPBarPlot* inRangePlot = [[[CPBarPlot alloc] initWithFrame:self.view.bounds] autorelease];
+    CPBarPlot* inRangePlot = [[[CPBarPlot alloc] initWithFrame:self.bounds] autorelease];
     inRangePlot.identifier = @"inRange";
     inRangePlot.dataSource = self;
     inRangePlot.barWidth = 5;
@@ -290,6 +292,22 @@ NSTimer *repeatingTimer;
         plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromDouble(0) length:CPDecimalFromDouble(higherBar + higherBar/5)];
     }
 }
+
+
+
+//The GL view is stored in the nib file. When it's unarchived it's sent -initWithCoder:
+- (id)initWithCoder:(NSCoder*)coder {
+    
+    if ((self = [super initWithCoder:coder])) {
+        NSLog(@"*************DO SOME REFACTORING*********");
+        [self loadStep1];
+        [self loadStep2];
+        
+    }
+    return self;
+}
+
+
 
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
     higherBar = 0;

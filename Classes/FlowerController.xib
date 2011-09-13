@@ -41,18 +41,6 @@
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIView" id="914775331">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 420}, {40, 40}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<string key="NSReuseIdentifierKey">_NS:180</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
-						</object>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
 					<object class="IBUIView" id="1026269626">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
@@ -64,6 +52,31 @@
 							<bytes key="NSRGB">MC4yMDg5MTI2MjUgMSAwLjY5NzIyNzQ4NDIAA</bytes>
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="446601705">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{40, 420}, {280, 40}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<string key="NSReuseIdentifierKey">_NS:180</string>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAwLjk5ODI2MDk4ODQgMC43NzU4NzQwNTc3AA</bytes>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="914775331">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{0, 420}, {40, 40}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="446601705"/>
+						<string key="NSReuseIdentifierKey">_NS:180</string>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwIDAAA</bytes>
+						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
@@ -116,6 +129,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="914775331"/>
 							<reference ref="1026269626"/>
+							<reference ref="446601705"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -131,19 +145,25 @@
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">5</int>
-						<reference key="object" ref="1026269626"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<reference key="parent" ref="191373211"/>
-						<string key="objectName">mainView</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">9</int>
 						<reference key="object" ref="914775331"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">needle</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">11</int>
+						<reference key="object" ref="446601705"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+						</object>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">history</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">5</int>
+						<reference key="object" ref="1026269626"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">mainView</string>
 					</object>
 				</object>
 			</object>
@@ -156,6 +176,8 @@
 					<string>-2.CustomClassName</string>
 					<string>-2.IBPluginDependency</string>
 					<string>1.IBPluginDependency</string>
+					<string>11.CustomClassName</string>
+					<string>11.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>9.CustomClassName</string>
 					<string>9.IBPluginDependency</string>
@@ -166,6 +188,8 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>HistoryView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>NeedleGL</string>
@@ -188,7 +212,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">10</int>
+			<int key="maxID">11</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -197,14 +221,35 @@
 					<string key="className">FlowerController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">mainView</string>
-						<string key="NS.object.0">UIView</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>historyViewController</string>
+							<string>mainView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>HistoryView</string>
+							<string>UIView</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">mainView</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">mainView</string>
-							<string key="candidateClassName">UIView</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>historyViewController</string>
+							<string>mainView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">historyViewController</string>
+								<string key="candidateClassName">HistoryView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">mainView</string>
+								<string key="candidateClassName">UIView</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -213,11 +258,19 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">NeedleGL</string>
+					<string key="className">HistoryView</string>
 					<string key="superclassName">UIView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NeedleGL</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NeedleGL.h</string>
 					</object>
 				</object>
 			</object>

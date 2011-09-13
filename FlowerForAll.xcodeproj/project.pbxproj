@@ -91,7 +91,7 @@
 		D77B109B140FC5A600897203 /* icon_contents_page_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */; };
 		D77B109C140FC5A600897203 /* RSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D77B1099140FC5A600897203 /* RSPageControl.m */; };
 		D7A9942B14165763000AA64A /* VolcanoApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7A9942914165763000AA64A /* VolcanoApp-Icon.png */; };
-		D7ABFF88140B8227003B9F08 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF86140B8227003B9F08 /* HistoryViewController.m */; };
+		D7ABFF88140B8227003B9F08 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF86140B8227003B9F08 /* HistoryView.m */; };
 		D7AD2ADC14174CA2004C6034 /* VolcanoApp_burst.png in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2ADB14174CA2004C6034 /* VolcanoApp_burst.png */; };
 		D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE71417645C004C6034 /* FlowerForAll.html */; };
 		D7D64652141659B700F0DE4F /* VolcanoApp_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D64651141659B700F0DE4F /* VolcanoApp_explosion.wav */; };
@@ -230,8 +230,8 @@
 		D77B1098140FC5A600897203 /* RSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSPageControl.h; path = UI/RSPageControl.h; sourceTree = "<group>"; };
 		D77B1099140FC5A600897203 /* RSPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSPageControl.m; path = UI/RSPageControl.m; sourceTree = "<group>"; };
 		D7A9942914165763000AA64A /* VolcanoApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolcanoApp-Icon.png"; sourceTree = "<group>"; };
-		D7ABFF85140B8227003B9F08 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
-		D7ABFF86140B8227003B9F08 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		D7ABFF85140B8227003B9F08 /* HistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryView.h; sourceTree = "<group>"; };
+		D7ABFF86140B8227003B9F08 /* HistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryView.m; sourceTree = "<group>"; };
 		D7AD2ADB14174CA2004C6034 /* VolcanoApp_burst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VolcanoApp_burst.png; sourceTree = "<group>"; };
 		D7AD2AE514176452004C6034 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = FlowerForAll.html; sourceTree = "<group>"; };
 		D7AD2AE81417645C004C6034 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = FlowerForAll.html; sourceTree = "<group>"; };
@@ -587,8 +587,8 @@
 			children = (
 				28FD14FC0DC6FC130079059D /* NeedleGL.h */,
 				28FD14FD0DC6FC130079059D /* NeedleGL.m */,
-				D7ABFF85140B8227003B9F08 /* HistoryViewController.h */,
-				D7ABFF86140B8227003B9F08 /* HistoryViewController.m */,
+				D7ABFF85140B8227003B9F08 /* HistoryView.h */,
+				D7ABFF86140B8227003B9F08 /* HistoryView.m */,
 			);
 			path = Monitoring;
 			sourceTree = "<group>";
@@ -727,7 +727,7 @@
 				4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */,
 				4E2F50001407D1F900C4C00C /* VolcanoApp.m in Sources */,
 				4E2F50071407DF8200C4C00C /* FLAPIBlow.m in Sources */,
-				D7ABFF88140B8227003B9F08 /* HistoryViewController.m in Sources */,
+				D7ABFF88140B8227003B9F08 /* HistoryView.m in Sources */,
 				4E584855140E61CC003892DA /* BlowHistory.m in Sources */,
 				D77B109C140FC5A600897203 /* RSPageControl.m in Sources */,
 				4EBFFD611414CD4300D4BE9C /* FLAPIExercice.m in Sources */,

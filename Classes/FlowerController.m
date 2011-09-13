@@ -17,8 +17,7 @@
 
 @implementation FlowerController
 
-@synthesize mainView, historyViewController;
-
+@synthesize mainView; 
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
 static MenuView* activitiesViewController;
@@ -196,8 +195,8 @@ static NSMutableDictionary* appList;
                nil];
     
     
-    historyViewController = [ [ HistoryViewController alloc ] init ];
-    [self.view addSubview:historyViewController.view];
+    //historyViewController = [ [ HistoryViewController alloc ] init ];
+    //[self.view addSubview:historyViewController.view];
     
     [FlowerController pushMenu]; //will init the MenuView
     [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
@@ -259,7 +258,7 @@ static NSMutableDictionary* appList;
 - (void)dealloc
 {
     [flapix release];
-    [historyViewController release];
+    //[historyViewController release];
     [super dealloc];
 }
 
