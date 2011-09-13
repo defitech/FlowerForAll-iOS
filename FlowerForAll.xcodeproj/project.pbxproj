@@ -317,7 +317,6 @@
 				4E92E72213C72C630060FBF6 /* Net */,
 				4E57A86513A8F19900910E4D /* Data */,
 				4E57A86313A8F12500910E4D /* Apps */,
-				4E57A86213A8F11A00910E4D /* Settings */,
 				4E8F590F13A7AF6B00D9D3A7 /* FlowerController.h */,
 				4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */,
 				4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */,
@@ -596,6 +595,7 @@
 		4EB510AC1418D1BC008FC46F /* Archives */ = {
 			isa = PBXGroup;
 			children = (
+				4E57A86213A8F11A00910E4D /* Settings */,
 				4E57A86413A8F16A00910E4D /* Statistics */,
 				4E8F590513A7AF6B00D9D3A7 /* DateClassificationResult.h */,
 				4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */,

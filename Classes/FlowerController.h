@@ -29,14 +29,18 @@
 + (void) showNav;
 
 
-
-
-/** called by Button on the UINavBar **/
-- (void)goToMenu: (id) sender  ;
-
 + (FlowerController*) currentFlower;
 
 + (FLAPIX*) currentFlapix;
+
+/** 
+ *called by Button on the UINavBar 
+ *This is a shortcut to a pushMenu static call
+ **/
+- (void)goToMenu: (id) sender  ;
+
+/** show The Menu **/
++ (void)pushMenu ;
 
 /** Promote an App as current Main COntroller **/ 
 + (void) pushApp:(NSString*) flowerApp ;

@@ -111,13 +111,23 @@
 
 
 // View lifecycle
-- (void)viewDidUnload { [super viewDidUnload]; }
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
 - (void)didReceiveMemoryWarning { [super didReceiveMemoryWarning]; }
 
 
 // Allows view to autorotate
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
 	return (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
+}
+
+
+- (void)dealloc
+{
+    
+    [super dealloc];
 }
 
 

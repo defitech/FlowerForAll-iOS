@@ -22,37 +22,37 @@
 
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
-
 static GameViewController* activitiesViewController;
-
 static FLAPIX* flapix;
 
 
-/** known application lists **/
+/** 
+ * known application lists 
+ * responsible of singelton management
+ **/
 static NSMutableDictionary* appList;
 
 # pragma mark View Control
 
+/** called by Button on the UINavBar **/
+-(void) goToMenu: (id) sender {
+    [FlowerController pushMenu];
+}
 
-// get Activities View Controller
-+ (GameViewController*) getActivitiesViewController
-{
-    NSLog(@"getActivitiesViewController");
+/** Promote the Menu as current Main Controller **/ 
++(void) pushMenu {
     if (activitiesViewController == nil) {
         activitiesViewController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:[NSBundle mainBundle]];
     }
-    return activitiesViewController;
-}
-
-# pragma mark App Managements
-
-/** called by Button on the UINavBar **/
--(void) goToMenu: (id) sender {
-    [FlowerController setCurrentMainController:[FlowerController getActivitiesViewController]];
+    if (currentMainController == nil) {
+        currentMainController = activitiesViewController;
+    } else {
+        [FlowerController setCurrentMainController:activitiesViewController];
+    }
 }
 
 
-/** Promote an App as current Main COntroller **/ 
+/** Promote an App as current Main Controller **/ 
 + (void) pushApp:(NSString*) flowerApp {
     if ([appList objectForKey:flowerApp] == nil) {
         NSLog(@"FlowerController:pushApp unkown app: %@",flowerApp);
@@ -72,6 +72,11 @@ static NSMutableDictionary* appList;
     [FlowerController setCurrentMainController:[appList objectForKey:flowerApp] ];
 }
 
+/** 
+ * normaly you should call goTo Menu to set the Menu 
+ * If you decide to push your own view a currentMainController you then need to 
+ * handle your retain / release yourself
+ **/
 +(void)setCurrentMainController:(UIViewController*)thisController {
     if ([currentMainController isKindOfClass:[thisController class]]) {
          NSLog(@"FLowerController: setCurrentMainController Skip");
@@ -95,8 +100,6 @@ static NSMutableDictionary* appList;
     [previousViewController.view removeFromSuperview];
     [singleton.mainView setNeedsLayout];
     [currentMainController viewDidAppear:true];
-    
-    
 }
 
 
@@ -142,19 +145,12 @@ static NSMutableDictionary* appList;
     
     switch (buttonIndex) {
         case 0: // Menu
-            [FlowerController setCurrentMainController:[FlowerController getActivitiesViewController]];
+            [FlowerController pushMenu];
             break;
         case 1:
             NSLog(@"Cancel");
             return;
             break;
-            
-			
-            //case 3: // Settings
-            //  [FlowerController setCurrentMainController:[FlowerController g]];
-            // break;
-            //case 4: // Statistics
-            //   [FlowerController setCurrentMainController:[FlowerController getStatisticsViewController]];
         case 2: // Start / Stop
             NSLog(@"Start / Stop");
             if ( [[FlowerController currentFlapix] running]) {
@@ -200,17 +196,16 @@ static NSMutableDictionary* appList;
                [NSNull alloc], @"ParametersApp",
                nil];
     
-    currentMainController = [FlowerController getActivitiesViewController];
+    
     historyViewController = [ [ HistoryViewController alloc ] init ];
     [self.view addSubview:historyViewController.view];
-    [self.mainView addSubview:currentMainController.view];
     
-    [FlowerController pushApp:@"VolcanoApp"];
-    [FlowerController pushApp:@"ParametersApp"];
-    [FlowerController pushApp:@"VolcanoApp"];
-    [FlowerController pushApp:@"VolcanoApp"];
+    [FlowerController pushMenu]; //will init the MenuView
+    [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
     
-     NSLog(@"FlowerController viewDidLoad");
+   
+    
+    NSLog(@"FlowerController viewDidLoad");
     // Do any additional setup after loading the view from its nib.
     [FlowerController currentFlapix];
     
@@ -240,7 +235,7 @@ static NSMutableDictionary* appList;
     [currentMainController release];
     [activitiesViewController release];
     [appList removeAllObjects];
-     [appList release];
+    [appList release];
     [singleton release];
 }
 
@@ -250,7 +245,15 @@ static NSMutableDictionary* appList;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    NSLog(@"**** didReceiveMemoryWarning");
+    NSLog(@"**** FlowerController: didReceiveMemoryWarning");
+    for(NSString *aKey in [appList allKeys]){
+        Class c = [[appList valueForKey:aKey] class];
+        if ([c isSubclassOfClass:[FlowerApp class]] && ! [currentMainController isKindOfClass:c]) {
+            [appList setValue:[[NSNull alloc] init] forKey:aKey]; // will call release on previous object
+            NSLog(@"FlowerController: poped up %@",aKey);
+        }
+    }
+
 }
 
 
