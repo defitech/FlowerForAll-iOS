@@ -438,6 +438,7 @@
 				4E141B1613B3769200698F53 /* SettingsView.xib */,
 			);
 			name = Settings;
+			path = Archives;
 			sourceTree = "<group>";
 		};
 		4E57A86313A8F12500910E4D /* Apps */ = {
