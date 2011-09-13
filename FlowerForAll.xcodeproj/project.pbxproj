@@ -22,8 +22,6 @@
 		4E141B0F13B35F1900698F53 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0913B35F1900698F53 /* Icon.png */; };
 		4E141B1013B35F1900698F53 /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0A13B35F1900698F53 /* Icon-iPad.png */; };
 		4E141B1113B35F1900698F53 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0B13B35F1900698F53 /* Icon@2x.png */; };
-		4E141B1713B3769200698F53 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B1613B3769200698F53 /* SettingsView.xib */; };
-		4E1834B3141E4DCE00E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B1141E4DCE00E5AE1F /* ParametersApp.strings */; };
 		4E1834B8141E568100E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B6141E568100E5AE1F /* ParametersApp.strings */; };
 		4E1834BA141E568800E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B6141E568100E5AE1F /* ParametersApp.strings */; };
 		4E2F50001407D1F900C4C00C /* VolcanoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2F4FFE1407D1F900C4C00C /* VolcanoApp.m */; };
@@ -33,13 +31,15 @@
 		4E3A7A7B13B8777D00853344 /* FlowerHowTo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */; };
 		4E3A7A7D13B877DD00853344 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */; };
 		4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A8213B884FD00853344 /* AVFoundation.framework */; };
+		4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
+		4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
+		4E4AE471141FA87A004256DA /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE470141FA87A004256DA /* MainWindow-iPad.xib */; };
+		4E4AE473141FAD7C004256DA /* FlowerController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE472141FAD7C004256DA /* FlowerController-iPad.xib */; };
 		4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B815A14165374009CC45D /* FlowerHowTo.m4v */; };
 		4E584855140E61CC003892DA /* BlowHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E584854140E61CC003892DA /* BlowHistory.m */; };
 		4E713C2B1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E713C2A1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
 		4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DB.m */; };
-		4E8F593013A7AF6B00D9D3A7 /* DateClassificationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */; };
-		4E8F593113A7AF6B00D9D3A7 /* DateClassifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590813A7AF6B00D9D3A7 /* DateClassifier.m */; };
 		4E8F593213A7AF6B00D9D3A7 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590A13A7AF6B00D9D3A7 /* Exercise.m */; };
 		4E8F593313A7AF6B00D9D3A7 /* Expiration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590C13A7AF6B00D9D3A7 /* Expiration.m */; };
 		4E8F593513A7AF6B00D9D3A7 /* FlowerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */; };
@@ -47,26 +47,10 @@
 		4E8F593713A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */; };
 		4E8F593813A7AF6B00D9D3A7 /* ParametersApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */; };
 		4E8F593913A7AF6B00D9D3A7 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591713A7AF6B00D9D3A7 /* MenuView.m */; };
-		4E8F593A13A7AF6B00D9D3A7 /* MonthStatisticListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591913A7AF6B00D9D3A7 /* MonthStatisticListViewController.m */; };
-		4E8F593B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m */; };
-		4E8F593C13A7AF6B00D9D3A7 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591D13A7AF6B00D9D3A7 /* SettingsViewController.m */; };
-		4E8F593D13A7AF6B00D9D3A7 /* StatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591F13A7AF6B00D9D3A7 /* StatisticCell.m */; };
-		4E8F593E13A7AF6B00D9D3A7 /* StatisticDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F592113A7AF6B00D9D3A7 /* StatisticDetailViewController.m */; };
-		4E8F593F13A7AF6B00D9D3A7 /* StatisticListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F592313A7AF6B00D9D3A7 /* StatisticListViewController.m */; };
-		4E8F594013A7AF6B00D9D3A7 /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F592513A7AF6B00D9D3A7 /* StatisticsViewController.m */; };
-		4E8F594213A7AF6B00D9D3A7 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F592913A7AF6B00D9D3A7 /* UserDetailViewController.m */; };
-		4E8F594313A7AF6B00D9D3A7 /* UserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F592B13A7AF6B00D9D3A7 /* UserListViewController.m */; };
-		4E8F594413A7AF6B00D9D3A7 /* YearStatisticListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F592D13A7AF6B00D9D3A7 /* YearStatisticListViewController.m */; };
 		4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */; };
-		4E8F594C13A7AF9800D9D3A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594A13A7AF9800D9D3A7 /* Localizable.strings */; };
 		4E8F595713A7AFA900D9D3A7 /* ParametersApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594D13A7AFA900D9D3A7 /* ParametersApp.xib */; };
 		4E8F595813A7AFA900D9D3A7 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594E13A7AFA900D9D3A7 /* MenuView.xib */; };
-		4E8F595A13A7AFA900D9D3A7 /* SettingChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595013A7AFA900D9D3A7 /* SettingChoiceView.xib */; };
 		4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */; };
-		4E8F595C13A7AFA900D9D3A7 /* StatisticDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595313A7AFA900D9D3A7 /* StatisticDetailView.xib */; };
-		4E8F595D13A7AFA900D9D3A7 /* StatisticListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595413A7AFA900D9D3A7 /* StatisticListView.xib */; };
-		4E8F595E13A7AFA900D9D3A7 /* UserDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595513A7AFA900D9D3A7 /* UserDetailView.xib */; };
-		4E8F595F13A7AFA900D9D3A7 /* UserListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595613A7AFA900D9D3A7 /* UserListView.xib */; };
 		4E8F596713A7B6FF00D9D3A7 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */; };
 		4E92E73F13C72C9C0060FBF6 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E72713C72C9C0060FBF6 /* NSObject+SBJson.m */; };
 		4E92E74013C72C9C0060FBF6 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E72A13C72C9C0060FBF6 /* SBJsonParser.m */; };
@@ -89,11 +73,8 @@
 		4ECC6CB414053744005519C7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB314053744005519C7 /* User.m */; };
 		4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEED18D141E3E3100F56102 /* CalibrationApp.m */; };
 		4EEED190141E3E3100F56102 /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED18E141E3E3100F56102 /* CalibrationApp.xib */; };
-		4EEED193141E3E4500F56102 /* CalibrationApp.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED191141E3E4500F56102 /* CalibrationApp.lproj */; };
-		4EEED195141E3E5700F56102 /* CalibrationApp.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED191141E3E4500F56102 /* CalibrationApp.lproj */; };
 		4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
 		4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
-		4EEED19E141E488200F56102 /* ParametersApp.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED19C141E488200F56102 /* ParametersApp.lproj */; };
 		4EFC3EBB14064911002F0BF7 /* DoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB814064911002F0BF7 /* DoubleSlider.m */; };
 		4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB914064911002F0BF7 /* handle_highlight.png */; };
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
@@ -102,7 +83,7 @@
 		D701908B141618510072D020 /* VolcanoApp_goal.wav in Resources */ = {isa = PBXBuildFile; fileRef = D701908A141618510072D020 /* VolcanoApp_goal.wav */; };
 		D702D18E14152C69005A1764 /* VolcanoApp_volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
-		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; };
+		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
 		D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */ = {isa = PBXBuildFile; fileRef = D72E02AC139E500800F3687C /* FLAPIrecorded.raw */; };
@@ -112,7 +93,6 @@
 		D7A9942B14165763000AA64A /* VolcanoApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7A9942914165763000AA64A /* VolcanoApp-Icon.png */; };
 		D7ABFF88140B8227003B9F08 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF86140B8227003B9F08 /* HistoryViewController.m */; };
 		D7AD2ADC14174CA2004C6034 /* VolcanoApp_burst.png in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2ADB14174CA2004C6034 /* VolcanoApp_burst.png */; };
-		D7AD2AE614176452004C6034 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE414176452004C6034 /* FlowerForAll.html */; };
 		D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE71417645C004C6034 /* FlowerForAll.html */; };
 		D7D64652141659B700F0DE4F /* VolcanoApp_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D64651141659B700F0DE4F /* VolcanoApp_explosion.wav */; };
 /* End PBXBuildFile section */
@@ -136,7 +116,6 @@
 		4E141B0913B35F1900698F53 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4E141B0A13B35F1900698F53 /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad.png"; sourceTree = "<group>"; };
 		4E141B0B13B35F1900698F53 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		4E141B1613B3769200698F53 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsView.xib; path = Settings/SettingsView.xib; sourceTree = "<group>"; };
 		4E1834B7141E568100E5AE1F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ParametersApp.strings; sourceTree = "<group>"; };
 		4E1834B9141E568800E5AE1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParametersApp.strings; sourceTree = "<group>"; };
 		4E2F4FFD1407D1F900C4C00C /* VolcanoApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolcanoApp.h; sourceTree = "<group>"; };
@@ -149,6 +128,10 @@
 		4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerHowTo.xib; sourceTree = "<group>"; };
 		4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4E3A7A8213B884FD00853344 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4E4AE46B141FA57B004256DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
+		4E4AE46D141FA584004256DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
+		4E4AE470141FA87A004256DA /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		4E4AE472141FAD7C004256DA /* FlowerController-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "FlowerController-iPad.xib"; path = "Apps/FlowerController-iPad.xib"; sourceTree = "<group>"; };
 		4E4B815A14165374009CC45D /* FlowerHowTo.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlowerHowTo.m4v; sourceTree = "<group>"; };
 		4E584853140E61CC003892DA /* BlowHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlowHistory.h; path = Data/BlowHistory.h; sourceTree = "<group>"; };
 		4E584854140E61CC003892DA /* BlowHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlowHistory.m; path = Data/BlowHistory.m; sourceTree = "<group>"; };
@@ -158,10 +141,6 @@
 		4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataAccess.m; path = Data/DataAccess.m; sourceTree = "<group>"; };
 		4E8F590313A7AF6B00D9D3A7 /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DB.h; path = Data/DB.h; sourceTree = "<group>"; };
 		4E8F590413A7AF6B00D9D3A7 /* DB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DB.m; path = Data/DB.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		4E8F590513A7AF6B00D9D3A7 /* DateClassificationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateClassificationResult.h; path = Archives/DateClassificationResult.h; sourceTree = "<group>"; };
-		4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateClassificationResult.m; path = Archives/DateClassificationResult.m; sourceTree = "<group>"; };
-		4E8F590713A7AF6B00D9D3A7 /* DateClassifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateClassifier.h; path = Archives/DateClassifier.h; sourceTree = "<group>"; };
-		4E8F590813A7AF6B00D9D3A7 /* DateClassifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateClassifier.m; path = Archives/DateClassifier.m; sourceTree = "<group>"; };
 		4E8F590913A7AF6B00D9D3A7 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Exercise.h; path = Data/Exercise.h; sourceTree = "<group>"; };
 		4E8F590A13A7AF6B00D9D3A7 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Exercise.m; path = Data/Exercise.m; sourceTree = "<group>"; };
 		4E8F590B13A7AF6B00D9D3A7 /* Expiration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Expiration.h; path = Data/Expiration.h; sourceTree = "<group>"; };
@@ -175,36 +154,11 @@
 		4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersApp.m; sourceTree = "<group>"; };
 		4E8F591613A7AF6B00D9D3A7 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
 		4E8F591713A7AF6B00D9D3A7 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
-		4E8F591813A7AF6B00D9D3A7 /* MonthStatisticListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonthStatisticListViewController.h; path = Statistics/MonthStatisticListViewController.h; sourceTree = "<group>"; };
-		4E8F591913A7AF6B00D9D3A7 /* MonthStatisticListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MonthStatisticListViewController.m; path = Statistics/MonthStatisticListViewController.m; sourceTree = "<group>"; };
-		4E8F591A13A7AF6B00D9D3A7 /* SettingChoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingChoiceViewController.h; path = Settings/SettingChoiceViewController.h; sourceTree = "<group>"; };
-		4E8F591B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingChoiceViewController.m; path = Settings/SettingChoiceViewController.m; sourceTree = "<group>"; };
-		4E8F591C13A7AF6B00D9D3A7 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Settings/SettingsViewController.h; sourceTree = "<group>"; };
-		4E8F591D13A7AF6B00D9D3A7 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Settings/SettingsViewController.m; sourceTree = "<group>"; };
-		4E8F591E13A7AF6B00D9D3A7 /* StatisticCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticCell.h; path = Statistics/StatisticCell.h; sourceTree = "<group>"; };
-		4E8F591F13A7AF6B00D9D3A7 /* StatisticCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatisticCell.m; path = Statistics/StatisticCell.m; sourceTree = "<group>"; };
-		4E8F592013A7AF6B00D9D3A7 /* StatisticDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticDetailViewController.h; path = Statistics/StatisticDetailViewController.h; sourceTree = "<group>"; };
-		4E8F592113A7AF6B00D9D3A7 /* StatisticDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatisticDetailViewController.m; path = Statistics/StatisticDetailViewController.m; sourceTree = "<group>"; };
-		4E8F592213A7AF6B00D9D3A7 /* StatisticListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticListViewController.h; path = Statistics/StatisticListViewController.h; sourceTree = "<group>"; };
-		4E8F592313A7AF6B00D9D3A7 /* StatisticListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatisticListViewController.m; path = Statistics/StatisticListViewController.m; sourceTree = "<group>"; };
-		4E8F592413A7AF6B00D9D3A7 /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatisticsViewController.h; path = Statistics/StatisticsViewController.h; sourceTree = "<group>"; };
-		4E8F592513A7AF6B00D9D3A7 /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatisticsViewController.m; path = Statistics/StatisticsViewController.m; sourceTree = "<group>"; };
-		4E8F592813A7AF6B00D9D3A7 /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDetailViewController.h; path = Settings/UserDetailViewController.h; sourceTree = "<group>"; };
-		4E8F592913A7AF6B00D9D3A7 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserDetailViewController.m; path = Settings/UserDetailViewController.m; sourceTree = "<group>"; };
-		4E8F592A13A7AF6B00D9D3A7 /* UserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserListViewController.h; path = Settings/UserListViewController.h; sourceTree = "<group>"; };
-		4E8F592B13A7AF6B00D9D3A7 /* UserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserListViewController.m; path = Settings/UserListViewController.m; sourceTree = "<group>"; };
-		4E8F592C13A7AF6B00D9D3A7 /* YearStatisticListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YearStatisticListViewController.h; path = Statistics/YearStatisticListViewController.h; sourceTree = "<group>"; };
-		4E8F592D13A7AF6B00D9D3A7 /* YearStatisticListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YearStatisticListViewController.m; path = Statistics/YearStatisticListViewController.m; sourceTree = "<group>"; };
 		4E8F594713A7AF8B00D9D3A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		4E8F594B13A7AF9800D9D3A7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
 		4E8F594D13A7AFA900D9D3A7 /* ParametersApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParametersApp.xib; sourceTree = "<group>"; };
 		4E8F594E13A7AFA900D9D3A7 /* MenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
-		4E8F595013A7AFA900D9D3A7 /* SettingChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingChoiceView.xib; path = Settings/SettingChoiceView.xib; sourceTree = "<group>"; };
 		4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlutterApp2Database.sql; sourceTree = "<group>"; };
-		4E8F595313A7AFA900D9D3A7 /* StatisticDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatisticDetailView.xib; path = Statistics/StatisticDetailView.xib; sourceTree = "<group>"; };
-		4E8F595413A7AFA900D9D3A7 /* StatisticListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatisticListView.xib; path = Statistics/StatisticListView.xib; sourceTree = "<group>"; };
-		4E8F595513A7AFA900D9D3A7 /* UserDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserDetailView.xib; path = Settings/UserDetailView.xib; sourceTree = "<group>"; };
-		4E8F595613A7AFA900D9D3A7 /* UserListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserListView.xib; path = Settings/UserListView.xib; sourceTree = "<group>"; };
 		4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		4E92E72513C72C9C0060FBF6 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
@@ -249,8 +203,6 @@
 		4EEED18C141E3E3100F56102 /* CalibrationApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp.h; sourceTree = "<group>"; };
 		4EEED18D141E3E3100F56102 /* CalibrationApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp.m; sourceTree = "<group>"; };
 		4EEED18E141E3E3100F56102 /* CalibrationApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalibrationApp.xib; sourceTree = "<group>"; };
-		4EEED192141E3E4500F56102 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/CalibrationApp.lproj; sourceTree = "<group>"; };
-		4EEED194141E3E5700F56102 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text; name = fr; path = fr.lproj/CalibrationApp.lproj; sourceTree = "<group>"; };
 		4EEED197141E3E7F00F56102 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
 		4EEED199141E3E8700F56102 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
 		4EFC3EB714064911002F0BF7 /* DoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoubleSlider.h; path = UI/DoubleSlider/DoubleSlider.h; sourceTree = "<group>"; };
@@ -311,7 +263,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4EB510AC1418D1BC008FC46F /* Archives */,
 				D7ABFF7C140B75A1003B9F08 /* Monitoring */,
 				4ECC6CAB1404E150005519C7 /* UI */,
 				4E92E72213C72C630060FBF6 /* Net */,
@@ -319,6 +270,7 @@
 				4E57A86313A8F12500910E4D /* Apps */,
 				4E8F590F13A7AF6B00D9D3A7 /* FlowerController.h */,
 				4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */,
+				4E4AE472141FAD7C004256DA /* FlowerController-iPad.xib */,
 				4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */,
 				4E8F591213A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.h */,
 				4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */,
@@ -342,6 +294,7 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				4E4AE46F141FA871004256DA /* iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -360,8 +313,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4E8F595113A7AFA900D9D3A7 /* sqlite_database */,
+				4E4AE470141FA87A004256DA /* MainWindow-iPad.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				4E8F595113A7AFA900D9D3A7 /* sqlite_database */,
 				4E8F594913A7AF9800D9D3A7 /* fr.lproj */,
 				4E8F594513A7AF8B00D9D3A7 /* en.lproj */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -421,24 +375,11 @@
 			path = FlowerHowTo;
 			sourceTree = "<group>";
 		};
-		4E57A86213A8F11A00910E4D /* Settings */ = {
+		4E4AE46F141FA871004256DA /* iPad */ = {
 			isa = PBXGroup;
 			children = (
-				4E8F595513A7AFA900D9D3A7 /* UserDetailView.xib */,
-				4E8F592813A7AF6B00D9D3A7 /* UserDetailViewController.h */,
-				4E8F592913A7AF6B00D9D3A7 /* UserDetailViewController.m */,
-				4E8F595613A7AFA900D9D3A7 /* UserListView.xib */,
-				4E8F592A13A7AF6B00D9D3A7 /* UserListViewController.h */,
-				4E8F592B13A7AF6B00D9D3A7 /* UserListViewController.m */,
-				4E8F595013A7AFA900D9D3A7 /* SettingChoiceView.xib */,
-				4E8F591A13A7AF6B00D9D3A7 /* SettingChoiceViewController.h */,
-				4E8F591B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m */,
-				4E8F591C13A7AF6B00D9D3A7 /* SettingsViewController.h */,
-				4E8F591D13A7AF6B00D9D3A7 /* SettingsViewController.m */,
-				4E141B1613B3769200698F53 /* SettingsView.xib */,
 			);
-			name = Settings;
-			path = Archives;
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		4E57A86313A8F12500910E4D /* Apps */ = {
@@ -456,28 +397,6 @@
 				4E081DCF1419F4DD003C9178 /* FlowerApp.m */,
 			);
 			path = Apps;
-			sourceTree = "<group>";
-		};
-		4E57A86413A8F16A00910E4D /* Statistics */ = {
-			isa = PBXGroup;
-			children = (
-				4E8F591E13A7AF6B00D9D3A7 /* StatisticCell.h */,
-				4E8F591F13A7AF6B00D9D3A7 /* StatisticCell.m */,
-				4E8F595313A7AFA900D9D3A7 /* StatisticDetailView.xib */,
-				4E8F592013A7AF6B00D9D3A7 /* StatisticDetailViewController.h */,
-				4E8F592113A7AF6B00D9D3A7 /* StatisticDetailViewController.m */,
-				4E8F592213A7AF6B00D9D3A7 /* StatisticListViewController.h */,
-				4E8F592313A7AF6B00D9D3A7 /* StatisticListViewController.m */,
-				4E8F595413A7AFA900D9D3A7 /* StatisticListView.xib */,
-				4E8F592413A7AF6B00D9D3A7 /* StatisticsViewController.h */,
-				4E8F592513A7AF6B00D9D3A7 /* StatisticsViewController.m */,
-				4E8F592C13A7AF6B00D9D3A7 /* YearStatisticListViewController.h */,
-				4E8F592D13A7AF6B00D9D3A7 /* YearStatisticListViewController.m */,
-				4E8F591813A7AF6B00D9D3A7 /* MonthStatisticListViewController.h */,
-				4E8F591913A7AF6B00D9D3A7 /* MonthStatisticListViewController.m */,
-			);
-			name = Statistics;
-			path = Archives;
 			sourceTree = "<group>";
 		};
 		4E57A86513A8F19900910E4D /* Data */ = {
@@ -593,19 +512,6 @@
 			name = Visual;
 			sourceTree = "<group>";
 		};
-		4EB510AC1418D1BC008FC46F /* Archives */ = {
-			isa = PBXGroup;
-			children = (
-				4E57A86213A8F11A00910E4D /* Settings */,
-				4E57A86413A8F16A00910E4D /* Statistics */,
-				4E8F590513A7AF6B00D9D3A7 /* DateClassificationResult.h */,
-				4E8F590613A7AF6B00D9D3A7 /* DateClassificationResult.m */,
-				4E8F590713A7AF6B00D9D3A7 /* DateClassifier.h */,
-				4E8F590813A7AF6B00D9D3A7 /* DateClassifier.m */,
-			);
-			name = Archives;
-			sourceTree = "<group>";
-		};
 		4ECC6CAB1404E150005519C7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -623,7 +529,7 @@
 		4EEED18B141E3D4100F56102 /* CalibrationApp */ = {
 			isa = PBXGroup;
 			children = (
-				4EEED191141E3E4500F56102 /* CalibrationApp.lproj */,
+				4E4AE46A141FA57B004256DA /* CalibrationApp.strings */,
 				4EEED18C141E3E3100F56102 /* CalibrationApp.h */,
 				4EEED18D141E3E3100F56102 /* CalibrationApp.m */,
 				4EEED18E141E3E3100F56102 /* CalibrationApp.xib */,
@@ -745,21 +651,14 @@
 				D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */,
 				4E8F593613A7AF6B00D9D3A7 /* FlowerController.xib in Resources */,
 				4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */,
-				4E8F594C13A7AF9800D9D3A7 /* Localizable.strings in Resources */,
 				4E8F595713A7AFA900D9D3A7 /* ParametersApp.xib in Resources */,
 				4E8F595813A7AFA900D9D3A7 /* MenuView.xib in Resources */,
-				4E8F595A13A7AFA900D9D3A7 /* SettingChoiceView.xib in Resources */,
 				4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */,
-				4E8F595C13A7AFA900D9D3A7 /* StatisticDetailView.xib in Resources */,
-				4E8F595D13A7AFA900D9D3A7 /* StatisticListView.xib in Resources */,
-				4E8F595E13A7AFA900D9D3A7 /* UserDetailView.xib in Resources */,
-				4E8F595F13A7AFA900D9D3A7 /* UserListView.xib in Resources */,
 				4E141B0D13B35F1900698F53 /* Default.png in Resources */,
 				4E141B0E13B35F1900698F53 /* Default@2x.png in Resources */,
 				4E141B0F13B35F1900698F53 /* Icon.png in Resources */,
 				4E141B1013B35F1900698F53 /* Icon-iPad.png in Resources */,
 				4E141B1113B35F1900698F53 /* Icon@2x.png in Resources */,
-				4E141B1713B3769200698F53 /* SettingsView.xib in Resources */,
 				4E3A7A7B13B8777D00853344 /* FlowerHowTo.xib in Resources */,
 				4E018F7813BB2D6B00333528 /* FlowerHowTo-icon.png in Resources */,
 				4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */,
@@ -773,19 +672,18 @@
 				D7D64652141659B700F0DE4F /* VolcanoApp_explosion.wav in Resources */,
 				D7A9942B14165763000AA64A /* VolcanoApp-Icon.png in Resources */,
 				D7AD2ADC14174CA2004C6034 /* VolcanoApp_burst.png in Resources */,
-				D7AD2AE614176452004C6034 /* FlowerForAll.html in Resources */,
 				D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */,
 				4EB510A81418C883008FC46F /* ExempleApp.strings in Resources */,
 				4E081DCD1419F340003C9178 /* param-icon.png in Resources */,
 				4EEED190141E3E3100F56102 /* CalibrationApp.xib in Resources */,
-				4EEED193141E3E4500F56102 /* CalibrationApp.lproj in Resources */,
-				4EEED195141E3E5700F56102 /* CalibrationApp.lproj in Resources */,
 				4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */,
 				4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */,
-				4EEED19E141E488200F56102 /* ParametersApp.lproj in Resources */,
-				4E1834B3141E4DCE00E5AE1F /* ParametersApp.strings in Resources */,
 				4E1834B8141E568100E5AE1F /* ParametersApp.strings in Resources */,
 				4E1834BA141E568800E5AE1F /* ParametersApp.strings in Resources */,
+				4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */,
+				4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */,
+				4E4AE471141FA87A004256DA /* MainWindow-iPad.xib in Resources */,
+				4E4AE473141FAD7C004256DA /* FlowerController-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,24 +700,12 @@
 				D72E0290139E448200F3687C /* subsys_ios.mm in Sources */,
 				4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */,
 				4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */,
-				4E8F593013A7AF6B00D9D3A7 /* DateClassificationResult.m in Sources */,
-				4E8F593113A7AF6B00D9D3A7 /* DateClassifier.m in Sources */,
 				4E8F593213A7AF6B00D9D3A7 /* Exercise.m in Sources */,
 				4E8F593313A7AF6B00D9D3A7 /* Expiration.m in Sources */,
 				4E8F593513A7AF6B00D9D3A7 /* FlowerController.m in Sources */,
 				4E8F593713A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m in Sources */,
 				4E8F593813A7AF6B00D9D3A7 /* ParametersApp.m in Sources */,
 				4E8F593913A7AF6B00D9D3A7 /* MenuView.m in Sources */,
-				4E8F593A13A7AF6B00D9D3A7 /* MonthStatisticListViewController.m in Sources */,
-				4E8F593B13A7AF6B00D9D3A7 /* SettingChoiceViewController.m in Sources */,
-				4E8F593C13A7AF6B00D9D3A7 /* SettingsViewController.m in Sources */,
-				4E8F593D13A7AF6B00D9D3A7 /* StatisticCell.m in Sources */,
-				4E8F593E13A7AF6B00D9D3A7 /* StatisticDetailViewController.m in Sources */,
-				4E8F593F13A7AF6B00D9D3A7 /* StatisticListViewController.m in Sources */,
-				4E8F594013A7AF6B00D9D3A7 /* StatisticsViewController.m in Sources */,
-				4E8F594213A7AF6B00D9D3A7 /* UserDetailViewController.m in Sources */,
-				4E8F594313A7AF6B00D9D3A7 /* UserListViewController.m in Sources */,
-				4E8F594413A7AF6B00D9D3A7 /* YearStatisticListViewController.m in Sources */,
 				4E3A7A7A13B8777D00853344 /* FlowerHowTo.m in Sources */,
 				4E92E73F13C72C9C0060FBF6 /* NSObject+SBJson.m in Sources */,
 				4E92E74013C72C9C0060FBF6 /* SBJsonParser.m in Sources */,
@@ -854,14 +740,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4E1834B1141E4DCE00E5AE1F /* ParametersApp.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-			);
-			name = ParametersApp.strings;
-			path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Classes/Apps/ParametersApp;
-			sourceTree = "<absolute>";
-		};
 		4E1834B6141E568100E5AE1F /* ParametersApp.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -869,6 +747,15 @@
 				4E1834B9141E568800E5AE1F /* en */,
 			);
 			name = ParametersApp.strings;
+			sourceTree = "<group>";
+		};
+		4E4AE46A141FA57B004256DA /* CalibrationApp.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E4AE46B141FA57B004256DA /* en */,
+				4E4AE46D141FA584004256DA /* fr */,
+			);
+			name = CalibrationApp.strings;
 			sourceTree = "<group>";
 		};
 		4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */ = {
@@ -896,15 +783,6 @@
 			name = ExempleApp.strings;
 			sourceTree = "<group>";
 		};
-		4EEED191141E3E4500F56102 /* CalibrationApp.lproj */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4EEED192141E3E4500F56102 /* en */,
-				4EEED194141E3E5700F56102 /* fr */,
-			);
-			name = CalibrationApp.lproj;
-			sourceTree = "<group>";
-		};
 		4EEED196141E3E7F00F56102 /* VolcanoApp.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -913,14 +791,6 @@
 			);
 			name = VolcanoApp.strings;
 			sourceTree = "<group>";
-		};
-		4EEED19C141E488200F56102 /* ParametersApp.lproj */ = {
-			isa = PBXVariantGroup;
-			children = (
-			);
-			name = ParametersApp.lproj;
-			path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Classes/Apps;
-			sourceTree = "<absolute>";
 		};
 		D7AD2AE414176452004C6034 /* FlowerForAll.html */ = {
 			isa = PBXVariantGroup;
@@ -954,11 +824,13 @@
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FLAPI\"",
 				);
 				PRODUCT_NAME = FlowerForAll;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -972,11 +844,13 @@
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FLAPI\"",
 				);
 				PRODUCT_NAME = FlowerForAll;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -997,7 +871,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Debug;
 		};
@@ -1017,7 +891,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Release;
 		};

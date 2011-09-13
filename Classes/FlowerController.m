@@ -10,7 +10,6 @@
 #import "MenuView.h"
 #import "ParametersApp.h"
 #import "ParametersApp.h"
-#import "StatisticsViewController.h"
 #import "FlutterApp2AppDelegate.h"
 #import "ParametersManager.h"
 #import "BlowHistory.h"

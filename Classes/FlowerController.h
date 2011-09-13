@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "NeedleGL.h"
-#import "StatisticsViewController.h"
 #import "FLAPIX.h"
 #import "HistoryViewController.h"
 #import "ParametersApp.h"

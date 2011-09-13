@@ -101,45 +101,7 @@
 /** fill **/
 + (void) fillWithBlows:(NSMutableArray*)history fromTimestamp:(double)timestamp;
 
-/*************************************************** EXERCISES ***************************************************/
 
-
-
-//Lists all the exercises of a user based on its ID
-+(NSArray*)listOfUserExercises:(NSInteger)ID;
-
-//Lists all the exercises of a user (based on its ID) for the specified month and year
-+(NSArray*)listOfUserExercisesInMonthAndYear:(NSInteger)ID:(NSInteger)month:(NSInteger)year;
-
-//Get all dateTimes a user's exercises
-//This is used in order to be able to classify the exercises on a time base:
-//Which exercice have been done in the current month, which have been done in past months but still in the year,
-//and which have been done in the past years. (This is used to hierarchically display exercise data to the user,
-//depending on when the exercises have been done. See the classes StatisticListViewController, MonthStatisticListViewController
-//and YearStatisticListViewController.)
-+(NSArray*)listOfUserExerciseDates:(NSInteger)ID;
-
-//Lists all dateTimes of a user's exercise (based on its ID) for the specified year
-//This is used by the class YearStatisticListViewController
-+(NSArray*)listOfUserExerciseDatesInYear:(NSInteger)ID:(NSInteger)year;
-
-//Deletes an exercise
-+(void)deleteExercise:(NSInteger)exerciseID;
-
-//Delete all exercises of a user for the specified month and year
-+(void)deleteUserExercisesInMonthAndYear:(NSInteger)userID:(NSInteger)month:(NSInteger)year;
-
-//Delete all exercises of a user for the specified year
-+(void)deleteUserExercisesInYear:(NSInteger)userID:(NSInteger)year;
-
-
-
-/*************************************************** EXPIRATIONS ***************************************************/
-
-
-
-//List all expirations of an exercise based on its ID
-+(NSArray*)listOfExerciseExpirations:(NSInteger)ID;
 
 
 @end
