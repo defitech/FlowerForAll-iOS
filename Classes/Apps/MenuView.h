@@ -1,5 +1,5 @@
 //
-//  GameViewController.h
+//  MenuView.h
 //  FlutterApp2
 //
 //  Created by Dev on 24.12.10.
@@ -14,7 +14,7 @@
 #import "RSPageControl.h"
 
 
-@interface GameViewController : UIViewController <UIScrollViewDelegate>{
+@interface MenuView : UIViewController <UIScrollViewDelegate>{
 
 	//The sub views include mainly the scroll view, which will include game1ChoiceView and game2ChoiceView (for the moment there are 2 games)
 	IBOutlet UIScrollView *scrollView;

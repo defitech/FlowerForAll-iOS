@@ -5,7 +5,7 @@
 //  Created by Pierre-Mikael Legris on 24.08.11.
 //  Copyright 2011 Fondation Defitech http://defitech.ch All rights reserved.
 //
-// Moved the code for the User Picker From GameView to a Neater place
+// Moved the code for the User Picker From MenuView to a Neater place
 // Maybe this code will be Abandonned
 
 #import <Foundation/Foundation.h>

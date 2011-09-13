@@ -1,16 +1,16 @@
 //
-//  GameViewController.m
+//  MenuView.m
 //  FlutterApp2
 //
 //  Created by Dev on 24.12.10.
 //  Copyright 2010 Defitech. All rights reserved.
 //
-//  Implementation of the GameViewController class
+//  Implementation of the MenuView class
 
 
 #import "FlutterApp2AppDelegate.h"
 
-#import "GameViewController.h"
+#import "MenuView.h"
 
 #import "DataAccess.h"
 #import "DB.h"
@@ -19,7 +19,7 @@
 #import "FlowerHowTo.h"
 #import "ParametersApp.h"
 
-@implementation GameViewController
+@implementation MenuView
 
 
 @synthesize page2, web, scrollView, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel;

@@ -7,7 +7,7 @@
 //
 
 #import "FlowerController.h"
-#import "GameViewController.h"
+#import "MenuView.h"
 #import "ParametersApp.h"
 #import "ParametersApp.h"
 #import "StatisticsViewController.h"
@@ -22,7 +22,7 @@
 
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
-static GameViewController* activitiesViewController;
+static MenuView* activitiesViewController;
 static FLAPIX* flapix;
 
 
@@ -42,7 +42,7 @@ static NSMutableDictionary* appList;
 /** Promote the Menu as current Main Controller **/ 
 +(void) pushMenu {
     if (activitiesViewController == nil) {
-        activitiesViewController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:[NSBundle mainBundle]];
+        activitiesViewController = [[MenuView alloc] initWithNibName:@"MenuView" bundle:[NSBundle mainBundle]];
     }
     if (currentMainController == nil) {
         currentMainController = activitiesViewController;
