@@ -21,6 +21,7 @@
 
 #pragma mark - View lifecycle
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -50,8 +51,6 @@
 	[self valueChangedForDoubleSlider:slider];
 
 }
-
-
 
 #pragma mark Control Event Handlers
 

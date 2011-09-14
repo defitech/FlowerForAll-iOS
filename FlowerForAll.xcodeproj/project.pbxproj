@@ -64,6 +64,7 @@
 		4EA1A3AE1420E89700B11705 /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA1A3B01420E89700B11705 /* CalibrationApp.xib */; };
 		4EA1A3B11420E89B00B11705 /* ParametersApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA1A3B31420E89B00B11705 /* ParametersApp.xib */; };
 		4EA1A3B41420E8B800B11705 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA1A3B51420E8B800B11705 /* MenuView.xib */; };
+		4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */; };
 		4EB510A81418C883008FC46F /* ExempleApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EB510A51418C883008FC46F /* ExempleApp.strings */; };
 		4EB510AB1418CFC6008FC46F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */; };
 		4EBFFD611414CD4300D4BE9C /* FLAPIExercice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */; };
@@ -186,6 +187,8 @@
 		4EA1A3AF1420E89700B11705 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CalibrationApp.xib; sourceTree = "<group>"; };
 		4EA1A3B21420E89B00B11705 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ParametersApp.xib; sourceTree = "<group>"; };
 		4EA1A3B51420E8B800B11705 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
+		4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp_NeedleView.h; sourceTree = "<group>"; };
+		4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp_NeedleView.m; sourceTree = "<group>"; };
 		4EB510A31418C4AC008FC46F /* FlowerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerApp.h; sourceTree = "<group>"; };
 		4EB510A61418C883008FC46F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ExempleApp.strings; sourceTree = "<group>"; };
 		4EB510A71418C883008FC46F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ExempleApp.strings; sourceTree = "<group>"; };
@@ -527,6 +530,8 @@
 				4EEED18C141E3E3100F56102 /* CalibrationApp.h */,
 				4EEED18D141E3E3100F56102 /* CalibrationApp.m */,
 				4EA1A3B01420E89700B11705 /* CalibrationApp.xib */,
+				4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */,
+				4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */,
 			);
 			path = CalibrationApp;
 			sourceTree = "<group>";
@@ -726,6 +731,7 @@
 				4E713C2B1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m in Sources */,
 				4E081DD01419F4DD003C9178 /* FlowerApp.m in Sources */,
 				4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */,
+				4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
