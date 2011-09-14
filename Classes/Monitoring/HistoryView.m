@@ -294,7 +294,7 @@ NSTimer *repeatingTimer;
     int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
     [labelPercent setText:[NSString stringWithFormat:@"%i %%",p]];
     [labelFrequency setText:[NSString stringWithFormat:@"%i Hz",(int)blow.medianFrequency]];
-    [labelDuration setText:[NSString stringWithFormat:@"%f sec",blow.in_range_duration]];
+    [labelDuration setText:[NSString stringWithFormat:@"%.2lf sec",blow.in_range_duration]];
     
     //Resize Y axis if needed
     if (blow.duration > higherBar) {
