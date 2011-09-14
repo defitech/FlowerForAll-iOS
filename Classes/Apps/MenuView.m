@@ -22,7 +22,7 @@
 @implementation MenuView
 
 
-@synthesize page2, web, scrollView, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel;
+@synthesize page2, web, scrollView, backItem, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel;
 
 
 
@@ -44,7 +44,12 @@ FlowerHowTo *flowerHowTo;
 }
 
 
-
+-(void)backToMenu {
+    CGPoint offset;
+    offset.x = 0;                                                                                               
+    offset.y = 0;
+    [scrollView setContentOffset:offset animated:YES];
+}
  
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -86,9 +91,15 @@ FlowerHowTo *flowerHowTo;
 	[UIView beginAnimations:@"Transition" context:nil];
 	[UIView setAnimationDuration:0.3];
 
-
 	[UIView commitAnimations];
+
 	
+    UIButton* backButton = [UIButton buttonWithType:101]; // left-pointing shape
+    [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
+    [backButton setTitle:NSLocalizedString(@"Menu", @"Back To Menu") forState:UIControlStateNormal];
+    
+    // create button item
+    backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
 }
 
 
@@ -124,8 +135,14 @@ FlowerHowTo *flowerHowTo;
     //Set title of the navigation bar
     if ( page == 1) {
         navigationBar.topItem.title = NSLocalizedString(@"FFA", @"Flower For All");
+        
+        // add the back button to navigation bar
+        navigationBar.topItem.leftBarButtonItem = backItem;
     } else {
         navigationBar.topItem.title = NSLocalizedString(@"Menu", @"Menu");
+        
+        // remove the back button to navigation bar
+        navigationBar.topItem.leftBarButtonItem = nil;
     }
 }
 
@@ -156,6 +173,7 @@ FlowerHowTo *flowerHowTo;
 
 
 - (void)dealloc {
+    [backItem release];
 	[scrollView release];
 	[volcanoGame release];
 	[videoPlayerView release];

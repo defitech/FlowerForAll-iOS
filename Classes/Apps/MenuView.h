@@ -37,11 +37,13 @@
 	//Page control for the ScrollView
 	IBOutlet RSPageControl *pageControl;
 	
+    UIBarButtonItem* backItem;
 }
 
 
 //Properties
 @property(nonatomic,retain) UIScrollView *scrollView;
+@property(nonatomic,retain) UIBarButtonItem *backItem;
 
 @property (nonatomic, retain) UINavigationBar *navigationBar;
 @property (nonatomic, retain) RSPageControl *pageControl;
