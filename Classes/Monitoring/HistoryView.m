@@ -106,27 +106,34 @@ NSTimer *repeatingTimer;
     
 	
 	// Alloc Graph View
-	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 230.0, 40.0) ];
+	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 170.0, 40.0) ];
 	[ self addSubview:[ graphView autorelease ] ];
     
     // Alloc Label View
-    labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(230.0, 0.0, 50.0, 12.0) ];
+    labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(180.0, 0.0, 100.0, 20.0) ];
     [labelPercent setBackgroundColor:[UIColor blackColor]];
     [labelPercent setTextColor:[UIColor whiteColor]];
-    [labelPercent setFont:[UIFont systemFontOfSize:8.0]];
-    [labelPercent setText:@"-"];
+    [labelPercent setFont:[UIFont systemFontOfSize:15.0]];
+    [labelPercent setText:@"%"];
     
-    labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(230.0, 14.0, 50.0, 12.0) ];
+    labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(230.0, 0.0, 100.0, 20.0) ];
     [labelFrequency setBackgroundColor:[UIColor blackColor]];
     [labelFrequency setTextColor:[UIColor whiteColor]];
-    [labelFrequency setFont:[UIFont systemFontOfSize:8.0]];
-    [labelFrequency setText:@"-"];
+    [labelFrequency setFont:[UIFont systemFontOfSize:15.0]];
+    [labelFrequency setText:@"Hz"];
+    
+    labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(180.0, 20.0, 100.0, 20.0) ];
+    [labelDuration setBackgroundColor:[UIColor blackColor]];
+    [labelDuration setTextColor:[UIColor whiteColor]];
+    [labelDuration setFont:[UIFont systemFontOfSize:15.0]];
+    [labelDuration setText:@"sec"];
     
     
     [ self addSubview:labelPercent ];
     [ self addSubview:labelFrequency ];
+    [ self addSubview:labelDuration ];
     
-    historyDuration = 2; // 2 minutes
+    historyDuration = 1; // 1 minutes
     graphPadding = 2; // 2 pixels
     
     history = [[BlowHistory alloc] initWithDuration:historyDuration delegate:self];
@@ -156,11 +163,11 @@ NSTimer *repeatingTimer;
 	 */
 	// Default X & Y Range for Plot Space
 	plotSpace = (CPXYPlotSpace *)graph.defaultPlotSpace;
-	// Set X Range from -45 minutes to now
+	// Set X Range
 	plotSpace.xRange = [CPPlotRange
                         plotRangeWithLocation:CPDecimalFromDouble(-(historyDuration * 60))
                         length:CPDecimalFromDouble(historyDuration * 60 + 1)];
-	// Set Y Range from 0 to 4 secondes
+	// Set Y Range
 	plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromDouble(0) length:CPDecimalFromDouble(higherBar)];
     
 	/*
@@ -285,6 +292,7 @@ NSTimer *repeatingTimer;
     int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
     [labelPercent setText:[NSString stringWithFormat:@"%i %%",p]];
     [labelFrequency setText:[NSString stringWithFormat:@"%i Hz",(int)blow.medianFrequency]];
+    [labelDuration setText:[NSString stringWithFormat:@"%f sec",blow.in_range_duration]];
     
     //Resize Y axis if needed
     if (blow.duration > higherBar) {

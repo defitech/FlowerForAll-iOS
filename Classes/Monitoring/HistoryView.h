@@ -17,6 +17,7 @@
     
     UILabel *labelPercent;
     UILabel *labelFrequency;
+    UILabel *labelDuration;
     
     BlowHistory *history;
     int historyDuration;
