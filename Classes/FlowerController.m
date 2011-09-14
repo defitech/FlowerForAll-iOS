@@ -108,19 +108,11 @@ static NSMutableDictionary* appList;
 {
     
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] 
-                                  initWithTitle:@"Choose an action" 
-                                  delegate:singleton 
-                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel Button") 
-                                  destructiveButtonTitle:NSLocalizedString(@"Go to menu", @"Title of the first tab bar item")
-                                  otherButtonTitles: nil];
-    
-    
-    
-    
-    // [actionSheet addButtonWithTitle:NSLocalizedString(@"Settings", @"Title of the second tab bar item")];
-    
-    // [actionSheet addButtonWithTitle:NSLocalizedString(@"Satistics", @"Title of the third tab bar item")];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] init ];
+    actionSheet.title = NSLocalizedString(@"Choose an action", @"Choose an action");
+    actionSheet.delegate = singleton;
+   
+
     NSString *startstop =  [[FlowerController currentFlapix] running] ? NSLocalizedString(@"Stop Exercice", @"Stop Action") :
     NSLocalizedString(@"Start Exercice", @"Start Action") ;
     
@@ -131,9 +123,16 @@ static NSMutableDictionary* appList;
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Stop Demo Mode", @"Enable Demo Mode")];
     }
     
+    actionSheet.destructiveButtonIndex = 
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Go to menu", @"Title of the first tab bar item")];
     
+    // iPad Tweak
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
+        actionSheet.cancelButtonIndex = 
+        [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel Button")];
+    }
     [actionSheet showInView:singleton.view];
-    [actionSheet release];
+    
 }
 
 
@@ -142,14 +141,7 @@ static NSMutableDictionary* appList;
     NSLog(@"actionSheet %i", buttonIndex);
     
     switch (buttonIndex) {
-        case 0: // Menu
-            [FlowerController pushMenu];
-            break;
-        case 1:
-            NSLog(@"Cancel");
-            return;
-            break;
-        case 2: // Start / Stop
+        case 0: // Start / Stop
             NSLog(@"Start / Stop");
             if ( [[FlowerController currentFlapix] running]) {
                 [[FlowerController currentFlapix] Stop];
@@ -159,12 +151,20 @@ static NSMutableDictionary* appList;
             return;
             break;
             
-        case 3: // Enable DemoMode
+        case 1: // Enable DemoMode
             [[FlowerController currentFlapix] SetDemo:![[FlowerController currentFlapix] IsDemo]];
             break;
+        case 2: // Menu
+            [FlowerController pushMenu];
+            break;
+        case 3: // not used on iPad
+            NSLog(@"Cancel");
+            return;
+            break;
+
             
     }
-    
+    [actionSheet release];
     
 }
 
