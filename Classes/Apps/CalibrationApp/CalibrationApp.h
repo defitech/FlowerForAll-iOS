@@ -7,7 +7,24 @@
 //
 
 #import "FlowerApp.h"
+#import "DoubleSlider.h"
 
-@interface CalibrationApp : FlowerApp
+@interface CalibrationApp : FlowerApp {
+    IBOutlet UILabel *targetFrequencyRangeLabel;
+	IBOutlet UILabel *minLabel;
+	IBOutlet UILabel *maxLabel;
+
+    //double Slide
+    IBOutlet DoubleSlider *slider;
+
+}
+
+
+
+@property (nonatomic, retain) UILabel *targetFrequencyRangeLabel;
+@property (nonatomic, retain) UILabel *minLabel;
+@property (nonatomic, retain) UILabel *maxLabel;
+
+
 
 @end

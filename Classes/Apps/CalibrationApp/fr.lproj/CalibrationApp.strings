@@ -1,2 +1,6 @@
-"AppTitle" = "Calibrationn";
+"AppTitle" = "Calibration";
+
+
+/* Main label of the game parameters view */
+"TargetFrequencyRangeLabel" = "Intervale de fréquence";
 

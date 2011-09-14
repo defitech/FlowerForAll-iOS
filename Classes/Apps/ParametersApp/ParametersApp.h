@@ -9,17 +9,12 @@
 
 
 #import <UIKit/UIKit.h>
-#import "DoubleSlider.h"
+
 #import "FlowerApp.h"
 
 @interface ParametersApp : FlowerApp {
 	
 	//Widgets
-	IBOutlet UILabel *targetFrequencyRangeLabel;
-	IBOutlet UILabel *minLabel;
-	IBOutlet UILabel *maxLabel;
-    
-    
     IBOutlet UILabel *durationLabel;
     
 	IBOutlet UILabel *expirationLabel;
@@ -30,12 +25,7 @@
 	IBOutlet UILabel *exerciceTimeLabel;
     IBOutlet UISlider *exerciceSlider;
     
-    //double Slide
-    IBOutlet DoubleSlider *slider;
-    
-    //two labels to show the currently selected values
-	UILabel *leftLabel;
-	UILabel *rightLabel;
+       
 	
 }
 
@@ -43,9 +33,6 @@
 
 //Properties
 
-@property (nonatomic, retain) UILabel *targetFrequencyRangeLabel;
-@property (nonatomic, retain) UILabel *minLabel;
-@property (nonatomic, retain) UILabel *maxLabel;
 
 @property (nonatomic, retain) UILabel *durationLabel;
 

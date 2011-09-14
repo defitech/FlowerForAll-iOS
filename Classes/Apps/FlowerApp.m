@@ -22,6 +22,7 @@
 }
 
 +(FlowerApp*)autoInit {
+    NSLog(@"FlowerApp autoInit: %@ ",[self appName]);
     return [[[self class] alloc] initWithNibName:([self appName])  bundle:[NSBundle mainBundle]];
 }
 

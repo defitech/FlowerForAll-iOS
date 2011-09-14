@@ -1,8 +1,5 @@
 "AppTitle" = "Settings";
 
-/* Main label of the game parameters view */
-"TargetFrequencyRangeLabel" = "Range of frequency";
-
 "DurationLabel" = "Durations: period of time where the Flutter® vibrates in the targeted frequency range.";
 
 "ExerciceLabel" = "Duration for one exercice";

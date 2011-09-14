@@ -57,6 +57,7 @@
 - (IBAction) volcanoTouch:(id) sender;
 - (IBAction) flowerHowTo:(id) sender;
 - (IBAction) settingsTouch:(id) sender;
+- (IBAction) calibrationTouch:(id) sender;
 
 - (IBAction) pageControlDidChangeValue:(id) sender;
 

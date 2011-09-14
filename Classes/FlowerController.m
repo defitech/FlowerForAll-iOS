@@ -192,6 +192,7 @@ static NSMutableDictionary* appList;
     appList = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                [NSNull alloc], @"VolcanoApp",
                [NSNull alloc], @"ParametersApp",
+               [NSNull alloc], @"CalibrationApp",
                nil];
     
     

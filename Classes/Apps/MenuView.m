@@ -34,6 +34,10 @@
     [FlowerController pushApp:@"ParametersApp"];
 }
 
+- (IBAction) calibrationTouch:(id) sender {
+    [FlowerController pushApp:@"CalibrationApp"];
+}
+
 FlowerHowTo *flowerHowTo;
 - (IBAction) flowerHowTo:(id) sender {
     NSLog(@"flowerHowToTouch: %@",[flowerHowTo class]);

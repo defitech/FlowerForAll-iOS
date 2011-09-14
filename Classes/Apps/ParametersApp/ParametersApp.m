@@ -9,13 +9,10 @@
 
 
 #import "ParametersApp.h"
-#import "DoubleSlider.h"
 #import "FlowerController.h"
 #import "ParametersManager.h"
 
 @interface ParametersApp (PrivateMethods)
-- (void)valueChangedForDoubleSlider:(DoubleSlider *)slider;
-- (void)editingEndForDoubleSlider:(DoubleSlider *)slider;
 - (void)valueChangedForDurationSlider:(UISlider *)slider;
 - (void)editingEndForDurationSlider:(UISlider *)slider;
 @end
@@ -24,42 +21,24 @@
 @implementation ParametersApp
 
 
-@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, durationLabel,
+@synthesize  durationLabel,
 expirationLabel, expirationTimeLabel, expirationSlider,
 exerciceLabel, exerciceTimeLabel, exerciceSlider;
 
 
 # pragma mark utilities for non-linear progression of the exercice duration
 
-float maxExecriceDuration_s = 120.0;
-float minExecriceDuration_s = 7.0;
+float maxExerciceDuration_s = 120.0;
+float minExerciceDuration_s = 7.0;
 
 - (float)exericeDurationSliderToSystem:(float)sliderValue {
-    return roundf(sliderValue*sliderValue*(maxExecriceDuration_s-minExecriceDuration_s)+minExecriceDuration_s);
+    return roundf(sliderValue*sliderValue*(maxExerciceDuration_s-minExerciceDuration_s)+minExerciceDuration_s);
 }
 
 - (float)exericeDurationSystemToSlider:(float)systemValue {
-    return sqrtf((systemValue-minExecriceDuration_s)/(maxExecriceDuration_s-minExecriceDuration_s));
+    return sqrtf((systemValue-minExerciceDuration_s)/(maxExerciceDuration_s-minExerciceDuration_s));
 }
 
-
-
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
 
 
 
@@ -67,9 +46,7 @@ float minExecriceDuration_s = 7.0;
 - (void)viewDidLoad {
 	
     [super viewDidLoad];
-	
-	targetFrequencyRangeLabel.text = 
-        [ParametersApp translate:@"TargetFrequencyRangeLabel" comment:@"Target Frequency Range"];
+
 	durationLabel.text = 
         [ParametersApp translate:@"DurationLabel" comment:@"DurationExplanantion"];
 	
@@ -106,27 +83,7 @@ float minExecriceDuration_s = 7.0;
     
     [self  valueChangedForExpirationSlider:expirationSlider];
     [self  valueChangedForExericeSlider:exerciceSlider];
-    
-    
-	//DoubleSlider setup
-	[slider addTarget:self action:@selector(valueChangedForDoubleSlider:) 
-            forControlEvents:UIControlEventValueChanged];
-    
-    [slider addTarget:self action:@selector(editingEndForDoubleSlider:) 
-            forControlEvents:UIControlEventEditingDidEnd];
-    
-   
-    
-    double target = [[FlowerController currentFlapix] frequenceTarget];
-    double toleranceH =  [[FlowerController currentFlapix] frequenceTolerance] / 2;
-    
-	[slider setSelectedValues:(target - toleranceH) maxValue:(target+ toleranceH)];
-    
-	
-	//get the initial values
-    //slider.transform = CGAffineTransformRotate(slider.transform, 90.0/180*M_PI);      //make it vertical
-	[self valueChangedForDoubleSlider:slider];
-}
+ }
 
 
 
@@ -137,34 +94,6 @@ float minExecriceDuration_s = 7.0;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
-
-
-
-#pragma mark Control Event Handlers
-
-- (void)valueChangedForDoubleSlider:(DoubleSlider *)aSlider
-{
-	minLabel.text = [NSString stringWithFormat:@"%1.1f Hz", aSlider.minSelectedValue];
-	maxLabel.text = [NSString stringWithFormat:@"%1.1f Hz", aSlider.maxSelectedValue];
-    
-    double target = (aSlider.minSelectedValue + aSlider.maxSelectedValue) / 2;
-    double tolerance =  aSlider.maxSelectedValue - aSlider.minSelectedValue;
-    
-    [[FlowerController currentFlapix] SetTargetFrequency:target frequency_tolerance:tolerance];
-   
-}
-
-
-
-- (void)editingEndForDoubleSlider:(DoubleSlider *)aSlider
-{
-	[self valueChangedForDoubleSlider:aSlider];
-    
-    double target = (aSlider.minSelectedValue + aSlider.maxSelectedValue) / 2;
-    double tolerance =  aSlider.maxSelectedValue - aSlider.minSelectedValue;
-    
-    [ParametersManager saveFrequency:target tolerance:tolerance];
-}
 
 - (void)valueChangedForExpirationSlider:(UISlider *)aSlider
 {
@@ -204,8 +133,13 @@ float minExecriceDuration_s = 7.0;
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.durationLabel = nil;
+    self.expirationLabel = nil;
+	self.expirationTimeLabel = nil;
+    self.expirationSlider = nil;
+    self.exerciceLabel = nil;
+	self.exerciceTimeLabel = nil;
+    self.exerciceSlider = nil;
 }
 
 

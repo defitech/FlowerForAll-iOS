@@ -51,7 +51,7 @@ static const CGFloat innerColors [] = {
 //The GL view is stored in the nib file. When it's unarchived it's sent -initWithCoder:
 - (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super initWithCoder:aDecoder];
-    NSLog(@"***DoubleSlider: Init with code called");
+    NSLog(@"***DoubleSlider: Init with coder called");
     NSLog(@"init with coder before super width %f",super.frame.size.width); 
     if (self)
 	{

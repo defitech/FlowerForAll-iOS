@@ -46,8 +46,6 @@
 		4E8F593813A7AF6B00D9D3A7 /* ParametersApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */; };
 		4E8F593913A7AF6B00D9D3A7 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591713A7AF6B00D9D3A7 /* MenuView.m */; };
 		4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */; };
-		4E8F595713A7AFA900D9D3A7 /* ParametersApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594D13A7AFA900D9D3A7 /* ParametersApp.xib */; };
-		4E8F595813A7AFA900D9D3A7 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594E13A7AFA900D9D3A7 /* MenuView.xib */; };
 		4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */; };
 		4E8F596713A7B6FF00D9D3A7 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */; };
 		4E92E73F13C72C9C0060FBF6 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E72713C72C9C0060FBF6 /* NSObject+SBJson.m */; };
@@ -63,6 +61,9 @@
 		4E92E74913C72C9C0060FBF6 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E73C13C72C9C0060FBF6 /* SBJsonUTF8Stream.m */; };
 		4E92E74A13C72C9C0060FBF6 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E73E13C72C9C0060FBF6 /* SBJsonWriter.m */; };
 		4E92E74D13C72D3A0060FBF6 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */; };
+		4EA1A3AE1420E89700B11705 /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA1A3B01420E89700B11705 /* CalibrationApp.xib */; };
+		4EA1A3B11420E89B00B11705 /* ParametersApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA1A3B31420E89B00B11705 /* ParametersApp.xib */; };
+		4EA1A3B41420E8B800B11705 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA1A3B51420E8B800B11705 /* MenuView.xib */; };
 		4EB510A81418C883008FC46F /* ExempleApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EB510A51418C883008FC46F /* ExempleApp.strings */; };
 		4EB510AB1418CFC6008FC46F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */; };
 		4EBFFD611414CD4300D4BE9C /* FLAPIExercice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */; };
@@ -70,7 +71,6 @@
 		4ECC6CB11404E5F7005519C7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB01404E5F7005519C7 /* UserManager.m */; };
 		4ECC6CB414053744005519C7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB314053744005519C7 /* User.m */; };
 		4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEED18D141E3E3100F56102 /* CalibrationApp.m */; };
-		4EEED190141E3E3100F56102 /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED18E141E3E3100F56102 /* CalibrationApp.xib */; };
 		4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
 		4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
 		4EFC3EBB14064911002F0BF7 /* DoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB814064911002F0BF7 /* DoubleSlider.m */; };
@@ -147,13 +147,11 @@
 		4E8F591213A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlutterApp2AppDelegate.h; sourceTree = "<group>"; };
 		4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlutterApp2AppDelegate.m; sourceTree = "<group>"; };
 		4E8F591413A7AF6B00D9D3A7 /* ParametersApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersApp.h; sourceTree = "<group>"; };
-		4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersApp.m; sourceTree = "<group>"; };
+		4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ParametersApp.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4E8F591613A7AF6B00D9D3A7 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
 		4E8F591713A7AF6B00D9D3A7 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		4E8F594713A7AF8B00D9D3A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		4E8F594B13A7AF9800D9D3A7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
-		4E8F594D13A7AFA900D9D3A7 /* ParametersApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParametersApp.xib; sourceTree = "<group>"; };
-		4E8F594E13A7AFA900D9D3A7 /* MenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlutterApp2Database.sql; sourceTree = "<group>"; };
 		4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -185,6 +183,9 @@
 		4E92E73E13C72C9C0060FBF6 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		4E92E74B13C72D3A0060FBF6 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
+		4EA1A3AF1420E89700B11705 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CalibrationApp.xib; sourceTree = "<group>"; };
+		4EA1A3B21420E89B00B11705 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ParametersApp.xib; sourceTree = "<group>"; };
+		4EA1A3B51420E8B800B11705 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		4EB510A31418C4AC008FC46F /* FlowerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerApp.h; sourceTree = "<group>"; };
 		4EB510A61418C883008FC46F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ExempleApp.strings; sourceTree = "<group>"; };
 		4EB510A71418C883008FC46F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ExempleApp.strings; sourceTree = "<group>"; };
@@ -198,7 +199,6 @@
 		4ECC6CB314053744005519C7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Data/User.m; sourceTree = "<group>"; };
 		4EEED18C141E3E3100F56102 /* CalibrationApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp.h; sourceTree = "<group>"; };
 		4EEED18D141E3E3100F56102 /* CalibrationApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp.m; sourceTree = "<group>"; };
-		4EEED18E141E3E3100F56102 /* CalibrationApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalibrationApp.xib; sourceTree = "<group>"; };
 		4EEED197141E3E7F00F56102 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
 		4EEED199141E3E8700F56102 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
 		4EFC3EB714064911002F0BF7 /* DoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoubleSlider.h; path = UI/DoubleSlider/DoubleSlider.h; sourceTree = "<group>"; };
@@ -384,7 +384,7 @@
 				4EB510A41418C883008FC46F /* ExempleApp */,
 				4E2F4FFC1407D1B100C4C00C /* VolcanoApp */,
 				4E3A7A7613B8766900853344 /* FlowerHowTo */,
-				4E8F594E13A7AFA900D9D3A7 /* MenuView.xib */,
+				4EA1A3B51420E8B800B11705 /* MenuView.xib */,
 				4E8F591613A7AF6B00D9D3A7 /* MenuView.h */,
 				4E8F591713A7AF6B00D9D3A7 /* MenuView.m */,
 				4EB510A31418C4AC008FC46F /* FlowerApp.h */,
@@ -526,7 +526,7 @@
 				4E4AE46A141FA57B004256DA /* CalibrationApp.strings */,
 				4EEED18C141E3E3100F56102 /* CalibrationApp.h */,
 				4EEED18D141E3E3100F56102 /* CalibrationApp.m */,
-				4EEED18E141E3E3100F56102 /* CalibrationApp.xib */,
+				4EA1A3B01420E89700B11705 /* CalibrationApp.xib */,
 			);
 			path = CalibrationApp;
 			sourceTree = "<group>";
@@ -535,7 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				4E1834B6141E568100E5AE1F /* ParametersApp.strings */,
-				4E8F594D13A7AFA900D9D3A7 /* ParametersApp.xib */,
+				4EA1A3B31420E89B00B11705 /* ParametersApp.xib */,
 				4E8F591413A7AF6B00D9D3A7 /* ParametersApp.h */,
 				4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */,
 			);
@@ -645,8 +645,8 @@
 				D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */,
 				4E8F593613A7AF6B00D9D3A7 /* FlowerController.xib in Resources */,
 				4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */,
-				4E8F595713A7AFA900D9D3A7 /* ParametersApp.xib in Resources */,
-				4E8F595813A7AFA900D9D3A7 /* MenuView.xib in Resources */,
+				4EA1A3B11420E89B00B11705 /* ParametersApp.xib in Resources */,
+				4EA1A3B41420E8B800B11705 /* MenuView.xib in Resources */,
 				4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */,
 				4E141B0D13B35F1900698F53 /* Default.png in Resources */,
 				4E141B0E13B35F1900698F53 /* Default@2x.png in Resources */,
@@ -669,7 +669,7 @@
 				D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */,
 				4EB510A81418C883008FC46F /* ExempleApp.strings in Resources */,
 				4E081DCD1419F340003C9178 /* param-icon.png in Resources */,
-				4EEED190141E3E3100F56102 /* CalibrationApp.xib in Resources */,
+				4EA1A3AE1420E89700B11705 /* CalibrationApp.xib in Resources */,
 				4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */,
 				4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */,
 				4E1834B8141E568100E5AE1F /* ParametersApp.strings in Resources */,
@@ -764,6 +764,22 @@
 				4E8F594B13A7AF9800D9D3A7 /* fr */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4EA1A3B01420E89700B11705 /* CalibrationApp.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EA1A3AF1420E89700B11705 /* en */,
+			);
+			name = CalibrationApp.xib;
+			sourceTree = "<group>";
+		};
+		4EA1A3B31420E89B00B11705 /* ParametersApp.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EA1A3B21420E89B00B11705 /* en */,
+			);
+			name = ParametersApp.xib;
 			sourceTree = "<group>";
 		};
 		4EB510A51418C883008FC46F /* ExempleApp.strings */ = {
