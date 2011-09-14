@@ -103,29 +103,31 @@ NSTimer *repeatingTimer;
     [self addGestureRecognizer:singleFingerTap];
     [singleFingerTap release];
 
-    
+    // Frame dimensions
+    float width = self.frame.size.width;
+    float height = self.frame.size.height;    
 	
 	// Alloc Graph View
-	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, 170.0, 40.0) ];
+	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, width*2/3-10, height) ];
 	[ self addSubview:[ graphView autorelease ] ];
     
     // Alloc Label View
-    labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(180.0, 0.0, 100.0, 20.0) ];
+    labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/3, height/2) ];
     [labelPercent setBackgroundColor:[UIColor blackColor]];
     [labelPercent setTextColor:[UIColor whiteColor]];
-    [labelPercent setFont:[UIFont systemFontOfSize:15.0]];
+    [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
     [labelPercent setText:@"%"];
     
-    labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(230.0, 0.0, 100.0, 20.0) ];
+    labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*5/6, 0.0, width*1/3, height/2) ];
     [labelFrequency setBackgroundColor:[UIColor blackColor]];
     [labelFrequency setTextColor:[UIColor whiteColor]];
-    [labelFrequency setFont:[UIFont systemFontOfSize:15.0]];
+    [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
     [labelFrequency setText:@"Hz"];
     
-    labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(180.0, 20.0, 100.0, 20.0) ];
+    labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, height/2, width*1/3, height/2) ];
     [labelDuration setBackgroundColor:[UIColor blackColor]];
     [labelDuration setTextColor:[UIColor whiteColor]];
-    [labelDuration setFont:[UIFont systemFontOfSize:15.0]];
+    [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
     [labelDuration setText:@"sec"];
     
     
@@ -207,7 +209,7 @@ NSTimer *repeatingTimer;
     CPBarPlot* blowPlot = [[[CPBarPlot alloc] initWithFrame:self.bounds] autorelease];
     blowPlot.identifier = @"blow";
     blowPlot.dataSource = self;
-    blowPlot.barWidth = 5;
+    blowPlot.barWidth = self.frame.size.width/50;
     blowPlot.barOffset = 0;  
     blowPlot.fill = [[[CPFill alloc] initWithColor:[CPColor redColor]] autorelease];
     [ graph addPlot:blowPlot ];
@@ -216,7 +218,7 @@ NSTimer *repeatingTimer;
     CPBarPlot* inRangePlot = [[[CPBarPlot alloc] initWithFrame:self.bounds] autorelease];
     inRangePlot.identifier = @"inRange";
     inRangePlot.dataSource = self;
-    inRangePlot.barWidth = 5;
+    inRangePlot.barWidth = self.frame.size.width/50;
     inRangePlot.barOffset = 0;
     inRangePlot.fill = [[[CPFill alloc] initWithColor:[CPColor greenColor]] autorelease];
     [ graph addPlot:inRangePlot ];
@@ -273,7 +275,7 @@ NSTimer *repeatingTimer;
 -(CPPlotSymbol *)symbolForScatterPlot:(CPScatterPlot *)plot recordIndex:(NSUInteger)index {
     CPPlotSymbol *symbol = [[[CPPlotSymbol alloc] init] autorelease];
     symbol.symbolType = CPPlotSymbolTypeStar;
-    symbol.size = CGSizeMake(10.0, 10.0);
+    symbol.size = CGSizeMake(self.frame.size.width/28, self.frame.size.height/4);
     symbol.fill = [CPFill fillWithColor:[CPColor whiteColor]];
     return symbol;
 }
