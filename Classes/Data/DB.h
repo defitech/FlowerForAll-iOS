@@ -26,7 +26,7 @@
 //Execute a statement 
 +(void)execute:(NSString*)sqlStatement;
 /** execute With Format **/
-+(void)executeWF:(NSString*)sqlStatementFormat, ... NS_FORMAT_FUNCTION(1,2);  // sugar implementation
++(void)executeWF:(NSString*)sqlStatementFormat, ...;// NS_FORMAT_FUNCTION(1,2);  // sugar implementation
 
 /**
  * Create Statement from NSTRing
@@ -34,7 +34,7 @@
  */
 +(sqlite3_stmt*) genCStatement:(NSString*)sqlStatement;
 /** genCStatement With Format **/
-+(sqlite3_stmt*) genCStatementWF:(NSString*)sqlStatementFormat, ... NS_FORMAT_FUNCTION(1,2); // sugar implementation
++(sqlite3_stmt*) genCStatementWF:(NSString*)sqlStatementFormat, ...;// NS_FORMAT_FUNCTION(1,2); // sugar implementation
 
 /**
  * shortcut to get a single value
@@ -42,7 +42,7 @@
  */
 +(NSString*) getSingleValue:(NSString*)sqlStatement;
 /** getSingleValue With Format **/
-+(NSString*) getSingleValueWF:(NSString*)sqlStatementFormat, ... NS_FORMAT_FUNCTION(1,2); // sugar implementation
++(NSString*) getSingleValueWF:(NSString*)sqlStatementFormat, ...;// NS_FORMAT_FUNCTION(1,2); // sugar implementation
 
 /** get values from the db info table **/
 +(NSString*) getInfoValueForKey:(NSString*)key;

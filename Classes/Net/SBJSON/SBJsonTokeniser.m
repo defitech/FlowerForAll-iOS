@@ -133,6 +133,25 @@
     return YES;
 }
 
+
+/* 
+ * UTF-16 surrogate support
+ * // Normally in CFString but.. added by Perki because it was missing iOS SDK 3.2
+ */
++ (BOOL) MYStringIsSurrogateHighCharacter:(UniChar)character {
+    return ((character >= 0xD800UL) && (character <= 0xDBFFUL) ? true : false);
+}
+
+/* 
+ * UTF-16 surrogate support
+ * // Normally in CFString but.. added by Perki because it was missing iOS SDK 3.2
+ */
++ (BOOL) MYStringIsSurrogateLowCharacter:(UniChar)character {
+    return ((character >= 0xDC00UL) && (character <= 0xDFFFUL) ? true : false);
+}
+
+
+
 - (sbjson_token_t)getStringToken:(NSObject**)token {
     NSMutableString *acc = nil;
 
@@ -193,7 +212,7 @@
                         return sbjson_token_error;
                     }
 
-                    if (CFStringIsSurrogateHighCharacter(hi)) {
+                    if ([SBJsonTokeniser MYStringIsSurrogateHighCharacter:hi]) {
                         unichar lo;
 
                         if (![_stream haveRemainingCharacters:6])
@@ -206,7 +225,7 @@
                             return sbjson_token_error;
                         }
 
-                        if (!CFStringIsSurrogateLowCharacter(lo)) {
+                        if (![SBJsonTokeniser MYStringIsSurrogateLowCharacter:lo]) {
                             self.error = @"Invalid low character in surrogate pair";
                             return sbjson_token_error;
                         }
