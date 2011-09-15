@@ -17,7 +17,7 @@
 
 @implementation CalibrationApp
 
-@synthesize targetFrequencyRangeLabel, minLabel, maxLabel;
+@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, inRangeTextLabel, inRangeValueLabel, inRangeMinusButton, inRangePlusButton, durationTextLabel, durationValueLabel, durationMinusButton, durationPlusButton;
 
 #pragma mark - View lifecycle
 
@@ -64,6 +64,7 @@
     
     [[FlowerController currentFlapix] SetTargetFrequency:target frequency_tolerance:tolerance];
     
+    [needle setNeedsDisplay];
 }
 
 
@@ -78,8 +79,21 @@
     [ParametersManager saveFrequency:target tolerance:tolerance];
 }
 
+- (IBAction) pressInRangeMinus:(id) sender {
+    NSLog(@"pressInRangeMinus");
+    
+}
+- (IBAction) pressInRangePlus:(id) sender {
+    NSLog(@"pressInRangePlus");
+}
 
+- (IBAction) pressDurationMinus:(id) sender {
+    NSLog(@"pressDurationMinus");
+}
 
+- (IBAction) pressDurationPlus:(id) sender {
+    NSLog(@"pressDurationPlus");
+}
 
 - (void)viewDidUnload
 {

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CalibrationApp_NeedleView : UIView
+@interface CalibrationApp_NeedleView : UIView {
+    double lastTarget;
+    double lastTolerance;
+}
+
+-(void)drawFreqRules:(double)target freqTol:(double)tolerance isReference:(BOOL)isRef;
 
 @end

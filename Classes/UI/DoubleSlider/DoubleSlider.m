@@ -257,14 +257,14 @@ static const CGFloat innerColors [] = {
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         CGContextSaveGState(ctx);
     
-        CGFloat xxx = sliderBarWidth * (mark - 4) / 22;
-        CGFloat yyy = self.frame.size.height / 2;
+        CGFloat x = sliderBarWidth * (mark - 4) / 22;
+        CGFloat y = self.frame.size.height / 2;
     
-        const float mStrokeColor[4] = {1.0,  0.5,  0.1,  1.0};
-        CGContextSetStrokeColor(ctx, mStrokeColor);
+        UIColor *orange = [UIColor orangeColor];
+        CGContextSetStrokeColor(ctx, CGColorGetComponents(orange.CGColor));
         CGContextSetLineWidth(ctx, 1);
-        CGContextMoveToPoint(ctx, xxx, yyy - 15);
-        CGContextAddLineToPoint(ctx, xxx, yyy + 10);
+        CGContextMoveToPoint(ctx, x, y - 15);
+        CGContextAddLineToPoint(ctx, x, y + 10);
         
         CGFloat dash[] = {5.0, 2.0};
         CGContextSetLineDash(ctx, 0.0, dash, 2);
@@ -272,10 +272,10 @@ static const CGFloat innerColors [] = {
         CGContextStrokePath(ctx);
         CGContextRestoreGState(ctx);
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(xxx - 12, yyy + 10, 24, 10)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x - 12, y + 10, 24, 10)];
         [label setFont:[UIFont fontWithName:@"Helvetica" size:12]];
         label.text = [NSString stringWithFormat:@"%1.1f", mark];
-        label.textColor = [UIColor orangeColor];
+        label.textColor = orange;
         label.textAlignment = UITextAlignmentCenter;
         [self addSubview:label];
         

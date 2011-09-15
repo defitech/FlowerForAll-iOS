@@ -32,7 +32,7 @@ extern NSString * const FLAPIX_EVENT_FREQUENCY;
     float lastlevel;
     BOOL blowing;
     FLAPIExercice* current_exercice;
-    
+    FLAPIBlow* lastBlow;
     
     
 }
