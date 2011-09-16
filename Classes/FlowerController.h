@@ -38,7 +38,8 @@
 
 /** Promote an App as current Main COntroller **/ 
 + (void) pushApp:(NSString*) flowerApp ;
++ (void) pushApp:(NSString*) flowerApp withUIViewAnimation:(UIViewAnimationTransition)transition;
 
-+(void)setCurrentMainController:(UIViewController*)thisController;
-
++ (void) setCurrentMainController:(UIViewController*)thisController;
++ (void) setCurrentMainController:(UIViewController*)thisController withUIViewAnimation:(UIViewAnimationTransition)transition;
 @end

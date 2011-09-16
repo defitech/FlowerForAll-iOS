@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 
 #import "FlowerApp.h"
+#import "ProfilePickerViewController.h"
 
 @interface ParametersApp : FlowerApp {
 	
@@ -45,6 +46,8 @@
 @property (nonatomic, retain) UILabel *exerciceTimeLabel;
 @property (nonatomic, retain) UISlider *exerciceSlider;
 
+
+- (IBAction)profileButtonPushed:(id)sender;
 
 
 - (void)valueChangedForExpirationSlider:(UISlider *)aSlider;

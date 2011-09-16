@@ -52,6 +52,11 @@ static NSMutableDictionary* appList;
 
 /** Promote an App as current Main Controller **/ 
 + (void) pushApp:(NSString*) flowerApp {
+    [FlowerController pushApp:flowerApp withUIViewAnimation:UIViewAnimationTransitionNone];
+}
+
+/** Promote an App as current Main Controller **/ 
++ (void) pushApp:(NSString*) flowerApp withUIViewAnimation:(UIViewAnimationTransition)transition{
     if ([appList objectForKey:flowerApp] == nil) {
         NSLog(@"FlowerController:pushApp unkown app: %@",flowerApp);
         return;
@@ -67,7 +72,7 @@ static NSMutableDictionary* appList;
         NSLog(@"FlowerController:pushApp Init %@",flowerApp);
         [appList setValue:[flowerAppClass autoInit] forKey:flowerApp];
     }
-    [FlowerController setCurrentMainController:[appList objectForKey:flowerApp] ];
+    [FlowerController setCurrentMainController:[appList objectForKey:flowerApp] withUIViewAnimation:transition];
 }
 
 /** 
@@ -76,8 +81,17 @@ static NSMutableDictionary* appList;
  * handle your retain / release yourself
  **/
 +(void)setCurrentMainController:(UIViewController*)thisController {
+    [FlowerController setCurrentMainController:thisController withUIViewAnimation:UIViewAnimationTransitionNone];
+}
+
+/** 
+ * normaly you should call goTo Menu to set the Menu 
+ * If you decide to push your own view a currentMainController you then need to 
+ * handle your retain / release yourself
+ **/
++(void)setCurrentMainController:(UIViewController*)thisController withUIViewAnimation:(UIViewAnimationTransition)transition {
     if ([currentMainController isKindOfClass:[thisController class]]) {
-         NSLog(@"FLowerController: setCurrentMainController Skip");
+        NSLog(@"FLowerController: setCurrentMainController Skip");
         return;
     }
     if (! [singleton isKindOfClass:[FlowerController class]]) {
@@ -91,9 +105,22 @@ static NSMutableDictionary* appList;
     UIViewController *previousViewController = currentMainController;
     currentMainController = thisController;
     NSLog(@"%f %f %f %f",singleton.mainView.frame.origin.x,singleton.mainView.frame.origin.y,
-            singleton.mainView.frame.size.width, singleton.mainView.frame.size.height);
+          singleton.mainView.frame.size.width, singleton.mainView.frame.size.height);
     
+    if ( transition != UIViewAnimationTransitionNone) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:1.0];
+        [UIView setAnimationTransition:transition
+                               forView:singleton.mainView
+                                 cache:YES];
+    }
     [singleton.mainView addSubview:currentMainController.view];
+    if ( transition != UIViewAnimationTransitionNone) {
+        [UIView commitAnimations];
+    }
+    
+    
+    
     [previousViewController viewDidDisappear:true];
     [previousViewController.view removeFromSuperview];
     [singleton.mainView setNeedsLayout];

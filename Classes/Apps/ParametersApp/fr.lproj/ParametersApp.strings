@@ -1,5 +1,6 @@
 "AppTitle" = "Réglages";
 
+"ProfilManagementTitle" = "Choix du profil";
 
 "DurationLabel" = "Durées: periodes pendant lesquelles le Flutter® vibre dans l'interval de fréquences choisit.";
 

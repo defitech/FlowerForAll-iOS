@@ -1,5 +1,7 @@
 "AppTitle" = "Settings";
 
+"ProfilManagementTitle" = "Choose a profil";
+
 "DurationLabel" = "Durations: period of time where the Flutter® vibrates in the targeted frequency range.";
 
 "ExerciceLabel" = "Duration for one exercice";

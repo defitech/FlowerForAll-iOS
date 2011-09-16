@@ -11,6 +11,7 @@
 #import "ParametersApp.h"
 #import "FlowerController.h"
 #import "ParametersManager.h"
+#import "ProfilePickerViewController.h"
 
 @interface ParametersApp (PrivateMethods)
 - (void)valueChangedForDurationSlider:(UISlider *)slider;
@@ -122,7 +123,42 @@ float minExerciceDuration_s = 7.0;
     
 }
 
+# pragma mark profilPicker
 
+- (void)showOptionView
+{
+    NSLog(@"ProfilPicker SHOW");
+    ProfilePickerViewController* optionViewController = 
+    [[ProfilePickerViewController alloc] initWithNibName:@"ProfilePickerViewController" bundle:nil];
+  //  optionViewController.paramApp = self;
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:optionViewController];
+    nav.view.frame = CGRectMake(0,self.view.frame.size.height,self.view.frame.size.width,self.view.frame.size.height);
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.75];
+     nav.view.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
+    [self.view addSubview:nav.view];
+    
+    [UIView commitAnimations];
+    
+    
+    
+    
+    
+    //[navController release];
+    //[optionViewController release];
+}
+
+- (IBAction)profileButtonPushed:(id)sender {
+    [self showOptionView];
+}
+
+
+- (void)profilePickerViewController:(ProfilePickerViewController*)ProfilePickerViewController didFinishWithSelection:(NSString*)selection {
+    NSLog(@"ProfilPicker DiD FInish");
+}
+
+
+# pragma mark profilPicker
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
