@@ -11,7 +11,7 @@
 #import "ParametersApp.h"
 #import "FlowerController.h"
 #import "ParametersManager.h"
-#import "ProfilePickerViewController.h"
+#import "PickerEditor.h"
 
 @interface ParametersApp (PrivateMethods)
 - (void)valueChangedForDurationSlider:(UISlider *)slider;
@@ -128,24 +128,8 @@ float minExerciceDuration_s = 7.0;
 - (void)showOptionView
 {
     NSLog(@"ProfilPicker SHOW");
-    ProfilePickerViewController* optionViewController = 
-    [[ProfilePickerViewController alloc] initWithNibName:@"ProfilePickerViewController" bundle:nil];
-  //  optionViewController.paramApp = self;
-    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:optionViewController];
-    nav.view.frame = CGRectMake(0,self.view.frame.size.height,self.view.frame.size.width,self.view.frame.size.height);
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:.75];
-     nav.view.frame = CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
-    [self.view addSubview:nav.view];
-    
-    [UIView commitAnimations];
-    
-    
-    
-    
-    
-    //[navController release];
-    //[optionViewController release];
+    PickerEditor* optionViewController = [[PickerEditor alloc] initWithDelegate:self];
+    [optionViewController showOnTopOfView:self.view];
 }
 
 - (IBAction)profileButtonPushed:(id)sender {
@@ -153,10 +137,18 @@ float minExerciceDuration_s = 7.0;
 }
 
 
-- (void)profilePickerViewController:(ProfilePickerViewController*)ProfilePickerViewController didFinishWithSelection:(NSString*)selection {
+- (void)pickerEditorIsDone:(PickerEditor*)sender didFinishWithSelection:(NSString*)selection {
     NSLog(@"ProfilPicker DiD FInish");
 }
 
+
+-(NSString*)pickerEditorTitle:(PickerEditor*)sender {
+    return [ParametersApp translate:@"ProfilManagementTitle" comment:@"Profil Management Title"];
+}
+
+-(NSString*)pickerEditorEndButtonTitle:(PickerEditor*)sender {
+    return [ParametersApp translate:@"AppTitle" comment:@"Back Button for Title management"];
+}
 
 # pragma mark profilPicker
 

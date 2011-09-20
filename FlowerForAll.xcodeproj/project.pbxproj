@@ -34,7 +34,6 @@
 		4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B815A14165374009CC45D /* FlowerHowTo.m4v */; };
-		4E51107A1428A3C300A464EA /* ProfilePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E318CFF1421FB41009E0FE1 /* ProfilePickerViewController.xib */; };
 		4E51107B1428A44100A464EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594A13A7AF9800D9D3A7 /* Localizable.strings */; };
 		4E51107C1428A44300A464EA /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE414176452004C6034 /* FlowerForAll.html */; };
 		4E584855140E61CC003892DA /* BlowHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E584854140E61CC003892DA /* BlowHistory.m */; };
@@ -99,7 +98,7 @@
 		D7C3A9C31423478900A6D464 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C3A9C11423478900A6D464 /* minus.png */; };
 		D7C3A9C41423478900A6D464 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C3A9C21423478900A6D464 /* plus.png */; };
 		D7D64652141659B700F0DE4F /* VolcanoApp_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D64651141659B700F0DE4F /* VolcanoApp_explosion.wav */; };
-		D7F59A6914286D06006FE244 /* ProfilePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E318D021421FB8C009E0FE1 /* ProfilePickerViewController.m */; };
+		D7F59A6914286D06006FE244 /* PickerEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E318D021421FB8C009E0FE1 /* PickerEditor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,9 +127,8 @@
 		4E2F4FFF1407D1F900C4C00C /* VolcanoApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VolcanoApp.xib; sourceTree = "<group>"; };
 		4E2F50051407DF8200C4C00C /* FLAPIBlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAPIBlow.h; sourceTree = "<group>"; };
 		4E2F50061407DF8200C4C00C /* FLAPIBlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAPIBlow.m; sourceTree = "<group>"; };
-		4E318CFF1421FB41009E0FE1 /* ProfilePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilePickerViewController.xib; sourceTree = "<group>"; };
-		4E318D011421FB8C009E0FE1 /* ProfilePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePickerViewController.h; sourceTree = "<group>"; };
-		4E318D021421FB8C009E0FE1 /* ProfilePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePickerViewController.m; sourceTree = "<group>"; };
+		4E318D011421FB8C009E0FE1 /* PickerEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerEditor.h; sourceTree = "<group>"; };
+		4E318D021421FB8C009E0FE1 /* PickerEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerEditor.m; sourceTree = "<group>"; };
 		4E3A7A7713B8777D00853344 /* FlowerHowTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerHowTo.h; sourceTree = "<group>"; };
 		4E3A7A7813B8777D00853344 /* FlowerHowTo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerHowTo.m; sourceTree = "<group>"; };
 		4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerHowTo.xib; sourceTree = "<group>"; };
@@ -556,9 +554,8 @@
 				D73EB4F1142233EF001AB2DE /* ParametersApp.xib */,
 				4E8F591413A7AF6B00D9D3A7 /* ParametersApp.h */,
 				4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */,
-				4E318CFF1421FB41009E0FE1 /* ProfilePickerViewController.xib */,
-				4E318D011421FB8C009E0FE1 /* ProfilePickerViewController.h */,
-				4E318D021421FB8C009E0FE1 /* ProfilePickerViewController.m */,
+				4E318D011421FB8C009E0FE1 /* PickerEditor.h */,
+				4E318D021421FB8C009E0FE1 /* PickerEditor.m */,
 			);
 			path = ParametersApp;
 			sourceTree = "<group>";
@@ -753,7 +750,7 @@
 				4E081DD01419F4DD003C9178 /* FlowerApp.m in Sources */,
 				4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */,
 				4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */,
-				D7F59A6914286D06006FE244 /* ProfilePickerViewController.m in Sources */,
+				D7F59A6914286D06006FE244 /* PickerEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

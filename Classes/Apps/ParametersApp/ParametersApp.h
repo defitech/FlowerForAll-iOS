@@ -11,9 +11,9 @@
 #import <UIKit/UIKit.h>
 
 #import "FlowerApp.h"
-#import "ProfilePickerViewController.h"
+#import "PickerEditor.h"
 
-@interface ParametersApp : FlowerApp {
+@interface ParametersApp : FlowerApp <PickerEditorDelegate> {
 	
 	//Widgets
     IBOutlet UILabel *durationLabel;
@@ -25,9 +25,6 @@
     IBOutlet UILabel *exerciceLabel;
 	IBOutlet UILabel *exerciceTimeLabel;
     IBOutlet UISlider *exerciceSlider;
-    
-       
-	
 }
 
 
