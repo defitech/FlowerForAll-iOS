@@ -22,7 +22,7 @@
 @property (nonatomic, assign) id delegate;
 -(id)initWithDelegate:(id<PickerEditorDelegate>)delegate ;
 -(void)showOnTopOfView:(UIView*)onView;
-
+-(void)close;
 @end // end interface
 
 
@@ -30,7 +30,20 @@
 @required
 -(NSString*)pickerEditorTitle:(PickerEditor*)sender; 
 -(NSString*)pickerEditorEndButtonTitle:(PickerEditor*)sender; 
--(void)pickerEditorIsDone:(PickerEditor*)sender didFinishWithSelection:(NSString*)selection;
+-(void)pickerEditorIsDone:(PickerEditor*)sender;
+
+/** return the number of choices **/
+-(int)pickerEditorSize:(PickerEditor*)sender; 
+
+/** return the index of the selected value **/
+-(int)pickerEditorIsSelect:(PickerEditor*)sender index:(int)index;;
+
+/** return the text to display for this element **/
+-(NSString*)pickerEditorValue:(PickerEditor*)sender index:(int)index;
+
+/** called when selection change on an element **/
+-(void)pickerEditorSelectionChange:(PickerEditor*)sender index:(int)index;
+
 @end
 
 

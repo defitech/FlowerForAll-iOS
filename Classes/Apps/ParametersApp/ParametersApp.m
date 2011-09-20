@@ -137,7 +137,7 @@ float minExerciceDuration_s = 7.0;
 }
 
 
-- (void)pickerEditorIsDone:(PickerEditor*)sender didFinishWithSelection:(NSString*)selection {
+- (void)pickerEditorIsDone:(PickerEditor*)sender {
     NSLog(@"ProfilPicker DiD FInish");
 }
 
@@ -147,7 +147,30 @@ float minExerciceDuration_s = 7.0;
 }
 
 -(NSString*)pickerEditorEndButtonTitle:(PickerEditor*)sender {
-    return [ParametersApp translate:@"AppTitle" comment:@"Back Button for Title management"];
+    return [ParametersApp translate:@"Done" comment:@"Back Button for Title management"];
+}
+
+
+/** return the number of choices **/
+-(int)pickerEditorSize:(PickerEditor*)sender {
+    return 5;
+}
+
+int selected_index = 2;
+/** return the index of the selected value **/
+-(int)pickerEditorIsSelect:(PickerEditor*)sender index:(int)index {
+    return index == selected_index;
+}
+
+/** return the text to display for this element **/
+-(NSString*)pickerEditorValue:(PickerEditor*)sender index:(int)index {
+    return [NSString stringWithFormat:@"profil # %i",index];
+}
+
+/** called when selection change on an element **/
+-(void)pickerEditorSelectionChange:(PickerEditor*)sender index:(int)index {
+    selected_index = index;
+    NSLog(@"Selected profil:%i",index);  
 }
 
 # pragma mark profilPicker

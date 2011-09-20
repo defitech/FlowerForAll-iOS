@@ -40,19 +40,65 @@
 }
 
 - (void)returnToParamWindow:(id)sender {
-    [delegate pickerEditorIsDone:self didFinishWithSelection:@"BOB"];
-    NSLog(@"bye");
+    [self close];
+    [delegate pickerEditorIsDone:self];
 }
 
+-(void)close {
+    // animation not working
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.75];
+    nav.view.frame = CGRectMake(0,nav.view.superview.frame.size.height, nav.view.superview.frame.size.width,nav.view.superview.frame.size.height);
+    [UIView commitAnimations];
+    [nav.view removeFromSuperview];
+}
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {  
+    return 1;  
+}   
 
-- (void)ProfilePickerViewController:(PickerEditor*)ProfilePickerViewController didFinishWithSelection:(NSInteger)selection
-{
-    // Do something with selection here
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {  
+    return [delegate pickerEditorSize:self];  
+}   
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {   
+    static NSString *CellIdentifier = @"Cell";  
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];   
+    if (cell == nil) {  
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];  
+    }   
+    [cell.textLabel setText:[delegate pickerEditorValue:self index:indexPath.row]];   
+    if ([delegate pickerEditorIsSelect:self index:indexPath.row]) {
+         [cell setAccessoryType:UITableViewCellAccessoryCheckmark]; 
+    } else {
+         [cell setAccessoryType:UITableViewCellAccessoryNone]; 
+    }
     
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    UIView* backgroundView = [ [ [ UIView alloc ] initWithFrame:CGRectZero ] autorelease ];
+	backgroundView.backgroundColor = (indexPath.row % 2) ? [ UIColor lightGrayColor ] : [ UIColor clearColor ];
+	cell.backgroundView = backgroundView;
+    [[cell textLabel] setBackgroundColor:backgroundView.backgroundColor];
+    [[cell detailTextLabel] setBackgroundColor:backgroundView.backgroundColor];
+    return cell;   
+    
+}  
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([delegate pickerEditorIsSelect:self index:indexPath.row]) return;
+    [delegate pickerEditorSelectionChange:self index:indexPath.row];
+    [tableView reloadData];
 }
 
+
+
+
+-(void)viewDidUnload {
+    nav = nil;
+    [super viewDidUnload];
+}
 
 
 @end
