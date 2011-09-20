@@ -10,52 +10,59 @@
 #import "DB.h"
 #import "FLAPIX.h"
 #import "FlowerController.h"
+#import "Profil.h"
 
 @implementation ParametersManager
 
 +(void) saveFrequency:(double)target tolerance:(double)tolerance {
-    [DB setInfoValueForKey:@"frequencyTarget" value:[NSString stringWithFormat:@"%1.1f",target]];
-    [DB setInfoValueForKey:@"frequencyTolerance" value:[NSString stringWithFormat:@"%1.1f",tolerance]];
+    [[Profil current] setFrequency_target_hz:target];
+    [[Profil current] setFrequency_tolerance_hz:tolerance];
+    [[Profil current] save];
 }
 
 +(void) loadParameters:(FLAPIX*)flapix  {
-    double target=[[DB getInfoValueForKey:@"frequencyTarget"] doubleValue];
-    double tolerance=[[DB getInfoValueForKey:@"frequencyTolerance"] doubleValue];
-    if ( ((target - (tolerance / 2)) < [flapix frequenceMin]) || 
-         ((target + (tolerance / 2)) > [flapix frequenceMax] )) {
-         NSLog(@"loadParameters: invalid frequency parameters target:%f tolerance:%tolerance reseting to defaults",target,tolerance );
-         target = ([flapix frequenceMax] + [flapix frequenceMin]) / 2;
-         tolerance = ([flapix frequenceMax] - [flapix frequenceMin]) * 0.2;
-       
+    Profil* profil = [Profil current];
+    
+
+    BOOL saveProfil = false;
+    if ( ((profil.frequency_target_hz - (profil.frequency_tolerance_hz / 2)) < [flapix frequenceMin]) || 
+         ((profil.frequency_target_hz + (profil.frequency_tolerance_hz / 2)) > [flapix frequenceMax] )) {
+         NSLog(@"loadParameters: invalid frequency parameters target:%f tolerance:%tolerance reseting to defaults",profil.frequency_target_hz,profil.frequency_tolerance_hz );
+         profil.frequency_target_hz = ([flapix frequenceMax] + [flapix frequenceMin]) / 2;
+         profil.frequency_tolerance_hz = ([flapix frequenceMax] - [flapix frequenceMin]) * 0.2;
+        saveProfil = true;
     }
-    [flapix SetTargetFrequency:target frequency_tolerance:tolerance];
+    [flapix SetTargetFrequency:profil.frequency_target_hz frequency_tolerance:profil.frequency_tolerance_hz];
     
     
-    float duration = [[DB getInfoValueForKey:@"expirationDuration"] floatValue];
-    if (duration < 0.5f || duration > 12.0f) {
-         NSLog(@"loadParameters: invalid expiration duration:%f parameter reseting to defaults",duration );
-        duration = 1.0f;
-        
+    if (profil.duration_expiration_s < 0.5f || profil.duration_expiration_s > 12.0f) {
+         NSLog(@"loadParameters: invalid expiration duration:%f parameter reseting to defaults",profil.duration_expiration_s );
+        profil.duration_expiration_s = 1.0f;
+        saveProfil = true;
     }
-    [flapix SetTargetExpirationDuration:duration];
+    [flapix SetTargetExpirationDuration:profil.duration_expiration_s];
     
-    
-    duration = [[DB getInfoValueForKey:@"exerciceDuration"] floatValue];
-    if (duration < 5.0f || duration > 1000.0f) {
-        NSLog(@"loadParameters: invalid exerice duration:%f parameter reseting to defaults",duration );
-        duration = 20.0f;
-        
+
+    if (profil.duration_exercice_s < 5.0f || profil.duration_exercice_s > 1000.0f) {
+        NSLog(@"loadParameters: invalid exerice duration:%f parameter reseting to defaults",profil.duration_exercice_s );
+        profil.duration_exercice_s = 20.0f;
+        saveProfil = true;
     }
-    [flapix SetTargetExerciceDuration:duration];
+    [flapix SetTargetExerciceDuration:profil.duration_exercice_s];
+    if (saveProfil) {
+        [profil save];
+    }
 }
 
 +(void) saveExpirationDuration:(float)duration {
-    [DB setInfoValueForKey:@"expirationDuration" value:[NSString stringWithFormat:@"%1.1f",duration]];
+    [[Profil current] setDuration_expiration_s:(double)duration];
+    [[Profil current] save];
     [[FlowerController currentFlapix] SetTargetExpirationDuration:duration];
 }
 
 +(void) saveExerciceDuration:(float)duration {
-    [DB setInfoValueForKey:@"exerciceDuration" value:[NSString stringWithFormat:@"%1.1f",duration]];
+    [[Profil current] setDuration_exercice_s:(double)duration];
+    [[Profil current] save];
     [[FlowerController currentFlapix] SetTargetExerciceDuration:duration];
 }
 

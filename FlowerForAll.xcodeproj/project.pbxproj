@@ -34,8 +34,7 @@
 		4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B815A14165374009CC45D /* FlowerHowTo.m4v */; };
-		4E51107B1428A44100A464EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594A13A7AF9800D9D3A7 /* Localizable.strings */; };
-		4E51107C1428A44300A464EA /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE414176452004C6034 /* FlowerForAll.html */; };
+		4E5110881428CBC600A464EA /* Profil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5110871428CBC600A464EA /* Profil.m */; };
 		4E584855140E61CC003892DA /* BlowHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E584854140E61CC003892DA /* BlowHistory.m */; };
 		4E713C2B1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E713C2A1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
@@ -137,6 +136,8 @@
 		4E4AE46B141FA57B004256DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
 		4E4AE46D141FA584004256DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
 		4E4B815A14165374009CC45D /* FlowerHowTo.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlowerHowTo.m4v; sourceTree = "<group>"; };
+		4E5110861428CBC500A464EA /* Profil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profil.h; sourceTree = "<group>"; };
+		4E5110871428CBC600A464EA /* Profil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profil.m; sourceTree = "<group>"; };
 		4E584853140E61CC003892DA /* BlowHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlowHistory.h; path = Data/BlowHistory.h; sourceTree = "<group>"; };
 		4E584854140E61CC003892DA /* BlowHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlowHistory.m; path = Data/BlowHistory.m; sourceTree = "<group>"; };
 		4E713C291416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subsys_ios_AVAudioSessionDelegate.h; sourceTree = "<group>"; };
@@ -424,6 +425,8 @@
 				4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */,
 				4E584853140E61CC003892DA /* BlowHistory.h */,
 				4E584854140E61CC003892DA /* BlowHistory.m */,
+				4E5110861428CBC500A464EA /* Profil.h */,
+				4E5110871428CBC600A464EA /* Profil.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */,
 				4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */,
 				D7F59A6914286D06006FE244 /* PickerEditor.m in Sources */,
+				4E5110881428CBC600A464EA /* Profil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
