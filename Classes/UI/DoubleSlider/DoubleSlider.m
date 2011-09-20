@@ -94,6 +94,9 @@ static const CGFloat innerColors [] = {
     self.minHandle.center = CGPointMake(sliderBarWidth * (aMinValue - minValue) / (maxValue - minValue) , sliderBarHeight * 0.5+sliderBarDeltaY);
     self.maxHandle.center = CGPointMake(sliderBarWidth * (aMaxValue - minValue) / (maxValue - minValue) , sliderBarHeight * 0.5+sliderBarDeltaY);
     [self updateValues];
+    
+    lastMinSelectedValue = self.minSelectedValue;
+    lastMaxSelectedValue = self.maxSelectedValue;
 }
 
 -(void) initView:(float)height {
@@ -218,18 +221,20 @@ static const CGFloat innerColors [] = {
      //draw middle rect
 	CGContextRestoreGState(context);
     
+    CGContextSaveGState(context);
     [self addToContext:context roundRect:rect2 withRoundedCorner1:NO corner2:NO corner3:NO corner4:NO radius:5.0f];
     CGContextClip(context);
     CGContextDrawLinearGradient(context, innerGradient, startPoint, endPoint, 0);
     CGGradientRelease(innerGradient), innerGradient = NULL;
-
     
    
-    //CGContextRestoreGState(context);
+    CGContextRestoreGState(context);
     
 	//CGContextSetFillColorWithColor(context, bgColor);
 	//CGContextFillRect(context, rect2);
-   	
+    
+    [self addMarkWithLabel:lastMinSelectedValue];
+    [self addMarkWithLabel:lastMaxSelectedValue];
     
     
 	[super drawRect:rect];
@@ -247,6 +252,36 @@ static const CGFloat innerColors [] = {
 	CGContextAddArcToPoint(context, minx, maxy, minx, midy, c4 ? radius : 0.0f);
 }
 
+-(void)addMarkWithLabel:(float)mark {
+    if(mark >= 4 && mark <= 26) {
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        CGContextSaveGState(ctx);
+    
+        CGFloat xxx = sliderBarWidth * (mark - 4) / 22;
+        CGFloat yyy = self.frame.size.height / 2;
+    
+        const float mStrokeColor[4] = {1.0,  0.5,  0.1,  1.0};
+        CGContextSetStrokeColor(ctx, mStrokeColor);
+        CGContextSetLineWidth(ctx, 1);
+        CGContextMoveToPoint(ctx, xxx, yyy - 15);
+        CGContextAddLineToPoint(ctx, xxx, yyy + 10);
+        
+        CGFloat dash[] = {5.0, 2.0};
+        CGContextSetLineDash(ctx, 0.0, dash, 2);
+    
+        CGContextStrokePath(ctx);
+        CGContextRestoreGState(ctx);
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(xxx - 12, yyy + 10, 24, 10)];
+        [label setFont:[UIFont fontWithName:@"Helvetica" size:12]];
+        label.text = [NSString stringWithFormat:@"%1.1f", mark];
+        label.textColor = [UIColor orangeColor];
+        label.textAlignment = UITextAlignmentCenter;
+        [self addSubview:label];
+        
+        [label release];
+    }
+}
 
 #pragma mark Helper
 

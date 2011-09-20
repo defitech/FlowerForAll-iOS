@@ -95,6 +95,7 @@
 		D7AD2ADC14174CA2004C6034 /* VolcanoApp_burst.png in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2ADB14174CA2004C6034 /* VolcanoApp_burst.png */; };
 		D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE71417645C004C6034 /* FlowerForAll.html */; };
 		D7D64652141659B700F0DE4F /* VolcanoApp_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D64651141659B700F0DE4F /* VolcanoApp_explosion.wav */; };
+		D7F59A6914286D06006FE244 /* ProfilePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E318D021421FB8C009E0FE1 /* ProfilePickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -687,7 +688,6 @@
 				4E1834BA141E568800E5AE1F /* ParametersApp.strings in Resources */,
 				4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */,
 				4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */,
-				4E318D001421FB41009E0FE1 /* ProfilePickerViewController.xib in Resources */,
 				D75CDE69142227D900BE68F4 /* FlowerForAll.html in Resources */,
 				D73EB4F0142233EF001AB2DE /* ParametersApp.xib in Resources */,
 			);
@@ -741,7 +741,7 @@
 				4E081DD01419F4DD003C9178 /* FlowerApp.m in Sources */,
 				4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */,
 				4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */,
-				4E318D031421FB8C009E0FE1 /* ProfilePickerViewController.m in Sources */,
+				D7F59A6914286D06006FE244 /* ProfilePickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
