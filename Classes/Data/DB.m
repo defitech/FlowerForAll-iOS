@@ -49,13 +49,26 @@ static sqlite3 *database;
             NSString* actualVersion = [DB getInfoValueForKey:@"db_version"];
             
             if (actualVersion == nil) {
-                [DB execute:@"CREATE TABLE infos(key TEXT PRIMARY KEY, VALUE TEXT);"];
+                [DB execute:@"CREATE TABLE infos(key TEXT PRIMARY KEY, value TEXT);"];
+                [DB execute:@"CREATE TABLE profils(pid INTEGER PRIMARY KEY AUTOINCREMENT, \
+                                                 name TEXT NOT NULL, \
+                                                 frequency_target_hz NUM, \
+                                                 frequency_tolerance_hz NUM, \
+                                                 duration_expiration_s NUM, \
+                                                 duration_exercice_s NUM);"];
+                [DB executeWF:@"INSERT INTO profils VALUES (0,'%@',16,6,3,40)",
+                    NSLocalizedString(@"Normal", @"Name of the standard Profile")];
+                [DB executeWF:@"INSERT INTO profils VALUES (1,'%@',16,8,3,30)",
+                    NSLocalizedString(@"Easy", @"Name of the easy Profile")];
+                [DB executeWF:@"INSERT INTO profils VALUES (2,'%@',18,4,10,100)",
+                    NSLocalizedString(@"Difficult", @"Name of the difficult Profile")];
+                
                 [DB execute:@"CREATE TABLE blows(timestamp NUM PRIMARY KEY, duration NUM, ir_duration NUM, goal INTEGER DEFAULT 0) ;"];
                 [DB execute:@"CREATE TABLE exercices(start_ts NUM PRIMARY KEY, stop_ts NUM, \
                                     frequency_target_hz NUM, frequency_tolerance_hz NUM, \
                                     duration_expiration_s NUM, duration_exercice_s NUM, \
-                                    duration_exercice_done_p NUM, blow_count NUM, blow_star_count NUM) ;"];
-                actualVersion = @"3";
+                                    duration_exercice_done_p NUM, blow_count NUM, blow_star_count NUM , profile_name TEXT) ;"];
+                actualVersion = @"4";
                 [DB setInfoValueForKey:@"db_version" value:actualVersion];
             } 
             
@@ -64,7 +77,8 @@ static sqlite3 *database;
                 [DB execute:@"ALTER TABLE blows ADD COLUMN goal INTEGER DEFAULT 0;"];
                 [DB execute:@"UPDATE  blows SET goal = 0;"];
                 [DB executeWF:@"UPDATE blows SET goal = 1 WHERE ir_duration >= %f;",1.1f ];
-                [DB setInfoValueForKey:@"db_version" value:@"2"];
+                actualVersion = @"2";
+                [DB setInfoValueForKey:@"db_version" value:actualVersion];
             }
             
             // update from 2 to 3
@@ -73,7 +87,30 @@ static sqlite3 *database;
                                                     frequency_target_hz NUM, frequency_tolerance_hz NUM, \
                                                     duration_expiration_s NUM, duration_exercice_s NUM, \
                                                     duration_exercice_done_p NUM, blow_count NUM, blow_star_count NUM) ;"];
-                [DB setInfoValueForKey:@"db_version" value:@"3"];
+                 actualVersion = @"3";
+                [DB setInfoValueForKey:@"db_version" value:actualVersion];
+            }
+            
+            
+            // update from 3 to 4
+            if ([actualVersion isEqualToString:@"3"]) {
+                [DB execute:@"CREATE TABLE profils(pid INTEGER PRIMARY KEY AUTOINCREMENT, \
+                 name TEXT NOT NULL, \
+                 frequency_target_hz NUM, \
+                 frequency_tolerance_hz NUM, \
+                 duration_expiration_s NUM, \
+                 duration_exercice_s NUM);"];
+                [DB executeWF:@"INSERT INTO profils VALUES (0,'%@',16,6,3,40)",
+                 NSLocalizedString(@"Normal", @"Name of the standard Profile")];
+                [DB executeWF:@"INSERT INTO profils VALUES (1,'%@',16,8,3,30)",
+                 NSLocalizedString(@"Easy", @"Name of the easy Profile")];
+                [DB executeWF:@"INSERT INTO profils VALUES (2,'%@',18,4,10,100)",
+                 NSLocalizedString(@"Difficult", @"Name of the difficult Profile")];
+                
+                [DB execute:@"ALTER TABLE exercices ADD COLUMN profile_name TEXT DEFAULT 'Unkown';"];
+                
+                actualVersion = @"4";
+                [DB setInfoValueForKey:@"db_version" value:actualVersion];
             }
             
             

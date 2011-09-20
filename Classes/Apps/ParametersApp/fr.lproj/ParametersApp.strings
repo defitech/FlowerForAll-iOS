@@ -1,5 +1,7 @@
 "AppTitle" = "Réglages";
 
+"Done" = "OK";
+
 "ProfilManagementTitle" = "Choix du profil";
 
 "DurationLabel" = "Durées: periodes pendant lesquelles le Flutter® vibre dans l'interval de fréquences choisit.";
@@ -9,3 +11,11 @@
 /* Expiration time label */
 "ExpirationLabel" = "Durée pour une expiration";
 
+/* Name of the standard Profile */
+"Normal" = "Normal";
+
+/* Name of the easy Profile */
+"Easy" = "Facile";
+
+/* Name of the difficult Profile */
+"Difficult" = "Difficile";
