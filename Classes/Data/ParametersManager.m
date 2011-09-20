@@ -21,6 +21,14 @@
 }
 
 +(void) loadParameters:(FLAPIX*)flapix  {
+    if (flapix == nil) {
+        flapix = [FlowerController currentFlapix];
+        if (flapix == nil) {
+            NSLog(@"***!!***loadParameters: Something went bad flapix is nil");
+            return;
+        }
+    }
+    
     Profil* profil = [Profil current];
     
 

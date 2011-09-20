@@ -32,6 +32,16 @@
 /** get the current profil **/
 +(Profil*)getFromId:(int)profil_id;
 
+/** get All profiles **/
++(NSArray*)getAll;
+
 /** save to DB **/
 -(void)save ;
+
+/** set the current profile **/
+-(void)setCurrent;
+
+
+/** return true is this profile is the current profile **/
+-(BOOL)isCurrent;
 @end

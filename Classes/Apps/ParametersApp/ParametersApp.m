@@ -12,6 +12,7 @@
 #import "FlowerController.h"
 #import "ParametersManager.h"
 #import "PickerEditor.h"
+#import "Profil.h"
 
 @interface ParametersApp (PrivateMethods)
 - (void)valueChangedForDurationSlider:(UISlider *)slider;
@@ -150,16 +151,24 @@ float minExerciceDuration_s = 7.0;
     return [ParametersApp translate:@"Done" comment:@"Back Button for Title management"];
 }
 
+NSArray* myProfils;
+-(NSArray*)profils {
+    if (myProfils == nil) {
+        myProfils = [Profil getAll];
+    }
+    return myProfils;
+}
 
 /** return the number of choices **/
 -(int)pickerEditorSize:(PickerEditor*)sender {
-    return 5;
+    return [[self profils] count];
 }
 
-int selected_index = 2;
-/** return the index of the selected value **/
--(int)pickerEditorIsSelect:(PickerEditor*)sender index:(int)index {
-    return index == selected_index;
+/** return the true if the object at this index is selected **/
+-(BOOL)pickerEditorIsSelected:(PickerEditor*)sender index:(int)index {
+    NSArray* mp = [self profils];
+    Profil* p = (Profil*)[mp objectAtIndex:index];
+    return [p isCurrent];
 }
 
 /** return the text to display for this element **/
@@ -169,7 +178,8 @@ int selected_index = 2;
 
 /** called when selection change on an element **/
 -(void)pickerEditorSelectionChange:(PickerEditor*)sender index:(int)index {
-    selected_index = index;
+    if ([self pickerEditorIsSelected:sender index:index]) return;
+    [(Profil*)[[self profils] objectAtIndex:index] setCurrent];
     NSLog(@"Selected profil:%i",index);  
 }
 

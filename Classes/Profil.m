@@ -8,7 +8,7 @@
 
 #import "Profil.h"
 #import "DB.h"
-
+#import "ParametersManager.h"
 
 
 @implementation Profil
@@ -39,9 +39,28 @@ duration_exercice_s:(double)_duration_exercice_s {
         VALUES (%i, '%@', %f, %f, %f, %f)",self.pid, self.name, self.frequency_target_hz, self.frequency_tolerance_hz, self.duration_expiration_s, self.duration_exercice_s];
 }
 
+static Profil* currentProfil;
+/** set the current profil **/
++(void)setCurrentS:(Profil*)profil {
+    if (currentProfil != profil) {
+        currentProfil = profil;
+    }
+}
+
+-(void)setCurrent {
+    [Profil setCurrentS:self];
+    [ParametersManager loadParameters:nil];
+    NSLog(@"Profil set to: %@",self.name);
+}
+
+-(BOOL)isCurrent {
+    return (self.pid == [Profil current].pid);
+}
+
+
 /** get the current profil **/
 +(Profil*)current {
-    static Profil* currentProfil;
+   
     if (currentProfil == nil) {
         // get the currentProfileId
         int currentProfileID = [[DB getInfoValueForKey:@"currentProfile"] intValue];
@@ -69,5 +88,22 @@ duration_exercice_s:(double)_duration_exercice_s {
     return profile;
 }
 
+/** get All profiles **/
++(NSArray*)getAll {
+    sqlite3_stmt *cs = 
+    [DB genCStatementWF:@"SELECT pid, name, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s  FROM profils"];
+    NSMutableArray* profils = [[NSMutableArray alloc] init ];
+    while(sqlite3_step(cs) == SQLITE_ROW) {
+        [profils addObject:[[Profil alloc] initWidth:[DB colI:cs index:0] 
+                                        name:[DB colS:cs index:1] 
+                         frequency_target_hz:[DB colD:cs index:2] 
+                      frequency_tolerance_hz:[DB colD:cs index:3] 
+                       duration_expiration_s:[DB colD:cs index:4] 
+                         duration_exercice_s:[DB colD:cs index:5]]] ;
+    }
+    sqlite3_finalize(cs);
+    return profils;
+
+}
 
 @end

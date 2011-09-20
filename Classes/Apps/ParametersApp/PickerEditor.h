@@ -35,8 +35,8 @@
 /** return the number of choices **/
 -(int)pickerEditorSize:(PickerEditor*)sender; 
 
-/** return the index of the selected value **/
--(int)pickerEditorIsSelect:(PickerEditor*)sender index:(int)index;;
+/** return the true if the object at this index is selected **/
+-(BOOL)pickerEditorIsSelected:(PickerEditor*)sender index:(int)index;;
 
 /** return the text to display for this element **/
 -(NSString*)pickerEditorValue:(PickerEditor*)sender index:(int)index;

@@ -68,7 +68,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];  
     }   
     [cell.textLabel setText:[delegate pickerEditorValue:self index:indexPath.row]];   
-    if ([delegate pickerEditorIsSelect:self index:indexPath.row]) {
+    if ([delegate pickerEditorIsSelected:self index:indexPath.row]) {
          [cell setAccessoryType:UITableViewCellAccessoryCheckmark]; 
     } else {
          [cell setAccessoryType:UITableViewCellAccessoryNone]; 
@@ -87,7 +87,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([delegate pickerEditorIsSelect:self index:indexPath.row]) return;
+    if ([delegate pickerEditorIsSelected:self index:indexPath.row]) return;
     [delegate pickerEditorSelectionChange:self index:indexPath.row];
     [tableView reloadData];
 }
