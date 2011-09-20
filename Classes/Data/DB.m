@@ -17,6 +17,7 @@
 #import "User.h"
 #import "Exercise.h"
 #import "Expiration.h"
+#import "Profil.h"
 
 #import "FLAPIBlow.h"
 #import "FLAPIExercice.h"
@@ -226,9 +227,9 @@ static sqlite3 *database;
 
 + (void) saveExercice:(FLAPIExercice*)e {
     [DB executeWF:@"INSERT INTO exercices (start_ts,stop_ts,frequency_target_hz, frequency_tolerance_hz, \
-     duration_expiration_s, duration_exercice_s, duration_exercice_done_p , blow_count, blow_star_count ) \
-        VALUES ('%f', '%f', '%f', '%f', '%f', '%f','%f','%i','%i')",
-        e.start_ts, e.stop_ts, e.frequency_target_hz, e.frequency_tolerance_hz, e.duration_expiration_s, e.duration_exercice_s, [e percent_done], e.blow_count, e.blow_star_count];
+     duration_expiration_s, duration_exercice_s, duration_exercice_done_p , blow_count, blow_star_count , profile_name) \
+        VALUES ('%f', '%f', '%f', '%f', '%f', '%f','%f','%i','%i','%@')",
+        e.start_ts, e.stop_ts, e.frequency_target_hz, e.frequency_tolerance_hz, e.duration_expiration_s, e.duration_exercice_s, [e percent_done], e.blow_count, e.blow_star_count, [Profil current].name];
     
 }
 

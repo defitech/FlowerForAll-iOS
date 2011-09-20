@@ -31,11 +31,11 @@
 }
 
 - (IBAction) settingsTouch:(id) sender {
-    [FlowerController pushApp:@"ParametersApp" withUIViewAnimation:UIViewAnimationTransitionCurlUp];
+    [FlowerController pushApp:@"ParametersApp" ];
 }
 
 - (IBAction) calibrationTouch:(id) sender {
-    [FlowerController pushApp:@"CalibrationApp" withUIViewAnimation:UIViewAnimationTransitionFlipFromRight];
+    [FlowerController pushApp:@"CalibrationApp" ];
 }
 
 FlowerHowTo *flowerHowTo;
