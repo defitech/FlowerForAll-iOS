@@ -6,6 +6,14 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+/*
+ * TODO:
+ * - Init last values with last FLAPIBlow object values.
+ * - Fix rules target for last value and keep it even for calibration blow.
+ * - Rotate needle with calibration blow.
+ * - Replace the two actual durations by the "blow duration in range" frame.
+ */
+
 #import "CalibrationApp.h"
 #import "FlowerController.h"
 #import "ParametersManager.h"
@@ -17,7 +25,7 @@
 
 @implementation CalibrationApp
 
-@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, inRangeTextLabel, inRangeValueLabel, inRangeMinusButton, inRangePlusButton, durationTextLabel, durationValueLabel, durationMinusButton, durationPlusButton;
+@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, lastFreqLabel, inRangeTextLabel, inRangeValueLabel, inRangeMinusButton, inRangePlusButton, durationTextLabel, durationValueLabel, durationMinusButton, durationPlusButton;
 
 #pragma mark - View lifecycle
 
@@ -49,6 +57,8 @@
 	//get the initial values
     //slider.transform = CGAffineTransformRotate(slider.transform, 90.0/180*M_PI);      //make it vertical
 	[self valueChangedForDoubleSlider:slider];
+    
+    lastFreqLabel.text = [NSString stringWithFormat:@"%1.1f Hz", target];
 
 }
 

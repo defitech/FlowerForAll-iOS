@@ -170,15 +170,38 @@
 					<object class="IBUIView" id="896728784">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
+						<array class="NSMutableArray" key="NSSubviews">
+							<object class="IBUILabel" id="1066462540">
+								<reference key="NSNextResponder" ref="896728784"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{45, 0}, {70, 30}}</string>
+								<reference key="NSSuperview" ref="896728784"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="264030788"/>
+								<reference key="IBUIBackgroundColor" ref="23519297"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">15.0 Hz</string>
+								<reference key="IBUIFont" ref="1070976312"/>
+								<object class="NSColor" key="IBUITextColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MSAwLjUgMAA</bytes>
+								</object>
+								<reference key="IBUIHighlightedColor" ref="23519297"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">10</float>
+								<int key="IBUITextAlignment">1</int>
+							</object>
+						</array>
 						<string key="NSFrame">{{80, 20}, {160, 200}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="264030788"/>
+						<reference key="NSNextKeyView" ref="1066462540"/>
 						<string key="NSReuseIdentifierKey">_NS:180</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xMjk0Mzg2NDg5IDEgMC4yMTYwOTQxMzc4AA</bytes>
-						</object>
+						<reference key="IBUIBackgroundColor" ref="23519297"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<object class="IBUILabel" id="720572296">
@@ -489,6 +512,14 @@
 					</object>
 					<int key="connectionID">43</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lastFreqLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="1066462540"/>
+					</object>
+					<int key="connectionID">45</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -553,6 +584,9 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">13</int>
 						<reference key="object" ref="896728784"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="1066462540"/>
+						</array>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">needleView</string>
 					</object>
@@ -596,6 +630,11 @@
 						<reference key="object" ref="165756834"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">44</int>
+						<reference key="object" ref="1066462540"/>
+						<reference key="parent" ref="896728784"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -615,6 +654,7 @@
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="44.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.CustomClassName">DoubleSlider</string>
@@ -626,7 +666,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">43</int>
+			<int key="maxID">46</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -666,6 +706,7 @@
 						<string key="inRangePlusButton">UIButton</string>
 						<string key="inRangeTextLabel">UILabel</string>
 						<string key="inRangeValueLabel">UILabel</string>
+						<string key="lastFreqLabel">UILabel</string>
 						<string key="maxLabel">UILabel</string>
 						<string key="minLabel">UILabel</string>
 						<string key="needle">CalibrationApp_NeedleView</string>
@@ -703,6 +744,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="inRangeValueLabel">
 							<string key="name">inRangeValueLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lastFreqLabel">
+							<string key="name">lastFreqLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="maxLabel">

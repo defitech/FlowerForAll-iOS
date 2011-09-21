@@ -14,6 +14,7 @@
     IBOutlet UILabel *targetFrequencyRangeLabel;
 	IBOutlet UILabel *minLabel;
 	IBOutlet UILabel *maxLabel;
+	IBOutlet UILabel *lastFreqLabel;
     
     IBOutlet UILabel *inRangeTextLabel;
 	IBOutlet UILabel *inRangeValueLabel;
@@ -37,6 +38,7 @@
 @property (nonatomic, retain) UILabel *targetFrequencyRangeLabel;
 @property (nonatomic, retain) UILabel *minLabel;
 @property (nonatomic, retain) UILabel *maxLabel;
+@property (nonatomic, retain) UILabel *lastFreqLabel;
 
 @property (nonatomic, retain) UILabel *inRangeTextLabel;
 @property (nonatomic, retain) UILabel *inRangeValueLabel;
