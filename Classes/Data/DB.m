@@ -23,6 +23,8 @@
 #import "FLAPIExercice.h"
 #import "ParametersManager.h"
 
+#import "ExerciseDay.h"
+
 
 @implementation DB
 
@@ -113,8 +115,6 @@ static sqlite3 *database;
                 actualVersion = @"4";
                 [DB setInfoValueForKey:@"db_version" value:actualVersion];
             }
-            
-            
             NSLog(@"DB VERSION: %@", [DB getInfoValueForKey:@"db_version"] );
         } else {
             NSAssert1(0, @"** FAILED ** DB OPEN %@", dbFilePath);
@@ -232,6 +232,76 @@ static sqlite3 *database;
         e.start_ts, e.stop_ts, e.frequency_target_hz, e.frequency_tolerance_hz, e.duration_expiration_s, e.duration_exercice_s, [e percent_done], e.blow_count, e.blow_star_count, [Profil current].name];
     
 }
+
+
++(NSArray*) getDays {
+	NSLog(@"Get all days");
+	
+    NSMutableArray *days = [[NSMutableArray alloc] init];
+    ExerciseDay* currentDay = nil;
+    ExerciseDay* lastDay = nil;
+    
+    sqlite3_stmt *cStatement = 
+    [DB genCStatementWF:@"SELECT start_ts, duration_exercice_done_p FROM exercices ORDER BY start_ts DESC"];
+    while(sqlite3_step(cStatement) == SQLITE_ROW) {
+
+        double start_ts = [DB colD:cStatement index:0];
+        double duration_exercice_done_p = [DB colD:cStatement index:1];
+        
+        currentDay = [[ExerciseDay alloc] init:start_ts];
+        
+        if (lastDay == nil || ![lastDay.formattedDate isEqualToString:currentDay.formattedDate]) {
+            if (duration_exercice_done_p >= 1.0f)
+                currentDay.good++;
+            else
+                currentDay.bad++;
+            
+            lastDay = currentDay;
+            [days addObject:currentDay];
+        }
+        else {
+            if (duration_exercice_done_p >= 1.0f)
+                lastDay.good++;
+            else
+                lastDay.bad++;
+        }
+        
+    }
+    sqlite3_finalize(cStatement);
+    [currentDay release];
+    return days;
+}
+
+
+
++(NSArray*) getExercisesInDay:(NSString*) day {
+	NSLog(@"Get exercises in the given day");
+	
+    NSDateFormatter* dateAndTimeFormatter = [[NSDateFormatter alloc] init];
+    [dateAndTimeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    [dateAndTimeFormatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
+    
+    NSDate *dayBegin = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day, @"00:00:00"]];
+    NSDate *dayEnd = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day, @"23:59:59"]];
+    
+    double dayBeginAbsoluteTime = [dayBegin timeIntervalSinceReferenceDate];
+    double dayEndAbsoluteTime = [dayEnd timeIntervalSinceReferenceDate];
+    
+    NSMutableArray *exercises = [[NSMutableArray alloc] init];
+    
+    sqlite3_stmt *cStatement = 
+    [DB genCStatementWF:@"SELECT start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s, duration_exercice_done_p, blow_count, blow_star_count FROM exercices WHERE start_ts >= '%f' AND start_ts <= '%f' ORDER BY start_ts DESC", dayBeginAbsoluteTime, dayEndAbsoluteTime];
+    while(sqlite3_step(cStatement) == SQLITE_ROW) {
+        
+        Exercise *exercise = [[[Exercise alloc] init:[DB colD:cStatement index:0]:[DB colD:cStatement index:1]:[DB colD:cStatement index:2]:[DB colD:cStatement index:3]:[DB colD:cStatement index:4]:[DB colD:cStatement index:5]:[DB colD:cStatement index:6]:[DB colD:cStatement index:7]:[DB colD:cStatement index:8]] autorelease]; 
+        
+        [exercises addObject:exercise];
+    }
+    sqlite3_finalize(cStatement);
+    [dateAndTimeFormatter release];
+    return exercises;
+}
+
 
 /*************************************************** BLOWS ***************************************************/
 

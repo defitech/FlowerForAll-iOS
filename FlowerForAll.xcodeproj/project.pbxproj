@@ -85,6 +85,13 @@
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
 		D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */ = {isa = PBXBuildFile; fileRef = D72E02AC139E500800F3687C /* FLAPIrecorded.raw */; };
+		D73C1313142879050006B28F /* DayStatisticListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1305142879050006B28F /* DayStatisticListViewController.m */; };
+		D73C1314142879050006B28F /* ResultsApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = D73C1306142879050006B28F /* ResultsApp.strings */; };
+		D73C1317142879050006B28F /* StatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C130D142879050006B28F /* StatisticCell.m */; };
+		D73C1318142879050006B28F /* StatisticListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73C130E142879050006B28F /* StatisticListView.xib */; };
+		D73C1319142879050006B28F /* StatisticListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1310142879050006B28F /* StatisticListViewController.m */; };
+		D73C131A142879050006B28F /* StatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1312142879050006B28F /* StatisticsViewController.m */; };
+		D73C13201428B34D0006B28F /* ExerciseDay.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C131F1428B34D0006B28F /* ExerciseDay.m */; };
 		D73EB4F0142233EF001AB2DE /* ParametersApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73EB4F1142233EF001AB2DE /* ParametersApp.xib */; };
 		D73EB4F214223412001AB2DE /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73EB4F314223412001AB2DE /* CalibrationApp.xib */; };
 		D77B109A140FC5A600897203 /* icon_contents_page_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1096140FC5A600897203 /* icon_contents_page_selected.png */; };
@@ -230,6 +237,19 @@
 		D72E028D139E448200F3687C /* subsys_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = subsys_ios.mm; sourceTree = "<group>"; };
 		D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		D72E02AC139E500800F3687C /* FLAPIrecorded.raw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FLAPIrecorded.raw; sourceTree = "<group>"; };
+		D73C1304142879050006B28F /* DayStatisticListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayStatisticListViewController.h; sourceTree = "<group>"; };
+		D73C1305142879050006B28F /* DayStatisticListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayStatisticListViewController.m; sourceTree = "<group>"; };
+		D73C1307142879050006B28F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ResultsApp.strings; sourceTree = "<group>"; };
+		D73C1308142879050006B28F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ResultsApp.strings; sourceTree = "<group>"; };
+		D73C130C142879050006B28F /* StatisticCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticCell.h; sourceTree = "<group>"; };
+		D73C130D142879050006B28F /* StatisticCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticCell.m; sourceTree = "<group>"; };
+		D73C130E142879050006B28F /* StatisticListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatisticListView.xib; sourceTree = "<group>"; };
+		D73C130F142879050006B28F /* StatisticListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticListViewController.h; sourceTree = "<group>"; };
+		D73C1310142879050006B28F /* StatisticListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticListViewController.m; sourceTree = "<group>"; };
+		D73C1311142879050006B28F /* StatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsViewController.h; sourceTree = "<group>"; };
+		D73C1312142879050006B28F /* StatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsViewController.m; sourceTree = "<group>"; };
+		D73C131E1428B34D0006B28F /* ExerciseDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseDay.h; sourceTree = "<group>"; };
+		D73C131F1428B34D0006B28F /* ExerciseDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseDay.m; sourceTree = "<group>"; };
 		D73EB4F1142233EF001AB2DE /* ParametersApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParametersApp.xib; sourceTree = "<group>"; };
 		D73EB4F314223412001AB2DE /* CalibrationApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalibrationApp.xib; sourceTree = "<group>"; };
 		D77B1096140FC5A600897203 /* icon_contents_page_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_contents_page_selected.png; path = UI/icon_contents_page_selected.png; sourceTree = "<group>"; };
@@ -392,6 +412,7 @@
 		4E57A86313A8F12500910E4D /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				D73C1303142879050006B28F /* ResultsApp */,
 				4EEED19B141E474600F56102 /* ParametersApp */,
 				4EEED18B141E3D4100F56102 /* CalibrationApp */,
 				4EB510A41418C883008FC46F /* ExempleApp */,
@@ -427,6 +448,8 @@
 				4E584854140E61CC003892DA /* BlowHistory.m */,
 				4E5110861428CBC500A464EA /* Profil.h */,
 				4E5110871428CBC600A464EA /* Profil.m */,
+				D73C131E1428B34D0006B28F /* ExerciseDay.h */,
+				D73C131F1428B34D0006B28F /* ExerciseDay.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -597,6 +620,23 @@
 			path = FLAPI;
 			sourceTree = "<group>";
 		};
+		D73C1303142879050006B28F /* ResultsApp */ = {
+			isa = PBXGroup;
+			children = (
+				D73C1304142879050006B28F /* DayStatisticListViewController.h */,
+				D73C1305142879050006B28F /* DayStatisticListViewController.m */,
+				D73C1306142879050006B28F /* ResultsApp.strings */,
+				D73C130C142879050006B28F /* StatisticCell.h */,
+				D73C130D142879050006B28F /* StatisticCell.m */,
+				D73C130E142879050006B28F /* StatisticListView.xib */,
+				D73C130F142879050006B28F /* StatisticListViewController.h */,
+				D73C1310142879050006B28F /* StatisticListViewController.m */,
+				D73C1311142879050006B28F /* StatisticsViewController.h */,
+				D73C1312142879050006B28F /* StatisticsViewController.m */,
+			);
+			path = ResultsApp;
+			sourceTree = "<group>";
+		};
 		D7ABFF7C140B75A1003B9F08 /* Monitoring */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,9 +739,9 @@
 				D73EB4F0142233EF001AB2DE /* ParametersApp.xib in Resources */,
 				D7C3A9C31423478900A6D464 /* minus.png in Resources */,
 				D7C3A9C41423478900A6D464 /* plus.png in Resources */,
-				4E51107A1428A3C300A464EA /* ProfilePickerViewController.xib in Resources */,
-				4E51107B1428A44100A464EA /* Localizable.strings in Resources */,
-				4E51107C1428A44300A464EA /* FlowerForAll.html in Resources */,
+				D73EB4F0142233EF001AB2DE /* ParametersApp.xib in Resources */,
+				D73C1314142879050006B28F /* ResultsApp.strings in Resources */,
+				D73C1318142879050006B28F /* StatisticListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,6 +795,11 @@
 				4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */,
 				D7F59A6914286D06006FE244 /* PickerEditor.m in Sources */,
 				4E5110881428CBC600A464EA /* Profil.m in Sources */,
+				D73C1313142879050006B28F /* DayStatisticListViewController.m in Sources */,
+				D73C1317142879050006B28F /* StatisticCell.m in Sources */,
+				D73C1319142879050006B28F /* StatisticListViewController.m in Sources */,
+				D73C131A142879050006B28F /* StatisticsViewController.m in Sources */,
+				D73C13201428B34D0006B28F /* ExerciseDay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +858,15 @@
 			name = VolcanoApp.strings;
 			sourceTree = "<group>";
 		};
+		D73C1306142879050006B28F /* ResultsApp.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D73C1307142879050006B28F /* en */,
+				D73C1308142879050006B28F /* fr */,
+			);
+			name = ResultsApp.strings;
+			sourceTree = "<group>";
+		};
 		D7AD2AE414176452004C6034 /* FlowerForAll.html */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -843,7 +897,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
-				GCC_VERSION = "";
+				GCC_VERSION = 4.2;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
@@ -863,7 +917,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
-				GCC_VERSION = "";
+				GCC_VERSION = 4.2;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (

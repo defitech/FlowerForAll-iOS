@@ -18,6 +18,7 @@
 #import "FlowerController.h"
 #import "FlowerHowTo.h"
 #import "ParametersApp.h"
+#import "StatisticsViewController.h"
 
 @implementation MenuView
 
@@ -45,6 +46,14 @@ FlowerHowTo *flowerHowTo;
         flowerHowTo = [[FlowerHowTo alloc] initWithNibName:@"FlowerHowTo" bundle:[NSBundle mainBundle]];
     }
     [FlowerController setCurrentMainController:flowerHowTo];
+}
+
+StatisticsViewController* statViewController;
+- (IBAction) resultsTouch:(id) sender {
+    if (statViewController == nil) {
+        statViewController = [[StatisticsViewController alloc] init];
+    }
+    [FlowerController setCurrentMainController:statViewController];
 }
 
 
@@ -123,6 +132,7 @@ FlowerHowTo *flowerHowTo;
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
     [flowerHowTo release];
+    [statViewController release];
 }
 
 

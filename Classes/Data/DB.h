@@ -93,7 +93,13 @@
 
 
 /*************************************************** Exercice *******************************************************/
-+ (void) saveExercice:(FLAPIExercice*)exercice;  
++ (void) saveExercice:(FLAPIExercice*)exercice;
+
++(NSArray*) getExercises;
+
++(NSArray*) getDays;
+
++(NSArray*) getExercisesInDay:(NSString*) day;
 
 /*************************************************** BLOWS *******************************************************/
 + (void) saveBlow:(FLAPIBlow*)blow;  

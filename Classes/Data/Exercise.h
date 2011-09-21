@@ -13,36 +13,30 @@
 
 
 @interface Exercise : NSObject {
-	NSInteger exerciseId;
-	NSInteger dateTime;
-	NSString *appVersion;
-	NSInteger localUserId;
-	NSInteger globalUserId;
-	NSInteger gameId;
-	double targetFrequency;
-	double targetFrequencyTolerance;
-	NSInteger targetBlowingDuration;
-	NSInteger targetDuration;
-	double goodPercentage;
-	NSInteger transferStatus;
+	double start_ts;
+    double stop_ts;
+    double frequency_target_hz;
+    double frequency_tolerance_hz;
+    double duration_expiration_s;
+    double duration_exercice_s;
+    double duration_exercice_done_ps;
+    NSInteger blow_count;
+    NSInteger blow_star_count;
 }
 
--(id)init:(NSInteger)_exerciseId:(NSInteger)_dateTime:(NSString *)_appVersion:(NSInteger)_localUserId:(NSInteger)_globalUserId:(NSInteger)_gameId:(double) _targetFrequency:(double) _targetFrequencyTolerance:(NSInteger)_targetBlowingDuration:(NSInteger)_targetDuration:(double)_goodPercentage:(NSInteger)_transferStatus;
+-(id)init:(double)_start_ts:(double)_stop_ts:(double)_frequency_target_hz:(double)_frequency_tolerance_hz:(double)_duration_expiration_s:(double)_duration_exercice_s:(double)_duration_exercice_done_ps:(NSInteger)_blow_count:(NSInteger)_blow_star_count;
 
 
 //Properties
-@property  NSInteger exerciseId;
-@property  NSInteger dateTime;
-@property (nonatomic, retain) NSString *appVersion;
-@property  NSInteger localUserId;
-@property  NSInteger globalUserId;
-@property  NSInteger gameId;
-@property  double targetFrequency;
-@property  double targetFrequencyTolerance;
-@property  NSInteger targetBlowingDuration;
-@property  NSInteger targetDuration;
-@property double goodPercentage;
-@property  NSInteger transferStatus;
+@property  double start_ts;
+@property  double stop_ts;
+@property  double frequency_target_hz;
+@property  double frequency_tolerance_hz;
+@property  double duration_expiration_s;
+@property  double duration_exercice_s;
+@property  double duration_exercice_done_ps;
+@property  NSInteger blow_count;
+@property  NSInteger blow_star_count;
 
 
 
