@@ -50,7 +50,7 @@
 	
 	//Set title, disable scrolling (at least for the moment)
 	self.title = formattedDate;
-	statisticListTableView.scrollEnabled = NO;
+	//statisticListTableView.scrollEnabled = NO;
 	
     //Fetch exercises of the day from the DB
 	exercises = [DB getExercisesInDay:formattedDate];
@@ -109,7 +109,7 @@
         NSString *formattedTime = [self.timeFormatter stringFromDate:exerciseDate];
         
 		cell.primaryLabel.text = formattedTime;
-        cell.thirdLabel.text = [NSString stringWithFormat:@"%.2f%@", ex.duration_exercice_done_ps, @"%"];
+        cell.thirdLabel.text = [NSString stringWithFormat:@"%i%@",(int)(ex.duration_exercice_done_ps * 100.0), @"%"];
 		
 	}
     return cell;

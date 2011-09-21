@@ -42,7 +42,7 @@
 	//Set title, disable scrolling (at least for the moment)
 	//self.title = NSLocalizedString(@"StatisticListViewTitle", @"Title of the statistic list view");
     self.title = NSLocalizedStringFromTable(@"StatisticListViewTitle",@"ResultsApp",@"Title of the statistic list view");
-	statisticListTableView.scrollEnabled = NO;
+	statisticListTableView.scrollEnabled = YES;
 	
 	//Fetch list of all days from the DB
 	exerciseDays = [DB getDays];
