@@ -68,6 +68,8 @@
 - (void)flapixEventFrequency:(double)frequency {
     lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaReverse);
     
+    
+    
     // oscillates between 1/4 and 3/4 of lavaUp
     if ((lavaReverse > 0 && lavaSmooth == 7) ||
         (lavaReverse < 0 && lavaSmooth == 2)) {

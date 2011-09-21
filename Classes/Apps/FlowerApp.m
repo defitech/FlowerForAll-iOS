@@ -86,7 +86,10 @@
     [self flapixEventLevel:[((FLAPIX*)[notification object]) lastlevel]];
 }
 - (void)_flapixEventFrequency:(NSNotification *)notification {
-    [self flapixEventFrequency:[((FLAPIX*)[notification object]) frequency]];
+    double frequency = [((FLAPIX*)[notification object]) frequency];
+    BOOL good = (frequency > [((FLAPIX*)[notification object]) frequenceMin] &&
+                 frequency < [((FLAPIX*)[notification object]) frequenceMax]);
+    [self flapixEventFrequency:frequency in_target:good];
 }
 - (void)_flapixEventBlowStart:(NSNotification *)notification {
     [self flapixEventBlowStart:((FLAPIBlow*)[notification object])];
@@ -102,7 +105,7 @@
 }
 
 - (void)flapixEventLevel:(float)soundLevel {}
-- (void)flapixEventFrequency:(double)frequency {}
+- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good{}
 
 - (void)flapixEventBlowStart:(FLAPIBlow *)blow {}
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {}

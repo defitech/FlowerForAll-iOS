@@ -52,7 +52,7 @@
  * return the actual Frequency 
  * Override this method to catch 
  **/
--(void)flapixEventFrequency:(double)ferquency;
+-(void)flapixEventFrequency:(double)frequency in_target:(BOOL)good;
 /**  
  * A blow started  
  * Override this method to catch 
