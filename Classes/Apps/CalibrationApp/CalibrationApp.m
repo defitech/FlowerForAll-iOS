@@ -11,7 +11,7 @@
  * - Init last values with last FLAPIBlow object values.
  * - Fix rules target for last value and keep it even for calibration blow.
  * - Rotate needle with calibration blow.
- * - Replace the two actual durations by the "blow duration in range" frame.
+ * - Set InRange duration.
  */
 
 #import "CalibrationApp.h"
@@ -25,7 +25,7 @@
 
 @implementation CalibrationApp
 
-@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, lastFreqLabel, inRangeTextLabel, inRangeValueLabel, inRangeMinusButton, inRangePlusButton, durationTextLabel, durationValueLabel, durationMinusButton, durationPlusButton;
+@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, lastFreqLabel, inRangeLabel, lastDurationTextLabel, lastDurationValueLabel, calibrationTextLabel, calibrationValueLabel, calibrationMinusButton, calibrationPlusButton;
 
 #pragma mark - View lifecycle
 
@@ -89,20 +89,30 @@
     [ParametersManager saveFrequency:target tolerance:tolerance];
 }
 
-- (IBAction) pressInRangeMinus:(id) sender {
-    NSLog(@"pressInRangeMinus");
+
+- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good {    
+    [needle calcRotation:frequency];
+    [needle setNeedsDisplay];
+}
+
+- (void)flapixEventBlowStop:(FLAPIBlow *)blow {
     
 }
-- (IBAction) pressInRangePlus:(id) sender {
-    NSLog(@"pressInRangePlus");
+
+- (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {
+    
 }
 
-- (IBAction) pressDurationMinus:(id) sender {
-    NSLog(@"pressDurationMinus");
+- (void)flapixEventExerciceStop:(FLAPIExercice *)exercice {
+    
 }
 
-- (IBAction) pressDurationPlus:(id) sender {
-    NSLog(@"pressDurationPlus");
+- (IBAction) pressCalibrationMinus:(id) sender {
+    NSLog(@"pressCalibrationMinus");
+}
+
+- (IBAction) pressCalibrationPlus:(id) sender {
+    NSLog(@"pressCalibrationPlus");
 }
 
 - (void)viewDidUnload

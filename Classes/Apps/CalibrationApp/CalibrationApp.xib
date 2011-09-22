@@ -138,7 +138,7 @@
 						<string key="NSFrame">{{177, 270}, {90, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="903246852"/>
+						<reference key="NSNextKeyView" ref="720572296"/>
 						<reference key="IBUIBackgroundColor" ref="23519297"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -177,7 +177,7 @@
 								<string key="NSFrame">{{45, 0}, {70, 30}}</string>
 								<reference key="NSSuperview" ref="896728784"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="264030788"/>
+								<reference key="NSNextKeyView" ref="553625937"/>
 								<reference key="IBUIBackgroundColor" ref="23519297"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -207,7 +207,7 @@
 					<object class="IBUILabel" id="720572296">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 307}, {124, 30}}</string>
+						<string key="NSFrame">{{20, 307}, {100, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="662325439"/>
@@ -216,43 +216,49 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Blow duration</string>
-						<reference key="IBUIFont" ref="266378343"/>
+						<string key="IBUIText">Calibration:</string>
+						<object class="NSFont" key="IBUIFont" id="326450872">
+							<string key="NSName">Helvetica</string>
+							<double key="NSSize">14</double>
+							<int key="NSfFlags">16</int>
+						</object>
 						<reference key="IBUITextColor" ref="944481702"/>
 						<reference key="IBUIHighlightedColor" ref="23519297"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
+						<int key="IBUITextAlignment">2</int>
 						<int key="IBUILineBreakMode">0</int>
 					</object>
 					<object class="IBUILabel" id="264030788">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 270}, {124, 30}}</string>
+						<string key="NSFrame">{{20, 270}, {100, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="667039882"/>
+						<reference key="NSNextKeyView" ref="25003388"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">In range duration</string>
-						<reference key="IBUIFont" ref="266378343"/>
+						<string key="IBUIText">Last Blow:</string>
+						<reference key="IBUIFont" ref="326450872"/>
 						<reference key="IBUITextColor" ref="944481702"/>
 						<reference key="IBUIHighlightedColor" ref="23519297"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
+						<int key="IBUITextAlignment">2</int>
 						<int key="IBUILineBreakMode">0</int>
 					</object>
-					<object class="IBUIButton" id="667039882">
+					<object class="IBUIButton" id="662325439">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{144, 270}, {33, 30}}</string>
+						<string key="NSFrame">{{144, 307}, {33, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="25003388"/>
+						<reference key="NSNextKeyView" ref="836289855"/>
 						<string key="NSReuseIdentifierKey">_NS:222</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -273,56 +279,9 @@
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
-						<object class="NSCustomResource" key="IBUINormalImage" id="429169090">
+						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">minus.png</string>
-						</object>
-					</object>
-					<object class="IBUIButton" id="662325439">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{144, 307}, {33, 30}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="836289855"/>
-						<string key="NSReuseIdentifierKey">_NS:222</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<reference key="IBUIFont" ref="770569124"/>
-						<int key="IBUIButtonType">1</int>
-						<reference key="IBUIHighlightedTitleColor" ref="23519297"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-						</object>
-						<reference key="IBUINormalTitleShadowColor" ref="587607283"/>
-						<reference key="IBUINormalImage" ref="429169090"/>
-					</object>
-					<object class="IBUIButton" id="903246852">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{267, 270}, {33, 30}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="720572296"/>
-						<string key="NSReuseIdentifierKey">_NS:222</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<reference key="IBUIFont" ref="770569124"/>
-						<int key="IBUIButtonType">1</int>
-						<reference key="IBUIHighlightedTitleColor" ref="23519297"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-						</object>
-						<reference key="IBUINormalTitleShadowColor" ref="587607283"/>
-						<object class="NSCustomResource" key="IBUINormalImage" id="650925381">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">plus.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="165756834">
@@ -345,7 +304,32 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="587607283"/>
-						<reference key="IBUINormalImage" ref="650925381"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">plus.png</string>
+						</object>
+					</object>
+					<object class="IBUILabel" id="553625937">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{20, 250}, {280, 20}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="264030788"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">7</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<string key="IBUIText">In range duration</string>
+						<reference key="IBUIFont" ref="266378343"/>
+						<reference key="IBUITextColor" ref="944481702"/>
+						<reference key="IBUIHighlightedColor" ref="23519297"/>
+						<int key="IBUIBaselineAdjustment">0</int>
+						<float key="IBUIMinimumFontSize">10</float>
+						<int key="IBUINumberOfLines">0</int>
+						<int key="IBUITextAlignment">1</int>
+						<int key="IBUILineBreakMode">0</int>
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 420}</string>
@@ -414,111 +398,85 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">inRangePlusButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="903246852"/>
-					</object>
-					<int key="connectionID">32</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">inRangeMinusButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="667039882"/>
-					</object>
-					<int key="connectionID">33</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">durationMinusButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="662325439"/>
-					</object>
-					<int key="connectionID">34</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">durationPlusButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="165756834"/>
-					</object>
-					<int key="connectionID">35</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">inRangeValueLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="25003388"/>
-					</object>
-					<int key="connectionID">36</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">inRangeTextLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="264030788"/>
-					</object>
-					<int key="connectionID">37</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">durationTextLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="720572296"/>
-					</object>
-					<int key="connectionID">38</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">durationValueLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="836289855"/>
-					</object>
-					<int key="connectionID">39</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">pressInRangeMinus:</string>
-						<reference key="source" ref="667039882"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">1</int>
-					</object>
-					<int key="connectionID">40</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">pressDurationMinus:</string>
-						<reference key="source" ref="662325439"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">1</int>
-					</object>
-					<int key="connectionID">41</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">pressInRangePlus:</string>
-						<reference key="source" ref="903246852"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">1</int>
-					</object>
-					<int key="connectionID">42</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">pressDurationPlus:</string>
-						<reference key="source" ref="165756834"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">1</int>
-					</object>
-					<int key="connectionID">43</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">lastFreqLabel</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="1066462540"/>
 					</object>
 					<int key="connectionID">45</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">pressCalibrationPlus:</string>
+						<reference key="source" ref="165756834"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">1</int>
+					</object>
+					<int key="connectionID">48</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">pressCalibrationMinus:</string>
+						<reference key="source" ref="662325439"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">1</int>
+					</object>
+					<int key="connectionID">49</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">calibrationTextLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="720572296"/>
+					</object>
+					<int key="connectionID">50</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">calibrationValueLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="836289855"/>
+					</object>
+					<int key="connectionID">51</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lastDurationValueLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="25003388"/>
+					</object>
+					<int key="connectionID">52</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lastDurationTextLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="264030788"/>
+					</object>
+					<int key="connectionID">53</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">inRangeLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="553625937"/>
+					</object>
+					<int key="connectionID">54</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">calibrationMinusButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="662325439"/>
+					</object>
+					<int key="connectionID">55</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">calibrationPlusButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="165756834"/>
+					</object>
+					<int key="connectionID">56</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -534,18 +492,17 @@
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="936757274"/>
-							<reference ref="896728784"/>
 							<reference ref="821852371"/>
 							<reference ref="629835577"/>
 							<reference ref="25003388"/>
 							<reference ref="172047251"/>
-							<reference ref="720572296"/>
 							<reference ref="264030788"/>
-							<reference ref="836289855"/>
 							<reference ref="662325439"/>
-							<reference ref="903246852"/>
 							<reference ref="165756834"/>
-							<reference ref="667039882"/>
+							<reference ref="720572296"/>
+							<reference ref="553625937"/>
+							<reference ref="836289855"/>
+							<reference ref="896728784"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -611,18 +568,8 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">28</int>
-						<reference key="object" ref="667039882"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">29</int>
 						<reference key="object" ref="662325439"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">30</int>
-						<reference key="object" ref="903246852"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -634,6 +581,11 @@
 						<int key="objectID">44</int>
 						<reference key="object" ref="1066462540"/>
 						<reference key="parent" ref="896728784"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">47</int>
+						<reference key="object" ref="553625937"/>
+						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
 			</object>
@@ -649,12 +601,11 @@
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="26.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="27.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="44.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="47.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.CustomClassName">DoubleSlider</string>
@@ -666,7 +617,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">46</int>
+			<int key="maxID">56</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -674,38 +625,27 @@
 					<string key="className">CalibrationApp</string>
 					<string key="superclassName">FlowerApp</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="pressDurationMinus:">id</string>
-						<string key="pressDurationPlus:">id</string>
-						<string key="pressInRangeMinus:">id</string>
-						<string key="pressInRangePlus:">id</string>
+						<string key="pressCalibrationMinus:">id</string>
+						<string key="pressCalibrationPlus:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="pressDurationMinus:">
-							<string key="name">pressDurationMinus:</string>
+						<object class="IBActionInfo" key="pressCalibrationMinus:">
+							<string key="name">pressCalibrationMinus:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="pressDurationPlus:">
-							<string key="name">pressDurationPlus:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressInRangeMinus:">
-							<string key="name">pressInRangeMinus:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressInRangePlus:">
-							<string key="name">pressInRangePlus:</string>
+						<object class="IBActionInfo" key="pressCalibrationPlus:">
+							<string key="name">pressCalibrationPlus:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="durationMinusButton">UIButton</string>
-						<string key="durationPlusButton">UIButton</string>
-						<string key="durationTextLabel">UILabel</string>
-						<string key="durationValueLabel">UILabel</string>
-						<string key="inRangeMinusButton">UIButton</string>
-						<string key="inRangePlusButton">UIButton</string>
-						<string key="inRangeTextLabel">UILabel</string>
-						<string key="inRangeValueLabel">UILabel</string>
+						<string key="calibrationMinusButton">UIButton</string>
+						<string key="calibrationPlusButton">UIButton</string>
+						<string key="calibrationTextLabel">UILabel</string>
+						<string key="calibrationValueLabel">UILabel</string>
+						<string key="inRangeLabel">UILabel</string>
+						<string key="lastDurationTextLabel">UILabel</string>
+						<string key="lastDurationValueLabel">UILabel</string>
 						<string key="lastFreqLabel">UILabel</string>
 						<string key="maxLabel">UILabel</string>
 						<string key="minLabel">UILabel</string>
@@ -714,36 +654,32 @@
 						<string key="targetFrequencyRangeLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="durationMinusButton">
-							<string key="name">durationMinusButton</string>
+						<object class="IBToOneOutletInfo" key="calibrationMinusButton">
+							<string key="name">calibrationMinusButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="durationPlusButton">
-							<string key="name">durationPlusButton</string>
+						<object class="IBToOneOutletInfo" key="calibrationPlusButton">
+							<string key="name">calibrationPlusButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="durationTextLabel">
-							<string key="name">durationTextLabel</string>
+						<object class="IBToOneOutletInfo" key="calibrationTextLabel">
+							<string key="name">calibrationTextLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="durationValueLabel">
-							<string key="name">durationValueLabel</string>
+						<object class="IBToOneOutletInfo" key="calibrationValueLabel">
+							<string key="name">calibrationValueLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="inRangeMinusButton">
-							<string key="name">inRangeMinusButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="inRangePlusButton">
-							<string key="name">inRangePlusButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="inRangeTextLabel">
-							<string key="name">inRangeTextLabel</string>
+						<object class="IBToOneOutletInfo" key="inRangeLabel">
+							<string key="name">inRangeLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="inRangeValueLabel">
-							<string key="name">inRangeValueLabel</string>
+						<object class="IBToOneOutletInfo" key="lastDurationTextLabel">
+							<string key="name">lastDurationTextLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lastDurationValueLabel">
+							<string key="name">lastDurationValueLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="lastFreqLabel">

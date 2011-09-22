@@ -17,6 +17,7 @@
     if (self) {
         lastTarget = [[FlowerController currentFlapix] frequenceTarget];
         lastTolerance = [[FlowerController currentFlapix] frequenceTolerance];
+        rotation = 0;
     }
     return self;
     
@@ -25,13 +26,15 @@
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
     CGContextTranslateCTM(context, self.frame.size.width / 2, self.frame.size.height / 1.5); // Move the context
-    CGContextScaleCTM(context,self.frame.size.width / 60, -1 *  self.frame.size.height / 60 ); // revert the axis
     
     // draw the needle
-    CGMutablePathRef path = CGPathCreateMutable();
+    CGContextSaveGState(context);
     
+    CGContextRotateCTM(context, rotation);
+    CGContextScaleCTM(context,self.frame.size.width / 60, -1 *  self.frame.size.height / 60 ); // revert the axis
+    
+    CGMutablePathRef path = CGPathCreateMutable();
     float minX = -10.0f; float maxX = 10.0f;
     float minY = -10.0f; float maxY = 30.0f;
     float r = 3.0f;
@@ -49,22 +52,22 @@
     CGContextFillPath(context);
     CGPathRelease(path);
     
-    // draw current frequency rules
+    CGContextRestoreGState(context);
+    
+    // draw the rules
     [self drawFreqRules:[[FlowerController currentFlapix] frequenceTarget]
                 freqTol:[[FlowerController currentFlapix] frequenceTolerance]
             isReference:false];
-    // draw last blow frequency rules
     [self drawFreqRules:lastTarget freqTol:lastTolerance isReference:true];
-    
     
 	[super drawRect:rect];
 }
 
 -(void)drawFreqRules:(double)target freqTol:(double)tolerance isReference:(BOOL)isRef {
-    float angle = tolerance /target;
-    float length = 40.0f;
+    float angle = tolerance / target;
+    float length = 120.0f;
     float x = length * sin(angle);
-    float y = length * cos(angle);
+    float y = - length * cos(angle);
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSaveGState(ctx);
@@ -76,12 +79,16 @@
     CGContextAddLineToPoint(ctx, x, y);
     if(isRef) {
         CGContextSetStrokeColor(ctx, CGColorGetComponents([UIColor orangeColor].CGColor));
-        CGFloat dash[] = {3.0, 1.0};
+        CGFloat dash[] = {6.0, 3.0};
         CGContextSetLineDash(ctx, 0.0, dash, 2);
     }
-    CGContextSetLineWidth(ctx,0.5);
+    CGContextSetLineWidth(ctx,1);
     CGContextStrokePath(ctx);
     CGContextRestoreGState(ctx);
+}
+
+-(void)calcRotation:(double)freq {
+    rotation = 0;
 }
 
 @end

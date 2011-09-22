@@ -105,6 +105,7 @@
 		D7C3A9C41423478900A6D464 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C3A9C21423478900A6D464 /* plus.png */; };
 		D7D64652141659B700F0DE4F /* VolcanoApp_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D64651141659B700F0DE4F /* VolcanoApp_explosion.wav */; };
 		D7F59A6914286D06006FE244 /* PickerEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E318D021421FB8C009E0FE1 /* PickerEditor.m */; };
+		D7F59A7F142B54CB006FE244 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE414176452004C6034 /* FlowerForAll.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -742,6 +743,7 @@
 				D73EB4F0142233EF001AB2DE /* ParametersApp.xib in Resources */,
 				D73C1314142879050006B28F /* ResultsApp.strings in Resources */,
 				D73C1318142879050006B28F /* StatisticListView.xib in Resources */,
+				D7F59A7F142B54CB006FE244 /* FlowerForAll.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

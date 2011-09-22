@@ -11,8 +11,11 @@
 @interface CalibrationApp_NeedleView : UIView {
     double lastTarget;
     double lastTolerance;
+    double rotation;
 }
 
 -(void)drawFreqRules:(double)target freqTol:(double)tolerance isReference:(BOOL)isRef;
+
+-(void)calcRotation:(double)frequency;
 
 @end

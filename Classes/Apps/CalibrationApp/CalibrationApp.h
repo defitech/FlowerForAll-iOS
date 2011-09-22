@@ -16,15 +16,15 @@
 	IBOutlet UILabel *maxLabel;
 	IBOutlet UILabel *lastFreqLabel;
     
-    IBOutlet UILabel *inRangeTextLabel;
-	IBOutlet UILabel *inRangeValueLabel;
-	IBOutlet UIButton *inRangeMinusButton;
-	IBOutlet UIButton *inRangePlusButton;
+    IBOutlet UILabel *inRangeLabel;
     
-    IBOutlet UILabel *durationTextLabel;
-	IBOutlet UILabel *durationValueLabel;
-	IBOutlet UIButton *durationMinusButton;
-	IBOutlet UIButton *durationPlusButton;
+    IBOutlet UILabel *lastDurationTextLabel;
+	IBOutlet UILabel *lastDurationValueLabel;
+
+    IBOutlet UILabel *calibrationTextLabel;
+	IBOutlet UILabel *calibrationValueLabel;
+	IBOutlet UIButton *calibrationMinusButton;
+	IBOutlet UIButton *calibrationPlusButton;
 
     //double Slide
     IBOutlet DoubleSlider *slider;
@@ -40,19 +40,17 @@
 @property (nonatomic, retain) UILabel *maxLabel;
 @property (nonatomic, retain) UILabel *lastFreqLabel;
 
-@property (nonatomic, retain) UILabel *inRangeTextLabel;
-@property (nonatomic, retain) UILabel *inRangeValueLabel;
-@property (nonatomic, retain) UIButton *inRangeMinusButton;
-@property (nonatomic, retain) UIButton *inRangePlusButton;
+@property (nonatomic, retain) UILabel *inRangeLabel;
 
-@property (nonatomic, retain) UILabel *durationTextLabel;
-@property (nonatomic, retain) UILabel *durationValueLabel;
-@property (nonatomic, retain) UIButton *durationMinusButton;
-@property (nonatomic, retain) UIButton *durationPlusButton;
+@property (nonatomic, retain) UILabel *lastDurationTextLabel;
+@property (nonatomic, retain) UILabel *lastDurationValueLabel;
 
-- (IBAction) pressInRangeMinus:(id) sender;
-- (IBAction) pressInRangePlus:(id) sender;
-- (IBAction) pressDurationMinus:(id) sender;
-- (IBAction) pressDurationPlus:(id) sender;
+@property (nonatomic, retain) UILabel *calibrationTextLabel;
+@property (nonatomic, retain) UILabel *calibrationValueLabel;
+@property (nonatomic, retain) UIButton *calibrationMinusButton;
+@property (nonatomic, retain) UIButton *calibrationPlusButton;
+
+- (IBAction) pressCalibrationMinus:(id) sender;
+- (IBAction) pressCalibrationPlus:(id) sender;
 
 @end
