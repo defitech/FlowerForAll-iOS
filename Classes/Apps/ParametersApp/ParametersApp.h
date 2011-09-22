@@ -25,6 +25,9 @@
     IBOutlet UILabel *exerciceLabel;
 	IBOutlet UILabel *exerciceTimeLabel;
     IBOutlet UISlider *exerciceSlider;
+    
+    IBOutlet UIButton *buttonProfile;
+    
 }
 
 
@@ -42,6 +45,8 @@
 @property (nonatomic, retain) UILabel *exerciceLabel;
 @property (nonatomic, retain) UILabel *exerciceTimeLabel;
 @property (nonatomic, retain) UISlider *exerciceSlider;
+
+@property (nonatomic, retain) UIButton *buttonProfile;
 
 
 - (IBAction)profileButtonPushed:(id)sender;

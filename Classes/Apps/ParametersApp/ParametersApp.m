@@ -13,6 +13,7 @@
 #import "ParametersManager.h"
 #import "PickerEditor.h"
 #import "Profil.h"
+#import "PickerProfileCell.h"
 
 @interface ParametersApp (PrivateMethods)
 - (void)valueChangedForDurationSlider:(UISlider *)slider;
@@ -25,7 +26,7 @@
 
 @synthesize  durationLabel,
 expirationLabel, expirationTimeLabel, expirationSlider,
-exerciceLabel, exerciceTimeLabel, exerciceSlider;
+exerciceLabel, exerciceTimeLabel, exerciceSlider, buttonProfile;
 
 
 # pragma mark utilities for non-linear progression of the exercice duration
@@ -92,6 +93,8 @@ float minExerciceDuration_s = 7.0;
     [exerciceSlider setValue:[self exericeDurationSystemToSlider:[[FlowerController currentFlapix] exerciceDurationTarget]] animated:true];
     [self  valueChangedForExpirationSlider:expirationSlider];
     [self  valueChangedForExericeSlider:exerciceSlider];
+    
+    [buttonProfile setTitle:[NSString stringWithFormat:@"%@ : %@",[ParametersApp translate:@"Profil" comment:@"Profile Button with title"],[[Profil current] name ]] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -139,7 +142,7 @@ float minExerciceDuration_s = 7.0;
 - (void)showOptionView
 {
     NSLog(@"ProfilPicker SHOW");
-    PickerEditor* optionViewController = [[PickerEditor alloc] initWithDelegate:self];
+    PickerEditor* optionViewController = [[PickerEditor alloc] initWithDelegate:self useCellNib:@"PickerProfileCell"];
     [optionViewController showOnTopOfView:self.view];
 }
 
@@ -174,21 +177,35 @@ NSArray* myProfils;
     return [[self profils] count];
 }
 
-/** return the true if the object at this index is selected **/
--(BOOL)pickerEditorIsSelected:(PickerEditor*)sender index:(int)index {
-    return [(Profil*)[[self profils] objectAtIndex:index] isCurrent];
+
+
+-(void)pimpCellAt:(PickerEditor *)sender cell:(UITableViewCell *)cell index:(int)index {
+    PickerProfileCell* pcell = (PickerProfileCell*)cell;
+    Profil* p = (Profil*)[[self profils] objectAtIndex:index];
+    pcell.nameLabel.text = p.name;
+    pcell.minHzLabel.text = [NSString stringWithFormat:@"%1.1f Hz",[p frequenceMin]];
+    pcell.maxHzLabel.text = [NSString stringWithFormat:@"%1.1f Hz",[p frequenceMax]];
+    pcell.exeDLabel.text = [NSString stringWithFormat:@"%1.0f s",[p duration_exercice_s]];
+    pcell.expDLabel.text = [NSString stringWithFormat:@"%1.0f s",[p duration_expiration_s]];
+    if ([p isCurrent]) {
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark]; 
+    } else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone]; 
+    }
+
+    
+    pcell = nil;
+    p = nil;
 }
 
-/** return the text to display for this element **/
--(NSString*)pickerEditorValue:(PickerEditor*)sender index:(int)index {
-    return [(Profil*)[[self profils] objectAtIndex:index] name];
-}
+
 
 /** called when selection change on an element **/
--(void)pickerEditorSelectionChange:(PickerEditor*)sender index:(int)index {
-    if ([self pickerEditorIsSelected:sender index:index]) return;
-    [(Profil*)[[self profils] objectAtIndex:index] setCurrent];
-    NSLog(@"Selected profil:%i",index);  
+-(void)pickerEditorSelectedRowAt:(PickerEditor*)sender index:(int)index {
+    Profil* p = (Profil*)[[self profils] objectAtIndex:index];
+    if ([p isCurrent]) return;
+    [p setCurrent];
+    p = nil;
 }
 
 # pragma mark profilPicker

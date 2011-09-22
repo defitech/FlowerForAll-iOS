@@ -33,8 +33,8 @@
     
 
     BOOL saveProfil = false;
-    if ( ((profil.frequency_target_hz - (profil.frequency_tolerance_hz / 2)) < [flapix frequenceMin]) || 
-         ((profil.frequency_target_hz + (profil.frequency_tolerance_hz / 2)) > [flapix frequenceMax] )) {
+    if ( ([profil frequenceMin] < [flapix frequenceMin]) || 
+         ([profil frequenceMax] > [flapix frequenceMax] )) {
          NSLog(@"loadParameters: invalid frequency parameters target:%f tolerance:%tolerance reseting to defaults",profil.frequency_target_hz,profil.frequency_tolerance_hz );
          profil.frequency_target_hz = ([flapix frequenceMax] + [flapix frequenceMin]) / 2;
          profil.frequency_tolerance_hz = ([flapix frequenceMax] - [flapix frequenceMin]) * 0.2;

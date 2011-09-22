@@ -16,8 +16,9 @@
 @synthesize delegate;
 
 
--(id)initWithDelegate:(id<PickerEditorDelegate>)_delegate {
+-(id)initWithDelegate:(id<PickerEditorDelegate>)_delegate useCellNib:(NSString*)_nib {
     delegate = _delegate;
+    cellNibName = _nib;
     return [self init]; 
 }
 -(void)showOnTopOfView:(UIView*)onView {
@@ -61,25 +62,26 @@
     return [delegate pickerEditorSize:self];  
 }   
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {   
-    static NSString *CellIdentifier = @"Cell";  
+    
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+    // construct our own cell
+    static NSString *CellIdentifier = @"PickerCell";  
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];   
     if (cell == nil) {  
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];  
+        NSLog(@"Going for nib: %@",cellNibName);
+        if (cellNibName != nil) {
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellNibName owner:self options:nil];
+            cell = (UITableViewCell *)[nib objectAtIndex:0];
+        } else {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];  
+        }
     }   
-    [cell.textLabel setText:[delegate pickerEditorValue:self index:indexPath.row]];   
-    if ([delegate pickerEditorIsSelected:self index:indexPath.row]) {
-         [cell setAccessoryType:UITableViewCellAccessoryCheckmark]; 
-    } else {
-         [cell setAccessoryType:UITableViewCellAccessoryNone]; 
-    }
+         
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    UIView* backgroundView = [ [ [ UIView alloc ] initWithFrame:CGRectZero ] autorelease ];
-	backgroundView.backgroundColor = (indexPath.row % 2) ? [ UIColor lightGrayColor ] : [ UIColor clearColor ];
-	cell.backgroundView = backgroundView;
-    [[cell textLabel] setBackgroundColor:backgroundView.backgroundColor];
-    [[cell detailTextLabel] setBackgroundColor:backgroundView.backgroundColor];
+    /** use it if you want to pimp a custom cell **/
+    [delegate pimpCellAt:self cell:cell index:indexPath.row];
+    
     return cell;   
     
 }  
@@ -87,8 +89,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([delegate pickerEditorIsSelected:self index:indexPath.row]) return;
-    [delegate pickerEditorSelectionChange:self index:indexPath.row];
+    [delegate pickerEditorSelectedRowAt:self index:indexPath.row];
     [tableView reloadData];
 }
 

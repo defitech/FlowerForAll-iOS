@@ -26,6 +26,7 @@
 
 
 
+
 /** get the current profil **/
 +(Profil*)current;
 
@@ -41,7 +42,14 @@
 /** set the current profile **/
 -(void)setCurrent;
 
-
 /** return true is this profile is the current profile **/
 -(BOOL)isCurrent;
+
+/** convenience tool to get min from target and tolerance **/
+-(double)frequenceMin;
+/** convenience tool to get max from target and tolerance **/
+-(double)frequenceMax;
+
+
+
 @end

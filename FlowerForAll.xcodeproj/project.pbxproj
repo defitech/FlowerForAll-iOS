@@ -78,6 +78,8 @@
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
 		4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */; };
 		4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */; };
+		4EFE7915142B5369009EE121 /* PickerProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EFE7914142B5369009EE121 /* PickerProfileCell.xib */; };
+		4EFE7918142B53BA009EE121 /* PickerProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE7917142B53BA009EE121 /* PickerProfileCell.m */; };
 		D701908B141618510072D020 /* VolcanoApp_goal.wav in Resources */ = {isa = PBXBuildFile; fileRef = D701908A141618510072D020 /* VolcanoApp_goal.wav */; };
 		D702D18E14152C69005A1764 /* VolcanoApp_volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
@@ -225,6 +227,9 @@
 		4EFC3EBE1406837D002F0BF7 /* ParametersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParametersManager.h; path = Data/ParametersManager.h; sourceTree = "<group>"; };
 		4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParametersManager.m; path = Data/ParametersManager.m; sourceTree = "<group>"; };
 		4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-ios.a"; sourceTree = "<group>"; };
+		4EFE7914142B5369009EE121 /* PickerProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerProfileCell.xib; sourceTree = "<group>"; };
+		4EFE7916142B53BA009EE121 /* PickerProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerProfileCell.h; sourceTree = "<group>"; };
+		4EFE7917142B53BA009EE121 /* PickerProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerProfileCell.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D701908A141618510072D020 /* VolcanoApp_goal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = VolcanoApp_goal.wav; sourceTree = "<group>"; };
 		D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VolcanoApp_volcano.png; sourceTree = "<group>"; };
@@ -583,6 +588,9 @@
 				4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */,
 				4E318D011421FB8C009E0FE1 /* PickerEditor.h */,
 				4E318D021421FB8C009E0FE1 /* PickerEditor.m */,
+				4EFE7914142B5369009EE121 /* PickerProfileCell.xib */,
+				4EFE7916142B53BA009EE121 /* PickerProfileCell.h */,
+				4EFE7917142B53BA009EE121 /* PickerProfileCell.m */,
 			);
 			path = ParametersApp;
 			sourceTree = "<group>";
@@ -744,6 +752,7 @@
 				D73C1314142879050006B28F /* ResultsApp.strings in Resources */,
 				D73C1318142879050006B28F /* StatisticListView.xib in Resources */,
 				D7F59A7F142B54CB006FE244 /* FlowerForAll.html in Resources */,
+				4EFE7915142B5369009EE121 /* PickerProfileCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -802,6 +811,7 @@
 				D73C1319142879050006B28F /* StatisticListViewController.m in Sources */,
 				D73C131A142879050006B28F /* StatisticsViewController.m in Sources */,
 				D73C13201428B34D0006B28F /* ExerciseDay.m in Sources */,
+				4EFE7918142B53BA009EE121 /* PickerProfileCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

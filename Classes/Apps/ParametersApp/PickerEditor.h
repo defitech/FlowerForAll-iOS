@@ -17,10 +17,14 @@
 {
     id<PickerEditorDelegate> delegate;
     UINavigationController* nav;
+    NSString* cellNibName;
+    
+    // My Cell
+	IBOutlet UITableViewCell *tblCell;
 }
 
 @property (nonatomic, assign) id delegate;
--(id)initWithDelegate:(id<PickerEditorDelegate>)delegate ;
+-(id)initWithDelegate:(id<PickerEditorDelegate>)delegate useCellNib:(NSString*)nib;
 -(void)showOnTopOfView:(UIView*)onView;
 -(void)close;
 @end // end interface
@@ -35,14 +39,12 @@
 /** return the number of choices **/
 -(int)pickerEditorSize:(PickerEditor*)sender; 
 
-/** return the true if the object at this index is selected **/
--(BOOL)pickerEditorIsSelected:(PickerEditor*)sender index:(int)index;;
 
-/** return the text to display for this element **/
--(NSString*)pickerEditorValue:(PickerEditor*)sender index:(int)index;
+/** use it if you want to pimp a custom cell **/
+-(void)pimpCellAt:(PickerEditor*)sender cell:(UITableViewCell*)cell index:(int)index;
 
 /** called when selection change on an element **/
--(void)pickerEditorSelectionChange:(PickerEditor*)sender index:(int)index;
+-(void)pickerEditorSelectedRowAt:(PickerEditor*)sender index:(int)index;
 
 @end
 

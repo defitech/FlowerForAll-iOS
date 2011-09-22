@@ -44,6 +44,7 @@ static Profil* currentProfil;
 +(void)setCurrentS:(Profil*)profil {
     if (currentProfil != profil) {
         currentProfil = profil;
+        [DB setInfoValueForKey:@"currentProfile" value:[NSString stringWithFormat:@"%i",currentProfil.pid]];
     }
 }
 
@@ -55,6 +56,15 @@ static Profil* currentProfil;
 
 -(BOOL)isCurrent {
     return (self.pid == [Profil current].pid);
+}
+
+/** convenience tool to get min from target and tolerance **/
+-(double)frequenceMin {
+    return self.frequency_target_hz - (self.frequency_tolerance_hz / 2);
+}
+/** convenience tool to get max from target and tolerance **/
+-(double)frequenceMax {
+    return self.frequency_target_hz + (self.frequency_tolerance_hz / 2);
 }
 
 
