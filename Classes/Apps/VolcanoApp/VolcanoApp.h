@@ -17,9 +17,6 @@
     UIImageView *burst;
     UIView *lavaHidder;
     
-    int lavaReverse;
-    int lavaSmooth;
-    
     CGRect lavaFrame;
     
     int lavaWidth;

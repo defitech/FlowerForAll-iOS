@@ -29,9 +29,6 @@
     lavaHidder.hidden = false;
 
     lavaFrame = lavaHidder.frame;
-    
-    lavaSmooth = 1;
-    lavaReverse = 1;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,33 +62,31 @@
     [self.view setNeedsDisplay];
 }
 
-- (void)flapixEventFrequency:(double)frequency {
-    lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - lavaReverse);
-    
-    
-    
-    // oscillates between 1/4 and 3/4 of lavaUp
-    if ((lavaReverse > 0 && lavaSmooth == 7) ||
-        (lavaReverse < 0 && lavaSmooth == 2)) {
-        
-        lavaReverse = -1 * lavaReverse;
-    }
-    
-    lavaSmooth = lavaSmooth + lavaReverse;
+- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good {
+    if (good)
+        lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - 1.0f);
 }
 
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {
     
     [self.view setNeedsDisplay];
     
-    NSLog(@"percent_done: %f", [currentExercice percent_done]);
+    float percent = [currentExercice percent_done];
+    NSLog(@"percent_done: %f", percent);
     
     //Add sound when the goal has been reached for the last blow
     if (blow.goal)
         [self playSystemSound:@"/VolcanoApp_goal.wav"];
     
     //Raise up lava
-    lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * [currentExercice percent_done]);
+    lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * percent);
+    
+    if (percent >= 1.0f) {
+        lavaHidder.hidden = true;
+        burst.hidden = false;
+        
+        [self playSystemSound:@"/VolcanoApp_explosion.wav"];
+    }
 }
 
 - (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {
@@ -104,11 +99,6 @@
 
 - (void)flapixEventExerciceStop:(FLAPIExercice *)exercice {
     [start setTitle:@"Start Exercice" forState:UIControlStateNormal];
-    
-    lavaHidder.hidden = true;
-    burst.hidden = false;
-    
-    [self playSystemSound:@"/VolcanoApp_explosion.wav"];
 }
 
 
