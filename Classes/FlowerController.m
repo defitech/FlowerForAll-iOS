@@ -99,8 +99,9 @@ static NSMutableDictionary* appList;
         return;
     }
     NSLog(@"FLowerController: setCurrentMainController %@",[thisController class]);
-    [currentMainController viewWillDisappear:true];
-    [thisController viewWillAppear:true];
+    BOOL animated = transition != UIViewAnimationTransitionNone;
+    [currentMainController viewWillDisappear:animated];
+    [thisController viewWillAppear:animated];
     
     UIViewController *previousViewController = currentMainController;
     currentMainController = thisController;
@@ -121,10 +122,10 @@ static NSMutableDictionary* appList;
     
     
     
-    [previousViewController viewDidDisappear:true];
+    [previousViewController viewDidDisappear:animated];
     [previousViewController.view removeFromSuperview];
     [singleton.mainView setNeedsLayout];
-    [currentMainController viewDidAppear:true];
+    [currentMainController viewDidAppear:animated];
 }
 
 

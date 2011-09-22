@@ -65,7 +65,7 @@ float minExerciceDuration_s = 7.0;
     
     [expirationSlider setMinimumValue:0.2f];
     [expirationSlider setMaximumValue:5.0f];
-    [expirationSlider setValue:[[FlowerController currentFlapix] expirationDurationTarget]];
+   
     
     
     //Exercice slider
@@ -80,13 +80,23 @@ float minExerciceDuration_s = 7.0;
     
     [exerciceSlider setMinimumValue:0.0f];
     [exerciceSlider setMaximumValue:1.0f];
-    [exerciceSlider setValue:[self exericeDurationSystemToSlider:[[FlowerController currentFlapix] exerciceDurationTarget]]];
     
     
-    [self  valueChangedForExpirationSlider:expirationSlider];
-    [self  valueChangedForExericeSlider:exerciceSlider];
+    [self reloadValues];
+   
  }
 
+
+- (void)reloadValues {
+    [expirationSlider setValue:[[FlowerController currentFlapix] expirationDurationTarget] animated:true];
+    [exerciceSlider setValue:[self exericeDurationSystemToSlider:[[FlowerController currentFlapix] exerciceDurationTarget]] animated:true];
+    [self  valueChangedForExpirationSlider:expirationSlider];
+    [self  valueChangedForExericeSlider:exerciceSlider];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+     [self reloadValues];
+}
 
 
 /*
@@ -139,7 +149,7 @@ float minExerciceDuration_s = 7.0;
 
 
 - (void)pickerEditorIsDone:(PickerEditor*)sender {
-    NSLog(@"ProfilPicker DiD FInish");
+    [self reloadValues];
 }
 
 
@@ -166,14 +176,12 @@ NSArray* myProfils;
 
 /** return the true if the object at this index is selected **/
 -(BOOL)pickerEditorIsSelected:(PickerEditor*)sender index:(int)index {
-    NSArray* mp = [self profils];
-    Profil* p = (Profil*)[mp objectAtIndex:index];
-    return [p isCurrent];
+    return [(Profil*)[[self profils] objectAtIndex:index] isCurrent];
 }
 
 /** return the text to display for this element **/
 -(NSString*)pickerEditorValue:(PickerEditor*)sender index:(int)index {
-    return [NSString stringWithFormat:@"profil # %i",index];
+    return [(Profil*)[[self profils] objectAtIndex:index] name];
 }
 
 /** called when selection change on an element **/

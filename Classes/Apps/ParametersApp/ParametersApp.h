@@ -47,7 +47,11 @@
 - (IBAction)profileButtonPushed:(id)sender;
 
 
+- (void)reloadValues ;
+
 - (void)valueChangedForExpirationSlider:(UISlider *)aSlider;
 - (void)valueChangedForExericeSlider:(UISlider *)aSlider;
+
+
 
 @end
