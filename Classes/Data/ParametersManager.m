@@ -37,7 +37,7 @@
          ([profil frequenceMax] > [flapix frequenceMax] )) {
          NSLog(@"loadParameters: invalid frequency parameters target:%f tolerance:%tolerance reseting to defaults",profil.frequency_target_hz,profil.frequency_tolerance_hz );
          profil.frequency_target_hz = ([flapix frequenceMax] + [flapix frequenceMin]) / 2;
-         profil.frequency_tolerance_hz = ([flapix frequenceMax] - [flapix frequenceMin]) * 0.2;
+         profil.frequency_tolerance_hz = 2.0f;
         saveProfil = true;
     }
     [flapix SetTargetFrequency:profil.frequency_target_hz frequency_tolerance:profil.frequency_tolerance_hz];

@@ -70,7 +70,7 @@
 	maxLabel.text = [NSString stringWithFormat:@"%1.1f Hz", aSlider.maxSelectedValue];
     
     double target = (aSlider.minSelectedValue + aSlider.maxSelectedValue) / 2;
-    double tolerance =  aSlider.maxSelectedValue - aSlider.minSelectedValue;
+    double tolerance =  (aSlider.maxSelectedValue - aSlider.minSelectedValue) / 2;
     
     [[FlowerController currentFlapix] SetTargetFrequency:target frequency_tolerance:tolerance];
     

@@ -87,8 +87,8 @@ struct FLAPI_rParams{
 	int		frequency_min;
 
 	double	threshold;
-	int		frequency_tolerance;
-	int		target_frequency;
+	double		frequency_tolerance; // int to  (modified from orig FLAPI)
+	double		target_frequency;   // int to  (modified from orig FLAPI)
 	int		target_duration;
 
 

@@ -347,10 +347,12 @@ double blow_in_range_duration = 0.0f; // duration of in-range blowing
 
 // for convience
 double blow_timestamp = 0.0f; // temporary timestamp for work on
-int blow_frequency_trigger = 4;
+
 
 // break blowing if too long
-double blow_max_duration = 7.0f; //(seconds) when a blowing is declared as invalid because too long
+double blow_max_duration = 30.0f; //(seconds) when a blowing is declared as invalid because too long
+
+float blow_frequency_trigger = 0.0f;
 
 // Internal Subsystem function
 // ===========================
@@ -358,6 +360,7 @@ double blow_max_duration = 7.0f; //(seconds) when a blowing is declared as inval
 //So it just pass usefull events to FLAPIX
 int SendWinMsg( int msg, int lparam, int hparam ){
 	//NSLog(@"SendWinMsg msg:%i lparam:%i hparam:%i",msg,lparam,hparam);
+    blow_frequency_trigger = gParams.target_frequency - gParams.frequency_tolerance - 2 ;
 
 	switch (msg) {
 		case FLAPI_WINMSG_ON_STOP:
@@ -381,6 +384,11 @@ int SendWinMsg( int msg, int lparam, int hparam ){
             //NSLog(@"FLAPI_WINMSG_ON_FREQUENCY_CHANGE ");
             [flapix EventFrequency:FLAPI_GetFrequency()];
            
+            // blow_frequency_trigger is normaly 7 .. but we lower it in case minFrequency -2 is lower
+            
+            if (blow_frequency_trigger > 7) blow_frequency_trigger = 7;
+            NSLog(@"blow_frequency_trigger %f",blow_frequency_trigger);
+            
             // coded this quickly because original FLAPI was lacking blow detection.. it seems sufficient but maybe IAV could
             // produce or more academic processing
             blow_timestamp = CFAbsoluteTimeGetCurrent(); // Warning.. date must not be changed during exercice
@@ -403,9 +411,9 @@ int SendWinMsg( int msg, int lparam, int hparam ){
                 } else { // stop blowing
                     [flapix EventBlowEnd:blow_last_start duration:(blow_last_freq - blow_last_start) in_range_duration:blow_in_range_duration];
                     blow_last_start = 0.0f;
+                    
+            
                 }
-                
-                
                 
             } else { // not blowing (blow_last_start == 0)
                 if (FLAPI_GetFrequency() >= blow_frequency_trigger) { // start blowing
@@ -419,7 +427,6 @@ int SendWinMsg( int msg, int lparam, int hparam ){
                 }
             }
             blow_last_freq = blow_timestamp;
-            
             break;
 
 		case FLAPI_WINMSG_ON_BLOWING:
@@ -439,8 +446,6 @@ int SendWinMsg( int msg, int lparam, int hparam ){
                 }
                 
             }
-            
-            
 			break;
 
 		case FLAPI_WINMSG_ON_DETECTION_BUFFER:
