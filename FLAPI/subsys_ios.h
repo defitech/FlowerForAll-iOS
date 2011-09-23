@@ -40,6 +40,7 @@ typedef struct
     bool playBackIsOn; // The user want's playback
     
     bool isPlaying; // Inidicate if Player is On
+    float playBackVolume; // PlayBack Volume
     AudioQueueRef queue; // reference to the used Audio Queue
     short bufferSize; // number of samples
     short bufferByteSize; // number of samples * size of each one
@@ -58,9 +59,9 @@ void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read);
 // Custom  (Differ from windows FLAPI) Register the FLAPIX Controller instance
 void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *flapix);
 
-// Custom  PlayBack Start / Stop
-void FLAPI_SUBSYS_IOS_SET_PlayBack(BOOL on);
-BOOL FLAPI_SUBSYS_IOS_GET_PlayBack_State() ;
+// Custom  PlayBack .. Set Volume to 0 to Stop PlayBack
+void FLAPI_SUBSYS_IOS_SET_PlayBackVolume(float volume);
+float FLAPI_SUBSYS_IOS_GET_PlayBackVolume() ;
 
 
 #pragma  mark PAUSE / START

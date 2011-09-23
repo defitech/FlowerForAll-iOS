@@ -351,6 +351,7 @@ double blow_timestamp = 0.0f; // temporary timestamp for work on
 
 // break blowing if too long
 double blow_max_duration = 30.0f; //(seconds) when a blowing is declared as invalid because too long
+double blow_min_duration = 2.0f; //(seconds) when a blowing is declared as invalid because too small
 
 float blow_frequency_trigger = 0.0f;
 
@@ -360,8 +361,11 @@ float blow_frequency_trigger = 0.0f;
 //So it just pass usefull events to FLAPIX
 int SendWinMsg( int msg, int lparam, int hparam ){
 	//NSLog(@"SendWinMsg msg:%i lparam:%i hparam:%i",msg,lparam,hparam);
+    
+    // blow_frequency_trigger is normaly 7 .. but we lower it in case minFrequency -2 is smaller
     blow_frequency_trigger = gParams.target_frequency - gParams.frequency_tolerance - 2 ;
-
+    if (blow_frequency_trigger > 7) blow_frequency_trigger = 7;
+    
 	switch (msg) {
 		case FLAPI_WINMSG_ON_STOP:
 			printf("FLAPI_WINMSG_ON_STOP\n");
@@ -384,10 +388,7 @@ int SendWinMsg( int msg, int lparam, int hparam ){
             //NSLog(@"FLAPI_WINMSG_ON_FREQUENCY_CHANGE ");
             [flapix EventFrequency:FLAPI_GetFrequency()];
            
-            // blow_frequency_trigger is normaly 7 .. but we lower it in case minFrequency -2 is lower
-            
-            if (blow_frequency_trigger > 7) blow_frequency_trigger = 7;
-            NSLog(@"blow_frequency_trigger %f",blow_frequency_trigger);
+           
             
             // coded this quickly because original FLAPI was lacking blow detection.. it seems sufficient but maybe IAV could
             // produce or more academic processing
@@ -409,10 +410,9 @@ int SendWinMsg( int msg, int lparam, int hparam ){
                 if (FLAPI_GetFrequency() >= blow_frequency_trigger) { // continue
                     //.. blowing
                 } else { // stop blowing
+                    if ((blow_last_freq - blow_last_start) > blow_min_duration ) // only if long enough
                     [flapix EventBlowEnd:blow_last_start duration:(blow_last_freq - blow_last_start) in_range_duration:blow_in_range_duration];
                     blow_last_start = 0.0f;
-                    
-            
                 }
                 
             } else { // not blowing (blow_last_start == 0)
@@ -568,14 +568,22 @@ void AudioEngineOutputBufferCallback (void *inUserData, AudioQueueRef queue, Aud
 
 
 // Custom  PlayBack Stop
-
-void FLAPI_SUBSYS_IOS_SET_PlayBack(BOOL on) {
-    ioState.playBackIsOn = on ;
+void FLAPI_SUBSYS_IOS_SET_PlayBackVolume(float volume) {
+    if (volume  < 0.02f) {
+        volume = 0.0f;
+        ioState.playBackIsOn = false ;
+    } 
+    if (volume  > 1.0f) {
+        volume = 1.0f;
+    } 
+    ioState.playBackIsOn = true ;
+    ioState.bool isPlaying; // Inidicate if Player is On = volume;
     io_check_state();
-}
 
-BOOL FLAPI_SUBSYS_IOS_GET_PlayBack_State() {
-    return ioState.playBackIsOn;
+};
+
+float FLAPI_SUBSYS_IOS_GET_PlayBackVolume() {
+    return ioState.playBackVolume;
 }
 
 void io_stop() {
@@ -632,7 +640,6 @@ void io_check_state() {
 
 // Called by SubSys_init;
 void io_init() {
-    ioState.playBackIsOn = YES;
     ioState.isPlaying = NO;
     ioState.next_to_read = -1;
     ioState.next_to_write = 0;
