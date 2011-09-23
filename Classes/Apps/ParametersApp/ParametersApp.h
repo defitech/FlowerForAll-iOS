@@ -18,6 +18,9 @@
 	//Widgets
     IBOutlet UILabel *durationLabel;
     
+    IBOutlet UILabel *playBackLabel;
+    IBOutlet UISlider *playBackSlider;
+    
 	IBOutlet UILabel *expirationLabel;
 	IBOutlet UILabel *expirationTimeLabel;
     IBOutlet UISlider *expirationSlider;
@@ -34,6 +37,8 @@
 
 //Properties
 
+@property (nonatomic, retain) UILabel *playBackLabel;
+@property (nonatomic, retain) UISlider *playBackSlider;
 
 @property (nonatomic, retain) UILabel *durationLabel;
 

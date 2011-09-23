@@ -60,6 +60,12 @@
     if (saveProfil) {
         [profil save];
     }
+    
+    [flapix SetPlayBackVolume:[[DB getInfoValueForKey:@"playBackVolume"] floatValue]];
+}
+
++(void) savePlayBackVolume:(float)volume {
+    [DB setInfoValueForKey:@"playBackVolume" value:[NSString stringWithFormat:@"%f",volume]];
 }
 
 +(void) saveExpirationDuration:(float)duration {

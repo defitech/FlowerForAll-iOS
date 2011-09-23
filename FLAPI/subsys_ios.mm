@@ -577,7 +577,7 @@ void FLAPI_SUBSYS_IOS_SET_PlayBackVolume(float volume) {
         volume = 1.0f;
     } 
     ioState.playBackIsOn = true ;
-    ioState.bool isPlaying; // Inidicate if Player is On = volume;
+    ioState.playBackVolume = volume; // Inidicate if Player is On = volume;
     io_check_state();
 
 };
@@ -595,6 +595,8 @@ void io_stop() {
 }
 
 void io_check_state() {
+   
+    
     if (ioState.isPlaying && ! ioState.playBackIsOn ) { //STOP any eventual playBack 
         io_stop();
         return;
@@ -602,6 +604,8 @@ void io_check_state() {
     if (ioState.isPlaying && ioState.playBackIsOn ) { // RUNNING AND OK 
         return;
     }
+    
+     if (! running || paused) { return ; }
     // needs to start
     OSStatus err = noErr; 
     if (ioState.isPlaying == NO) {
@@ -684,7 +688,7 @@ void io_pop_buff_for_playback(AudioQueueBufferRef buffer) {
     //printf(" r:%i ss:%i ds:%i    w:%i\n",reading,srcBuffSize,dstBuffSize, ioState.next_to_write);
     int buffSize = srcBuffSize < dstBuffSize ? srcBuffSize : dstBuffSize; // we loose data if one of the buffer is smaller
     for (int i = 0; i < buffSize; i++) {
-        p[i] = ioState.buff[reading][i] ;
+        p[i] = ioState.buff[reading][i] * ioState.playBackVolume;
     }
     buffer->mAudioDataByteSize = buffSize * sizeof (short);
     // mark buffer as read;

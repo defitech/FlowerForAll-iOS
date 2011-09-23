@@ -51,6 +51,10 @@ extern NSString * const FLAPIX_EVENT_FREQUENCY;
 - (void) SetTargetExpirationDuration:(float)durations_s;
 - (void) SetTargetExerciceDuration:(float)durations_s;
 
+// Custom  PlayBack Stop
+- (void) SetPlayBackVolume:(float) volume;
+- (float) playBackVolume;
+
 - (void) SetDemo:(BOOL)on;
 - (BOOL) IsDemo;
 

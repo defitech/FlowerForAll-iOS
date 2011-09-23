@@ -15,6 +15,9 @@
 +(void) saveExpirationDuration:(float)duration;
 +(void) saveExerciceDuration:(float)duration;
 
+/** between 0 and 1 **/
++(void) savePlayBackVolume:(float)volume;
+
 +(void) loadParameters:(FLAPIX*)flapix;
 
 @end

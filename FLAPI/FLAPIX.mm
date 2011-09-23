@@ -98,6 +98,14 @@ NSString * const FLAPIX_EVENT_FREQUENCY = @"FlapixEventFrequency";
 }
 
 
+- (void) SetPlayBackVolume:(float) volume {
+    FLAPI_SUBSYS_IOS_SET_PlayBackVolume(volume);
+};
+
+- (float) playBackVolume {
+    return FLAPI_SUBSYS_IOS_GET_PlayBackVolume();
+}
+
 // duration of an exerice
 double exerice_duration_s = -1.0f;
 

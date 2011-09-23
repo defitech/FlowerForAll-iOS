@@ -24,7 +24,7 @@
 @implementation ParametersApp
 
 
-@synthesize  durationLabel,
+@synthesize  durationLabel, playBackLabel, playBackSlider,
 expirationLabel, expirationTimeLabel, expirationSlider,
 exerciceLabel, exerciceTimeLabel, exerciceSlider, buttonProfile;
 
@@ -53,6 +53,19 @@ float minExerciceDuration_s = 7.0;
 	durationLabel.text = 
         [ParametersApp translate:@"DurationLabel" comment:@"DurationExplanantion"];
 	
+    
+    //Volume slider
+    playBackLabel.text = 
+    [ParametersApp translate:@"PlayBackLabel" comment:@"PlayBack Volume"];
+    
+    [playBackSlider addTarget:self action:@selector(valueChangedForPlayBackSlider:) 
+               forControlEvents:UIControlEventValueChanged];
+    
+    [playBackSlider addTarget:self action:@selector(editingEndForPlayBackSlider:) 
+               forControlEvents:UIControlEventTouchUpInside];
+    
+    [playBackSlider setMinimumValue:0.0f];
+    [playBackSlider setMaximumValue:1.0f];
     
     //Expiration slider
     expirationLabel.text = 
@@ -91,6 +104,7 @@ float minExerciceDuration_s = 7.0;
 - (void)reloadValues {
     [expirationSlider setValue:[[FlowerController currentFlapix] expirationDurationTarget] animated:true];
     [exerciceSlider setValue:[self exericeDurationSystemToSlider:[[FlowerController currentFlapix] exerciceDurationTarget]] animated:true];
+    [playBackSlider setValue:[[FlowerController currentFlapix] playBackVolume] animated:true];
     [self  valueChangedForExpirationSlider:expirationSlider];
     [self  valueChangedForExericeSlider:exerciceSlider];
     
@@ -109,6 +123,19 @@ float minExerciceDuration_s = 7.0;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
+
+
+- (void)valueChangedForPlayBackSlider:(UISlider *)aSlider
+{
+    [[FlowerController currentFlapix] SetPlayBackVolume:(float) aSlider.value];
+}
+
+- (void)editingEndForPlayBackSlider:(UISlider *)aSlider
+{
+    [ParametersManager savePlayBackVolume:(float) aSlider.value];
+}
+
+
 
 - (void)valueChangedForExpirationSlider:(UISlider *)aSlider
 {
