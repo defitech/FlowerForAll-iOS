@@ -8,22 +8,47 @@
 
 #import "CalibrationApp_NeedleView.h"
 #import "FlowerController.h"
+#import "CalibratiomApp_NeedleLayer.h"
 
 @implementation CalibrationApp_NeedleView
-
 
 - (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         lastTarget = [[FlowerController currentFlapix] frequenceTarget];
         lastTolerance = [[FlowerController currentFlapix] frequenceTolerance];
-        rotation = 0;
+        
+        
+        [self setBackgroundColor:[UIColor whiteColor]];
+        NSLog(@"Done");
+        CalibratiomApp_NeedleLayer *needleLayer = [CalibratiomApp_NeedleLayer layer];
+        needleLayer.frame = CGRectMake(5, 35, 150, 150);
+        //needleLayer.delegate = self;
+        [self.layer addSublayer:needleLayer];
+        [needleLayer setNeedsDisplay];
+        
+        //needleLayer.transform = CATransform3DMakeRotation(90.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
+        CAKeyframeAnimation *rot = [CAKeyframeAnimation animation];
+     
+        rot.values = [NSArray arrayWithObjects:
+                               [NSValue valueWithCATransform3D:CATransform3DMakeRotation(0.0f, 0.0f, 1.0f, 0.0f)],
+                               [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0.0f, 1.0f, 0.0f)],nil];
+
+        
+        rot.duration = 2;
+        rot.delegate = self;
+        
+        [needleLayer addAnimation:rot forKey:@"transform"];
+
     }
     return self;
     
 }
 
-- (void)drawRect:(CGRect)rect
+
+
+
+- (void)xdrawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, self.frame.size.width / 2, self.frame.size.height / 1.5); // Move the context
@@ -32,7 +57,9 @@
     CGContextSaveGState(context);
     
     CGContextRotateCTM(context, rotation);
-    CGContextScaleCTM(context,self.frame.size.width / 60, -1 *  self.frame.size.height / 60 ); // revert the axis
+    float reference = self.frame.size.width < self.frame.size.height ? self.frame.size.width : self.frame.size.height;
+    CGContextScaleCTM(context,reference / 60, -1 *  reference / 60 ); // revert the axis
+
     
     CGMutablePathRef path = CGPathCreateMutable();
     float minX = -10.0f; float maxX = 10.0f;

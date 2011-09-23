@@ -31,6 +31,7 @@
 		4E3A7A7B13B8777D00853344 /* FlowerHowTo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */; };
 		4E3A7A7D13B877DD00853344 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */; };
 		4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A8213B884FD00853344 /* AVFoundation.framework */; };
+		4E46B816142CE740003D738D /* CalibratiomApp_NeedleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E46B815142CE740003D738D /* CalibratiomApp_NeedleLayer.m */; };
 		4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B815A14165374009CC45D /* FlowerHowTo.m4v */; };
@@ -143,6 +144,8 @@
 		4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerHowTo.xib; sourceTree = "<group>"; };
 		4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4E3A7A8213B884FD00853344 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4E46B814142CE740003D738D /* CalibratiomApp_NeedleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibratiomApp_NeedleLayer.h; sourceTree = "<group>"; };
+		4E46B815142CE740003D738D /* CalibratiomApp_NeedleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibratiomApp_NeedleLayer.m; sourceTree = "<group>"; };
 		4E4AE46B141FA57B004256DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
 		4E4AE46D141FA584004256DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
 		4E4B815A14165374009CC45D /* FlowerHowTo.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlowerHowTo.m4v; sourceTree = "<group>"; };
@@ -575,6 +578,8 @@
 				D73EB4F314223412001AB2DE /* CalibrationApp.xib */,
 				4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */,
 				4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */,
+				4E46B814142CE740003D738D /* CalibratiomApp_NeedleLayer.h */,
+				4E46B815142CE740003D738D /* CalibratiomApp_NeedleLayer.m */,
 			);
 			path = CalibrationApp;
 			sourceTree = "<group>";
@@ -812,6 +817,7 @@
 				D73C131A142879050006B28F /* StatisticsViewController.m in Sources */,
 				D73C13201428B34D0006B28F /* ExerciseDay.m in Sources */,
 				4EFE7918142B53BA009EE121 /* PickerProfileCell.m in Sources */,
+				4E46B816142CE740003D738D /* CalibratiomApp_NeedleLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
