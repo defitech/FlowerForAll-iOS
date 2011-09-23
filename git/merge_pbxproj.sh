@@ -9,3 +9,6 @@ savefile="${projectdir}/project.pbxproj.mergesave"
 cat $projectfile | grep -v "<<<<<<< HEAD" | grep -v "=======" | grep -v "^>>>>>>> " > $tempfile
 cp $projectfile $savefile
 mv $tempfile $projectfile
+git add $projectfile
+
+echo "Do not forget to remove $savefile !!"

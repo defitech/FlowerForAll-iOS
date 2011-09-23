@@ -33,6 +33,24 @@ typedef struct
 	UInt32 bufferSize; // bufferSize
 } RecordState;
 
+// Structure used for IO Monitoring
+#define NUM_IO_BUFFERS 20
+typedef struct
+{
+    bool playBackIsOn; // The user want's playback
+    
+    bool isPlaying; // Inidicate if Player is On
+    AudioQueueRef queue; // reference to the used Audio Queue
+    short bufferSize; // number of samples
+    short bufferByteSize; // number of samples * size of each one
+    
+    
+    short* buff[NUM_IO_BUFFERS]; // Buffers that keeps I/O sound
+    short buffSize[NUM_IO_BUFFERS]; // Quantity to read for each buffer
+    int next_to_read ; // pointer to the next buffer to read
+    int next_to_write ; // pointer to the next buffer to write
+} IOState;
+
 
 // Custom (Differ from windows FLAPI) Subsystem start for devel
 void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read);
@@ -40,6 +58,9 @@ void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read);
 // Custom  (Differ from windows FLAPI) Register the FLAPIX Controller instance
 void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *flapix);
 
+// Custom  PlayBack Start / Stop
+void FLAPI_SUBSYS_IOS_SET_PlayBack(BOOL on);
+BOOL FLAPI_SUBSYS_IOS_GET_PlayBack_State() ;
 
 
 #pragma  mark PAUSE / START
@@ -62,6 +83,12 @@ int SendWinMsg( int msg, int lparam, int hparam );
 
 int	OpenDevice();
 int	CloseDevice();
+
+void io_init();
+void io_check_state();
+void io_stop();
+void io_push_buff_for_playback(short* buffer,short buffSize);
+void io_pop_buff_for_playback(AudioQueueBufferRef buffer);
 
 #endif
 #endif
