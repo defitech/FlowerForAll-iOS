@@ -264,9 +264,6 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     
     FLAPI_SetMode(1); // send winMSG
     FLAPI_Init();
-    
-    
-    
 }
 
 
