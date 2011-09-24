@@ -10,4 +10,8 @@
 
 @interface CalibratiomApp_NeedleLayer : CALayer
 
+- (id)initWithAngle:(float)angle;
+
+
+- (void)setAngle:(float)angle;
 @end

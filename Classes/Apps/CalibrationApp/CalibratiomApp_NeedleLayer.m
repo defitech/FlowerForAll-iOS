@@ -10,27 +10,51 @@
 
 @implementation CalibratiomApp_NeedleLayer
 
-- (id)init
+
+float lastAngle;
+
+- (id)initWithAngle:(float)angle
 {
     self = [super init];
     if (self) {
-        // Initialization code here.
+        lastAngle = 0;
+        [self setAngle:-0.5f];
     }
     
     return self;
+}
+
+
+- (void)setAngle:(float)angle
+{
+    
+    //needleLayer.transform = CATransform3DMakeRotation(90.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
+    CAKeyframeAnimation *rot = [CAKeyframeAnimation animation];
+    
+    rot.values = [NSArray arrayWithObjects:
+                  [NSValue valueWithCATransform3D:CATransform3DMakeRotation(lastAngle * M_PI, 0.0f, 0.0f, 1.0f)],
+                  [NSValue valueWithCATransform3D:CATransform3DMakeRotation(angle * M_PI, 0.0f, 0.0f, 1.0f)],nil];
+    
+    lastAngle = angle;
+    
+    rot.duration = 0.3;
+    rot.delegate = self;
+    
+    [self addAnimation:rot forKey:@"transform"];
+    
 }
 
 - (void)drawInContext:(CGContextRef)context
 
 {
     
-    CGContextTranslateCTM(context, self.frame.size.width / 2, self.frame.size.height / 1.5); // Move the context
+    CGContextTranslateCTM(context, self.frame.size.width / 2, self.frame.size.height / 2); // Move the context
     
     // draw the needle
     CGContextSaveGState(context);
     
     float reference = self.frame.size.width < self.frame.size.height ? self.frame.size.width : self.frame.size.height;
-    CGContextScaleCTM(context,reference / 20, -1 *  reference / 40 ); // revert the axis
+    CGContextScaleCTM(context,reference / 60, -1 *  reference / 60 ); // revert the axis
     
     
     CGMutablePathRef path = CGPathCreateMutable();
