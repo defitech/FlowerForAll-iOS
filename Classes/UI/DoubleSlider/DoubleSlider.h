@@ -27,10 +27,14 @@
     float sliderBarDeltaX;
 	
 	CGColorRef bgColor;
+    
+    
+    float valueStepRounding;
 }
 
 @property float minSelectedValue;
 @property float maxSelectedValue;
+@property float valueStepRounding;
 
 @property (nonatomic, retain) UIImageView *minHandle;
 @property (nonatomic, retain) UIImageView *maxHandle;

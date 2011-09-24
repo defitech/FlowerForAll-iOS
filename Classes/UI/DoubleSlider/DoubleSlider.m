@@ -11,7 +11,7 @@
 #import "FlowerController.h"
 
 #define kMinHandleDistance          22.0
-#define kBoundaryValueThreshold     0.01
+#define kBoundaryValueThreshold     0.04
 
 //create the gradient
 static const CGFloat colors [] = { 
@@ -35,7 +35,7 @@ static const CGFloat innerColors [] = {
 
 @implementation DoubleSlider
 
-@synthesize minSelectedValue, maxSelectedValue;
+@synthesize minSelectedValue, maxSelectedValue, valueStepRounding;
 @synthesize minHandle, maxHandle;
 
 - (void) dealloc
@@ -74,7 +74,7 @@ static const CGFloat innerColors [] = {
         maxValue = aMinValue;
     }
     valueSpan = maxValue - minValue;
-    
+    valueStepRounding = 0.2;
     
     
     //init
@@ -85,7 +85,8 @@ static const CGFloat innerColors [] = {
 }
 
 -(float) xToValue:(float)x {
-    return (x - sliderBarDeltaX) * valueSpan / sliderBarWidth  + minValue ;
+    float realvalue = (x - sliderBarDeltaX) * valueSpan / sliderBarWidth  + minValue ;
+    return round( realvalue / valueStepRounding) * valueStepRounding;
 }
 
 -(float)valueToX:(float)value {
