@@ -156,10 +156,15 @@ static const CGFloat innerColors [] = {
                                   self.minHandle.frame.size.width+radius*2, self.minHandle.frame.size.height+radius*2);
     CGRect detectMax = CGRectMake(self.maxHandle.frame.origin.x-radius, self.maxHandle.frame.origin.y-radius, 
                                   self.maxHandle.frame.size.width+radius*2, self.maxHandle.frame.size.height+radius*2);
-    if ( CGRectContainsPoint(detectMin, touchPoint) ) {
+    
+    // take closest
+    if (abs(touchPoint.x - self.minHandle.center.x) < abs(touchPoint.x - self.maxHandle.center.x)) {
+        NSLog(@"A");
+        if ( CGRectContainsPoint(detectMin, touchPoint) ) {
 		latchMin = YES;
-	}
-	else if ( CGRectContainsPoint(detectMax, touchPoint) ) {
+            NSLog(@"B");
+        }
+    } else if ( CGRectContainsPoint(detectMax, touchPoint) ) {
 		latchMax = YES;
 	}
     [self updateHandleImages];
