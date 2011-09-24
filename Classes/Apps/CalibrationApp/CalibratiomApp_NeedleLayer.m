@@ -18,18 +18,19 @@ float lastAngle;
     self = [super init];
     if (self) {
         lastAngle = 0;
-        [self setAngle:-0.5f];
+        [self setAngle:-0.0f];
     }
     
     return self;
 }
 
+float actualAngle;
 
 - (void)setAngle:(float)angle
 {
     
     //needleLayer.transform = CATransform3DMakeRotation(90.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
-    CAKeyframeAnimation *rot = [CAKeyframeAnimation animation];
+    /**CAKeyframeAnimation *rot = [CAKeyframeAnimation animation];
     
     rot.values = [NSArray arrayWithObjects:
                   [NSValue valueWithCATransform3D:CATransform3DMakeRotation(lastAngle * M_PI, 0.0f, 0.0f, 1.0f)],
@@ -39,15 +40,25 @@ float lastAngle;
     
     rot.duration = 0.3;
     rot.delegate = self;
+     [self addAnimation:rot forKey:@"transform"];
+    **/
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.fromValue = [NSNumber numberWithFloat: lastAngle*M_PI];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: angle*M_PI];
+    rotationAnimation.duration = 0.3;
+    rotationAnimation.additive = YES;
+    rotationAnimation.fillMode = kCAFillModeForwards;
+    rotationAnimation.removedOnCompletion = NO;
+    [self addAnimation:rotationAnimation forKey:@"rotationAnimation1"];
+
     
-    [self addAnimation:rot forKey:@"transform"];
+     lastAngle = angle;
     
 }
 
 - (void)drawInContext:(CGContextRef)context
 
 {
-    
     CGContextTranslateCTM(context, self.frame.size.width / 2, self.frame.size.height / 2); // Move the context
     
     // draw the needle

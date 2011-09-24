@@ -12,6 +12,9 @@
 
 @implementation CalibrationApp_NeedleView
 
+
+CalibratiomApp_NeedleLayer *needleLayer;
+
 - (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -22,17 +25,17 @@
         [self setBackgroundColor:[UIColor whiteColor]];
     
         NSLog(@"Done");
-        CalibratiomApp_NeedleLayer *needleLayer = [CalibratiomApp_NeedleLayer layer];
-        int needle_width = 200;
-        int deltaY = - 0.5f ; //  
-        needleLayer.frame = CGRectMake((self.frame.size.width - needle_width) / 2,  (self.frame.size.height - needle_width) / 2 , needle_width, needle_width);
-        //needleLayer.delegate = self;
-        self.layer.zPosition = 0;
-        needleLayer.zPosition = 1;
+        needleLayer = [CalibratiomApp_NeedleLayer layer];
+        int needle_width = self.frame.size.width / 2.0f;
+        float deltaY = 0.333333f ; //  
+        
+        CGPoint axeCenter = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height * (1.0f + deltaY) / 2.0f );
+        
+        needleLayer.frame = CGRectMake(axeCenter.x-(needle_width/2.0f),  axeCenter.y - (needle_width/2.0f), needle_width, needle_width);
         [self.layer addSublayer:needleLayer];
         
         [needleLayer setNeedsDisplay];
-       
+        [needleLayer setAngle:-0.5f];
 
     }
     return self;
@@ -81,8 +84,19 @@
     CGContextRestoreGState(ctx);
 }
 
+-(float)frequencyToAngle:(double)freq {
+    float longest = ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceTarget]) >
+         ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceMin]) ?
+    ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceTarget]) :
+    ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceMin]);
+    
+    return (freq - [[FlowerController currentFlapix] frequenceTarget]) / (2 * longest ) ;
+    
+}
+
 -(void)calcRotation:(double)freq {
-    rotation = 0;
+    [needleLayer setAngle:[self frequencyToAngle:freq]];
+
 }
 
 @end
