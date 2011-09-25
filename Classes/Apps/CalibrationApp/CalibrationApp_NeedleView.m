@@ -9,6 +9,7 @@
 #import "CalibrationApp_NeedleView.h"
 #import "FlowerController.h"
 #import "CalibratiomApp_NeedleLayer.h"
+#import "NeedleGL.h"
 
 @implementation CalibrationApp_NeedleView
 
@@ -36,6 +37,7 @@ CalibratiomApp_NeedleLayer *needleLayer;
         
         [needleLayer setNeedsDisplay];
         [needleLayer setAngle:-0.5f];
+      
 
     }
     return self;
@@ -84,18 +86,10 @@ CalibratiomApp_NeedleLayer *needleLayer;
     CGContextRestoreGState(ctx);
 }
 
--(float)frequencyToAngle:(double)freq {
-    float longest = ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceTarget]) >
-         ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceMin]) ?
-    ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceTarget]) :
-    ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceMin]);
-    
-    return (freq - [[FlowerController currentFlapix] frequenceTarget]) / (2 * longest ) ;
-    
-}
+
 
 -(void)calcRotation:(double)freq {
-    [needleLayer setAngle:[self frequencyToAngle:freq]];
+    [needleLayer setAngle:[NeedleGL frequencyToAngle:freq]];
 
 }
 

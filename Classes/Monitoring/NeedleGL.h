@@ -50,4 +50,7 @@ Note that setting the view non-opaque will only work if the EAGL surface has an 
 - (void)setupView;
 - (void)checkGLError:(BOOL)visibleCheck;
 
+
++(float)frequencyToAngle:(double)freq;
+
 @end

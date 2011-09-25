@@ -39,8 +39,6 @@
     return [CAEAGLLayer class];
 }
 
-
-
 //The GL view is stored in the nib file. When it's unarchived it's sent -initWithCoder:
 - (id)initWithCoder:(NSCoder*)coder {
     
@@ -150,22 +148,18 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     
 	/*************** Debut du nouveau code ******************/
     
-    /*
-     * TODO:
-     * 1. Change color in relation with the distance to the target.
-     *    Green for 15 Hz and increasingly red with farther.
-     */
-    float target = - 90 /[flapix frequenceTarget];// the target is to keep the needle at 90 degrees for a frequency of x
-    static float transY = 0.0f;         // effective rotation angle in degrees
-    static int freq = 0;                // current frequency
-    static float degree = 0.0f;         // current angle
-    static float prev = 0.0f;           // previous angle
+    
+    static float angle_actual = 0.0f;         // effective rotation angle in degrees
+    static float angle_toreach = 0.0f;         // current angle
+    static float angle_previous = 0.0f;           // previous angle
+    static float angle_freqMin = 0.0f;
+    static float angle_freqMax = 0.0f;
     static float speed = 0.0f;          // rotation speed
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    
-    
+    angle_freqMin = [NeedleGL frequencyToAngle:([flapix frequenceTarget] - [flapix frequenceTolerance])]*180;
+    angle_freqMax = [NeedleGL frequencyToAngle:([flapix frequenceTarget] + [flapix frequenceTolerance])]*180;
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -177,39 +171,31 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     } else {
        
         
-        freq = flapix.frequency;
-       // NSLog(@"freq = %i \n", freq);
-        degree = (freq * target); // to reach
-        speed = fabs((degree - prev) / 10);
+        angle_toreach = 270-[NeedleGL frequencyToAngle:flapix.frequency]*180;
+        speed = fabs((angle_toreach - angle_previous) / 10);
        // NSLog(@"speed = %f \n", speed);
     
-        if(degree > prev) {
-            transY = prev + speed;
+        if(angle_toreach > angle_previous) {
+            angle_actual = angle_previous + speed;
         } else {
-            transY = prev - speed;
+            angle_actual = angle_previous - speed;
         }
         
         
-        if ((([flapix frequenceTarget] - [flapix frequenceTolerance])*target > transY) && 
-            (([flapix frequenceTarget] + [flapix frequenceTolerance])*target < transY)) { // Good
-  
+        if ((angle_freqMax < angle_actual) && (angle_freqMin > angle_actual)) { // Good
             glColor4f(0.0f,  1.0f, 0.0f, 1.0f);
-            
         } else { // Bad
-            //NSLog(@"LEVL %f",);
             glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
         }
         
-        prev = transY;
+        angle_previous = angle_actual;
     }
-    glRotatef(transY, 0.0f, 0.0f, 1.0f);
+    glRotatef(angle_actual, 0.0f, 0.0f, 1.0f);
     
 	
-//	glVertexPointer(3, GL_FLOAT, 0, triangleVertices);
 	glVertexPointer(3, GL_FLOAT, 0, quadVertices);
 	
 	glEnableClientState(GL_VERTEX_ARRAY);
-    //	glDrawArrays(GL_TRIANGLES, 0, 3);
     
     if ([flapix running])
         glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
@@ -222,17 +208,18 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     
      glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
-    glRotatef([flapix frequenceTolerance] * target, 0.0f, 0.0f, 1.0f);
+    
+    glRotatef(angle_freqMax, 0.0f, 0.0f, 1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
 
+    glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
      glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
-    glRotatef([flapix frequenceTolerance] * target, 0.0f, 0.0f, -1.0f);
+    glRotatef(angle_freqMin, 0.0f, 0.0f, 1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
     
-	//[self drawLine:-4.0 y1:0.0 z1:0.0 x2:4.0  y2:0.0  z2:-1.0];
-
+	
 	/*************** Fin du nouveau code ********************/ 
 	
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
@@ -350,6 +337,16 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
             NSLog(@"Unknown GL Error");
             break;
     }
+}
+
++(float)frequencyToAngle:(double)freq {
+    float longest = ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceTarget]) >
+    ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceMin]) ?
+    ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceTarget]) :
+    ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceMin]);
+    
+    return (freq - [[FlowerController currentFlapix] frequenceTarget]) / (2 * longest ) ;
+    
 }
 
 

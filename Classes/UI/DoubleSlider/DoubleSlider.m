@@ -159,10 +159,8 @@ static const CGFloat innerColors [] = {
     
     // take closest
     if (abs(touchPoint.x - self.minHandle.center.x) < abs(touchPoint.x - self.maxHandle.center.x)) {
-        NSLog(@"A");
         if ( CGRectContainsPoint(detectMin, touchPoint) ) {
 		latchMin = YES;
-            NSLog(@"B");
         }
     } else if ( CGRectContainsPoint(detectMax, touchPoint) ) {
 		latchMax = YES;
