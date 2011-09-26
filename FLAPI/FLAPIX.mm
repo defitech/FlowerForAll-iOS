@@ -230,16 +230,29 @@ NSMutableArray *blowFrequencies;
     
     //calculate MedianFrequency
     double medianFrequency = 0;
-     if (blowFrequencies != nil && [blowFrequencies count] > 0) { 
-         NSArray *sorted = [blowFrequencies sortedArrayUsingSelector:@selector(compare:)];
-         medianFrequency = [(NSNumber*)[sorted objectAtIndex:(int)([sorted count] / 2)] doubleValue];
-     }
+    double medianTolerance = 0;
+    if (blowFrequencies != nil && [blowFrequencies count] > 0) { 
+        NSArray *sorted = [blowFrequencies sortedArrayUsingSelector:@selector(compare:)];
+        medianFrequency = [(NSNumber*)[sorted objectAtIndex:(int)([sorted count] / 2)] doubleValue];
+        
+        // remove all the values that have a differnce of more that 20%
+        double max = 0.0f;
+        double min = 1000.0f;
+        double v = 0.0f;
+        if (medianFrequency != 0)
+        for (id object in sorted) {
+            v = [(NSNumber*)object doubleValue];
+            if (v > max) max = v;
+            if (v < min) min = v;
+        }
+        medianTolerance = fabs(max-min)*0.8/2;
+    }
     // send messages
     NSLog(@"Median frequency: %0.1f",medianFrequency);
     FLAPIBlow* blow = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal medianFrequency:medianFrequency];
+    blow.medianTolerance = medianTolerance;
     
-    
-     [DB saveBlow:blow];
+    [DB saveBlow:blow];
     
     
     // exercice management

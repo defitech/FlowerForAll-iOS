@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "FLAPIBlow.h"
 
 
 @interface CalibrationApp_NeedleView : UIView {
@@ -22,8 +23,7 @@
 -(void)drawNeedle;
 -(void)drawFreqRules:(double)target freqTol:(double)tolerance isReference:(BOOL)isRef;
 
--(void)calcRotation:(double)frequency;
-
+-(void)refreshLastBlow:(FLAPIBlow*)blow;
 
 # pragma mark animation stuff
 

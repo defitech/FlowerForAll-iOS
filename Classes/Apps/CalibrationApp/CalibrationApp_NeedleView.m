@@ -58,6 +58,8 @@ float angle_freqMin_previous = 0.0f;
 float angle_freqMax_previous = 0.0f;
 float speed = 0.0f;          // rotation speed
 
+BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
+
 - (void)drawRect:(CGRect)rect
 {
    
@@ -94,7 +96,7 @@ float speed = 0.0f;          // rotation speed
     angle_toreach = [NeedleGL frequencyToAngle:flapix.frequency];
     
     BOOL needle_needrefresh = (fabs(angle_toreach - angle_actual) < 0.02 ) || ! flapix.blowing;
-    if ( needle_needrefresh && angle_freqMin == angle_freqMin_previous && angle_freqMax == angle_freqMax_previous) {
+    if ( lastBlowIdentical && needle_needrefresh && angle_freqMin == angle_freqMin_previous && angle_freqMax == angle_freqMax_previous) {
         return;
     }
      NSLog(@"%f %f %f",angle_toreach ,angle_actual,fabs(angle_toreach - angle_actual));
@@ -125,7 +127,7 @@ float speed = 0.0f;          // rotation speed
         angle_previous = angle_actual;
     }
     
-    
+    lastBlowIdentical = true;
     [self setNeedsDisplay];
 }
 
@@ -191,11 +193,13 @@ float speed = 0.0f;          // rotation speed
 }
 
 
-
--(void)calcRotation:(double)freq {
-    //[needleLayer setAngle:[NeedleGL frequencyToAngle:freq]];
-
+-(void)refreshLastBlow:(FLAPIBlow*)blow {
+    lastTarget = [blow medianFrequency];
+    lastTolerance =  [blow medianTolerance];
+    lastBlowIdentical = false;
+    [self setNeedsDisplay];
 }
+
 
 
 # pragma mark animation Stuff

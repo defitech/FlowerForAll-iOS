@@ -10,7 +10,7 @@
 
 @implementation FLAPIBlow
 
-@synthesize timestamp, duration, in_range_duration, goal, medianFrequency;
+@synthesize timestamp, duration, in_range_duration, goal, medianFrequency,medianTolerance;
 
 - (id)initWith:(double)atimestamp duration:(double)alength in_range_duration:(double)air_length goal:(BOOL)good  medianFrequency:(BOOL)median_frequency
 {

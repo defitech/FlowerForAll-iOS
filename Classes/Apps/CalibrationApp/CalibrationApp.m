@@ -94,12 +94,11 @@
 
 
 - (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good {    
-    [needle calcRotation:frequency];
     [needle setNeedsDisplay];
 }
 
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {
-    
+    [needle refreshLastBlow:blow];
 }
 
 - (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {
