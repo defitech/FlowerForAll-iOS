@@ -88,7 +88,6 @@ NSString * const FLAPIX_EVENT_FREQUENCY = @"FlapixEventFrequency";
 
 
 - (void) SetTargetFrequency:(double)target_frequency frequency_tolerance:(double)tolerance {
-    NSLog(@"SetTargetFrequency: %f",tolerance);
     gParams.target_frequency	= target_frequency;
 	gParams.frequency_tolerance	= tolerance;
 }
