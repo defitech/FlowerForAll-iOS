@@ -149,8 +149,8 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
         //nothing to do
         return;
     }
-    angle_freqMin_previous = angle_freqMin_previous;
-    angle_freqMax_previous = angle_freqMax_previous;
+    angle_freqMin_previous = angle_freqMin;
+    angle_freqMax_previous = angle_freqMax;
     
     
     /*************** Drawing code ******************/
