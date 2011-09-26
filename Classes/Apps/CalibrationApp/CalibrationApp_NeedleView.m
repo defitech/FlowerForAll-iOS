@@ -80,8 +80,6 @@ float speed = 0.0f;          // rotation speed
             isReference:false];
     [self drawFreqRules:lastTarget freqTol:lastTolerance isReference:true];
 
-    
-    
     [super drawRect:rect];
 }
 
@@ -164,6 +162,8 @@ float speed = 0.0f;          // rotation speed
 
 
 -(void)drawFreqRules:(double)target freqTol:(double)tolerance isReference:(BOOL)isRef {
+    
+    
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGContextSaveGState(ctx);
     float angle[2];

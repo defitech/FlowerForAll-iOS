@@ -3,3 +3,8 @@
 
 /* Main label of the game parameters view */
 "TargetFrequencyRangeLabel" = "Range of frequency";
+
+"Last Blow's frequency" = "Last Blow's frequency";
+
+/* "go to duration settings" */
+"Duration settings" = "Duration settings";

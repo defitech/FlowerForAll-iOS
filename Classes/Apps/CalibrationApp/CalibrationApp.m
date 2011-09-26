@@ -25,7 +25,7 @@
 
 @implementation CalibrationApp
 
-@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, lastFreqLabel, inRangeLabel, lastDurationTextLabel, lastDurationValueLabel, calibrationTextLabel, calibrationValueLabel, calibrationMinusButton, calibrationPlusButton;
+@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, lastFreqLabelValue, targetFreqLabelValue, lastFreqLabelTitle, goToDurationButton;
 
 #pragma mark - View lifecycle
 
@@ -36,8 +36,11 @@
     
 	targetFrequencyRangeLabel.text = 
     [CalibrationApp translate:@"TargetFrequencyRangeLabel" comment:@"Target Frequency Range"];
+    lastFreqLabelTitle.text = 
+    [CalibrationApp translate:@"Last Blow's frequency" comment:@"Last Blow's frequency"];
+    [goToDurationButton setTitle:[CalibrationApp translate:@"Duration settings" comment:@"go to uration settings"] forState:UIControlStateNormal];
     
-    
+    targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",[[FlowerController currentFlapix]frequenceTarget]];
     
 	//DoubleSlider setup
 	[slider addTarget:self action:@selector(valueChangedForDoubleSlider:) 
@@ -58,8 +61,8 @@
     //slider.transform = CGAffineTransformRotate(slider.transform, 90.0/180*M_PI);      //make it vertical
 	[self valueChangedForDoubleSlider:slider];
     
-    lastFreqLabel.text = [NSString stringWithFormat:@"%1.1f Hz", target];
-
+    lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", target];
+    
 }
 
 #pragma mark Control Event Handlers
@@ -71,7 +74,7 @@
     
     double target = (aSlider.minSelectedValue + aSlider.maxSelectedValue) / 2;
     double tolerance =  (aSlider.maxSelectedValue - aSlider.minSelectedValue) / 2;
-    
+    targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", target];
     [[FlowerController currentFlapix] SetTargetFrequency:target frequency_tolerance:tolerance];
     
     [needle setNeedsDisplay];
@@ -107,13 +110,11 @@
     
 }
 
-- (IBAction) pressCalibrationMinus:(id) sender {
+
+- (IBAction) goToDurationAction:(id) sender {
     NSLog(@"pressCalibrationMinus");
 }
 
-- (IBAction) pressCalibrationPlus:(id) sender {
-    NSLog(@"pressCalibrationPlus");
-}
 
 - (void)viewDidUnload
 {
