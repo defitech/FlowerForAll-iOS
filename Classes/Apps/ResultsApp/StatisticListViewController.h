@@ -21,13 +21,16 @@
 	IBOutlet UITableView *statisticListTableView;
 	
 	//Arrays used to store dates and exercises
-    NSArray* exerciseDays;
+    NSMutableArray* exerciseDays;
     
 	//Stores the currently selected row in the table
 	NSInteger currentlySelectedRow;
 	
 	//Child view controller
     DayStatisticListViewController *dayStatisticListViewController;
+    
+    //Bar button item to switch to edit mode
+    UIBarButtonItem *modifyButton;
 	
 }
 
@@ -35,12 +38,13 @@
 //Properties
 @property (nonatomic, retain) IBOutlet UITableView *statisticListTableView;
 
-@property (nonatomic, retain) NSArray *exerciseDays;
+@property (nonatomic, retain) NSMutableArray *exerciseDays;
 
 @property NSInteger currentlySelectedRow;
 
 @property (nonatomic, retain) DayStatisticListViewController *dayStatisticListViewController;
 
+@property (nonatomic, retain) UIBarButtonItem *modifyButton;
 
 
 @end

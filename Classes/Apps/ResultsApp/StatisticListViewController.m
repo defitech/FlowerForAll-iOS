@@ -17,7 +17,7 @@
 
 @implementation StatisticListViewController
 
-@synthesize dayStatisticListViewController, exerciseDays, statisticListTableView, currentlySelectedRow;
+@synthesize dayStatisticListViewController, exerciseDays, statisticListTableView, currentlySelectedRow, modifyButton;
 
 
 #pragma mark -
@@ -27,6 +27,8 @@
     NSLog(@"StatListViewController initWithNibName");
 	if (self) {
 		// Custom initialization.
+        modifyButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"ModifyTableButtonLabel", @"ResultsApp", @"Label of the modify table button") style:UIBarButtonItemStylePlain target:self action:@selector(modifyTable)];
+        self.navigationItem.rightBarButtonItem = modifyButton;
 	}
 	return self;
 }
@@ -39,10 +41,7 @@
     [super viewDidLoad];
     NSLog(@"StatListViewController didload");
 	
-	//Set title, disable scrolling (at least for the moment)
-	//self.title = NSLocalizedString(@"StatisticListViewTitle", @"Title of the statistic list view");
     self.title = NSLocalizedStringFromTable(@"StatisticListViewTitle",@"ResultsApp",@"Title of the statistic list view");
-	statisticListTableView.scrollEnabled = YES;
 	
 	//Fetch list of all days from the DB
 	exerciseDays = [DB getDays];
@@ -59,6 +58,51 @@
 	[self.statisticListTableView reloadData];
 	
 }
+
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+        return UITableViewCellEditingStyleDelete;
+}
+
+
+//Called when the user confirms deletion of a row
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSUInteger row = [indexPath row];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        //Remove exercises of the given day
+        ExerciseDay* day = [exerciseDays objectAtIndex:row];
+        [DB deleteDay:day.formattedDate];
+        
+        //Update the model here (necessary to avoid inconsistency exception)
+        [exerciseDays removeObjectAtIndex:row];
+        
+        //Remove row from the table view
+        [statisticListTableView beginUpdates];
+        [statisticListTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [statisticListTableView endUpdates];
+    }
+}
+
+
+
+//Called when the user pushes the modify button
+- (void)modifyTable {
+	
+    //Set the table in edit mode or in non-edit mode
+	if (statisticListTableView.editing == NO) {
+        [statisticListTableView setEditing:YES animated:YES];
+		modifyButton.style = UIBarButtonItemStyleDone;
+        modifyButton.title = NSLocalizedStringFromTable(@"ModifyTableButtonLabelInEditMode",@"ResultsApp",@"Label of the modify table button in edit mode");
+	}
+	else {
+        [statisticListTableView setEditing:NO animated:YES];
+		modifyButton.style = UIBarButtonItemStylePlain;
+        modifyButton.title = NSLocalizedStringFromTable(@"ModifyTableButtonLabel",@"ResultsApp",@"Label of the modify table button");
+	}
+    
+}
+
 
 
 #pragma mark -
@@ -88,7 +132,7 @@
     
 	if (cell == nil) {
 		cell = [[[StatisticCell alloc] initWithFrame:CGRectZero reuseIdentifier: CellIdentifier] autorelease];
-		//cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
 	NSUInteger row = [indexPath row];

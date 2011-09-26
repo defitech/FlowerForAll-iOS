@@ -16,7 +16,7 @@
 
 @implementation DayStatisticListViewController
 
-@synthesize formattedDate,dateFormatter,timeFormatter, exercises, statisticListTableView, currentlySelectedRow;
+@synthesize formattedDate,dateFormatter,timeFormatter, exercises, statisticListTableView, currentlySelectedRow, modifyButton;
 
 
 #pragma mark -
@@ -36,6 +36,9 @@
         timeFormatter = [[NSDateFormatter alloc] init];
         [timeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
         [timeFormatter setDateFormat:@"HH:mm:ss"];
+        
+        modifyButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"ModifyTableButtonLabel", @"ResultsApp", @"Label of the modify table button") style:UIBarButtonItemStylePlain target:self action:@selector(modifyTable)];
+        self.navigationItem.rightBarButtonItem = modifyButton;
 	}
 	return self;
 }
@@ -48,9 +51,7 @@
     [super viewDidLoad];
     NSLog(@"DayStatListViewController didload");
 	
-	//Set title, disable scrolling (at least for the moment)
 	self.title = formattedDate;
-	//statisticListTableView.scrollEnabled = NO;
 	
     //Fetch exercises of the day from the DB
 	exercises = [DB getExercisesInDay:formattedDate];
@@ -67,6 +68,54 @@
 	[self.statisticListTableView reloadData];
 	
 }
+
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+
+//Called when the user confirms deletion of a row
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSUInteger row = [indexPath row];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        //Remove exercises of the given day
+        Exercise* ex = [exercises objectAtIndex:row];
+        [DB deleteExercise:ex.start_ts];
+        
+        //Update the model here (necessary to avoid inconsistency exception)
+        [exercises removeObjectAtIndex:row];
+        
+        //Remove row from the table view
+        [statisticListTableView beginUpdates];
+        [statisticListTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [statisticListTableView endUpdates];
+        
+        if ([exercises count] == 0) {
+            [[self navigationController] popViewControllerAnimated:YES];
+        }
+    }
+}
+
+
+//Called when the user pushes the modify button
+- (void)modifyTable {
+	
+    //Set the table in edit mode or in non-edit mode
+	if (statisticListTableView.editing == NO) {
+        [statisticListTableView setEditing:YES animated:YES];
+		modifyButton.style = UIBarButtonItemStyleDone;
+        modifyButton.title = NSLocalizedStringFromTable(@"ModifyTableButtonLabelInEditMode",@"ResultsApp",@"Label of the modify table button in edit mode");
+	}
+	else {
+        [statisticListTableView setEditing:NO animated:YES];
+		modifyButton.style = UIBarButtonItemStylePlain;
+        modifyButton.title = NSLocalizedStringFromTable(@"ModifyTableButtonLabel",@"ResultsApp",@"Label of the modify table button");
+	}
+    
+}
+
 
 
 #pragma mark -

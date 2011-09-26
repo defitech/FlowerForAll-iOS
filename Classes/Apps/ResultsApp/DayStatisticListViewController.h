@@ -19,7 +19,7 @@
 	IBOutlet UITableView *statisticListTableView;
     
     //The exercises
-    NSArray* exercises;
+    NSMutableArray* exercises;
     
     //The date of the current day formatted as a string
     NSString* formattedDate;
@@ -31,6 +31,8 @@
 	//Stores the currently selected row in the table
 	NSInteger currentlySelectedRow;
 	
+    //Bar button item to switch to edit mode
+    UIBarButtonItem *modifyButton;
 	
 }
 
@@ -38,7 +40,7 @@
 //Properties
 @property (nonatomic, retain) IBOutlet UITableView *statisticListTableView;
 
-@property (nonatomic, retain) NSArray *exercises;
+@property (nonatomic, retain) NSMutableArray *exercises;
 
 @property (nonatomic, retain) NSString* formattedDate;
 
@@ -46,6 +48,8 @@
 @property (nonatomic, retain) NSDateFormatter *timeFormatter;
 
 @property NSInteger currentlySelectedRow;
+
+@property (nonatomic, retain) UIBarButtonItem *modifyButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil extraParameter:(NSString*)_formattedDate;
 

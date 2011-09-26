@@ -234,7 +234,7 @@ static sqlite3 *database;
 }
 
 
-+(NSArray*) getDays {
++(NSMutableArray*) getDays {
 	NSLog(@"Get all days");
 	
     NSMutableArray *days = [[NSMutableArray alloc] init];
@@ -273,8 +273,7 @@ static sqlite3 *database;
 }
 
 
-
-+(NSArray*) getExercisesInDay:(NSString*) day {
++(NSMutableArray*) getExercisesInDay:(NSString*) day {
 	NSLog(@"Get exercises in the given day");
 	
     NSDateFormatter* dateAndTimeFormatter = [[NSDateFormatter alloc] init];
@@ -300,6 +299,32 @@ static sqlite3 *database;
     sqlite3_finalize(cStatement);
     [dateAndTimeFormatter release];
     return exercises;
+}
+
+
++(void) deleteDay:(NSString*)day {
+	NSLog(@"Delete exercises in the given day");
+	
+    NSDateFormatter* dateAndTimeFormatter = [[NSDateFormatter alloc] init];
+    [dateAndTimeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    [dateAndTimeFormatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
+    
+    NSDate *dayBegin = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day, @"00:00:00"]];
+    NSDate *dayEnd = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day, @"23:59:59"]];
+    
+    double dayBeginAbsoluteTime = [dayBegin timeIntervalSinceReferenceDate];
+    double dayEndAbsoluteTime = [dayEnd timeIntervalSinceReferenceDate];
+    
+    [DB executeWF:@"DELETE FROM exercices WHERE (start_ts >= '%f' AND start_ts <= '%f')", dayBeginAbsoluteTime, dayEndAbsoluteTime];
+
+    [dateAndTimeFormatter release];
+}
+
+
++(void) deleteExercise:(double)start_ts {
+	NSLog(@"Delete exercise");
+    
+    [DB executeWF:@"DELETE FROM exercices WHERE start_ts = '%f'", start_ts];
 }
 
 

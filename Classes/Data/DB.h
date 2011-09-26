@@ -95,11 +95,13 @@
 /*************************************************** Exercice *******************************************************/
 + (void) saveExercice:(FLAPIExercice*)exercice;
 
-+(NSArray*) getExercises;
++(NSMutableArray*) getDays;
 
-+(NSArray*) getDays;
++(NSMutableArray*) getExercisesInDay:(NSString*) day;
 
-+(NSArray*) getExercisesInDay:(NSString*) day;
++(void) deleteDay:(NSString*) day;
+
++(void) deleteExercise:(double)start_ts;
 
 /*************************************************** BLOWS *******************************************************/
 + (void) saveBlow:(FLAPIBlow*)blow;  

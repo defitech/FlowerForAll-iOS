@@ -1,3 +1,5 @@
 "StatisticListViewTitle" = "Satistiques";
 
+"ModifyTableButtonLabel" = "Modifier";
 
+"ModifyTableButtonLabelInEditMode" = "OK";
