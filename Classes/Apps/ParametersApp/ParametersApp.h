@@ -31,6 +31,9 @@
     
     IBOutlet UIButton *buttonProfile;
     
+    
+    IBOutlet UIButton *goToCalibrationButton;
+    
 }
 
 
@@ -52,10 +55,10 @@
 @property (nonatomic, retain) UISlider *exerciceSlider;
 
 @property (nonatomic, retain) UIButton *buttonProfile;
-
+@property (nonatomic, retain) UIButton *goToCalibrationButton;
 
 - (IBAction)profileButtonPushed:(id)sender;
-
+- (IBAction)goToCalibration:(id)sender;
 
 - (void)reloadValues ;
 

@@ -112,7 +112,7 @@
 
 
 - (IBAction) goToDurationAction:(id) sender {
-    NSLog(@"pressCalibrationMinus");
+    [FlowerController pushApp:@"ParametersApp" withUIViewAnimation:UIViewAnimationTransitionFlipFromRight];
 }
 
 

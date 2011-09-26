@@ -26,7 +26,7 @@
 
 @synthesize  durationLabel, playBackLabel, playBackSlider,
 expirationLabel, expirationTimeLabel, expirationSlider,
-exerciceLabel, exerciceTimeLabel, exerciceSlider, buttonProfile;
+exerciceLabel, exerciceTimeLabel, exerciceSlider, buttonProfile, goToCalibrationButton;
 
 
 # pragma mark utilities for non-linear progression of the exercice duration
@@ -95,6 +95,8 @@ float minExerciceDuration_s = 7.0;
     [exerciceSlider setMinimumValue:0.0f];
     [exerciceSlider setMaximumValue:1.0f];
     
+    [goToCalibrationButton setTitle:[ParametersApp translate:@"Calibration settings" comment:@"go to calibration settings"] forState:UIControlStateNormal];
+
     
     [self reloadValues];
    
@@ -235,6 +237,12 @@ NSArray* myProfils;
     p = nil;
 }
 
+# pragma mark navigation
+
+- (void)goToCalibration:(id)sender {
+    [FlowerController pushApp:@"CalibrationApp" withUIViewAnimation:UIViewAnimationTransitionFlipFromRight];
+}
+
 # pragma mark profilPicker
 
 - (void)didReceiveMemoryWarning {
@@ -253,6 +261,7 @@ NSArray* myProfils;
     self.exerciceLabel = nil;
 	self.exerciceTimeLabel = nil;
     self.exerciceSlider = nil;
+    self.buttonProfile = nil;
 }
 
 

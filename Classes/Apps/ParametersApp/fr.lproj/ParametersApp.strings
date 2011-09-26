@@ -24,3 +24,6 @@
 "Profil" = "Profil";
 
 "PlayBackLabel" = "Volume de retour";
+
+/* go to calibration settings */
+"Calibration settings" = "Calibration";

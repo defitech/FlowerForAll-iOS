@@ -25,3 +25,6 @@
 "Profil" = "Profile";
 
 "PlayBackLabel" = "PlayBack Volume";
+
+/* go to calibration settings */
+"Calibration settings" = "Calibration";

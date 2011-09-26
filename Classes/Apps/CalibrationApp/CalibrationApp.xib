@@ -210,7 +210,7 @@
 					<object class="IBUIButton" id="738228078">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{65, 8}, {244, 37}}</string>
+						<string key="NSFrame">{{118, 8}, {191, 33}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:222</string>
@@ -219,8 +219,8 @@
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica</string>
-							<double key="NSSize">15</double>
+							<string key="NSName">Helvetica-Light</string>
+							<double key="NSSize">14</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<int key="IBUIButtonType">1</int>
@@ -238,7 +238,7 @@
 					<object class="IBUIButton" id="513812224">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{274, 11}, {29, 31}}</string>
+						<string key="NSFrame">{{278, 8}, {29, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:222</string>
@@ -394,8 +394,8 @@
 							<reference ref="1066462540"/>
 							<reference ref="896728784"/>
 							<reference ref="738228078"/>
-							<reference ref="513812224"/>
 							<reference ref="264030788"/>
+							<reference ref="513812224"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
