@@ -145,7 +145,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     angle_freqMax = [NeedleGL frequencyToAngle:([flapix frequenceTarget] + [flapix frequenceTolerance])]*180;
     angle_toreach = [NeedleGL frequencyToAngle:flapix.frequency]*180;
     
-    if (angle_toreach == angle_actual && angle_freqMin == angle_freqMin_previous && angle_freqMax == angle_freqMax_previous) {
+    if (fabs(angle_toreach - angle_actual) < 2  && angle_freqMin == angle_freqMin_previous && angle_freqMax == angle_freqMax_previous) {
         //nothing to do
         return;
     }
