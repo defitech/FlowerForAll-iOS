@@ -112,7 +112,7 @@
 
 
 - (IBAction) goToDurationAction:(id) sender {
-    [FlowerController pushApp:@"ParametersApp" withUIViewAnimation:UIViewAnimationTransitionFlipFromRight];
+    [FlowerController pushApp:@"ParametersApp" withUIViewAnimation:UIViewAnimationTransitionFlipFromLeft];
 }
 
 

@@ -240,7 +240,7 @@ NSArray* myProfils;
 # pragma mark navigation
 
 - (void)goToCalibration:(id)sender {
-    [FlowerController pushApp:@"CalibrationApp" withUIViewAnimation:UIViewAnimationTransitionFlipFromRight];
+    [FlowerController pushApp:@"CalibrationApp" withUIViewAnimation:UIViewAnimationTransitionFlipFromLeft];
 }
 
 # pragma mark profilPicker
