@@ -125,41 +125,53 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
 - (void)drawView {
     FLAPIX* flapix = [FlowerController currentFlapix];
     if (flapix == nil) return;
-	
-//	// Def de notre triangle
-//	const GLfloat triangleVertices[] = {
-//        1.0, 1.0, -5.0,                    // base droite
-//        -3.0, 0.0, -5.0,                   // pointe
-//        1.0, -1.0, -5.0                    // base gauche
-//    };
     
-	// Def needle
+	    
+	/*************** Logic code ******************/
+    
+    
+    static float angle_actual = 0.1f;         // effective rotation angle in degrees
+    static float angle_toreach = 0.0f;         // current angle
+    static float angle_previous = 0.0f;           // previous angle
+    static float angle_freqMin = 0.0f;
+    static float angle_freqMax = 0.0f;
+    static float angle_freqMin_previous = 0.0f;
+    static float angle_freqMax_previous = 0.0f;
+    static float speed = 0.0f;          // rotation speed
+    
+    
+    
+    angle_freqMin = [NeedleGL frequencyToAngle:([flapix frequenceTarget] - [flapix frequenceTolerance])]*180;
+    angle_freqMax = [NeedleGL frequencyToAngle:([flapix frequenceTarget] + [flapix frequenceTolerance])]*180;
+    angle_toreach = [NeedleGL frequencyToAngle:flapix.frequency]*180;
+    
+    if (angle_toreach == angle_actual && angle_freqMin == angle_freqMin_previous && angle_freqMax == angle_freqMax_previous) {
+        //nothing to do
+        return;
+    }
+    angle_freqMin_previous = angle_freqMin_previous;
+    angle_freqMax_previous = angle_freqMax_previous;
+    
+    
+    /*************** Drawing code ******************/
+    
+    // Def needle
 	const GLfloat quadVertices[] = {
-        0.0, 0.5, -5.0,                     // right
-        -2.0, 0.0, -5.0,                    // head
-        0.0, -0.5, -5.0,                    // left
-        0.5, 0.0, -5.0                      // queue
+          0.0, 2.0, -5.0,                    // head
+          0.5, 0.0, -5.0,                    // left
+          0.0, -0.5, -5.0,                      // queue
+         -0.5, 0.0, -5.0                     // right
+      
+      
+      
     };
 	
     [EAGLContext setCurrentContext:context];    
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
     glViewport(0, 0, backingWidth, backingHeight);
-//	NSLog(@"View port %d,%d",backingWidth,backingHeight);
-    
-	/*************** Debut du nouveau code ******************/
-    
-    
-    static float angle_actual = 0.0f;         // effective rotation angle in degrees
-    static float angle_toreach = 0.0f;         // current angle
-    static float angle_previous = 0.0f;           // previous angle
-    static float angle_freqMin = 0.0f;
-    static float angle_freqMax = 0.0f;
-    static float speed = 0.0f;          // rotation speed
+
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-    angle_freqMin = [NeedleGL frequencyToAngle:([flapix frequenceTarget] - [flapix frequenceTolerance])]*180;
-    angle_freqMax = [NeedleGL frequencyToAngle:([flapix frequenceTarget] + [flapix frequenceTolerance])]*180;
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -168,10 +180,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     if(!flapix.blowing) {
         
         glColor4f(0.f, 0.0f, 0.5f+[flapix lastlevel]/2, 1.0f);
-    } else {
-       
-        
-        angle_toreach = 270-[NeedleGL frequencyToAngle:flapix.frequency]*180;
+    } else { 
         speed = fabs((angle_toreach - angle_previous) / 10);
        // NSLog(@"speed = %f \n", speed);
     
@@ -182,7 +191,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
         }
         
         
-        if ((angle_freqMax < angle_actual) && (angle_freqMin > angle_actual)) { // Good
+        if ((angle_freqMax > angle_actual) && (angle_freqMin < angle_actual)) { // Good
             glColor4f(0.0f,  1.0f, 0.0f, 1.0f);
         } else { // Bad
             glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
@@ -190,7 +199,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
         
         angle_previous = angle_actual;
     }
-    glRotatef(angle_actual, 0.0f, 0.0f, 1.0f);
+    glRotatef(angle_actual, 0.0f, 0.0f, -1.0f);
     
 	
 	glVertexPointer(3, GL_FLOAT, 0, quadVertices);
@@ -209,14 +218,14 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
      glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
     
-    glRotatef(angle_freqMax, 0.0f, 0.0f, 1.0f);
+    glRotatef(angle_freqMax, 0.0f, 0.0f, -1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-     glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
+    glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
-    glRotatef(angle_freqMin, 0.0f, 0.0f, 1.0f);
+    glRotatef(angle_freqMin, 0.0f, 0.0f, -1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
     
 	

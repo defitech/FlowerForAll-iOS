@@ -15,6 +15,8 @@
 
 
 CalibratiomApp_NeedleLayer *needleLayer;
+CGPoint axeCenter;
+float reference; // width / height of reference (largest)
 
 - (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -30,7 +32,8 @@ CalibratiomApp_NeedleLayer *needleLayer;
         int needle_width = self.frame.size.width / 2.0f;
         float deltaY = 0.333333f ; //  
         
-        CGPoint axeCenter = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height * (1.0f + deltaY) / 2.0f );
+        axeCenter = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height * (1.0f + deltaY) / 2.0f );
+        reference = self.frame.size.width < self.frame.size.height ? self.frame.size.width : self.frame.size.height;
         
         needleLayer.frame = CGRectMake(axeCenter.x-(needle_width/2.0f),  axeCenter.y - (needle_width/2.0f), needle_width, needle_width);
         [self.layer addSublayer:needleLayer];
@@ -49,8 +52,8 @@ CalibratiomApp_NeedleLayer *needleLayer;
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(context, self.frame.size.width / 2, self.frame.size.height / 1.5); // Move the context
-    
+    CGContextTranslateCTM(context, axeCenter.x, axeCenter.y); // Move the context
+    CGContextScaleCTM(context,reference / 120.0f , -1 *  reference  / 120.0f); // revert the axis
    
     
     // draw the rules
@@ -63,27 +66,31 @@ CalibratiomApp_NeedleLayer *needleLayer;
 }
 
 -(void)drawFreqRules:(double)target freqTol:(double)tolerance isReference:(BOOL)isRef {
-    float angle = tolerance / target;
+    float angle[2];
+  
+    angle[0] = [NeedleGL frequencyToAngle:(target - tolerance)];
+    angle[1] = [NeedleGL frequencyToAngle:(target + tolerance)];
+    
     float length = 120.0f;
-    float x = length * sin(angle);
-    float y = - length * cos(angle);
     
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(ctx);
+    for (int i = 0; i < 2; i++) {
+        
     
-    CGContextBeginPath(ctx);
-    CGContextMoveToPoint(ctx, 0.0f, 0.0f);
-    CGContextAddLineToPoint (ctx, - x, y);
-    CGContextMoveToPoint(ctx, 0.0f, 0.0f);
-    CGContextAddLineToPoint(ctx, x, y);
-    if(isRef) {
-        CGContextSetStrokeColor(ctx, CGColorGetComponents([UIColor orangeColor].CGColor));
-        CGFloat dash[] = {6.0, 3.0};
-        CGContextSetLineDash(ctx, 0.0, dash, 2);
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+        CGContextSaveGState(ctx);
+        CGContextRotateCTM (ctx,-angle[i]*M_PI);
+        CGContextBeginPath(ctx);
+        CGContextMoveToPoint(ctx, 0.0f, 0.0f);
+        CGContextAddLineToPoint (ctx, 0.0f, length);
+        if(isRef) {
+            CGContextSetStrokeColor(ctx, CGColorGetComponents([UIColor orangeColor].CGColor));
+            CGFloat dash[] = {6.0, 3.0};
+            CGContextSetLineDash(ctx, 0.0, dash, 2);
+        }
+        CGContextSetLineWidth(ctx,1);
+        CGContextStrokePath(ctx);
+        CGContextRestoreGState(ctx);
     }
-    CGContextSetLineWidth(ctx,1);
-    CGContextStrokePath(ctx);
-    CGContextRestoreGState(ctx);
 }
 
 

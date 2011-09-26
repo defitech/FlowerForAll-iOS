@@ -60,11 +60,11 @@ static Profil* currentProfil;
 
 /** convenience tool to get min from target and tolerance **/
 -(double)frequenceMin {
-    return self.frequency_target_hz - (self.frequency_tolerance_hz / 2);
+    return self.frequency_target_hz - self.frequency_tolerance_hz;
 }
 /** convenience tool to get max from target and tolerance **/
 -(double)frequenceMax {
-    return self.frequency_target_hz + (self.frequency_tolerance_hz / 2);
+    return self.frequency_target_hz + self.frequency_tolerance_hz;
 }
 
 

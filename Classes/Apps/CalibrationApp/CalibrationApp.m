@@ -49,7 +49,7 @@
     
     
     double target = [[FlowerController currentFlapix] frequenceTarget];
-    double toleranceH =  [[FlowerController currentFlapix] frequenceTolerance] / 2;
+    double toleranceH =  [[FlowerController currentFlapix] frequenceTolerance] ;
     
 	[slider setSelectedValues:(target - toleranceH) maxValue:(target+ toleranceH)];
     
@@ -84,7 +84,7 @@
 	[self valueChangedForDoubleSlider:aSlider];
     
     double target = (aSlider.minSelectedValue + aSlider.maxSelectedValue) / 2;
-    double tolerance =  aSlider.maxSelectedValue - aSlider.minSelectedValue;
+    double tolerance =  (aSlider.maxSelectedValue - aSlider.minSelectedValue) / 2;
     
     [ParametersManager saveFrequency:target tolerance:tolerance];
 }
