@@ -38,7 +38,7 @@ static NSMutableDictionary* appList;
 }
 
 - (void) showMenu: (id) sender {
-    [self goToMenu:sender];
+    [FlowerController pushMenu];
 }
 
 /** Promote the Menu as current Main Controller **/ 
@@ -51,6 +51,7 @@ static NSMutableDictionary* appList;
     } else {
         [FlowerController setCurrentMainController:activitiesViewController];
     }
+    [activitiesViewController backToMenu];
 }
 
 

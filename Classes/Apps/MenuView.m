@@ -109,7 +109,7 @@ StatisticsViewController* statViewController;
 	
     UIButton* backButton = [UIButton buttonWithType:101]; // left-pointing shape
     [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:NSLocalizedString(@"Menu", @"Back To Menu") forState:UIControlStateNormal];
+    [backButton setTitle:NSLocalizedString(@"Back To Menu", @"Back To Menu") forState:UIControlStateNormal];
     
     // create button item
     backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];

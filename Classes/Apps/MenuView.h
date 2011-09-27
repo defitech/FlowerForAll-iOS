@@ -62,5 +62,6 @@
 
 - (IBAction) pageControlDidChangeValue:(id) sender;
 
+-(void)backToMenu ;
 
 @end

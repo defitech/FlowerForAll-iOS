@@ -1,4 +1,5 @@
-"Menu" = "Menu";
+"Menu" = "Flower For All";
+"Back To Menu" = "Menu";
 "FFA" = "Flower For All";
 "Setup Video" = "How to setup Flutter®";
 "Game Volcano" = "Volcano Game";
@@ -21,7 +22,6 @@
 
 /* Name of the owner user */
 "OwnerUserName" = "Owner";
-
 
 /* Title of the setting choice view */
 "SettingChoiceViewTitle" = "Settings";

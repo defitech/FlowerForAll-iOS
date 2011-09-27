@@ -338,6 +338,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="650753798"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIBarStyle">2</int>
 						<object class="NSArray" key="IBUIItems">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUINavigationItem" id="385754603">
@@ -547,9 +548,9 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1039577078"/>
 							<reference ref="650753798"/>
 							<reference ref="158983628"/>
+							<reference ref="1039577078"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
