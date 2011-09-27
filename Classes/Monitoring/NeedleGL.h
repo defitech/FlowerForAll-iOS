@@ -36,10 +36,10 @@ Note that setting the view non-opaque will only work if the EAGL surface has an 
     NSTimer *animationTimer;
     NSTimeInterval animationInterval;
     
+    
 }
 
 @property NSTimeInterval animationInterval;
-
 
 
 - (void)drawLine:(float)x1 y1:(float)y1  z1:(float)z1 x2:(float)x2 y2:(float)y2 z2:(float)z2 ;

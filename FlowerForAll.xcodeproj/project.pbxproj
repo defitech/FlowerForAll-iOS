@@ -923,7 +923,7 @@
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
 				GCC_VERSION = 4.2;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FLAPI\"",
@@ -943,7 +943,7 @@
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
 				GCC_VERSION = 4.2;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FLAPI\"",
@@ -963,6 +963,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/include/CorePlot";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/lib";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -970,7 +971,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
 		};
@@ -984,13 +985,14 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/include/CorePlot";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/lib";
 				OTHER_LDFLAGS = (
 					"-lCorePlot",
 					"-all_load",
 					"-ObjC",
 				);
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Release;
 		};

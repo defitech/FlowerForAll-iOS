@@ -46,6 +46,14 @@
         // Get the layer
         CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
         
+        // ? retina Display
+        if ([self respondsToSelector:@selector(contentScaleFactor)])
+        {
+            self.contentScaleFactor = [[UIScreen mainScreen] scale];
+            eaglLayer.contentsScale = [[UIScreen mainScreen] scale];
+        }
+
+        
         eaglLayer.opaque = YES;
         eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [NSNumber numberWithBool:NO], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, nil];
