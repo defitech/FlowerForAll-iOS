@@ -15,6 +15,27 @@
 
 @synthesize link;
 
+
+//create the gradient
+static const CGFloat gradientGreen [] = { 
+	0.0, 0.8, 0.1, 1.0, 
+	0.0, 0.6, 0.0, 1.0
+};
+
+//create the gradient
+static const CGFloat gradientBlue [] = { 
+	0.0, 0.1, 0.8, 1.0, 
+	0.0, 0.0, 0.6, 1.0
+};
+
+//create the gradient
+static const CGFloat gradientRed [] = { 
+	0.8, 0.1, 0.0, 1.0, 
+	0.6, 0.0, 0.0, 1.0
+};
+
+int actualGradient = 0;
+
 CGPoint axeCenter;
 float reference; // width / height of reference (largest)
 
@@ -28,6 +49,8 @@ float reference; // width / height of reference (largest)
         float deltaY = 0.333333f ; //  
         axeCenter = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height * (1.0f + deltaY) / 2.0f );
         reference = self.frame.size.width < self.frame.size.height ? self.frame.size.width : self.frame.size.height;
+        
+        
         
         [self setBackgroundColor:[UIColor whiteColor]];
 
@@ -74,7 +97,19 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
    
     
     // draw the needle
-    [self drawNeedle];
+    switch (actualGradient) {
+        case 0:
+            [self drawNeedle:gradientBlue];
+        break;
+        case 1:
+            [self drawNeedle:gradientGreen];
+        break;
+        case 2:
+            [self drawNeedle:gradientRed];
+        break;  
+            
+    }
+    
          
     // draw the rules
     [self drawFreqRules:[[FlowerController currentFlapix] frequenceTarget]
@@ -103,6 +138,7 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
     angle_freqMin_previous = angle_freqMin;
     angle_freqMax_previous = angle_freqMax;
     
+    actualGradient = 0;
     if (! flapix.blowing) {
         
         
@@ -118,9 +154,9 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
         }
         
         if ((angle_freqMax > angle_actual) && (angle_freqMin < angle_actual)) { // Good
-            
+            actualGradient = 1;
         } else { // Bad
-            
+            actualGradient = 2;
         }
         
         angle_previous = angle_actual;
@@ -130,12 +166,12 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
     [self setNeedsDisplay];
 }
 
--(void)drawNeedle {
+-(void)drawNeedle:(const CGFloat[])gradient {
     CGContextRef context = UIGraphicsGetCurrentContext();
      CGContextSaveGState(context);
     
     // draw the needle
-   
+    
     
     CGContextRotateCTM (context,-1*angle_actual*M_PI);
     
@@ -151,16 +187,24 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
     CGPathAddCurveToPoint(path,NULL, 0.0f + rN, maxY,   maxX, 0.0f + r, maxX, 0.0f); // N -> W
     CGPathAddCurveToPoint(path,NULL,    maxX, 0.0f -r ,     0.0f + r, minY,  0.0f , minY); // W -> S
     CGPathCloseSubpath(path);
-    
-    CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor);
     CGContextAddPath(context, path);
-    CGContextFillPath(context);
+
+    // Gradient
+    CGContextClip(context);
+    CGColorSpaceRef baseSpace = CGColorSpaceCreateDeviceRGB();
+    CGGradientRef gGradient = CGGradientCreateWithColorComponents(baseSpace, gradient, NULL, 2);
+    CGContextDrawLinearGradient(context, gGradient, CGPointMake(0, maxY), CGPointMake(0, minY), 0); 
+    
+    CGContextDrawLinearGradient(context, gGradient, CGPointMake(0, maxY), CGPointMake(0, minY), 0);
+    
+    CGGradientRelease(gGradient), gGradient = NULL;
+
+    
     CGPathRelease(path);
     
     CGContextRestoreGState(context);
 
 }
-
 
 -(void)drawFreqRules:(double)target freqTol:(double)tolerance isReference:(BOOL)isRef {
     

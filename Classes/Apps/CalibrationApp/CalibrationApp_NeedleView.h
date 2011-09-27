@@ -20,7 +20,7 @@
 }
 @property (retain) CADisplayLink *link;
 
--(void)drawNeedle;
+-(void)drawNeedle:(const CGFloat[])gradient;
 -(void)drawFreqRules:(double)target freqTol:(double)tolerance isReference:(BOOL)isRef;
 
 -(void)refreshLastBlow:(FLAPIBlow*)blow;
