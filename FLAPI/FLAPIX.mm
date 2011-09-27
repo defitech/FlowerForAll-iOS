@@ -219,8 +219,6 @@ NSMutableArray *blowFrequencies;
 }
 
 - (void) EventBlowEnd:(double)timestamp duration:(double)length in_range_duration:(double)ir_length {
-    
-    NSLog(@"End Blow timestamp:%f length:%f ir_length:%f target:%f",timestamp,length,ir_length,[self expirationDurationTarget]);
     // Seems there is no pool for this thread.. (I must read more about this)
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
@@ -245,10 +243,9 @@ NSMutableArray *blowFrequencies;
             if (v > max) max = v;
             if (v < min) min = v;
         }
-        medianTolerance = fabs(max-min)*0.8/2;
+        medianTolerance = (max-min)*0.8/2;
     }
     // send messages
-    NSLog(@"Median frequency: %0.1f",medianFrequency);
     FLAPIBlow* blow = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal medianFrequency:medianFrequency];
     blow.medianTolerance = medianTolerance;
     
