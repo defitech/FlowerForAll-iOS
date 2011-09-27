@@ -134,7 +134,6 @@ double exerice_duration_s = -1.0f;
 }
 
 
-
 - (double) frequenceTolerance { return gParams.frequency_tolerance; }
 
 - (double) frequenceTarget { return gParams.target_frequency; }

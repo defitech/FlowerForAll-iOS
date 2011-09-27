@@ -8,7 +8,6 @@
 
 #import "CalibrationApp_NeedleView.h"
 #import "FlowerController.h"
-#import "CalibratiomApp_NeedleLayer.h"
 #import "NeedleGL.h"
 
 @implementation CalibrationApp_NeedleView

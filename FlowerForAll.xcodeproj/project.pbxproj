@@ -31,7 +31,6 @@
 		4E3A7A7B13B8777D00853344 /* FlowerHowTo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */; };
 		4E3A7A7D13B877DD00853344 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */; };
 		4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A8213B884FD00853344 /* AVFoundation.framework */; };
-		4E46B816142CE740003D738D /* CalibratiomApp_NeedleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E46B815142CE740003D738D /* CalibratiomApp_NeedleLayer.m */; };
 		4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B815A14165374009CC45D /* FlowerHowTo.m4v */; };
@@ -50,6 +49,8 @@
 		4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */; };
 		4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */; };
 		4E8F596713A7B6FF00D9D3A7 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */; };
+		4E91DCA51431CECC00C3780B /* CalibrationApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E91DCA41431CECC00C3780B /* CalibrationApp-Icon.png */; };
+		4E91DCA91431D24900C3780B /* dialpad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E91DCA81431D24900C3780B /* dialpad.png */; };
 		4E92E73F13C72C9C0060FBF6 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E72713C72C9C0060FBF6 /* NSObject+SBJson.m */; };
 		4E92E74013C72C9C0060FBF6 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E72A13C72C9C0060FBF6 /* SBJsonParser.m */; };
 		4E92E74113C72C9C0060FBF6 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E72C13C72C9C0060FBF6 /* SBJsonStreamParser.m */; };
@@ -144,8 +145,6 @@
 		4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerHowTo.xib; sourceTree = "<group>"; };
 		4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4E3A7A8213B884FD00853344 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		4E46B814142CE740003D738D /* CalibratiomApp_NeedleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibratiomApp_NeedleLayer.h; sourceTree = "<group>"; };
-		4E46B815142CE740003D738D /* CalibratiomApp_NeedleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibratiomApp_NeedleLayer.m; sourceTree = "<group>"; };
 		4E4AE46B141FA57B004256DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
 		4E4AE46D141FA584004256DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
 		4E4B815A14165374009CC45D /* FlowerHowTo.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlowerHowTo.m4v; sourceTree = "<group>"; };
@@ -177,6 +176,8 @@
 		4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlutterApp2Database.sql; sourceTree = "<group>"; };
 		4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		4E91DCA41431CECC00C3780B /* CalibrationApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalibrationApp-Icon.png"; sourceTree = "<group>"; };
+		4E91DCA81431D24900C3780B /* dialpad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialpad.png; sourceTree = "<group>"; };
 		4E92E72513C72C9C0060FBF6 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		4E92E72613C72C9C0060FBF6 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		4E92E72713C72C9C0060FBF6 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
@@ -309,6 +310,7 @@
 				4E8F590F13A7AF6B00D9D3A7 /* FlowerController.h */,
 				4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */,
 				4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */,
+				4E91DCA81431D24900C3780B /* dialpad.png */,
 				4E8F591213A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.h */,
 				4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */,
 			);
@@ -570,6 +572,7 @@
 		4EEED18B141E3D4100F56102 /* CalibrationApp */ = {
 			isa = PBXGroup;
 			children = (
+				4E91DCA41431CECC00C3780B /* CalibrationApp-Icon.png */,
 				D7C3A9C11423478900A6D464 /* minus.png */,
 				D7C3A9C21423478900A6D464 /* plus.png */,
 				4E4AE46A141FA57B004256DA /* CalibrationApp.strings */,
@@ -578,8 +581,6 @@
 				D73EB4F314223412001AB2DE /* CalibrationApp.xib */,
 				4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */,
 				4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */,
-				4E46B814142CE740003D738D /* CalibratiomApp_NeedleLayer.h */,
-				4E46B815142CE740003D738D /* CalibratiomApp_NeedleLayer.m */,
 			);
 			path = CalibrationApp;
 			sourceTree = "<group>";
@@ -758,6 +759,8 @@
 				D73C1318142879050006B28F /* StatisticListView.xib in Resources */,
 				D7F59A7F142B54CB006FE244 /* FlowerForAll.html in Resources */,
 				4EFE7915142B5369009EE121 /* PickerProfileCell.xib in Resources */,
+				4E91DCA51431CECC00C3780B /* CalibrationApp-Icon.png in Resources */,
+				4E91DCA91431D24900C3780B /* dialpad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,7 +820,6 @@
 				D73C131A142879050006B28F /* StatisticsViewController.m in Sources */,
 				D73C13201428B34D0006B28F /* ExerciseDay.m in Sources */,
 				4EFE7918142B53BA009EE121 /* PickerProfileCell.m in Sources */,
-				4E46B816142CE740003D738D /* CalibratiomApp_NeedleLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

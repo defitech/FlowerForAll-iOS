@@ -15,17 +15,22 @@
 
 @interface FlowerController : UIViewController <UIActionSheetDelegate> {
     UIView *mainView;
+    IBOutlet UIButton *menuButton;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *mainView;
+@property (nonatomic, retain) IBOutlet UIButton *menuButton;
+
+- (IBAction) showMenu: (id) sender;
 
 // show navigation action sheet
 + (void) showNav;
 
-
 + (FlowerController*) currentFlower;
 
 + (FLAPIX*) currentFlapix;
+
+
 
 /** 
  *called by Button on the UINavBar 

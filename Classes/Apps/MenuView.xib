@@ -241,6 +241,10 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="865084460"/>
+										<object class="NSCustomResource" key="IBUINormalImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">CalibrationApp-Icon.png</string>
+										</object>
 									</object>
 									<object class="IBUILabel" id="662795630">
 										<reference key="NSNextResponder" ref="171790071"/>
@@ -345,7 +349,6 @@
 						<string key="NSFrame">{{0, 384}, {326, 36}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:643</string>
 						<reference key="IBUIBackgroundColor" ref="438752637"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -363,7 +366,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="302547512">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -372,6 +375,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 460}</string>
 						<reference key="NSSuperview" ref="302547512"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:667</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -383,6 +387,8 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="302860455"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -911,12 +917,14 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>CalibrationApp-Icon.png</string>
 				<string>FlowerHowTo-icon.png</string>
 				<string>VolcanoApp-Icon.png</string>
 				<string>param-icon.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{124, 124}</string>
 				<string>{57, 57}</string>
 				<string>{57, 57}</string>
 				<string>{57, 57}</string>
