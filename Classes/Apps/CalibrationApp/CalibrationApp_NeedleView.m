@@ -99,7 +99,6 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
     if ( lastBlowIdentical && needle_needrefresh && angle_freqMin == angle_freqMin_previous && angle_freqMax == angle_freqMax_previous) {
         return;
     }
-     NSLog(@"%f %f %f",angle_toreach ,angle_actual,fabs(angle_toreach - angle_actual));
     
     angle_freqMin_previous = angle_freqMin;
     angle_freqMax_previous = angle_freqMax;
@@ -167,16 +166,14 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
     
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(ctx);
+   
     float angle[2];
   
     angle[0] = [NeedleGL frequencyToAngle:(target - tolerance)];
     angle[1] = [NeedleGL frequencyToAngle:(target + tolerance)];
     
-
-    NSLog(@"uuuuu");
     for (int i = 0; i < 2; i++) {
-       
+        CGContextSaveGState(ctx);
         CGContextRotateCTM (ctx,-angle[i]*M_PI);
         CGContextBeginPath(ctx);
         CGContextMoveToPoint(ctx, 0.0f, 3.0f);
@@ -188,8 +185,9 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
         }
         CGContextSetLineWidth(ctx,1);
         CGContextStrokePath(ctx);
+        CGContextRestoreGState(ctx);
     }
-    CGContextRestoreGState(ctx);
+   
 }
 
 

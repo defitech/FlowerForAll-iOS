@@ -42,26 +42,30 @@
     
     targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",[[FlowerController currentFlapix]frequenceTarget]];
     
-	//DoubleSlider setup
-	[slider addTarget:self action:@selector(valueChangedForDoubleSlider:) 
-     forControlEvents:UIControlEventValueChanged];
-    
-    [slider addTarget:self action:@selector(editingEndForDoubleSlider:) 
-     forControlEvents:UIControlEventEditingDidEnd];
-    
-    
+	    
     
     double target = [[FlowerController currentFlapix] frequenceTarget];
     double toleranceH =  [[FlowerController currentFlapix] frequenceTolerance] ;
     
-	[slider setSelectedValues:(target - toleranceH) maxValue:(target+ toleranceH)];
+    
+	
+    lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", target];
+    
+    [slider setSelectedValues:(target - toleranceH) maxValue:(target+ toleranceH)];
     
 	
 	//get the initial values
     //slider.transform = CGAffineTransformRotate(slider.transform, 90.0/180*M_PI);      //make it vertical
 	[self valueChangedForDoubleSlider:slider];
     
-    lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", target];
+    
+    //DoubleSlider setup
+	[slider addTarget:self action:@selector(valueChangedForDoubleSlider:) 
+     forControlEvents:UIControlEventValueChanged];
+    
+    [slider addTarget:self action:@selector(editingEndForDoubleSlider:) 
+     forControlEvents:UIControlEventEditingDidEnd];
+    
     
 }
 
@@ -99,6 +103,12 @@
 
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {
     [needle refreshLastBlow:blow];
+    lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", blow.medianFrequency];
+    NSArray* marks = [[[NSArray alloc] 
+                        initWithObjects:[NSNumber numberWithFloat:(blow.medianFrequency - blow.medianTolerance)], 
+                              [NSNumber numberWithFloat:(blow.medianFrequency + blow.medianTolerance)],
+                              nil] autorelease];
+    [slider setMarks:marks];
 }
 
 - (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {

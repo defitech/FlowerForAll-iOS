@@ -26,7 +26,6 @@
     IBOutlet DoubleSlider *slider;
     
     IBOutlet CalibrationApp_NeedleView *needle;
-
 }
 
 

@@ -30,17 +30,19 @@ static const CGFloat innerColors [] = {
 - (void)updateValues;
 - (void)addToContext:(CGContextRef)context roundRect:(CGRect)rrect withRoundedCorner1:(BOOL)c1 corner2:(BOOL)c2 corner3:(BOOL)c3 corner4:(BOOL)c4 radius:(CGFloat)radius;
 - (void)updateHandleImages;
+- (void)addMarkWithLabel:(float)mark;
 @end
 
 
 @implementation DoubleSlider
 
-@synthesize minSelectedValue, maxSelectedValue, valueStepRounding;
+@synthesize  minSelectedValue, maxSelectedValue, valueStepRounding;
 @synthesize minHandle, maxHandle;
 
 - (void) dealloc
 {
 	CGColorRelease(bgColor);
+    marks = nil;
 	self.minHandle = nil;
 	self.maxHandle = nil;
 	[super dealloc];
@@ -58,6 +60,7 @@ static const CGFloat innerColors [] = {
        [self initValues:(float)[[FlowerController currentFlapix] frequenceMin] 
                maxValue:(float)[[FlowerController currentFlapix] frequenceMax] ];
        [self initView:10.0f];
+        marks = [[NSMutableArray alloc] init];
     }
     return self;
     
@@ -101,18 +104,14 @@ static const CGFloat innerColors [] = {
 
 
 -(void) setSelectedValues:(float)aMinValue maxValue:(float)aMaxValue {
-    
     self.minHandle.center = CGPointMake([self valueToX:aMinValue] , sliderBarHeight * 0.5+sliderBarDeltaY);
     self.maxHandle.center = CGPointMake([self valueToX:aMaxValue], sliderBarHeight * 0.5+sliderBarDeltaY);
     [self updateValues];
-    
-    lastMinSelectedValue = self.minSelectedValue;
-    lastMaxSelectedValue = self.maxSelectedValue;
 }
 
 -(void) initView:(float)height {
     sliderBarDeltaX = 20; // needed to catch touches that are arround the handles (see TrackingWithTouch radius)
-    sliderBarDeltaY = (self.frame.size.height - height) / 2;
+    sliderBarDeltaY = (self.frame.size.height - height) / 2.5;
     sliderBarHeight = height;
     sliderBarWidth = self.frame.size.width / self.transform.a - 2*sliderBarDeltaX;  //calculate the actual bar width by dividing with the cos of the view's angle
     
@@ -144,6 +143,12 @@ static const CGFloat innerColors [] = {
 + (id) doubleSlider
 {
 	return [[[self alloc] initWithFrame:CGRectMake(0., 0., 300., 40.) minValue:0.0 maxValue:100.0 barHeight:10.0] autorelease];
+}
+
+- (void) setMarks:(NSArray*)_marks {
+    [marks removeAllObjects];
+    [marks addObjectsFromArray:_marks];
+    [self setNeedsDisplay];
 }
 
 #pragma mark Touch tracking
@@ -245,13 +250,12 @@ static const CGFloat innerColors [] = {
    
     CGContextRestoreGState(context);
     
-	//CGContextSetFillColorWithColor(context, bgColor);
-	//CGContextFillRect(context, rect2);
+    for (id mark in marks) {
+        [self addMarkWithLabel:[(NSNumber*)mark floatValue]];
+    }
     
-    [self addMarkWithLabel:lastMinSelectedValue];
-    [self addMarkWithLabel:lastMaxSelectedValue];
-    
-    
+    CGContextSaveGState(context);
+  
 	[super drawRect:rect];
 }
 
@@ -268,34 +272,42 @@ static const CGFloat innerColors [] = {
 }
 
 -(void)addMarkWithLabel:(float)mark {
-    if(mark >= 4 && mark <= 26) {
-        CGContextRef ctx = UIGraphicsGetCurrentContext();
-        CGContextSaveGState(ctx);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(ctx);
     
-        CGFloat x = [self valueToX:mark];
-        CGFloat y = self.frame.size.height / 2;
+    CGFloat x = [self valueToX:mark];
+    CGFloat y = self.frame.size.height / 2;
     
-        UIColor *orange = [UIColor orangeColor];
-        CGContextSetStrokeColor(ctx, CGColorGetComponents(orange.CGColor));
-        CGContextSetLineWidth(ctx, 1);
-        CGContextMoveToPoint(ctx, x, y - 15);
-        CGContextAddLineToPoint(ctx, x, y + 10);
-        
-        CGFloat dash[] = {5.0, 2.0};
-        CGContextSetLineDash(ctx, 0.0, dash, 2);
+    UIColor *orange = [UIColor orangeColor];
+    CGContextSetStrokeColor(ctx, CGColorGetComponents(orange.CGColor));
+    CGContextSetLineWidth(ctx, 1);
+    CGContextMoveToPoint(ctx, x, y - 15);
+    CGContextAddLineToPoint(ctx, x, y + 10);
     
-        CGContextStrokePath(ctx);
-        CGContextRestoreGState(ctx);
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x - 12, y + 10, 24, 10)];
-        [label setFont:[UIFont fontWithName:@"Helvetica" size:12]];
-        label.text = [NSString stringWithFormat:@"%1.1f", mark];
-        label.textColor = orange;
-        label.textAlignment = UITextAlignmentCenter;
-        [self addSubview:label];
-        
-        [label release];
-    }
+    CGFloat dash[] = {5.0, 2.0};
+    CGContextSetLineDash(ctx, 0.0, dash, 2);
+    
+    CGContextStrokePath(ctx);
+    
+    CGContextRestoreGState(ctx);
+    
+    // ---- Text
+    NSString* str = [NSString stringWithFormat:@"%1.1f", mark];
+    CGContextSaveGState(ctx);
+    CGContextSetFillColorWithColor(ctx, [orange CGColor]);
+    CGContextSelectFont(ctx,  "Helvetica Neue Bold" , 12.0, kCGEncodingMacRoman);
+    CGContextSetTextMatrix(ctx, CGAffineTransformMakeScale(1, -1)); 
+    
+    
+    CGContextSetTextMatrix(ctx, CGAffineTransformMakeScale(1, -1)); 
+    CGContextSetShadowWithColor(ctx, CGSizeMake(0.0, 1.0), 1.0, [[UIColor whiteColor] CGColor]);
+    CGContextSetTextMatrix(ctx, CGAffineTransformMake(1.0,0.0, 0.0, -1.0, 0.0, 0.0));
+    
+    CGContextShowTextAtPoint(ctx,x - 12, y + 20, [str UTF8String], str.length);
+    CGContextRestoreGState(ctx);
+    
+    orange = nil;
+    
 }
 
 #pragma mark Helper

@@ -8,8 +8,7 @@
 
 
 @interface DoubleSlider : UIControl {
-	float lastMinSelectedValue;
-	float lastMaxSelectedValue;
+	NSMutableArray* marks; // marks to display
 	float minSelectedValue;
 	float maxSelectedValue;
 	float minValue;
@@ -31,7 +30,6 @@
     
     float valueStepRounding;
 }
-
 @property float minSelectedValue;
 @property float maxSelectedValue;
 @property float valueStepRounding;
@@ -45,9 +43,9 @@
 
 - (id) initWithFrame:(CGRect)aFrame minValue:(float)minValue maxValue:(float)maxValue barHeight:(float)height;
 
-+ (id) doubleSlider;
++(id) doubleSlider;
 
--(void)addMarkWithLabel:(float)mark;
+-(void)setMarks:(NSArray*)marks; // NSNumbers
 
 @end
 
