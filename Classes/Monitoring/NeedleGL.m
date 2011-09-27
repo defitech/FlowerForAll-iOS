@@ -109,7 +109,6 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     CGRect rect = self.bounds;
     glFrustumf(-size, size, -size / (rect.size.width / rect.size.height), size / (rect.size.width / rect.size.height), zNear, zFar);
     glViewport(0, 0, rect.size.width, rect.size.height);
-	NSLog(@"View port %f,%f",rect.size.width,rect.size.height);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
       
 }

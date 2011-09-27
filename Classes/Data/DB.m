@@ -132,7 +132,7 @@ static sqlite3 *database;
 
 //Execute a statement 
 +(void)execute:(NSString*)sqlStatement {
-    NSLog(@"execute: %@",sqlStatement);
+    //NSLog(@"execute: %@",sqlStatement);
     sqlite3_stmt *statement = [DB genCStatement:sqlStatement];
     if (sqlite3_step(statement) != SQLITE_DONE)
     {
@@ -274,7 +274,6 @@ static sqlite3 *database;
 
 
 +(NSMutableArray*) getExercisesInDay:(NSString*) day {
-	NSLog(@"Get exercises in the given day");
 	
     NSDateFormatter* dateAndTimeFormatter = [[NSDateFormatter alloc] init];
     [dateAndTimeFormatter setTimeZone:[NSTimeZone systemTimeZone]];

@@ -38,7 +38,7 @@
     [CalibrationApp translate:@"TargetFrequencyRangeLabel" comment:@"Target Frequency Range"];
     lastFreqLabelTitle.text = 
     [CalibrationApp translate:@"Last Blow's frequency" comment:@"Last Blow's frequency"];
-    [goToDurationButton setTitle:[CalibrationApp translate:@"Duration settings" comment:@"go to uration settings"] forState:UIControlStateNormal];
+    [goToDurationButton setTitle:[CalibrationApp translate:@"Duration settings" comment:@"go to duration settings"] forState:UIControlStateNormal];
     
     targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",[[FlowerController currentFlapix]frequenceTarget]];
     

@@ -102,15 +102,12 @@ static NSMutableDictionary* appList;
         NSLog(@"** Something went bad we've lost FLowerController Singleton");
         return;
     }
-    NSLog(@"FLowerController: setCurrentMainController %@",[thisController class]);
     BOOL animated = transition != UIViewAnimationTransitionNone;
     [currentMainController viewWillDisappear:animated];
     [thisController viewWillAppear:animated];
     
     UIViewController *previousViewController = currentMainController;
     currentMainController = thisController;
-    NSLog(@"%f %f %f %f",singleton.mainView.frame.origin.x,singleton.mainView.frame.origin.y,
-          singleton.mainView.frame.size.width, singleton.mainView.frame.size.height);
     
     if ( transition != UIViewAnimationTransitionNone) {
         [UIView beginAnimations:nil context:nil];
@@ -210,14 +207,12 @@ static NSMutableDictionary* appList;
 }
 
 -(void) startButtonPressed:(id) sender {
-    NSLog(@"startButtonPressed");
     if (! [[FlowerController currentFlapix] running]) {
         [[FlowerController currentFlapix] Start];
     }
 }
 
 - (void)startStopButtonRefresh:(NSNotification *)notification {
-     NSLog(@"FLAPI_WINMSG_ON_START STOP %i",(int)[[FlowerController currentFlapix] running]);
     if ([[FlowerController currentFlapix] running]) {
         [self.view bringSubviewToFront:needleGL];
     } else {

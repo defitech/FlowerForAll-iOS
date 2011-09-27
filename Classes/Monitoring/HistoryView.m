@@ -135,7 +135,7 @@ NSTimer *repeatingTimer;
     [ self addSubview:labelFrequency ];
     [ self addSubview:labelDuration ];
     
-    historyDuration = 1; // 1 minutes
+    historyDuration = 2; // 1 minutes
     graphPadding = 2; // 2 pixels
     
     history = [[BlowHistory alloc] initWithDuration:historyDuration delegate:self];
@@ -309,7 +309,7 @@ NSTimer *repeatingTimer;
 - (id)initWithCoder:(NSCoder*)coder {
     
     if ((self = [super initWithCoder:coder])) {
-        NSLog(@"*************DO SOME REFACTORING*********");
+        //@"*************DO SOME REFACTORING*********
         [self loadStep1];
         [self loadStep2];
         
