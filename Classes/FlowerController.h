@@ -15,9 +15,12 @@
 
 @interface FlowerController : UIViewController <UIActionSheetDelegate> {
     UIView *mainView;
+    NeedleGL *needleGL;
     IBOutlet UIButton *menuButton;
+    UIButton *startButton;
 }
 
+@property (nonatomic, retain) IBOutlet UIView *needleGL;
 @property (nonatomic, retain) IBOutlet UIView *mainView;
 @property (nonatomic, retain) IBOutlet UIButton *menuButton;
 

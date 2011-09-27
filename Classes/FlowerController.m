@@ -17,7 +17,7 @@
 
 @implementation FlowerController
 
-@synthesize mainView; 
+@synthesize mainView, menuButton, needleGL; 
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
 static MenuView* activitiesViewController;
@@ -155,8 +155,8 @@ static NSMutableDictionary* appList;
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Stop Demo Mode", @"Enable Demo Mode")];
     }
     
-    actionSheet.destructiveButtonIndex = 
-    [actionSheet addButtonWithTitle:NSLocalizedString(@"Go to menu", @"Title of the first tab bar item")];
+    //actionSheet.destructiveButtonIndex = 
+    //[actionSheet addButtonWithTitle:NSLocalizedString(@"Go to menu", @"Title of the first tab bar item")];
     
     // iPad Tweak
     if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
@@ -186,10 +186,7 @@ static NSMutableDictionary* appList;
         case 1: // Enable DemoMode
             [[FlowerController currentFlapix] SetDemo:![[FlowerController currentFlapix] IsDemo]];
             break;
-        case 2: // Menu
-            [FlowerController pushMenu];
-            break;
-        case 3: // not used on iPad
+        case 2: // not used on iPad
             NSLog(@"Cancel");
             return;
             break;
@@ -211,6 +208,23 @@ static NSMutableDictionary* appList;
     }
     return self;
 }
+
+-(void) startButtonPressed:(id) sender {
+    NSLog(@"startButtonPressed");
+    if (! [[FlowerController currentFlapix] running]) {
+        [[FlowerController currentFlapix] Start];
+    }
+}
+
+- (void)startStopButtonRefresh:(NSNotification *)notification {
+     NSLog(@"FLAPI_WINMSG_ON_START STOP %i",(int)[[FlowerController currentFlapix] running]);
+    if ([[FlowerController currentFlapix] running]) {
+        [self.view bringSubviewToFront:needleGL];
+    } else {
+        [self.view bringSubviewToFront:startButton];
+    }
+}
+
 
 
 - (void)viewDidLoad
@@ -234,15 +248,27 @@ static NSMutableDictionary* appList;
     [FlowerController pushMenu]; //will init the MenuView
     [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
     
-   
+    startButton = [[UIButton alloc] initWithFrame:needleGL.frame];
+    UIImage *buttonImageNormal = [UIImage imageNamed: @"play.png"];
+    [startButton setImage:buttonImageNormal forState:UIControlStateNormal];
+    [startButton setBackgroundColor:[UIColor blackColor]];
+    [startButton setOpaque:YES];
+    [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:startButton];
+    [self startStopButtonRefresh:nil];
     
     NSLog(@"FlowerController viewDidLoad");
     // Do any additional setup after loading the view from its nib.
     [FlowerController currentFlapix];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(startStopButtonRefresh:)
+                                                 name:FLAPIX_EVENT_START object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(startStopButtonRefresh:)
+                                                 name:FLAPIX_EVENT_STOP object:nil];
 }
-
 
 +(FlowerController*) currentFlower {
     return singleton;
@@ -268,6 +294,10 @@ static NSMutableDictionary* appList;
     [appList removeAllObjects];
     [appList release];
     [singleton release];
+    menuButton = nil;
+    mainView = nil;
+    needleGL = nil;
+    startButton = nil;
 }
 
 # pragma mark Quit

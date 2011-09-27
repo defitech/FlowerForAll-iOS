@@ -234,14 +234,13 @@
 										<int key="IBUIContentVerticalAlignment">0</int>
 										<reference key="IBUIFont" ref="83977446"/>
 										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">CAL</string>
 										<reference key="IBUIHighlightedTitleColor" ref="438752637"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="865084460"/>
-										<object class="NSCustomResource" key="IBUINormalImage">
+										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">CalibrationApp-Icon.png</string>
 										</object>
@@ -349,6 +348,7 @@
 						<string key="NSFrame">{{0, 384}, {326, 36}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:643</string>
 						<reference key="IBUIBackgroundColor" ref="438752637"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -376,6 +376,7 @@
 						<string key="NSFrameSize">{320, 460}</string>
 						<reference key="NSSuperview" ref="302547512"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:667</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>

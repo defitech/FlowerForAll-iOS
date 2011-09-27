@@ -90,7 +90,6 @@
 						<string key="NSFrame">{{280, 420}, {40, 40}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:222</string>
 						<reference key="IBUIBackgroundColor" ref="858807360"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -159,6 +158,14 @@
 						<int key="IBEventType">1</int>
 					</object>
 					<int key="connectionID">13</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">needleGL</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="914775331"/>
+					</object>
+					<int key="connectionID">14</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -264,7 +271,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">13</int>
+			<int key="maxID">14</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -289,11 +296,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>mainView</string>
 							<string>menuButton</string>
+							<string>needleGL</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIView</string>
 							<string>UIButton</string>
+							<string>UIView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -302,6 +311,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>mainView</string>
 							<string>menuButton</string>
+							<string>needleGL</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -312,6 +322,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">menuButton</string>
 								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">needleGL</string>
+								<string key="candidateClassName">UIView</string>
 							</object>
 						</object>
 					</object>
