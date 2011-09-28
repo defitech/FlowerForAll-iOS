@@ -7,14 +7,14 @@
 //
 //	Implementation of the StatisticListViewController class
 
-#import "DayStatisticListViewController.h"
+#import "ResultsApp_Day.h"
 
 #import "DB.h"
 #import "Exercise.h"
 
-#import "StatisticCell.h"
+#import "ResultsApp_DayCell.h"
 
-@implementation DayStatisticListViewController
+@implementation ResultsApp_Day
 
 @synthesize formattedDate,dateFormatter,timeFormatter, exercises, statisticListTableView, currentlySelectedRow, modifyButton;
 
@@ -140,10 +140,10 @@
     static NSString *CellIdentifier = @"Cell";
     
 	//Use statistic cell instead of standard UITableViewCell
-	StatisticCell *cell = (StatisticCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	ResultsApp_DayCell *cell = (ResultsApp_DayCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
 	if (cell == nil) {
-		cell = [[[StatisticCell alloc] initWithFrame:CGRectZero reuseIdentifier: CellIdentifier] autorelease];
+		cell = [[[ResultsApp_DayCell alloc] initWithFrame:CGRectZero reuseIdentifier: CellIdentifier] autorelease];
 		//cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	

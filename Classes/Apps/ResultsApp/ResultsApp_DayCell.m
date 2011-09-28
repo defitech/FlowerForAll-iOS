@@ -8,10 +8,10 @@
 //  Implementation of the StatisticCell class
 
 
-#import "StatisticCell.h"
+#import "ResultsApp_DayCell.h"
 
 
-@implementation StatisticCell
+@implementation ResultsApp_DayCell
 
 
 @synthesize primaryLabel, secondaryLabel, thirdLabel;

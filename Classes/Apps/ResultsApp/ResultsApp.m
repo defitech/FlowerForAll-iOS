@@ -30,7 +30,7 @@
     
 
     
-    statViewController = [[StatisticsViewController alloc] init];
+    statViewController = [[ResultsApp_Nav alloc] init];
     statViewController.view.frame = CGRectMake(0,0,
                                                self.controllerView.frame.size.width,
                                                self.controllerView.frame.size.height);

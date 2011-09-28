@@ -7,12 +7,12 @@
 //
 
 #import "FlowerApp.h"
-#import "StatisticsViewController.h";
+#import "ResultsApp_Nav.h";
 
 @interface ResultsApp : FlowerApp {
     IBOutlet UIView* controllerView; 
     IBOutlet UITabBar* toolbar; 
-    StatisticsViewController* statViewController;
+    ResultsApp_Nav* statViewController;
 }
 
 @property (nonatomic, retain)  IBOutlet UIView* controllerView;  

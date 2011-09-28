@@ -9,7 +9,7 @@
 "Go to menu" = "Go to menu";
 
 /* Title of the second tab bar item */
-"Statistics" = "Statistics";
+"Statistics" = "Results";
 
 /* Text of the username label */
 "UsernameLabel" = "Username";
@@ -27,7 +27,7 @@
 "SettingChoiceViewTitle" = "Settings";
 
 /* Title of the statistic list view */
-"StatisticListViewTitle" = "Statistics";
+"StatisticListViewTitle" = "Results";
 
 /* Title of the user list view */
 "UserListViewTitle" = "Users";

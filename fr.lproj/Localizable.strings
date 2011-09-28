@@ -9,7 +9,7 @@
 "Go to menu" = "Aller au menu";
 
 /* Title of the second tab bar item */
-"Statistics" = "Statistiques";
+"Statistics" = "Résultats";
 
 
 /* Text of the username label */
@@ -34,7 +34,7 @@
 "SettingChoiceViewTitle" = "Objectifs d'expiration";
 
 /* Title of the statistic list view */
-"StatisticListViewTitle" = "Statistiques";
+"StatisticListViewTitle" = "Résultats";
 
 /* Title of the user list view */
 "UserListViewTitle" = "Utilisateurs";

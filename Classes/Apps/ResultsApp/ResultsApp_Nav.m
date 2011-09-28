@@ -8,10 +8,10 @@
 //  Implementation of the StatisticsViewController class
 
 
-#import "StatisticsViewController.h"
-#import "StatisticListViewController.h"
+#import "ResultsApp_Nav.h"
+#import "ResultsApp_List.h"
 
-@implementation StatisticsViewController
+@implementation ResultsApp_Nav
 
 @synthesize statisticListViewController;
 
@@ -27,7 +27,7 @@
         
         //Push a StatisticListViewController
         if (statisticListViewController == nil) {
-            statisticListViewController = [[StatisticListViewController alloc] initWithNibName:@"StatisticListView" bundle:[NSBundle mainBundle]];
+            statisticListViewController = [[ResultsApp_List alloc] initWithNibName:@"ResultsApp_List" bundle:[NSBundle mainBundle]];
         }
         [self pushViewController:statisticListViewController animated:YES];
 

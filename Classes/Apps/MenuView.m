@@ -18,7 +18,7 @@
 #import "FlowerController.h"
 #import "FlowerHowTo.h"
 #import "ParametersApp.h"
-#import "StatisticsViewController.h"
+#import "ResultsApp_Nav.h"
 
 @implementation MenuView
 
@@ -39,6 +39,10 @@
     [FlowerController pushApp:@"CalibrationApp" ];
 }
 
+- (IBAction) resultsTouch:(id) sender {
+    [FlowerController pushApp:@"ResultsApp"];
+}
+
 FlowerHowTo *flowerHowTo;
 - (IBAction) flowerHowTo:(id) sender {
     NSLog(@"flowerHowToTouch: %@",[flowerHowTo class]);
@@ -48,10 +52,7 @@ FlowerHowTo *flowerHowTo;
     [FlowerController setCurrentMainController:flowerHowTo];
 }
 
-StatisticsViewController* statViewController;
-- (IBAction) resultsTouch:(id) sender {
-    [FlowerController pushApp:@"ResultsApp"];
-}
+
 
 
 -(void)backToMenu {

@@ -9,14 +9,14 @@
 
 
 #import <UIKit/UIKit.h>
-#import "StatisticListViewController.h"
+#import "ResultsApp_List.h"
 
 
-@interface StatisticsViewController : UINavigationController {
+@interface ResultsApp_Nav : UINavigationController {
 
-    StatisticListViewController* statisticListViewController;
+    ResultsApp_List* statisticListViewController;
 }
 
-@property (nonatomic, retain) StatisticListViewController* statisticListViewController;
+@property (nonatomic, retain) ResultsApp_List* statisticListViewController;
 
 @end

@@ -7,13 +7,13 @@
 //
 //	Implementation of the StatisticListViewController class
 
-#import "DayStatisticListViewController.h"
-#import "StatisticListViewController.h"
+#import "ResultsApp_Day.h"
+#import "ResultsApp_List.h"
 
 #import "DB.h"
 #import "ExerciseDay.h"
 
-@implementation StatisticListViewController
+@implementation ResultsApp_List
 
 @synthesize dayStatisticListViewController, exerciseDays, statisticListTableView, currentlySelectedRow, modifyButton;
 
@@ -190,9 +190,9 @@
         
         NSString *imagePath;
         if (c == '0')
-            imagePath = [[NSBundle mainBundle] pathForResource:@"grey_star" ofType:@"png"];
+            imagePath = [[NSBundle mainBundle] pathForResource:@"ResultsApp-grey_star" ofType:@"png"];
         else
-            imagePath = [[NSBundle mainBundle] pathForResource:@"black_star" ofType:@"png"];
+            imagePath = [[NSBundle mainBundle] pathForResource:@"ResultsApp-black_star" ofType:@"png"];
         
         UIImage *theImage = [UIImage imageWithContentsOfFile:imagePath];
         
@@ -222,7 +222,7 @@
         ExerciseDay* day = [exerciseDays objectAtIndex:row];
 
 		//if (dayStatisticListViewController == nil){
-        dayStatisticListViewController = [[DayStatisticListViewController alloc] initWithNibName:@"StatisticListView" bundle:nil extraParameter:day.formattedDate];
+        dayStatisticListViewController = [[ResultsApp_Day alloc] initWithNibName:@"StatisticListView" bundle:nil extraParameter:day.formattedDate];
 		//}
 		
 		[[self navigationController] pushViewController:dayStatisticListViewController animated:YES];

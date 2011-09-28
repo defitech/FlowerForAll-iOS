@@ -1,5 +1,5 @@
 //
-//  StatisticCell.h
+//  ResultsApp_DayCell.h
 //  FlutterApp2
 //
 //  Created by Dev on 28.12.10.
@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface StatisticCell : UITableViewCell {
+@interface ResultsApp_DayCell : UITableViewCell {
 	
 	//Widgets of the custom cell
 	UILabel *primaryLabel;

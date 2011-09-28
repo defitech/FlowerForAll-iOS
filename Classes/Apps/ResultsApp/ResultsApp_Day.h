@@ -1,5 +1,5 @@
 //
-//  StatisticListViewController.h
+//  ListViewController.h
 //  FlutterApp2
 //
 //  Created by Dev on 28.12.10.
@@ -13,7 +13,7 @@
 #import "CorePlot-CocoaTouch.h"
 
 
-@interface DayStatisticListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface ResultsApp_Day : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
 	
 	//The table view
 	IBOutlet UITableView *statisticListTableView;

@@ -12,10 +12,10 @@
 
 #import "CorePlot-CocoaTouch.h"
 
-@class DayStatisticListViewController;
+@class ResultsApp_Day;
 
 
-@interface StatisticListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface ResultsApp_List : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
 	
 	//The table view
 	IBOutlet UITableView *statisticListTableView;
@@ -27,7 +27,7 @@
 	NSInteger currentlySelectedRow;
 	
 	//Child view controller
-    DayStatisticListViewController *dayStatisticListViewController;
+    ResultsApp_Day *dayStatisticListViewController;
     
     //Bar button item to switch to edit mode
     UIBarButtonItem *modifyButton;
@@ -42,7 +42,7 @@
 
 @property NSInteger currentlySelectedRow;
 
-@property (nonatomic, retain) DayStatisticListViewController *dayStatisticListViewController;
+@property (nonatomic, retain) ResultsApp_Day *dayStatisticListViewController;
 
 @property (nonatomic, retain) UIBarButtonItem *modifyButton;
 
