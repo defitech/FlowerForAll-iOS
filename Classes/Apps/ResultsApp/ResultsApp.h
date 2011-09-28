@@ -8,12 +8,13 @@
 
 #import "FlowerApp.h"
 #import "ResultsApp_Nav.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface ResultsApp : FlowerApp {
+@interface ResultsApp : FlowerApp <MFMailComposeViewControllerDelegate>  {
     IBOutlet UIView* controllerView; 
     IBOutlet UIToolbar* toolbar; 
     ResultsApp_Nav* statViewController;
-    
     IBOutlet UIBarButtonItem *sendButton;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "ResultsApp.h"
+#import "ResultsApp_Mailer.h"
 
 @implementation ResultsApp
 
@@ -26,24 +27,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [sendButton setTitle:
+     [ResultsApp translate:@"Send results" comment:@"Button that open the mailer"]];
+    
 
+
+    
     statViewController = [[ResultsApp_Nav alloc] init];
     statViewController.view.frame = CGRectMake(0,0,
                                                self.controllerView.frame.size.width,
                                                self.controllerView.frame.size.height);
     [self.controllerView addSubview:statViewController.view];
+   
 
 }
 
-- (IBAction)sendButtonPressed:(id)sender {
-    
-}
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     controllerView = nil;
-    
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -52,6 +56,64 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+# pragma mark mailer stuff
+
+
+- (IBAction)sendButtonPressed:(id)sender {
+    NSLog(@"sendButtonPressed");
+    
+    if ([MFMailComposeViewController canSendMail]) {
+        
+        MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+        mailViewController.mailComposeDelegate = self;
+        [mailViewController setSubject:@"Flutter Data"];
+        
+        
+        NSMutableData *data = [[NSMutableData alloc] init];
+        
+        NSMutableString *message = [[NSMutableString alloc] init];
+        [message appendString:
+         NSLocalizedStringFromTable(@"<br>....Data enclosed to this mail.\n<br><br>\n", @"ResultsApp", @"Mail introduction")];
+        
+        [ResultsApp_Mailer exericesToCSV:data html:message];
+        [mailViewController setMessageBody:message isHTML:YES];
+        
+        [mailViewController addAttachmentData:data mimeType:@"text/csv" fileName:@"FlutterData"];
+        
+        [self presentModalViewController:mailViewController animated:YES];
+        [mailViewController release];
+        
+    }  else {
+        
+    }
+    
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
+{
+    // Notifies users about errors associated with the interface
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            //message.text = @"Result: canceled";
+            break;
+        case MFMailComposeResultSaved:
+            //message.text = @"Result: saved";
+            break;
+        case MFMailComposeResultSent:
+            //message.text = @"Result: sent";
+            break;
+        case MFMailComposeResultFailed:
+            //message.text = @"Result: failed";
+            break;
+        default:
+            //message.text = @"Result: not sent";
+            break;
+    }
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
