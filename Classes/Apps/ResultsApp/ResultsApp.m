@@ -8,10 +8,9 @@
 
 #import "ResultsApp.h"
 
-
 @implementation ResultsApp
 
-@synthesize controllerView, toolbar;
+@synthesize controllerView, toolbar, sendButton;
 
 
 - (void)didReceiveMemoryWarning
@@ -27,15 +26,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 
-    
     statViewController = [[ResultsApp_Nav alloc] init];
     statViewController.view.frame = CGRectMake(0,0,
                                                self.controllerView.frame.size.width,
                                                self.controllerView.frame.size.height);
     [self.controllerView addSubview:statViewController.view];
 
+}
+
+- (IBAction)sendButtonPressed:(id)sender {
+    
 }
 
 - (void)viewDidUnload

@@ -32,7 +32,7 @@
 		4E3A7A7B13B8777D00853344 /* FlowerHowTo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */; };
 		4E3A7A7D13B877DD00853344 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */; };
 		4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A8213B884FD00853344 /* AVFoundation.framework */; };
-		4E41DBEC143212C000185074 /* Mailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E41DBEB143212C000185074 /* Mailer.m */; };
+		4E4301321433AE330066ED6F /* ResultsApp_Mailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4301311433AE330066ED6F /* ResultsApp_Mailer.m */; };
 		4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B815A14165374009CC45D /* FlowerHowTo.m4v */; };
@@ -154,8 +154,8 @@
 		4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerHowTo.xib; sourceTree = "<group>"; };
 		4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4E3A7A8213B884FD00853344 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		4E41DBEA143212C000185074 /* Mailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mailer.h; sourceTree = "<group>"; };
-		4E41DBEB143212C000185074 /* Mailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mailer.m; sourceTree = "<group>"; };
+		4E4301301433AE330066ED6F /* ResultsApp_Mailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsApp_Mailer.h; sourceTree = "<group>"; };
+		4E4301311433AE330066ED6F /* ResultsApp_Mailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsApp_Mailer.m; sourceTree = "<group>"; };
 		4E4AE46B141FA57B004256DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
 		4E4AE46D141FA584004256DA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
 		4E4B815A14165374009CC45D /* FlowerHowTo.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlowerHowTo.m4v; sourceTree = "<group>"; };
@@ -321,7 +321,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4E41DBE91432128400185074 /* Transfer */,
 				D7ABFF7C140B75A1003B9F08 /* Monitoring */,
 				4ECC6CAB1404E150005519C7 /* UI */,
 				4E92E72213C72C630060FBF6 /* Net */,
@@ -435,13 +434,13 @@
 			path = FlowerHowTo;
 			sourceTree = "<group>";
 		};
-		4E41DBE91432128400185074 /* Transfer */ = {
+		4E43012F1433ADE20066ED6F /* Mailer */ = {
 			isa = PBXGroup;
 			children = (
-				4E41DBEA143212C000185074 /* Mailer.h */,
-				4E41DBEB143212C000185074 /* Mailer.m */,
+				4E4301301433AE330066ED6F /* ResultsApp_Mailer.h */,
+				4E4301311433AE330066ED6F /* ResultsApp_Mailer.m */,
 			);
-			path = Transfer;
+			path = Mailer;
 			sourceTree = "<group>";
 		};
 		4E4AE46F141FA871004256DA /* iPad */ = {
@@ -678,6 +677,7 @@
 		D73C1303142879050006B28F /* ResultsApp */ = {
 			isa = PBXGroup;
 			children = (
+				4E43012F1433ADE20066ED6F /* Mailer */,
 				D7F6174B1430CA0E00C4475B /* Visual */,
 				D73C1304142879050006B28F /* ResultsApp_Day.h */,
 				D73C1305142879050006B28F /* ResultsApp_Day.m */,
@@ -879,8 +879,8 @@
 				D73C131A142879050006B28F /* ResultsApp_Nav.m in Sources */,
 				D73C13201428B34D0006B28F /* ExerciseDay.m in Sources */,
 				4EFE7918142B53BA009EE121 /* ParametersAppPickerProfileCell.m in Sources */,
-				4E41DBEC143212C000185074 /* Mailer.m in Sources */,
 				4E4E9BE114336F9600F96792 /* ResultsApp.m in Sources */,
+				4E4301321433AE330066ED6F /* ResultsApp_Mailer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
-@interface Mailer : UIViewController <MFMailComposeViewControllerDelegate> {
+@interface ResultsApp_Mailer : UIViewController <MFMailComposeViewControllerDelegate> {
     
 }
 

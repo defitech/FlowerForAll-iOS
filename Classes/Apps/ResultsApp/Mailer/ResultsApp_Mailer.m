@@ -6,10 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "Mailer.h"
+#import "ResultsApp_Mailer.h"
 #import "DB.h"
 
-@implementation Mailer
+@implementation ResultsApp_Mailer
 
 - (void)viewDidLoad {
     
@@ -25,30 +25,22 @@
         mailViewController.mailComposeDelegate = self;
         [mailViewController setSubject:@"Flutter Data"];
         
-        
-        
-        
-        
-        // Create NSData object as PNG image data from camera image
+
         NSMutableData *data = [[NSMutableData alloc] init];
         
         NSMutableString *message = [[NSMutableString alloc] init];
         [message appendString:
             NSLocalizedStringFromTable(@"<br>....Data enclosed to this mail.\n<br><br>\n", @"ResultsApp", @"Mail introduction")];
         
-        [Mailer exericesToCSV:data html:message];
+        [ResultsApp_Mailer exericesToCSV:data html:message];
         [mailViewController setMessageBody:message isHTML:YES];
         
-        // Attach image data to the email
-        // 'CameraImage.png' is the file name that will be attached to the email
         [mailViewController addAttachmentData:data mimeType:@"text/csv" fileName:@"FlutterData"];
         
         [self presentModalViewController:mailViewController animated:YES];
         [mailViewController release];
         
-    }
-    
-    else {
+    }  else {
         
     }
     

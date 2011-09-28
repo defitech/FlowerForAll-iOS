@@ -12,7 +12,6 @@
 #import "FlutterApp2AppDelegate.h"
 #import "ParametersManager.h"
 #import "BlowHistory.h"
-#import "Mailer.h"
 
 
 @implementation FlowerController
@@ -54,19 +53,7 @@ static NSMutableDictionary* appList;
     [activitiesViewController backToMenu];
 }
 
-static Mailer* mailer;
-/**
- * PushMail
- */
-+ (void) pushMail {
-    if (mailer == nil) {
-        mailer = [[Mailer alloc] init];
-        mailer.view.frame = singleton.mainView.frame;
-        [singleton.mainView addSubview:mailer.view];
 
-    }
-    [mailer actionEmailComposer];
-}
 
 /** Promote an App as current Main Controller **/ 
 + (void) pushApp:(NSString*) flowerApp {
@@ -312,7 +299,6 @@ static Mailer* mailer;
     mainView = nil;
     needleGL = nil;
     startButton = nil;
-    mailer = nil;
 }
 
 # pragma mark Quit
