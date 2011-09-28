@@ -9,10 +9,10 @@
 #import "FlowerController.h"
 #import "MenuView.h"
 #import "ParametersApp.h"
-#import "ParametersApp.h"
 #import "FlutterApp2AppDelegate.h"
 #import "ParametersManager.h"
 #import "BlowHistory.h"
+#import "Mailer.h"
 
 
 @implementation FlowerController
@@ -54,10 +54,20 @@ static NSMutableDictionary* appList;
     [activitiesViewController backToMenu];
 }
 
+/**
+ * PushMail
+ */
++ (void) pushMail {
+    Mailer* mailer = [[Mailer alloc] init];
+    mailer.view.frame = singleton.mainView.frame;
+    [FlowerController setCurrentMainController:mailer];
+    [mailer actionEmailComposer];
+}
 
 /** Promote an App as current Main Controller **/ 
 + (void) pushApp:(NSString*) flowerApp {
-    [FlowerController pushApp:flowerApp withUIViewAnimation:UIViewAnimationTransitionNone];
+    [FlowerController pushMail];
+    //  [FlowerController pushApp:flowerApp withUIViewAnimation:UIViewAnimationTransitionNone];
 }
 
 /** Promote an App as current Main Controller **/ 
@@ -79,6 +89,9 @@ static NSMutableDictionary* appList;
     }
     [FlowerController setCurrentMainController:[appList objectForKey:flowerApp] withUIViewAnimation:transition];
 }
+
+
+
 
 /** 
  * normaly you should call goTo Menu to set the Menu 

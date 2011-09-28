@@ -613,7 +613,7 @@ void io_check_state() {
         err = AudioQueueNewOutput(&recordState.dataFormat, AudioEngineOutputBufferCallback, nil, nil, nil, 0, &ioState.queue);
         if (err != noErr) printf("AudioQueueNewOutput() error: %d \n",  (int)err);
         
-        NSLog(@"buff sizes %i %i",ioState.bufferSize,ioState.bufferByteSize);
+        //NSLog(@"buff sizes %i %i",ioState.bufferSize,ioState.bufferByteSize);
         
         AudioQueueBufferRef buffers[NUM_BUFFERS];
         for (int i=0; i<NUM_BUFFERS; i++) {
