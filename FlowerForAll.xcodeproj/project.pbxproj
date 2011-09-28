@@ -71,7 +71,6 @@
 		4EBFFD611414CD4300D4BE9C /* FLAPIExercice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */; };
 		4EC3CC971431F2640013FECF /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3CC961431F2640013FECF /* play.png */; };
 		4EC3CC99143205470013FECF /* ParametersApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3CC98143205470013FECF /* ParametersApp-Icon.png */; };
-		4EC3CC9B143209230013FECF /* sound-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3CC9A143209230013FECF /* sound-on.png */; };
 		4ECC6CAE1404E171005519C7 /* UserPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CAD1404E171005519C7 /* UserPicker.m */; };
 		4ECC6CB11404E5F7005519C7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB01404E5F7005519C7 /* UserManager.m */; };
 		4ECC6CB414053744005519C7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB314053744005519C7 /* User.m */; };
@@ -221,7 +220,6 @@
 		4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAPIExercice.m; sourceTree = "<group>"; };
 		4EC3CC961431F2640013FECF /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		4EC3CC98143205470013FECF /* ParametersApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ParametersApp-Icon.png"; sourceTree = "<group>"; };
-		4EC3CC9A143209230013FECF /* sound-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sound-on.png"; path = "../../../../../../../../Volumes/Temp/perki/Downloads/GlyphishPro/icons/icons-gray/sound-on.png"; sourceTree = "<group>"; };
 		4ECC6CAC1404E171005519C7 /* UserPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserPicker.h; path = UI/UserPicker.h; sourceTree = "<group>"; };
 		4ECC6CAD1404E171005519C7 /* UserPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserPicker.m; path = UI/UserPicker.m; sourceTree = "<group>"; };
 		4ECC6CAF1404E5F7005519C7 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserManager.h; path = Data/UserManager.h; sourceTree = "<group>"; };
@@ -599,7 +597,6 @@
 		4EEED19B141E474600F56102 /* ParametersApp */ = {
 			isa = PBXGroup;
 			children = (
-				4EC3CC9A143209230013FECF /* sound-on.png */,
 				4EC3CC98143205470013FECF /* ParametersApp-Icon.png */,
 				4E1834B6141E568100E5AE1F /* ParametersApp.strings */,
 				D73EB4F1142233EF001AB2DE /* ParametersApp.xib */,
@@ -786,7 +783,6 @@
 				4E91DCA91431D24900C3780B /* dialpad.png in Resources */,
 				4EC3CC971431F2640013FECF /* play.png in Resources */,
 				4EC3CC99143205470013FECF /* ParametersApp-Icon.png in Resources */,
-				4EC3CC9B143209230013FECF /* sound-on.png in Resources */,
 				D740E5EE14321B4600F623CB /* black_star.png in Resources */,
 				D740E5F114321B4F00F623CB /* grey_star.png in Resources */,
 			);
