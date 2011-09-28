@@ -2,7 +2,7 @@
 //  UserPicker.h
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 24.08.11.
+//  Created by Pierre-Mikael Legris (Perki) on 24.08.11.
 //  Copyright 2011 Fondation Defitech http://defitech.ch All rights reserved.
 //
 // Moved the code for the User Picker From MenuView to a Neater place

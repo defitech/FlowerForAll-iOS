@@ -2,7 +2,7 @@
 //  User.h
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 24.08.11.
+//  Created by Pierre-Mikael Legris (Perki) on 24.08.11.
 //  Copyright 2011 fondation Defitech All rights reserved.
 //
 // Vehicule for UserDara

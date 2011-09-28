@@ -2,7 +2,7 @@
 //  MyClass.m
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 09.09.11.
+//  Created by Pierre-Mikael Legris (Perki) on 09.09.11.
 //  Copyright 2011 fondationDefitech All rights reserved.
 //
 

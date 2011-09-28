@@ -2,7 +2,7 @@
 //  ConnectionManager.m
 //  EasyMemory
 //
-//  Created by Pierre-Mikael Legris on 07.07.11.
+//  Created by Pierre-Mikael Legris (Perki) on 07.07.11.
 //  Copyright 2011 SimpleData Sarl. All rights reserved.
 //
 

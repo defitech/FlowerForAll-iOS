@@ -2,7 +2,7 @@
 //  ParametersManager.h
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 25.08.11.
+//  Created by Pierre-Mikael Legris (Perki) on 25.08.11.
 //  Copyright 2011 fondation Defitech. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
  *  subsys_ios.cpp
  *  FLAPI
  *
- *  Created by Pierre-Mikael Legris on 08.03.11.
+ *  Created by Pierre-Mikael Legris (Perki) on 08.03.11.
  *  Copyright 2011 fondation Defitech. All rights reserved.
  *
  * ref: http://blog.boreal-kiss.net/2011/03/15/how-to-create-universal-static-libraries-on-xcode-4/

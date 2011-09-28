@@ -2,7 +2,7 @@
 //  Mailer.h
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 27.09.11.
+//  Created by Pierre-Mikael Legris (Perki) on 27.09.11.
 //  Copyright 2011 fondation Defitech. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  BlowHistory.m
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 31.08.11.
+//  Created by Pierre-Mikael Legris (Perki) on 31.08.11.
 //  Copyright 2011 fondation Defitech. All rights reserved.
 //
 

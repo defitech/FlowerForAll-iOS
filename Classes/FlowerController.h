@@ -2,7 +2,7 @@
 //  FlowerController.h
 //  FlutterApp2
 //
-//  Created by Pierre-Mikael Legris on 07.06.11.
+//  Created by Pierre-Mikael Legris (Perki) on 07.06.11.
 //  Copyright 2011 fondation Defitech. All rights reserved.
 //
 

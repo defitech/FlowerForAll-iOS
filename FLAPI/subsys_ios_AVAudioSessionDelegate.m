@@ -2,7 +2,7 @@
 //  subsys_ios_AVAudioSessionDelegate.m
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 06.09.11.
+//  Created by Pierre-Mikael Legris (Perki) on 06.09.11.
 //  Copyright 2011 fondation Defitech. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  FlowerHowTo.m
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 27.06.11.
+//  Created by Pierre-Mikael Legris (Perki) on 27.06.11.
 //  Copyright 2011 fondation Defitech. All rights reserved.
 //
 

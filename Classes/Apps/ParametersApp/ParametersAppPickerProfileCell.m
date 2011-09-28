@@ -2,7 +2,7 @@
 //  ParametersAppPickerProfileCell.m
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 22.09.11.
+//  Created by Pierre-Mikael Legris (Perki) on 22.09.11.
 //  Copyright 2011 fondation Defitech. All rights reserved.
 //
 

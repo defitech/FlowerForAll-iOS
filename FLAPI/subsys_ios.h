@@ -2,7 +2,7 @@
  *  subsys_ios.h
  *  FLAPI
  *
- *  Created by Pierre-Mikael Legris on 08.03.11.
+ *  Created by Pierre-Mikael Legris (Perki) on 08.03.11.
  *  Copyright 2011 fondation Defitech All rights reserved.
  *
  * Make a Lib

@@ -2,7 +2,7 @@
 //  Profil.m
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 20.09.11.
+//  Created by Pierre-Mikael Legris (Perki) on 20.09.11.
 //  Copyright 2011 fondation Defitech. All rights reserved.
 //
 
