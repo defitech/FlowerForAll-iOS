@@ -220,7 +220,7 @@
 						<string key="NSFrame">{{11, 103}, {291, 23}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="990818479"/>
+						<reference key="NSNextKeyView" ref="293709823"/>
 						<string key="NSReuseIdentifierKey">_NS:605</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -234,7 +234,7 @@
 						<string key="NSFrame">{{13, 80}, {257, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="999046670"/>
+						<reference key="NSNextKeyView" ref="791046710"/>
 						<string key="NSReuseIdentifierKey">_NS:311</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -295,13 +295,13 @@
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="131940796"/>
 					</object>
-					<object class="IBUIButton" id="990818479">
+					<object class="IBUIButton" id="791046710">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{262, 80}, {24, 24}}</string>
+						<string key="NSFrame">{{273, 86}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="293709823"/>
+						<reference key="NSNextKeyView" ref="999046670"/>
 						<string key="NSReuseIdentifierKey">_NS:222</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -316,7 +316,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="131940796"/>
 						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">sound-on.png</string>
+							<string key="NSResourceName">ParametersApp-SoundOn.png</string>
 						</object>
 					</object>
 				</object>
@@ -493,7 +493,7 @@
 							<reference ref="53499036"/>
 							<reference ref="203297813"/>
 							<reference ref="918677472"/>
-							<reference ref="990818479"/>
+							<reference ref="791046710"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -562,8 +562,8 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">71</int>
-						<reference key="object" ref="990818479"/>
+						<int key="objectID">73</int>
+						<reference key="object" ref="791046710"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
@@ -591,8 +591,8 @@
 					<string>67.IBPluginDependency</string>
 					<string>68.IBPluginDependency</string>
 					<string>68.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
-					<string>71.IBPluginDependency</string>
-					<string>71.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
+					<string>73.IBPluginDependency</string>
+					<string>73.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -631,7 +631,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">72</int>
+			<int key="maxID">73</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -794,8 +794,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">sound-on.png</string>
-			<string key="NS.object.0">{60, 50}</string>
+			<string key="NS.key.0">ParametersApp-SoundOn.png</string>
+			<string key="NS.object.0">{30, 25}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">534</string>
 	</data>
