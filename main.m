@@ -3,7 +3,7 @@
 //  OpenGL_ES_tuto1
 //
 //  Created by Marian PAUL on 19/04/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright fondation Defitech 2009. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
