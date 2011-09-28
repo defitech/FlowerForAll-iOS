@@ -1,5 +1,5 @@
 //
-//  PickerProfileCell.h
+//  ParametersAppPickerProfileCell.h
 //  FlowerForAll
 //
 //  Created by Pierre-Mikael Legris on 22.09.11.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PickerProfileCell : UITableViewCell {
+@interface ParametersAppPickerProfileCell : UITableViewCell {
     IBOutlet UILabel* nameLabel;
     IBOutlet UILabel* minHzLabel;
     IBOutlet UILabel* maxHzLabel;

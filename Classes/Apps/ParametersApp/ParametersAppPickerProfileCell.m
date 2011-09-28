@@ -1,14 +1,14 @@
 //
-//  PickerProfileCell.m
+//  ParametersAppPickerProfileCell.m
 //  FlowerForAll
 //
 //  Created by Pierre-Mikael Legris on 22.09.11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "PickerProfileCell.h"
+#import "ParametersAppPickerProfileCell.h"
 
-@implementation PickerProfileCell
+@implementation ParametersAppPickerProfileCell
 
 @synthesize   nameLabel, minHzLabel, maxHzLabel, exeDLabel, expDLabel;
 
@@ -30,7 +30,7 @@
 }
 
 - (NSString *) reuseIdentifier {
-    return @"PickerProfileCell";
+    return @"ParametersAppPickerProfileCell";
 }
 
 

@@ -87,8 +87,8 @@
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
 		4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */; };
 		4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */; };
-		4EFE7915142B5369009EE121 /* PickerProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EFE7914142B5369009EE121 /* PickerProfileCell.xib */; };
-		4EFE7918142B53BA009EE121 /* PickerProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE7917142B53BA009EE121 /* PickerProfileCell.m */; };
+		4EFE7915142B5369009EE121 /* ParametersAppPickerProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */; };
+		4EFE7918142B53BA009EE121 /* ParametersAppPickerProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */; };
 		D701908B141618510072D020 /* VolcanoApp_goal.wav in Resources */ = {isa = PBXBuildFile; fileRef = D701908A141618510072D020 /* VolcanoApp_goal.wav */; };
 		D702D18E14152C69005A1764 /* VolcanoApp_volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */; };
 		D70BFD4014332753004EABC2 /* ResultsApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */; };
@@ -250,9 +250,9 @@
 		4EFC3EBE1406837D002F0BF7 /* ParametersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParametersManager.h; path = Data/ParametersManager.h; sourceTree = "<group>"; };
 		4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParametersManager.m; path = Data/ParametersManager.m; sourceTree = "<group>"; };
 		4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-ios.a"; sourceTree = "<group>"; };
-		4EFE7914142B5369009EE121 /* PickerProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerProfileCell.xib; sourceTree = "<group>"; };
-		4EFE7916142B53BA009EE121 /* PickerProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerProfileCell.h; sourceTree = "<group>"; };
-		4EFE7917142B53BA009EE121 /* PickerProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerProfileCell.m; sourceTree = "<group>"; };
+		4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParametersAppPickerProfileCell.xib; sourceTree = "<group>"; };
+		4EFE7916142B53BA009EE121 /* ParametersAppPickerProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ParametersAppPickerProfileCell.h; sourceTree = "<group>"; };
+		4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersAppPickerProfileCell.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D701908A141618510072D020 /* VolcanoApp_goal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = VolcanoApp_goal.wav; sourceTree = "<group>"; };
 		D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VolcanoApp_volcano.png; sourceTree = "<group>"; };
@@ -455,6 +455,16 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
+		4E4E9BE314337BC800F96792 /* PickerEditor */ = {
+			isa = PBXGroup;
+			children = (
+				4E318D011421FB8C009E0FE1 /* PickerEditor.h */,
+				4E318D021421FB8C009E0FE1 /* PickerEditor.m */,
+			);
+			name = PickerEditor;
+			path = UI/PickerEditor;
+			sourceTree = "<group>";
+		};
 		4E57A86313A8F12500910E4D /* Apps */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +603,7 @@
 		4ECC6CAB1404E150005519C7 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4E4E9BE314337BC800F96792 /* PickerEditor */,
 				D77B1096140FC5A600897203 /* icon_contents_page_selected.png */,
 				D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */,
 				D77B1098140FC5A600897203 /* RSPageControl.h */,
@@ -623,17 +634,15 @@
 		4EEED19B141E474600F56102 /* ParametersApp */ = {
 			isa = PBXGroup;
 			children = (
+				4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */,
+				4EFE7916142B53BA009EE121 /* ParametersAppPickerProfileCell.h */,
+				4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */,
 				4E18C43A14333F76007C7AE7 /* sound-on.png */,
 				4EC3CC98143205470013FECF /* ParametersApp-Icon.png */,
 				4E1834B6141E568100E5AE1F /* ParametersApp.strings */,
 				D73EB4F1142233EF001AB2DE /* ParametersApp.xib */,
 				4E8F591413A7AF6B00D9D3A7 /* ParametersApp.h */,
 				4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */,
-				4E318D011421FB8C009E0FE1 /* PickerEditor.h */,
-				4E318D021421FB8C009E0FE1 /* PickerEditor.m */,
-				4EFE7914142B5369009EE121 /* PickerProfileCell.xib */,
-				4EFE7916142B53BA009EE121 /* PickerProfileCell.h */,
-				4EFE7917142B53BA009EE121 /* PickerProfileCell.m */,
 			);
 			path = ParametersApp;
 			sourceTree = "<group>";
@@ -809,7 +818,7 @@
 				D73C1314142879050006B28F /* ResultsApp.strings in Resources */,
 				D73C1318142879050006B28F /* StatisticListView.xib in Resources */,
 				D7F59A7F142B54CB006FE244 /* FlowerForAll.html in Resources */,
-				4EFE7915142B5369009EE121 /* PickerProfileCell.xib in Resources */,
+				4EFE7915142B5369009EE121 /* ParametersAppPickerProfileCell.xib in Resources */,
 				4E91DCA51431CECC00C3780B /* CalibrationApp-Icon.png in Resources */,
 				4E91DCA91431D24900C3780B /* dialpad.png in Resources */,
 				4EC3CC971431F2640013FECF /* play.png in Resources */,
@@ -877,7 +886,7 @@
 				D73C1319142879050006B28F /* StatisticListViewController.m in Sources */,
 				D73C131A142879050006B28F /* StatisticsViewController.m in Sources */,
 				D73C13201428B34D0006B28F /* ExerciseDay.m in Sources */,
-				4EFE7918142B53BA009EE121 /* PickerProfileCell.m in Sources */,
+				4EFE7918142B53BA009EE121 /* ParametersAppPickerProfileCell.m in Sources */,
 				4E41DBEC143212C000185074 /* Mailer.m in Sources */,
 				4E4E9BE114336F9600F96792 /* ResultsApp.m in Sources */,
 			);

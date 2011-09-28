@@ -13,7 +13,7 @@
 #import "ParametersManager.h"
 #import "PickerEditor.h"
 #import "Profil.h"
-#import "PickerProfileCell.h"
+#import "ParametersAppPickerProfileCell.h"
 
 @interface ParametersApp (PrivateMethods)
 - (void)valueChangedForDurationSlider:(UISlider *)slider;
@@ -171,7 +171,7 @@ float minExerciceDuration_s = 7.0;
 - (void)showOptionView
 {
     NSLog(@"ProfilPicker SHOW");
-    PickerEditor* optionViewController = [[PickerEditor alloc] initWithDelegate:self useCellNib:@"PickerProfileCell"];
+    PickerEditor* optionViewController = [[PickerEditor alloc] initWithDelegate:self useCellNib:@"ParametersAppPickerProfileCell"];
     [optionViewController showOnTopOfView:self.view];
 }
 
@@ -209,7 +209,7 @@ NSArray* myProfils;
 
 
 -(void)pimpCellAt:(PickerEditor *)sender cell:(UITableViewCell *)cell index:(int)index {
-    PickerProfileCell* pcell = (PickerProfileCell*)cell;
+    ParametersAppPickerProfileCell* pcell = (ParametersAppPickerProfileCell*)cell;
     Profil* p = (Profil*)[[self profils] objectAtIndex:index];
     pcell.nameLabel.text = p.name;
     pcell.minHzLabel.text = [NSString stringWithFormat:@"%1.1f Hz",[p frequenceMin]];
