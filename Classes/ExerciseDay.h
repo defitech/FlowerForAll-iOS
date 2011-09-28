@@ -12,6 +12,7 @@
     
     NSDate* date;
     NSString* formattedDate;
+    NSString* order;
     NSInteger good;
     NSInteger bad;
     
@@ -19,6 +20,7 @@
 
 @property (nonatomic, retain) NSDate* date;
 @property (nonatomic, retain) NSString* formattedDate;
+@property (nonatomic, retain) NSString* order;
 @property (nonatomic) NSInteger good;
 @property (nonatomic) NSInteger bad;
 

@@ -251,19 +251,26 @@ static sqlite3 *database;
         currentDay = [[ExerciseDay alloc] init:start_ts];
         
         if (lastDay == nil || ![lastDay.formattedDate isEqualToString:currentDay.formattedDate]) {
-            if (duration_exercice_done_p >= 1.0f)
+            if (duration_exercice_done_p >= 1.0f){
                 currentDay.good++;
-            else
+                currentDay.order = [currentDay.order stringByAppendingString:@"1"];
+            }
+            else{
                 currentDay.bad++;
-            
+                currentDay.order = [currentDay.order stringByAppendingString:@"0"];
+            }
             lastDay = currentDay;
             [days addObject:currentDay];
         }
         else {
-            if (duration_exercice_done_p >= 1.0f)
+            if (duration_exercice_done_p >= 1.0f){
                 lastDay.good++;
-            else
+                lastDay.order = [lastDay.order stringByAppendingString:@"1"];
+            }
+            else{
                 lastDay.bad++;
+                lastDay.order = [lastDay.order stringByAppendingString:@"0"];
+            }
         }
         
     }

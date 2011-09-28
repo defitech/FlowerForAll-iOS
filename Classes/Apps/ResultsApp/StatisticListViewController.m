@@ -13,8 +13,6 @@
 #import "DB.h"
 #import "ExerciseDay.h"
 
-#import "StatisticCell.h"
-
 @implementation StatisticListViewController
 
 @synthesize dayStatisticListViewController, exerciseDays, statisticListTableView, currentlySelectedRow, modifyButton;
@@ -85,7 +83,6 @@
 }
 
 
-
 //Called when the user pushes the modify button
 - (void)modifyTable {
 	
@@ -122,30 +119,92 @@
 }
 
 
-// Customize the appearance of table view cells
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    NSUInteger row = [indexPath row];
     
-	//Use statistic cell instead of standard UITableViewCell
-	StatisticCell *cell = (StatisticCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ExerciseDay* day = [exerciseDays objectAtIndex:row];
     
-	if (cell == nil) {
-		cell = [[[StatisticCell alloc] initWithFrame:CGRectZero reuseIdentifier: CellIdentifier] autorelease];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}
-	
-	NSUInteger row = [indexPath row];
-	
-	//Exercises for the current month and year
-	if (row < [exerciseDays count]) {
-        ExerciseDay* day = [exerciseDays objectAtIndex:row];
-		cell.primaryLabel.text = day.formattedDate;
-		
-	}
+    static NSString *CellIdentifier = @"StarOnRightCell";
+    
+    UILabel *mainLabel;
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        
+    } else {
+        
+        for(UIView* subview in [cell.contentView subviews]) {
+            [subview removeFromSuperview];
+        }
+        
+    }
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    mainLabel = [[[UILabel alloc] initWithFrame:CGRectMake(20.0, 8.0, 140.0, 25.0)] autorelease];
+    mainLabel.font = [UIFont boldSystemFontOfSize:20];
+    mainLabel.textAlignment = UITextAlignmentLeft;
+    [cell.contentView addSubview:mainLabel];
+    
+    
+    int max = day.order.length > 5 ? 5 : day.order.length;
+    
+    for(int i=0; i < max; i++){
+        UIImageView* star2 = [UIImageView alloc];
+        
+        unichar c = [day.order characterAtIndex:i];
+        
+        int starLength = 20;
+        int offset = 170;
+        
+        CGRect frame2;
+        
+        switch (max){
+            case 1:
+                frame2= CGRectMake(offset+2*starLength ,8, 20, 25);
+                break;
+            case 2:
+                frame2= CGRectMake(offset+1.5*starLength+starLength*i ,8, 20, 25);
+                break;
+            case 3:
+                frame2= CGRectMake(offset+starLength+starLength*i ,8, 20, 25);
+                break;
+            case 4:
+                frame2= CGRectMake(offset+0.5*starLength+starLength*i ,8, 20, 25);
+                break;
+            case 5:
+                frame2= CGRectMake(offset+starLength*i ,8, 20, 25);
+                break;
+            default:
+                break;
+        }
+        
+        [star2 initWithFrame:frame2];
+        
+        [cell.contentView addSubview:star2];
+        
+        NSString *imagePath;
+        if (c == '0')
+            imagePath = [[NSBundle mainBundle] pathForResource:@"grey_star" ofType:@"png"];
+        else
+            imagePath = [[NSBundle mainBundle] pathForResource:@"black_star" ofType:@"png"];
+        
+        UIImage *theImage = [UIImage imageWithContentsOfFile:imagePath];
+        
+        star2.image = theImage;
+        
+    }
+    
+    mainLabel.text = day.formattedDate;
     
     return cell;
 }
+
 
 
 #pragma mark -
@@ -167,6 +226,7 @@
 		//}
 		
 		[[self navigationController] pushViewController:dayStatisticListViewController animated:YES];
+        
 	}
 	
 }

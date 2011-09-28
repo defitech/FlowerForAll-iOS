@@ -17,7 +17,6 @@
 	UILabel *primaryLabel;
 	UILabel *secondaryLabel;
 	UILabel *thirdLabel;
-	//UISwitch *aSwitch;
 	
 }
 
@@ -26,7 +25,6 @@
 @property(nonatomic,retain)UILabel *primaryLabel;
 @property(nonatomic,retain)UILabel *secondaryLabel;
 @property(nonatomic,retain)UILabel *thirdLabel;
-//@property(nonatomic,retain)UISwitch *aSwitch;
 
 
 @end

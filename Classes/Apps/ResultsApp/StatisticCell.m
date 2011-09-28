@@ -19,25 +19,9 @@
 
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
     if (self == ([super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
-    
-/**    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code.
-    }
-    return self;
-}
-
-
-
-
-//Add the widgets to the cell
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-	
-	if (self == ([super initWithFrame:frame reuseIdentifier:reuseIdentifier])) {**/
-    
 
 		// Initialization code
 		primaryLabel = [[UILabel alloc]init];
@@ -54,14 +38,12 @@
 		thirdLabel.textAlignment = UITextAlignmentLeft;
 		//thirdLabel.font = [UIFont systemFontOfSize:20];
 		thirdLabel.font = [UIFont boldSystemFontOfSize:20];
-		
-		//aSwitch = [[UISwitch alloc] init];
+
 		
 		//myImageView = [[UIImageView alloc]init];
 		[self.contentView addSubview:primaryLabel];
 		[self.contentView addSubview:secondaryLabel];
 		[self.contentView addSubview:thirdLabel];
-		//[self.contentView addSubview:aSwitch];
 		//[self.contentView addSubview:myImageView];
 		
 	}
@@ -81,9 +63,6 @@
 	CGFloat boundsX = contentRect.origin.x;
 	CGRect frame;
 	
-	//frame= CGRectMake(boundsX+10 ,0, 50, 50);
-	//myImageView.frame = frame;
-	
 	frame= CGRectMake(boundsX+10 ,0, 200, 25);
 	primaryLabel.frame = frame;
 	
@@ -92,9 +71,6 @@
 	
 	frame= CGRectMake(boundsX+140 ,0, 100, 25);
 	thirdLabel.frame = frame;
-	
-	/*frame= CGRectMake(boundsX+210 ,8, 75, 20);
-	aSwitch.frame = frame;*/
 	
 }
 
@@ -105,10 +81,6 @@
     
     [super setSelected:selected animated:animated];
     
-    // Configure the view for the selected state.
-	/*primaryLabel.textColor = [UIColor whiteColor];
-	secondaryLabel.textColor = [UIColor whiteColor];
-	thirdLabel.textColor = [UIColor whiteColor];*/
 }
 
 

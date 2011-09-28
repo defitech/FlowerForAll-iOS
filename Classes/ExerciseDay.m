@@ -10,7 +10,7 @@
 
 @implementation ExerciseDay
 
-@synthesize date, formattedDate, good, bad;
+@synthesize date, formattedDate, order, good, bad;
 
 - (id)init:(double)start_ts
 {
@@ -25,6 +25,8 @@
         self.formattedDate = [dateFormatter stringFromDate:self.date];
         
         [dateFormatter release];
+        
+        self.order = @"";
     }
     
     return self;
