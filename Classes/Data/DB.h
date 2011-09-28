@@ -95,6 +95,8 @@
 /*************************************************** Exercice *******************************************************/
 + (void) saveExercice:(FLAPIExercice*)exercice;
 
++ (int) exericesToCSV:(NSMutableData*)data html:(NSMutableString*)html;
+
 +(NSMutableArray*) getDays;
 
 +(NSMutableArray*) getExercisesInDay:(NSString*) day;

@@ -165,7 +165,6 @@
 		4E713C2A1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = subsys_ios_AVAudioSessionDelegate.m; sourceTree = "<group>"; };
 		4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataAccess.h; path = Data/DataAccess.h; sourceTree = "<group>"; };
 		4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataAccess.m; path = Data/DataAccess.m; sourceTree = "<group>"; };
-		4E8F590313A7AF6B00D9D3A7 /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DB.h; path = Data/DB.h; sourceTree = "<group>"; };
 		4E8F590413A7AF6B00D9D3A7 /* DB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DB.m; path = Data/DB.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4E8F590913A7AF6B00D9D3A7 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Exercise.h; path = Data/Exercise.h; sourceTree = "<group>"; };
 		4E8F590A13A7AF6B00D9D3A7 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Exercise.m; path = Data/Exercise.m; sourceTree = "<group>"; };
@@ -215,6 +214,7 @@
 		4E92E73E13C72C9C0060FBF6 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		4E92E74B13C72D3A0060FBF6 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
+		4EA076E314331EFF00638C4E /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DB.h; path = Data/DB.h; sourceTree = "<group>"; };
 		4EA1A3B51420E8B800B11705 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp_NeedleView.h; sourceTree = "<group>"; };
 		4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp_NeedleView.m; sourceTree = "<group>"; };
@@ -225,6 +225,7 @@
 		4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAPIExercice.m; sourceTree = "<group>"; };
 		4EC3CC961431F2640013FECF /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		4EC3CC98143205470013FECF /* ParametersApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ParametersApp-Icon.png"; sourceTree = "<group>"; };
+		4EC3CC9A143209230013FECF /* sound-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sound-on.png"; sourceTree = "<group>"; };
 		4ECC6CAC1404E171005519C7 /* UserPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserPicker.h; path = UI/UserPicker.h; sourceTree = "<group>"; };
 		4ECC6CAD1404E171005519C7 /* UserPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserPicker.m; path = UI/UserPicker.m; sourceTree = "<group>"; };
 		4ECC6CAF1404E5F7005519C7 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserManager.h; path = Data/UserManager.h; sourceTree = "<group>"; };
@@ -469,9 +470,9 @@
 		4E57A86513A8F19900910E4D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4EA076E314331EFF00638C4E /* DB.h */,
 				4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */,
 				4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */,
-				4E8F590313A7AF6B00D9D3A7 /* DB.h */,
 				4E8F590413A7AF6B00D9D3A7 /* DB.m */,
 				4E8F590913A7AF6B00D9D3A7 /* Exercise.h */,
 				4E8F590A13A7AF6B00D9D3A7 /* Exercise.m */,

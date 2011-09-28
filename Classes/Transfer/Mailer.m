@@ -7,6 +7,7 @@
 //
 
 #import "Mailer.h"
+#import "DB.h"
 
 @implementation Mailer
 
@@ -23,15 +24,16 @@
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = self;
         [mailViewController setSubject:@"Flutter Data"];
-        [mailViewController setMessageBody:@"Your message goes here." isHTML:NO];
+        
         
         
         
         
         // Create NSData object as PNG image data from camera image
         NSMutableData *data = [[NSMutableData alloc] init];
-        
-        
+        NSMutableString *message = [[NSMutableString alloc] init];
+        [DB exericesToCSV:data html:message];
+        [mailViewController setMessageBody:message isHTML:YES];
         
         // Attach image data to the email
         // 'CameraImage.png' is the file name that will be attached to the email

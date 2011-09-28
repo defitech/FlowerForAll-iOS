@@ -54,13 +54,17 @@ static NSMutableDictionary* appList;
     [activitiesViewController backToMenu];
 }
 
+static Mailer* mailer;
 /**
  * PushMail
  */
 + (void) pushMail {
-    Mailer* mailer = [[Mailer alloc] init];
-    mailer.view.frame = singleton.mainView.frame;
-    [FlowerController setCurrentMainController:mailer];
+    if (mailer == nil) {
+        mailer = [[Mailer alloc] init];
+        mailer.view.frame = singleton.mainView.frame;
+        [singleton.mainView addSubview:mailer.view];
+
+    }
     [mailer actionEmailComposer];
 }
 
@@ -307,6 +311,7 @@ static NSMutableDictionary* appList;
     mainView = nil;
     needleGL = nil;
     startButton = nil;
+    mailer = nil;
 }
 
 # pragma mark Quit

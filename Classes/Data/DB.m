@@ -132,7 +132,7 @@ static sqlite3 *database;
 
 //Execute a statement 
 +(void)execute:(NSString*)sqlStatement {
-    //NSLog(@"execute: %@",sqlStatement);
+    NSLog(@"execute: %@",sqlStatement);
     sqlite3_stmt *statement = [DB genCStatement:sqlStatement];
     if (sqlite3_step(statement) != SQLITE_DONE)
     {
@@ -155,7 +155,7 @@ static sqlite3 *database;
  * !! don't forget to finalize it!
  */
 +(sqlite3_stmt*) genCStatement:(NSString*)sqlStatement {
-    //NSLog(@"genCStatement: %@",sqlStatement);
+    NSLog(@"genCStatement: %@",sqlStatement);
     sqlite3_stmt *cStatement;
     int res = sqlite3_prepare_v2([DB db], [sqlStatement UTF8String], -1, &cStatement, NULL);
     if(res == SQLITE_OK) {
@@ -207,6 +207,7 @@ static sqlite3 *database;
 
 // convenience shortcut to get a String at a defined index in a row
 +(NSString*) colS:(sqlite3_stmt*)cStatement index:(int)index {
+    if (sqlite3_column_text(cStatement, index) == nil) return @"";
     return [NSString stringWithUTF8String:(char *)sqlite3_column_text(cStatement, index)];
 }
 
@@ -358,22 +359,24 @@ static sqlite3 *database;
     float dayBeginAbsoluteTime = 0;
     float dayEndAbsoluteTime = 1000000000000000;
     
-    NSDictionary* headers = [NSDictionary dictionaryWithObjectsAndKeys:@"T",@"start_ts",  @"T",@"stop_ts",  @"P",@"duration_exercice_done_p", 
-                             @"I",@"blow_count",    @"I",@"blow_star_count",   @"S",@"profile_name",   
-                             @"F",@"frequency_target_hz",  @"F",@"frequency_tolerance_hz",   @"F",@"duration_expiration_s", @"F",@"duration_exercice_s", nil];
+    NSArray* headers = [[NSArray alloc] initWithObjects:@"start_ts", @"stop_ts", @"duration_exercice_done_p", 
+    @"blow_count",   @"blow_star_count",@"profile_name",  @"frequency_target_hz",
+    @"frequency_tolerance_hz", @"duration_expiration_s", @"duration_exercice_s", nil ];
+    char* typesC = "TTPIISFFFF";
+    int typeL = strlen(typesC);
     
     if (data != nil) {
-        [data appendData:[[[headers allKeys] componentsJoinedByString:@","] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+        [data appendData:[[headers componentsJoinedByString:@","] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
         [data appendData:[@"\n" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
     }
     
     if (html != nil) {
-        [html appendString:@"<table border=\"1\"><th><td>"];
-        [html appendString:[[headers allKeys] componentsJoinedByString:@"</td>\n\t<td>"]] ;
-        [html appendString:@"</td></th>\n"];
+        [html appendString:@"<table border=\"1\"><tr><th>"];
+        [html appendString:[headers componentsJoinedByString:@"</th>\n\t<th>"]] ;
+        [html appendString:@"</th></tr>\n"];
     }
     
-    NSString* headersS = [[headers allKeys] componentsJoinedByString:@", "];
+    NSString* headersS = [headers componentsJoinedByString:@", "];
     sqlite3_stmt *cStatement = [DB genCStatementWF:@"SELECT %@ FROM exercices WHERE start_ts >= '%f' AND start_ts <= '%f' ORDER BY start_ts DESC", 
                                 headersS, dayBeginAbsoluteTime, dayEndAbsoluteTime];
     
@@ -384,43 +387,42 @@ static sqlite3 *database;
     NSString* value;
     int headersCount = [headers count];
     while(sqlite3_step(cStatement) == SQLITE_ROW) {
-        int i = 0;
         count++;
-        for (NSString* key in [headers keyEnumerator]) {
-            
-            switch ([(NSString*)[headers valueForKey:key] characterAtIndex:0]) {
-                    case 'T': // time
+        for (int i = 0; i <  typeL; i++ ) {
+            switch (typesC[i]) {
+                case 'T': // time
                     value = [DB colTDF:cStatement index:i format:dateAndTimeFormatter];
                     break;
-                   /** case 'P': // percent
-                    break;
-                    case 'I': // integer
-                    break;
-                    case 'F': // float
-                    break;**/
-                    default: // string (S)
+                    /** case 'P': // percent
+                     break;
+                     case 'I': // integer
+                     break;
+                     case 'F': // float
+                     break;**/
+                default: // string (S)
                     value = [DB colS:cStatement index:i];
                     break;
             }
+            
+            if (data != nil) {
+                [data appendData:[value dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+                if (i < headersCount) {
+                    [data appendData:[@"," dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+                } else {
+                    [data appendData:[@"\n" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+                }
+            }
+            
+            if (html != nil) {
+                if (i == 0 ) {
+                    [html appendString:@"\n<tr>"];
+                } 
+                [html appendFormat:@"\n\t<td>%@</td>",value];
+                if (i == headersCount) {
+                    [html appendString:@"\n</tr>"];
+                }
+            }
             i++;
-        }
-        if (data != nil) {
-            [data appendData:[value dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
-            if (i < headersCount) {
-                [data appendData:[@"," dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
-            } else {
-                [data appendData:[@"\n" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
-            }
-        }
-        
-        if (html != nil) {
-            if (i == 0 ) {
-                [html appendString:@"\n<tr>"];
-            } 
-            [html appendFormat:@"\n\t<td>%@</td>",value];
-            if (i == headersCount) {
-                [html appendString:@"\n</tr>"];
-            }
         }
         
     }
@@ -430,7 +432,7 @@ static sqlite3 *database;
     }
     
     [dateAndTimeFormatter release];
-    
+     NSLog(html);
     return count;
 }
 
