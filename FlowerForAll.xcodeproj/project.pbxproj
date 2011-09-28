@@ -86,6 +86,7 @@
 		4EFE7918142B53BA009EE121 /* PickerProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE7917142B53BA009EE121 /* PickerProfileCell.m */; };
 		D701908B141618510072D020 /* VolcanoApp_goal.wav in Resources */ = {isa = PBXBuildFile; fileRef = D701908A141618510072D020 /* VolcanoApp_goal.wav */; };
 		D702D18E14152C69005A1764 /* VolcanoApp_volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */; };
+		D70BFD4014332753004EABC2 /* ResultsApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
 		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
@@ -243,6 +244,7 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D701908A141618510072D020 /* VolcanoApp_goal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = VolcanoApp_goal.wav; sourceTree = "<group>"; };
 		D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VolcanoApp_volcano.png; sourceTree = "<group>"; };
+		D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsApp-Icon.png"; sourceTree = "<group>"; };
 		D72E0286139E448200F3687C /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		D72E0287139E448200F3687C /* filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filter.h; sourceTree = "<group>"; };
 		D72E0288139E448200F3687C /* flapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flapi.h; sourceTree = "<group>"; };
@@ -677,6 +679,7 @@
 		D7F6174B1430CA0E00C4475B /* Visual */ = {
 			isa = PBXGroup;
 			children = (
+				D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */,
 				D740E5F014321B4F00F623CB /* grey_star.png */,
 				D740E5ED14321B4600F623CB /* black_star.png */,
 			);
@@ -785,6 +788,7 @@
 				4EC3CC99143205470013FECF /* ParametersApp-Icon.png in Resources */,
 				D740E5EE14321B4600F623CB /* black_star.png in Resources */,
 				D740E5F114321B4F00F623CB /* grey_star.png in Resources */,
+				D70BFD4014332753004EABC2 /* ResultsApp-Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
