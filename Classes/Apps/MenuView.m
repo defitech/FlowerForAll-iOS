@@ -50,10 +50,7 @@ FlowerHowTo *flowerHowTo;
 
 StatisticsViewController* statViewController;
 - (IBAction) resultsTouch:(id) sender {
-    if (statViewController == nil) {
-        statViewController = [[StatisticsViewController alloc] init];
-    }
-    [FlowerController setCurrentMainController:statViewController];
+    [FlowerController pushApp:@"ResultsApp"];
 }
 
 

@@ -212,15 +212,18 @@ static sqlite3 *database;
 }
 
 +(int) colI:(sqlite3_stmt*)cStatement index:(int)index {
+    if (sqlite3_column_text(cStatement, index) == nil) return 0;
      return sqlite3_column_int(cStatement, index);
 }
 
 +(double) colD:(sqlite3_stmt*)cStatement index:(int)index {
+     if (sqlite3_column_text(cStatement, index) == nil) return 0.0f;
     return sqlite3_column_double(cStatement, index);
 }
 
 
 +(BOOL) colB:(sqlite3_stmt*)cStatement index:(int)index {
+    if (sqlite3_column_text(cStatement, index) == nil) return FALSE;
     return (sqlite3_column_int(cStatement, index) != 0);
 }
 
@@ -352,89 +355,6 @@ static sqlite3 *database;
 
 /******************************************* EXERCICES DATA ***********************************/
 # pragma mark  EXERCICES DATA
-
-// will take dates as parameter * return exerices and an HTML version
-+ (int) exericesToCSV:(NSMutableData*)data html:(NSMutableString*)html {
-    int count = 0;
-    float dayBeginAbsoluteTime = 0;
-    float dayEndAbsoluteTime = 1000000000000000;
-    
-    NSArray* headers = [[NSArray alloc] initWithObjects:@"start_ts", @"stop_ts", @"duration_exercice_done_p", 
-    @"blow_count",   @"blow_star_count",@"profile_name",  @"frequency_target_hz",
-    @"frequency_tolerance_hz", @"duration_expiration_s", @"duration_exercice_s", nil ];
-    char* typesC = "TTPIISFFFF";
-    int typeL = strlen(typesC);
-    
-    if (data != nil) {
-        [data appendData:[[headers componentsJoinedByString:@","] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
-        [data appendData:[@"\n" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
-    }
-    
-    if (html != nil) {
-        [html appendString:@"<table border=\"1\"><tr><th>"];
-        [html appendString:[headers componentsJoinedByString:@"</th>\n\t<th>"]] ;
-        [html appendString:@"</th></tr>\n"];
-    }
-    
-    NSString* headersS = [headers componentsJoinedByString:@", "];
-    sqlite3_stmt *cStatement = [DB genCStatementWF:@"SELECT %@ FROM exercices WHERE start_ts >= '%f' AND start_ts <= '%f' ORDER BY start_ts DESC", 
-                                headersS, dayBeginAbsoluteTime, dayEndAbsoluteTime];
-    
-    NSDateFormatter* dateAndTimeFormatter = [[NSDateFormatter alloc] init];
-    [dateAndTimeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateAndTimeFormatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
-    
-    NSString* value;
-    int headersCount = [headers count];
-    while(sqlite3_step(cStatement) == SQLITE_ROW) {
-        count++;
-        for (int i = 0; i <  typeL; i++ ) {
-            switch (typesC[i]) {
-                case 'T': // time
-                    value = [DB colTDF:cStatement index:i format:dateAndTimeFormatter];
-                    break;
-                    /** case 'P': // percent
-                     break;
-                     case 'I': // integer
-                     break;
-                     case 'F': // float
-                     break;**/
-                default: // string (S)
-                    value = [DB colS:cStatement index:i];
-                    break;
-            }
-            
-            if (data != nil) {
-                [data appendData:[value dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
-                if (i < headersCount) {
-                    [data appendData:[@"," dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
-                } else {
-                    [data appendData:[@"\n" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
-                }
-            }
-            
-            if (html != nil) {
-                if (i == 0 ) {
-                    [html appendString:@"\n<tr>"];
-                } 
-                [html appendFormat:@"\n\t<td>%@</td>",value];
-                if (i == headersCount) {
-                    [html appendString:@"\n</tr>"];
-                }
-            }
-            i++;
-        }
-        
-    }
-    
-    if (html != nil) {
-        [html appendString:@"\n</table>"];
-    }
-    
-    [dateAndTimeFormatter release];
-     NSLog(html);
-    return count;
-}
 
 /*************************************************** BLOWS ***************************************************/
 # pragma mark  BLOWS

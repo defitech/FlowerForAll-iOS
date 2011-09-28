@@ -17,4 +17,7 @@
 
 - (IBAction)actionEmailComposer;
 
+
++ (int) exericesToCSV:(NSMutableData*)data html:(NSMutableString*)html;
+
 @end

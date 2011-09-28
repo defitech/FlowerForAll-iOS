@@ -70,7 +70,7 @@ static Mailer* mailer;
 
 /** Promote an App as current Main Controller **/ 
 + (void) pushApp:(NSString*) flowerApp {
-    //[FlowerController pushMail];
+   // [FlowerController pushMail];
     [FlowerController pushApp:flowerApp withUIViewAnimation:UIViewAnimationTransitionNone];
 }
 
@@ -252,6 +252,7 @@ static Mailer* mailer;
                [NSNull alloc], @"VolcanoApp",
                [NSNull alloc], @"ParametersApp",
                [NSNull alloc], @"CalibrationApp",
+               [NSNull alloc], @"ResultsApp",
                nil];
     
     

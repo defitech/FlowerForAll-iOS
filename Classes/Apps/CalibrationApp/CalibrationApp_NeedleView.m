@@ -142,7 +142,7 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
         
         
     } else {
-        speed = fabs((angle_toreach - angle_previous) / 4);
+        speed = fabs((angle_toreach - angle_previous) / 9);
         
         if (fabs(angle_toreach - angle_actual) < 0.02) {
             angle_toreach = angle_actual;

@@ -78,7 +78,7 @@ float minExerciceDuration_s = 7.0;
              forControlEvents:UIControlEventTouchUpInside];
     
     [expirationSlider setMinimumValue:0.2f];
-    [expirationSlider setMaximumValue:5.0f];
+    [expirationSlider setMaximumValue:25.0f];
    
     
     

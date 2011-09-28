@@ -63,6 +63,16 @@
 /** convenience shortcut to get a BOOLEAN at a defined index in a row  (test if == 0 )**/
 +(BOOL) colB:(sqlite3_stmt*)cStatement index:(int)index ;
 
+
+/** 
+ * convenience shortcut to get an NSDate at a defined index in a row  (test if == 0 )
+ * look at colTDF to reuse yor own NSDateFormatter
+ **/
++(NSString*) colTWF:(sqlite3_stmt*)cStatement index:(int)index format:(NSString*)format;
+
+/** convenience shortcut to get an NSDate Formated Strinf at a defined index in a row  (test if == 0 )**/
++(NSString*) colTDF:(sqlite3_stmt*)cStatement index:(int)index format:(NSDateFormatter*)dateFormatter;
+
 /*************************************************** USERS ***************************************************/
 
 
@@ -95,7 +105,6 @@
 /*************************************************** Exercice *******************************************************/
 + (void) saveExercice:(FLAPIExercice*)exercice;
 
-+ (int) exericesToCSV:(NSMutableData*)data html:(NSMutableString*)html;
 
 +(NSMutableArray*) getDays;
 
