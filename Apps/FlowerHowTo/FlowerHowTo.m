@@ -11,6 +11,14 @@
 
 @implementation FlowerHowTo
 
+# pragma mark FlowerApp overriding
+
+/** Used to put in as label on the App Menu (Localized)**/
++(NSString*)appTitle {
+    return NSLocalizedStringFromTable(@"Setup instructions",@"FlowerHowTo",@"FlowerHowTo Title");
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

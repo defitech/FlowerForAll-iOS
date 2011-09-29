@@ -40,7 +40,7 @@
     int typeL = strlen(typesC);
     
     if (data != nil) {
-        [data appendData:[[headersTitles componentsJoinedByString:@","] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+        [data appendData:[[headersTitles componentsJoinedByString:@";"] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
         [data appendData:[@"\n" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
     }
     
@@ -85,8 +85,8 @@
             
             if (data != nil) {
                 [data appendData:[value dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
-                if (i < typeL) {
-                    [data appendData:[@"," dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+                if (i < (typeL - 1)) {
+                    [data appendData:[@";" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
                 } else {
                     [data appendData:[@"\n" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
                 }
@@ -97,7 +97,7 @@
                     [html appendString:@"\n<tr>"];
                 } 
                 [html appendFormat:@"\n\t<td>%@</td>",value];
-                if (i == typeL) {
+                if (i == (typeL - 1)) {
                     [html appendString:@"\n</tr>"];
                 }
             }

@@ -92,7 +92,7 @@
         [ResultsApp_Mailer exericesToCSV:data html:message];
         [mailViewController setMessageBody:message isHTML:YES];
         
-        [mailViewController addAttachmentData:data mimeType:@"text/csv" fileName:@"FlutterData"];
+        [mailViewController addAttachmentData:data mimeType:@"text/csv" fileName:@"FlutterData.csv"];
         
         [self presentModalViewController:mailViewController animated:YES];
         [mailViewController release];
