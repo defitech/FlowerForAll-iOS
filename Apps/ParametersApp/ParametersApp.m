@@ -58,7 +58,7 @@ float minExerciceDuration_s = 7.0;
     [super viewDidLoad];
 
 	durationLabel.text = 
-         NSLocalizedStringFromTable(@"Durations: periods whe the Flutter® VRP1 vibrates in the targeted range of frequencies.",@"ParametersApp",@"DurationExplanantion");
+         NSLocalizedStringFromTable(@"Durations: periods when the Flutter® VRP1 vibrates in the targeted range of frequencies.",@"ParametersApp",@"DurationExplanantion");
 	
     
     //Volume slider
