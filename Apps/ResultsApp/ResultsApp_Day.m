@@ -37,7 +37,7 @@
         [timeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
         [timeFormatter setDateFormat:@"HH:mm"];
         
-        modifyButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"ModifyTableButtonLabel", @"ResultsApp", @"Label of the modify table button") style:UIBarButtonItemStylePlain target:self action:@selector(modifyTable)];
+        modifyButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Modify", @"ResultsApp", @"Label of the modify table button") style:UIBarButtonItemStylePlain target:self action:@selector(modifyTable)];
         self.navigationItem.rightBarButtonItem = modifyButton;
 	}
 	return self;
@@ -106,12 +106,12 @@
 	if (statisticListTableView.editing == NO) {
         [statisticListTableView setEditing:YES animated:YES];
 		modifyButton.style = UIBarButtonItemStyleDone;
-        modifyButton.title = NSLocalizedStringFromTable(@"ModifyTableButtonLabelInEditMode",@"ResultsApp",@"Label of the modify table button in edit mode");
+        modifyButton.title = NSLocalizedStringFromTable(@"OK",@"ResultsApp",@"Label of the modify table button in edit mode");
 	}
 	else {
         [statisticListTableView setEditing:NO animated:YES];
 		modifyButton.style = UIBarButtonItemStylePlain;
-        modifyButton.title = NSLocalizedStringFromTable(@"ModifyTableButtonLabel",@"ResultsApp",@"Label of the modify table button");
+        modifyButton.title = NSLocalizedStringFromTable(@"Modify",@"ResultsApp",@"Label of the modify table button");
 	}
     
 }

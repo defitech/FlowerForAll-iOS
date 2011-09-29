@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface ResultsApp_Mailer 
+@interface ResultsApp_Mailer : NSObject
 
 + (int) exericesToCSV:(NSMutableData*)data html:(NSMutableString*)html;
 

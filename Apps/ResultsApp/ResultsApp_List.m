@@ -39,7 +39,7 @@
     [super viewDidLoad];
     NSLog(@"StatListViewController didload");
 	
-    self.title = NSLocalizedStringFromTable(@"StatisticListViewTitle",@"ResultsApp",@"Title of the statistic list view");
+    self.title = NSLocalizedStringFromTable(@"Results",@"ResultsApp",nil);
 	
 	//Fetch list of all days from the DB
 	exerciseDays = [DB getDays];

@@ -29,7 +29,7 @@
                             NSLocalizedStringFromTable(@"Target Freq. Hz",@"ResultsApp", @"Data column title"),
                             NSLocalizedStringFromTable(@"Freq. Tolerance Hz", @"ResultsApp", @"Data column title"),
                             NSLocalizedStringFromTable(@"Expected blow duration (s)",@"ResultsApp" , @"Data column title"),
-                            NSLocalizedStringFromTable(@"Expected exercice duration (s)","ResultsApp" , @"Data column title"),
+                            NSLocalizedStringFromTable(@"Expected exercice duration (s)",@"ResultsApp" , @"Data column title"),
                             nil ];
     
     NSArray* headersDB = [[NSArray alloc] initWithObjects:
