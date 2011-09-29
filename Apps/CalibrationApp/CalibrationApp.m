@@ -43,7 +43,7 @@
     [super viewDidLoad];
     
 	targetFrequencyRangeLabel.text = 
-    NSLocalizedStringFromTable(@"TargetFrequencyRangeLabel",@"CalibrationApp",@"Target Frequency Range");
+    NSLocalizedStringFromTable(@"Range of frequencies",@"CalibrationApp",@"Target Frequency Range");
     lastFreqLabelTitle.text = 
     NSLocalizedStringFromTable(@"Last Blow's frequency",@"CalibrationApp",@"Last Blow's frequency");
     [goToDurationButton setTitle:NSLocalizedStringFromTable(@"Duration settings",@"CalibrationApp",@"go to duration settings") forState:UIControlStateNormal];

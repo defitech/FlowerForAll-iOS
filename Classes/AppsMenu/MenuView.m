@@ -69,11 +69,11 @@ FlowerHowTo *flowerHowTo;
     [super viewDidLoad];
 
 	//Set title of the navigation bar
-	navigationBar.topItem.title = NSLocalizedString(@"Menu", @"Menu");
+	navigationBar.topItem.title = NSLocalizedString(@"Flower For All", @"Menu Title");
 	
 	//Set title of game buttons for all states
     [volcanoLabel setText:[VolcanoApp appTitle]];
-    [videoPlayerLabel setText:NSLocalizedString(@"Setup Video", @"Icon Title")];
+    [videoPlayerLabel setText:[FlowerHowTo appTitle]];
     [settingsLabel setText:[ParametersApp appTitle]];
 	
     int nb_pages = 2;
@@ -145,12 +145,12 @@ FlowerHowTo *flowerHowTo;
 	
     //Set title of the navigation bar
     if ( page == 1) {
-        navigationBar.topItem.title = NSLocalizedString(@"FFA", @"Flower For All");
+        navigationBar.topItem.title = NSLocalizedString(@"About Flower For All", @"About Title Page");
         
         // add the back button to navigation bar
         navigationBar.topItem.leftBarButtonItem = backItem;
     } else {
-        navigationBar.topItem.title = NSLocalizedString(@"Menu", @"Menu");
+        navigationBar.topItem.title = NSLocalizedString(@"Flower For All", @"Menu Title");
         
         // remove the back button to navigation bar
         navigationBar.topItem.leftBarButtonItem = nil;

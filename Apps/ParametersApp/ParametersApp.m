@@ -58,12 +58,12 @@ float minExerciceDuration_s = 7.0;
     [super viewDidLoad];
 
 	durationLabel.text = 
-         NSLocalizedStringFromTable(@"DurationLabel",@"ParametersApp",@"DurationExplanantion");
+         NSLocalizedStringFromTable(@"Durations: periods whe the Flutter® VRP1 vibrates in the targeted range of frequencies.",@"ParametersApp",@"DurationExplanantion");
 	
     
     //Volume slider
     playBackLabel.text = 
-     NSLocalizedStringFromTable(@"PlayBackLabel",@"ParametersApp",@"PlayBack Volume");
+     NSLocalizedStringFromTable(@"PlayBack Volume",@"ParametersApp",@"PlayBack Volume");
     
     [playBackSlider addTarget:self action:@selector(valueChangedForPlayBackSlider:) 
                forControlEvents:UIControlEventValueChanged];
@@ -76,7 +76,7 @@ float minExerciceDuration_s = 7.0;
     
     //Expiration slider
     expirationLabel.text = 
-       NSLocalizedStringFromTable(@"ExpirationLabel",@"ParametersApp",@"Expiration duration target");
+       NSLocalizedStringFromTable(@"Expiration duration target",@"ParametersApp",@"Expiration duration target");
     
     [expirationSlider addTarget:self action:@selector(valueChangedForExpirationSlider:) 
              forControlEvents:UIControlEventValueChanged];
@@ -91,7 +91,7 @@ float minExerciceDuration_s = 7.0;
     
     //Exercice slider
     exerciceLabel.text = 
-        NSLocalizedStringFromTable(@"ExerciceLabel",@"ParametersApp",@"Exerice duration target");
+        NSLocalizedStringFromTable(@"Exercice duration target",@"ParametersApp",@"Exercice duration target");
     
     [exerciceSlider addTarget:self action:@selector(valueChangedForExericeSlider:) 
                forControlEvents:UIControlEventValueChanged];
@@ -117,7 +117,7 @@ float minExerciceDuration_s = 7.0;
     [self  valueChangedForExpirationSlider:expirationSlider];
     [self  valueChangedForExericeSlider:exerciceSlider];
     
-    [buttonProfile setTitle:[NSString stringWithFormat:@"%@ : %@",NSLocalizedStringFromTable(@"Profil",@"ParametersApp",@"Profile Button with title"),[[Profil current] name ]] forState:UIControlStateNormal];
+    [buttonProfile setTitle:[NSString stringWithFormat:@"%@ : %@",NSLocalizedStringFromTable(@"Profile",@"ParametersApp",@"Profile Button with title"),[[Profil current] name ]] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -193,7 +193,7 @@ float minExerciceDuration_s = 7.0;
 
 
 -(NSString*)pickerEditorTitle:(PickerEditor*)sender {
-    return  NSLocalizedStringFromTable(@"ProfilManagementTitle",@"ParametersApp",@"Profil Management Title");
+    return  NSLocalizedStringFromTable(@"Profiles",@"ParametersApp",@"Profil Management Title");
 }
 
 -(NSString*)pickerEditorEndButtonTitle:(PickerEditor*)sender {

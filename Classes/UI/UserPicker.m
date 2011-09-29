@@ -65,7 +65,7 @@
             pickerLabel.textColor = [UIColor whiteColor];
             //pickerLabel.shadowColor = [UIColor whiteColor];
             //pickerLabel.shadowOffset = CGSizeMake (0,1)
-            pickerLabel.text = NSLocalizedString(@"UserChoiceLabel", @"Label asking to choose the current user");
+            pickerLabel.text = NSLocalizedString(@"User", @"Label asking to choose the current user");
             
             //Add myPickerView and pickerLabel to labelAndPickerView
             [labelAndPickerView addSubview:pickerLabel];
