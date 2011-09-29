@@ -43,14 +43,9 @@
 
 /** Used to put in as label on the App Menu (Localized)**/
 +(NSString*)appTitle {
-    return [self translate:@"AppTitle" comment:@"Will be dispayed behing the icon"];
+    NSLog(@"**WARNING!! FlowerApp:appTitle is called directly - override this call in %@",[self appName]);
+    return @"Override FlowerApp:appTitle";
 }
-
-/** Utility to get translated strings from %lang.lproj%/MyApp.strings**/
-+(NSString*)translate:(NSString*)key comment:(NSString*)comment {
-    return NSLocalizedStringFromTable(key,[self appName],comment);
-}
-
 
 
 // Event Observers 

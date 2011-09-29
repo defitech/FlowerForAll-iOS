@@ -27,6 +27,14 @@
 
 @synthesize targetFrequencyRangeLabel, minLabel, maxLabel, lastFreqLabelValue, targetFreqLabelValue, lastFreqLabelTitle, goToDurationButton;
 
+# pragma mark FlowerApp overriding
+
+/** Used to put in as label on the App Menu (Localized)**/
++(NSString*)appTitle {
+    return NSLocalizedStringFromTable(@"Calibration",@"CalibrationApp",@"CalibrationApp Title");
+}
+
+
 #pragma mark - View lifecycle
 
 
@@ -35,10 +43,10 @@
     [super viewDidLoad];
     
 	targetFrequencyRangeLabel.text = 
-    [CalibrationApp translate:@"TargetFrequencyRangeLabel" comment:@"Target Frequency Range"];
+    NSLocalizedStringFromTable(@"TargetFrequencyRangeLabel",@"CalibrationApp",@"Target Frequency Range");
     lastFreqLabelTitle.text = 
-    [CalibrationApp translate:@"Last Blow's frequency" comment:@"Last Blow's frequency"];
-    [goToDurationButton setTitle:[CalibrationApp translate:@"Duration settings" comment:@"go to duration settings"] forState:UIControlStateNormal];
+    NSLocalizedStringFromTable(@"Last Blow's frequency",@"CalibrationApp",@"Last Blow's frequency");
+    [goToDurationButton setTitle:NSLocalizedStringFromTable(@"Duration settings",@"CalibrationApp",@"go to duration settings") forState:UIControlStateNormal];
     
     targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",[[FlowerController currentFlapix]frequenceTarget]];
     

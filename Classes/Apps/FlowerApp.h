@@ -28,9 +28,6 @@
 /** Used to put in as label on the App Menu (Localized)**/
 +(NSString*)appTitle;
 
-/** Utility to get translated strings from %lang.lproj%/MyApp.strings**/
-+(NSString*)translate:(NSString*)key comment:(NSString*)comment;
-
 /**  
  * A new exerice start  
  * Override this method to catch 

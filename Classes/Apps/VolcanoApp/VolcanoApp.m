@@ -15,6 +15,13 @@
 
 @implementation VolcanoApp
 
+# pragma mark FlowerApp overriding
+
+/** Used to put in as label on the App Menu (Localized)**/
++(NSString*)appTitle {
+    return NSLocalizedStringFromTable(@"Volcano Game",@"VolcanoApp",@"VolcanoApp Title");
+}
+
 
 - (void)initVariables {
     

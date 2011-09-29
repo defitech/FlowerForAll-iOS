@@ -19,15 +19,18 @@
     float dayBeginAbsoluteTime = 0;
     float dayEndAbsoluteTime = 1000000000000000;
     
-    NSArray* headersName = [[NSArray alloc] initWithObjects:
-                            @"Start", @"Duration (s)", @"Done %", 
-                            @"Blows",   @"Good Blows",@"Profile",  @"Target Freq. Hz",
-                            @"Freq. Tolerance Hz", @"Expected blow duration (s)", @"Expected exercice duration (s)", nil ];
-    
-    NSMutableArray* headersTitles = [[NSMutableArray alloc] init];
-    for (int i = 0; i <  [headersName count]; i++ ) {
-        [headersTitles addObject:NSLocalizedStringFromTable([headersName objectAtIndex:i], @"ResultsApp", @"For data columns title")];
-    }
+    NSArray* headersTitles = [[NSArray alloc] initWithObjects:
+                            NSLocalizedStringFromTable(@"Start",@"ResultsApp", @"Data column title"),
+                            NSLocalizedStringFromTable(@"Duration (s)",@"ResultsApp", @"Data column title"), 
+                            NSLocalizedStringFromTable(@"Done %", @"ResultsApp", @"Data column title"),
+                            NSLocalizedStringFromTable(@"Blows", @"ResultsApp", @"Data column title"),  
+                            NSLocalizedStringFromTable(@"Good Blows",@"ResultsApp", @"Data column title"),
+                            NSLocalizedStringFromTable(@"Profile",  @"ResultsApp", @"Data column title"),
+                            NSLocalizedStringFromTable(@"Target Freq. Hz",@"ResultsApp", @"Data column title"),
+                            NSLocalizedStringFromTable(@"Freq. Tolerance Hz", @"ResultsApp", @"Data column title"),
+                            NSLocalizedStringFromTable(@"Expected blow duration (s)",@"ResultsApp" , @"Data column title"),
+                            NSLocalizedStringFromTable(@"Expected exercice duration (s)","ResultsApp" , @"Data column title"),
+                            nil ];
     
     NSArray* headersDB = [[NSArray alloc] initWithObjects:
                         @"start_ts", @"stop_ts", @"duration_exercice_done_p", 
@@ -107,7 +110,8 @@
     }
     
     [dateAndTimeFormatter release];
-    //NSLog(html);
+    headersDB = nil;
+    headersTitles = nil;
     return count;
 }
 

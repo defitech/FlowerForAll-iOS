@@ -13,6 +13,13 @@
 
 @synthesize controllerView, toolbar, sendButton;
 
+# pragma mark FlowerApp overriding
+
+/** Used to put in as label on the App Menu (Localized)**/
++(NSString*)appTitle {
+    return NSLocalizedStringFromTable(@"Results",@"ResultsApp",@"ResultsApp Title");
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -29,7 +36,7 @@
     [super viewDidLoad];
     
     [sendButton setTitle:
-     [ResultsApp translate:@"Send results" comment:@"Button that open the mailer"]];
+      NSLocalizedStringFromTable(@"Send results",@"ResultsApp",@"Button that open the mailer")];
     
 
 

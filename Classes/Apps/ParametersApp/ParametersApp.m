@@ -28,6 +28,13 @@
 expirationLabel, expirationTimeLabel, expirationSlider,
 exerciceLabel, exerciceTimeLabel, exerciceSlider, buttonProfile, goToCalibrationButton;
 
+# pragma mark FlowerApp overriding
+
+/** Used to put in as label on the App Menu (Localized)**/
++(NSString*)appTitle {
+    return NSLocalizedStringFromTable(@"Settings",@"ParametersApp",@"ParametersApp Title");
+}
+
 
 # pragma mark utilities for non-linear progression of the exercice duration
 
@@ -51,12 +58,12 @@ float minExerciceDuration_s = 7.0;
     [super viewDidLoad];
 
 	durationLabel.text = 
-        [ParametersApp translate:@"DurationLabel" comment:@"DurationExplanantion"];
+         NSLocalizedStringFromTable(@"DurationLabel",@"ParametersApp",@"DurationExplanantion");
 	
     
     //Volume slider
     playBackLabel.text = 
-    [ParametersApp translate:@"PlayBackLabel" comment:@"PlayBack Volume"];
+     NSLocalizedStringFromTable(@"PlayBackLabel",@"ParametersApp",@"PlayBack Volume");
     
     [playBackSlider addTarget:self action:@selector(valueChangedForPlayBackSlider:) 
                forControlEvents:UIControlEventValueChanged];
@@ -69,7 +76,7 @@ float minExerciceDuration_s = 7.0;
     
     //Expiration slider
     expirationLabel.text = 
-        [ParametersApp translate:@"ExpirationLabel" comment:@"Expiration duration target"];
+       NSLocalizedStringFromTable(@"ExpirationLabel",@"ParametersApp",@"Expiration duration target");
     
     [expirationSlider addTarget:self action:@selector(valueChangedForExpirationSlider:) 
              forControlEvents:UIControlEventValueChanged];
@@ -84,7 +91,7 @@ float minExerciceDuration_s = 7.0;
     
     //Exercice slider
     exerciceLabel.text = 
-        [ParametersApp translate:@"ExerciceLabel" comment:@"Exerice duration target"];
+        NSLocalizedStringFromTable(@"ExerciceLabel",@"ParametersApp",@"Exerice duration target");
     
     [exerciceSlider addTarget:self action:@selector(valueChangedForExericeSlider:) 
                forControlEvents:UIControlEventValueChanged];
@@ -95,7 +102,7 @@ float minExerciceDuration_s = 7.0;
     [exerciceSlider setMinimumValue:0.0f];
     [exerciceSlider setMaximumValue:1.0f];
     
-    [goToCalibrationButton setTitle:[ParametersApp translate:@"Calibration settings" comment:@"go to calibration settings"] forState:UIControlStateNormal];
+    [goToCalibrationButton setTitle:NSLocalizedStringFromTable(@"Calibration settings",@"ParametersApp",@"go to calibration settings") forState:UIControlStateNormal];
 
     
     [self reloadValues];
@@ -110,7 +117,7 @@ float minExerciceDuration_s = 7.0;
     [self  valueChangedForExpirationSlider:expirationSlider];
     [self  valueChangedForExericeSlider:exerciceSlider];
     
-    [buttonProfile setTitle:[NSString stringWithFormat:@"%@ : %@",[ParametersApp translate:@"Profil" comment:@"Profile Button with title"],[[Profil current] name ]] forState:UIControlStateNormal];
+    [buttonProfile setTitle:[NSString stringWithFormat:@"%@ : %@",NSLocalizedStringFromTable(@"Profil",@"ParametersApp",@"Profile Button with title"),[[Profil current] name ]] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -186,11 +193,11 @@ float minExerciceDuration_s = 7.0;
 
 
 -(NSString*)pickerEditorTitle:(PickerEditor*)sender {
-    return [ParametersApp translate:@"ProfilManagementTitle" comment:@"Profil Management Title"];
+    return  NSLocalizedStringFromTable(@"ProfilManagementTitle",@"ParametersApp",@"Profil Management Title");
 }
 
 -(NSString*)pickerEditorEndButtonTitle:(PickerEditor*)sender {
-    return [ParametersApp translate:@"Done" comment:@"Back Button for Title management"];
+    return  NSLocalizedStringFromTable(@"Done",@"ParametersApp",@"Back Button for Title management");
 }
 
 NSArray* myProfils;
