@@ -29,10 +29,10 @@
 		//primaryLabel.font = [UIFont systemFontOfSize:20];
 		primaryLabel.font = [UIFont boldSystemFontOfSize:20];
 		
-		secondaryLabel = [[UILabel alloc]init];
+		/*secondaryLabel = [[UILabel alloc]init];
 		secondaryLabel.textAlignment = UITextAlignmentLeft;
 		secondaryLabel.font = [UIFont systemFontOfSize:14];
-		secondaryLabel.textColor = [UIColor grayColor];
+		secondaryLabel.textColor = [UIColor grayColor];*/
 		
 		thirdLabel = [[UILabel alloc]init];
 		thirdLabel.textAlignment = UITextAlignmentLeft;
@@ -42,7 +42,7 @@
 		
 		//myImageView = [[UIImageView alloc]init];
 		[self.contentView addSubview:primaryLabel];
-		[self.contentView addSubview:secondaryLabel];
+		//[self.contentView addSubview:secondaryLabel];
 		[self.contentView addSubview:thirdLabel];
 		//[self.contentView addSubview:myImageView];
 		
@@ -63,13 +63,13 @@
 	CGFloat boundsX = contentRect.origin.x;
 	CGRect frame;
 	
-	frame= CGRectMake(boundsX+10 ,0, 200, 25);
+	frame= CGRectMake(boundsX+20 ,9, 200, 25);
 	primaryLabel.frame = frame;
 	
-	frame= CGRectMake(boundsX+10 ,25, 100, 15);
-	secondaryLabel.frame = frame;
+	/*frame= CGRectMake(boundsX+10 ,25, 100, 15);
+	secondaryLabel.frame = frame;*/
 	
-	frame= CGRectMake(boundsX+140 ,0, 100, 25);
+	frame= CGRectMake(boundsX+140 ,9, 100, 25);
 	thirdLabel.frame = frame;
 	
 }
@@ -88,7 +88,7 @@
 
 - (void)dealloc {
 	[primaryLabel dealloc];
-	[secondaryLabel dealloc];
+	//[secondaryLabel dealloc];
 	[thirdLabel dealloc];
     [super dealloc];
 }

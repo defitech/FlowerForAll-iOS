@@ -46,7 +46,7 @@
                                                self.controllerView.frame.size.width,
                                                self.controllerView.frame.size.height);
     [self.controllerView addSubview:statViewController.view];
-   
+    [statViewController viewWillAppear:NO];
 
 }
 
@@ -54,9 +54,14 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    controllerView = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	
+    [super viewWillAppear:animated];
+	[statViewController viewWillAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

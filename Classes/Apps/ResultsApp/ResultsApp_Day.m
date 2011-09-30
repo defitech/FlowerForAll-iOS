@@ -35,7 +35,7 @@
         
         timeFormatter = [[NSDateFormatter alloc] init];
         [timeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-        [timeFormatter setDateFormat:@"HH:mm:ss"];
+        [timeFormatter setDateFormat:@"HH:mm"];
         
         modifyButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"ModifyTableButtonLabel", @"ResultsApp", @"Label of the modify table button") style:UIBarButtonItemStylePlain target:self action:@selector(modifyTable)];
         self.navigationItem.rightBarButtonItem = modifyButton;

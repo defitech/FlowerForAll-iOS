@@ -129,6 +129,8 @@
     static NSString *CellIdentifier = @"StarOnRightCell";
     
     UILabel *mainLabel;
+    UILabel *numberLabel;
+    UILabel *plusLabel;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -146,61 +148,62 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    mainLabel = [[[UILabel alloc] initWithFrame:CGRectMake(20.0, 8.0, 140.0, 25.0)] autorelease];
+    mainLabel = [[[UILabel alloc] initWithFrame:CGRectMake(15.0, 9.0, 140.0, 25.0)] autorelease];
     mainLabel.font = [UIFont boldSystemFontOfSize:20];
     mainLabel.textAlignment = UITextAlignmentLeft;
     [cell.contentView addSubview:mainLabel];
     
+    numberLabel = [[[UILabel alloc] initWithFrame:CGRectMake(152.0, 9.0, 20.0, 25.0)] autorelease];
+    numberLabel.font = [UIFont boldSystemFontOfSize:16];
+    numberLabel.textColor = [UIColor grayColor];
+    numberLabel.textAlignment = UITextAlignmentLeft;
+    [cell.contentView addSubview:numberLabel];
+    
+    plusLabel = [[[UILabel alloc] initWithFrame:CGRectMake(275.0, 8.0, 20.0, 25.0)] autorelease];
+    plusLabel.font = [UIFont boldSystemFontOfSize:18];
+    plusLabel.textColor = [UIColor grayColor];
+    plusLabel.textAlignment = UITextAlignmentLeft;
+    [cell.contentView addSubview:plusLabel];
+    
     
     int max = day.order.length > 5 ? 5 : day.order.length;
     
+    int localGoodCount = 0;
+    
     for(int i=0; i < max; i++){
-        UIImageView* star2 = [UIImageView alloc];
-        
         unichar c = [day.order characterAtIndex:i];
+        if (c == '1')
+            localGoodCount++;
+    }
+    
+    for(int i=0; i < max; i++){
         
-        int starLength = 20;
-        int offset = 170;
+        int starLength = 16;
+        int offset = 192;
         
-        CGRect frame2;
+        UIImageView* star = [UIImageView alloc];
         
-        switch (max){
-            case 1:
-                frame2= CGRectMake(offset+2*starLength ,8, 20, 25);
-                break;
-            case 2:
-                frame2= CGRectMake(offset+1.5*starLength+starLength*i ,8, 20, 25);
-                break;
-            case 3:
-                frame2= CGRectMake(offset+starLength+starLength*i ,8, 20, 25);
-                break;
-            case 4:
-                frame2= CGRectMake(offset+0.5*starLength+starLength*i ,8, 20, 25);
-                break;
-            case 5:
-                frame2= CGRectMake(offset+starLength*i ,8, 20, 25);
-                break;
-            default:
-                break;
-        }
+        CGRect frame2 = CGRectMake(offset+starLength*i ,8, 20, 25);
         
-        [star2 initWithFrame:frame2];
+        [star initWithFrame:frame2];
         
-        [cell.contentView addSubview:star2];
+        [cell.contentView addSubview:star];
         
         NSString *imagePath;
-        if (c == '0')
-            imagePath = [[NSBundle mainBundle] pathForResource:@"ResultsApp-grey_star" ofType:@"png"];
+        if (i < localGoodCount)
+            imagePath = [[NSBundle mainBundle] pathForResource:@"ResultsApp-gold_star" ofType:@"png"];
         else
-            imagePath = [[NSBundle mainBundle] pathForResource:@"ResultsApp-black_star" ofType:@"png"];
+            imagePath = [[NSBundle mainBundle] pathForResource:@"ResultsApp-blue_star" ofType:@"png"];
         
         UIImage *theImage = [UIImage imageWithContentsOfFile:imagePath];
         
-        star2.image = theImage;
-        
+        star.image = theImage;
     }
     
     mainLabel.text = day.formattedDate;
+    numberLabel.text = [NSString stringWithFormat:@"%i", day.order.length];
+    if (day.order.length > 5)
+        plusLabel.text = @"+";
     
     return cell;
 }
@@ -222,7 +225,7 @@
         ExerciseDay* day = [exerciseDays objectAtIndex:row];
 
 		//if (dayStatisticListViewController == nil){
-        dayStatisticListViewController = [[ResultsApp_Day alloc] initWithNibName:@"StatisticListView" bundle:nil extraParameter:day.formattedDate];
+        dayStatisticListViewController = [[ResultsApp_Day alloc] initWithNibName:@"ResultsApp_List" bundle:nil extraParameter:day.formattedDate];
 		//}
 		
 		[[self navigationController] pushViewController:dayStatisticListViewController animated:YES];
