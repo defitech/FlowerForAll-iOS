@@ -148,7 +148,7 @@ BOOL demo_mode = NO;
     const char* toread = nil;
     
     if (on) { toread = [[[[NSBundle mainBundle] resourcePath] 
-                         stringByAppendingPathComponent: @"FLAPIrecorded.raw"] UTF8String]; }
+                         stringByAppendingPathComponent: @"Denis2.raw"] UTF8String]; }
 
     FLAPI_SUBSYS_IOS_file_dev(toread,true);
     demo_mode = on;

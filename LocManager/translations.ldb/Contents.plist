@@ -381,7 +381,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-09-29T11:33:33Z</date>
+					<date>2011-10-01T09:43:56Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -391,7 +391,7 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>4a2bd424cf8752241babddb9bda86652
+					<string>aad8d21d24e51704c8dc38e9b912597c
 </string>
 					<key>name</key>
 					<string>ResultsApp.strings</string>
@@ -617,13 +617,11 @@
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>Modify</string>
+							<string>Modidy</string>
 							<key>localizations</key>
 							<dict>
 								<key>en</key>
-								<string>Modify</string>
-								<key>fr</key>
-								<string>Modifier</string>
+								<string>Modidy</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -642,38 +640,13 @@
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>ModifyTableButtonLabel</string>
+							<string>Modify</string>
 							<key>localizations</key>
 							<dict>
 								<key>en</key>
-								<string>ModifyTableButtonLabel</string>
+								<string>Modify</string>
 								<key>fr</key>
-								<string>ModifyTableButtonLabel</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
-							<string>Label of the modify table button in edit mode</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>ModifyTableButtonLabelInEditMode</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>ModifyTableButtonLabelInEditMode</string>
-								<key>fr</key>
-								<string>ModifyTableButtonLabelInEditMode</string>
+								<string>Modifier</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -852,6 +825,56 @@
 								<string>StatisticListViewTitle</string>
 								<key>fr</key>
 								<string>StatisticListViewTitle</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of the modify table button</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>ModifyTableButtonLabel</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>ModifyTableButtonLabel</string>
+								<key>fr</key>
+								<string>ModifyTableButtonLabel</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of the modify table button in edit mode</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>ModifyTableButtonLabelInEditMode</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>ModifyTableButtonLabelInEditMode</string>
+								<key>fr</key>
+								<string>ModifyTableButtonLabelInEditMode</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1176,7 +1199,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-09-29T09:02:17Z</date>
+					<date>2011-10-01T09:40:53Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -1184,9 +1207,9 @@
 					<key>errors</key>
 					<array/>
 					<key>flags</key>
-					<integer>1</integer>
+					<integer>0</integer>
 					<key>hash</key>
-					<string>5903186296e0f5a900bcffe84925d21f
+					<string>e02bc9429737b8254d8ebab8955601a5
 </string>
 					<key>name</key>
 					<string>Localizable.strings</string>
@@ -1206,13 +1229,13 @@
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>About Flower For All</string>
+							<string>About Flower breath</string>
 							<key>localizations</key>
 							<dict>
 								<key>en</key>
-								<string>About Flower For All</string>
+								<string>About Flower breath</string>
 								<key>fr</key>
-								<string>A propos de Flower FOr All</string>
+								<string>A propos</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1356,13 +1379,13 @@
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>Flower For All</string>
+							<string>Flower breath</string>
 							<key>localizations</key>
 							<dict>
 								<key>en</key>
-								<string>Flower For All</string>
+								<string>Flower breath</string>
 								<key>fr</key>
-								<string>Flower For All</string>
+								<string>Flower breath</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1669,7 +1692,58 @@
 						</dict>
 					</array>
 					<key>old objects</key>
-					<array/>
+					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>About Title Page</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>About Flower For All</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>About Flower For All</string>
+								<key>fr</key>
+								<string>A propos de Flower FOr All</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Menu Title</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Flower For All</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Flower For All</string>
+								<key>fr</key>
+								<string>Flower For All</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+					</array>
 					<key>plist file</key>
 					<false/>
 					<key>snapshots</key>
@@ -1691,6 +1765,100 @@
 			<integer>1</integer>
 			<key>user name</key>
 			<string>FlowerForAll</string>
+		</dict>
+		<dict>
+			<key>associated Xcode projects</key>
+			<array/>
+			<key>change date</key>
+			<date>2001-01-01T00:00:00Z</date>
+			<key>changed values</key>
+			<array/>
+			<key>class</key>
+			<string>BLBundleObject</string>
+			<key>errors</key>
+			<array/>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>attachments</key>
+					<dict>
+						<key>backup</key>
+						<dict>
+							<key>1</key>
+							<dict>
+								<key>class</key>
+								<string>BLWrapperHandle</string>
+								<key>name</key>
+								<string>FlowerHowTo/FlowerHowTo/1/FlowerHowTo.strings</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>change date</key>
+					<date>2011-10-01T09:46:58Z</date>
+					<key>changed values</key>
+					<array/>
+					<key>class</key>
+					<string>BLStringsFileObject</string>
+					<key>errors</key>
+					<array/>
+					<key>flags</key>
+					<integer>0</integer>
+					<key>hash</key>
+					<string>fae123e27fdcb38fc3ba0674e52d9c65
+</string>
+					<key>name</key>
+					<string>FlowerHowTo.strings</string>
+					<key>objects</key>
+					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>FlowerHowTo Title</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Setup instructions</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Setup instructions</string>
+								<key>fr</key>
+								<string>Instructions</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+					</array>
+					<key>old objects</key>
+					<array/>
+					<key>plist file</key>
+					<false/>
+					<key>snapshots</key>
+					<dict/>
+					<key>versions</key>
+					<dict>
+						<key>en</key>
+						<string>1</string>
+					</dict>
+				</dict>
+			</array>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>../Apps/FlowerHowTo</string>
+			<key>naming style</key>
+			<integer>1</integer>
+			<key>referencing style</key>
+			<integer>1</integer>
+			<key>user name</key>
+			<string>FlowerHowTo</string>
 		</dict>
 	</array>
 	<key>languages</key>
