@@ -102,7 +102,7 @@ float minExerciceDuration_s = 7.0;
     [exerciceSlider setMinimumValue:0.0f];
     [exerciceSlider setMaximumValue:1.0f];
     
-    [goToCalibrationButton setTitle:NSLocalizedStringFromTable(@"Calibration settings",@"ParametersApp",@"go to calibration settings") forState:UIControlStateNormal];
+    [goToCalibrationButton setTitle:NSLocalizedStringFromTable(@"Calibration",@"ParametersApp",@"go to calibration settings") forState:UIControlStateNormal];
 
     
     [self reloadValues];
