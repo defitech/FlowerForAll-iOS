@@ -1,0 +1,21 @@
+# HOWTO update github ..
+
+# 1st checkout githublocal
+git checkout githublocal
+
+# merge it with your own branch (for me its:)
+#   with auto-resolve of conflict 
+git merge -s recursive -X theirs perki
+
+# verify that branch "github local" is identical to your branch
+
+# push to github
+git push github HEAD:master
+
+# config for Perki:
+# [remote "github"]
+#	url = git@github.com:perki/FlowerForAll-by-Defitech.git
+#	fetch = +refs/heads/*:refs/remotes/github/*
+# [branch "githublocal"]
+#        remote = github
+#        merge = refs/heads/master
