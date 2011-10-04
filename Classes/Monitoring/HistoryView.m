@@ -291,8 +291,12 @@ NSTimer *repeatingTimer;
 
 - (void)flapixEventEndBlow:(NSNotification *)notification {
 	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
-    int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
-    [labelPercent setText:[NSString stringWithFormat:@"%i%%",p]];
+    if ([[FlowerController currentFlapix] exerciceInCourse]) {
+        int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
+        [labelPercent setText:[NSString stringWithFormat:@"%i%%",p]];
+    } else {
+        [labelPercent setText:@"---"];
+    }
     [labelFrequency setText:[NSString stringWithFormat:@"%iHz",(int)blow.medianFrequency]];
     [labelDuration setText:[NSString stringWithFormat:@"%.2lf sec",blow.in_range_duration]];
     

@@ -160,7 +160,6 @@ BOOL demo_mode = NO;
 
 - (BOOL) Start {
     if (self.running) return NO;
-    [self exerciceStart]; // will start a new exercice
     if (FLAPI_SUCCESS != FLAPI_Start()) return NO; // This does start the sound recording and processing
     self.running = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_START  object:self];
@@ -170,7 +169,6 @@ BOOL demo_mode = NO;
 - (BOOL) Stop {
     NSLog(@"Stop");
     [self SetDemo:NO]; // we must quit Demo before we stop;
-    [self exerciceStop];
     if (! self.running) return NO;
     if (FLAPI_SUCCESS != FLAPI_Stop()) return NO; // This does stop the sound recording and processing
     self.running = NO;
@@ -247,22 +245,34 @@ NSMutableArray *blowFrequencies;
     // send messages
     FLAPIBlow* blow = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal medianFrequency:medianFrequency];
     blow.medianTolerance = medianTolerance;
+    lastBlow = blow;
     
-    [DB saveBlow:blow];
-    
-    
-    // exercice management
-    [[self currentExercice] addBlow:blow];
-    
+    if ([self exerciceInCourse]) {
+        [DB saveBlow:blow];
+        // exercice management
+        [[self currentExercice] addBlow:blow];
+        if ([[self currentExercice] percent_done] >= 1) {
+            [self Stop];
+        }
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_BLOW_STOP object:blow];
     
-
-    if ([[self currentExercice] percent_done] >= 1) {
-        [self Stop];
-    }
     [blow autorelease];
     
     [pool drain]; 
+}
+
+# pragma mark lastBlow
+-(FLAPIBlow*) lastBlow {
+    if (lastBlow == nil) {
+        lastBlow = [[FLAPIBlow alloc] initWith:0 
+                                      duration:[self expirationDurationTarget] 
+                             in_range_duration:[self expirationDurationTarget] 
+                                          goal:YES 
+                               medianFrequency:[self frequenceTarget]];
+        lastBlow.medianTolerance = [self frequenceTolerance];
+    }
+    return lastBlow;
 }
 
 
@@ -282,6 +292,8 @@ NSMutableArray *blowFrequencies;
     if ((current_exercice == nil) || (! [current_exercice inCourse])) {
         current_exercice = [[FLAPIExercice alloc] initWithFlapix:self];
     }
+    // start FLAPIX if needed
+    if (! self.running) [self Start];
     return current_exercice;
 }
 
@@ -290,6 +302,10 @@ NSMutableArray *blowFrequencies;
         NSLog(@"currentExerice called and is NULL!!");
     }
     return current_exercice;
+}
+
+- (BOOL)exerciceInCourse {
+    return (current_exercice != nil);
 }
 
 # pragma mark MEMORY

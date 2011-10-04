@@ -61,10 +61,10 @@
 }
 
 - (IBAction) pressStart:(id)sender {
-    if ([[FlowerController currentFlapix] running])
-        [[FlowerController currentFlapix] Stop];
+    if ([[FlowerController currentFlapix] exerciceInCourse])
+        [[FlowerController currentFlapix] exerciceStop];
     else
-        [[FlowerController currentFlapix] Start];
+        [[FlowerController currentFlapix] exerciceStart];
     
     [self.view setNeedsDisplay];
 }
@@ -75,9 +75,8 @@
 }
 
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {
-    
-    [self.view setNeedsDisplay];
-    
+    if (currentExercice == nil) return;
+    if ([[FlowerController currentFlapix] exerciceInCourse]) return;
     float percent = [currentExercice percent_done];
     NSLog(@"percent_done: %f", percent);
     
@@ -94,6 +93,8 @@
         
         [self playSystemSound:@"/VolcanoApp_explosion.wav"];
     }
+    
+    [self.view setNeedsDisplay];
 }
 
 - (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {
@@ -105,6 +106,7 @@
 }
 
 - (void)flapixEventExerciceStop:(FLAPIExercice *)exercice {
+    currentExercice = nil;
     [start setTitle:@"Start Exercice" forState:UIControlStateNormal];
 }
 

@@ -44,6 +44,7 @@ extern NSString * const FLAPIX_EVENT_FREQUENCY;
 @property (nonatomic) float lastlevel;
 @property (nonatomic) BOOL blowing;
 
+// Exercice !!
 - (BOOL) Start;
 - (BOOL) Stop;
 
@@ -84,6 +85,9 @@ extern NSString * const FLAPIX_EVENT_FREQUENCY;
 - (void) EventBlowEnd:(double)timestamp duration:(double)length in_range_duration:(double)ir_length;
 
 
+// Get last blow.. 
+- (FLAPIBlow*) lastBlow;
+
 
 // EXERCICES
 - (void)exerciceStop;
@@ -92,6 +96,8 @@ extern NSString * const FLAPIX_EVENT_FREQUENCY;
 /** Current Exercice return nil if not in course **/
 - (FLAPIExercice*)currentExercice;
 
+/** test if exerice is in course (! nil)**/
+- (BOOL)exerciceInCourse;
 
 
 @end

@@ -147,7 +147,7 @@ static NSMutableDictionary* appList;
     actionSheet.delegate = singleton;
    
 
-    NSString *startstop =  [[FlowerController currentFlapix] running] ? NSLocalizedString(@"Stop Exercice", @"Stop Action") :
+    NSString *startstop =  [[FlowerController currentFlapix] exerciceInCourse] ? NSLocalizedString(@"Stop Exercice", @"Stop Action") :
     NSLocalizedString(@"Start Exercice", @"Start Action") ;
     
     [actionSheet addButtonWithTitle:startstop];
@@ -177,10 +177,10 @@ static NSMutableDictionary* appList;
     switch (buttonIndex) {
         case 0: // Start / Stop
             NSLog(@"Start / Stop");
-            if ( [[FlowerController currentFlapix] running]) {
-                [[FlowerController currentFlapix] Stop];
+            if ( [[FlowerController currentFlapix] exerciceInCourse]) {
+                [[FlowerController currentFlapix] exerciceStop];
             } else {
-                [[FlowerController currentFlapix] Start];
+                [[FlowerController currentFlapix] exerciceStart];
             }
             return;
             break;

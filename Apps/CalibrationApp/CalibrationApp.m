@@ -74,7 +74,8 @@
     [slider addTarget:self action:@selector(editingEndForDoubleSlider:) 
      forControlEvents:UIControlEventEditingDidEnd];
     
-    
+    // set last values
+    [self flapixEventBlowStop: [[FlowerController currentFlapix] lastBlow]]; 
 }
 
 #pragma mark Control Event Handlers
