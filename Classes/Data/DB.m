@@ -132,7 +132,7 @@ static sqlite3 *database;
 
 //Execute a statement 
 +(void)execute:(NSString*)sqlStatement {
-    NSLog(@"execute: %@",sqlStatement);
+   // NSLog(@"execute: %@",sqlStatement);
     sqlite3_stmt *statement = [DB genCStatement:sqlStatement];
     if (sqlite3_step(statement) != SQLITE_DONE)
     {
@@ -155,7 +155,7 @@ static sqlite3 *database;
  * !! don't forget to finalize it!
  */
 +(sqlite3_stmt*) genCStatement:(NSString*)sqlStatement {
-    NSLog(@"genCStatement: %@",sqlStatement);
+   // NSLog(@"genCStatement: %@",sqlStatement);
     sqlite3_stmt *cStatement;
     int res = sqlite3_prepare_v2([DB db], [sqlStatement UTF8String], -1, &cStatement, NULL);
     if(res == SQLITE_OK) {

@@ -104,7 +104,7 @@ bool debug_events = NO;
     
     if (! [[FlowerController currentFlapix] exerciceInCourse]) return;
     float percent = [[[FlowerController currentFlapix] currentExercice] percent_done];
-    NSLog(@"percent_done: %f", percent);
+    //NSLog(@"percent_done: %f", percent);
     
     //Add sound when the goal has been reached for the last blow
     if (blow.goal)
@@ -117,9 +117,7 @@ bool debug_events = NO;
 }
 
 - (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {
-     if (debug_events) NSLog(@"VOLCANO flapixEvent  ExerciceStart");
-    
-    NSLog(@"VolcanoApp flapixEventExerciceStart");
+    if (debug_events) NSLog(@"VOLCANO flapixEvent  ExerciceStart");
     [self initVariables];
 }
 
@@ -129,7 +127,6 @@ bool debug_events = NO;
     if (exercice.duration_exercice_s <= exercice.duration_exercice_done_s) {
         lavaHidder.hidden = true;
         burst.hidden = false;
-        NSLog(@"********************");
         [self playSystemSound:@"/VolcanoApp_explosion.wav"];
     }
     [self.view setNeedsDisplay];
