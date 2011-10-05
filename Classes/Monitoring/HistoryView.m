@@ -184,12 +184,18 @@ NSTimer *repeatingTimer;
 	CPXYAxisSet *axisSet = (CPXYAxisSet *)graph.axisSet;
 	// Set axis line style
 	axisSet.xAxis.axisLineStyle = lineStyle;
+    axisSet.xAxis.labelFormatter = nil;
+    axisSet.xAxis.minorTickLineStyle = nil;
+    axisSet.xAxis.majorTickLineStyle = nil;
     axisSet.xAxis.labelExclusionRanges = [NSArray arrayWithObjects:
                                           [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-200) 
                                                                       length:CPDecimalFromFloat(250)], nil];
     
 	// Axis Y Prefs (same things)
 	axisSet.yAxis.axisLineStyle = lineStyle;
+    axisSet.yAxis.labelFormatter = nil;
+    axisSet.yAxis.minorTickLineStyle = nil;
+    axisSet.yAxis.majorTickLineStyle = nil;
     axisSet.yAxis.labelExclusionRanges = [NSArray arrayWithObjects:
                                           [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-10) 
                                                                       length:CPDecimalFromFloat(20)], nil];
