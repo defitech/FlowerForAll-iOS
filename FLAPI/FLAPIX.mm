@@ -32,9 +32,6 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
 
 
 
-/**
- * init 
- */ 
 - (id)init
 {
     NSLog(@"FLAPIX init");
@@ -101,7 +98,7 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
 
 - (void) SetPlayBackVolume:(float) volume {
     FLAPI_SUBSYS_IOS_SET_PlayBackVolume(volume);
-};
+}
 
 - (float) playBackVolume {
     return FLAPI_SUBSYS_IOS_GET_PlayBackVolume();
@@ -143,6 +140,7 @@ double exerice_duration_s = -1.0f;
 BOOL demo_mode = NO;
 - (void) SetDemo:(BOOL)on {
     if (! self.running) [self Start];
+    NSLog(@"setDemoi %i %i",demo_mode,on);
     if (demo_mode == on) return;
     
     // debug -- read from file
@@ -269,6 +267,15 @@ NSMutableArray *blowFrequencies;
 }
 
 - (void) EventMicrophonePlugged:(BOOL)on {
+    // here we start or stop FLAPI if needed
+    if (running == on ) return; // nothing to do if running and on, or stopped and off;
+    if (on == YES) { 
+        [self Start]; 
+    } else {
+        [self Stop];
+    }
+    
+    
     NSLog(@"EventMicrophonePlugged %i",on);
 }
 

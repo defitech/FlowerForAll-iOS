@@ -37,6 +37,7 @@
 		4E3A7A7B13B8777D00853344 /* FlowerHowTo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */; };
 		4E3A7A7D13B877DD00853344 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */; };
 		4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A8213B884FD00853344 /* AVFoundation.framework */; };
+		4E3EE3BC143CEC92002B111E /* jack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3EE3BB143CEC92002B111E /* jack.png */; };
 		4E4301321433AE330066ED6F /* ResultsApp_Mailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4301311433AE330066ED6F /* ResultsApp_Mailer.m */; };
 		4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
@@ -163,6 +164,7 @@
 		4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerHowTo.xib; sourceTree = "<group>"; };
 		4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4E3A7A8213B884FD00853344 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4E3EE3BB143CEC92002B111E /* jack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jack.png; sourceTree = "<group>"; };
 		4E4301301433AE330066ED6F /* ResultsApp_Mailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsApp_Mailer.h; sourceTree = "<group>"; };
 		4E4301311433AE330066ED6F /* ResultsApp_Mailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsApp_Mailer.m; sourceTree = "<group>"; };
 		4E4AE46B141FA57B004256DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4E3EE3BB143CEC92002B111E /* jack.png */,
 				4ED5F32B14346B0500520737 /* AppsMenu */,
 				D7ABFF7C140B75A1003B9F08 /* Monitoring */,
 				4ECC6CAB1404E150005519C7 /* UI */,
@@ -842,6 +845,7 @@
 				4E101E4D143615EF002BFDCC /* Martial1.raw in Resources */,
 				4E101E541437193B002BFDCC /* FlowerHowTo.strings in Resources */,
 				4E101E5614371947002BFDCC /* FlowerHowTo.strings in Resources */,
+				4E3EE3BC143CEC92002B111E /* jack.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
