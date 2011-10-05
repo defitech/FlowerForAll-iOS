@@ -22,6 +22,13 @@
     return NSLocalizedStringFromTable(@"Volcano Game",@"VolcanoApp",@"VolcanoApp Title");
 }
 
+- (void)refreshStartButton {
+    if ([[FlowerController currentFlapix] exerciceInCourse]) {
+        [start setTitle:@"Stop Exercice" forState:UIControlStateNormal];
+    } else {
+        [start setTitle:@"Start Exercice" forState:UIControlStateNormal];
+    }
+}
 
 - (void)initVariables {
     
@@ -36,7 +43,10 @@
     lavaHidder.hidden = false;
 
     lavaFrame = lavaHidder.frame;
+    [self refreshStartButton];
 }
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,23 +71,27 @@
 }
 
 - (IBAction) pressStart:(id)sender {
-    if ([[FlowerController currentFlapix] exerciceInCourse])
+    if ([[FlowerController currentFlapix] exerciceInCourse]) {
+        NSLog(@"pressStart: stop");
         [[FlowerController currentFlapix] exerciceStop];
-    else
+    } else {
+        NSLog(@"pressStart: start");
         [[FlowerController currentFlapix] exerciceStart];
-    
-    [self.view setNeedsDisplay];
+    }
 }
 
+bool debug_events = NO;
 - (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good {
+    if (! [[FlowerController currentFlapix] exerciceInCourse]) return;
     if (good)
         lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - 1.0f);
 }
 
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {
-    if (currentExercice == nil) return;
-    if ([[FlowerController currentFlapix] exerciceInCourse]) return;
-    float percent = [currentExercice percent_done];
+     if (debug_events) NSLog(@"VOLCANO flapixEvent  BlowStop");
+    
+    if (! [[FlowerController currentFlapix] exerciceInCourse]) return;
+    float percent = [[[FlowerController currentFlapix] currentExercice] percent_done];
     NSLog(@"percent_done: %f", percent);
     
     //Add sound when the goal has been reached for the last blow
@@ -86,28 +100,28 @@
     
     //Raise up lava
     lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * percent);
-    
-    if (percent >= 1.0f) {
-        lavaHidder.hidden = true;
-        burst.hidden = false;
-        
-        [self playSystemSound:@"/VolcanoApp_explosion.wav"];
-    }
-    
+    [self refreshStartButton];
     [self.view setNeedsDisplay];
 }
 
 - (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {
-    [start setTitle:@"Stop Exercice" forState:UIControlStateNormal];
+     if (debug_events) NSLog(@"VOLCANO flapixEvent  ExerciceStart");
     
     NSLog(@"VolcanoApp flapixEventExerciceStart");
-    currentExercice = exercice;
     [self initVariables];
 }
 
 - (void)flapixEventExerciceStop:(FLAPIExercice *)exercice {
-    currentExercice = nil;
-    [start setTitle:@"Start Exercice" forState:UIControlStateNormal];
+    if (debug_events) NSLog(@"VOLCANO flapixEvent  ExerciceStop");
+    
+    if (exercice.duration_exercice_s <= exercice.duration_exercice_done_s) {
+        lavaHidder.hidden = true;
+        burst.hidden = false;
+        NSLog(@"********************");
+        [self playSystemSound:@"/VolcanoApp_explosion.wav"];
+    }
+    [self.view setNeedsDisplay];
+    [self refreshStartButton];
 }
 
 

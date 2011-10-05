@@ -22,7 +22,6 @@
     int lavaWidth;
     int lavaHeight;
     
-    FLAPIExercice *currentExercice;
 }
 
 - (void)playSystemSound:(NSString *)soundFilename;

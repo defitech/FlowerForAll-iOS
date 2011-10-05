@@ -24,16 +24,12 @@
         duration_exercice_done_s = 0;
         blow_star_count = 0;
     }
-    [[NSNotificationCenter defaultCenter] 
-     postNotificationName:FLAPIX_EVENT_EXERCICE_START  object:self];
     return self;
 }
 
 -(void)stop:(FLAPIX*)flapix {
     [self copyParams:flapix];
     stop_ts = CFAbsoluteTimeGetCurrent();
-    [[NSNotificationCenter defaultCenter] 
-     postNotificationName:FLAPIX_EVENT_EXERCICE_STOP  object:self];
 }
 
 -(void)copyParams:(FLAPIX*)flapix {

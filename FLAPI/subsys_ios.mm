@@ -38,6 +38,9 @@ bool stop_possible = true; // flag passed to true when OnSubSystemProcess
 bool running = false;
 bool paused = false;
 
+// microphone state
+bool mic_plugged = false;
+
 
 // Standard Subsystem function
 // ===========================
@@ -55,6 +58,8 @@ OSStatus FLAPI_SUBSYS_IOS_Pause() {
 OSStatus FLAPI_SUBSYS_IOS_UnPause() {
     if (recordState.queue == nil || ! running || ! paused) { return nil; }
     printf("FLAPI_SUBSYS_IOS_UnPause\n");
+    
+    checkMicrophonePluggedIn();
     
     if (ioState.isPlaying) AudioQueueStart(ioState.queue,nil);
     
@@ -165,7 +170,7 @@ int	SubSys_Close(){
 
 # pragma mark I/O detection and management
 
-BOOL isMicrophonePluggedIn () {
+BOOL checkMicrophonePluggedIn () {
     //--check the actual Route
     CFStringRef state = nil;
     UInt32 propertySize = sizeof(CFStringRef);
@@ -174,15 +179,22 @@ BOOL isMicrophonePluggedIn () {
     {
         if( CFStringGetLength(state) > 0)
         {
-            NSLog(@"SUbsyIOS:Actual ROUTE:%@",(NSString *)state);
+            NSLog(@"SUbsyIOS checkMicrophonePluggedIn:Actual ROUTE:%@",(NSString *)state);
             if ([@"HeadsetInOut" isEqualToString:(NSString *)state]) {
-                NSLog(@"**Yeahh ready to go!");
+                if (! mic_plugged) {
+                    mic_plugged = true;
+                    [flapix EventMicrophonePlugged:YES];
+                }
                 return YES;
             }
-             return NO;
+            if (mic_plugged) {
+                mic_plugged = false;
+                [flapix EventMicrophonePlugged:NO];
+            }
+            return NO;
         }
-    } NSLog(@"SUbsyIOS:Actual Failed"); 
-    
+    } 
+    NSLog(@"SUbsyIOS checkMicrophonePluggedIn:Actual Failed"); 
     return NO;
 }
 
@@ -192,9 +204,9 @@ void audioRouteChangeListenerCallback (
                          UInt32                    inDataSize,
                          const void                *inData
                          ) {
-    if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return; // 5
-    //MainViewController *controller = (MainViewController *) inUserData; // 6
+    if (inPropertyID != kAudioSessionProperty_AudioRouteChange) return; // 5    
     
+    /** Keep this for further use
     CFDictionaryRef routeChangeDictionary = (CFDictionaryRef)inData;        // 8
     CFNumberRef routeChangeReasonRef = (CFNumberRef)CFDictionaryGetValue (routeChangeDictionary,
                                                                           CFSTR (kAudioSession_AudioRouteChangeKey_Reason));
@@ -203,8 +215,10 @@ void audioRouteChangeListenerCallback (
     CFNumberGetValue (routeChangeReasonRef, kCFNumberSInt32Type, &routeChangeReason);
     if ((routeChangeReason == kAudioSessionRouteChangeReason_OldDeviceUnavailable) || 
         (routeChangeReason == kAudioSessionRouteChangeReason_NewDeviceAvailable)) {  // 9
-            
+            NSLog(@"audioRouteChangeListenerCallback ***");
     }
+    */
+    checkMicrophonePluggedIn();
 }
 
 # pragma mark INIT IOS SPECIFIC CALL
@@ -235,7 +249,7 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     }
     
     // test
-    isMicrophonePluggedIn();   
+    checkMicrophonePluggedIn();   
     
     
     bSuccess= [audioSession setActive: YES error: &myErr];  

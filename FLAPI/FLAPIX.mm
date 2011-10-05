@@ -24,6 +24,7 @@ NSString * const FLAPIX_EVENT_EXERCICE_STOP = @"FlapixEventExerciceStop";
 NSString * const FLAPIX_EVENT_LEVEL = @"FlapixEventLevel";
 NSString * const FLAPIX_EVENT_FREQUENCY = @"FlapixEventFrequency";
 
+NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
 
 @implementation FLAPIX
 
@@ -52,7 +53,7 @@ NSString * const FLAPIX_EVENT_FREQUENCY = @"FlapixEventFrequency";
         
         UpdateAudioInfo();
         
-        printf("gParams frequency_max:%i frequency_min:%i\n",gParams.frequency_max,gParams.frequency_min);
+        NSLog(@"gParams frequency_max:%i frequency_min:%i\n",gParams.frequency_max,gParams.frequency_min);
         // -- write your own code here to do some more init stuff
         
         current_exercice = nil;
@@ -252,14 +253,21 @@ NSMutableArray *blowFrequencies;
         // exercice management
         [[self currentExercice] addBlow:blow];
         if ([[self currentExercice] percent_done] >= 1) {
-            [self Stop];
+            [self exerciceStop];
         }
     }
+    
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_BLOW_STOP object:blow];
+    
     
     [blow autorelease];
     
     [pool drain]; 
+}
+
+- (void) EventMicrophonePlugged:(BOOL)on {
+    NSLog(@"EventMicrophonePlugged %i",on);
 }
 
 # pragma mark lastBlow
@@ -281,6 +289,10 @@ NSMutableArray *blowFrequencies;
 - (void)exerciceStop {
     if (current_exercice == nil) return;
     if ([current_exercice inCourse])  [current_exercice stop:self];
+    
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:FLAPIX_EVENT_EXERCICE_STOP  object:current_exercice];
+    
     [DB saveExercice:current_exercice];
     [current_exercice release];
     current_exercice = nil;
@@ -294,6 +306,10 @@ NSMutableArray *blowFrequencies;
     }
     // start FLAPIX if needed
     if (! self.running) [self Start];
+    
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:FLAPIX_EVENT_EXERCICE_START  object:current_exercice];
+    
     return current_exercice;
 }
 
