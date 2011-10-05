@@ -19,8 +19,10 @@
     
     CGRect lavaFrame;
     
-    int lavaWidth;
-    int lavaHeight;
+    float mainWidth;
+    float mainHeight;
+    float lavaWidth;
+    float lavaHeight;
     
 }
 

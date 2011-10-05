@@ -13,6 +13,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+
+
 @implementation VolcanoApp
 
 # pragma mark FlowerApp overriding
@@ -32,14 +34,13 @@
 
 - (void)initVariables {
     
-    int mainWidth = self.view.frame.size.width;
-    int mainHeight = self.view.frame.size.height - 40 - 20; // 40 for needle + 20 for padding
-    lavaHeight = volcano.frame.size.height;
+    float correctedHeight = self.view.frame.size.height - 40 - 20; // 40 for needle + 20 for padding
+    float adjustBurst = 100.0f; // kind of hack to adjust burst on top of volcano 
     
-    volcano.center = CGPointMake(mainWidth / 2, mainHeight - (lavaHeight / 2));
-    burst.center = CGPointMake(mainWidth / 2, mainHeight - lavaHeight - (burst.frame.size.height / 2) + 67);
+    volcano.center = CGPointMake(mainWidth / 2, correctedHeight - (lavaHeight / 2));
+    burst.center = CGPointMake(mainWidth / 2, correctedHeight - lavaHeight - (burst.frame.size.height / 2) + adjustBurst);
     burst.hidden = true;
-    lavaHidder.center = CGPointMake(mainWidth / 2, mainHeight - (lavaHeight / 2) - 10);
+    lavaHidder.center = CGPointMake(mainWidth / 2, correctedHeight - (lavaHeight / 2));
     lavaHidder.hidden = false;
 
     lavaFrame = lavaHidder.frame;
@@ -52,10 +53,21 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        mainWidth = self.view.frame.size.width;
+        mainHeight = self.view.frame.size.height;
         
         volcano = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VolcanoApp_volcano.png"] ] autorelease];
-        burst = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VolcanoApp_burst.png"] ] autorelease];     
-        lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 22, volcano.frame.size.height + 20)];
+        [volcano setFrame:CGRectMake(0, 0, mainWidth * 0.9, volcano.frame.size.height * mainWidth * 0.9 / volcano.frame.size.width)];
+        volcano.contentMode = UIViewContentModeScaleAspectFit;
+        
+        burst = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VolcanoApp_burst.png"] ] autorelease];
+        [burst setFrame:CGRectMake(0, 0, mainWidth * 0.9, burst.frame.size.height * mainWidth * 0.9 / burst.frame.size.width)];
+        burst.contentMode = UIViewContentModeScaleAspectFit;
+        
+        lavaWidth = 19; //depending of volcano image
+        lavaHeight = volcano.frame.size.height;
+        
+        lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, lavaWidth, lavaHeight)];
         lavaHidder.backgroundColor = [UIColor whiteColor];
         
         [self initVariables];
@@ -64,7 +76,7 @@
         [self.view addSubview:burst];
         [self.view addSubview:lavaHidder];
         
-              
+        [self.view bringSubviewToFront:start];
     }
     
     return self;
