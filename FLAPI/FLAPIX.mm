@@ -170,6 +170,8 @@ BOOL demo_mode = NO;
 - (BOOL) Stop {
     NSLog(@"Stop");
     [self SetDemo:NO]; // we must quit Demo before we stop;
+    [self exerciceStop]; // maybe an exerice is going on
+    
     if (! self.running) return NO;
     if (FLAPI_SUCCESS != FLAPI_Stop()) return NO; // This does stop the sound recording and processing
     self.running = NO;
