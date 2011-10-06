@@ -12,7 +12,7 @@
 #import "DB.h"
 #import "Exercise.h"
 
-#import "ResultsApp_DayCell.h"
+//#import "ResultsApp_DayCell.h"
 
 @implementation ResultsApp_Day
 
@@ -137,30 +137,99 @@
 // Customize the appearance of table view cells
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    NSUInteger row = [indexPath row];
     
-	//Use statistic cell instead of standard UITableViewCell
-	ResultsApp_DayCell *cell = (ResultsApp_DayCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    Exercise* ex = [self.exercises objectAtIndex:row];
     
-	if (cell == nil) {
-		cell = [[[ResultsApp_DayCell alloc] initWithFrame:CGRectZero reuseIdentifier: CellIdentifier] autorelease];
-		//cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}
-	
-	NSUInteger row = [indexPath row];
+    static NSString *CellIdentifier = @"PercentOnRightCell";
     
-	if (row < [exercises count]) {
-        
-        //Format the actual time of the exercise
-        Exercise* ex = [self.exercises objectAtIndex:row];
-        double startTime = ex.start_ts;
-        NSDate* exerciseDate = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:startTime];
-        NSString *formattedTime = [self.timeFormatter stringFromDate:exerciseDate];
-        
-		cell.primaryLabel.text = formattedTime;
-        cell.thirdLabel.text = [NSString stringWithFormat:@"%i%@",(int)(ex.duration_exercice_done_ps * 100.0), @"%"];
-		
-	}
+    UILabel *time;
+    UILabel *duration;
+    UILabel *percent;
+    UILabel *profile;
+    UILabel *blow;
+    UILabel *blowRatio;
+    
+    int starAlignment = 15;
+    int timeAlignment = 70;
+    int blowAlignment = 163;
+    int profileAlignment = 270;
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    } else {
+        for(UIView* subview in [cell.contentView subviews]) {
+            [subview removeFromSuperview];
+        }
+    }
+    
+    time = [[[UILabel alloc] initWithFrame:CGRectMake(timeAlignment, 3.0, 80.0, 20.0)] autorelease];
+    time.font = [UIFont systemFontOfSize:20];
+    time.textAlignment = UITextAlignmentLeft;
+    [cell.contentView addSubview:time];
+    
+    duration = [[[UILabel alloc] initWithFrame:CGRectMake(timeAlignment, 27.0, 80.0, 10.0)] autorelease];
+    duration.font = [UIFont systemFontOfSize:12];
+    duration.textAlignment = UITextAlignmentLeft;
+    [cell.contentView addSubview:duration];
+    
+    if (ex.duration_exercice_done_ps < 1.0){
+        percent = [[[UILabel alloc] initWithFrame:CGRectMake(starAlignment, 25.0, 30.0, 15.0)] autorelease];
+        percent.font = [UIFont systemFontOfSize:12];
+        percent.textAlignment = UITextAlignmentLeft;
+        [cell.contentView addSubview:percent];
+    }
+    
+    blow = [[[UILabel alloc] initWithFrame:CGRectMake(blowAlignment, 6.0, 70.0, 10.0)] autorelease];
+    blow.font = [UIFont boldSystemFontOfSize:12];
+    blow.textColor = [UIColor grayColor];
+    blow.textAlignment = UITextAlignmentLeft;
+    [cell.contentView addSubview:blow];
+    
+    blowRatio = [[[UILabel alloc] initWithFrame:CGRectMake(blowAlignment, 20.0, 60.0, 16.0)] autorelease];
+    blowRatio.font = [UIFont systemFontOfSize:16];
+    blowRatio.textAlignment = UITextAlignmentLeft;
+    [cell.contentView addSubview:blowRatio];
+    
+    profile = [[[UILabel alloc] initWithFrame:CGRectMake(profileAlignment, 6.0, 70.0, 10.0)] autorelease];
+    profile.font = [UIFont boldSystemFontOfSize:12];
+    profile.textColor = [UIColor grayColor];
+    profile.textAlignment = UITextAlignmentLeft;
+    [cell.contentView addSubview:profile];
+    
+    UIImageView* star = [UIImageView alloc];
+    NSString *imagePath;
+    if (ex.duration_exercice_done_ps >= 1.0){
+        CGRect frame = CGRectMake(starAlignment, 8, 20, 25);
+        [star initWithFrame:frame];
+        [cell.contentView addSubview:star];
+        imagePath = [[NSBundle mainBundle] pathForResource:@"ResultsApp-gold_star" ofType:@"png"];
+    }
+    else{
+        CGRect frame = CGRectMake(starAlignment, 2, 20, 25);
+        [star initWithFrame:frame];
+        [cell.contentView addSubview:star];
+        imagePath = [[NSBundle mainBundle] pathForResource:@"ResultsApp-blue_star" ofType:@"png"];
+    }
+    UIImage *theImage = [UIImage imageWithContentsOfFile:imagePath];
+    star.image = theImage;
+    
+
+    NSDate* exerciseDate = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:ex.start_ts];
+    NSString *formattedTime = [self.timeFormatter stringFromDate:exerciseDate];
+    time.text = formattedTime;
+    
+    duration.text = [NSString stringWithFormat:@"%i%@", (int)(ex.stop_ts - ex.start_ts), @"s"];
+    if (ex.duration_exercice_done_ps < 1.0){
+        percent.text = [NSString stringWithFormat:@"%i%@",(int)(ex.duration_exercice_done_ps * 100.0), @"%"];
+    }
+
+    blow.text = NSLocalizedStringFromTable(@"Good Blows",@"ResultsApp",nil);
+    blowRatio.text = [NSString stringWithFormat:@"%i %@ %i", ex.blow_star_count, NSLocalizedStringFromTable(@"Over",@"ResultsApp",nil), ex.blow_count];
+    profile.text = ex.profile_name;
+    
     return cell;
 }
 
