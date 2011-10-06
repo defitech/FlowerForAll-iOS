@@ -181,9 +181,6 @@ NSArray *optionList ;
 		NSLog(@"Erreur lors de la lecture du code JSON (%@).", [ jsonError localizedDescription ]);
 		
 	}
-	
-	NSLog(@"BLOP");
-	
 	[response release];           
 	[connection release];  
 	[webData release]; 

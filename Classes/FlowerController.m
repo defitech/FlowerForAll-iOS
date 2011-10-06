@@ -223,8 +223,10 @@ static NSMutableDictionary* appList;
 - (void)startStopButtonRefresh:(NSNotification *)notification {
     if ([[FlowerController currentFlapix] running]) {
         [self.view bringSubviewToFront:historyView];
+        [self.view bringSubviewToFront:menuButton];
     } else {
         [self.view bringSubviewToFront:startButton];
+        
     }
 }
 
