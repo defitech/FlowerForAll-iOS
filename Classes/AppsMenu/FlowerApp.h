@@ -29,6 +29,19 @@
 +(NSString*)appTitle;
 
 /**  
+ * FLAPIX start  !! check   flapixEventExerciceStart
+ * Override this method to catch 
+ **/
+-(void)flapixEventStart:(FLAPIX *)flapix;
+/** 
+ * FLAPIX stop !! check   flapixEventExerciceStop
+ * Override this method to catch 
+ **/
+-(void)flapixEventStop:(FLAPIX *)flapix;
+
+
+
+/**  
  * A new exerice start  
  * Override this method to catch 
  **/

@@ -14,7 +14,6 @@
 #ifndef __HEADER_H__
 #define __HEADER_H__
 
-
 extern NSString * const FLAPIX_EVENT_START;
 extern NSString * const FLAPIX_EVENT_STOP;
 extern NSString * const FLAPIX_EVENT_BLOW_START;

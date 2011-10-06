@@ -25,15 +25,34 @@
 }
 
 - (void)refreshStartButton {
+    NSLog(@"refreshStartButton %i",[[FlowerController currentFlapix] exerciceInCourse]);
+    if ( (! [[FlowerController currentFlapix] running]) 
+        || [[FlowerController currentFlapix] exerciceInCourse]) {
+        [self.view sendSubviewToBack:start]; 
+    } else {
+        [self.view bringSubviewToFront:start]; 
+    }
+    /**
     if ([[FlowerController currentFlapix] exerciceInCourse]) {
         [start setTitle:@"Stop Exercice" forState:UIControlStateNormal];
     } else {
         [start setTitle:@"Start Exercice" forState:UIControlStateNormal];
     }
+     **/
 }
 
+
+
+-(void)flapixEventStart:(FLAPIX *)flapix {
+    [self refreshStartButton];
+}
+
+-(void)flapixEventStop:(FLAPIX *)flapix {
+    [self refreshStartButton];
+}
+
+
 - (void)initVariables {
-    
     float correctedHeight = self.view.frame.size.height - 40 - 20; // 40 for needle + 20 for padding
     float adjustBurst = 100.0f; // kind of hack to adjust burst on top of volcano 
     
@@ -44,7 +63,8 @@
     lavaHidder.hidden = false;
 
     lavaFrame = lavaHidder.frame;
-    [self refreshStartButton];
+   
+      [self refreshStartButton];
 }
 
 
@@ -70,19 +90,27 @@
         lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, lavaWidth, lavaHeight)];
         lavaHidder.backgroundColor = [UIColor whiteColor];
         
+         [start setTitle:NSLocalizedStringFromTable(@"Start Exercice",@"VolcanoApp",@"Start Button") 
+                forState:UIControlStateNormal];
+        
         [self initVariables];
         
         [self.view addSubview:volcano];
         [self.view addSubview:burst];
         [self.view addSubview:lavaHidder];
         
-        [self.view bringSubviewToFront:start];
+        
         
         starLabel.text = @"0";
+        
+       
     }
     
     return self;
 }
+
+
+
 
 - (IBAction) pressStart:(id)sender {
     if ([[FlowerController currentFlapix] exerciceInCourse]) {

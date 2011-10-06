@@ -47,7 +47,7 @@
 					<object class="IBUIButton" id="498284563">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{97, 15}, {127, 37}}</string>
+						<string key="NSFrame">{{97, 335}, {127, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="435055819"/>
@@ -88,7 +88,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">ResultsApp-Icon.png</string>
+							<string key="NSResourceName">VolcanoApp-star.png</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="875948120">
@@ -97,7 +97,6 @@
 						<string key="NSFrame">{{36, 69}, {32, 32}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:311</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -186,9 +185,9 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="498284563"/>
 							<reference ref="435055819"/>
 							<reference ref="875948120"/>
+							<reference ref="498284563"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -332,7 +331,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">ResultsApp-Icon.png</string>
+			<string key="NS.key.0">VolcanoApp-star.png</string>
 			<string key="NS.object.0">{48, 48}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">534</string>
