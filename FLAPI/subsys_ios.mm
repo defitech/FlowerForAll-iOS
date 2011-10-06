@@ -59,7 +59,6 @@ OSStatus FLAPI_SUBSYS_IOS_UnPause() {
     if (recordState.queue == nil || ! running || ! paused) { return nil; }
     printf("FLAPI_SUBSYS_IOS_UnPause\n");
     
-    checkMicrophonePluggedIn();
     
     if (ioState.isPlaying) AudioQueueStart(ioState.queue,nil);
     
@@ -233,13 +232,9 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     
     [audioSession setDelegate:[[subsys_ios_AVAudioSessionDelegate alloc] init]];
-    AudioSessionAddPropertyListener (kAudioSessionProperty_AudioRouteChange,
-                                     audioRouteChangeListenerCallback,
-                                     [audioSession delegate]);
     
     
     bAudioInputAvailable= [audioSession inputIsAvailable];
-    
     if( bAudioInputAvailable)
     {
         [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:&myErr];
@@ -247,11 +242,7 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     else {
         NSLog(@"FLAPI_SUBSYS_IOS_init_and_registerFLAPIX: Cannot init AudioSession");
     }
-    
-    // test
-    checkMicrophonePluggedIn();   
-    
-    
+
     bSuccess= [audioSession setActive: YES error: &myErr];  
     
     if(!bSuccess)
@@ -271,13 +262,18 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
                              );
     
     
-    //Add property listener
-    
-    //-- end of AudioSession 
-    
-    
+    // Init FLAPI
     FLAPI_SetMode(1); // send winMSG
     FLAPI_Init();
+    
+    
+    //-- Add property Listener
+    AudioSessionAddPropertyListener (kAudioSessionProperty_AudioRouteChange,
+                                     audioRouteChangeListenerCallback,
+                                     [audioSession delegate]);
+    
+    // test if Microphone is Plugged In .. will start recording if possible
+    //checkMicrophonePluggedIn();   
 }
 
 

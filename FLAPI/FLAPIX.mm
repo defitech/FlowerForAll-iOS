@@ -14,7 +14,6 @@
 #import "FLAPIBlow.h"
 
 
-
 NSString * const FLAPIX_EVENT_START = @"FlapixEventStart";
 NSString * const FLAPIX_EVENT_STOP = @"FlapixEventStop";
 NSString * const FLAPIX_EVENT_BLOW_START = @"FlapixEventBlowStart";
@@ -82,6 +81,8 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
     NSLog(@"FLAPIX become active");
     FLAPI_SUBSYS_IOS_UnPause();
+    // Start App If Mic is In
+    checkMicrophonePluggedIn();
 }
 
 

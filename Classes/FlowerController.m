@@ -236,6 +236,11 @@ static NSMutableDictionary* appList;
     if (singleton != nil)  return ;
     singleton = self;
     
+    // Start FLAPIX
+    NSLog(@"FlowerController viewDidLoad");
+    // Do any additional setup after loading the view from its nib.
+    [FlowerController currentFlapix];
+    
     // init App list
     appList = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                [NSNull alloc], @"VolcanoApp",
@@ -252,21 +257,21 @@ static NSMutableDictionary* appList;
     [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
     
     // Plug an iPhone
-    CGRect plugFrame = CGRectMake(historyView.frame.origin.x+10, 
-                                    historyView.frame.origin.y+10, 
-                                    160, 25); 
+    CGRect plugFrame = historyView.frame; 
+    
     startButton = [[UIButton alloc] initWithFrame:plugFrame];
-    UIImage *buttonImageNormal = [UIImage imageNamed: @"jack.png"];
-    [startButton setImage:buttonImageNormal forState:UIControlStateNormal];
+    UIImage *buttonImageHighlighted = [UIImage imageNamed: @"jack.png"];
+    [startButton setImage:buttonImageHighlighted forState:UIControlStateHighlighted];
+    [startButton setTitle:@"Plug headphones with mic. to start" forState:UIControlStateNormal];
+    startButton.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
+    startButton.titleLabel.textAlignment = UITextAlignmentCenter;
     [startButton setBackgroundColor:[UIColor blackColor]];
-    [startButton setOpaque:YES];
+    [startButton setOpaque:NO];
     [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:startButton];
     [self startStopButtonRefresh:nil];
-    
-    NSLog(@"FlowerController viewDidLoad");
-    // Do any additional setup after loading the view from its nib.
-    [FlowerController currentFlapix];
+    [buttonImageHighlighted release];
+ 
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(startStopButtonRefresh:)
