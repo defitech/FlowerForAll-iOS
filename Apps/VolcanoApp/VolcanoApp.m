@@ -25,20 +25,12 @@
 }
 
 - (void)refreshStartButton {
-    NSLog(@"refreshStartButton %i",[[FlowerController currentFlapix] exerciceInCourse]);
     if ( (! [[FlowerController currentFlapix] running]) 
         || [[FlowerController currentFlapix] exerciceInCourse]) {
         [self.view sendSubviewToBack:start]; 
     } else {
         [self.view bringSubviewToFront:start]; 
     }
-    /**
-    if ([[FlowerController currentFlapix] exerciceInCourse]) {
-        [start setTitle:@"Stop Exercice" forState:UIControlStateNormal];
-    } else {
-        [start setTitle:@"Start Exercice" forState:UIControlStateNormal];
-    }
-     **/
 }
 
 

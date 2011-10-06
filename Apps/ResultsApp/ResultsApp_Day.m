@@ -227,7 +227,7 @@
     }
 
     blow.text = NSLocalizedStringFromTable(@"Good Blows",@"ResultsApp",nil);
-    blowRatio.text = [NSString stringWithFormat:@"%i %@ %i", ex.blow_star_count, NSLocalizedStringFromTable(@"Over",@"ResultsApp",nil), ex.blow_count];
+    blowRatio.text = [NSString stringWithFormat:@"%i %@ %i", ex.blow_star_count, NSLocalizedStringFromTable(@"over",@"ResultsApp",nil), ex.blow_count];
     profile.text = ex.profile_name;
     
     return cell;
