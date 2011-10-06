@@ -178,7 +178,7 @@ BOOL checkMicrophonePluggedIn () {
     {
         if( CFStringGetLength(state) > 0)
         {
-            //NSLog(@"SUbsyIOS checkMicrophonePluggedIn:Actual ROUTE:%@",(NSString *)state);
+            NSLog(@"SUbsyIOS checkMicrophonePluggedIn: %i Actual ROUTE:%@",mic_plugged,(NSString *)state);
             if ([@"HeadsetInOut" isEqualToString:(NSString *)state]) {
                 if (! mic_plugged) {
                     mic_plugged = true;

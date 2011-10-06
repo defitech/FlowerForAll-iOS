@@ -140,8 +140,8 @@ double exerice_duration_s = -1.0f;
 
 BOOL demo_mode = NO;
 - (void) SetDemo:(BOOL)on {
-    if (! self.running) [self Start];
-    NSLog(@"setDemoi %i %i",demo_mode,on);
+    if (! self.running && on) [self Start];
+    
     if (demo_mode == on) return;
     
     // debug -- read from file
@@ -152,6 +152,11 @@ BOOL demo_mode = NO;
 
     FLAPI_SUBSYS_IOS_file_dev(toread,true);
     demo_mode = on;
+    
+    // Check if Microphone is Plugged.. if not Stop
+    if (! demo_mode && ! checkMicrophonePluggedIn()) {
+        [self Stop];
+    }
 }
 
 - (BOOL) IsDemo {
@@ -268,6 +273,9 @@ NSMutableArray *blowFrequencies;
 }
 
 - (void) EventMicrophonePlugged:(BOOL)on {
+    // Simulate ON when in demo mode
+    if ([self IsDemo]) on = YES;
+    
     // here we start or stop FLAPI if needed
     if (running == on ) return; // nothing to do if running and on, or stopped and off;
     if (on == YES) { 

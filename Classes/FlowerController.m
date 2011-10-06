@@ -206,18 +206,7 @@ static NSMutableDictionary* appList;
 
 // jack plug clicked
 -(void) startButtonPressed:(id) sender {
-    if (! [[FlowerController currentFlapix] running]) {
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:nil  
-                                                          message:
-                                NSLocalizedString(@"Plug an headphone with microphone to start",@"When the headphone button is clicked")
-                                                         delegate:nil  
-                                                cancelButtonTitle:NSLocalizedString(@"OK",@"OK")  
-                                                otherButtonTitles:nil];  
-        
-        [message show];  
-        
-        [message release]; 
-    }
+    [FlowerController showNav];
 }
 
 - (void)startStopButtonRefresh:(NSNotification *)notification {
@@ -264,7 +253,7 @@ static NSMutableDictionary* appList;
     startButton = [[UIButton alloc] initWithFrame:plugFrame];
     UIImage *buttonImageHighlighted = [UIImage imageNamed: @"jack.png"];
     [startButton setImage:buttonImageHighlighted forState:UIControlStateHighlighted];
-    [startButton setTitle:@"Plug headphones with mic. to start" forState:UIControlStateNormal];
+    [startButton setTitle:NSLocalizedString(@"Plug an headphone with microphone to start",@"Displayed on the ToolBar") forState:UIControlStateNormal];
     startButton.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
     startButton.titleLabel.textAlignment = UITextAlignmentCenter;
     [startButton setBackgroundColor:[UIColor blackColor]];
