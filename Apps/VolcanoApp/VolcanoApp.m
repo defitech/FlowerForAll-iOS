@@ -77,6 +77,8 @@
         [self.view addSubview:lavaHidder];
         
         [self.view bringSubviewToFront:start];
+        
+        starLabel.text = @"0";
     }
     
     return self;
@@ -107,8 +109,10 @@ bool debug_events = NO;
     //NSLog(@"percent_done: %f", percent);
     
     //Add sound when the goal has been reached for the last blow
-    if (blow.goal)
+    if (blow.goal) {
         [self playSystemSound:@"/VolcanoApp_goal.wav"];
+        starLabel.text = [NSString stringWithFormat:@"%d", [starLabel.text intValue] + 1];
+    }
     
     //Raise up lava
     lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * percent);

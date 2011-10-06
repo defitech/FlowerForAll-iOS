@@ -17,6 +17,8 @@
     UIImageView *burst;
     UIView *lavaHidder;
     
+    IBOutlet UILabel *starLabel;
+    
     CGRect lavaFrame;
     
     float mainWidth;
