@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSMutableData *webData;
 
 //ping easymemory server
--(void)ping:(NSDictionary*)infos;
+-(void)ping:(NSDictionary*)infos skipIfLastWasNSecondsAgo:(double)seconds;
 
 //this is used to post the data to web server database through HTTP POST method
 -(void)sendPostRequest:(NSString*)url postString:(NSString*)post;

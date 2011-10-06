@@ -45,13 +45,19 @@
 
 @synthesize webData;
 
+
+static double lastPing = 0;
 static BOOL pinging;
 // Am I the pinger?
 BOOL pinger = NO;
 //
--(void)ping:(NSDictionary*)infos
+-(void)ping:(NSDictionary*)infos  skipIfLastWasNSecondsAgo:(double)seconds
 {
 	if (pinging) { NSLog(@"Already Pinging"); return ;};
+    if ((lastPing + seconds) > CFAbsoluteTimeGetCurrent()) {
+        return ;
+    }
+    lastPing = CFAbsoluteTimeGetCurrent();
 	NSLog(@"Pinging");
 	pinger = YES;
 	pinging = YES;

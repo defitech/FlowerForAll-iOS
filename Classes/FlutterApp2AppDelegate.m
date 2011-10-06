@@ -58,7 +58,7 @@
     
     NSMutableDictionary *infos = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"applicationDidBecomeActive",@"event",nil];
     //[infos addEntriesFromDictionary:xxxxxxxxxxx];
-    [cm ping:infos];  // advertise presence
+    [cm ping:infos skipIfLastWasNSecondsAgo:3600];  // advertise presence
     [cm release];
     NSLog(@"applicationDidBecomeActive");
 }
