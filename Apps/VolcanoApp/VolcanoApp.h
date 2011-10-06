@@ -17,12 +17,15 @@
     UIImageView *burst;
     UIView *lavaHidder;
     
+    IBOutlet UILabel *starLabel;
+    
     CGRect lavaFrame;
     
-    int lavaWidth;
-    int lavaHeight;
+    float mainWidth;
+    float mainHeight;
+    float lavaWidth;
+    float lavaHeight;
     
-    FLAPIExercice *currentExercice;
 }
 
 - (void)playSystemSound:(NSString *)soundFilename;

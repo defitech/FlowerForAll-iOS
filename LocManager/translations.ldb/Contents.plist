@@ -381,7 +381,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-10-01T09:43:56Z</date>
+					<date>2011-10-06T16:31:04Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -391,7 +391,7 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>aad8d21d24e51704c8dc38e9b912597c
+					<string>26a20b8739c19bcd061a6b955db1e4d9
 </string>
 					<key>name</key>
 					<string>ResultsApp.strings</string>
@@ -617,29 +617,6 @@
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>Modidy</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>Modidy</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
-							<string>Label of the modify table button</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
 							<string>Modify</string>
 							<key>localizations</key>
 							<dict>
@@ -672,6 +649,31 @@
 								<string>OK</string>
 								<key>fr</key>
 								<string>OK</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>No comment provided by engineer.</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>over</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>over</string>
+								<key>fr</key>
+								<string>sur</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -875,6 +877,54 @@
 								<string>ModifyTableButtonLabelInEditMode</string>
 								<key>fr</key>
 								<string>ModifyTableButtonLabelInEditMode</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of the modify table button</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Modidy</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Modidy</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>No comment provided by engineer.</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Over</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Over</string>
+								<key>fr</key>
+								<string>sur</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1103,7 +1153,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-09-29T09:14:54Z</date>
+					<date>2011-10-06T16:25:17Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -1111,14 +1161,39 @@
 					<key>errors</key>
 					<array/>
 					<key>flags</key>
-					<integer>1</integer>
+					<integer>0</integer>
 					<key>hash</key>
-					<string>ff9778e9e6a71cd77d63d85fa9df1d26
+					<string>6a1a88ca9018e025343b7eec0b5e9d25
 </string>
 					<key>name</key>
 					<string>VolcanoApp.strings</string>
 					<key>objects</key>
 					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Start Button</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Start Exercice</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Start Exercice</string>
+								<key>fr</key>
+								<string>Démarer un exerice</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
 						<dict>
 							<key>change date</key>
 							<date>2001-01-01T00:00:00Z</date>
@@ -1199,7 +1274,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-10-01T09:40:53Z</date>
+					<date>2011-10-06T16:25:17Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -1209,7 +1284,7 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>e02bc9429737b8254d8ebab8955601a5
+					<string>392f51b0ee97e925fe7254256ed6a77d
 </string>
 					<key>name</key>
 					<string>Localizable.strings</string>
@@ -1398,31 +1473,6 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Title of the first tab bar item</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>Go to menu</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>Go to menu</string>
-								<key>fr</key>
-								<string>Aller au menu</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
 							<string>Label of the identification failed alert</string>
 							<key>errors</key>
 							<array/>
@@ -1561,6 +1611,31 @@
 								<string>PasswordAlertOKButtonLabel</string>
 								<key>fr</key>
 								<string>PasswordAlertOKButtonLabel</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Displayed on the ToolBar</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Plug an headphone with microphone to start</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Plug an headphone with microphone to start</string>
+								<key>fr</key>
+								<string>Brancher des écouteurs avec micro</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1739,6 +1814,31 @@
 								<string>Flower For All</string>
 								<key>fr</key>
 								<string>Flower For All</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Title of the first tab bar item</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Go to menu</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Go to menu</string>
+								<key>fr</key>
+								<string>Aller au menu</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>

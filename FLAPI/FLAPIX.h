@@ -23,6 +23,8 @@ extern NSString * const FLAPIX_EVENT_EXERCICE_STOP;
 extern NSString * const FLAPIX_EVENT_LEVEL;
 extern NSString * const FLAPIX_EVENT_FREQUENCY;
 
+extern NSString * const FLAPIX_EVENT_MICROPHONE_STATE; // when microphone is plugged / unplugged
+
 
 #endif
 
@@ -33,8 +35,6 @@ extern NSString * const FLAPIX_EVENT_FREQUENCY;
     BOOL blowing;
     FLAPIExercice* current_exercice;
     FLAPIBlow* lastBlow;
-    
-    
 }
 
 
@@ -44,6 +44,7 @@ extern NSString * const FLAPIX_EVENT_FREQUENCY;
 @property (nonatomic) float lastlevel;
 @property (nonatomic) BOOL blowing;
 
+// System !!
 - (BOOL) Start;
 - (BOOL) Stop;
 
@@ -76,13 +77,17 @@ extern NSString * const FLAPIX_EVENT_FREQUENCY;
 // return actual frequency Tolerance value
 - (double) frequenceTolerance;
 
-// EVENTS
+// EVENTS FROM subsys_ios
 - (void) EventLevel:(float) level;
 - (void) EventFrequency:(double) frequency;
 
 - (void) EventBlowStart:(double)timestamp;
 - (void) EventBlowEnd:(double)timestamp duration:(double)length in_range_duration:(double)ir_length;
 
+- (void) EventMicrophonePlugged:(BOOL)on;
+
+// Get last blow.. 
+- (FLAPIBlow*) lastBlow;
 
 
 // EXERCICES
@@ -92,6 +97,8 @@ extern NSString * const FLAPIX_EVENT_FREQUENCY;
 /** Current Exercice return nil if not in course **/
 - (FLAPIExercice*)currentExercice;
 
+/** test if exerice is in course (! nil)**/
+- (BOOL)exerciceInCourse;
 
 
 @end

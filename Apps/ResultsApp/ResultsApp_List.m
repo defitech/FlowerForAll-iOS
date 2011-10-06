@@ -95,7 +95,7 @@
 	else {
         [statisticListTableView setEditing:NO animated:YES];
 		modifyButton.style = UIBarButtonItemStylePlain;
-        modifyButton.title = NSLocalizedStringFromTable(@"Modidy",@"ResultsApp",@"Label of the modify table button");
+        modifyButton.title = NSLocalizedStringFromTable(@"Modify",@"ResultsApp",@"Label of the modify table button");
 	}
     
 }

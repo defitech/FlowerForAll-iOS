@@ -41,8 +41,9 @@ float reference; // width / height of reference (largest)
 - (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        lastTarget = [[FlowerController currentFlapix] frequenceTarget];
-        lastTolerance = [[FlowerController currentFlapix] frequenceTolerance];
+        //lastTarget = [[FlowerController currentFlapix] frequenceTarget];
+        //lastTolerance = [[FlowerController currentFlapix] frequenceTolerance];
+        [self refreshLastBlow:[[FlowerController currentFlapix] lastBlow]];
         
         // init position and frame rederences
         float deltaY = 0.333333f ; //  

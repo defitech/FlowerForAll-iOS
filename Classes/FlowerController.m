@@ -16,7 +16,7 @@
 
 @implementation FlowerController
 
-@synthesize mainView, menuButton, needleGL; 
+@synthesize mainView, menuButton, needleGL, historyView; 
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
 static MenuView* activitiesViewController;
@@ -145,21 +145,22 @@ static NSMutableDictionary* appList;
     UIActionSheet *actionSheet = [[UIActionSheet alloc] init ];
     actionSheet.title = NSLocalizedString(@"Choose an action", @"Choose an action");
     actionSheet.delegate = singleton;
-   
-
-    NSString *startstop =  [[FlowerController currentFlapix] running] ? NSLocalizedString(@"Stop Exercice", @"Stop Action") :
-    NSLocalizedString(@"Start Exercice", @"Start Action") ;
     
-    [actionSheet addButtonWithTitle:startstop];
+    // propose start / stop exercice only if running
+    if ([[FlowerController currentFlapix] running]) {
+        NSString *startstop =  
+        [[FlowerController currentFlapix] exerciceInCourse] ? NSLocalizedString(@"Stop Exercice", @"Stop Action") :
+        NSLocalizedString(@"Start Exercice", @"Start Action") ;
+        [actionSheet addButtonWithTitle:startstop];
+    }
+    
     if (![[self currentFlapix] IsDemo]) {
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Start Demo Mode", @"Enable Demo Mode")];
     } else {
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Stop Demo Mode", @"Enable Demo Mode")];
     }
     
-    //actionSheet.destructiveButtonIndex = 
-    //[actionSheet addButtonWithTitle:NSLocalizedString(@"Go to menu", @"Title of the first tab bar item")];
-    
+   
     // iPad Tweak
     if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
         actionSheet.cancelButtonIndex = 
@@ -174,13 +175,16 @@ static NSMutableDictionary* appList;
 -(void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
     NSLog(@"actionSheet %i", buttonIndex);
     
+    // skip start / stop if not plugged in
+    if (! [[FlowerController currentFlapix] running]) buttonIndex++ ;
+    
     switch (buttonIndex) {
         case 0: // Start / Stop
             NSLog(@"Start / Stop");
-            if ( [[FlowerController currentFlapix] running]) {
-                [[FlowerController currentFlapix] Stop];
+            if ( [[FlowerController currentFlapix] exerciceInCourse]) {
+                [[FlowerController currentFlapix] exerciceStop];
             } else {
-                [[FlowerController currentFlapix] Start];
+                [[FlowerController currentFlapix] exerciceStart];
             }
             return;
             break;
@@ -200,28 +204,18 @@ static NSMutableDictionary* appList;
 }
 
 
-#pragma mark Init
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        NSLog(@"Init With Nib");
-    }
-    return self;
-}
-
+// jack plug clicked
 -(void) startButtonPressed:(id) sender {
-    if (! [[FlowerController currentFlapix] running]) {
-        [[FlowerController currentFlapix] Start];
-    }
+    [FlowerController showNav];
 }
 
 - (void)startStopButtonRefresh:(NSNotification *)notification {
     if ([[FlowerController currentFlapix] running]) {
-        [self.view bringSubviewToFront:needleGL];
+        [self.view bringSubviewToFront:historyView];
+        [self.view bringSubviewToFront:menuButton];
     } else {
         [self.view bringSubviewToFront:startButton];
+        
     }
 }
 
@@ -233,6 +227,10 @@ static NSMutableDictionary* appList;
     if (singleton != nil)  return ;
     singleton = self;
     
+    // Start FLAPIX
+    NSLog(@"FlowerController viewDidLoad");
+    // Do any additional setup after loading the view from its nib.
+    [FlowerController currentFlapix];
     
     // init App list
     appList = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
@@ -249,18 +247,22 @@ static NSMutableDictionary* appList;
     [FlowerController pushMenu]; //will init the MenuView
     [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
     
-    startButton = [[UIButton alloc] initWithFrame:needleGL.frame];
-    UIImage *buttonImageNormal = [UIImage imageNamed: @"play.png"];
-    [startButton setImage:buttonImageNormal forState:UIControlStateNormal];
+    // Plug an iPhone
+    CGRect plugFrame = historyView.frame; 
+    
+    startButton = [[UIButton alloc] initWithFrame:plugFrame];
+    UIImage *buttonImageHighlighted = [UIImage imageNamed: @"jack.png"];
+    [startButton setImage:buttonImageHighlighted forState:UIControlStateHighlighted];
+    [startButton setTitle:NSLocalizedString(@"Plug an headphone with microphone to start",@"Displayed on the ToolBar") forState:UIControlStateNormal];
+    startButton.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
+    startButton.titleLabel.textAlignment = UITextAlignmentCenter;
     [startButton setBackgroundColor:[UIColor blackColor]];
-    [startButton setOpaque:YES];
+    [startButton setOpaque:NO];
     [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:startButton];
     [self startStopButtonRefresh:nil];
-    
-    NSLog(@"FlowerController viewDidLoad");
-    // Do any additional setup after loading the view from its nib.
-    [FlowerController currentFlapix];
+    [buttonImageHighlighted release];
+ 
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(startStopButtonRefresh:)
@@ -269,6 +271,8 @@ static NSMutableDictionary* appList;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(startStopButtonRefresh:)
                                                  name:FLAPIX_EVENT_STOP object:nil];
+    
+
 }
 
 +(FlowerController*) currentFlower {
@@ -280,7 +284,6 @@ static NSMutableDictionary* appList;
     if (flapix == nil) {
         flapix = [FLAPIX new];
         [ParametersManager loadParameters:flapix];
-        //[flapix Start];
     }
     return flapix;
 }
@@ -299,6 +302,7 @@ static NSMutableDictionary* appList;
     mainView = nil;
     needleGL = nil;
     startButton = nil;
+    historyView = nil;
 }
 
 # pragma mark Quit

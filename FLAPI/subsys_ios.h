@@ -91,5 +91,7 @@ void io_stop();
 void io_push_buff_for_playback(short* buffer,short buffSize);
 void io_pop_buff_for_playback(AudioQueueBufferRef buffer);
 
+BOOL checkMicrophonePluggedIn ();
+
 #endif
 #endif

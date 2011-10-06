@@ -53,6 +53,14 @@
     [super viewDidLoad]; 
     
     [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_flapixEventStart:)
+                                                 name:FLAPIX_EVENT_START object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_flapixEventStop:)
+                                                 name:FLAPIX_EVENT_STOP object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventLevel:)
                                                  name:FLAPIX_EVENT_LEVEL object:nil];
     
@@ -71,6 +79,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventExerciceStart:)
                                                  name:FLAPIX_EVENT_EXERCICE_START object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_flapixEventExerciceStop:)
+                                                 name:FLAPIX_EVENT_EXERCICE_STOP object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventExerciceStop:)
@@ -99,6 +111,16 @@
 - (void)_flapixEventExerciceStop:(NSNotification *)notification {
     [self flapixEventExerciceStop:((FLAPIExercice*)[notification object])];
 }
+
+- (void)_flapixEventStart:(NSNotification *)notification {
+    [self flapixEventStart:((FLAPIX*)[notification object])];
+}
+- (void)_flapixEventStop:(NSNotification *)notification {
+    [self flapixEventStop:((FLAPIX*)[notification object])];
+}
+
+- (void)flapixEventStart:(FLAPIX *)flapix {}
+- (void)flapixEventStop:(FLAPIX *)flapix {}
 
 - (void)flapixEventLevel:(float)soundLevel {}
 - (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good{}

@@ -1,0 +1,4 @@
+#notes about git
+
+#remove a remote branch
+git branch -d -r origin/<branchname>

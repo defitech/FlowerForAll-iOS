@@ -13,8 +13,6 @@
 #import "DB.h"
 #import "FLAPIBlow.h"
 
-
-
 NSString * const FLAPIX_EVENT_START = @"FlapixEventStart";
 NSString * const FLAPIX_EVENT_STOP = @"FlapixEventStop";
 NSString * const FLAPIX_EVENT_BLOW_START = @"FlapixEventBlowStart";
@@ -24,16 +22,12 @@ NSString * const FLAPIX_EVENT_EXERCICE_STOP = @"FlapixEventExerciceStop";
 NSString * const FLAPIX_EVENT_LEVEL = @"FlapixEventLevel";
 NSString * const FLAPIX_EVENT_FREQUENCY = @"FlapixEventFrequency";
 
+NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
 
 @implementation FLAPIX
 
 @synthesize running, frequency, blowing, lastlevel;
 
-
-
-/**
- * init 
- */ 
 - (id)init
 {
     NSLog(@"FLAPIX init");
@@ -52,7 +46,7 @@ NSString * const FLAPIX_EVENT_FREQUENCY = @"FlapixEventFrequency";
         
         UpdateAudioInfo();
         
-        printf("gParams frequency_max:%i frequency_min:%i\n",gParams.frequency_max,gParams.frequency_min);
+        NSLog(@"gParams frequency_max:%i frequency_min:%i\n",gParams.frequency_max,gParams.frequency_min);
         // -- write your own code here to do some more init stuff
         
         current_exercice = nil;
@@ -84,6 +78,8 @@ NSString * const FLAPIX_EVENT_FREQUENCY = @"FlapixEventFrequency";
 - (void)applicationDidBecomeActive:(NSNotification *)notification {
     NSLog(@"FLAPIX become active");
     FLAPI_SUBSYS_IOS_UnPause();
+    // Start App If Mic is In
+    checkMicrophonePluggedIn();
 }
 
 
@@ -100,7 +96,7 @@ NSString * const FLAPIX_EVENT_FREQUENCY = @"FlapixEventFrequency";
 
 - (void) SetPlayBackVolume:(float) volume {
     FLAPI_SUBSYS_IOS_SET_PlayBackVolume(volume);
-};
+}
 
 - (float) playBackVolume {
     return FLAPI_SUBSYS_IOS_GET_PlayBackVolume();
@@ -141,7 +137,8 @@ double exerice_duration_s = -1.0f;
 
 BOOL demo_mode = NO;
 - (void) SetDemo:(BOOL)on {
-    if (! self.running) [self Start];
+    if (! self.running && on) [self Start];
+    
     if (demo_mode == on) return;
     
     // debug -- read from file
@@ -152,6 +149,11 @@ BOOL demo_mode = NO;
 
     FLAPI_SUBSYS_IOS_file_dev(toread,true);
     demo_mode = on;
+    
+    // Check if Microphone is Plugged.. if not Stop
+    if (! demo_mode && ! checkMicrophonePluggedIn()) {
+        [self Stop];
+    }
 }
 
 - (BOOL) IsDemo {
@@ -160,7 +162,6 @@ BOOL demo_mode = NO;
 
 - (BOOL) Start {
     if (self.running) return NO;
-    [self exerciceStart]; // will start a new exercice
     if (FLAPI_SUCCESS != FLAPI_Start()) return NO; // This does start the sound recording and processing
     self.running = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_START  object:self];
@@ -170,7 +171,8 @@ BOOL demo_mode = NO;
 - (BOOL) Stop {
     NSLog(@"Stop");
     [self SetDemo:NO]; // we must quit Demo before we stop;
-    [self exerciceStop];
+    [self exerciceStop]; // maybe an exerice is going on
+    
     if (! self.running) return NO;
     if (FLAPI_SUCCESS != FLAPI_Stop()) return NO; // This does stop the sound recording and processing
     self.running = NO;
@@ -247,22 +249,60 @@ NSMutableArray *blowFrequencies;
     // send messages
     FLAPIBlow* blow = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal medianFrequency:medianFrequency];
     blow.medianTolerance = medianTolerance;
+    lastBlow = blow;
     
-    [DB saveBlow:blow];
     
-    
-    // exercice management
-    [[self currentExercice] addBlow:blow];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_BLOW_STOP object:blow];
-    
-
-    if ([[self currentExercice] percent_done] >= 1) {
-        [self Stop];
+    // WE MUST SEND END BLOW EVENT BEFORE _ END EXERCICE EVENT
+    // BUT! WE NEED TO ADD BLOWS TO EXERCICES BEFORE END BLOW EVENT
+    //      FOR APPS READING duration_exercice_done_s ON EXERCICE
+    if ([self exerciceInCourse]) {
+        [DB saveBlow:blow];
+        // exercice management
+        [[self currentExercice] addBlow:blow];
+        [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_BLOW_STOP object:blow];
+        if ([[self currentExercice] percent_done] >= 1) {
+            [self exerciceStop];
+        }
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_BLOW_STOP object:blow];
     }
+    
+    
+   
+    
+    
     [blow autorelease];
     
     [pool drain]; 
+}
+
+- (void) EventMicrophonePlugged:(BOOL)on {
+    // Simulate ON when in demo mode
+    if ([self IsDemo]) on = YES;
+    
+    // here we start or stop FLAPI if needed
+    if (running == on ) return; // nothing to do if running and on, or stopped and off;
+    if (on == YES) { 
+        [self Start]; 
+    } else {
+        [self Stop];
+    }
+    
+    
+    NSLog(@"EventMicrophonePlugged %i",on);
+}
+
+# pragma mark lastBlow
+-(FLAPIBlow*) lastBlow {
+    if (lastBlow == nil) {
+        lastBlow = [[FLAPIBlow alloc] initWith:0 
+                                      duration:[self expirationDurationTarget] 
+                             in_range_duration:[self expirationDurationTarget] 
+                                          goal:YES 
+                               medianFrequency:[self frequenceTarget]];
+        lastBlow.medianTolerance = [self frequenceTolerance];
+    }
+    return lastBlow;
 }
 
 
@@ -271,17 +311,35 @@ NSMutableArray *blowFrequencies;
 - (void)exerciceStop {
     if (current_exercice == nil) return;
     if ([current_exercice inCourse])  [current_exercice stop:self];
+    FLAPIExercice *temp = current_exercice;
+    
+    
     [DB saveExercice:current_exercice];
-    [current_exercice release];
     current_exercice = nil;
+    
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:FLAPIX_EVENT_EXERCICE_STOP  object:temp];
+     [temp release];
 }
 
 /** start Exercice **/
 - (FLAPIExercice*)exerciceStart {
     [self exerciceStop];
+    // not possible if not running
+    if (! self.running) {
+        NSLog(@"!!! FLAPIX exerciceStart called while not running");
+        return nil;
+    }
+    
     if ((current_exercice == nil) || (! [current_exercice inCourse])) {
         current_exercice = [[FLAPIExercice alloc] initWithFlapix:self];
     }
+    // start FLAPIX if needed
+    
+    
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:FLAPIX_EVENT_EXERCICE_START  object:current_exercice];
+    
     return current_exercice;
 }
 
@@ -290,6 +348,10 @@ NSMutableArray *blowFrequencies;
         NSLog(@"currentExerice called and is NULL!!");
     }
     return current_exercice;
+}
+
+- (BOOL)exerciceInCourse {
+    return (current_exercice != nil);
 }
 
 # pragma mark MEMORY
