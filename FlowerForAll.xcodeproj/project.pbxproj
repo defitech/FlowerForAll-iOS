@@ -92,6 +92,7 @@
 		4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEED18D141E3E3100F56102 /* CalibrationApp.m */; };
 		4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
 		4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
+		4EF52A38143F47B1007068CD /* FlowerHowTo-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF52A37143F47B1007068CD /* FlowerHowTo-mic.png */; };
 		4EFC3EBB14064911002F0BF7 /* DoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB814064911002F0BF7 /* DoubleSlider.m */; };
 		4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB914064911002F0BF7 /* handle_highlight.png */; };
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
@@ -260,6 +261,7 @@
 		4EEED18D141E3E3100F56102 /* CalibrationApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp.m; sourceTree = "<group>"; };
 		4EEED197141E3E7F00F56102 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
 		4EEED199141E3E8700F56102 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
+		4EF52A37143F47B1007068CD /* FlowerHowTo-mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-mic.png"; sourceTree = "<group>"; };
 		4EFC3EB714064911002F0BF7 /* DoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoubleSlider.h; path = UI/DoubleSlider/DoubleSlider.h; sourceTree = "<group>"; };
 		4EFC3EB814064911002F0BF7 /* DoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoubleSlider.m; path = UI/DoubleSlider/DoubleSlider.m; sourceTree = "<group>"; };
 		4EFC3EB914064911002F0BF7 /* handle_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = handle_highlight.png; path = UI/DoubleSlider/handle_highlight.png; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 		4EC7FF39143F269C00B534E0 /* documents */ = {
 			isa = PBXGroup;
 			children = (
+				4EF52A37143F47B1007068CD /* FlowerHowTo-mic.png */,
 				4EC7FF4F143F42FD00B534E0 /* FlowerHowTo.css */,
 				4EC7FF4D143F31D900B534E0 /* FlowerHowTo-patafix.png */,
 				4EC7FF3F143F29CF00B534E0 /* FlowerHowTo-headphones.png */,
@@ -873,6 +876,7 @@
 				4EC7FF4A143F2ACC00B534E0 /* FlowerHowTo.xib in Resources */,
 				4EC7FF4E143F31D900B534E0 /* FlowerHowTo-patafix.png in Resources */,
 				4EC7FF50143F42FD00B534E0 /* FlowerHowTo.css in Resources */,
+				4EF52A38143F47B1007068CD /* FlowerHowTo-mic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
