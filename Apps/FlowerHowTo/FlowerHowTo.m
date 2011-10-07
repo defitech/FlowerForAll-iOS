@@ -2,36 +2,13 @@
 //  FlowerHowTo.m
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris (Perki) on 27.06.11.
-//  Copyright 2011 fondation Defitech. All rights reserved.
+//  Created by Pierre-Mikael Legris on 07.10.11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "FlowerHowTo.h"
-#import <MediaPlayer/MediaPlayer.h>
 
 @implementation FlowerHowTo
-
-# pragma mark FlowerApp overriding
-
-/** Used to put in as label on the App Menu (Localized)**/
-+(NSString*)appTitle {
-    return NSLocalizedStringFromTable(@"Setup instructions",@"FlowerHowTo",@"FlowerHowTo Title");
-}
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -43,10 +20,24 @@
 
 #pragma mark - View lifecycle
 
-MPMoviePlayerController *player;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    player = nil;
+    NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    NSString *fpath = [[NSBundle mainBundle] pathForResource:@"FlowerHowTo-index" ofType:@"html"];
+    NSString *fileText = [NSString stringWithContentsOfFile:fpath encoding:NSUTF8StringEncoding error:nil];
+    NSLog(@"%@ %@",baseURL,fpath);
+    NSLog(@"%@",fileText);
+    [webView loadHTMLString:fileText baseURL:baseURL];
+    [webView setDelegate:self];
+
+}
+
+
+- (void)playVideo
+{
+    if (player != nil) return ; // already playing
     
     NSString *url = [[NSBundle mainBundle] 
                      pathForResource:@"FlowerHowTo" 
@@ -64,36 +55,31 @@ MPMoviePlayerController *player;
      name:MPMoviePlayerPlaybackDidFinishNotification
      object:player];
     
-  
+    
     
     //---play partial screen---
-    player.view.frame = CGRectMake(0, 0, 460, 320);
-    player.view.center = CGPointMake(160, 230);
+    player.view.frame =  CGRectMake(0, 0, webView.frame.size.height, webView.frame.size.width);
+    player.view.center = CGPointMake(webView.frame.size.width/2, webView.frame.size.height/2);
     player.view.transform = CGAffineTransformMakeRotation(M_PI/ 2);
+    
+   
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp
+                           forView:self.view
+                             cache:YES];
+
+    
+    
     [self.view addSubview:player.view];
+    
+    [UIView commitAnimations];
     
     //---play movie---
     [player play];    
-  
-    
-    NSLog(@"Playing %@",url);   
+    NSLog(@"FlowerHowTo_VideoPlayer Playing %@",url);   
 }
-
-- (void) movieFinishedCallback:(NSNotification*) aNotification {
-    MPMoviePlayerController *player = [aNotification object];
-    [[NSNotificationCenter defaultCenter] 
-     removeObserver:self
-     name:MPMoviePlayerPlaybackDidFinishNotification
-     object:player];    
-    NSLog(@"Finished Playing"); 
-  
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [player play];    
-}
-
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -101,13 +87,62 @@ MPMoviePlayerController *player;
     [super viewWillDisappear:animated];
 }
 
+- (void)stopVideo {
+     if (player == nil) return ; // not playing
+    [[NSNotificationCenter defaultCenter] 
+     removeObserver:self
+     name:MPMoviePlayerPlaybackDidFinishNotification
+     object:player];    
+    
+    [player.view removeFromSuperview];  
+    [player release];
+    player = nil;
+    NSLog(@"FlowerHowTo_VideoPlayer Finished Playing"); 
+
+}
+
+// stop from button
+- (void) stopVideoPressed:(id)sender {
+     [self stopVideo];
+}
+
+// called when video end
+- (void) movieFinishedCallback:(NSNotification*) aNotification {
+    [self stopVideo];
+}
+
+
+
+//CAPTURE USER LINK-CLICK.
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSString* url = [[request URL] absoluteString];
+    NSLog(@"Clicked: %@",url);
+    if ([@"action://playvideo" isEqualToString:url]) {
+        [self playVideo];
+         return NO;
+    }
+    return YES;   
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // stop video if in course
+    [self stopVideo];
+}
+
+
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    // switch to Activitiy chooser
-    [player release];    
+    webView = nil;
+    player = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

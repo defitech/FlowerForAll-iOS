@@ -250,12 +250,15 @@ static NSMutableDictionary* appList;
     // Plug an iPhone
     CGRect plugFrame = historyView.frame; 
     
+    
+    
     startButton = [[UIButton alloc] initWithFrame:plugFrame];
     UIImage *buttonImageHighlighted = [UIImage imageNamed: @"jack.png"];
     [startButton setImage:buttonImageHighlighted forState:UIControlStateHighlighted];
-    [startButton setTitle:NSLocalizedString(@"Plug headphones with microphone to start",@"Displayed on the ToolBar") forState:UIControlStateNormal];
+    [startButton setTitle:NSLocalizedString(@"Plug headphones with\nmicrophone to start",@"Displayed on the ToolBar") forState:UIControlStateNormal];
     startButton.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
     startButton.titleLabel.textAlignment = UITextAlignmentCenter;
+    [startButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [startButton setBackgroundColor:[UIColor blackColor]];
     [startButton setOpaque:NO];
     [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];

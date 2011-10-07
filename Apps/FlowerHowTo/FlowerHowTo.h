@@ -2,16 +2,19 @@
 //  FlowerHowTo.h
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris (Perki) on 27.06.11.
-//  Copyright 2011 fondation Defitech. All rights reserved.
+//  Created by Pierre-Mikael Legris on 07.10.11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FlowerApp.h"
 
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface FlowerHowTo : FlowerApp {
+@interface FlowerHowTo : FlowerApp <UIWebViewDelegate> {
+    IBOutlet UIWebView* webView;
     
+    MPMoviePlayerController *player;
 }
+
 
 @end
