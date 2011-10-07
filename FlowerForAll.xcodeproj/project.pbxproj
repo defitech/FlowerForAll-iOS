@@ -84,6 +84,7 @@
 		4EC7FF49143F2ACC00B534E0 /* FlowerHowTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC7FF47143F2ACC00B534E0 /* FlowerHowTo.m */; };
 		4EC7FF4A143F2ACC00B534E0 /* FlowerHowTo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC7FF48143F2ACC00B534E0 /* FlowerHowTo.xib */; };
 		4EC7FF4E143F31D900B534E0 /* FlowerHowTo-patafix.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC7FF4D143F31D900B534E0 /* FlowerHowTo-patafix.png */; };
+		4EC7FF50143F42FD00B534E0 /* FlowerHowTo.css in Resources */ = {isa = PBXBuildFile; fileRef = 4EC7FF4F143F42FD00B534E0 /* FlowerHowTo.css */; };
 		4ECC6CAE1404E171005519C7 /* UserPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CAD1404E171005519C7 /* UserPicker.m */; };
 		4ECC6CB11404E5F7005519C7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB01404E5F7005519C7 /* UserManager.m */; };
 		4ECC6CB414053744005519C7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB314053744005519C7 /* User.m */; };
@@ -247,6 +248,7 @@
 		4EC7FF47143F2ACC00B534E0 /* FlowerHowTo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerHowTo.m; sourceTree = "<group>"; };
 		4EC7FF48143F2ACC00B534E0 /* FlowerHowTo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerHowTo.xib; sourceTree = "<group>"; };
 		4EC7FF4D143F31D900B534E0 /* FlowerHowTo-patafix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-patafix.png"; sourceTree = "<group>"; };
+		4EC7FF4F143F42FD00B534E0 /* FlowerHowTo.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = FlowerHowTo.css; sourceTree = "<group>"; };
 		4ECC6CAC1404E171005519C7 /* UserPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserPicker.h; path = UI/UserPicker.h; sourceTree = "<group>"; };
 		4ECC6CAD1404E171005519C7 /* UserPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserPicker.m; path = UI/UserPicker.m; sourceTree = "<group>"; };
 		4ECC6CAF1404E5F7005519C7 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserManager.h; path = Data/UserManager.h; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 		4EC7FF39143F269C00B534E0 /* documents */ = {
 			isa = PBXGroup;
 			children = (
+				4EC7FF4F143F42FD00B534E0 /* FlowerHowTo.css */,
 				4EC7FF4D143F31D900B534E0 /* FlowerHowTo-patafix.png */,
 				4EC7FF3F143F29CF00B534E0 /* FlowerHowTo-headphones.png */,
 				4EC7FF3A143F276800B534E0 /* FlowerHowTo-index.html */,
@@ -869,6 +872,7 @@
 				4EC7FF40143F29CF00B534E0 /* FlowerHowTo-headphones.png in Resources */,
 				4EC7FF4A143F2ACC00B534E0 /* FlowerHowTo.xib in Resources */,
 				4EC7FF4E143F31D900B534E0 /* FlowerHowTo-patafix.png in Resources */,
+				4EC7FF50143F42FD00B534E0 /* FlowerHowTo.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
