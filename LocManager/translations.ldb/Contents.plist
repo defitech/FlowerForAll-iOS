@@ -990,7 +990,7 @@
 					<key>errors</key>
 					<array/>
 					<key>flags</key>
-					<integer>1</integer>
+					<integer>0</integer>
 					<key>hash</key>
 					<string>9ab8864c49660085b9177beba7ee3fa8
 </string>
@@ -1093,7 +1093,7 @@
 								<key>en</key>
 								<string>Range of frequencies</string>
 								<key>fr</key>
-								<string>Intervalle de frequences</string>
+								<string>Intervalle de fréquences</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1274,7 +1274,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-10-06T16:25:17Z</date>
+					<date>2011-10-07T10:26:46Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -1284,7 +1284,7 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>392f51b0ee97e925fe7254256ed6a77d
+					<string>65fd27569e86387a15c41e7192ae70b0
 </string>
 					<key>name</key>
 					<string>Localizable.strings</string>
@@ -1348,7 +1348,7 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Cancel Button</string>
+							<string>Action Popup Menu</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
@@ -1360,7 +1360,7 @@
 								<key>en</key>
 								<string>Cancel</string>
 								<key>fr</key>
-								<string>Annuller</string>
+								<string>Annuler</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1373,7 +1373,7 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Choose an action</string>
+							<string>CalibrationApp Title</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
@@ -1629,13 +1629,13 @@
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>Plug an headphone with microphone to start</string>
+							<string>Plug headphones with microphone to start</string>
 							<key>localizations</key>
 							<dict>
 								<key>en</key>
-								<string>Plug an headphone with microphone to start</string>
+								<string>Plug headphones with microphone to start</string>
 								<key>fr</key>
-								<string>Brancher des écouteurs avec micro</string>
+								<string>Brancher des écouteurs avec un microphone</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1648,7 +1648,7 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Enable Demo Mode</string>
+							<string>Action Popup Menu</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
@@ -1660,7 +1660,7 @@
 								<key>en</key>
 								<string>Start Demo Mode</string>
 								<key>fr</key>
-								<string>Démarer le mode démo</string>
+								<string>Démarrer le mode démo</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1673,7 +1673,7 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Start Action</string>
+							<string>Action Popup Menu</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
@@ -1698,7 +1698,7 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Enable Demo Mode</string>
+							<string>Action Popup Menu</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
@@ -1723,7 +1723,7 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Stop Action</string>
+							<string>Action Popup Menu</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
@@ -1839,6 +1839,31 @@
 								<string>Go to menu</string>
 								<key>fr</key>
 								<string>Aller au menu</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Displayed on the ToolBar</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Plug an headphone with microphone to start</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Plug an headphone with microphone to start</string>
+								<key>fr</key>
+								<string>Brancher des écouteurs avec micro</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
