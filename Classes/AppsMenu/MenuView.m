@@ -86,7 +86,12 @@ FlowerHowTo *flowerHowTo;
     //add pages
     page2.frame = CGRectMake(320.0f, 0.0f, 320.0f, 367.0f);
     [scrollView addSubview:page2];
-    [web loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"FlowerForAll" ofType:@"html"]isDirectory:NO]]];
+    
+    NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+    NSString *fpath = [[NSBundle mainBundle] pathForResource:@"FlowerForAll" ofType:@"html"];
+    NSString *fileText = [NSString stringWithContentsOfFile:fpath encoding:NSUTF8StringEncoding error:nil];
+    [web loadHTMLString:fileText baseURL:baseURL];
+ 
     
 	//Set scroll view zoom scale
 	scrollView.maximumZoomScale = 3.0;
