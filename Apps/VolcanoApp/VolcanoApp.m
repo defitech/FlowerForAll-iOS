@@ -25,11 +25,11 @@
 }
 
 - (void)refreshStartButton {
-    if ( (! [[FlowerController currentFlapix] running]) 
-        || [[FlowerController currentFlapix] exerciceInCourse]) {
-        [self.view sendSubviewToBack:start]; 
-    } else {
+    if ( [[FlowerController currentFlapix] running] && (! [[FlowerController currentFlapix] exerciceInCourse])) {
         [self.view bringSubviewToFront:start]; 
+    } else {
+        [self.view sendSubviewToBack:start];
+        
     }
 }
 
@@ -95,7 +95,7 @@
         
         starLabel.text = @"0";
         
-       
+        [self refreshStartButton];
     }
     
     return self;
