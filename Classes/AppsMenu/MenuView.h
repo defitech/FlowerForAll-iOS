@@ -28,7 +28,7 @@
     UIView *videoPlayerView;
 	
 	//The buttons inside each of the game sub views
-    IBOutlet UILabel *volcanoLabel, *videoPlayerLabel, *settingsLabel;
+    IBOutlet UILabel *volcanoLabel, *videoPlayerLabel, *settingsLabel, *resultsLabel;
 
 	
 	//There is no navigation controller here. So we add a navigation bar individually.
@@ -52,7 +52,7 @@
 
 //Activities Properties
 
-@property(nonatomic,retain) UILabel *volcanoLabel, *videoPlayerLabel, *settingsLabel;
+@property(nonatomic,retain) UILabel *volcanoLabel, *videoPlayerLabel, *settingsLabel, *resultsLabel;
 
 - (IBAction) volcanoTouch:(id) sender;
 - (IBAction) flowerHowTo:(id) sender;

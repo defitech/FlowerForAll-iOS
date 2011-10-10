@@ -249,9 +249,7 @@ static NSMutableDictionary* appList;
     
     // Plug an iPhone
     CGRect plugFrame = historyView.frame; 
-    
-    
-    
+
     startButton = [[UIButton alloc] initWithFrame:plugFrame];
     UIImage *buttonImageHighlighted = [UIImage imageNamed: @"jack.png"];
     [startButton setImage:buttonImageHighlighted forState:UIControlStateHighlighted];

@@ -10,13 +10,17 @@
 
 @implementation FlowerHowTo
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+# pragma mark FlowerApp overriding
+
+/** Used to put in as label on the App Menu (Localized)**/
++(NSString*)appTitle {
+    return NSLocalizedStringFromTable(@"Setup instructions",@"FlowerHowTo",@"App Title");
 }
+
+/**
+ * Override FlowerHowTo, we do not need events
+ */
+-(void)addObservers { }
 
 #pragma mark - View lifecycle
 
@@ -27,8 +31,8 @@
     NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     NSString *fpath = [[NSBundle mainBundle] pathForResource:@"FlowerHowTo-index" ofType:@"html"];
     NSString *fileText = [NSString stringWithContentsOfFile:fpath encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"%@ %@",baseURL,fpath);
-    NSLog(@"%@",fileText);
+    //NSLog(@"%@ %@",baseURL,fpath);
+    //NSLog(@"%@",fileText);
     [webView loadHTMLString:fileText baseURL:baseURL];
     [webView setDelegate:self];
 

@@ -18,12 +18,12 @@
 #import "FlowerController.h"
 #import "FlowerHowTo.h"
 #import "ParametersApp.h"
-#import "ResultsApp_Nav.h"
+#import "ResultsApp.h"
 
 @implementation MenuView
 
 
-@synthesize page2, web, scrollView, backItem, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel;
+@synthesize page2, web, scrollView, backItem, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel;
 
 
 
@@ -75,6 +75,7 @@ FlowerHowTo *flowerHowTo;
     [volcanoLabel setText:[VolcanoApp appTitle]];
     [videoPlayerLabel setText:[FlowerHowTo appTitle]];
     [settingsLabel setText:[ParametersApp appTitle]];
+    [resultsLabel setText:[ResultsApp appTitle]];
 	
     int nb_pages = 2;
 	//scrollView.contentSize = CGSizeMake(960.0,0.0);

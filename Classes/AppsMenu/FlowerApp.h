@@ -28,6 +28,13 @@
 /** Used to put in as label on the App Menu (Localized)**/
 +(NSString*)appTitle;
 
+/**
+ * Add FLAPIX Listeners
+ * Will automatically add all observers ..
+ * may be overriden  for efficiency 
+ */
+-(void)addObservers;
+
 /**  
  * FLAPIX start  !! check   flapixEventExerciceStart
  * Override this method to catch 

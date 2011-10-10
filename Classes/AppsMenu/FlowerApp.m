@@ -51,6 +51,15 @@
 // Event Observers 
 -(void)viewDidLoad {
     [super viewDidLoad]; 
+    [self addObservers];
+}
+
+/**
+ * Add FLAPIX Listeners
+ * Will automatically add all observers ..
+ * may be overriden  for efficiency 
+ */
+-(void)addObservers {
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventStart:)
