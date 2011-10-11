@@ -91,7 +91,7 @@ FlowerHowTo *flowerHowTo;
     NSString *fpath = [[NSBundle mainBundle] pathForResource:@"FlowerForAll" ofType:@"html"];
     NSString *fileText = [NSString stringWithContentsOfFile:fpath encoding:NSUTF8StringEncoding error:nil];
     [web loadHTMLString:fileText baseURL:baseURL];
- 
+    [web setDelegate:self];
     
 	//Set scroll view zoom scale
 	scrollView.maximumZoomScale = 3.0;
@@ -184,6 +184,16 @@ FlowerHowTo *flowerHowTo;
     
     [scrollView scrollRectToVisible:frame animated:YES];
     
+}
+
+//CAPTURE USER LINK-CLICK.
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSString* url = [[request URL] absoluteString];
+    if ([url hasPrefix:@"http://"] || [url hasPrefix:@"mailto:"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+        return NO;
+    }
+    return YES;
 }
 
 

@@ -14,7 +14,7 @@
 #import "RSPageControl.h"
 
 
-@interface MenuView : UIViewController <UIScrollViewDelegate>{
+@interface MenuView : UIViewController <UIScrollViewDelegate, UIWebViewDelegate>{
 
 	//The sub views include mainly the scroll view, which will include game1ChoiceView and game2ChoiceView (for the moment there are 2 games)
 	IBOutlet UIScrollView *scrollView;
