@@ -67,9 +67,10 @@
 -(void)flapixEventLevel:(float)soundLevel;
 /**  
  * return the actual Frequency 
+ * percent done is between 0 and 1 if exercice in cource, -1 if not in course
  * Override this method to catch 
  **/
--(void)flapixEventFrequency:(double)frequency in_target:(BOOL)good;
+- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good current_exercice:(double)percent_done ;
 /**  
  * A blow started  
  * Override this method to catch 

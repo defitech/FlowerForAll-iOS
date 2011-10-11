@@ -52,6 +52,10 @@ NSTimer *repeatingTimer;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(flapixEventExerciceStop:)
                                                  name:FLAPIX_EVENT_EXERCICE_STOP object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(flapixEventFrequency:)
+                                                 name:FLAPIX_EVENT_FREQUENCY object:nil];
 }
 
 - (void) startReloadTimer {
@@ -208,6 +212,8 @@ NSTimer *repeatingTimer;
                                           [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-10) 
                                                                       length:CPDecimalFromFloat(20)], nil];
 	
+   
+    
 	/*
 	 *	PLOTS
 	 */
@@ -271,9 +277,9 @@ NSTimer *repeatingTimer;
                     return [ NSNumber numberWithDouble:0.0f];
                 } else {
                     if (index > [[history getHistoryArray] count]) {
-                        return  [ NSNumber numberWithDouble:(lastExericeStopTimeStamp - CFAbsoluteTimeGetCurrent()+1) 
+                        return  [ NSNumber numberWithDouble:(lastExericeStopTimeStamp - CFAbsoluteTimeGetCurrent()) 
                                  ];
-
+                        
                     } else {
                         return [ NSNumber numberWithDouble:(lastExericeStartTimeStamp - CFAbsoluteTimeGetCurrent()-1) 
                                 ];
@@ -287,27 +293,27 @@ NSTimer *repeatingTimer;
     
     FLAPIBlow* current = [[history getHistoryArray] objectAtIndex:index];
     
-//    NSLog(@"timestamp = %f", current.timestamp);
-//    NSLog(@"in_range_duration = %f", current.in_range_duration);
-//    NSLog(@"duration = %f", current.duration);
-//    NSLog(@"goal = %@", (current.goal ? @"YES" : @"NO"));
-   // NSLog(@"numberForPlot = %@ %i",plot.identifier,index );
+    //    NSLog(@"timestamp = %f", current.timestamp);
+    //    NSLog(@"in_range_duration = %f", current.in_range_duration);
+    //    NSLog(@"duration = %f", current.duration);
+    //    NSLog(@"goal = %@", (current.goal ? @"YES" : @"NO"));
+    // NSLog(@"numberForPlot = %@ %i",plot.identifier,index );
     
     switch ( fieldEnum ) {
-        // return Y 
-        case CPScatterPlotFieldY: 
+            // return Y 
+        case CPScatterPlotFieldY: // Y for stars
             if (current.goal)
                 return [ NSNumber numberWithDouble:(higherBar*1.1) ];
             break;
         case CPBarPlotFieldBarLength:
             if (plot.identifier == @"inRange")
                 return [ NSNumber numberWithDouble:current.in_range_duration ];
-                
+            
             else if (plot.identifier == @"blow")
                 return [ NSNumber numberWithDouble:current.duration ];
             
             break;
-        // return X position for all plots
+            // return X position for all plots
         case CPScatterPlotFieldX:
         case CPBarPlotFieldBarLocation:
             return [ NSNumber numberWithDouble:current.timestamp - CFAbsoluteTimeGetCurrent() ];
@@ -320,9 +326,13 @@ NSTimer *repeatingTimer;
 }
 
 -(CPPlotSymbol *)symbolForScatterPlot:(CPScatterPlot *)plot recordIndex:(NSUInteger)index {
-    if (index  >= [[history getHistoryArray] count]) { // display start/stop exerice
-        if (lastExericeStartTimeStamp > 0) {
-            if (plot.identifier == @"isStartStop") {
+
+
+    
+    if (plot.identifier == @"isStartStop") {
+        if (index  >= [[history getHistoryArray] count]) { // display start/stop exerice
+            if (lastExericeStartTimeStamp > 0) {
+                
                 CPPlotSymbol *symbol = [CPPlotSymbol trianglePlotSymbol];
                 if (index  > [[history getHistoryArray] count]) {
                     symbol.symbolType = CPPlotSymbolTypeTriangle;
@@ -336,11 +346,12 @@ NSTimer *repeatingTimer;
                 symbol.fill = [CPFill fillWithColor:[CPColor yellowColor]];
                 return symbol;
             } 
+            
+            
         }
         return nil;
     }
     CPPlotSymbol *symbol = [CPPlotSymbol starPlotSymbol];
-    symbol.symbolType = CPPlotSymbolTypeStar;
     symbol.size = CGSizeMake(self.frame.size.width/28, self.frame.size.height/4);
     symbol.fill = [CPFill fillWithColor:[CPColor whiteColor]];
     return symbol;
@@ -354,6 +365,16 @@ NSTimer *repeatingTimer;
     
     // update labels
 }
+
+- (void)flapixEventFrequency:(NSNotification *)notification {
+    if ([[FlowerController currentFlapix] exerciceInCourse]) {
+        int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
+        [labelPercent setText:[NSString stringWithFormat:@"%i%%",p]];
+    } else {
+        [labelPercent setText:@"---"];
+    }
+}
+
 
 - (void)flapixEventEndBlow:(NSNotification *)notification {
 	FLAPIBlow* blow = (FLAPIBlow*)[notification object];

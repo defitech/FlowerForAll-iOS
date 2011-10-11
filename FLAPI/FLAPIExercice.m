@@ -11,18 +11,19 @@
 
 @implementation FLAPIExercice
 
-@synthesize start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s, duration_exercice_done_s, blow_count, blow_star_count;
+@synthesize start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s, duration_exercice_done_s, blow_count, blow_star_count, current_blow_in_range_duration_s;
 
 - (id)initWithFlapix:(FLAPIX*)flapix
 {
     self = [super init];
     if (self) {
          [self copyParams:flapix];
-        start_ts = CFAbsoluteTimeGetCurrent();
+        start_ts =  CFAbsoluteTimeGetCurrent();
         stop_ts = 0;
         blow_count = 0;
         duration_exercice_done_s = 0;
         blow_star_count = 0;
+        current_blow_in_range_duration_s = 0;
     }
     return self;
 }
@@ -42,11 +43,12 @@
 -(void)addBlow:(FLAPIBlow*)blow {
     blow_count++;
     if ([blow goal]) blow_star_count++;
+    current_blow_in_range_duration_s = 0;
     duration_exercice_done_s += [blow in_range_duration];
 }
 
 -(float)percent_done {
-    double temp = duration_exercice_done_s / duration_exercice_s;
+    double temp = (duration_exercice_done_s + current_blow_in_range_duration_s) / duration_exercice_s;
     return (temp > 1) ? 1 : temp;
 }
 

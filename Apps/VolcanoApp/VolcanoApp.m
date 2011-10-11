@@ -55,8 +55,8 @@
     lavaHidder.hidden = false;
 
     lavaFrame = lavaHidder.frame;
-   
-      [self refreshStartButton];
+    starLabel.text = @"0";
+    [self refreshStartButton];
 }
 
 
@@ -93,7 +93,7 @@
         
         
         
-        starLabel.text = @"0";
+       
         
         [self refreshStartButton];
     }
@@ -115,10 +115,10 @@
 }
 
 bool debug_events = NO;
-- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good {
+- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good current_exercice:(double)percent_done {
     if (! [[FlowerController currentFlapix] exerciceInCourse]) return;
-    if (good)
-        lavaHidder.frame = CGRectOffset(lavaHidder.frame, 0, - 1.0f);
+    if (percent_done > 0)
+        lavaHidder.frame =  CGRectOffset(lavaFrame, 0, - lavaHeight * percent_done);
 }
 
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {
@@ -131,9 +131,10 @@ bool debug_events = NO;
     //Add sound when the goal has been reached for the last blow
     if (blow.goal) {
         [self playSystemSound:@"/VolcanoApp_goal.wav"];
-        starLabel.text = [NSString stringWithFormat:@"%d", [starLabel.text intValue] + 1];
+       
     }
-    
+    starLabel.text = [NSString stringWithFormat:@"%i", 
+                      [[[FlowerController currentFlapix] currentExercice] blow_star_count]];
     //Raise up lava
     lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * percent);
     [self refreshStartButton];
