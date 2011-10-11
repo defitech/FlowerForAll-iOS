@@ -59,6 +59,8 @@ void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read);
 // Custom  (Differ from windows FLAPI) Register the FLAPIX Controller instance
 void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *flapix);
 
+double FLAPI_SUBSYS_IOS_get_current_blow_in_range_duration();
+
 // Custom  PlayBack .. Set Volume to 0 to Stop PlayBack
 void FLAPI_SUBSYS_IOS_SET_PlayBackVolume(float volume);
 float FLAPI_SUBSYS_IOS_GET_PlayBackVolume() ;

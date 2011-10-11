@@ -145,7 +145,7 @@ BOOL demo_mode = NO;
     const char* toread = nil;
     
     if (on) { toread = [[[[NSBundle mainBundle] resourcePath] 
-                         stringByAppendingPathComponent: @"Denis2.raw"] UTF8String]; }
+                         stringByAppendingPathComponent: @"Mix.raw"] UTF8String]; }
 
     FLAPI_SUBSYS_IOS_file_dev(toread,true);
     demo_mode = on;
@@ -194,12 +194,19 @@ BOOL demo_mode = NO;
 /** contain the frequencies list of cuurent blow **/
 NSMutableArray *blowFrequencies; 
 - (void) EventFrequency:(double) freq {
-//    NSLog(@"New Frequency %i",freq);
+    //    NSLog(@"New Frequency %i",freq);
     frequency = freq;
      NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
+    if (current_exercice != nil) {
+        current_exercice.current_blow_in_range_duration_s = FLAPI_SUBSYS_IOS_get_current_blow_in_range_duration();
+    } 
+    //NSLog(@"FLAPIX %1.2f %1.2f %1.2f", [current_exercice percent_done], [current_exercice duration_exercice_done_s],FLAPI_SUBSYS_IOS_get_current_blow_in_range_duration() );
      if (blowFrequencies != nil) { [blowFrequencies addObject:[NSNumber numberWithDouble:freq]] ; }
      [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_FREQUENCY  object:self];
+    
+   
+    
     
     [pool drain]; 
 }
@@ -224,7 +231,7 @@ NSMutableArray *blowFrequencies;
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     
-    BOOL goal = ir_length >= [self expirationDurationTarget];
+    BOOL goal = (ir_length >= [self expirationDurationTarget]);
     blowing = false;
     
     //calculate MedianFrequency

@@ -51,6 +51,15 @@
 // Event Observers 
 -(void)viewDidLoad {
     [super viewDidLoad]; 
+    [self addObservers];
+}
+
+/**
+ * Add FLAPIX Listeners
+ * Will automatically add all observers ..
+ * may be overriden  for efficiency 
+ */
+-(void)addObservers {
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(_flapixEventStart:)
@@ -97,7 +106,12 @@
     double frequency = [((FLAPIX*)[notification object]) frequency];
     BOOL good = (frequency > [((FLAPIX*)[notification object]) frequenceMin] &&
                  frequency < [((FLAPIX*)[notification object]) frequenceMax]);
-    [self flapixEventFrequency:frequency in_target:good];
+    
+    double percent_done = -1;
+    if ([((FLAPIX*)[notification object]) exerciceInCourse]) {
+        percent_done = [[((FLAPIX*)[notification object]) currentExercice] percent_done];
+    }
+    [self flapixEventFrequency:frequency in_target:good current_exercice:percent_done];
 }
 - (void)_flapixEventBlowStart:(NSNotification *)notification {
     [self flapixEventBlowStart:((FLAPIBlow*)[notification object])];
@@ -123,7 +137,7 @@
 - (void)flapixEventStop:(FLAPIX *)flapix {}
 
 - (void)flapixEventLevel:(float)soundLevel {}
-- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good{}
+- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good current_exercice:(double)percent_done {}
 
 - (void)flapixEventBlowStart:(FLAPIBlow *)blow {}
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {}

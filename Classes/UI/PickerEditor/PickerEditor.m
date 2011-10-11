@@ -69,7 +69,7 @@
     static NSString *CellIdentifier = @"PickerCell";  
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];   
     if (cell == nil) {  
-        NSLog(@"Going for nib: %@",cellNibName);
+        //NSLog(@"Going for nib: %@",cellNibName);
         if (cellNibName != nil) {
             NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellNibName owner:self options:nil];
             cell = (UITableViewCell *)[nib objectAtIndex:0];

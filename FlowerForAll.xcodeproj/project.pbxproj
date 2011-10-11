@@ -15,11 +15,7 @@
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		4E018F7813BB2D6B00333528 /* FlowerHowTo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */; };
-		4E081DCD1419F340003C9178 /* param-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E081DCC1419F340003C9178 /* param-icon.png */; };
 		4E081DD01419F4DD003C9178 /* FlowerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E081DCF1419F4DD003C9178 /* FlowerApp.m */; };
-		4E101E4B143615EF002BFDCC /* Denis1.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E48143615EF002BFDCC /* Denis1.raw */; };
-		4E101E4C143615EF002BFDCC /* Denis2.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E49143615EF002BFDCC /* Denis2.raw */; };
-		4E101E4D143615EF002BFDCC /* Martial1.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E4A143615EF002BFDCC /* Martial1.raw */; };
 		4E101E541437193B002BFDCC /* FlowerHowTo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E521437193B002BFDCC /* FlowerHowTo.strings */; };
 		4E101E5614371947002BFDCC /* FlowerHowTo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E521437193B002BFDCC /* FlowerHowTo.strings */; };
 		4E141B0D13B35F1900698F53 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0713B35F1900698F53 /* Default.png */; };
@@ -33,10 +29,10 @@
 		4E2F50001407D1F900C4C00C /* VolcanoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2F4FFE1407D1F900C4C00C /* VolcanoApp.m */; };
 		4E2F50011407D1F900C4C00C /* VolcanoApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E2F4FFF1407D1F900C4C00C /* VolcanoApp.xib */; };
 		4E2F50071407DF8200C4C00C /* FLAPIBlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2F50061407DF8200C4C00C /* FLAPIBlow.m */; };
-		4E3A7A7A13B8777D00853344 /* FlowerHowTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7813B8777D00853344 /* FlowerHowTo.m */; };
-		4E3A7A7B13B8777D00853344 /* FlowerHowTo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */; };
 		4E3A7A7D13B877DD00853344 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */; };
 		4E3A7A8313B884FD00853344 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3A7A8213B884FD00853344 /* AVFoundation.framework */; };
+		4E3BEDB414442DA600D72705 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3BEDB314442DA600D72705 /* Default-Portrait.png */; };
+		4E3BEDB714442FEF00D72705 /* About-banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3BEDB614442FEF00D72705 /* About-banner.png */; };
 		4E3EE3BC143CEC92002B111E /* jack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3EE3BB143CEC92002B111E /* jack.png */; };
 		4E4301321433AE330066ED6F /* ResultsApp_Mailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4301311433AE330066ED6F /* ResultsApp_Mailer.m */; };
 		4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
@@ -46,6 +42,7 @@
 		4E4E9BE214336F9600F96792 /* ResultsApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E9BE014336F9600F96792 /* ResultsApp.xib */; };
 		4E5110881428CBC600A464EA /* Profil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5110871428CBC600A464EA /* Profil.m */; };
 		4E584855140E61CC003892DA /* BlowHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E584854140E61CC003892DA /* BlowHistory.m */; };
+		4E6145BA144348C80056B84D /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = 4E6145B9144348C80056B84D /* default.css */; };
 		4E713C2B1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E713C2A1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m */; };
 		4E800122143E0067001C15C7 /* VolcanoApp-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E800121143E0067001C15C7 /* VolcanoApp-star.png */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
@@ -78,9 +75,19 @@
 		4EA1A3B41420E8B800B11705 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA1A3B51420E8B800B11705 /* MenuView.xib */; };
 		4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */; };
 		4EB510AB1418CFC6008FC46F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */; };
+		4EB75E911442EA3400E886C3 /* FlowerHowTo-Flutter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB75E901442EA3400E886C3 /* FlowerHowTo-Flutter.png */; };
+		4EB75E951442F7C800E886C3 /* FlowerHowTo-Nav-Num.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB75E941442F7C800E886C3 /* FlowerHowTo-Nav-Num.png */; };
+		4EB75E97144315FD00E886C3 /* FlowerHowTo-PlayVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB75E96144315FD00E886C3 /* FlowerHowTo-PlayVideo.png */; };
+		4EBBA3E31443559200F8B45E /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE414176452004C6034 /* FlowerForAll.html */; };
+		4EBBA3E41443559800F8B45E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594A13A7AF9800D9D3A7 /* Localizable.strings */; };
 		4EBFFD611414CD4300D4BE9C /* FLAPIExercice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */; };
 		4EC3CC971431F2640013FECF /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3CC961431F2640013FECF /* play.png */; };
 		4EC3CC99143205470013FECF /* ParametersApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3CC98143205470013FECF /* ParametersApp-Icon.png */; };
+		4EC7FF3E143F27A400B534E0 /* FlowerHowTo-index.html in Resources */ = {isa = PBXBuildFile; fileRef = 4EC7FF3A143F276800B534E0 /* FlowerHowTo-index.html */; };
+		4EC7FF40143F29CF00B534E0 /* FlowerHowTo-headphones.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC7FF3F143F29CF00B534E0 /* FlowerHowTo-headphones.png */; };
+		4EC7FF49143F2ACC00B534E0 /* FlowerHowTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC7FF47143F2ACC00B534E0 /* FlowerHowTo.m */; };
+		4EC7FF4A143F2ACC00B534E0 /* FlowerHowTo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC7FF48143F2ACC00B534E0 /* FlowerHowTo.xib */; };
+		4EC7FF4E143F31D900B534E0 /* FlowerHowTo-patafix.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC7FF4D143F31D900B534E0 /* FlowerHowTo-patafix.png */; };
 		4ECC6CAE1404E171005519C7 /* UserPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CAD1404E171005519C7 /* UserPicker.m */; };
 		4ECC6CB11404E5F7005519C7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB01404E5F7005519C7 /* UserManager.m */; };
 		4ECC6CB414053744005519C7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB314053744005519C7 /* User.m */; };
@@ -88,10 +95,13 @@
 		4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEED18D141E3E3100F56102 /* CalibrationApp.m */; };
 		4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
 		4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
+		4EF0469114434DD200665E23 /* FlowerHowTo-Calibration_FR.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF0469014434DD200665E23 /* FlowerHowTo-Calibration_FR.png */; };
+		4EF52A38143F47B1007068CD /* FlowerHowTo-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF52A37143F47B1007068CD /* FlowerHowTo-mic.png */; };
 		4EFC3EBB14064911002F0BF7 /* DoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB814064911002F0BF7 /* DoubleSlider.m */; };
 		4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB914064911002F0BF7 /* handle_highlight.png */; };
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
 		4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */; };
+		4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4EFCD46814448EAA00FDECE9 /* Mix.raw */; };
 		4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */; };
 		4EFE7915142B5369009EE121 /* ParametersAppPickerProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */; };
 		4EFE7918142B53BA009EE121 /* ParametersAppPickerProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */; };
@@ -102,7 +112,6 @@
 		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
-		D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */ = {isa = PBXBuildFile; fileRef = D72E02AC139E500800F3687C /* FLAPIrecorded.raw */; };
 		D7397B251434763900C646D5 /* ResultsApp-gold_star.png in Resources */ = {isa = PBXBuildFile; fileRef = D7397B241434763900C646D5 /* ResultsApp-gold_star.png */; };
 		D7397B2A143478BC00C646D5 /* ResultsApp-blue_star.png in Resources */ = {isa = PBXBuildFile; fileRef = D7397B29143478BB00C646D5 /* ResultsApp-blue_star.png */; };
 		D73C1313142879050006B28F /* ResultsApp_Day.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1305142879050006B28F /* ResultsApp_Day.m */; };
@@ -123,7 +132,6 @@
 		D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE71417645C004C6034 /* FlowerForAll.html */; };
 		D7D64652141659B700F0DE4F /* VolcanoApp_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D64651141659B700F0DE4F /* VolcanoApp_explosion.wav */; };
 		D7F59A6914286D06006FE244 /* PickerEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E318D021421FB8C009E0FE1 /* PickerEditor.m */; };
-		D7F59A7F142B54CB006FE244 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE414176452004C6034 /* FlowerForAll.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,11 +146,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* FlowerForAll_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerForAll_Prefix.pch; sourceTree = "<group>"; };
 		4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-icon.png"; sourceTree = "<group>"; };
-		4E081DCC1419F340003C9178 /* param-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "param-icon.png"; sourceTree = "<group>"; };
 		4E081DCF1419F4DD003C9178 /* FlowerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlowerApp.m; path = AppsMenu/FlowerApp.m; sourceTree = "<group>"; };
-		4E101E48143615EF002BFDCC /* Denis1.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = Denis1.raw; sourceTree = "<group>"; };
-		4E101E49143615EF002BFDCC /* Denis2.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = Denis2.raw; sourceTree = "<group>"; };
-		4E101E4A143615EF002BFDCC /* Martial1.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = Martial1.raw; sourceTree = "<group>"; };
 		4E101E531437193B002BFDCC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FlowerHowTo.strings; sourceTree = "<group>"; };
 		4E101E5514371947002BFDCC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FlowerHowTo.strings; sourceTree = "<group>"; };
 		4E141B0713B35F1900698F53 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -160,11 +164,10 @@
 		4E2F50061407DF8200C4C00C /* FLAPIBlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAPIBlow.m; sourceTree = "<group>"; };
 		4E318D011421FB8C009E0FE1 /* PickerEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerEditor.h; sourceTree = "<group>"; };
 		4E318D021421FB8C009E0FE1 /* PickerEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerEditor.m; sourceTree = "<group>"; };
-		4E3A7A7713B8777D00853344 /* FlowerHowTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerHowTo.h; sourceTree = "<group>"; };
-		4E3A7A7813B8777D00853344 /* FlowerHowTo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerHowTo.m; sourceTree = "<group>"; };
-		4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerHowTo.xib; sourceTree = "<group>"; };
 		4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4E3A7A8213B884FD00853344 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4E3BEDB314442DA600D72705 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		4E3BEDB614442FEF00D72705 /* About-banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "About-banner.png"; path = "documents/About-banner.png"; sourceTree = "<group>"; };
 		4E3EE3BB143CEC92002B111E /* jack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jack.png; sourceTree = "<group>"; };
 		4E4301301433AE330066ED6F /* ResultsApp_Mailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsApp_Mailer.h; sourceTree = "<group>"; };
 		4E4301311433AE330066ED6F /* ResultsApp_Mailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsApp_Mailer.m; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 		4E5110871428CBC600A464EA /* Profil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profil.m; sourceTree = "<group>"; };
 		4E584853140E61CC003892DA /* BlowHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlowHistory.h; path = Data/BlowHistory.h; sourceTree = "<group>"; };
 		4E584854140E61CC003892DA /* BlowHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlowHistory.m; path = Data/BlowHistory.m; sourceTree = "<group>"; };
+		4E6145B9144348C80056B84D /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.css; sourceTree = "<group>"; };
 		4E713C291416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subsys_ios_AVAudioSessionDelegate.h; sourceTree = "<group>"; };
 		4E713C2A1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = subsys_ios_AVAudioSessionDelegate.m; sourceTree = "<group>"; };
 		4E800121143E0067001C15C7 /* VolcanoApp-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolcanoApp-star.png"; sourceTree = "<group>"; };
@@ -198,7 +202,7 @@
 		4E8F591613A7AF6B00D9D3A7 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuView.h; path = AppsMenu/MenuView.h; sourceTree = "<group>"; };
 		4E8F591713A7AF6B00D9D3A7 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuView.m; path = AppsMenu/MenuView.m; sourceTree = "<group>"; };
 		4E8F594713A7AF8B00D9D3A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
-		4E8F594B13A7AF9800D9D3A7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
+		4E8F594B13A7AF9800D9D3A7 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
 		4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlutterApp2Database.sql; sourceTree = "<group>"; };
 		4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -237,10 +241,20 @@
 		4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp_NeedleView.h; sourceTree = "<group>"; };
 		4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp_NeedleView.m; sourceTree = "<group>"; };
 		4EB510A31418C4AC008FC46F /* FlowerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlowerApp.h; path = AppsMenu/FlowerApp.h; sourceTree = "<group>"; };
+		4EB75E901442EA3400E886C3 /* FlowerHowTo-Flutter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-Flutter.png"; sourceTree = "<group>"; };
+		4EB75E941442F7C800E886C3 /* FlowerHowTo-Nav-Num.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-Nav-Num.png"; sourceTree = "<group>"; };
+		4EB75E96144315FD00E886C3 /* FlowerHowTo-PlayVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-PlayVideo.png"; sourceTree = "<group>"; };
 		4EBFFD5F1414CD4300D4BE9C /* FLAPIExercice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAPIExercice.h; sourceTree = "<group>"; };
 		4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAPIExercice.m; sourceTree = "<group>"; };
 		4EC3CC961431F2640013FECF /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		4EC3CC98143205470013FECF /* ParametersApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ParametersApp-Icon.png"; sourceTree = "<group>"; };
+		4EC7FF3B143F276800B534E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = "en.lproj/FlowerHowTo-index.html"; sourceTree = "<group>"; };
+		4EC7FF3D143F27A400B534E0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = "fr.lproj/FlowerHowTo-index.html"; sourceTree = "<group>"; };
+		4EC7FF3F143F29CF00B534E0 /* FlowerHowTo-headphones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-headphones.png"; sourceTree = "<group>"; };
+		4EC7FF46143F2ACC00B534E0 /* FlowerHowTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerHowTo.h; sourceTree = "<group>"; };
+		4EC7FF47143F2ACC00B534E0 /* FlowerHowTo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerHowTo.m; sourceTree = "<group>"; };
+		4EC7FF48143F2ACC00B534E0 /* FlowerHowTo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerHowTo.xib; sourceTree = "<group>"; };
+		4EC7FF4D143F31D900B534E0 /* FlowerHowTo-patafix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-patafix.png"; sourceTree = "<group>"; };
 		4ECC6CAC1404E171005519C7 /* UserPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserPicker.h; path = UI/UserPicker.h; sourceTree = "<group>"; };
 		4ECC6CAD1404E171005519C7 /* UserPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserPicker.m; path = UI/UserPicker.m; sourceTree = "<group>"; };
 		4ECC6CAF1404E5F7005519C7 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserManager.h; path = Data/UserManager.h; sourceTree = "<group>"; };
@@ -252,12 +266,15 @@
 		4EEED18D141E3E3100F56102 /* CalibrationApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp.m; sourceTree = "<group>"; };
 		4EEED197141E3E7F00F56102 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
 		4EEED199141E3E8700F56102 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
+		4EF0469014434DD200665E23 /* FlowerHowTo-Calibration_FR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-Calibration_FR.png"; sourceTree = "<group>"; };
+		4EF52A37143F47B1007068CD /* FlowerHowTo-mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-mic.png"; sourceTree = "<group>"; };
 		4EFC3EB714064911002F0BF7 /* DoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DoubleSlider.h; path = UI/DoubleSlider/DoubleSlider.h; sourceTree = "<group>"; };
 		4EFC3EB814064911002F0BF7 /* DoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DoubleSlider.m; path = UI/DoubleSlider/DoubleSlider.m; sourceTree = "<group>"; };
 		4EFC3EB914064911002F0BF7 /* handle_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = handle_highlight.png; path = UI/DoubleSlider/handle_highlight.png; sourceTree = "<group>"; };
 		4EFC3EBA14064911002F0BF7 /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = handle.png; path = UI/DoubleSlider/handle.png; sourceTree = "<group>"; };
 		4EFC3EBE1406837D002F0BF7 /* ParametersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParametersManager.h; path = Data/ParametersManager.h; sourceTree = "<group>"; };
 		4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParametersManager.m; path = Data/ParametersManager.m; sourceTree = "<group>"; };
+		4EFCD46814448EAA00FDECE9 /* Mix.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix.raw; sourceTree = "<group>"; };
 		4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-ios.a"; sourceTree = "<group>"; };
 		4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParametersAppPickerProfileCell.xib; sourceTree = "<group>"; };
 		4EFE7916142B53BA009EE121 /* ParametersAppPickerProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersAppPickerProfileCell.h; sourceTree = "<group>"; };
@@ -275,7 +292,6 @@
 		D72E028C139E448200F3687C /* subsys_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subsys_ios.h; sourceTree = "<group>"; };
 		D72E028D139E448200F3687C /* subsys_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = subsys_ios.mm; sourceTree = "<group>"; };
 		D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
-		D72E02AC139E500800F3687C /* FLAPIrecorded.raw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FLAPIrecorded.raw; sourceTree = "<group>"; };
 		D7397B241434763900C646D5 /* ResultsApp-gold_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsApp-gold_star.png"; sourceTree = "<group>"; };
 		D7397B29143478BB00C646D5 /* ResultsApp-blue_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsApp-blue_star.png"; sourceTree = "<group>"; };
 		D73C1304142879050006B28F /* ResultsApp_Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsApp_Day.h; sourceTree = "<group>"; };
@@ -387,6 +403,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E3BEDB514442FD800D72705 /* documents */,
+				4E6145B9144348C80056B84D /* default.css */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				4E8F595113A7AFA900D9D3A7 /* sqlite_database */,
 				4E8F594913A7AF9800D9D3A7 /* fr.lproj */,
@@ -415,9 +433,7 @@
 		4E101E47143615EF002BFDCC /* Recordings */ = {
 			isa = PBXGroup;
 			children = (
-				4E101E48143615EF002BFDCC /* Denis1.raw */,
-				4E101E49143615EF002BFDCC /* Denis2.raw */,
-				4E101E4A143615EF002BFDCC /* Martial1.raw */,
+				4EFCD46814448EAA00FDECE9 /* Mix.raw */,
 			);
 			path = Recordings;
 			sourceTree = "<group>";
@@ -450,14 +466,23 @@
 		4E3A7A7613B8766900853344 /* FlowerHowTo */ = {
 			isa = PBXGroup;
 			children = (
+				4EC7FF39143F269C00B534E0 /* documents */,
 				4E101E521437193B002BFDCC /* FlowerHowTo.strings */,
 				4E4B815A14165374009CC45D /* FlowerHowTo.m4v */,
 				4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */,
-				4E3A7A7713B8777D00853344 /* FlowerHowTo.h */,
-				4E3A7A7813B8777D00853344 /* FlowerHowTo.m */,
-				4E3A7A7913B8777D00853344 /* FlowerHowTo.xib */,
+				4EC7FF46143F2ACC00B534E0 /* FlowerHowTo.h */,
+				4EC7FF47143F2ACC00B534E0 /* FlowerHowTo.m */,
+				4EC7FF48143F2ACC00B534E0 /* FlowerHowTo.xib */,
 			);
 			path = FlowerHowTo;
+			sourceTree = "<group>";
+		};
+		4E3BEDB514442FD800D72705 /* documents */ = {
+			isa = PBXGroup;
+			children = (
+				4E3BEDB614442FEF00D72705 /* About-banner.png */,
+			);
+			name = documents;
 			sourceTree = "<group>";
 		};
 		4E43012F1433ADE20066ED6F /* Mailer */ = {
@@ -597,7 +622,7 @@
 		4EB510AA1418CCA7008FC46F /* Visual */ = {
 			isa = PBXGroup;
 			children = (
-				4E081DCC1419F340003C9178 /* param-icon.png */,
+				4E3BEDB314442DA600D72705 /* Default-Portrait.png */,
 				4E141B0713B35F1900698F53 /* Default.png */,
 				4E141B0813B35F1900698F53 /* Default@2x.png */,
 				4E141B0913B35F1900698F53 /* Icon.png */,
@@ -605,6 +630,21 @@
 				4E141B0B13B35F1900698F53 /* Icon@2x.png */,
 			);
 			name = Visual;
+			sourceTree = "<group>";
+		};
+		4EC7FF39143F269C00B534E0 /* documents */ = {
+			isa = PBXGroup;
+			children = (
+				4EF0469014434DD200665E23 /* FlowerHowTo-Calibration_FR.png */,
+				4EB75E96144315FD00E886C3 /* FlowerHowTo-PlayVideo.png */,
+				4EB75E941442F7C800E886C3 /* FlowerHowTo-Nav-Num.png */,
+				4EB75E901442EA3400E886C3 /* FlowerHowTo-Flutter.png */,
+				4EF52A37143F47B1007068CD /* FlowerHowTo-mic.png */,
+				4EC7FF4D143F31D900B534E0 /* FlowerHowTo-patafix.png */,
+				4EC7FF3F143F29CF00B534E0 /* FlowerHowTo-headphones.png */,
+				4EC7FF3A143F276800B534E0 /* FlowerHowTo-index.html */,
+			);
+			path = documents;
 			sourceTree = "<group>";
 		};
 		4ECC6CAB1404E150005519C7 /* UI */ = {
@@ -687,7 +727,6 @@
 				D72E028A139E448200F3687C /* FLAPIX.mm */,
 				D72E028C139E448200F3687C /* subsys_ios.h */,
 				D72E028D139E448200F3687C /* subsys_ios.mm */,
-				D72E02AC139E500800F3687C /* FLAPIrecorded.raw */,
 				4E2F50051407DF8200C4C00C /* FLAPIBlow.h */,
 				4E2F50061407DF8200C4C00C /* FLAPIBlow.m */,
 				4EBFFD5F1414CD4300D4BE9C /* FLAPIExercice.h */,
@@ -796,7 +835,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */,
 				4E8F593613A7AF6B00D9D3A7 /* FlowerController.xib in Resources */,
 				4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */,
 				4EA1A3B41420E8B800B11705 /* MenuView.xib in Resources */,
@@ -806,7 +844,6 @@
 				4E141B0F13B35F1900698F53 /* Icon.png in Resources */,
 				4E141B1013B35F1900698F53 /* Icon-iPad.png in Resources */,
 				4E141B1113B35F1900698F53 /* Icon@2x.png in Resources */,
-				4E3A7A7B13B8777D00853344 /* FlowerHowTo.xib in Resources */,
 				4E018F7813BB2D6B00333528 /* FlowerHowTo-icon.png in Resources */,
 				4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */,
 				4EFC3EBD14064911002F0BF7 /* handle.png in Resources */,
@@ -820,7 +857,6 @@
 				D7A9942B14165763000AA64A /* VolcanoApp-Icon.png in Resources */,
 				D7AD2ADC14174CA2004C6034 /* VolcanoApp_burst.png in Resources */,
 				D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */,
-				4E081DCD1419F340003C9178 /* param-icon.png in Resources */,
 				D73EB4F214223412001AB2DE /* CalibrationApp.xib in Resources */,
 				4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */,
 				4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */,
@@ -832,7 +868,6 @@
 				D73EB4F0142233EF001AB2DE /* ParametersApp.xib in Resources */,
 				D73C1314142879050006B28F /* ResultsApp.strings in Resources */,
 				D73C1318142879050006B28F /* ResultsApp_List.xib in Resources */,
-				D7F59A7F142B54CB006FE244 /* FlowerForAll.html in Resources */,
 				4EFE7915142B5369009EE121 /* ParametersAppPickerProfileCell.xib in Resources */,
 				4E91DCA51431CECC00C3780B /* CalibrationApp-Icon.png in Resources */,
 				4E91DCA91431D24900C3780B /* dialpad.png in Resources */,
@@ -843,13 +878,25 @@
 				4E4E9BE214336F9600F96792 /* ResultsApp.xib in Resources */,
 				D7397B251434763900C646D5 /* ResultsApp-gold_star.png in Resources */,
 				D7397B2A143478BC00C646D5 /* ResultsApp-blue_star.png in Resources */,
-				4E101E4B143615EF002BFDCC /* Denis1.raw in Resources */,
-				4E101E4C143615EF002BFDCC /* Denis2.raw in Resources */,
-				4E101E4D143615EF002BFDCC /* Martial1.raw in Resources */,
 				4E101E541437193B002BFDCC /* FlowerHowTo.strings in Resources */,
 				4E101E5614371947002BFDCC /* FlowerHowTo.strings in Resources */,
 				4E3EE3BC143CEC92002B111E /* jack.png in Resources */,
 				4E800122143E0067001C15C7 /* VolcanoApp-star.png in Resources */,
+				4EC7FF3E143F27A400B534E0 /* FlowerHowTo-index.html in Resources */,
+				4EC7FF40143F29CF00B534E0 /* FlowerHowTo-headphones.png in Resources */,
+				4EC7FF4A143F2ACC00B534E0 /* FlowerHowTo.xib in Resources */,
+				4EC7FF4E143F31D900B534E0 /* FlowerHowTo-patafix.png in Resources */,
+				4EF52A38143F47B1007068CD /* FlowerHowTo-mic.png in Resources */,
+				4EB75E911442EA3400E886C3 /* FlowerHowTo-Flutter.png in Resources */,
+				4EB75E951442F7C800E886C3 /* FlowerHowTo-Nav-Num.png in Resources */,
+				4EB75E97144315FD00E886C3 /* FlowerHowTo-PlayVideo.png in Resources */,
+				4E6145BA144348C80056B84D /* default.css in Resources */,
+				4EF0469114434DD200665E23 /* FlowerHowTo-Calibration_FR.png in Resources */,
+				4EBBA3E31443559200F8B45E /* FlowerForAll.html in Resources */,
+				4EBBA3E41443559800F8B45E /* Localizable.strings in Resources */,
+				4E3BEDB414442DA600D72705 /* Default-Portrait.png in Resources */,
+				4E3BEDB714442FEF00D72705 /* About-banner.png in Resources */,
+				4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,7 +919,6 @@
 				4E8F593713A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m in Sources */,
 				4E8F593813A7AF6B00D9D3A7 /* ParametersApp.m in Sources */,
 				4E8F593913A7AF6B00D9D3A7 /* MenuView.m in Sources */,
-				4E3A7A7A13B8777D00853344 /* FlowerHowTo.m in Sources */,
 				4E92E73F13C72C9C0060FBF6 /* NSObject+SBJson.m in Sources */,
 				4E92E74013C72C9C0060FBF6 /* SBJsonParser.m in Sources */,
 				4E92E74113C72C9C0060FBF6 /* SBJsonStreamParser.m in Sources */,
@@ -911,6 +957,7 @@
 				4EFE7918142B53BA009EE121 /* ParametersAppPickerProfileCell.m in Sources */,
 				4E4E9BE114336F9600F96792 /* ResultsApp.m in Sources */,
 				4E4301321433AE330066ED6F /* ResultsApp_Mailer.m in Sources */,
+				4EC7FF49143F2ACC00B534E0 /* FlowerHowTo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,6 +1005,15 @@
 				4E8F594B13A7AF9800D9D3A7 /* fr */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4EC7FF3A143F276800B534E0 /* FlowerHowTo-index.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EC7FF3B143F276800B534E0 /* en */,
+				4EC7FF3D143F27A400B534E0 /* fr */,
+			);
+			name = "FlowerHowTo-index.html";
 			sourceTree = "<group>";
 		};
 		4EEED196141E3E7F00F56102 /* VolcanoApp.strings */ = {

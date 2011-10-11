@@ -106,7 +106,7 @@
 }
 
 
-- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good {    
+- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good current_exercice:(double)percent_done {    
     [needle setNeedsDisplay];
 }
 

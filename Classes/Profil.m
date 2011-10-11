@@ -9,6 +9,7 @@
 #import "Profil.h"
 #import "DB.h"
 #import "ParametersManager.h"
+#import "FlowerController.h"
 
 
 @implementation Profil
@@ -50,7 +51,7 @@ static Profil* currentProfil;
 
 -(void)setCurrent {
     [Profil setCurrentS:self];
-    [ParametersManager loadParameters:nil];
+    [ParametersManager loadParameters:[FlowerController currentFlapix]];
     NSLog(@"Profil set to: %@",self.name);
 }
 

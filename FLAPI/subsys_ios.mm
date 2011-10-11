@@ -420,18 +420,21 @@ int SendWinMsg( int msg, int lparam, int hparam ){
                 if (FLAPI_GetFrequency() >= blow_frequency_trigger) { // continue
                     //.. blowing
                 } else { // stop blowing
+                     double temp_blow_in_range_duration = blow_in_range_duration;
+                    blow_in_range_duration = 0.0f;
                     if ((blow_last_freq - blow_last_start) > blow_min_duration ) // only if long enough
-                    [flapix EventBlowEnd:blow_last_start duration:(blow_last_freq - blow_last_start) in_range_duration:blow_in_range_duration];
+                    [flapix EventBlowEnd:blow_last_start duration:(blow_last_freq - blow_last_start) in_range_duration:temp_blow_in_range_duration];
                     blow_last_start = 0.0f;
                 }
                 
             } else { // not blowing (blow_last_start == 0)
+                 blow_in_range_duration = 0.0f;
                 if (FLAPI_GetFrequency() >= blow_frequency_trigger) { // start blowing
                     blow_last_start = blow_timestamp;
                     [flapix EventBlowStart:blow_last_start];
                     // init blowing vars
                     blow_last_freq = 0.0f;
-                    blow_in_range_duration = 0.0f;
+                   
                 } else { // continue
                     //.. not blowing
                 }
@@ -465,6 +468,10 @@ int SendWinMsg( int msg, int lparam, int hparam ){
 			
 	}
 	return FLAPI_SUCCESS;
+}
+
+double FLAPI_SUBSYS_IOS_get_current_blow_in_range_duration() {
+    return blow_in_range_duration;
 }
 
 # pragma mark DEVEL UTILS

@@ -9,7 +9,7 @@
 #import "CorePlot-CocoaTouch.h"
 #import "BlowHistory.h"
 
-@interface HistoryView : UIView <CPPlotDataSource,BlowHistoryDelegate> {
+@interface HistoryView : UIView <CPPlotDataSource,CPScatterPlotDelegate,BlowHistoryDelegate> {
     
 	CPGraphHostingView *graphView;
 	CPXYGraph *graph;

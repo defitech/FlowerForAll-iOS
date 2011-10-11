@@ -115,18 +115,20 @@ static const CGFloat innerColors [] = {
     sliderBarHeight = height;
     sliderBarWidth = self.frame.size.width / self.transform.a - 2*sliderBarDeltaX;  //calculate the actual bar width by dividing with the cos of the view's angle
     
-    self.minHandle = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"handle.png"] highlightedImage:[UIImage imageNamed:@"handle_highlight.png"]] autorelease];
+    
+    UIImage* handleImage = [UIImage imageWithCGImage:[[UIImage imageNamed:@"handle.png"] CGImage] scale:2 orientation:UIImageOrientationUp];
+    self.minHandle = [[[UIImageView alloc] initWithImage:handleImage highlightedImage:[UIImage imageNamed:@"handle_highlight.png"]] autorelease];
     
     self.minHandle.center = CGPointMake(sliderBarWidth * 0.2+sliderBarDeltaX, sliderBarHeight * 0.5 + sliderBarDeltaY);
     [self addSubview:self.minHandle];
     
-    self.maxHandle = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"handle.png"] highlightedImage:[UIImage imageNamed:@"handle_highlight.png"]] autorelease];
+    self.maxHandle = [[[UIImageView alloc] initWithImage:handleImage highlightedImage:[UIImage imageNamed:@"handle_highlight.png"]] autorelease];
     self.maxHandle.center = CGPointMake(sliderBarWidth * 0.8+sliderBarDeltaX, sliderBarHeight * 0.5 + sliderBarDeltaY);
     [self addSubview:self.maxHandle];
     
     bgColor = CGColorRetain([UIColor greenColor].CGColor);
     self.backgroundColor = [UIColor clearColor];
-
+    [handleImage release];
 }
 
 - (id) initWithFrame:(CGRect)aFrame minValue:(float)aMinValue maxValue:(float)aMaxValue barHeight:(float)height

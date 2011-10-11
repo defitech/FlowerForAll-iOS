@@ -36,6 +36,9 @@
 /** called by the NSNotificationCenter **/
 -(void) flapixEventEndBlow:(id)flapix_id;
 
+/** will return a min of 1second if empty or lower than 6Hz **/
+-(double) longestDuration ;
+
 @end
 
 

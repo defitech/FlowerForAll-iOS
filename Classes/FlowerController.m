@@ -143,28 +143,31 @@ static NSMutableDictionary* appList;
     
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] init ];
-    actionSheet.title = NSLocalizedString(@"Choose an action", @"Choose an action");
+    actionSheet.title = NSLocalizedString(@"Choose an action",@"CalibrationApp Title");
     actionSheet.delegate = singleton;
     
     // propose start / stop exercice only if running
     if ([[FlowerController currentFlapix] running]) {
         NSString *startstop =  
-        [[FlowerController currentFlapix] exerciceInCourse] ? NSLocalizedString(@"Stop Exercice", @"Stop Action") :
-        NSLocalizedString(@"Start Exercice", @"Start Action") ;
+        [[FlowerController currentFlapix] exerciceInCourse] ? NSLocalizedString(@"Stop Exercice", @"Action Popup Menu") :
+        NSLocalizedString(@"Start Exercice", @"Action Popup Menu") ;
         [actionSheet addButtonWithTitle:startstop];
     }
     
+    
+    
     if (![[self currentFlapix] IsDemo]) {
-        [actionSheet addButtonWithTitle:NSLocalizedString(@"Start Demo Mode", @"Enable Demo Mode")];
+        
+        [actionSheet addButtonWithTitle:NSLocalizedString(@"Start Demo Mode", @"Action Popup Menu")];
     } else {
-        [actionSheet addButtonWithTitle:NSLocalizedString(@"Stop Demo Mode", @"Enable Demo Mode")];
+        [actionSheet addButtonWithTitle:NSLocalizedString(@"Stop Demo Mode", @"Action Popup Menu")];
     }
     
    
     // iPad Tweak
     if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
         actionSheet.cancelButtonIndex = 
-        [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel Button")];
+        [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"Action Popup Menu")];
     }
     [actionSheet showInView:singleton.view];
     
@@ -249,13 +252,14 @@ static NSMutableDictionary* appList;
     
     // Plug an iPhone
     CGRect plugFrame = historyView.frame; 
-    
+
     startButton = [[UIButton alloc] initWithFrame:plugFrame];
     UIImage *buttonImageHighlighted = [UIImage imageNamed: @"jack.png"];
     [startButton setImage:buttonImageHighlighted forState:UIControlStateHighlighted];
-    [startButton setTitle:NSLocalizedString(@"Plug an headphone with microphone to start",@"Displayed on the ToolBar") forState:UIControlStateNormal];
+    [startButton setTitle:NSLocalizedString(@"Plug headphones with\nmicrophone to start",@"Displayed on the ToolBar") forState:UIControlStateNormal];
     startButton.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
     startButton.titleLabel.textAlignment = UITextAlignmentCenter;
+    [startButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [startButton setBackgroundColor:[UIColor blackColor]];
     [startButton setOpaque:NO];
     [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
