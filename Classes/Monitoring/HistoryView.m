@@ -148,7 +148,7 @@ NSTimer *repeatingTimer;
     
     history = [[BlowHistory alloc] initWithDuration:historyDuration delegate:self];
     
-    higherBar = 0;
+    higherBar = [history longestDuration];
 }
 
 
@@ -214,8 +214,7 @@ NSTimer *repeatingTimer;
 	// isGood plot
 	CPScatterPlot *goodPlot = [[[CPScatterPlot alloc]initWithFrame:self.bounds] autorelease];
     goodPlot.identifier = @"isGood";
-	goodPlot.dataLineStyle.lineWidth = 1.0f;
-	goodPlot.dataLineStyle.lineColor = [CPColor blackColor];
+	goodPlot.dataLineStyle.lineWidth = 0.0f;
 	goodPlot.dataSource = self;
 	[ graph addPlot:goodPlot];
     
@@ -298,7 +297,7 @@ NSTimer *repeatingTimer;
         // return Y 
         case CPScatterPlotFieldY: 
             if (current.goal)
-                return [ NSNumber numberWithDouble:(higherBar + higherBar/10) ];
+                return [ NSNumber numberWithDouble:(higherBar*1.1) ];
             break;
         case CPBarPlotFieldBarLength:
             if (plot.identifier == @"inRange")
@@ -324,12 +323,15 @@ NSTimer *repeatingTimer;
     if (index  >= [[history getHistoryArray] count]) { // display start/stop exerice
         if (lastExericeStartTimeStamp > 0) {
             if (plot.identifier == @"isStartStop") {
-                CPPlotSymbol *symbol = [[[CPPlotSymbol alloc] init] autorelease];
+                CPPlotSymbol *symbol = [CPPlotSymbol trianglePlotSymbol];
                 if (index  > [[history getHistoryArray] count]) {
-                    symbol.symbolType = CPPlotSymbolTypeCross;
+                    symbol.symbolType = CPPlotSymbolTypeTriangle;
+                    symbol.fill = [CPFill fillWithColor:[CPColor blueColor]]; 
                 } else {
+                    symbol.fill = [CPFill fillWithColor:[CPColor yellowColor]]; 
                     symbol.symbolType = CPPlotSymbolTypeTriangle;
                 }
+                symbol.lineStyle = nil;
                 symbol.size = CGSizeMake(self.frame.size.height/2, self.frame.size.height/2);
                 symbol.fill = [CPFill fillWithColor:[CPColor yellowColor]];
                 return symbol;
@@ -337,7 +339,7 @@ NSTimer *repeatingTimer;
         }
         return nil;
     }
-    CPPlotSymbol *symbol = [[[CPPlotSymbol alloc] init] autorelease];
+    CPPlotSymbol *symbol = [CPPlotSymbol starPlotSymbol];
     symbol.symbolType = CPPlotSymbolTypeStar;
     symbol.size = CGSizeMake(self.frame.size.width/28, self.frame.size.height/4);
     symbol.fill = [CPFill fillWithColor:[CPColor whiteColor]];
@@ -367,7 +369,7 @@ NSTimer *repeatingTimer;
     //Resize Y axis if needed
     if (blow.duration > higherBar) {
         higherBar = blow.duration;
-        plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromDouble(0) length:CPDecimalFromDouble(higherBar + higherBar/5)];
+        plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromDouble(0) length:CPDecimalFromDouble(higherBar*1.5)];
     }
 }
 
@@ -389,7 +391,7 @@ NSTimer *repeatingTimer;
 
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
     lastExericeStartTimeStamp = [(FLAPIExercice*)[notification object] start_ts];
-    higherBar = 0;
+    higherBar = [history longestDuration];
 }
 
 

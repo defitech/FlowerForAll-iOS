@@ -57,6 +57,15 @@
     return history;
 }
 
+/** will return a min of 1second if empty or lower than 6Hz **/
+-(double) longestDuration {
+    double max = 6.0f;
+    for (FLAPIBlow* blow in history) {
+        if (blow.duration > max) max = blow.duration;
+    }
+    return max;
+}
+
 - (void) dealloc
 {
     [history release];
