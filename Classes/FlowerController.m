@@ -154,7 +154,10 @@ static NSMutableDictionary* appList;
         [actionSheet addButtonWithTitle:startstop];
     }
     
+    
+    
     if (![[self currentFlapix] IsDemo]) {
+        
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Start Demo Mode", @"Action Popup Menu")];
     } else {
         [actionSheet addButtonWithTitle:NSLocalizedString(@"Stop Demo Mode", @"Action Popup Menu")];

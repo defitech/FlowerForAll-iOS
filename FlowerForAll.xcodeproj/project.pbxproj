@@ -16,9 +16,6 @@
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		4E018F7813BB2D6B00333528 /* FlowerHowTo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */; };
 		4E081DD01419F4DD003C9178 /* FlowerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E081DCF1419F4DD003C9178 /* FlowerApp.m */; };
-		4E101E4B143615EF002BFDCC /* Denis1.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E48143615EF002BFDCC /* Denis1.raw */; };
-		4E101E4C143615EF002BFDCC /* Denis2.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E49143615EF002BFDCC /* Denis2.raw */; };
-		4E101E4D143615EF002BFDCC /* Martial1.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E4A143615EF002BFDCC /* Martial1.raw */; };
 		4E101E541437193B002BFDCC /* FlowerHowTo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E521437193B002BFDCC /* FlowerHowTo.strings */; };
 		4E101E5614371947002BFDCC /* FlowerHowTo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E521437193B002BFDCC /* FlowerHowTo.strings */; };
 		4E141B0D13B35F1900698F53 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0713B35F1900698F53 /* Default.png */; };
@@ -104,6 +101,7 @@
 		4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB914064911002F0BF7 /* handle_highlight.png */; };
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
 		4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */; };
+		4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4EFCD46814448EAA00FDECE9 /* Mix.raw */; };
 		4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */; };
 		4EFE7915142B5369009EE121 /* ParametersAppPickerProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */; };
 		4EFE7918142B53BA009EE121 /* ParametersAppPickerProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */; };
@@ -114,7 +112,6 @@
 		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
-		D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */ = {isa = PBXBuildFile; fileRef = D72E02AC139E500800F3687C /* FLAPIrecorded.raw */; };
 		D7397B251434763900C646D5 /* ResultsApp-gold_star.png in Resources */ = {isa = PBXBuildFile; fileRef = D7397B241434763900C646D5 /* ResultsApp-gold_star.png */; };
 		D7397B2A143478BC00C646D5 /* ResultsApp-blue_star.png in Resources */ = {isa = PBXBuildFile; fileRef = D7397B29143478BB00C646D5 /* ResultsApp-blue_star.png */; };
 		D73C1313142879050006B28F /* ResultsApp_Day.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1305142879050006B28F /* ResultsApp_Day.m */; };
@@ -150,9 +147,6 @@
 		32CA4F630368D1EE00C91783 /* FlowerForAll_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerForAll_Prefix.pch; sourceTree = "<group>"; };
 		4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-icon.png"; sourceTree = "<group>"; };
 		4E081DCF1419F4DD003C9178 /* FlowerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlowerApp.m; path = AppsMenu/FlowerApp.m; sourceTree = "<group>"; };
-		4E101E48143615EF002BFDCC /* Denis1.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = Denis1.raw; sourceTree = "<group>"; };
-		4E101E49143615EF002BFDCC /* Denis2.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = Denis2.raw; sourceTree = "<group>"; };
-		4E101E4A143615EF002BFDCC /* Martial1.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = Martial1.raw; sourceTree = "<group>"; };
 		4E101E531437193B002BFDCC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FlowerHowTo.strings; sourceTree = "<group>"; };
 		4E101E5514371947002BFDCC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FlowerHowTo.strings; sourceTree = "<group>"; };
 		4E141B0713B35F1900698F53 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -280,6 +274,7 @@
 		4EFC3EBA14064911002F0BF7 /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = handle.png; path = UI/DoubleSlider/handle.png; sourceTree = "<group>"; };
 		4EFC3EBE1406837D002F0BF7 /* ParametersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParametersManager.h; path = Data/ParametersManager.h; sourceTree = "<group>"; };
 		4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParametersManager.m; path = Data/ParametersManager.m; sourceTree = "<group>"; };
+		4EFCD46814448EAA00FDECE9 /* Mix.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix.raw; sourceTree = "<group>"; };
 		4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-ios.a"; sourceTree = "<group>"; };
 		4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParametersAppPickerProfileCell.xib; sourceTree = "<group>"; };
 		4EFE7916142B53BA009EE121 /* ParametersAppPickerProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersAppPickerProfileCell.h; sourceTree = "<group>"; };
@@ -297,7 +292,6 @@
 		D72E028C139E448200F3687C /* subsys_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subsys_ios.h; sourceTree = "<group>"; };
 		D72E028D139E448200F3687C /* subsys_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = subsys_ios.mm; sourceTree = "<group>"; };
 		D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
-		D72E02AC139E500800F3687C /* FLAPIrecorded.raw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FLAPIrecorded.raw; sourceTree = "<group>"; };
 		D7397B241434763900C646D5 /* ResultsApp-gold_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsApp-gold_star.png"; sourceTree = "<group>"; };
 		D7397B29143478BB00C646D5 /* ResultsApp-blue_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsApp-blue_star.png"; sourceTree = "<group>"; };
 		D73C1304142879050006B28F /* ResultsApp_Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsApp_Day.h; sourceTree = "<group>"; };
@@ -439,9 +433,7 @@
 		4E101E47143615EF002BFDCC /* Recordings */ = {
 			isa = PBXGroup;
 			children = (
-				4E101E48143615EF002BFDCC /* Denis1.raw */,
-				4E101E49143615EF002BFDCC /* Denis2.raw */,
-				4E101E4A143615EF002BFDCC /* Martial1.raw */,
+				4EFCD46814448EAA00FDECE9 /* Mix.raw */,
 			);
 			path = Recordings;
 			sourceTree = "<group>";
@@ -735,7 +727,6 @@
 				D72E028A139E448200F3687C /* FLAPIX.mm */,
 				D72E028C139E448200F3687C /* subsys_ios.h */,
 				D72E028D139E448200F3687C /* subsys_ios.mm */,
-				D72E02AC139E500800F3687C /* FLAPIrecorded.raw */,
 				4E2F50051407DF8200C4C00C /* FLAPIBlow.h */,
 				4E2F50061407DF8200C4C00C /* FLAPIBlow.m */,
 				4EBFFD5F1414CD4300D4BE9C /* FLAPIExercice.h */,
@@ -844,7 +835,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				D72E02AD139E500800F3687C /* FLAPIrecorded.raw in Resources */,
 				4E8F593613A7AF6B00D9D3A7 /* FlowerController.xib in Resources */,
 				4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */,
 				4EA1A3B41420E8B800B11705 /* MenuView.xib in Resources */,
@@ -888,9 +878,6 @@
 				4E4E9BE214336F9600F96792 /* ResultsApp.xib in Resources */,
 				D7397B251434763900C646D5 /* ResultsApp-gold_star.png in Resources */,
 				D7397B2A143478BC00C646D5 /* ResultsApp-blue_star.png in Resources */,
-				4E101E4B143615EF002BFDCC /* Denis1.raw in Resources */,
-				4E101E4C143615EF002BFDCC /* Denis2.raw in Resources */,
-				4E101E4D143615EF002BFDCC /* Martial1.raw in Resources */,
 				4E101E541437193B002BFDCC /* FlowerHowTo.strings in Resources */,
 				4E101E5614371947002BFDCC /* FlowerHowTo.strings in Resources */,
 				4E3EE3BC143CEC92002B111E /* jack.png in Resources */,
@@ -909,6 +896,7 @@
 				4EBBA3E41443559800F8B45E /* Localizable.strings in Resources */,
 				4E3BEDB414442DA600D72705 /* Default-Portrait.png in Resources */,
 				4E3BEDB714442FEF00D72705 /* About-banner.png in Resources */,
+				4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
