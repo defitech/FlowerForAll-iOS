@@ -1131,7 +1131,9 @@
 			<key>change date</key>
 			<date>2001-01-01T00:00:00Z</date>
 			<key>changed values</key>
-			<array/>
+			<array>
+				<string>fr</string>
+			</array>
 			<key>class</key>
 			<string>BLBundleObject</string>
 			<key>errors</key>
@@ -1155,7 +1157,9 @@
 					<key>change date</key>
 					<date>2011-10-06T16:25:17Z</date>
 					<key>changed values</key>
-					<array/>
+					<array>
+						<string>fr</string>
+					</array>
 					<key>class</key>
 					<string>BLStringsFileObject</string>
 					<key>errors</key>
@@ -1173,7 +1177,9 @@
 							<key>change date</key>
 							<date>2001-01-01T00:00:00Z</date>
 							<key>changed values</key>
-							<array/>
+							<array>
+								<string>fr</string>
+							</array>
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
@@ -1189,7 +1195,7 @@
 								<key>en</key>
 								<string>Start Exercice</string>
 								<key>fr</key>
-								<string>Démarrer un exerice</string>
+								<string>Démarrer un exercice</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
