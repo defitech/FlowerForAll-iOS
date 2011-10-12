@@ -11,6 +11,7 @@
 #import "FlowerController.h"
 #import "FLAPIExercice.h"
 #import "FLAPIX.h"
+#import "CorePlot-CocoaTouch.h"
 
 @implementation HistoryView
 
@@ -217,6 +218,7 @@ NSTimer *repeatingTimer;
 	/*
 	 *	PLOTS
 	 */
+      
 	// isGood plot
 	CPScatterPlot *goodPlot = [[[CPScatterPlot alloc]initWithFrame:self.bounds] autorelease];
     goodPlot.identifier = @"isGood";

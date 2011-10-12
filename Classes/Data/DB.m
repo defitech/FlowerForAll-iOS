@@ -228,7 +228,7 @@ static sqlite3 *database;
 }
 
 +(NSDate*) colT:(sqlite3_stmt*)cStatement index:(int)index {
-    return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:[DB colD:cStatement index:index]];
+    return [[[NSDate alloc] initWithTimeIntervalSinceReferenceDate:[DB colD:cStatement index:index]] autorelease];
 }
 
 // look at colTDF to reuuse your own NSDateFormatter

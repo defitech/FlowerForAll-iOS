@@ -128,7 +128,6 @@ static const CGFloat innerColors [] = {
     
     bgColor = CGColorRetain([UIColor greenColor].CGColor);
     self.backgroundColor = [UIColor clearColor];
-    [handleImage release];
 }
 
 - (id) initWithFrame:(CGRect)aFrame minValue:(float)aMinValue maxValue:(float)aMaxValue barHeight:(float)height
