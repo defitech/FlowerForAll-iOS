@@ -247,6 +247,7 @@ NSTimer *repeatingTimer;
     // isStart plot
 	CPScatterPlot *startPlot = [[[CPScatterPlot alloc]initWithFrame:self.bounds] autorelease];
     startPlot.identifier = @"isStartStop";
+	startPlot.dataLineStyle.lineWidth = 0.0f;
 	startPlot.dataSource = self;
 	[ graph addPlot:startPlot];
 
