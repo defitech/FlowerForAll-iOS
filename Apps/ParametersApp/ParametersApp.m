@@ -76,7 +76,7 @@ float minExerciceDuration_s = 7.0;
     
     //Expiration slider
     expirationLabel.text = 
-       NSLocalizedStringFromTable(@"Expiration duration target",@"ParametersApp",@"Expiration duration target");
+       NSLocalizedStringFromTable(@"Blow duration target",@"ParametersApp",@"Blow duration target");
     
     [expirationSlider addTarget:self action:@selector(valueChangedForExpirationSlider:) 
              forControlEvents:UIControlEventValueChanged];

@@ -34,7 +34,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-09-29T11:34:38Z</date>
+					<date>2011-10-12T13:00:43Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -44,12 +44,37 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>042596c68acc2db737bed1b4d05981b7
+					<string>5c95e0d19b0a636600cb8788756c69ef
 </string>
 					<key>name</key>
 					<string>ParametersApp.strings</string>
 					<key>objects</key>
 					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Blow duration target</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Blow duration target</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Blow duration target</string>
+								<key>fr</key>
+								<string>Durée pour une expiration</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
 						<dict>
 							<key>change date</key>
 							<date>2001-01-01T00:00:00Z</date>
@@ -146,31 +171,6 @@
 								<string>Exercice duration target</string>
 								<key>fr</key>
 								<string>Durée totale pour un exerice</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
-							<string>Expiration duration target</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>Expiration duration target</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>Expiration duration target</string>
-								<key>fr</key>
-								<string>Durée pour une expiration</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -324,6 +324,31 @@
 								<string>Calibration</string>
 								<key>fr</key>
 								<string>Calibration</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Expiration duration target</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Expiration duration target</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Expiration duration target</string>
+								<key>fr</key>
+								<string>Durée pour une expiration</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
