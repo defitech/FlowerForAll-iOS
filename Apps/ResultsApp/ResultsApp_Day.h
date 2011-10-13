@@ -10,8 +10,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CorePlot-CocoaTouch.h"
-
 
 @interface ResultsApp_Day : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
 	

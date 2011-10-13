@@ -25,7 +25,7 @@
         //Set location of the controller's frame
         self.view.frame = CGRectMake(0.0f, 0.0f, 320.0f, 460.0f);
         
-        //Push a StatisticListViewController
+        //Push the ResultsApp_List inside the ResultsApp_Nav (which is an extended navigation controller)
         if (statisticListViewController == nil) {
             statisticListViewController = [[ResultsApp_List alloc] initWithNibName:@"ResultsApp_List" bundle:[NSBundle mainBundle]];
         }

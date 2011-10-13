@@ -16,16 +16,19 @@
 {
     self = [super init];
     if (self) {
+        //Init the date field
         self.date = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:start_ts];
         
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
         [dateFormatter setDateFormat:@"dd.MM.yyyy"];
         
+         //Init the formattedDate field
         self.formattedDate = [dateFormatter stringFromDate:self.date];
         
         [dateFormatter release];
         
+        //Init the order field
         self.order = @"";
     }
     

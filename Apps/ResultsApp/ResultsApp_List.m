@@ -24,7 +24,7 @@
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     NSLog(@"StatListViewController initWithNibName");
 	if (self) {
-		// Custom initialization.
+		// Custom initialization; init modifyButton and add it to the navigation bar
         modifyButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Modify", @"ResultsApp", @"Label of the modify table button") style:UIBarButtonItemStylePlain target:self action:@selector(modifyTable)];
         self.navigationItem.rightBarButtonItem = modifyButton;
 	}
@@ -41,7 +41,7 @@
 	
     self.title = NSLocalizedStringFromTable(@"Results",@"ResultsApp",nil);
 	
-	//Fetch list of all days from the DB
+	//Fetch list of all exercise days from the DB
 	exerciseDays = [DB getDays];
     
 }
@@ -58,6 +58,7 @@
 }
 
 
+//The editing style of the table is always the delete style
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
         return UITableViewCellEditingStyleDelete;
 }
@@ -86,7 +87,7 @@
 //Called when the user pushes the modify button
 - (void)modifyTable {
 	
-    //Set the table in edit mode or in non-edit mode
+    //Set the table in edit mode or, in the contrary, in non-edit mode
 	if (statisticListTableView.editing == NO) {
         [statisticListTableView setEditing:YES animated:YES];
 		modifyButton.style = UIBarButtonItemStyleDone;
@@ -99,7 +100,6 @@
 	}
     
 }
-
 
 
 #pragma mark -
@@ -119,73 +119,84 @@
 }
 
 
-
+//Customize the appearance of table view cells
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSUInteger row = [indexPath row];
     
+    //Get the day corresponding to the current cell
     ExerciseDay* day = [exerciseDays objectAtIndex:row];
     
     static NSString *CellIdentifier = @"StarOnRightCell";
     
-    UILabel *mainLabel;
-    UILabel *numberLabel;
-    UILabel *plusLabel;
+    //Labels in the cell
+    UILabel *date;
+    UILabel *number;
+    UILabel *plus;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    //If the cell is nil, create it, otherwise remove all its subviews
     if (cell == nil) {
-        
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        
-    } else {
-        
+    }
+    else {
         for(UIView* subview in [cell.contentView subviews]) {
             [subview removeFromSuperview];
         }
-        
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    mainLabel = [[[UILabel alloc] initWithFrame:CGRectMake(15.0, 9.0, 140.0, 25.0)] autorelease];
-    mainLabel.font = [UIFont boldSystemFontOfSize:20];
-    mainLabel.textAlignment = UITextAlignmentLeft;
-    [cell.contentView addSubview:mainLabel];
+    //Get cell dimensions. All elements placed in the cell will then be placed relatively to those dimensions
+    float cellHeight = cell.frame.size.height;
+    float cellWidth = cell.frame.size.width;
     
-    numberLabel = [[[UILabel alloc] initWithFrame:CGRectMake(152.0, 9.0, 20.0, 25.0)] autorelease];
-    numberLabel.font = [UIFont boldSystemFontOfSize:16];
-    numberLabel.textColor = [UIColor grayColor];
-    numberLabel.textAlignment = UITextAlignmentLeft;
-    [cell.contentView addSubview:numberLabel];
+    //Place and format labels
+    date = [[[UILabel alloc] initWithFrame:CGRectMake(cellWidth/21.33, cellHeight/4.88, cellWidth/2.28, cellHeight/1.76)] autorelease];
+    date.font = [UIFont boldSystemFontOfSize:cellWidth/16.0];
+    date.textAlignment = UITextAlignmentLeft;
+    date.adjustsFontSizeToFitWidth = YES;
+    [cell.contentView addSubview:date];
     
-    plusLabel = [[[UILabel alloc] initWithFrame:CGRectMake(275.0, 8.0, 20.0, 25.0)] autorelease];
-    plusLabel.font = [UIFont boldSystemFontOfSize:18];
-    plusLabel.textColor = [UIColor grayColor];
-    plusLabel.textAlignment = UITextAlignmentLeft;
-    [cell.contentView addSubview:plusLabel];
+    number = [[[UILabel alloc] initWithFrame:CGRectMake(cellWidth/2.1, cellHeight/4.88, cellWidth/16.0, cellHeight/1.76)] autorelease];
+    number.font = [UIFont boldSystemFontOfSize:cellWidth/20.0];
+    number.textColor = [UIColor grayColor];
+    number.textAlignment = UITextAlignmentLeft;
+    number.adjustsFontSizeToFitWidth = YES;
+    [cell.contentView addSubview:number];
     
+    plus = [[[UILabel alloc] initWithFrame:CGRectMake(cellWidth/1.16, cellHeight/5.5, cellWidth/16.0, cellHeight/1.76)] autorelease];
+    plus.font = [UIFont boldSystemFontOfSize:cellWidth/17.77];
+    plus.textColor = [UIColor grayColor];
+    plus.textAlignment = UITextAlignmentLeft;
+    plus.adjustsFontSizeToFitWidth = YES;
+    [cell.contentView addSubview:plus];
     
+    //The code below draws the stars (up to five)
+    
+    //Determines the number of stars (maximum is 5)
     int max = day.order.length > 5 ? 5 : day.order.length;
     
+    //Determine how many good exercises in the first 5 (or low if there is less than 5 exercises)
     int localGoodCount = 0;
-    
     for(int i=0; i < max; i++){
         unichar c = [day.order characterAtIndex:i];
         if (c == '1')
             localGoodCount++;
     }
     
+    //Draw the stars (gold for a good ex, blue for a bad). All gold stars are drawn en the lef (before the blue)
     for(int i=0; i < max; i++){
         
-        int starLength = 16;
-        int offset = 192;
+        int starLength = cellWidth/20.0;
+        int offset = cellWidth/1.66;
         
         UIImageView* star = [UIImageView alloc];
         
-        CGRect frame2 = CGRectMake(offset+starLength*i ,8, 20, 25);
+        CGRect frame = CGRectMake(offset+starLength*i, cellHeight/5.5, cellWidth/16.0, cellHeight/1.76);
         
-        [star initWithFrame:frame2];
+        [star initWithFrame:frame];
         
         [cell.contentView addSubview:star];
         
@@ -200,18 +211,21 @@
         star.image = theImage;
     }
     
-    mainLabel.text = day.formattedDate;
-    numberLabel.text = [NSString stringWithFormat:@"%i", day.order.length];
+    //Set text in the labels
+    date.text = day.formattedDate;
+    number.text = [NSString stringWithFormat:@"%i", day.order.length];
+    
+    //Add the plus if there are more than 5 exercises
     if (day.order.length > 5)
-        plusLabel.text = @"+";
+        plus.text = @"+";
     
     return cell;
 }
 
 
-
 #pragma mark -
 #pragma mark Table view delegate
+//Push a ResultsApp_Day controller when the user touches a row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 	NSInteger row = [indexPath row];
@@ -219,7 +233,6 @@
 	//Update self.currentlySelectedRow field
 	self.currentlySelectedRow = row;
 
-	//Exercises for the current month and year
 	if (row < [exerciseDays count]) {
 
         ExerciseDay* day = [exerciseDays objectAtIndex:row];
