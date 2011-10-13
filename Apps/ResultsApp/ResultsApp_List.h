@@ -10,7 +10,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CorePlot-CocoaTouch.h"
 
 @class ResultsApp_Day;
 
@@ -20,7 +19,7 @@
 	//The table view
 	IBOutlet UITableView *statisticListTableView;
 	
-	//Arrays used to store dates and exercises
+	//Arrays used to store exercises days
     NSMutableArray* exerciseDays;
     
 	//Stores the currently selected row in the table

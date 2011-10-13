@@ -23,6 +23,7 @@
 		4E141B0F13B35F1900698F53 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0913B35F1900698F53 /* Icon.png */; };
 		4E141B1013B35F1900698F53 /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0A13B35F1900698F53 /* Icon-iPad.png */; };
 		4E141B1113B35F1900698F53 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0B13B35F1900698F53 /* Icon@2x.png */; };
+		4E16EA4B1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E16EA4A1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png */; };
 		4E1834B8141E568100E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B6141E568100E5AE1F /* ParametersApp.strings */; };
 		4E1834BA141E568800E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B6141E568100E5AE1F /* ParametersApp.strings */; };
 		4E18C43B14333F76007C7AE7 /* ParametersApp-SoundOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E18C43A14333F76007C7AE7 /* ParametersApp-SoundOn.png */; };
@@ -116,7 +117,6 @@
 		D7397B2A143478BC00C646D5 /* ResultsApp-blue_star.png in Resources */ = {isa = PBXBuildFile; fileRef = D7397B29143478BB00C646D5 /* ResultsApp-blue_star.png */; };
 		D73C1313142879050006B28F /* ResultsApp_Day.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1305142879050006B28F /* ResultsApp_Day.m */; };
 		D73C1314142879050006B28F /* ResultsApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = D73C1306142879050006B28F /* ResultsApp.strings */; };
-		D73C1317142879050006B28F /* ResultsApp_DayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C130D142879050006B28F /* ResultsApp_DayCell.m */; };
 		D73C1318142879050006B28F /* ResultsApp_List.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73C130E142879050006B28F /* ResultsApp_List.xib */; };
 		D73C1319142879050006B28F /* ResultsApp_List.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1310142879050006B28F /* ResultsApp_List.m */; };
 		D73C131A142879050006B28F /* ResultsApp_Nav.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1312142879050006B28F /* ResultsApp_Nav.m */; };
@@ -154,6 +154,7 @@
 		4E141B0913B35F1900698F53 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4E141B0A13B35F1900698F53 /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad.png"; sourceTree = "<group>"; };
 		4E141B0B13B35F1900698F53 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		4E16EA4A1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-Calibration_EN.png"; sourceTree = "<group>"; };
 		4E1834B7141E568100E5AE1F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ParametersApp.strings; sourceTree = "<group>"; };
 		4E1834B9141E568800E5AE1F /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParametersApp.strings; sourceTree = "<group>"; };
 		4E18C43A14333F76007C7AE7 /* ParametersApp-SoundOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ParametersApp-SoundOn.png"; sourceTree = "<group>"; };
@@ -298,8 +299,6 @@
 		D73C1305142879050006B28F /* ResultsApp_Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsApp_Day.m; sourceTree = "<group>"; };
 		D73C1307142879050006B28F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ResultsApp.strings; sourceTree = "<group>"; };
 		D73C1308142879050006B28F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ResultsApp.strings; sourceTree = "<group>"; };
-		D73C130C142879050006B28F /* ResultsApp_DayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsApp_DayCell.h; sourceTree = "<group>"; };
-		D73C130D142879050006B28F /* ResultsApp_DayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsApp_DayCell.m; sourceTree = "<group>"; };
 		D73C130E142879050006B28F /* ResultsApp_List.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsApp_List.xib; sourceTree = "<group>"; };
 		D73C130F142879050006B28F /* ResultsApp_List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsApp_List.h; sourceTree = "<group>"; };
 		D73C1310142879050006B28F /* ResultsApp_List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsApp_List.m; sourceTree = "<group>"; };
@@ -635,6 +634,7 @@
 		4EC7FF39143F269C00B534E0 /* documents */ = {
 			isa = PBXGroup;
 			children = (
+				4E16EA4A1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png */,
 				4EF0469014434DD200665E23 /* FlowerHowTo-Calibration_FR.png */,
 				4EB75E96144315FD00E886C3 /* FlowerHowTo-PlayVideo.png */,
 				4EB75E941442F7C800E886C3 /* FlowerHowTo-Nav-Num.png */,
@@ -745,8 +745,6 @@
 				D73C1304142879050006B28F /* ResultsApp_Day.h */,
 				D73C1305142879050006B28F /* ResultsApp_Day.m */,
 				D73C1306142879050006B28F /* ResultsApp.strings */,
-				D73C130C142879050006B28F /* ResultsApp_DayCell.h */,
-				D73C130D142879050006B28F /* ResultsApp_DayCell.m */,
 				D73C130E142879050006B28F /* ResultsApp_List.xib */,
 				D73C130F142879050006B28F /* ResultsApp_List.h */,
 				D73C1310142879050006B28F /* ResultsApp_List.m */,
@@ -897,6 +895,7 @@
 				4E3BEDB414442DA600D72705 /* Default-Portrait.png in Resources */,
 				4E3BEDB714442FEF00D72705 /* About-banner.png in Resources */,
 				4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */,
+				4E16EA4B1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,7 +949,6 @@
 				D7F59A6914286D06006FE244 /* PickerEditor.m in Sources */,
 				4E5110881428CBC600A464EA /* Profil.m in Sources */,
 				D73C1313142879050006B28F /* ResultsApp_Day.m in Sources */,
-				D73C1317142879050006B28F /* ResultsApp_DayCell.m in Sources */,
 				D73C1319142879050006B28F /* ResultsApp_List.m in Sources */,
 				D73C131A142879050006B28F /* ResultsApp_Nav.m in Sources */,
 				D73C13201428B34D0006B28F /* ExerciseDay.m in Sources */,
@@ -1092,6 +1090,7 @@
 					"\"$(SRCROOT)/FLAPI\"",
 				);
 				PRODUCT_NAME = FlowerForAll;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1123,7 +1122,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1135,6 +1134,7 @@
 					"-all_load",
 					"-ObjC",
 				);
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				SDKROOT = iphoneos4.0;
 			};
 			name = Release;

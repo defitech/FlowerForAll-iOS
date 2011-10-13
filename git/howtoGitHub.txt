@@ -4,13 +4,18 @@
 git checkout githublocal
 
 # merge it with your own branch (for me its:)
-#   with auto-resolve of conflict 
-git merge -s recursive -X theirs perki
+git merge perki
+# commit with a name
+git commit -a -m "...."
 
 # verify that branch "github local" is identical to your branch
 
 # push to github
 git push github HEAD:master
+
+
+# go back to your branch
+git checkut perki
 
 # config for Perki:
 # [remote "github"]

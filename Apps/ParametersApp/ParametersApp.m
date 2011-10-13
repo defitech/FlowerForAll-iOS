@@ -38,7 +38,7 @@ exerciceLabel, exerciceTimeLabel, exerciceSlider, buttonProfile, goToCalibration
 
 # pragma mark utilities for non-linear progression of the exercice duration
 
-float maxExerciceDuration_s = 120.0;
+float maxExerciceDuration_s = 480.0;
 float minExerciceDuration_s = 7.0;
 
 - (float)exericeDurationSliderToSystem:(float)sliderValue {
@@ -76,7 +76,7 @@ float minExerciceDuration_s = 7.0;
     
     //Expiration slider
     expirationLabel.text = 
-       NSLocalizedStringFromTable(@"Expiration duration target",@"ParametersApp",@"Expiration duration target");
+       NSLocalizedStringFromTable(@"Blow duration target",@"ParametersApp",@"Blow duration target");
     
     [expirationSlider addTarget:self action:@selector(valueChangedForExpirationSlider:) 
              forControlEvents:UIControlEventValueChanged];
@@ -162,7 +162,12 @@ float minExerciceDuration_s = 7.0;
 
 - (void)valueChangedForExericeSlider:(UISlider *)aSlider
 {
-    exerciceTimeLabel.text = [NSString stringWithFormat:@"%1.1f s",[self exericeDurationSliderToSystem:(float) aSlider.value]];
+    int s = (int)[self exericeDurationSliderToSystem:(float) aSlider.value];
+    int m = (int) (s/60);
+    s = s - (60 * m);
+    //NSLog(@"%i m %i s",m,s);
+    
+    exerciceTimeLabel.text = [NSString stringWithFormat:@"%i m %i s",m,s];
     
 }
 

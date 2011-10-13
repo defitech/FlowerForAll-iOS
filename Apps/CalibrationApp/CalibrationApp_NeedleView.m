@@ -201,7 +201,7 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
 
     
     CGPathRelease(path);
-    
+    CGColorSpaceRelease(baseSpace);
     CGContextRestoreGState(context);
 
 }

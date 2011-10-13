@@ -14,6 +14,7 @@
 
 @interface ResultsApp_Nav : UINavigationController {
 
+    //Child view controller
     ResultsApp_List* statisticListViewController;
 }
 

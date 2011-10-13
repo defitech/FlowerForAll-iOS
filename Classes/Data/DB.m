@@ -228,7 +228,7 @@ static sqlite3 *database;
 }
 
 +(NSDate*) colT:(sqlite3_stmt*)cStatement index:(int)index {
-    return [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:[DB colD:cStatement index:index]];
+    return [[[NSDate alloc] initWithTimeIntervalSinceReferenceDate:[DB colD:cStatement index:index]] autorelease];
 }
 
 // look at colTDF to reuuse your own NSDateFormatter
@@ -254,23 +254,42 @@ static sqlite3 *database;
 }
 
 
+/**
+ * Computes all days that contains exercises in the DB and return an array of ExerciseDay objects.
+ * The algorithm first fetches all exercises (only start_ts and duration_exercice_done_p columns),
+ * ordering by start_ts desc, in order to get exercise in the right order.
+ * Then it uses 2 objects: currentDay and lastDay. The loop iterates over all exercises and at each
+ * iteration, it checks if the current exercise belongs to the same day as the previous one.
+ * If it is not the case, it adds a new exercise day in the array. In all cases, it
+ * increments the day's good count if the exercise is successfull, the day's bad count otherwise.
+ */
 +(NSMutableArray*) getDays {
 	NSLog(@"Get all days");
 	
+    //Array to store results
     NSMutableArray *days = [[NSMutableArray alloc] init];
+    
+    //Objects used by the algorithm: the day of the current exercise (currentDay) and the last added day in the array (lastDay)
     ExerciseDay* currentDay = nil;
     ExerciseDay* lastDay = nil;
     
     sqlite3_stmt *cStatement = 
     [DB genCStatementWF:@"SELECT start_ts, duration_exercice_done_p FROM exercices ORDER BY start_ts DESC"];
+    
+    //Iterate over the result set
     while(sqlite3_step(cStatement) == SQLITE_ROW) {
-
+        
+        //Get data from the current row of the result set
         double start_ts = [DB colD:cStatement index:0];
         double duration_exercice_done_p = [DB colD:cStatement index:1];
         
+        //Initialize currentDay with the start_ts of the current exercise
         currentDay = [[ExerciseDay alloc] init:start_ts];
         
+        //Case where the current day is a new day (not already in the array)
         if (lastDay == nil || ![lastDay.formattedDate isEqualToString:currentDay.formattedDate]) {
+            //Check if the current exercise is successfull, then increment the day's bad or good count,
+            //and concatenate "0" or "1" to the day's order string.
             if (duration_exercice_done_p >= 1.0f){
                 currentDay.good++;
                 currentDay.order = [currentDay.order stringByAppendingString:@"1"];
@@ -280,9 +299,14 @@ static sqlite3 *database;
                 currentDay.order = [currentDay.order stringByAppendingString:@"0"];
             }
             lastDay = currentDay;
+            //add the new day to the array
             [days addObject:currentDay];
         }
+        
+        //Case where the current day is NOT a new day (already in the array)
         else {
+            //Check if the current exercise is successfull, then increment the day's bad or good count,
+            //and concatenate "0" or "1" to the day's order string.
             if (duration_exercice_done_p >= 1.0f){
                 lastDay.good++;
                 lastDay.order = [lastDay.order stringByAppendingString:@"1"];
@@ -300,22 +324,32 @@ static sqlite3 *database;
 }
 
 
+/**
+ * Retrieves all exercises in the given day and returns an array of Exercise objects.
+ * The input parametter day is the day formatted as a string (ex: 12.10.2011)
+ */
 +(NSMutableArray*) getExercisesInDay:(NSString*) day {
 	
+    //Create a date formatter for date and time
     NSDateFormatter* dateAndTimeFormatter = [[NSDateFormatter alloc] init];
     [dateAndTimeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
     [dateAndTimeFormatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
     
+    //Create 2 NSDate for the beginning and the end of the day
     NSDate *dayBegin = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day, @"00:00:00"]];
     NSDate *dayEnd = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day, @"23:59:59"]];
     
+    //Convert the NSDates to absolute time
     double dayBeginAbsoluteTime = [dayBegin timeIntervalSinceReferenceDate];
     double dayEndAbsoluteTime = [dayEnd timeIntervalSinceReferenceDate];
     
     NSMutableArray *exercises = [[NSMutableArray alloc] init];
     
+    //Execute query using dayBeginAbsoluteTime and dayEndAbsoluteTime as bounds
     sqlite3_stmt *cStatement = 
     [DB genCStatementWF:@"SELECT start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s, duration_exercice_done_p, blow_count, blow_star_count, profile_name FROM exercices WHERE start_ts >= '%f' AND start_ts <= '%f' ORDER BY start_ts DESC", dayBeginAbsoluteTime, dayEndAbsoluteTime];
+    
+    //Add all exercises in the result set to the result's array
     while(sqlite3_step(cStatement) == SQLITE_ROW) {
         
         Exercise *exercise = [[[Exercise alloc] init:[DB colD:cStatement index:0]:[DB colD:cStatement index:1]:[DB colD:cStatement index:2]:[DB colD:cStatement index:3]:[DB colD:cStatement index:4]:[DB colD:cStatement index:5]:[DB colD:cStatement index:6]:[DB colD:cStatement index:7]:[DB colD:cStatement index:8]:[DB colS:cStatement index:9]] autorelease];
@@ -328,25 +362,36 @@ static sqlite3 *database;
 }
 
 
+/**
+ * Delete all exercises in the given day.
+ * The input parametter day is the day formatted as a string (ex: 12.10.2011)
+ */
 +(void) deleteDay:(NSString*)day {
 	NSLog(@"Delete exercises in the given day");
 	
+    //Create a date formatter for date and time
     NSDateFormatter* dateAndTimeFormatter = [[NSDateFormatter alloc] init];
     [dateAndTimeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
     [dateAndTimeFormatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
     
+    //Create 2 NSDate for the beginning and the end of the day
     NSDate *dayBegin = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day, @"00:00:00"]];
     NSDate *dayEnd = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day, @"23:59:59"]];
     
+    //Convert the NSDates to absolute time
     double dayBeginAbsoluteTime = [dayBegin timeIntervalSinceReferenceDate];
     double dayEndAbsoluteTime = [dayEnd timeIntervalSinceReferenceDate];
     
+    //Execute query using dayBeginAbsoluteTime and dayEndAbsoluteTime as bounds
     [DB executeWF:@"DELETE FROM exercices WHERE (start_ts >= '%f' AND start_ts <= '%f')", dayBeginAbsoluteTime, dayEndAbsoluteTime];
 
     [dateAndTimeFormatter release];
 }
 
 
+/**
+ * Delete the exercises given by its start_ts.
+ */
 +(void) deleteExercise:(double)start_ts {
 	NSLog(@"Delete exercise");
     

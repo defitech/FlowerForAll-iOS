@@ -26,7 +26,7 @@
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     NSLog(@"DayStatListViewController initWithNibName");
 	if (self) {
-		// Custom initialization.
+		// Custom initialization. Initialize formattedDate, date and time formatters and modifyButton
         formattedDate = _formattedDate;
         
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -70,6 +70,7 @@
 }
 
 
+//The editing style of the table is always the delete style
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleDelete;
 }
@@ -92,6 +93,7 @@
         [statisticListTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         [statisticListTableView endUpdates];
         
+        //If all exercises of the day are deleted, pop the view controller
         if ([exercises count] == 0) {
             [[self navigationController] popViewControllerAnimated:YES];
         }
@@ -102,7 +104,7 @@
 //Called when the user pushes the modify button
 - (void)modifyTable {
 	
-    //Set the table in edit mode or in non-edit mode
+    //Set the table in edit mode or, in the contrary, in non-edit mode
 	if (statisticListTableView.editing == NO) {
         [statisticListTableView setEditing:YES animated:YES];
 		modifyButton.style = UIBarButtonItemStyleDone;
@@ -134,15 +136,17 @@
 }
 
 
-// Customize the appearance of table view cells
+//Customize the appearance of table view cells
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSUInteger row = [indexPath row];
     
+    //Get the exercise corresponding to the current cell
     Exercise* ex = [self.exercises objectAtIndex:row];
     
     static NSString *CellIdentifier = @"PercentOnRightCell";
     
+    //Labels in the cell
     UILabel *time;
     UILabel *duration;
     UILabel *percent;
@@ -150,65 +154,90 @@
     UILabel *blow;
     UILabel *blowRatio;
     
-    int starAlignment = 15;
-    int timeAlignment = 70;
-    int blowAlignment = 163;
-    int profileAlignment = 270;
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    //If the cell is nil, create it, otherwise remove all its subviews
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    } else {
+    }
+    else {
         for(UIView* subview in [cell.contentView subviews]) {
             [subview removeFromSuperview];
         }
     }
     
-    time = [[[UILabel alloc] initWithFrame:CGRectMake(timeAlignment, 3.0, 80.0, 20.0)] autorelease];
-    time.font = [UIFont systemFontOfSize:20];
+    //Get cell dimensions. All elements placed in the cell will then be placed relatively to those dimensions
+    float cellHeight = cell.frame.size.height;
+    float cellWidth = cell.frame.size.width;
+    
+    float starAlignment = cellWidth/21.33;
+    float timeAlignment = cellWidth/4.57;
+    
+    float blowAlignment;
+    //Change blowAlignment if the current language is french 
+    NSString* currentLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if ([currentLanguage isEqualToString:@"fr"]){
+        blowAlignment = cellWidth/2.1;
+    }
+    else{
+        blowAlignment = cellWidth/1.96;
+    }
+    
+    float profileAlignment = cellWidth/1.18;
+    
+    //Place and format labels
+    time = [[[UILabel alloc] initWithFrame:CGRectMake(timeAlignment, cellHeight/14.66, cellWidth/4.0, cellHeight/2.2)] autorelease];
+    time.font = [UIFont systemFontOfSize:cellWidth/16.0];
     time.textAlignment = UITextAlignmentLeft;
+    time.adjustsFontSizeToFitWidth = YES;
     [cell.contentView addSubview:time];
     
-    duration = [[[UILabel alloc] initWithFrame:CGRectMake(timeAlignment, 27.0, 80.0, 10.0)] autorelease];
-    duration.font = [UIFont systemFontOfSize:12];
+    duration = [[[UILabel alloc] initWithFrame:CGRectMake(timeAlignment, cellHeight/1.63, cellWidth/4.0, cellHeight/4.4)] autorelease];
+    duration.font = [UIFont systemFontOfSize:cellWidth/26.66];
     duration.textAlignment = UITextAlignmentLeft;
+    duration.adjustsFontSizeToFitWidth = YES;
     [cell.contentView addSubview:duration];
     
     if (ex.duration_exercice_done_ps < 1.0){
-        percent = [[[UILabel alloc] initWithFrame:CGRectMake(starAlignment, 25.0, 30.0, 15.0)] autorelease];
-        percent.font = [UIFont systemFontOfSize:12];
+        percent = [[[UILabel alloc] initWithFrame:CGRectMake(starAlignment, cellHeight/1.76, cellWidth/10.66, cellHeight/2.93)] autorelease];
+        percent.font = [UIFont systemFontOfSize:cellWidth/26.66];
         percent.textAlignment = UITextAlignmentLeft;
+        percent.adjustsFontSizeToFitWidth = YES;
         [cell.contentView addSubview:percent];
     }
     
-    blow = [[[UILabel alloc] initWithFrame:CGRectMake(blowAlignment, 6.0, 70.0, 10.0)] autorelease];
-    blow.font = [UIFont boldSystemFontOfSize:12];
+    blow = [[[UILabel alloc] initWithFrame:CGRectMake(blowAlignment, cellHeight/7.33, cellWidth/3.3, cellHeight/4.4)] autorelease];
+    blow.font = [UIFont boldSystemFontOfSize:cellWidth/26.66];
     blow.textColor = [UIColor grayColor];
     blow.textAlignment = UITextAlignmentLeft;
+    blow.adjustsFontSizeToFitWidth = YES;
     [cell.contentView addSubview:blow];
     
-    blowRatio = [[[UILabel alloc] initWithFrame:CGRectMake(blowAlignment, 20.0, 60.0, 16.0)] autorelease];
-    blowRatio.font = [UIFont systemFontOfSize:16];
+    blowRatio = [[[UILabel alloc] initWithFrame:CGRectMake(blowAlignment, cellHeight/2.2, cellWidth/5.33, cellHeight/2.75)] autorelease];
+    blowRatio.font = [UIFont systemFontOfSize:cellWidth/20.0];
     blowRatio.textAlignment = UITextAlignmentLeft;
+    blowRatio.adjustsFontSizeToFitWidth = YES;
     [cell.contentView addSubview:blowRatio];
     
-    profile = [[[UILabel alloc] initWithFrame:CGRectMake(profileAlignment, 6.0, 70.0, 10.0)] autorelease];
-    profile.font = [UIFont boldSystemFontOfSize:12];
+    profile = [[[UILabel alloc] initWithFrame:CGRectMake(profileAlignment, cellHeight/7.33, cellWidth/4.57, cellHeight/4.4)] autorelease];
+    profile.font = [UIFont boldSystemFontOfSize:cellWidth/26.66];
     profile.textColor = [UIColor grayColor];
     profile.textAlignment = UITextAlignmentLeft;
+    profile.adjustsFontSizeToFitWidth = YES;
     [cell.contentView addSubview:profile];
     
+    //Place stars on the left of the screen: a blue star (with the exercise percentage) if the exercise is below 100%;
+    //A gold star (without percentage) if the exercise is at 100%
     UIImageView* star = [UIImageView alloc];
     NSString *imagePath;
     if (ex.duration_exercice_done_ps >= 1.0){
-        CGRect frame = CGRectMake(starAlignment, 8, 20, 25);
+        CGRect frame = CGRectMake(starAlignment, cellHeight/5.5, cellWidth/16.0, cellHeight/1.76);
         [star initWithFrame:frame];
         [cell.contentView addSubview:star];
         imagePath = [[NSBundle mainBundle] pathForResource:@"ResultsApp-gold_star" ofType:@"png"];
     }
     else{
-        CGRect frame = CGRectMake(starAlignment, 2, 20, 25);
+        CGRect frame = CGRectMake(starAlignment, cellHeight/22.0, cellWidth/16.0, cellHeight/1.76);
         [star initWithFrame:frame];
         [cell.contentView addSubview:star];
         imagePath = [[NSBundle mainBundle] pathForResource:@"ResultsApp-blue_star" ofType:@"png"];
@@ -216,7 +245,7 @@
     UIImage *theImage = [UIImage imageWithContentsOfFile:imagePath];
     star.image = theImage;
     
-
+    //Set text in the labels
     NSDate* exerciseDate = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:ex.start_ts];
     NSString *formattedTime = [self.timeFormatter stringFromDate:exerciseDate];
     time.text = formattedTime;
@@ -236,6 +265,7 @@
 
 #pragma mark -
 #pragma mark Table view delegate
+//Do nothing if the user touches a row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	NSInteger row = [indexPath row];
