@@ -1090,6 +1090,7 @@
 					"\"$(SRCROOT)/FLAPI\"",
 				);
 				PRODUCT_NAME = FlowerForAll;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1121,7 +1122,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1133,6 +1134,7 @@
 					"-all_load",
 					"-ObjC",
 				);
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				SDKROOT = iphoneos4.0;
 			};
 			name = Release;
