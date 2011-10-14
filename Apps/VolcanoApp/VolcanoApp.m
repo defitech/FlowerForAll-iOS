@@ -13,8 +13,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-
-
 @implementation VolcanoApp
 
 # pragma mark FlowerApp overriding
@@ -25,15 +23,13 @@
 }
 
 - (void)refreshStartButton {
-    if ( [[FlowerController currentFlapix] running] && (! [[FlowerController currentFlapix] exerciceInCourse])) {
+    if ([FlowerController shouldShowStartButton]) {
         [self.view bringSubviewToFront:start]; 
     } else {
         [self.view sendSubviewToBack:start];
         
     }
 }
-
-
 
 -(void)flapixEventStart:(FLAPIX *)flapix {
     [self refreshStartButton];
@@ -90,18 +86,12 @@
         [self.view addSubview:volcano];
         [self.view addSubview:burst];
         [self.view addSubview:lavaHidder];
-        
-        
-        
-       
-        
+
         [self refreshStartButton];
     }
     
     return self;
 }
-
-
 
 
 - (IBAction) pressStart:(id)sender {

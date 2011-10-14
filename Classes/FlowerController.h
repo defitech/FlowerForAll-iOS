@@ -32,11 +32,14 @@
 // show navigation action sheet
 + (void) showNav;
 
-+ (FlowerController*) currentFlower;
 
+// current State and shortcuts
++ (FlowerController*) currentFlower;
 + (FLAPIX*) currentFlapix;
 
-
+// utils to monitor FLowerController State
+/** return true is a start Button should be shown **/
++ (BOOL) shouldShowStartButton;
 
 /** 
  *called by Button on the UINavBar 

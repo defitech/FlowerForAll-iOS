@@ -17,7 +17,6 @@
 		4E018F7813BB2D6B00333528 /* FlowerHowTo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */; };
 		4E081DD01419F4DD003C9178 /* FlowerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E081DCF1419F4DD003C9178 /* FlowerApp.m */; };
 		4E101E541437193B002BFDCC /* FlowerHowTo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E521437193B002BFDCC /* FlowerHowTo.strings */; };
-		4E101E5614371947002BFDCC /* FlowerHowTo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E521437193B002BFDCC /* FlowerHowTo.strings */; };
 		4E141B0D13B35F1900698F53 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0713B35F1900698F53 /* Default.png */; };
 		4E141B0E13B35F1900698F53 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0813B35F1900698F53 /* Default@2x.png */; };
 		4E141B0F13B35F1900698F53 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0913B35F1900698F53 /* Icon.png */; };
@@ -25,7 +24,6 @@
 		4E141B1113B35F1900698F53 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0B13B35F1900698F53 /* Icon@2x.png */; };
 		4E16EA4B1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E16EA4A1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png */; };
 		4E1834B8141E568100E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B6141E568100E5AE1F /* ParametersApp.strings */; };
-		4E1834BA141E568800E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B6141E568100E5AE1F /* ParametersApp.strings */; };
 		4E18C43B14333F76007C7AE7 /* ParametersApp-SoundOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E18C43A14333F76007C7AE7 /* ParametersApp-SoundOn.png */; };
 		4E2F50001407D1F900C4C00C /* VolcanoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2F4FFE1407D1F900C4C00C /* VolcanoApp.m */; };
 		4E2F50011407D1F900C4C00C /* VolcanoApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E2F4FFF1407D1F900C4C00C /* VolcanoApp.xib */; };
@@ -37,7 +35,6 @@
 		4E3EE3BC143CEC92002B111E /* jack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3EE3BB143CEC92002B111E /* jack.png */; };
 		4E4301321433AE330066ED6F /* ResultsApp_Mailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4301311433AE330066ED6F /* ResultsApp_Mailer.m */; };
 		4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
-		4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AE46A141FA57B004256DA /* CalibrationApp.strings */; };
 		4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B815A14165374009CC45D /* FlowerHowTo.m4v */; };
 		4E4E9BE114336F9600F96792 /* ResultsApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4E9BDF14336F9600F96792 /* ResultsApp.m */; };
 		4E4E9BE214336F9600F96792 /* ResultsApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E4E9BE014336F9600F96792 /* ResultsApp.xib */; };
@@ -93,9 +90,13 @@
 		4ECC6CB11404E5F7005519C7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB01404E5F7005519C7 /* UserManager.m */; };
 		4ECC6CB414053744005519C7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB314053744005519C7 /* User.m */; };
 		4ED2DC621432F9AE00A544E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED2DC611432F9AE00A544E3 /* MessageUI.framework */; };
+		4EDA57F7144833F1005C29EB /* ExampleApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA57F5144833F1005C29EB /* ExampleApp.m */; };
+		4EDA57F8144833F1005C29EB /* ExampleApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA57F6144833F1005C29EB /* ExampleApp.xib */; };
+		4EDA57F914485812005C29EB /* ParametersApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73EB4F1142233EF001AB2DE /* ParametersApp.xib */; };
+		4EDA57FC14485880005C29EB /* ExampleApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA57FA14485880005C29EB /* ExampleApp.strings */; };
+		4EDA57FE144859FB005C29EB /* ExampleApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA57FD144859FB005C29EB /* ExampleApp-Icon.png */; };
 		4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEED18D141E3E3100F56102 /* CalibrationApp.m */; };
 		4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
-		4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
 		4EF0469114434DD200665E23 /* FlowerHowTo-Calibration_FR.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF0469014434DD200665E23 /* FlowerHowTo-Calibration_FR.png */; };
 		4EF52A38143F47B1007068CD /* FlowerHowTo-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF52A37143F47B1007068CD /* FlowerHowTo-mic.png */; };
 		4EFC3EBB14064911002F0BF7 /* DoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB814064911002F0BF7 /* DoubleSlider.m */; };
@@ -121,7 +122,6 @@
 		D73C1319142879050006B28F /* ResultsApp_List.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1310142879050006B28F /* ResultsApp_List.m */; };
 		D73C131A142879050006B28F /* ResultsApp_Nav.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1312142879050006B28F /* ResultsApp_Nav.m */; };
 		D73C13201428B34D0006B28F /* ExerciseDay.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C131F1428B34D0006B28F /* ExerciseDay.m */; };
-		D73EB4F0142233EF001AB2DE /* ParametersApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73EB4F1142233EF001AB2DE /* ParametersApp.xib */; };
 		D73EB4F214223412001AB2DE /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73EB4F314223412001AB2DE /* CalibrationApp.xib */; };
 		D77B109A140FC5A600897203 /* icon_contents_page_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1096140FC5A600897203 /* icon_contents_page_selected.png */; };
 		D77B109B140FC5A600897203 /* icon_contents_page_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */; };
@@ -263,6 +263,13 @@
 		4ECC6CB214053744005519C7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Data/User.h; sourceTree = "<group>"; };
 		4ECC6CB314053744005519C7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Data/User.m; sourceTree = "<group>"; };
 		4ED2DC611432F9AE00A544E3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		4EDA57ED14481708005C29EB /* TODO_DEV.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO_DEV.txt; sourceTree = "<group>"; };
+		4EDA57EE14482A16005C29EB /* HOWTO_WRITE_A_GAME.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = HOWTO_WRITE_A_GAME.txt; sourceTree = "<group>"; };
+		4EDA57F4144833F1005C29EB /* ExampleApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleApp.h; sourceTree = "<group>"; };
+		4EDA57F5144833F1005C29EB /* ExampleApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleApp.m; sourceTree = "<group>"; };
+		4EDA57F6144833F1005C29EB /* ExampleApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExampleApp.xib; sourceTree = "<group>"; };
+		4EDA57FB14485880005C29EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ExampleApp.strings; sourceTree = "<group>"; };
+		4EDA57FD144859FB005C29EB /* ExampleApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ExampleApp-Icon.png"; sourceTree = "<group>"; };
 		4EEED18C141E3E3100F56102 /* CalibrationApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp.h; sourceTree = "<group>"; };
 		4EEED18D141E3E3100F56102 /* CalibrationApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp.m; sourceTree = "<group>"; };
 		4EEED197141E3E7F00F56102 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
@@ -347,7 +354,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4E3EE3BB143CEC92002B111E /* jack.png */,
 				4ED5F32B14346B0500520737 /* AppsMenu */,
 				D7ABFF7C140B75A1003B9F08 /* Monitoring */,
 				4ECC6CAB1404E150005519C7 /* UI */,
@@ -357,6 +363,7 @@
 				4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */,
 				4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */,
 				4EC3CC961431F2640013FECF /* play.png */,
+				4E3EE3BB143CEC92002B111E /* jack.png */,
 				4E91DCA81431D24900C3780B /* dialpad.png */,
 				4E8F591213A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.h */,
 				4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */,
@@ -375,8 +382,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4EDA57ED14481708005C29EB /* TODO_DEV.txt */,
 				4E101E47143615EF002BFDCC /* Recordings */,
-				4ED2DC611432F9AE00A544E3 /* MessageUI.framework */,
 				4EB510AA1418CCA7008FC46F /* Visual */,
 				D72E0285139E448200F3687C /* FLAPI */,
 				4E57A86313A8F12500910E4D /* Apps */,
@@ -416,10 +423,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */,
+				4ED2DC611432F9AE00A544E3 /* MessageUI.framework */,
 				4E3A7A8213B884FD00853344 /* AVFoundation.framework */,
 				4E3A7A7C13B877DD00853344 /* MediaPlayer.framework */,
 				4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */,
-				4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */,
 				D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */,
 				28FD15070DC6FC5B0079059D /* QuartzCore.framework */,
 				28FD14FF0DC6FC520079059D /* OpenGLES.framework */,
@@ -513,11 +521,13 @@
 		4E57A86313A8F12500910E4D /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				4EDA57EF14482E76005C29EB /* ExampleApp */,
 				D73C1303142879050006B28F /* ResultsApp */,
 				4EEED19B141E474600F56102 /* ParametersApp */,
 				4EEED18B141E3D4100F56102 /* CalibrationApp */,
 				4E2F4FFC1407D1B100C4C00C /* VolcanoApp */,
 				4E3A7A7613B8766900853344 /* FlowerHowTo */,
+				4EDA57EE14482A16005C29EB /* HOWTO_WRITE_A_GAME.txt */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
@@ -672,6 +682,18 @@
 				4E081DCF1419F4DD003C9178 /* FlowerApp.m */,
 			);
 			name = AppsMenu;
+			sourceTree = "<group>";
+		};
+		4EDA57EF14482E76005C29EB /* ExampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				4EDA57FD144859FB005C29EB /* ExampleApp-Icon.png */,
+				4EDA57FA14485880005C29EB /* ExampleApp.strings */,
+				4EDA57F4144833F1005C29EB /* ExampleApp.h */,
+				4EDA57F5144833F1005C29EB /* ExampleApp.m */,
+				4EDA57F6144833F1005C29EB /* ExampleApp.xib */,
+			);
+			path = ExampleApp;
 			sourceTree = "<group>";
 		};
 		4EEED18B141E3D4100F56102 /* CalibrationApp */ = {
@@ -857,13 +879,9 @@
 				D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */,
 				D73EB4F214223412001AB2DE /* CalibrationApp.xib in Resources */,
 				4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */,
-				4EEED19A141E3E8700F56102 /* VolcanoApp.strings in Resources */,
 				4E1834B8141E568100E5AE1F /* ParametersApp.strings in Resources */,
-				4E1834BA141E568800E5AE1F /* ParametersApp.strings in Resources */,
 				4E4AE46C141FA57B004256DA /* CalibrationApp.strings in Resources */,
-				4E4AE46E141FA584004256DA /* CalibrationApp.strings in Resources */,
-				D73EB4F0142233EF001AB2DE /* ParametersApp.xib in Resources */,
-				D73EB4F0142233EF001AB2DE /* ParametersApp.xib in Resources */,
+				4EDA57F914485812005C29EB /* ParametersApp.xib in Resources */,
 				D73C1314142879050006B28F /* ResultsApp.strings in Resources */,
 				D73C1318142879050006B28F /* ResultsApp_List.xib in Resources */,
 				4EFE7915142B5369009EE121 /* ParametersAppPickerProfileCell.xib in Resources */,
@@ -877,7 +895,6 @@
 				D7397B251434763900C646D5 /* ResultsApp-gold_star.png in Resources */,
 				D7397B2A143478BC00C646D5 /* ResultsApp-blue_star.png in Resources */,
 				4E101E541437193B002BFDCC /* FlowerHowTo.strings in Resources */,
-				4E101E5614371947002BFDCC /* FlowerHowTo.strings in Resources */,
 				4E3EE3BC143CEC92002B111E /* jack.png in Resources */,
 				4E800122143E0067001C15C7 /* VolcanoApp-star.png in Resources */,
 				4EC7FF3E143F27A400B534E0 /* FlowerHowTo-index.html in Resources */,
@@ -896,6 +913,9 @@
 				4E3BEDB714442FEF00D72705 /* About-banner.png in Resources */,
 				4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */,
 				4E16EA4B1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png in Resources */,
+				4EDA57F8144833F1005C29EB /* ExampleApp.xib in Resources */,
+				4EDA57FC14485880005C29EB /* ExampleApp.strings in Resources */,
+				4EDA57FE144859FB005C29EB /* ExampleApp-Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,6 +976,7 @@
 				4E4E9BE114336F9600F96792 /* ResultsApp.m in Sources */,
 				4E4301321433AE330066ED6F /* ResultsApp_Mailer.m in Sources */,
 				4EC7FF49143F2ACC00B534E0 /* FlowerHowTo.m in Sources */,
+				4EDA57F7144833F1005C29EB /* ExampleApp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,6 +1035,14 @@
 			name = "FlowerHowTo-index.html";
 			sourceTree = "<group>";
 		};
+		4EDA57FA14485880005C29EB /* ExampleApp.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4EDA57FB14485880005C29EB /* en */,
+			);
+			name = ExampleApp.strings;
+			sourceTree = "<group>";
+		};
 		4EEED196141E3E7F00F56102 /* VolcanoApp.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1062,7 +1091,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1082,7 +1111,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
-				GCC_VERSION = 4.2;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1113,7 +1142,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -1135,7 +1164,7 @@
 					"-ObjC",
 				);
 				"PROVISIONING_PROFILE[sdk=*]" = "";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

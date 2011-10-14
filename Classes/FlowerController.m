@@ -136,12 +136,14 @@ static NSMutableDictionary* appList;
 
 
 # pragma mark NAVIGATION ACTION SHEET
+// return true if start button should be shown 
++ (BOOL) shouldShowStartButton {
+    return [[FlowerController currentFlapix] running] && (! [[FlowerController currentFlapix] exerciceInCourse]);
+}
 
 // show navigation action sheet
 + (void) showNav
 {
-    
-    
     UIActionSheet *actionSheet = [[UIActionSheet alloc] init ];
     actionSheet.title = NSLocalizedString(@"Choose an action",@"CalibrationApp Title");
     actionSheet.delegate = singleton;
@@ -221,7 +223,6 @@ static NSMutableDictionary* appList;
         
     }
 }
-
 
 
 - (void)viewDidLoad

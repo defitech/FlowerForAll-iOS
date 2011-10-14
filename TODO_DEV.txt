@@ -1,0 +1,81 @@
+** Welcome to our advanced ticketing system. **
+
+If you want to write a game, please read:
+ Apps/HOWTO_WRITE_A_GAME.txt
+
+[ KNOWN BUGS ]
+- none 
+- but they must be some memory leaks.. 
+- it would be nice to have an objective-c expert do some code review.. 
+
+[ iPAD VERSION ]
+- This has to be done URGENTLY before we got too much UI elements
+
+[ DOCUMENTATION ]
+- Complete "How To develop a game" document, with ergonomic guidlines and event sequence description
+ 
+
+[ PARAMETERS - MONITORING MODE]
+Actually the soft is design in a "target" or "goal" mode, but some people would like
+to use is as a simpe monitoring device for their exercices.
+For exemple an Adult, would not do "games" with it but he will be interested in having
+historical statistics.
+This would be easily achived by recording every blows in the database, independently 
+of exerices start / stop. 
+But we need to create an interface for viewing this data..
+
+[ PARAMETERS - SETTINGS ]
+- Makes profiles editables / removables .
+- The model is ready to be implemented
+
+[ COSMETICS ]
+- Refactor FLOWER BREATH logo and icon
+
+[ MONITORING ]
+- Rewrite the history monitor in OpenGL 
+
+[ MULTI USERS ]
+For use in hospital or by a physiotherapist 
+
+** The DataModel has a multi-user layer ready to be implemented
+- each user has it's own directory, with it's own database
+- actually the administrator (owner) account is auto created 
+
+** Some zombie code, such as UserPicker is waiting for a nice developer
+to be reused.
+
+** multiuser should be implemented in this way:
+- Only user "owner" can manage user
+- User choice is proposed at start of the application if there is more
+than one user in the database.
+- "owner" may log as any user using it's own password, this to implement
+simply a method for the administrator to consult other users data.
+
+[ APPS MENU ]
+- Placement is now manual.
+  When we will have more apps, 
+  (more than one page) we will have to develop an automatic placement
+  for FlowerApp subclassing applications.
+
+[ VOLCANO APPS ]
+- It's nice but minimalist, 
+- It would be great to have some animations and litlle blows off 
+
+[ FLAPI - FLAPIX ]
+- Is  "code spagetthi" fashionned
+It would be nice to have someone exetrnal do some revieweing / refactoring
+
+[ AUDIO FEEDBACK ]
+- Add a nice audio feedback for someone who would do it's exerice without holding the iPhone.
+
+[ SOUND PROCESSING ]
+- is not perfect but functionnal..
+- we will probably need to rewrite FLAPI if IAV does open their code
+
+[ R & D ]
+- Possible with a bluetooth headset ?
+- Other microphone
+- Make a special piece of plastic to fix the microphone to the flutter
+
+
+
