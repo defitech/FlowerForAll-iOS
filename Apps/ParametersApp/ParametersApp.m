@@ -117,7 +117,7 @@ float minExerciceDuration_s = 7.0;
     [self  valueChangedForExpirationSlider:expirationSlider];
     [self  valueChangedForExericeSlider:exerciceSlider];
     
-    [buttonProfile setTitle:[NSString stringWithFormat:@"%@ : %@",NSLocalizedStringFromTable(@"Profile",@"ParametersApp",@"Profile Button with title"),[[Profil current] name ]] forState:UIControlStateNormal];
+    [buttonProfile setTitle:[NSString stringWithFormat:@"%@ : %@",NSLocalizedStringFromTable(@"Profile",@"ParametersApp",@" Profile Button with title"),[[Profil current] name ]] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

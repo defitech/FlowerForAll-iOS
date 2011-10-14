@@ -34,7 +34,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-10-12T13:00:43Z</date>
+					<date>2011-10-14T14:40:42Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -44,7 +44,7 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>5c95e0d19b0a636600cb8788756c69ef
+					<string>e2f8de01a52f886d37d81c13b7c5f1df
 </string>
 					<key>name</key>
 					<string>ParametersApp.strings</string>
@@ -446,7 +446,7 @@
 &lt;br&gt;&lt;br&gt;
 </string>
 								<key>fr</key>
-								<string>&lt;br&gt;....Données attachées a ce mail.
+								<string>&lt;br&gt;...Données attachées a ce mail.
 &lt;br&gt;&lt;br&gt;
 </string>
 							</dict>
