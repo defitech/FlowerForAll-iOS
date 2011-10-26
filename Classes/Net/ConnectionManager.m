@@ -68,6 +68,7 @@ BOOL pinger = NO;
 	NSString *model = [device model];
 	NSString *bundleID = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleIdentifier"];
 	NSString *bundleV = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleVersion"];
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
 	
 	NSLog(@"id is:%@",udid);
 	NSLog(@"system name is :%@",sysname);
@@ -75,8 +76,9 @@ BOOL pinger = NO;
 	NSLog(@"System model is:%@",model);
 	NSLog(@"Bundle ID:%@",bundleID);
 	NSLog(@"Bundle Version:%@",bundleV);
+    NSLog(@"System Language:%@",language);
 	
-	NSString *post = [NSString stringWithFormat:@"BundleID=%@&BundleV=%@&DeviceCode=%@&Firmware=%@&IMEI=%@",bundleID,bundleV,model,sysver,udid];
+	NSString *post = [NSString stringWithFormat:@"BundleID=%@&BundleV=%@&DeviceCode=%@&Firmware=%@&IMEI=%@&language=%@",bundleID,bundleV,model,sysver,udid,language];
 	
 	if (infos != nil)
 	for (NSString* key in infos) {
