@@ -81,6 +81,9 @@ int	SubSys_Close();
 
 // Internal Subsystem function
 // ===========================
+/** (internal) really do the stop when possible **/
+int _Stop_Force();
+
 
 int SendWinMsg( int msg, int lparam, int hparam );
 
@@ -94,6 +97,24 @@ void io_push_buff_for_playback(short* buffer,short buffSize);
 void io_pop_buff_for_playback(AudioQueueBufferRef buffer);
 
 BOOL checkMicrophonePluggedIn ();
+void audioRouteChangeListenerCallback (
+                                       void                      *inClientData,
+                                       AudioSessionPropertyID    inPropertyID,
+                                       UInt32                    inDataSize,
+                                       const void                *inData
+                                       );
+
+
+void AudioInputCallback (
+                         void *inUserData, // The first parameter is a void pointer that will actually point to our RecordState structure that was passed into AudioQueueNewInput
+                         AudioQueueRef inAQ, // This is a reference to the audio input queue which is also in our RecordState structure
+                         AudioQueueBufferRef inBuffer, // This is the buffer that has just been filled. In our case this will contain 1 second worth of audio
+                         const AudioTimeStamp *inStartTime, // is a timestamp value that can be used to syncronize audio
+                         UInt32 inNumberPacketDescriptions, // The number of packet descriptions in next parameter (inPacketDescs)
+                         const AudioStreamPacketDescription *inPacketDescs); // An array of packet descriptions
+
+// AudioQueue output queue callback.
+void AudioEngineOutputBufferCallback (void *inUserData, AudioQueueRef queue, AudioQueueBufferRef buffer);
 
 #endif
 #endif

@@ -84,7 +84,7 @@ int	SubSys_Init(){
     waitingBooth = (short*) malloc (sizeof(short)*gAudioInfo.buffer_sample);
     waitingBoothPointer = 0;
     
-	printf("SubSys_Init\n");
+    NSLog(@"SubSys_Init");
 	return FLAPI_SUCCESS;
 }
 
@@ -93,18 +93,23 @@ int	SubSys_Init(){
 int	SubSys_Start(){
 	bool run = true;
     
+    NSLog(@"SubSys_Start");
+    
 	//Update AudioInfo
 	if (run && (UpdateAudioInfo()!=FLAPI_SUCCESS))
-		run=false;		
+		run=false;	
+	NSLog(@"UpdateAudioInfo Done");
+    
 	//Openning device
 	if (run && (OpenDevice()!=FLAPI_SUCCESS))
 		run=false;	
 	//Common init
 	if (run && (OnSubSystemStart()!=FLAPI_SUCCESS) )
 		run=false;
-	
+	NSLog(@"OnSubSystemStart Done");
+    
 	if (! run) {
-		printf("Error Cannot start\n");
+		NSLog(@"Error Cannot start");
 		return false;
 	}
 	
@@ -112,14 +117,14 @@ int	SubSys_Start(){
 	//Starting Main loop, called by the AudioQueue		
 	OSStatus status = AudioQueueStart(recordState.queue, NULL);
 	if ( status != noErr ) {
-		printf("Error Starting AudioQueue\n");
+		NSLog(@"Error Starting AudioQueue");
 		return false;	
 	}
     
     stop_possible = true;
     stop_request = false;
     
-	printf("Started\n");
+	NSLog(@"Started");
     running = true;
     
     io_check_state() ; // start playback if needed
@@ -274,6 +279,7 @@ void FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(FLAPIX *owner){
     
     // test if Microphone is Plugged In .. will start recording if possible
     //checkMicrophonePluggedIn();   
+    NSLog(@"FLAPI_SUBSYS_IOS_init_and_registerFLAPIX Done");
 }
 
 
@@ -508,6 +514,7 @@ void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read){
 
 //Open audio device
 int OpenDevice(){
+    NSLog(@"Subys_OpenDevice Called");
 	// init the recordState structure from FLAPI settings 
 	recordState.dataFormat.mSampleRate = gAudioInfo.sample_rate ; // 48000
 	recordState.dataFormat.mBitsPerChannel = gAudioInfo.sample_size; // 16
@@ -534,7 +541,7 @@ int OpenDevice(){
 										 &recordState.queue);  // A pointer to the input audio queue reference in our RecordState structure. This reference will be populated if the call succeeds.
 	
 	if ( status != noErr ) {
-		printf("Error Creating AudioQueue\n");
+		NSLog(@"Error Creating AudioQueue\n");
 		return false;	
 	}
 	
@@ -547,7 +554,7 @@ int OpenDevice(){
 	}
 	
 	
-	printf("SubSys_OpenDevice\n");
+	NSLog(@"SubSys_OpenDevice Done");
     
     
 	return FLAPI_SUCCESS;
@@ -623,6 +630,7 @@ void io_check_state() {
     }
     
      if (! running || paused) { return ; }
+    NSLog(@"Subsys IO START");
     // needs to start
     OSStatus err = noErr; 
     if (ioState.isPlaying == NO) {
