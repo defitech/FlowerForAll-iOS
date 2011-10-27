@@ -71,6 +71,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "FlowerForAll"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

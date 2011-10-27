@@ -25,6 +25,8 @@
 		4E16EA4B1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E16EA4A1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png */; };
 		4E1834B8141E568100E5AE1F /* ParametersApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E1834B6141E568100E5AE1F /* ParametersApp.strings */; };
 		4E18C43B14333F76007C7AE7 /* ParametersApp-SoundOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E18C43A14333F76007C7AE7 /* ParametersApp-SoundOn.png */; };
+		4E26BA921459AA7600612F28 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = 4E26BA8E1459AA7600612F28 /* FlowerForAll.html */; };
+		4E26BA931459AA7600612F28 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E26BA901459AA7600612F28 /* Localizable.strings */; };
 		4E2F50001407D1F900C4C00C /* VolcanoApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2F4FFE1407D1F900C4C00C /* VolcanoApp.m */; };
 		4E2F50011407D1F900C4C00C /* VolcanoApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E2F4FFF1407D1F900C4C00C /* VolcanoApp.xib */; };
 		4E2F50071407DF8200C4C00C /* FLAPIBlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2F50061407DF8200C4C00C /* FLAPIBlow.m */; };
@@ -52,7 +54,6 @@
 		4E8F593713A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */; };
 		4E8F593813A7AF6B00D9D3A7 /* ParametersApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */; };
 		4E8F593913A7AF6B00D9D3A7 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F591713A7AF6B00D9D3A7 /* MenuView.m */; };
-		4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */; };
 		4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */; };
 		4E8F596713A7B6FF00D9D3A7 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */; };
 		4E91DCA51431CECC00C3780B /* CalibrationApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E91DCA41431CECC00C3780B /* CalibrationApp-Icon.png */; };
@@ -76,8 +77,6 @@
 		4EB75E911442EA3400E886C3 /* FlowerHowTo-Flutter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB75E901442EA3400E886C3 /* FlowerHowTo-Flutter.png */; };
 		4EB75E951442F7C800E886C3 /* FlowerHowTo-Nav-Num.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB75E941442F7C800E886C3 /* FlowerHowTo-Nav-Num.png */; };
 		4EB75E97144315FD00E886C3 /* FlowerHowTo-PlayVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB75E96144315FD00E886C3 /* FlowerHowTo-PlayVideo.png */; };
-		4EBBA3E31443559200F8B45E /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE414176452004C6034 /* FlowerForAll.html */; };
-		4EBBA3E41443559800F8B45E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F594A13A7AF9800D9D3A7 /* Localizable.strings */; };
 		4EBFFD611414CD4300D4BE9C /* FLAPIExercice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */; };
 		4EC3CC971431F2640013FECF /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3CC961431F2640013FECF /* play.png */; };
 		4EC3CC99143205470013FECF /* ParametersApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3CC98143205470013FECF /* ParametersApp-Icon.png */; };
@@ -111,7 +110,7 @@
 		D702D18E14152C69005A1764 /* VolcanoApp_volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */; };
 		D70BFD4014332753004EABC2 /* ResultsApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
-		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
 		D7397B251434763900C646D5 /* ResultsApp-gold_star.png in Resources */ = {isa = PBXBuildFile; fileRef = D7397B241434763900C646D5 /* ResultsApp-gold_star.png */; };
@@ -129,7 +128,6 @@
 		D7A9942B14165763000AA64A /* VolcanoApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7A9942914165763000AA64A /* VolcanoApp-Icon.png */; };
 		D7ABFF88140B8227003B9F08 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7ABFF86140B8227003B9F08 /* HistoryView.m */; };
 		D7AD2ADC14174CA2004C6034 /* VolcanoApp_burst.png in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2ADB14174CA2004C6034 /* VolcanoApp_burst.png */; };
-		D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */ = {isa = PBXBuildFile; fileRef = D7AD2AE71417645C004C6034 /* FlowerForAll.html */; };
 		D7D64652141659B700F0DE4F /* VolcanoApp_explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7D64651141659B700F0DE4F /* VolcanoApp_explosion.wav */; };
 		D7F59A6914286D06006FE244 /* PickerEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E318D021421FB8C009E0FE1 /* PickerEditor.m */; };
 /* End PBXBuildFile section */
@@ -158,6 +156,10 @@
 		4E1834B7141E568100E5AE1F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ParametersApp.strings; sourceTree = "<group>"; };
 		4E1834B9141E568800E5AE1F /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParametersApp.strings; sourceTree = "<group>"; };
 		4E18C43A14333F76007C7AE7 /* ParametersApp-SoundOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ParametersApp-SoundOn.png"; sourceTree = "<group>"; };
+		4E26BA8F1459AA7600612F28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/FlowerForAll.html; sourceTree = "<group>"; };
+		4E26BA911459AA7600612F28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E26BA941459AA8400612F28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/FlowerForAll.html; sourceTree = "<group>"; };
+		4E26BA951459AA8400612F28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E2F4FFD1407D1F900C4C00C /* VolcanoApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolcanoApp.h; sourceTree = "<group>"; };
 		4E2F4FFE1407D1F900C4C00C /* VolcanoApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolcanoApp.m; sourceTree = "<group>"; };
 		4E2F4FFF1407D1F900C4C00C /* VolcanoApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VolcanoApp.xib; sourceTree = "<group>"; };
@@ -202,8 +204,6 @@
 		4E8F591513A7AF6B00D9D3A7 /* ParametersApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ParametersApp.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4E8F591613A7AF6B00D9D3A7 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuView.h; path = AppsMenu/MenuView.h; sourceTree = "<group>"; };
 		4E8F591713A7AF6B00D9D3A7 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuView.m; path = AppsMenu/MenuView.m; sourceTree = "<group>"; };
-		4E8F594713A7AF8B00D9D3A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
-		4E8F594B13A7AF9800D9D3A7 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
 		4E8F595213A7AFA900D9D3A7 /* FlutterApp2Database.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlutterApp2Database.sql; sourceTree = "<group>"; };
 		4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4E8F596613A7B6FE00D9D3A7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -323,8 +323,6 @@
 		D7ABFF85140B8227003B9F08 /* HistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryView.h; sourceTree = "<group>"; };
 		D7ABFF86140B8227003B9F08 /* HistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryView.m; sourceTree = "<group>"; };
 		D7AD2ADB14174CA2004C6034 /* VolcanoApp_burst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VolcanoApp_burst.png; sourceTree = "<group>"; };
-		D7AD2AE514176452004C6034 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = FlowerForAll.html; sourceTree = "<group>"; };
-		D7AD2AE81417645C004C6034 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = FlowerForAll.html; sourceTree = "<group>"; };
 		D7D64651141659B700F0DE4F /* VolcanoApp_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = VolcanoApp_explosion.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -409,12 +407,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4E26BA8E1459AA7600612F28 /* FlowerForAll.html */,
+				4E26BA901459AA7600612F28 /* Localizable.strings */,
 				4E3BEDB514442FD800D72705 /* documents */,
 				4E6145B9144348C80056B84D /* default.css */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				4E8F595113A7AFA900D9D3A7 /* sqlite_database */,
-				4E8F594913A7AF9800D9D3A7 /* fr.lproj */,
-				4E8F594513A7AF8B00D9D3A7 /* en.lproj */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 			);
 			name = Resources;
@@ -557,24 +555,6 @@
 				D73C131F1428B34D0006B28F /* ExerciseDay.m */,
 			);
 			name = Data;
-			sourceTree = "<group>";
-		};
-		4E8F594513A7AF8B00D9D3A7 /* en.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				D7AD2AE71417645C004C6034 /* FlowerForAll.html */,
-				4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */,
-			);
-			path = en.lproj;
-			sourceTree = "<group>";
-		};
-		4E8F594913A7AF9800D9D3A7 /* fr.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				D7AD2AE414176452004C6034 /* FlowerForAll.html */,
-				4E8F594A13A7AF9800D9D3A7 /* Localizable.strings */,
-			);
-			path = fr.lproj;
 			sourceTree = "<group>";
 		};
 		4E8F595113A7AFA900D9D3A7 /* sqlite_database */ = {
@@ -856,7 +836,6 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				4E8F593613A7AF6B00D9D3A7 /* FlowerController.xib in Resources */,
-				4E8F594813A7AF8B00D9D3A7 /* Localizable.strings in Resources */,
 				4EA1A3B41420E8B800B11705 /* MenuView.xib in Resources */,
 				4E8F595B13A7AFA900D9D3A7 /* FlutterApp2Database.sql in Resources */,
 				4E141B0D13B35F1900698F53 /* Default.png in Resources */,
@@ -876,7 +855,6 @@
 				D7D64652141659B700F0DE4F /* VolcanoApp_explosion.wav in Resources */,
 				D7A9942B14165763000AA64A /* VolcanoApp-Icon.png in Resources */,
 				D7AD2ADC14174CA2004C6034 /* VolcanoApp_burst.png in Resources */,
-				D7AD2AE91417645C004C6034 /* FlowerForAll.html in Resources */,
 				D73EB4F214223412001AB2DE /* CalibrationApp.xib in Resources */,
 				4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */,
 				4E1834B8141E568100E5AE1F /* ParametersApp.strings in Resources */,
@@ -907,8 +885,6 @@
 				4EB75E97144315FD00E886C3 /* FlowerHowTo-PlayVideo.png in Resources */,
 				4E6145BA144348C80056B84D /* default.css in Resources */,
 				4EF0469114434DD200665E23 /* FlowerHowTo-Calibration_FR.png in Resources */,
-				4EBBA3E31443559200F8B45E /* FlowerForAll.html in Resources */,
-				4EBBA3E41443559800F8B45E /* Localizable.strings in Resources */,
 				4E3BEDB414442DA600D72705 /* Default-Portrait.png in Resources */,
 				4E3BEDB714442FEF00D72705 /* About-banner.png in Resources */,
 				4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */,
@@ -916,6 +892,8 @@
 				4EDA57F8144833F1005C29EB /* ExampleApp.xib in Resources */,
 				4EDA57FC14485880005C29EB /* ExampleApp.strings in Resources */,
 				4EDA57FE144859FB005C29EB /* ExampleApp-Icon.png in Resources */,
+				4E26BA921459AA7600612F28 /* FlowerForAll.html in Resources */,
+				4E26BA931459AA7600612F28 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,6 +979,24 @@
 			name = ParametersApp.strings;
 			sourceTree = "<group>";
 		};
+		4E26BA8E1459AA7600612F28 /* FlowerForAll.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E26BA8F1459AA7600612F28 /* en */,
+				4E26BA941459AA8400612F28 /* fr */,
+			);
+			name = FlowerForAll.html;
+			sourceTree = "<group>";
+		};
+		4E26BA901459AA7600612F28 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E26BA911459AA7600612F28 /* en */,
+				4E26BA951459AA8400612F28 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		4E4AE46A141FA57B004256DA /* CalibrationApp.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1008,22 +1004,6 @@
 				4E4AE46D141FA584004256DA /* fr */,
 			);
 			name = CalibrationApp.strings;
-			sourceTree = "<group>";
-		};
-		4E8F594613A7AF8B00D9D3A7 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E8F594713A7AF8B00D9D3A7 /* en */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		4E8F594A13A7AF9800D9D3A7 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E8F594B13A7AF9800D9D3A7 /* fr */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		4EC7FF3A143F276800B534E0 /* FlowerHowTo-index.html */ = {
@@ -1061,22 +1041,6 @@
 			name = ResultsApp.strings;
 			sourceTree = "<group>";
 		};
-		D7AD2AE414176452004C6034 /* FlowerForAll.html */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D7AD2AE514176452004C6034 /* fr */,
-			);
-			name = FlowerForAll.html;
-			sourceTree = "<group>";
-		};
-		D7AD2AE71417645C004C6034 /* FlowerForAll.html */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D7AD2AE81417645C004C6034 /* en */,
-			);
-			name = FlowerForAll.html;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1086,6 +1050,7 @@
 				ADDITIONAL_SDKS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk";
 				"ADDITIONAL_SDKS[arch=*]" = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk";
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1119,7 +1084,7 @@
 					"\"$(SRCROOT)/FLAPI\"",
 				);
 				PRODUCT_NAME = FlowerForAll;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1130,19 +1095,21 @@
 				ADDITIONAL_SDKS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/include/CorePlot";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/lib";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lCorePlot",
 					"-all_load",
 					"-ObjC",
 				);
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 			};
 			name = Debug;
 		};
@@ -1151,20 +1118,25 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/include/CorePlot";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "/Library/SDKs/CorePlotSDK/${PLATFORM_NAME}.sdk/usr/lib";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lCorePlot",
 					"-all_load",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=*]" = "";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
