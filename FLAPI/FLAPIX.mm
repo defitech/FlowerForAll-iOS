@@ -165,6 +165,7 @@ BOOL demo_mode = NO;
     if (FLAPI_SUCCESS != FLAPI_Start()) return NO; // This does start the sound recording and processing
     self.running = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_START  object:self];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES]; // Prevent app sleeping
     return YES;
 }
 
@@ -177,6 +178,7 @@ BOOL demo_mode = NO;
     if (FLAPI_SUCCESS != FLAPI_Stop()) return NO; // This does stop the sound recording and processing
     self.running = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_STOP  object:self];
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO]; // App can sleep if no action from the user
     return YES;
 }
 

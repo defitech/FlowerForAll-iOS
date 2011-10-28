@@ -80,6 +80,7 @@
 		4EBFFD611414CD4300D4BE9C /* FLAPIExercice.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */; };
 		4EC3CC971431F2640013FECF /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3CC961431F2640013FECF /* play.png */; };
 		4EC3CC99143205470013FECF /* ParametersApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC3CC98143205470013FECF /* ParametersApp-Icon.png */; };
+		4EC68D9E145AB0A300D8B785 /* libFLAPISP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EC68D9D145AB0A300D8B785 /* libFLAPISP.a */; };
 		4EC7FF3E143F27A400B534E0 /* FlowerHowTo-index.html in Resources */ = {isa = PBXBuildFile; fileRef = 4EC7FF3A143F276800B534E0 /* FlowerHowTo-index.html */; };
 		4EC7FF40143F29CF00B534E0 /* FlowerHowTo-headphones.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EC7FF3F143F29CF00B534E0 /* FlowerHowTo-headphones.png */; };
 		4EC7FF49143F2ACC00B534E0 /* FlowerHowTo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EC7FF47143F2ACC00B534E0 /* FlowerHowTo.m */; };
@@ -103,14 +104,12 @@
 		4EFC3EBD14064911002F0BF7 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBA14064911002F0BF7 /* handle.png */; };
 		4EFC3EC01406837D002F0BF7 /* ParametersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */; };
 		4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4EFCD46814448EAA00FDECE9 /* Mix.raw */; };
-		4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */; };
 		4EFE7915142B5369009EE121 /* ParametersAppPickerProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */; };
 		4EFE7918142B53BA009EE121 /* ParametersAppPickerProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */; };
 		D701908B141618510072D020 /* VolcanoApp_goal.wav in Resources */ = {isa = PBXBuildFile; fileRef = D701908A141618510072D020 /* VolcanoApp_goal.wav */; };
 		D702D18E14152C69005A1764 /* VolcanoApp_volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */; };
 		D70BFD4014332753004EABC2 /* ResultsApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */; };
 		D72E028E139E448200F3687C /* FLAPIX.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028A139E448200F3687C /* FLAPIX.mm */; };
-		D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E028B139E448200F3687C /* libFLAPISP-simulator.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D72E0290139E448200F3687C /* subsys_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = D72E028D139E448200F3687C /* subsys_ios.mm */; };
 		D72E02AB139E4F4E00F3687C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */; };
 		D7397B251434763900C646D5 /* ResultsApp-gold_star.png in Resources */ = {isa = PBXBuildFile; fileRef = D7397B241434763900C646D5 /* ResultsApp-gold_star.png */; };
@@ -249,6 +248,7 @@
 		4EBFFD601414CD4300D4BE9C /* FLAPIExercice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAPIExercice.m; sourceTree = "<group>"; };
 		4EC3CC961431F2640013FECF /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		4EC3CC98143205470013FECF /* ParametersApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ParametersApp-Icon.png"; sourceTree = "<group>"; };
+		4EC68D9D145AB0A300D8B785 /* libFLAPISP.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFLAPISP.a; sourceTree = "<group>"; };
 		4EC7FF3B143F276800B534E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = "en.lproj/FlowerHowTo-index.html"; sourceTree = "<group>"; };
 		4EC7FF3D143F27A400B534E0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = "fr.lproj/FlowerHowTo-index.html"; sourceTree = "<group>"; };
 		4EC7FF3F143F29CF00B534E0 /* FlowerHowTo-headphones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-headphones.png"; sourceTree = "<group>"; };
@@ -283,7 +283,6 @@
 		4EFC3EBE1406837D002F0BF7 /* ParametersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParametersManager.h; path = Data/ParametersManager.h; sourceTree = "<group>"; };
 		4EFC3EBF1406837D002F0BF7 /* ParametersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParametersManager.m; path = Data/ParametersManager.m; sourceTree = "<group>"; };
 		4EFCD46814448EAA00FDECE9 /* Mix.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mix.raw; sourceTree = "<group>"; };
-		4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-ios.a"; sourceTree = "<group>"; };
 		4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParametersAppPickerProfileCell.xib; sourceTree = "<group>"; };
 		4EFE7916142B53BA009EE121 /* ParametersAppPickerProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersAppPickerProfileCell.h; sourceTree = "<group>"; };
 		4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersAppPickerProfileCell.m; sourceTree = "<group>"; };
@@ -296,7 +295,6 @@
 		D72E0288139E448200F3687C /* flapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flapi.h; sourceTree = "<group>"; };
 		D72E0289139E448200F3687C /* FLAPIX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAPIX.h; sourceTree = "<group>"; };
 		D72E028A139E448200F3687C /* FLAPIX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FLAPIX.mm; sourceTree = "<group>"; };
-		D72E028B139E448200F3687C /* libFLAPISP-simulator.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libFLAPISP-simulator.a"; sourceTree = "<group>"; };
 		D72E028C139E448200F3687C /* subsys_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subsys_ios.h; sourceTree = "<group>"; };
 		D72E028D139E448200F3687C /* subsys_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = subsys_ios.mm; sourceTree = "<group>"; };
 		D72E02AA139E4F4E00F3687C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
@@ -341,8 +339,7 @@
 				28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */,
 				28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */,
 				4E8F596713A7B6FF00D9D3A7 /* libsqlite3.0.dylib in Frameworks */,
-				D72E028F139E448200F3687C /* libFLAPISP-simulator.a in Frameworks */,
-				4EFDB06C13AA022E003BD83A /* libFLAPISP-ios.a in Frameworks */,
+				4EC68D9E145AB0A300D8B785 /* libFLAPISP.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,8 +717,7 @@
 		D72E0285139E448200F3687C /* FLAPI */ = {
 			isa = PBXGroup;
 			children = (
-				4EFDB06B13AA022E003BD83A /* libFLAPISP-ios.a */,
-				D72E028B139E448200F3687C /* libFLAPISP-simulator.a */,
+				4EC68D9D145AB0A300D8B785 /* libFLAPISP.a */,
 				D72E0286139E448200F3687C /* common.h */,
 				D72E0287139E448200F3687C /* filter.h */,
 				D72E0288139E448200F3687C /* flapi.h */,
@@ -1108,7 +1104,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = NO;
 			};
 			name = Debug;
@@ -1135,7 +1131,7 @@
 				);
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
