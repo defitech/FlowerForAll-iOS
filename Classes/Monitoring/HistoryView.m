@@ -121,8 +121,8 @@ NSTimer *repeatingTimer;
     float height = self.frame.size.height;    
 	
 	// Alloc Graph View
-	graphView = [ [ CPGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, width*2/3-10, height) ];
-	[ self addSubview:[ graphView autorelease ] ];
+	graphView = [ [ CPTGraphHostingView alloc ] initWithFrame:CGRectMake(0.0, 0.0, width*2/3-10, height) ];
+	[ self addSubview:graphView ];
     
     // Alloc Label View
     labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/3, height/2) ];
@@ -161,10 +161,10 @@ NSTimer *repeatingTimer;
     
 	
 	/*
-	 *	CPXYGraph Prefs
+	 *	CPTXYGraph Prefs
 	 */
-	// Alloc CPXYGraph
-	graph = [ [ CPXYGraph alloc ] initWithFrame: self.bounds ];
+	// Alloc CPTXYGraph
+	graph = [ [ CPTXYGraph alloc ] initWithFrame: self.bounds ];
 	// Link between the view and the Layer
 	graphView.hostedGraph = graph;
 	// Init Padding to 2
@@ -177,32 +177,32 @@ NSTimer *repeatingTimer;
 	 *	Graph Prefs
 	 */
 	// Default X & Y Range for Plot Space
-	plotSpace = (CPXYPlotSpace *)graph.defaultPlotSpace;
+	plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
 	// Set X Range
-	plotSpace.xRange = [CPPlotRange
-                        plotRangeWithLocation:CPDecimalFromDouble(-(historyDuration * 60))
-                        length:CPDecimalFromDouble(historyDuration * 60 + 1)];
+	plotSpace.xRange = [CPTPlotRange
+                        plotRangeWithLocation:CPTDecimalFromDouble(-(historyDuration * 60))
+                        length:CPTDecimalFromDouble(historyDuration * 60 + 1)];
 	// Set Y Range
-	plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromDouble(0) length:CPDecimalFromDouble(higherBar)];
+	plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(higherBar)];
     
 	/*
 	 *	Axis Prefs
 	 */
 	// Line Style
-	CPLineStyle *lineStyle = [CPLineStyle lineStyle];
-	lineStyle.lineColor = [CPColor whiteColor];
+	CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
+	lineStyle.lineColor = [CPTColor whiteColor];
 	lineStyle.lineWidth = 1.0f;
 	
 	// Axis X Prefs
-	CPXYAxisSet *axisSet = (CPXYAxisSet *)graph.axisSet;
+	CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
 	// Set axis line style
 	axisSet.xAxis.axisLineStyle = lineStyle;
     axisSet.xAxis.labelFormatter = nil;
     axisSet.xAxis.minorTickLineStyle = nil;
     axisSet.xAxis.majorTickLineStyle = nil;
     axisSet.xAxis.labelExclusionRanges = [NSArray arrayWithObjects:
-                                          [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-200) 
-                                                                      length:CPDecimalFromFloat(250)], nil];
+                                          [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-200) 
+                                                                      length:CPTDecimalFromFloat(250)], nil];
     
 	// Axis Y Prefs (same things)
 	axisSet.yAxis.axisLineStyle = lineStyle;
@@ -210,8 +210,8 @@ NSTimer *repeatingTimer;
     axisSet.yAxis.minorTickLineStyle = nil;
     axisSet.yAxis.majorTickLineStyle = nil;
     axisSet.yAxis.labelExclusionRanges = [NSArray arrayWithObjects:
-                                          [CPPlotRange plotRangeWithLocation:CPDecimalFromFloat(-10) 
-                                                                      length:CPDecimalFromFloat(20)], nil];
+                                          [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-10) 
+                                                                      length:CPTDecimalFromFloat(20)], nil];
 	
    
     
@@ -220,39 +220,43 @@ NSTimer *repeatingTimer;
 	 */
       
 	// isGood plot
-	CPScatterPlot *goodPlot = [[[CPScatterPlot alloc]initWithFrame:self.bounds] autorelease];
+	CPTScatterPlot *goodPlot = [[CPTScatterPlot alloc]initWithFrame:self.bounds] ;
     goodPlot.identifier = @"isGood";
-	goodPlot.dataLineStyle.lineWidth = 0.0f;
+    CPTMutableLineStyle *gPlineStyle = [goodPlot.dataLineStyle 
+                                      mutableCopy] ; 
+    gPlineStyle.lineWidth = 0.f;  
+    goodPlot.dataLineStyle = gPlineStyle;
 	goodPlot.dataSource = self;
 	[ graph addPlot:goodPlot];
     
     
     // blow duration plot
-    CPBarPlot* blowPlot = [[[CPBarPlot alloc] initWithFrame:self.bounds] autorelease];
+    CPTBarPlot* blowPlot = [[CPTBarPlot alloc] initWithFrame:self.bounds];
     blowPlot.identifier = @"blow";
     blowPlot.dataSource = self;
-    blowPlot.barWidth = self.frame.size.width/50;
-    blowPlot.barOffset = 0;  
-    blowPlot.fill = [[[CPFill alloc] initWithColor:[CPColor redColor]] autorelease];
+    blowPlot.barWidth = [[NSNumber numberWithFloat:self.frame.size.width/50] decimalValue];
+    blowPlot.barOffset = [[NSNumber numberWithFloat:0.0f] decimalValue];  
+    blowPlot.fill = [[CPTFill alloc] initWithColor:[CPTColor redColor]] ;
     [ graph addPlot:blowPlot ];
     
     // in range duration
-    CPBarPlot* inRangePlot = [[[CPBarPlot alloc] initWithFrame:self.bounds] autorelease];
+    CPTBarPlot* inRangePlot = [[CPTBarPlot alloc] initWithFrame:self.bounds] ;
     inRangePlot.identifier = @"inRange";
     inRangePlot.dataSource = self;
-    inRangePlot.barWidth = self.frame.size.width/50;
-    inRangePlot.barOffset = 0;
-    inRangePlot.fill = [[[CPFill alloc] initWithColor:[CPColor greenColor]] autorelease];
+    inRangePlot.barWidth = blowPlot.barWidth;
+    inRangePlot.barOffset = blowPlot.barOffset;
+    inRangePlot.fill = [[CPTFill alloc] initWithColor:[CPTColor greenColor]] ;
     [ graph addPlot:inRangePlot ];
     
     
+  
     // isStart plot
-	CPScatterPlot *startPlot = [[[CPScatterPlot alloc]initWithFrame:self.bounds] autorelease];
+	CPTScatterPlot *startPlot = [[CPTScatterPlot alloc]initWithFrame:self.bounds] ;
     startPlot.identifier = @"isStartStop";
-	startPlot.dataLineStyle.lineWidth = 0.0f;
+	startPlot.dataLineStyle = gPlineStyle;
 	startPlot.dataSource = self;
 	[ graph addPlot:startPlot];
-
+  
     
     [self initTimersAndListeners];
 	
@@ -264,28 +268,34 @@ NSTimer *repeatingTimer;
 # pragma mark graph
 
 
-- (NSUInteger)numberOfRecordsForPlot:(CPPlot *)plot {
+- (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
     return [[history getHistoryArray] count] + 2;
     
 }
 
 
+
 // This method is called twice per plot.. 
-- (NSNumber *)numberForPlot:(CPPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
+- (NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
 	
     if (index  >= [[history getHistoryArray] count]) { // display start/stop exerice
         if (lastExericeStartTimeStamp > 0) {
             if (plot.identifier == @"isStartStop") {
-                if (fieldEnum == CPScatterPlotFieldY)  {
+                if (fieldEnum == CPTScatterPlotFieldY)  {
                     return [ NSNumber numberWithDouble:0.0f];
                 } else {
                     if (index > [[history getHistoryArray] count]) {
-                        return  [ NSNumber numberWithDouble:(lastExericeStopTimeStamp - CFAbsoluteTimeGetCurrent()) 
-                                 ];
-                        
+                        double d = (lastExericeStopTimeStamp - CFAbsoluteTimeGetCurrent());
+                       
+                        if (d < 0 && d > -60*historyDuration) {
+                            return  [ NSNumber numberWithDouble:d ];
+                        }
                     } else {
-                        return [ NSNumber numberWithDouble:(lastExericeStartTimeStamp - CFAbsoluteTimeGetCurrent()-1) 
-                                ];
+                        double d = (lastExericeStartTimeStamp - CFAbsoluteTimeGetCurrent()-1);
+                       
+                        if (d < 0 && d > -60*historyDuration) {
+                            return [ NSNumber numberWithDouble:d];
+                        }
                     }
                 }
             }
@@ -301,14 +311,15 @@ NSTimer *repeatingTimer;
     //    NSLog(@"duration = %f", current.duration);
     //    NSLog(@"goal = %@", (current.goal ? @"YES" : @"NO"));
     // NSLog(@"numberForPlot = %@ %i",plot.identifier,index );
-    
+    double d2 = current.timestamp - CFAbsoluteTimeGetCurrent();
+
     switch ( fieldEnum ) {
             // return Y 
-        case CPScatterPlotFieldY: // Y for stars
+        case CPTScatterPlotFieldY: // Y for stars
             if (current.goal)
                 return [ NSNumber numberWithDouble:(higherBar*1.1) ];
             break;
-        case CPBarPlotFieldBarLength:
+        case CPTBarPlotFieldBarTip:
             if (plot.identifier == @"inRange")
                 return [ NSNumber numberWithDouble:current.in_range_duration ];
             
@@ -317,9 +328,15 @@ NSTimer *repeatingTimer;
             
             break;
             // return X position for all plots
-        case CPScatterPlotFieldX:
-        case CPBarPlotFieldBarLocation:
-            return [ NSNumber numberWithDouble:current.timestamp - CFAbsoluteTimeGetCurrent() ];
+        case CPTBarPlotFieldBarBase:
+            return [ NSNumber numberWithDouble:0.0f];
+            
+            break;
+            // return X position for all plots
+        case CPTScatterPlotFieldX:
+        case CPTBarPlotFieldBarLocation:
+            
+            return [ NSNumber numberWithDouble:d2 ];
             break;
     }
 	
@@ -328,7 +345,7 @@ NSTimer *repeatingTimer;
 	
 }
 
--(CPPlotSymbol *)symbolForScatterPlot:(CPScatterPlot *)plot recordIndex:(NSUInteger)index {
+-(CPTPlotSymbol *)symbolForScatterPlot:(CPTScatterPlot *)plot recordIndex:(NSUInteger)index {
 
 
     
@@ -336,17 +353,17 @@ NSTimer *repeatingTimer;
         if (index  >= [[history getHistoryArray] count]) { // display start/stop exerice
             if (lastExericeStartTimeStamp > 0) {
                 
-                CPPlotSymbol *symbol = [CPPlotSymbol trianglePlotSymbol];
+                CPTPlotSymbol *symbol = [CPTPlotSymbol trianglePlotSymbol];
                 if (index  > [[history getHistoryArray] count]) {
-                    symbol.symbolType = CPPlotSymbolTypeTriangle;
-                    symbol.fill = [CPFill fillWithColor:[CPColor blueColor]]; 
+                    symbol.symbolType = CPTPlotSymbolTypeTriangle;
+                    symbol.fill = [CPTFill fillWithColor:[CPTColor blueColor]]; 
                 } else {
-                    symbol.fill = [CPFill fillWithColor:[CPColor yellowColor]]; 
-                    symbol.symbolType = CPPlotSymbolTypeTriangle;
+                    symbol.fill = [CPTFill fillWithColor:[CPTColor yellowColor]]; 
+                    symbol.symbolType = CPTPlotSymbolTypeTriangle;
                 }
                 symbol.lineStyle = nil;
                 symbol.size = CGSizeMake(self.frame.size.height/2, self.frame.size.height/2);
-                symbol.fill = [CPFill fillWithColor:[CPColor yellowColor]];
+                symbol.fill = [CPTFill fillWithColor:[CPTColor yellowColor]];
                 return symbol;
             } 
             
@@ -354,9 +371,9 @@ NSTimer *repeatingTimer;
         }
         return nil;
     }
-    CPPlotSymbol *symbol = [CPPlotSymbol starPlotSymbol];
+    CPTPlotSymbol *symbol = [CPTPlotSymbol starPlotSymbol];
     symbol.size = CGSizeMake(self.frame.size.width/28, self.frame.size.height/4);
-    symbol.fill = [CPFill fillWithColor:[CPColor whiteColor]];
+    symbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
     return symbol;
 }
 
@@ -393,7 +410,7 @@ NSTimer *repeatingTimer;
     //Resize Y axis if needed
     if (blow.duration > higherBar) {
         higherBar = blow.duration;
-        plotSpace.yRange = [CPPlotRange plotRangeWithLocation:CPDecimalFromDouble(0) length:CPDecimalFromDouble(higherBar*1.5)];
+        plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(higherBar*1.5)];
     }
 }
 
