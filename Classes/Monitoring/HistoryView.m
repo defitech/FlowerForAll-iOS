@@ -76,7 +76,7 @@ NSTimer *repeatingTimer;
 
 - (void) timerFireMethod:(NSTimer*)theTimer {
     if (! [[FlowerController currentFlapix] running]) [self stopReloadTimer];
-    [graph reloadData];
+    [self historyChange:nil];
 }
 
 
@@ -252,10 +252,18 @@ NSTimer *repeatingTimer;
   
     // isStart plot
 	CPTScatterPlot *startPlot = [[CPTScatterPlot alloc]initWithFrame:self.bounds] ;
-    startPlot.identifier = @"isStartStop";
+    startPlot.identifier = @"isStart";
 	startPlot.dataLineStyle = gPlineStyle;
 	startPlot.dataSource = self;
 	[ graph addPlot:startPlot];
+    
+    
+    // isStop plot
+	CPTScatterPlot *stopPlot = [[CPTScatterPlot alloc]initWithFrame:self.bounds] ;
+    stopPlot.identifier = @"isStop";
+	stopPlot.dataLineStyle = gPlineStyle;
+	stopPlot.dataSource = self;
+	[ graph addPlot:stopPlot];
   
     
     [self initTimersAndListeners];
@@ -269,7 +277,8 @@ NSTimer *repeatingTimer;
 
 
 - (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
-    return [[history getHistoryArray] count] + 2;
+    if (plot.identifier == @"isStart" || plot.identifier == @"isStop" ) return 1;
+    return [[history getHistoryArray] count];
     
 }
 
@@ -278,31 +287,21 @@ NSTimer *repeatingTimer;
 // This method is called twice per plot.. 
 - (NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
 	
-    if (index  >= [[history getHistoryArray] count]) { // display start/stop exerice
-        if (lastExericeStartTimeStamp > 0) {
-            if (plot.identifier == @"isStartStop") {
-                if (fieldEnum == CPTScatterPlotFieldY)  {
-                    return [ NSNumber numberWithDouble:0.0f];
-                } else {
-                    if (index > [[history getHistoryArray] count]) {
-                        double d = (lastExericeStopTimeStamp - CFAbsoluteTimeGetCurrent());
-                       
-                        if (d < 0 && d > -60*historyDuration) {
-                            return  [ NSNumber numberWithDouble:d ];
-                        }
-                    } else {
-                        double d = (lastExericeStartTimeStamp - CFAbsoluteTimeGetCurrent()-1);
-                       
-                        if (d < 0 && d > -60*historyDuration) {
-                            return [ NSNumber numberWithDouble:d];
-                        }
-                    }
-                }
-            }
-        }
-        return nil;
+    double ds = (lastExericeStartTimeStamp - CFAbsoluteTimeGetCurrent() - 1 );
+    if (plot.identifier == @"isStart") {
+        if (ds > 0 || ds < -60*historyDuration)  return  nil;
+        if (fieldEnum == CPTScatterPlotFieldY) return [ NSNumber numberWithDouble:0.0f];
+        return [ NSNumber numberWithDouble:ds];
     }
-    
+            
+    if (plot.identifier == @"isStop") {
+        double d = (lastExericeStopTimeStamp - CFAbsoluteTimeGetCurrent() );
+        if (d > 0 || d < -60*historyDuration)  return  nil;
+        if (d < ds) return nil;
+        if (fieldEnum == CPTScatterPlotFieldY) return [ NSNumber numberWithDouble:0.0f];
+        return [ NSNumber numberWithDouble:d];
+    }
+              
     
     FLAPIBlow* current = [[history getHistoryArray] objectAtIndex:index];
     
@@ -346,44 +345,36 @@ NSTimer *repeatingTimer;
 }
 
 -(CPTPlotSymbol *)symbolForScatterPlot:(CPTScatterPlot *)plot recordIndex:(NSUInteger)index {
-
-
     
-    if (plot.identifier == @"isStartStop") {
-        if (index  >= [[history getHistoryArray] count]) { // display start/stop exerice
-            if (lastExericeStartTimeStamp > 0) {
-                
-                CPTPlotSymbol *symbol = [CPTPlotSymbol trianglePlotSymbol];
-                if (index  > [[history getHistoryArray] count]) {
-                    symbol.symbolType = CPTPlotSymbolTypeTriangle;
-                    symbol.fill = [CPTFill fillWithColor:[CPTColor blueColor]]; 
-                } else {
-                    symbol.fill = [CPTFill fillWithColor:[CPTColor yellowColor]]; 
-                    symbol.symbolType = CPTPlotSymbolTypeTriangle;
-                }
-                symbol.lineStyle = nil;
-                symbol.size = CGSizeMake(self.frame.size.height/2, self.frame.size.height/2);
-                symbol.fill = [CPTFill fillWithColor:[CPTColor yellowColor]];
-                return symbol;
-            } 
-            
-            
-        }
-        return nil;
+    
+    if (plot.identifier == @"isStart") {
+        CPTPlotSymbol *symbol = [CPTPlotSymbol trianglePlotSymbol];
+        symbol.symbolType = CPTPlotSymbolTypeTriangle;
+        symbol.fill = [CPTFill fillWithColor:[CPTColor blueColor]]; 
+        symbol.lineStyle = nil;
+        symbol.size = CGSizeMake(self.frame.size.height/2, self.frame.size.height/2);
+        return symbol;
+    }  
+    if (plot.identifier == @"isStop") {
+        CPTPlotSymbol *symbol = [CPTPlotSymbol trianglePlotSymbol];
+        symbol.symbolType = CPTPlotSymbolTypeTriangle;
+        symbol.fill = [CPTFill fillWithColor:[CPTColor yellowColor]]; 
+        symbol.lineStyle = nil;
+        symbol.size = CGSizeMake(self.frame.size.height/2, self.frame.size.height/2);
+        return symbol;
     }
+    
+    
     CPTPlotSymbol *symbol = [CPTPlotSymbol starPlotSymbol];
     symbol.size = CGSizeMake(self.frame.size.width/28, self.frame.size.height/4);
     symbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
     return symbol;
 }
 
-
 -(void) historyChange:(id*) history_id {
-    //    NSLog(@"History change %i",[[(BlowHistory*)history_id getHistoryArray] count]);
-    //redraw the graph
-    [graph reloadData];
-    
-    // update labels
+    @synchronized([history getHistoryArray]) {
+       [graph reloadData];
+    }
 }
 
 - (void)flapixEventFrequency:(NSNotification *)notification {
