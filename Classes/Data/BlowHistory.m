@@ -42,12 +42,14 @@
 }
 
 -(void) flapixEventEndBlow:(NSNotification *)notification {
-    [history addObject:[notification object]];
-    
-    while ([history count] > 0 &&
-        [(FLAPIBlow*)[history objectAtIndex:0] timestamp] < (CFAbsoluteTimeGetCurrent() - duration_s)) {
+    @synchronized(history) {
+        [history addObject:[notification object]];
+        
+        while ([history count] > 0 &&
+               [(FLAPIBlow*)[history objectAtIndex:0] timestamp] < (CFAbsoluteTimeGetCurrent() - duration_s)) {
             [history removeObjectAtIndex:0];
-    } 
+        }
+    }
     if (delegate != nil) {
         [delegate  historyChange:(id*)self];
     }
