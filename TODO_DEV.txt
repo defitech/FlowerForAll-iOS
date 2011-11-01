@@ -4,31 +4,6 @@ If you want to write a game, please read:
  Apps/HOWTO_WRITE_A_GAME.txt
 
 [ KNOWN BUGS ]
-***************************************************************************************
-***** THE ONLINE VERSION CRASHES *******
-When headphones are plugged-in or the sound processing (thru the demo mode starts)... 
-We never had this bug during the developpement, nor we can reproduce it with our own version...
-It seems that in some way the binary produced for the release is not executed the same way our development binaries are.
-
-what I grab from the console.. and crash logs:
-
-* WHEN HEADSET PLUGGED *
-The last debug send by the App is:
---- SUbsyIOS checkMicrophonePluggedIn: 0 Actual ROUTE:HeadsetInOut
-
-* WHEN PRESSING DEMO MODE *
-The last debug send by the App is:
-<Warning>: actionSheet 0
-
-I would be nice to try our iApp on a jailbraked device with the "release" package.
-
-For now I'm working on a "deactivate RouteChangedListener" options in order to do a new release
-
-
-***************************************************************************************
-
-
-
 - they must be some memory leaks.. 
 - it would be nice to have an objective-c expert do some code review.. 
 
@@ -56,7 +31,7 @@ But we need to create an interface for viewing this data..
 - Refactor FLOWER BREATH logo and icon
 
 [ MONITORING ]
-- Rewrite the history monitor in OpenGL 
+- Rewrite the history monitor in OpenGL or Quartz
 
 [ MULTI USERS ]
 For use in hospital or by a physiotherapist 
