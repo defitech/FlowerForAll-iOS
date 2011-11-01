@@ -76,7 +76,9 @@ NSTimer *repeatingTimer;
 
 - (void) timerFireMethod:(NSTimer*)theTimer {
     if (! [[FlowerController currentFlapix] running]) [self stopReloadTimer];
-    [self historyChange:nil];
+    @synchronized([history getHistoryArray]) {
+        [graph reloadData];
+    }
 }
 
 
@@ -372,9 +374,7 @@ NSTimer *repeatingTimer;
 }
 
 -(void) historyChange:(id*) history_id {
-    @synchronized([history getHistoryArray]) {
-       [graph reloadData];
-    }
+ 
 }
 
 - (void)flapixEventFrequency:(NSNotification *)notification {
