@@ -53,7 +53,6 @@
 		4E78A0C0145ED9F800D4EF28 /* CPTMutableNumericData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A027145ED9F800D4EF28 /* CPTMutableNumericData.m */; };
 		4E78A0C1145ED9F800D4EF28 /* CPTNumericData+TypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A029145ED9F800D4EF28 /* CPTNumericData+TypeConversion.m */; };
 		4E78A0C2145ED9F800D4EF28 /* CPTMutableNumericData+TypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A02B145ED9F800D4EF28 /* CPTMutableNumericData+TypeConversion.m */; };
-		4E78A0C3145ED9F800D4EF28 /* CPTNumericData+TypeConversions_Generation.py in Resources */ = {isa = PBXBuildFile; fileRef = 4E78A02C145ED9F800D4EF28 /* CPTNumericData+TypeConversions_Generation.py */; };
 		4E78A0C4145ED9F800D4EF28 /* CPTDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A02E145ED9F800D4EF28 /* CPTDefinitions.m */; };
 		4E78A0C5145ED9F800D4EF28 /* CPTExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A030145ED9F800D4EF28 /* CPTExceptions.m */; };
 		4E78A0C6145ED9F800D4EF28 /* CPTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A032145ED9F800D4EF28 /* CPTUtilities.m */; };
@@ -1494,7 +1493,6 @@
 				4EDA57FE144859FB005C29EB /* ExampleApp-Icon.png in Resources */,
 				4E26BA921459AA7600612F28 /* FlowerForAll.html in Resources */,
 				4E26BA931459AA7600612F28 /* Localizable.strings in Resources */,
-				4E78A0C3145ED9F800D4EF28 /* CPTNumericData+TypeConversions_Generation.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
