@@ -122,7 +122,6 @@
 		4E78A106145ED9F800D4EF28 /* _CPTPlainWhiteTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0B8145ED9F800D4EF28 /* _CPTPlainWhiteTheme.m */; };
 		4E78A107145ED9F800D4EF28 /* _CPTSlateTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0BA145ED9F800D4EF28 /* _CPTSlateTheme.m */; };
 		4E78A108145ED9F800D4EF28 /* _CPTStocksTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0BC145ED9F800D4EF28 /* _CPTStocksTheme.m */; };
-		4E78A10D145EDC4E00D4EF28 /* CorePlotProbes.d in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A10C145EDC4E00D4EF28 /* CorePlotProbes.d */; };
 		4E800122143E0067001C15C7 /* VolcanoApp-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E800121143E0067001C15C7 /* VolcanoApp-star.png */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
 		4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DB.m */; };
@@ -840,8 +839,7 @@
 				4E78A020145ED9F800D4EF28 /* Themes */,
 			);
 			name = Source;
-			path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Classes/UI/CorePlot;
-			sourceTree = "<absolute>";
+			sourceTree = "<group>";
 		};
 		4E78A011145ED9F800D4EF28 /* Numeric Data */ = {
 			isa = PBXGroup;
@@ -1632,7 +1630,6 @@
 				4E78A106145ED9F800D4EF28 /* _CPTPlainWhiteTheme.m in Sources */,
 				4E78A107145ED9F800D4EF28 /* _CPTSlateTheme.m in Sources */,
 				4E78A108145ED9F800D4EF28 /* _CPTStocksTheme.m in Sources */,
-				4E78A10D145EDC4E00D4EF28 /* CorePlotProbes.d in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
