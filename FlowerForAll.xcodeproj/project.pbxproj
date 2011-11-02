@@ -48,13 +48,11 @@
 		4E78A006145ED9CF00D4EF28 /* CPTPlatformSpecificCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A000145ED9CE00D4EF28 /* CPTPlatformSpecificCategories.m */; };
 		4E78A007145ED9CF00D4EF28 /* CPTPlatformSpecificFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A002145ED9CE00D4EF28 /* CPTPlatformSpecificFunctions.m */; };
 		4E78A008145ED9CF00D4EF28 /* CPTGraphHostingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A004145ED9CE00D4EF28 /* CPTGraphHostingView.m */; };
-		4E78A0BD145ED9F800D4EF28 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4E78A021145ED9F800D4EF28 /* license.txt */; };
 		4E78A0BE145ED9F800D4EF28 /* CPTNumericDataType.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A023145ED9F800D4EF28 /* CPTNumericDataType.m */; };
 		4E78A0BF145ED9F800D4EF28 /* CPTNumericData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A025145ED9F800D4EF28 /* CPTNumericData.m */; };
 		4E78A0C0145ED9F800D4EF28 /* CPTMutableNumericData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A027145ED9F800D4EF28 /* CPTMutableNumericData.m */; };
 		4E78A0C1145ED9F800D4EF28 /* CPTNumericData+TypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A029145ED9F800D4EF28 /* CPTNumericData+TypeConversion.m */; };
 		4E78A0C2145ED9F800D4EF28 /* CPTMutableNumericData+TypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A02B145ED9F800D4EF28 /* CPTMutableNumericData+TypeConversion.m */; };
-		4E78A0C3145ED9F800D4EF28 /* CPTNumericData+TypeConversions_Generation.py in Resources */ = {isa = PBXBuildFile; fileRef = 4E78A02C145ED9F800D4EF28 /* CPTNumericData+TypeConversions_Generation.py */; };
 		4E78A0C4145ED9F800D4EF28 /* CPTDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A02E145ED9F800D4EF28 /* CPTDefinitions.m */; };
 		4E78A0C5145ED9F800D4EF28 /* CPTExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A030145ED9F800D4EF28 /* CPTExceptions.m */; };
 		4E78A0C6145ED9F800D4EF28 /* CPTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A032145ED9F800D4EF28 /* CPTUtilities.m */; };
@@ -124,7 +122,6 @@
 		4E78A106145ED9F800D4EF28 /* _CPTPlainWhiteTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0B8145ED9F800D4EF28 /* _CPTPlainWhiteTheme.m */; };
 		4E78A107145ED9F800D4EF28 /* _CPTSlateTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0BA145ED9F800D4EF28 /* _CPTSlateTheme.m */; };
 		4E78A108145ED9F800D4EF28 /* _CPTStocksTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0BC145ED9F800D4EF28 /* _CPTStocksTheme.m */; };
-		4E78A10D145EDC4E00D4EF28 /* CorePlotProbes.d in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A10C145EDC4E00D4EF28 /* CorePlotProbes.d */; };
 		4E800122143E0067001C15C7 /* VolcanoApp-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E800121143E0067001C15C7 /* VolcanoApp-star.png */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
 		4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DB.m */; };
@@ -842,8 +839,7 @@
 				4E78A020145ED9F800D4EF28 /* Themes */,
 			);
 			name = Source;
-			path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Classes/UI/CorePlot;
-			sourceTree = "<absolute>";
+			sourceTree = "<group>";
 		};
 		4E78A011145ED9F800D4EF28 /* Numeric Data */ = {
 			isa = PBXGroup;
@@ -1495,8 +1491,6 @@
 				4EDA57FE144859FB005C29EB /* ExampleApp-Icon.png in Resources */,
 				4E26BA921459AA7600612F28 /* FlowerForAll.html in Resources */,
 				4E26BA931459AA7600612F28 /* Localizable.strings in Resources */,
-				4E78A0BD145ED9F800D4EF28 /* license.txt in Resources */,
-				4E78A0C3145ED9F800D4EF28 /* CPTNumericData+TypeConversions_Generation.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1636,7 +1630,6 @@
 				4E78A106145ED9F800D4EF28 /* _CPTPlainWhiteTheme.m in Sources */,
 				4E78A107145ED9F800D4EF28 /* _CPTSlateTheme.m in Sources */,
 				4E78A108145ED9F800D4EF28 /* _CPTStocksTheme.m in Sources */,
-				4E78A10D145EDC4E00D4EF28 /* CorePlotProbes.d in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
