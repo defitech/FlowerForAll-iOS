@@ -15,6 +15,7 @@
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		4E018F7813BB2D6B00333528 /* FlowerHowTo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */; };
+		4E040E811462A9CC00928DE1 /* CorePlotProbes.d in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A10C145EDC4E00D4EF28 /* CorePlotProbes.d */; };
 		4E081DD01419F4DD003C9178 /* FlowerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E081DCF1419F4DD003C9178 /* FlowerApp.m */; };
 		4E101E541437193B002BFDCC /* FlowerHowTo.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E101E521437193B002BFDCC /* FlowerHowTo.strings */; };
 		4E141B0D13B35F1900698F53 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E141B0713B35F1900698F53 /* Default.png */; };
@@ -1630,6 +1631,7 @@
 				4E78A106145ED9F800D4EF28 /* _CPTPlainWhiteTheme.m in Sources */,
 				4E78A107145ED9F800D4EF28 /* _CPTSlateTheme.m in Sources */,
 				4E78A108145ED9F800D4EF28 /* _CPTStocksTheme.m in Sources */,
+				4E040E811462A9CC00928DE1 /* CorePlotProbes.d in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
