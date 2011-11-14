@@ -123,6 +123,11 @@
 		4E78A106145ED9F800D4EF28 /* _CPTPlainWhiteTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0B8145ED9F800D4EF28 /* _CPTPlainWhiteTheme.m */; };
 		4E78A107145ED9F800D4EF28 /* _CPTSlateTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0BA145ED9F800D4EF28 /* _CPTSlateTheme.m */; };
 		4E78A108145ED9F800D4EF28 /* _CPTStocksTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0BC145ED9F800D4EF28 /* _CPTStocksTheme.m */; };
+		4E7CDA09147114DD00047C99 /* Users.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CDA07147114DD00047C99 /* Users.strings */; };
+		4E7CDA0B147114E800047C99 /* Users.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CDA07147114DD00047C99 /* Users.strings */; };
+		4E7CDA0F1471153000047C99 /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDA0D1471153000047C99 /* Users.m */; };
+		4E7CDA101471153000047C99 /* Users.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CDA0E1471153000047C99 /* Users.xib */; };
+		4E7CDA12147115FC00047C99 /* Users-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CDA11147115FC00047C99 /* Users-Icon.png */; };
 		4E800122143E0067001C15C7 /* VolcanoApp-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E800121143E0067001C15C7 /* VolcanoApp-star.png */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
 		4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DB.m */; };
@@ -427,6 +432,12 @@
 		4E78A0BB145ED9F800D4EF28 /* _CPTStocksTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _CPTStocksTheme.h; path = Source/_CPTStocksTheme.h; sourceTree = "<group>"; };
 		4E78A0BC145ED9F800D4EF28 /* _CPTStocksTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _CPTStocksTheme.m; path = Source/_CPTStocksTheme.m; sourceTree = "<group>"; };
 		4E78A10C145EDC4E00D4EF28 /* CorePlotProbes.d */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.dtrace; path = CorePlotProbes.d; sourceTree = "<group>"; };
+		4E7CDA08147114DD00047C99 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; lineEnding = 0; name = en; path = en.lproj/Users.strings; sourceTree = "<group>"; };
+		4E7CDA0A147114E800047C99 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Users.strings; sourceTree = "<group>"; };
+		4E7CDA0C1471153000047C99 /* Users.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Users.h; sourceTree = "<group>"; };
+		4E7CDA0D1471153000047C99 /* Users.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Users.m; sourceTree = "<group>"; };
+		4E7CDA0E1471153000047C99 /* Users.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Users.xib; sourceTree = "<group>"; };
+		4E7CDA11147115FC00047C99 /* Users-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Users-Icon.png"; sourceTree = "<group>"; };
 		4E800121143E0067001C15C7 /* VolcanoApp-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolcanoApp-star.png"; sourceTree = "<group>"; };
 		4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataAccess.h; path = Data/DataAccess.h; sourceTree = "<group>"; };
 		4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataAccess.m; path = Data/DataAccess.m; sourceTree = "<group>"; };
@@ -756,6 +767,7 @@
 		4E57A86313A8F12500910E4D /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				4E7CDA061471146100047C99 /* Users */,
 				4EDA57EF14482E76005C29EB /* ExampleApp */,
 				D73C1303142879050006B28F /* ResultsApp */,
 				4EEED19B141E474600F56102 /* ParametersApp */,
@@ -1145,6 +1157,18 @@
 			name = "XY Axes";
 			sourceTree = "<group>";
 		};
+		4E7CDA061471146100047C99 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				4E7CDA11147115FC00047C99 /* Users-Icon.png */,
+				4E7CDA07147114DD00047C99 /* Users.strings */,
+				4E7CDA0C1471153000047C99 /* Users.h */,
+				4E7CDA0D1471153000047C99 /* Users.m */,
+				4E7CDA0E1471153000047C99 /* Users.xib */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		4E8F595113A7AFA900D9D3A7 /* sqlite_database */ = {
 			isa = PBXGroup;
 			children = (
@@ -1492,6 +1516,10 @@
 				4EDA57FE144859FB005C29EB /* ExampleApp-Icon.png in Resources */,
 				4E26BA921459AA7600612F28 /* FlowerForAll.html in Resources */,
 				4E26BA931459AA7600612F28 /* Localizable.strings in Resources */,
+				4E7CDA09147114DD00047C99 /* Users.strings in Resources */,
+				4E7CDA0B147114E800047C99 /* Users.strings in Resources */,
+				4E7CDA101471153000047C99 /* Users.xib in Resources */,
+				4E7CDA12147115FC00047C99 /* Users-Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1632,6 +1660,7 @@
 				4E78A107145ED9F800D4EF28 /* _CPTSlateTheme.m in Sources */,
 				4E78A108145ED9F800D4EF28 /* _CPTStocksTheme.m in Sources */,
 				4E040E811462A9CC00928DE1 /* CorePlotProbes.d in Sources */,
+				4E7CDA0F1471153000047C99 /* Users.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1681,6 +1710,15 @@
 				4E4AE46D141FA584004256DA /* fr */,
 			);
 			name = CalibrationApp.strings;
+			sourceTree = "<group>";
+		};
+		4E7CDA07147114DD00047C99 /* Users.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E7CDA08147114DD00047C99 /* en */,
+				4E7CDA0A147114E800047C99 /* fr */,
+			);
+			name = Users.strings;
 			sourceTree = "<group>";
 		};
 		4EC7FF3A143F276800B534E0 /* FlowerHowTo-index.html */ = {

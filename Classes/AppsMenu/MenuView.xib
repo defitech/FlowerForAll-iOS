@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">11B26</string>
+		<string key="IBDocument.SystemVersion">11C74</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
-		<string key="IBDocument.AppKitVersion">1138</string>
-		<string key="IBDocument.HIToolboxVersion">566.00</string>
+		<string key="IBDocument.AppKitVersion">1138.23</string>
+		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">534</string>
@@ -222,7 +222,7 @@
 										<string key="NSFrame">{{214, 125}, {57, 57}}</string>
 										<reference key="NSSuperview" ref="171790071"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="752802577"/>
+										<reference key="NSNextKeyView" ref="754155406"/>
 										<string key="NSReuseIdentifierKey">_NS:222</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -307,6 +307,52 @@
 										<object class="NSCustomResource" key="IBUINormalImage">
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">ResultsApp-Icon.png</string>
+										</object>
+									</object>
+									<object class="IBUILabel" id="754155406">
+										<reference key="NSNextResponder" ref="171790071"/>
+										<int key="NSvFlags">292</int>
+										<string key="NSFrame">{{20, 290}, {120, 40}}</string>
+										<reference key="NSSuperview" ref="171790071"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="808822809"/>
+										<string key="NSReuseIdentifierKey">_NS:311</string>
+										<bool key="IBUIOpaque">NO</bool>
+										<bool key="IBUIClipsSubviews">YES</bool>
+										<int key="IBUIContentMode">7</int>
+										<bool key="IBUIUserInteractionEnabled">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<string key="IBUIText">Utilisateurs</string>
+										<reference key="IBUIFont" ref="836365451"/>
+										<reference key="IBUITextColor" ref="567607318"/>
+										<nil key="IBUIHighlightedColor"/>
+										<int key="IBUIBaselineAdjustment">1</int>
+										<float key="IBUIMinimumFontSize">10</float>
+										<int key="IBUINumberOfLines">2</int>
+										<int key="IBUITextAlignment">1</int>
+									</object>
+									<object class="IBUIButton" id="808822809">
+										<reference key="NSNextResponder" ref="171790071"/>
+										<int key="NSvFlags">292</int>
+										<string key="NSFrame">{{50, 235}, {57, 57}}</string>
+										<reference key="NSSuperview" ref="171790071"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="752802577"/>
+										<string key="NSReuseIdentifierKey">_NS:222</string>
+										<bool key="IBUIOpaque">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIContentHorizontalAlignment">0</int>
+										<int key="IBUIContentVerticalAlignment">0</int>
+										<reference key="IBUIFont" ref="83977446"/>
+										<reference key="IBUIHighlightedTitleColor" ref="438752637"/>
+										<object class="NSColor" key="IBUINormalTitleColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+										</object>
+										<reference key="IBUINormalTitleShadowColor" ref="865084460"/>
+										<object class="NSCustomResource" key="IBUINormalImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">Users-Icon.png</string>
 										</object>
 									</object>
 								</object>
@@ -537,6 +583,23 @@
 					</object>
 					<int key="connectionID">79</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">usersLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="754155406"/>
+					</object>
+					<int key="connectionID">83</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">usersTouch:</string>
+						<reference key="source" ref="808822809"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">1</int>
+					</object>
+					<int key="connectionID">84</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -607,6 +670,8 @@
 							<reference ref="662795630"/>
 							<reference ref="752802577"/>
 							<reference ref="1070402911"/>
+							<reference ref="754155406"/>
+							<reference ref="808822809"/>
 						</object>
 						<reference key="parent" ref="650753798"/>
 						<string key="objectName">page1</string>
@@ -681,6 +746,16 @@
 						<reference key="object" ref="752802577"/>
 						<reference key="parent" ref="171790071"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">80</int>
+						<reference key="object" ref="754155406"/>
+						<reference key="parent" ref="171790071"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">81</int>
+						<reference key="object" ref="808822809"/>
+						<reference key="parent" ref="171790071"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -710,6 +785,8 @@
 					<string>76.IBPluginDependency</string>
 					<string>77.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
+					<string>80.IBPluginDependency</string>
+					<string>81.IBPluginDependency</string>
 					<string>9.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
@@ -738,6 +815,8 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -752,7 +831,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">79</int>
+			<int key="maxID">84</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -769,10 +848,14 @@
 							<string>pageControlDidChangeValue:</string>
 							<string>resultsTouch:</string>
 							<string>settingsTouch:</string>
+							<string>usersTouch:</string>
+							<string>userssTouch:</string>
 							<string>volcanoTouch:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -790,6 +873,8 @@
 							<string>pageControlDidChangeValue:</string>
 							<string>resultsTouch:</string>
 							<string>settingsTouch:</string>
+							<string>usersTouch:</string>
+							<string>userssTouch:</string>
 							<string>volcanoTouch:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -815,6 +900,14 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">usersTouch:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">userssTouch:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">volcanoTouch:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -830,6 +923,7 @@
 							<string>resultsLabel</string>
 							<string>scrollView</string>
 							<string>settingsLabel</string>
+							<string>usersLabel</string>
 							<string>videoPlayerLabel</string>
 							<string>volcanoLabel</string>
 							<string>web</string>
@@ -841,6 +935,7 @@
 							<string>RSPageControl</string>
 							<string>UILabel</string>
 							<string>UIScrollView</string>
+							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
@@ -857,6 +952,7 @@
 							<string>resultsLabel</string>
 							<string>scrollView</string>
 							<string>settingsLabel</string>
+							<string>usersLabel</string>
 							<string>videoPlayerLabel</string>
 							<string>volcanoLabel</string>
 							<string>web</string>
@@ -885,6 +981,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">settingsLabel</string>
+								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">usersLabel</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -936,6 +1036,7 @@
 				<string>FlowerHowTo-icon.png</string>
 				<string>ParametersApp-Icon.png</string>
 				<string>ResultsApp-Icon.png</string>
+				<string>Users-Icon.png</string>
 				<string>VolcanoApp-Icon.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
@@ -944,6 +1045,7 @@
 				<string>{512, 512}</string>
 				<string>{96, 96}</string>
 				<string>{256, 256}</string>
+				<string>{128, 128}</string>
 				<string>{512, 512}</string>
 			</object>
 		</object>

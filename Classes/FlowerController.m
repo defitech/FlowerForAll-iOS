@@ -242,6 +242,7 @@ static NSMutableDictionary* appList;
                [NSNull alloc], @"ParametersApp",
                [NSNull alloc], @"CalibrationApp",
                [NSNull alloc], @"ResultsApp",
+               [NSNull alloc], @"Users",
                nil];
     
     

@@ -23,9 +23,12 @@
 @implementation MenuView
 
 
-@synthesize page2, web, scrollView, backItem, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel;
+@synthesize page2, web, scrollView, backItem, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel, usersLabel;
 
 
+- (IBAction)usersTouch:(id) sender {
+    [FlowerController pushApp:@"Users"];
+}
 
 - (IBAction) volcanoTouch:(id) sender {
     [FlowerController pushApp:@"VolcanoApp"];
