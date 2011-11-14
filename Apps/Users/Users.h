@@ -8,6 +8,18 @@
 
 #import "FlowerApp.h"
 
-@interface Users : FlowerApp
+@interface Users : FlowerApp  <UITableViewDelegate, UITableViewDataSource>  {
+    IBOutlet UINavigationController* navController;
+    
+    //The table view
+	IBOutlet UITableView *usersListTableView;
+
+}
+
+@property (nonatomic, retain)  IBOutlet UINavigationController* navController;  
+
+@property (nonatomic, retain) IBOutlet UITableView *usersListTableView;
+
+- (IBAction) plusButtonTouch:(id)sender;
 
 @end
