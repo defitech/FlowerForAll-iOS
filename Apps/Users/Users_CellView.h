@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Users_CellView : UITableViewCell
+@interface Users_CellView : UITableViewCell {
+    IBOutlet UIButton *selectedButton;
+    IBOutlet UILabel *myLabel;
+}
+
+@property (nonatomic ,retain)  IBOutlet UIButton* selectedButton;  
+
+@property (nonatomic, retain) IBOutlet UILabel *myLabel;
+
 
 @end

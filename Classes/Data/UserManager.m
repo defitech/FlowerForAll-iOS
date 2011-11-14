@@ -86,7 +86,7 @@ static User* currentU;
 
 //List all users (Users)
 +(NSArray*)listAllUser {
-    NSMutableArray* ids = [[NSMutableArray alloc] init];
+    NSMutableArray* ids = [[[NSMutableArray alloc] init] autorelease];
     for (NSString* strId in [DataAccess arrayOfFilesInFolder:@"/users"]) {
         [ids addObject:[[User alloc] initWithId:[strId intValue]]];
     }

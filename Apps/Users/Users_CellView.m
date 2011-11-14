@@ -10,6 +10,8 @@
 
 @implementation Users_CellView
 
+@synthesize selectedButton, myLabel;
+
 - (NSString *) reuseIdentifier {
     return @"userCell";
 }

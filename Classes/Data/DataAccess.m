@@ -21,13 +21,14 @@ static NSString* dd;
 +(NSString*) docDirectory {
     if (dd == nil) {
         dd = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        [dd retain]; // otherwise it gets released 
     }
     return dd;
 }
 
 // return current directory
 +(NSString*) docDirectoryWithPath:(NSString*)path {
-    return [NSString stringWithFormat:@"%@/%@",[self docDirectory],path];
+    return [NSString stringWithFormat:@"%@/%@",[DataAccess docDirectory],path];
 }
 
 
