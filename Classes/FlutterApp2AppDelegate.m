@@ -10,11 +10,10 @@
 
 #import "FlutterApp2AppDelegate.h"
 
-#import "DB.h"
 #import "ConnectionManager.h"
 
 #import "User.h"
-
+#import "DB.h"
 
 @implementation FlutterApp2AppDelegate
 
@@ -33,7 +32,6 @@
 // - Creates the main user (with ID 0) if it does not already exist
 // - Then adds the tab bar controller view to the main window
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	[DB db]; // init and open the database
    	[self.window addSubview:viewController.view];
     [self.window makeKeyAndVisible];
     return YES;

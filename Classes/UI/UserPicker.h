@@ -9,16 +9,11 @@
 // Maybe this code will be Abandonned
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface UserPicker : NSObject  <UIPickerViewDataSource, UIPickerViewDelegate, UIAlertViewDelegate> {
-    //The picker view that is displayed for selecting the user in case of multiple users utilisation
-	UIView *labelAndPickerView;
-	UIPickerView *myPickerView;
-	UILabel *pickerLabel;
-    
     //Arrays containing the user informations (for the display and selection of users)
-	NSArray *userIDsArray;
-	NSArray *usernamesArray;
+	NSArray *userArray;
 	
 	//Stores the currently selected row in the picker view
 	NSInteger selectedRow;
@@ -27,15 +22,20 @@
 	UITextField *passwordTextField;
 }
 
+/** show the user picker on top of FLowerController view **/
++(void)show;
+
+- (void) dismissAndPickSelectedUser;
+
 - (id)showOnView:(UIViewController*)myController;
 
-@property (nonatomic, retain) UIView *labelAndPickerView;
-@property (nonatomic, retain) UIPickerView *myPickerView;
-@property (nonatomic, retain) UILabel *pickerLabel;
+-(IBAction)dismissActionSheet:(id)sender;
+
+- (User*) selectedUser;
 
 
-@property (nonatomic, retain) NSArray *userIDsArray;
-@property (nonatomic, retain) NSArray *usernamesArray;
+
+@property (nonatomic, retain) NSArray *userArray;
 @property NSInteger selectedRow;
 @property (nonatomic, retain) UITextField *passwordTextField;
 

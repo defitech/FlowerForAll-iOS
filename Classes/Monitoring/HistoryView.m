@@ -60,7 +60,7 @@ NSTimer *repeatingTimer;
 }
 
 - (void) startReloadTimer {
-    if (! [[FlowerController currentFlapix] running]) return;
+    if ([FlowerController currentFlapix] == nil || ! [[FlowerController currentFlapix] running]) return;
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                       target:self selector:@selector(timerFireMethod:)
                                                     userInfo:nil  repeats:YES];
@@ -375,6 +375,10 @@ NSTimer *repeatingTimer;
 
 -(void) historyChange:(id*) history_id {
  
+}
+
+-(void) reloadFromDB {
+    [history reloadFromDB];
 }
 
 - (void)flapixEventFrequency:(NSNotification *)notification {

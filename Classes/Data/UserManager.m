@@ -10,6 +10,9 @@
 #import "DB.h"
 #import "DataAccess.h"
 #import "User.h"
+#import "UserPicker.h"
+#import "FlowerController.h"
+#import "ParametersManager.h"
 
 @implementation UserManager
 
@@ -19,7 +22,6 @@ static User* currentU;
     if (currentU == nil) {
         // return nil if they are several users 
         if ([[self listAllUser] count] > 1) {
-            NSLog(@"UserManager: you must choose a user first");
             return nil;
         }
         if (! [DataAccess fileExists:[self uDir:0]]) { // Create owner
@@ -27,9 +29,35 @@ static User* currentU;
             [self createUser:NSLocalizedString(@"Owner", @"User name for the Owner of the App") password:@""];
         }
         NSLog(@"UserManager: autoload owner");
-        currentU = [[User alloc] initWithId:0];
+        [self setCurrentUser:0];
+       
     }
     return currentU;
+}
+
+
++(void) setCurrentUser:(int)uid {
+    if (currentU != nil) {
+        // close db
+        [DB close];
+        [currentU release];
+    }
+    currentU = [[User alloc] initWithId:uid];
+    [DB db]; // load database
+    // refresh flapix (if needed)
+    [FlowerController initFlapix];
+    // refresh history view
+    [[[FlowerController currentFlower] historyView] reloadFromDB];
+    NSLog(@"setCurrent User %i: %@",[currentU uid],[currentU name]);
+}
+
+// bloc process until a user is choosen
++(void) requireUser {
+    if ([self currentUser] == nil) {
+        NSLog(@"UserManager requireUser Loop");
+        [UserPicker show];
+        [UserManager performSelector:@selector(requireUser) withObject:nil afterDelay:1];
+    }
 }
 
 +(NSString*) uDir:(int)uid {

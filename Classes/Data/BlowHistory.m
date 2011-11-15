@@ -35,10 +35,14 @@
     if (history == nil) {
         history = [[NSMutableArray alloc] init ];
     }
+    
+    return YES;
+}
+
+-(void) reloadFromDB {
     // empty history and fill it with data from the DB
     [history removeAllObjects];
     [DB fillWithBlows:history fromTimestamp:(CFAbsoluteTimeGetCurrent() - duration_s)];
-    return YES;
 }
 
 -(void) flapixEventEndBlow:(NSNotification *)notification {
