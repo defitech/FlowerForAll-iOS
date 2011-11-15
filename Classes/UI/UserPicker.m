@@ -100,7 +100,7 @@ UIActionSheet* actionSheet;
     [actionSheet release];
     actionSheet = nil;
     
-    if ([[[self selectedUser] password] isEqualToString:@"x"]) {
+    if ([[[self selectedUser] password] isEqualToString:@""]) {
         [self dismissAndPickSelectedUser];
         return;
     }
