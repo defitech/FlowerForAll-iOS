@@ -25,14 +25,16 @@
 /** show the user picker on top of FLowerController view **/
 +(void)show;
 
+- (void) showUserPicker ;
+
 - (void) dismissAndPickSelectedUser;
 
-- (id)showOnView:(UIViewController*)myController;
 
 -(IBAction)dismissActionSheet:(id)sender;
 
 - (User*) selectedUser;
 
+- (void) showPasswordSheet:(NSString*)extraMessage ;
 
 
 @property (nonatomic, retain) NSArray *userArray;

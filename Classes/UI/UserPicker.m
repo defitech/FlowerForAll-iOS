@@ -28,7 +28,7 @@
     if (! showing) {
         showing = true;
         NSLog(@"UserPicker:show");
-        [[UserPicker alloc] showOnView:[FlowerController currentFlower]];
+        [[[UserPicker alloc] init] showUserPicker];
     } else {
          NSLog(@"UserPicker:already showing");
     }
@@ -42,69 +42,90 @@
 
 UIActionSheet* actionSheet;
 
-- (id)showOnView:(UIViewController*)myController
+- (id)init
 {
     self = [super init];
     if (self) {
         
         //Construct an array of user names based on the array of user IDs, and store into instance variables
         self.userArray = [UserManager listAllUser];
-        
-        actionSheet = [[UIActionSheet alloc] initWithTitle:nil 
-                                                                 delegate:nil
-                                                        cancelButtonTitle:nil
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:nil];
-        
-        [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-        
-        CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
-        
-        UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
-        pickerView.showsSelectionIndicator = YES;
-        pickerView.dataSource = self;
-        pickerView.delegate = self;
-        
-        [actionSheet addSubview:pickerView];
-        [pickerView release];
-        
-        UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:NSLocalizedString(@"Done", @"Button to validate user selection")]];
-        closeButton.momentary = YES; 
-        closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
-        closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
-        closeButton.tintColor = [UIColor blackColor];
-        [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
-        [actionSheet addSubview:closeButton];
-        [actionSheet setTitle:NSLocalizedString(@"Pick your profile name", @"Title of the user chooser")];
-        [closeButton release];
-        
-        [actionSheet showInView:myController.view];
-        
-        [actionSheet setBounds:CGRectMake(0, 0, 320, 485)];        
-        
+
     }
     
     return self;
 }
 
+- (void) showUserPicker {
+    if (actionSheet != nil) {
+        NSLog(@"UserPicker: showUserPicker actionSheet is not nil.. strange situation" );
+    }
+    actionSheet = [[UIActionSheet alloc] initWithTitle:nil 
+                                              delegate:nil
+                                     cancelButtonTitle:nil
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:nil];
+    
+    [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    
+    CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
+    
+    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
+    pickerView.showsSelectionIndicator = YES;
+    pickerView.dataSource = self;
+    pickerView.delegate = self;
+    
+    [actionSheet addSubview:pickerView];
+    [pickerView release];
+    
+    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:NSLocalizedString(@"Done", @"Button to validate user selection")]];
+    closeButton.momentary = YES; 
+    closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    closeButton.tintColor = [UIColor blackColor];
+    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
+    [actionSheet addSubview:closeButton];
+    [actionSheet setTitle:NSLocalizedString(@"Pick your profile name", @"Title of the user chooser")];
+    [closeButton release];
+    
+    [actionSheet showInView:[FlowerController currentFlower].view];
+    
+    [actionSheet setBounds:CGRectMake(0, 0, 320, 485)];        
+    
+}
+ 
+
 -(IBAction)dismissActionSheet:(id)sender {
     // hiden picker
     [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
     [actionSheet release];
+    actionSheet = nil;
     
-    if ([[[self selectedUser] password] isEqualToString:@""]) {
+    if ([[[self selectedUser] password] isEqualToString:@"x"]) {
         [self dismissAndPickSelectedUser];
         return;
     }
     
+    [self showPasswordSheet:@""];
+}
+
+
+- (void) showPasswordSheet:(NSString*)extraMessage {
+    
     //Creates an alert for the user to enter his password
-    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PasswordAlertLabel", @"Label of the password alert") message:@"this gets covered" delegate:self cancelButtonTitle:NSLocalizedString(@"PasswordAlertCancelButtonLabel", @"Label of the cancel button label on the password alert") otherButtonTitles:NSLocalizedString(@"PasswordAlertOKButtonLabel", @"Label of the OK button label on the password alert"), nil];
-    self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 45.0, 260.0, 25.0)];
+    UIAlertView *myAlertView = [[UIAlertView alloc] 
+                                initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Enter password for %@", @"Label of the password alert"),[[self selectedUser] name]] 
+                                message:[NSString stringWithFormat:@"%@\n\n",extraMessage]
+                                delegate:self 
+                                cancelButtonTitle:NSLocalizedString(@"Cancel", @"Label of the cancel button label on the password alert") 
+                                otherButtonTitles:NSLocalizedString(@"OK", @"Label of the OK button label on the password alert"), nil];
+    
+    self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 70.0, 260.0, 25.0)];
     [self.passwordTextField setBackgroundColor:[UIColor whiteColor]];
     self.passwordTextField.secureTextEntry = YES;
     [myAlertView addSubview:self.passwordTextField];
     [myAlertView show];
     [myAlertView release];
+    
 }
 
 //Returns 1 because we only need one column
@@ -131,7 +152,6 @@ UIActionSheet* actionSheet;
 }
 
 
-
 //Check password if clicked on OK button
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	
@@ -139,23 +159,16 @@ UIActionSheet* actionSheet;
         if ([[[self selectedUser] password] isEqualToString:self.passwordTextField.text]) {
             
             NSLog(@"Choose User %@",[[self selectedUser] name] );
-            
-            
-            [UIView beginAnimations:@"Transition" context:nil];
-            [UIView setAnimationDuration:0.3];
-            
-            
-            [UIView commitAnimations];
-            
-            //Re-enable UI elements
-            //scrollView.userInteractionEnabled = YES;
-            //delegate.tabBarController.tabBar.userInteractionEnabled = YES;
-            
+            [self dismissAndPickSelectedUser];
+            showing = false;
         } else {
-            NSLog(@"Wrong password");
+            [self showPasswordSheet:NSLocalizedString(@"Wrong password please retry.", @"Message to display in the alert box.")];
         }
         
-	}
+	} else {
+        //[self showUserPicker];
+         showing = false;
+    }
 }
 
 @end

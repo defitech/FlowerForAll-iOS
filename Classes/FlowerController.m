@@ -277,9 +277,6 @@ static NSMutableDictionary* appList;
     
     [buttonImageHighlighted release];
  
-
-
-    
     // depend of flapix state
     [self startStopButtonRefresh:nil];
     
