@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 
-@interface Users_Editor : UIViewController {
+@interface Users_Editor : UIViewController <UIAlertViewDelegate> {
     UILabel* nameLabel;
     UITextField* nameField;
     UILabel* passwordLabel;
@@ -31,7 +31,6 @@
 - (IBAction) nameFieldEditingEnd:(id)sender;
 - (IBAction) passwordFieldEditingEnd:(id)sender;
 
-- (IBAction)backgroundTouched:(id)sender;
-
+- (IBAction) buttonDeletePressed: (id)sender ;
 @end
 

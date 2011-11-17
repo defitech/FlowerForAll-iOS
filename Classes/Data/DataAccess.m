@@ -41,6 +41,12 @@ static NSString* dd;
 }
 
 
+//Move a  directory inside the Documents directory
++ (void)moveItemAtPath:(NSString *)srcpath toPath:(NSString *)dstpath {
+	[[NSFileManager defaultManager] moveItemAtPath:[self docDirectoryWithPath:srcpath] 
+                                            toPath:[self docDirectoryWithPath:dstpath] error:nil];
+}
+
 
 //Check if the file given by filePath
 + (BOOL)fileExists:(NSString *)filePath {

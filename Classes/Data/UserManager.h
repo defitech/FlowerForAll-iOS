@@ -41,6 +41,9 @@
 //Creates a new user return id of this new user
 + (int)createUser:(NSString *)name password:(NSString *)password;
 
+//Drop a user
++ (void)dropUser:(int)uid;
+
 
 
 //Info 

@@ -88,11 +88,21 @@ static User* currentU;
 	return uid;
 }
 
-
+//Drop a user
++ (void)dropUser:(int)uid {
+    if (currentU.uid == uid) {
+        NSLog(@"ERROR : userManager.dropuser cannot drop current user");
+        return;
+    }
+    [DataAccess createDirectory:@"trash"];
+    NSString *dstDir = [NSString stringWithFormat:@"trash/%i.user",CFAbsoluteTimeGetCurrent()];
+    [DataAccess moveItemAtPath:[self uDir:uid] toPath:dstDir];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"userDataChangeEvent" object:nil];
+}
 
 //Info 
 +(BOOL)setUserInfo:(int)uid key:(NSString*)key value: (NSString *)value {
-    [[NSNotificationCenter defaultCenter] postNotificationName: @"userDataChangeEvent" object: Nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"userDataChangeEvent" object:nil];
 	return [DataAccess writeToFile:value  filePath:[self uFile:uid filePath:key]] ;
 }
 

@@ -67,8 +67,25 @@
     [me changePassword:passwordField.text];
 }
 
-- (IBAction)backgroundTouched:(id)sender {
-    [sender resignFirstResponder];
+- (IBAction) buttonDeletePressed: (id)sender {
+    
+    // Show the confirmation.
+    UIAlertView *alert = [[UIAlertView alloc] 
+                          initWithTitle:NSLocalizedStringFromTable(@"Delete",@"Users",@"Title of the confirm deletion alert box")
+                          message:NSLocalizedStringFromTable(@"Do you want to delete all the data for this user?",@"Users",@"message")
+                          delegate: self
+                          cancelButtonTitle: NSLocalizedStringFromTable(@"Cancel",@"Users",nil)
+                          otherButtonTitles: NSLocalizedStringFromTable(@"Delete",@"Users",@"Button title for the Delete action"), nil];
+    [alert show];
+    [alert release];
+}
+
+// Called when an alertview button is touched
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if  (buttonIndex == 1) {
+        [[self navigationController] popViewControllerAnimated:YES];
+        [UserManager dropUser:me.uid];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

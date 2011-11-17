@@ -28,6 +28,8 @@
 //Create a new directory inside the Documents directory
 + (void)createDirectory:(NSString *)dirPath;
 
++ (void)moveItemAtPath:(NSString *)srcpath toPath:(NSString *)dstpath;
+
 //Check if the file given by filePath
 + (BOOL)fileExists:(NSString *)filePath;
 
