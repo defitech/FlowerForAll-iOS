@@ -25,6 +25,9 @@
 /** show the user picker on top of FLowerController view **/
 +(void)show;
 
+/** show the password test on top of FLowerController view **/
++(void)askPasswordFor:(User*)user;
+
 - (void) showUserPicker ;
 
 - (void) dismissAndPickSelectedUser;

@@ -22,17 +22,34 @@
 
 @synthesize  userArray,  selectedRow, passwordTextField;
 
+User* onlyPasswordModeUser;
+
+
  static BOOL showing = false;
 /** show the user picker on top of FLowerController view **/
 +(void)show {
     if (! showing) {
         showing = true;
-        NSLog(@"UserPicker:show");
+        onlyPasswordModeUser = nil;
         [[[UserPicker alloc] init] showUserPicker];
     } else {
          NSLog(@"UserPicker:already showing");
     }
 }
+
+
+/** show the password test on top of FLowerController view **/
++(void)askPasswordFor:(User*)user {
+    if (! showing) {
+        showing = true;
+        onlyPasswordModeUser = user;
+        [[[UserPicker alloc] init] showPasswordSheet:@""];
+    } else {
+        NSLog(@"UserPicker:already showing");
+    }
+}
+
+
 
 
 - (void) dismissAndPickSelectedUser {
@@ -149,7 +166,10 @@ UIActionSheet* actionSheet;
 
 
 - (User*) selectedUser {
-    return (User*)[self.userArray objectAtIndex:self.selectedRow];
+    if (onlyPasswordModeUser == nil)
+        return (User*)[self.userArray objectAtIndex:self.selectedRow];
+    
+    return onlyPasswordModeUser;
 }
 
 
@@ -168,7 +188,6 @@ UIActionSheet* actionSheet;
         }
         
 	} else {
-        //[self showUserPicker];
          showing = false;
     }
 }

@@ -126,6 +126,7 @@ static sqlite3 *database;
 +(void) close {
     if (database != nil) {
         sqlite3_close(database);
+        database = nil;
         NSLog(@"close database");
     }
 }

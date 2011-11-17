@@ -40,5 +40,9 @@
     return textView.frame.size.height + 10;
 }
 
+- (void)dealloc {
+    [super dealloc];
+    [textView release];
+}
 
 @end

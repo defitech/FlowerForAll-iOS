@@ -7,6 +7,7 @@
 //
 
 #import "Users_Editor.h"
+#import "UserManager.h"
 
 @implementation Users_Editor
 
@@ -29,10 +30,15 @@
     [nameLabel setText:NSLocalizedStringFromTable(@"Name",@"Users",@"Label of the name entry field")];
     [passwordLabel setText:NSLocalizedStringFromTable(@"Password",@"Users",@"Label of the password entry field")];
     [passwordField setPlaceholder:NSLocalizedStringFromTable(@"Leave empty for no password",@"Users",@"Tip for the password entry field")];
-    [deleteButton setTitle:NSLocalizedStringFromTable(@"Delete",@"Users",@"Label of delete button") forState:UIControlStateNormal];
+    
     
     [nameField setText:[me name]];
     [passwordField setText:[me password]];
+    
+    [deleteButton setTitle:NSLocalizedStringFromTable(@"Delete",@"Users",@"Label of delete button") forState:UIControlStateNormal];
+    if (me.uid == 0 || [UserManager currentUser].uid != 0) {
+        [deleteButton setHidden:YES];
+    }
 }
 
 - (void)viewDidUnload

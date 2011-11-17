@@ -12,6 +12,7 @@
 #import "Users_CellView.h"
 #import "Users_TextCell.h"
 #import "Users_Editor.h"
+#import "UserPicker.h"
 
 @implementation Users
 
@@ -109,6 +110,7 @@ Users_TextCell *cellh;
 }
 
 - (IBAction) userDataChangeEvent:(id)sender {
+    [self refreshPlusButton];
     [self.usersListTableView reloadData];
 }
 
@@ -118,10 +120,8 @@ Users_TextCell *cellh;
 #pragma mark Table view delegate
 //Push a ResultsApp_Day controller when the user touches a row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-	NSInteger row = [indexPath row];
-     NSLog(@"Select %i",row);
-		
+    User* user = (User*)[[UserManager listAllUser] objectAtIndex:[indexPath row]];
+	[UserPicker askPasswordFor:user];
 }
 
 
@@ -151,7 +151,7 @@ Users_TextCell *cellh;
     
     
     plusButton =  navItem.rightBarButtonItem ;
-    
+    [plusButton retain];
     [navController.navigationItem setRightBarButtonItem:nil]; 
     
     // register user name change events
@@ -177,19 +177,13 @@ Users_TextCell *cellh;
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    [plusButton release];
+    navController = nil;
+    navItem = nil;
+    usersListTableView = nil;
 }
 
 
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

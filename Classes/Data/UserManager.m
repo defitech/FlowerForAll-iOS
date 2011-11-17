@@ -49,6 +49,8 @@ static User* currentU;
     // refresh history view
     [[[FlowerController currentFlower] historyView] reloadFromDB];
     NSLog(@"setCurrent User %i: %@",[currentU uid],[currentU name]);
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"userDataChangeEvent" object: Nil];
+	
 }
 
 // bloc process until a user is choosen
