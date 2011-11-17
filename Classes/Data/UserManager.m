@@ -102,8 +102,9 @@ static User* currentU;
 
 //Info 
 +(BOOL)setUserInfo:(int)uid key:(NSString*)key value: (NSString *)value {
+    BOOL result = [DataAccess writeToFile:value  filePath:[self uFile:uid filePath:key]] ;
     [[NSNotificationCenter defaultCenter] postNotificationName: @"userDataChangeEvent" object:nil];
-	return [DataAccess writeToFile:value  filePath:[self uFile:uid filePath:key]] ;
+	return result;
 }
 
 

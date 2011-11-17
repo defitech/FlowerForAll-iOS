@@ -7,6 +7,7 @@
 //
 
 #import "Users_TextCell.h"
+#import "UserManager.h"
 
 @implementation Users_TextCell
 
@@ -22,13 +23,37 @@
         UIView *transparentBackground = [[UIView alloc] initWithFrame:CGRectZero];
         transparentBackground.backgroundColor = [UIColor clearColor];
         self.backgroundView = transparentBackground;	
+        
+
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(userDataChangeEvent:)
+         name: @"userDataChangeEvent"
+         object: nil];
+      
     }
     return self;
 }
 
+BOOL  textIsSet = NO;
+
+- (IBAction) userDataChangeEvent:(id)sender {
+     textIsSet = YES;
+    
+    if ([UserManager currentUser].uid == 0) {
+        if ([[UserManager listAllUser] count] > 1) {
+             [textView setText:NSLocalizedStringFromTable(@"Only the owner may remove or edit user. \nYou may switch to another identity by choosing the coresponding username.",@"Users",@"Info Text")];
+        } else {
+            [textView setText:NSLocalizedStringFromTable(@"Add users if this device is used by several persons. Use the + button on the top right corner.",@"Users",@"Info Text")];
+        }
+    } else {
+        [textView setText:NSLocalizedStringFromTable(@"You may switch to another identity by choosing the coresponding username. Only the owner may add or remove user.",@"Users",@"Info Text")];
+    }
+}
+
 
 - (CGFloat) height {
-    [textView setText:NSLocalizedStringFromTable(@"Add users if this device is used by several persons. Only the owner may add or remove users.",@"Users",@"Info Text")];
+    if (! textIsSet)   [self userDataChangeEvent:nil];
     
     CGSize constraintSize = CGSizeMake(textView.frame.size.width, MAXFLOAT);
     

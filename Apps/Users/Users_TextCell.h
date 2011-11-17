@@ -14,6 +14,8 @@
 
 @property (nonatomic ,retain)  IBOutlet UITextView* textView;  
 
+- (IBAction) userDataChangeEvent:(id)sender;
+
 - (CGFloat) height;
 
 @end

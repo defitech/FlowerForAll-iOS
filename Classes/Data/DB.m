@@ -44,14 +44,15 @@ static sqlite3 *database;
             [DataAccess docDirectory],
             [UserManager uDir:[[UserManager currentUser] uid]]];
       
-                
+        BOOL initDB = ! [[NSFileManager defaultManager] fileExistsAtPath:dbFilePath];
+        
         // Open the database
         if(sqlite3_open([dbFilePath UTF8String], &database) == SQLITE_OK){
-            NSLog(@"DB OPEN %@", dbFilePath);
             
-            NSString* actualVersion = [DB getInfoValueForKey:@"db_version"];
-            
-            if (actualVersion == nil) {
+            NSString* actualVersion = @"0";
+            if (initDB) {
+                NSLog(@"DB INIT ");
+                
                 [DB execute:@"CREATE TABLE infos(key TEXT PRIMARY KEY, value TEXT);"];
                 [DB execute:@"CREATE TABLE profils(pid INTEGER PRIMARY KEY AUTOINCREMENT, \
                                                  name TEXT NOT NULL, \
@@ -73,7 +74,9 @@ static sqlite3 *database;
                                     duration_exercice_done_p NUM, blow_count NUM, blow_star_count NUM , profile_name TEXT) ;"];
                 actualVersion = @"4";
                 [DB setInfoValueForKey:@"db_version" value:actualVersion];
-            } 
+            } else {
+                actualVersion = [DB getInfoValueForKey:@"db_version"];
+            }
             
             // update from 1 to 2
             if ([actualVersion isEqualToString:@"1"]) {
