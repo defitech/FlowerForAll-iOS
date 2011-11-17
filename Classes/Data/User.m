@@ -26,6 +26,11 @@
     return self;
 }
 
-
+- (void) changeName:(NSString*)newName {
+    [UserManager setUserInfo:uid key:@"username" value:newName];
+}
+- (void) changePassword:(NSString*)newPassword {
+     [UserManager setUserInfo:uid key:@"password" value:newPassword];
+}
 
 @end

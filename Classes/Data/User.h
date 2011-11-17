@@ -23,4 +23,8 @@
 
 - (id)initWithId:(int)_uid;
 
+
+- (void) changeName:(NSString*)newName;
+- (void) changePassword:(NSString*)newPassword;
+
 @end

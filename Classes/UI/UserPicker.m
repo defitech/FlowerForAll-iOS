@@ -122,6 +122,7 @@ UIActionSheet* actionSheet;
     self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 70.0, 260.0, 25.0)];
     [self.passwordTextField setBackgroundColor:[UIColor whiteColor]];
     self.passwordTextField.secureTextEntry = YES;
+    [self.passwordTextField setKeyboardType:UIKeyboardTypeNumberPad];
     [myAlertView addSubview:self.passwordTextField];
     [myAlertView show];
     [myAlertView release];
@@ -162,6 +163,7 @@ UIActionSheet* actionSheet;
             [self dismissAndPickSelectedUser];
             showing = false;
         } else {
+            NSLog(@"Password for User %@ is %@",[[self selectedUser] name],[[self selectedUser] password]);
             [self showPasswordSheet:NSLocalizedString(@"Wrong password please retry.", @"Message to display in the alert box.")];
         }
         

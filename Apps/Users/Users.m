@@ -10,6 +10,7 @@
 #import "UserManager.h"
 #import "Users_CellView.h"
 #import "Users_TextCell.h"
+#import "Users_Editor.h"
 
 @implementation Users
 
@@ -89,9 +90,26 @@ Users_TextCell *cellh;
     cell.selectedButton.hidden = [UserManager currentUser] == nil || 
                                  (user.uid != [UserManager currentUser].uid); 
     
+    if ([UserManager currentUser].uid == 0 || [UserManager currentUser].uid == user.uid)  {
+        [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+    } else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+        
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = [indexPath row];
+    User* user = (User*)[[UserManager listAllUser] objectAtIndex:row];
+	
+    [[self navController] pushViewController:[[Users_Editor alloc] initWithUser:user] animated:YES];
+
+}
+
+- (IBAction) userDataChangeEvent:(id)sender {
+    [self.usersListTableView reloadData];
+}
 
 #pragma mark -
 #pragma mark Table view delegate
@@ -99,13 +117,17 @@ Users_TextCell *cellh;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	NSInteger row = [indexPath row];
-    
+     NSLog(@"Select %i",row);
 		
 }
 
 
 
 #pragma mark - View lifecycle
+
+
+
+
 
 - (void)viewDidLoad
 {
@@ -118,6 +140,14 @@ Users_TextCell *cellh;
                             self.view.frame.size.width,
                             self.view.frame.size.height);
     [self.view addSubview:navController.view];
+    
+    // register user name change events
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(userDataChangeEvent:)
+     name: @"userDataChangeEvent"
+     object: nil];
+    
 }
 
 - (void)viewDidUnload
