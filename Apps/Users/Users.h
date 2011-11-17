@@ -9,19 +9,28 @@
 #import "FlowerApp.h"
 
 @interface Users : FlowerApp  <UITableViewDelegate, UITableViewDataSource>  {
-    IBOutlet UINavigationController* navController;
+    UINavigationController* navController;
     
     //The table view
-	IBOutlet UITableView *usersListTableView;
+	UITableView *usersListTableView;
     
+    UINavigationItem *navItem;
+    
+    // to keep a ref when hidding
+    UIBarButtonItem *plusButton;
 }
 
 @property (nonatomic, retain)  IBOutlet UINavigationController* navController;  
 
 @property (nonatomic, retain) IBOutlet UITableView *usersListTableView;
 
+@property (nonatomic, retain) IBOutlet UINavigationItem *navItem;
+
 - (IBAction) plusButtonTouch:(id)sender;
 
+
 - (IBAction) userDataChangeEvent:(id)sender;
+
+- (void)refreshPlusButton;
 
 @end

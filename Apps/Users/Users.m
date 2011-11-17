@@ -5,6 +5,7 @@
 //  Created by Pierre-Mikael Legris on 14.11.11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
+#import "FlowerController.h"
 
 #import "Users.h"
 #import "UserManager.h"
@@ -14,7 +15,7 @@
 
 @implementation Users
 
-@synthesize navController, usersListTableView;
+@synthesize navController, usersListTableView, navItem ;
 
 Users_TextCell *cellh;
 
@@ -111,6 +112,8 @@ Users_TextCell *cellh;
     [self.usersListTableView reloadData];
 }
 
+
+
 #pragma mark -
 #pragma mark Table view delegate
 //Push a ResultsApp_Day controller when the user touches a row
@@ -128,7 +131,6 @@ Users_TextCell *cellh;
 
 
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -141,6 +143,17 @@ Users_TextCell *cellh;
                             self.view.frame.size.height);
     [self.view addSubview:navController.view];
     
+    navItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+          initWithTitle:NSLocalizedStringFromTable(@"Menu",@"Users",@"Left nav Button")
+                                                        style:UIBarButtonItemStyleBordered 
+                                                        target:[FlowerController currentFlower] 
+                                                        action:@selector(goToMenu:)]; 
+    
+    
+    plusButton =  navItem.rightBarButtonItem ;
+    
+    [navController.navigationItem setRightBarButtonItem:nil]; 
+    
     // register user name change events
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -148,6 +161,17 @@ Users_TextCell *cellh;
      name: @"userDataChangeEvent"
      object: nil];
     
+    
+    [self refreshPlusButton];
+}
+
+
+- (void)refreshPlusButton {
+    if ([UserManager currentUser].uid == 0) {
+        navItem.rightBarButtonItem = plusButton;
+    } else {
+        navItem.rightBarButtonItem = nil;
+    }
 }
 
 - (void)viewDidUnload
