@@ -140,6 +140,8 @@ UIActionSheet* actionSheet;
     [self.passwordTextField setBackgroundColor:[UIColor whiteColor]];
     self.passwordTextField.secureTextEntry = YES;
     [self.passwordTextField setKeyboardType:UIKeyboardTypeNumberPad];
+    
+    [self.passwordTextField becomeFirstResponder];
     [myAlertView addSubview:self.passwordTextField];
     [myAlertView show];
     [myAlertView release];
