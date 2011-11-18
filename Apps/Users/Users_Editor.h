@@ -12,6 +12,7 @@
 @interface Users_Editor : UIViewController <UIAlertViewDelegate> {
     UILabel* nameLabel;
     UITextField* nameField;
+    UILabel* nameTipLabel;
     UILabel* passwordLabel;
     UITextField* passwordField;
     UIButton* deleteButton;
@@ -23,6 +24,7 @@
 
 @property (nonatomic, retain) IBOutlet UILabel* nameLabel;
 @property (nonatomic, retain) IBOutlet UITextField* nameField;
+@property (nonatomic, retain) IBOutlet UILabel* nameTipLabel;
 @property (nonatomic, retain) IBOutlet UILabel* passwordLabel;
 @property (nonatomic, retain) IBOutlet UITextField* passwordField;
 @property (nonatomic, retain) IBOutlet UIButton* deleteButton;

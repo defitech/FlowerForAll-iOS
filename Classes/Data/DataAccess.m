@@ -9,6 +9,7 @@
 
 
 #import "DataAccess.h"
+#import "UserManager.h"
 
 #include <math.h>
 
@@ -30,6 +31,16 @@ static NSString* dd;
         
         NSLog(@"DataAccess.initOrUpgrade: Moved data to Library");
     }
+    
+    // reset owner password
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[self libDirectoryWithPath:@"users/0/password"]] &&
+        [[NSFileManager defaultManager] fileExistsAtPath:[self docDirectoryWithPath:@"resetpassword.txt"]]) {
+        [UserManager setUserInfo:0 key:@"password" value:@""];
+        NSLog(@"DataAccess.initOrUpgrade: Reset owner password");
+        [[NSFileManager defaultManager] 
+            removeItemAtPath:[self docDirectoryWithPath:@"resetpassword.txt"] error:nil]; 
+    }
+    
 }
 
 

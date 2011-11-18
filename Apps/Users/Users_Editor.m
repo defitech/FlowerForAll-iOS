@@ -11,7 +11,7 @@
 
 @implementation Users_Editor
 
-@synthesize nameField, nameLabel, passwordField, passwordLabel, deleteButton, me;
+@synthesize nameField, nameLabel, nameTipLabel, passwordField, passwordLabel, deleteButton, me;
 
 - (id) initWithUser:(User *)user {
     [super initWithNibName:@"Users_Editor" bundle:nil];
@@ -28,6 +28,8 @@
     self.title = NSLocalizedStringFromTable(@"Edit user",@"Users",@"Edit User page title");
     
     [nameLabel setText:NSLocalizedStringFromTable(@"Name",@"Users",@"Label of the name entry field")];
+    [nameTipLabel setText:NSLocalizedStringFromTable(@"In a medical environnement choose a username that preserve nonymity.",@"Users",@"Tip for th label of the name entry field")];
+    
     [passwordLabel setText:NSLocalizedStringFromTable(@"Password",@"Users",@"Label of the password entry field")];
     [passwordField setPlaceholder:NSLocalizedStringFromTable(@"Leave empty for no password",@"Users",@"Tip for the password entry field")];
     
