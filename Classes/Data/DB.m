@@ -41,14 +41,14 @@ static sqlite3 *database;
         
         // Get path to db File file.
         NSString *dbFilePath = [NSString stringWithFormat:@"%@/%@/db.sql",
-            [DataAccess docDirectory],
+            [DataAccess libDirectory],
             [UserManager uDir:[[UserManager currentUser] uid]]];
       
         BOOL initDB = ! [[NSFileManager defaultManager] fileExistsAtPath:dbFilePath];
         
         // Open the database
         if(sqlite3_open([dbFilePath UTF8String], &database) == SQLITE_OK){
-            
+             NSLog(@" DB OPEN %@", dbFilePath);
             NSString* actualVersion = @"0";
             if (initDB) {
                 NSLog(@"DB INIT ");

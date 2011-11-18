@@ -15,9 +15,40 @@
 
 @implementation DataAccess
 
+static NSString* ld;
 static NSString* dd;
 
-// return current directory
+/**
+ * Check the data structure, init or upgrade it if needed
+ */
++(void) initOrUpgrade {
+    // move from structure where data was stored in Documents to Library
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[self docDirectoryWithPath:@"users"]] &&
+        ! [[NSFileManager defaultManager] fileExistsAtPath:[self libDirectoryWithPath:@"users"]]) {
+        [[NSFileManager defaultManager] moveItemAtPath:[self docDirectoryWithPath:@"users"] 
+                                                toPath:[self libDirectoryWithPath:@"users"] error:nil];
+        
+        NSLog(@"DataAccess.initOrUpgrade: Moved data to Library");
+    }
+}
+
+
+
+// return current lib directory
++(NSString*) libDirectory {
+    if (ld == nil) {
+        ld = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        [ld retain]; // otherwise it gets released 
+    }
+    return ld;
+}
+
+// return current lib directory
++(NSString*) libDirectoryWithPath:(NSString*)path {
+    return [NSString stringWithFormat:@"%@/%@",[DataAccess libDirectory],path];
+}
+
+// return current doc directory
 +(NSString*) docDirectory {
     if (dd == nil) {
         dd = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -26,38 +57,39 @@ static NSString* dd;
     return dd;
 }
 
-// return current directory
+// return current doc directory
 +(NSString*) docDirectoryWithPath:(NSString*)path {
     return [NSString stringWithFormat:@"%@/%@",[DataAccess docDirectory],path];
 }
 
 
 
-//Create a new directory inside the Documents directory
+
+//Create a new directory inside the Library directory
 + (void)createDirectory:(NSString *)dirPath {
-	//Create a new directory inside the Documents directory
-	[[NSFileManager defaultManager] createDirectoryAtPath:[self docDirectoryWithPath:dirPath] withIntermediateDirectories:YES attributes:nil error:nil];
+	//Create a new directory inside the Library directory
+	[[NSFileManager defaultManager] createDirectoryAtPath:[self libDirectoryWithPath:dirPath] withIntermediateDirectories:YES attributes:nil error:nil];
 	
 }
 
 
-//Move a  directory inside the Documents directory
+//Move a  directory inside the Library directory
 + (void)moveItemAtPath:(NSString *)srcpath toPath:(NSString *)dstpath {
-	[[NSFileManager defaultManager] moveItemAtPath:[self docDirectoryWithPath:srcpath] 
-                                            toPath:[self docDirectoryWithPath:dstpath] error:nil];
+	[[NSFileManager defaultManager] moveItemAtPath:[self libDirectoryWithPath:srcpath] 
+                                            toPath:[self libDirectoryWithPath:dstpath] error:nil];
 }
 
 
 //Check if the file given by filePath
 + (BOOL)fileExists:(NSString *)filePath {
     return [[NSFileManager defaultManager] 
-            fileExistsAtPath:[self docDirectoryWithPath:filePath]];
+            fileExistsAtPath:[self libDirectoryWithPath:filePath]];
 }
 
 
 //Write the string to the filePath
 + (BOOL)writeToFile:(NSString*)str  filePath:(NSString *)filePath {
-	return [[str dataUsingEncoding:NSUTF8StringEncoding] writeToFile:[self docDirectoryWithPath:filePath] atomically:YES];
+	return [[str dataUsingEncoding:NSUTF8StringEncoding] writeToFile:[self libDirectoryWithPath:filePath] atomically:YES];
     
 }
 
@@ -68,14 +100,14 @@ static NSString* dd;
         return nil;
     }
 	return [NSString 
-            stringWithContentsOfFile:[self docDirectoryWithPath:filePath] encoding:NSUTF8StringEncoding error:nil];  
+            stringWithContentsOfFile:[self libDirectoryWithPath:filePath] encoding:NSUTF8StringEncoding error:nil];  
 }
 
 
 
 //List all files in a given folder and returns an array containing these files 
 +(NSArray*)arrayOfFilesInFolder:(NSString*) path {
-	return [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self docDirectoryWithPath:path] error:nil];
+	return [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self libDirectoryWithPath:path] error:nil];
 }
 
 

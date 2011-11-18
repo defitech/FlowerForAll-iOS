@@ -14,6 +14,8 @@
 
 #import "UserManager.h"
 
+#import "DataAccess.h"
+
 
 @implementation FlowerController
 
@@ -242,10 +244,12 @@ static NSMutableDictionary* appList;
     if (singleton != nil)  return ;
     singleton = self;
     
-    // Start FLAPIX
-    NSLog(@"FlowerController viewDidLoad");
-    // Do any additional setup after loading the view from its nib.
+    // init any data if needed
+    [DataAccess initOrUpgrade];
     
+    
+    NSLog(@"FlowerController viewDidLoad");
+ 
     
     // init App list
     appList = [[NSMutableDictionary alloc] initWithObjectsAndKeys:

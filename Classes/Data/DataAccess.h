@@ -19,13 +19,24 @@
 }
 
 
+/**
+ * Check the data structure, init or upgrade it if needed
+ */
++(void) initOrUpgrade;
+
 // return current directory
-+(NSString*) docDirectory;
++(NSString*) libDirectory;
 
 // return current directory and append path
++(NSString*) libDirectoryWithPath:(NSString*)path;
+
+// return current doc directory
++(NSString*) docDirectory;
+
+// return current doc directory
 +(NSString*) docDirectoryWithPath:(NSString*)path;
 
-//Create a new directory inside the Documents directory
+//Create a new directory inside the Library directory
 + (void)createDirectory:(NSString *)dirPath;
 
 + (void)moveItemAtPath:(NSString *)srcpath toPath:(NSString *)dstpath;
