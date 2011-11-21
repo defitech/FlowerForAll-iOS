@@ -239,7 +239,7 @@ double	FLAPI_GetThreshold();
 int		FLAPI_SetBlowCount( int count );
 int		FLAPI_GetBlowCount();
 
-int		FLAPI_SetTargetFrequency( int freq, int tolerance );
+int		FLAPI_SetTargetFrequency( double freq, double tolerance );
 double		FLAPI_GetTargetFrequency();
 double		FLAPI_GetFrequencyTolerance();
 
