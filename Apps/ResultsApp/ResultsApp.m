@@ -8,6 +8,7 @@
 
 #import "ResultsApp.h"
 #import "ResultsApp_Mailer.h"
+#import "UserManager.h"
 
 @implementation ResultsApp
 
@@ -80,7 +81,8 @@
         
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = self;
-        [mailViewController setSubject:@"Flutter Data"];
+        [mailViewController setSubject:[NSString stringWithFormat:
+          NSLocalizedStringFromTable(@"Flower-Breath data for %@",@"ResultsApp", @"Mail subject"),[UserManager currentUser].name]];
         
         
         NSMutableData *data = [[NSMutableData alloc] init];
@@ -92,7 +94,8 @@
         [ResultsApp_Mailer exericesToCSV:data html:message];
         [mailViewController setMessageBody:message isHTML:YES];
         
-        [mailViewController addAttachmentData:data mimeType:@"text/csv" fileName:@"FlutterData.csv"];
+        [mailViewController addAttachmentData:data mimeType:@"text/csv" 
+                                     fileName:[NSString stringWithFormat:@"FlutterData %@.csv",[UserManager currentUser].name]];
         
         [self presentModalViewController:mailViewController animated:YES];
         [mailViewController release];

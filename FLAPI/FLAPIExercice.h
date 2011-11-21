@@ -29,10 +29,12 @@
     
     int blow_count;
     int blow_star_count;
+    
+    double avg_median_frequency_hz;
 }
 
 @property (nonatomic) double start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, 
-                             duration_expiration_s, duration_exercice_s,duration_exercice_done_s,current_blow_in_range_duration_s;
+                             duration_expiration_s, duration_exercice_s,duration_exercice_done_s,current_blow_in_range_duration_s,avg_median_frequency_hz;
 @property (nonatomic) int blow_count, blow_star_count;
 
 - (id)initWithFlapix:(FLAPIX*)flapix;
