@@ -133,8 +133,8 @@ UIActionSheet* actionSheet;
                                 initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Enter password for %@", @"Label of the password alert"),[[self selectedUser] name]] 
                                 message:[NSString stringWithFormat:@"%@\n\n",extraMessage]
                                 delegate:self 
-                                cancelButtonTitle:NSLocalizedString(@"Cancel", @"Label of the cancel button label on the password alert") 
-                                otherButtonTitles:NSLocalizedString(@"OK", @"Label of the OK button label on the password alert"), nil];
+                                cancelButtonTitle:NSLocalizedString(@"Cancel", nil) 
+                                otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
     
     self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 70.0, 260.0, 25.0)];
     [self.passwordTextField setBackgroundColor:[UIColor whiteColor]];

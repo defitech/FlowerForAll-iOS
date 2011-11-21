@@ -1299,7 +1299,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-10-10T12:12:59Z</date>
+					<date>2011-11-21T10:27:55Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -1309,7 +1309,7 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>950a0b910b4319165db2553b1c6b0055
+					<string>50925be87a323f8f91ae9822c604c90b
 </string>
 					<key>name</key>
 					<string>Localizable.strings</string>
@@ -1373,7 +1373,7 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Action Popup Menu</string>
+							<string>No comment provided by engineer.</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
@@ -1448,6 +1448,31 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
+							<string>Button to validate user selection</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Done</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Done</string>
+								<key>fr</key>
+								<string>OK</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
 							<string>Name of the easy Profile</string>
 							<key>errors</key>
 							<array/>
@@ -1461,6 +1486,31 @@
 								<string>Easy</string>
 								<key>fr</key>
 								<string>Facile</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of the password alert</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Enter password for %@</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Enter password for %@</string>
+								<key>fr</key>
+								<string>Mot de passe de %@</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1498,31 +1548,6 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Label of the identification failed alert</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>IdentificationFailedAlertLabel</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>IdentificationFailedAlertLabel</string>
-								<key>fr</key>
-								<string>IdentificationFailedAlertLabel</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
 							<string>Name of the standard Profile</string>
 							<key>errors</key>
 							<array/>
@@ -1536,6 +1561,31 @@
 								<string>Normal</string>
 								<key>fr</key>
 								<string>Normal</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>No comment provided by engineer.</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>OK</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>OK</string>
+								<key>fr</key>
+								<string>OK</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1573,69 +1623,19 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Label of the cancel button label on the password alert</string>
+							<string>Title of the user chooser</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>PasswordAlertCancelButtonLabel</string>
+							<string>Pick your profile name</string>
 							<key>localizations</key>
 							<dict>
 								<key>en</key>
-								<string>PasswordAlertCancelButtonLabel</string>
+								<string>Pick your profile name</string>
 								<key>fr</key>
-								<string>PasswordAlertCancelButtonLabel</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
-							<string>Label of the password alert</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>PasswordAlertLabel</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>PasswordAlertLabel</string>
-								<key>fr</key>
-								<string>PasswordAlertLabel</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
-							<string>Label of the OK button label on the password alert</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>PasswordAlertOKButtonLabel</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>PasswordAlertOKButtonLabel</string>
-								<key>fr</key>
-								<string>PasswordAlertOKButtonLabel</string>
+								<string>Choisissez votre profil</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1775,19 +1775,19 @@ microphone to start</string>
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Label asking to choose the current user</string>
+							<string>Message to display in the alert box.</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>User</string>
+							<string>Wrong password please retry.</string>
 							<key>localizations</key>
 							<dict>
 								<key>en</key>
-								<string>User</string>
+								<string>Wrong password please retry.</string>
 								<key>fr</key>
-								<string>Utilisateur</string>
+								<string>Mot de passe erroné. Veuillez essayer à nouveau.</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1916,6 +1916,131 @@ microphone to start</string>
 								<string>Plug headphones with microphone to start</string>
 								<key>fr</key>
 								<string>Brancher des écouteurs avec un microphone</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of the identification failed alert</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>IdentificationFailedAlertLabel</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>IdentificationFailedAlertLabel</string>
+								<key>fr</key>
+								<string>IdentificationFailedAlertLabel</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of the cancel button label on the password alert</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>PasswordAlertCancelButtonLabel</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>PasswordAlertCancelButtonLabel</string>
+								<key>fr</key>
+								<string>PasswordAlertCancelButtonLabel</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of the password alert</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>PasswordAlertLabel</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>PasswordAlertLabel</string>
+								<key>fr</key>
+								<string>PasswordAlertLabel</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of the OK button label on the password alert</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>PasswordAlertOKButtonLabel</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>PasswordAlertOKButtonLabel</string>
+								<key>fr</key>
+								<string>PasswordAlertOKButtonLabel</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label asking to choose the current user</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>User</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>User</string>
+								<key>fr</key>
+								<string>Utilisateur</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -2065,7 +2190,7 @@ microphone to start</string>
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-11-14T09:35:15Z</date>
+					<date>2011-11-21T10:27:55Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -2075,12 +2200,314 @@ microphone to start</string>
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>a101d469803f9de431f0df9a6a6d8d57
+					<string>dd1d209ce9d230890856bc1ccc7352bb
 </string>
 					<key>name</key>
 					<string>Users.strings</string>
 					<key>objects</key>
 					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Info Text</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Add users if this device is used by several persons. Use the + button on the top right corner.</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Add users if this device is used by several persons. Use the + button on the top right corner.</string>
+								<key>fr</key>
+								<string>Ajoutez des utilisateurs si cet appareil est utilisé par plusieurs utilisateurs. Utilisez les boutons + en haut à droite.</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>No comment provided by engineer.</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Cancel</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Cancel</string>
+								<key>fr</key>
+								<string>Annuler</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of delete button</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Delete</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Delete</string>
+								<key>fr</key>
+								<string>Effacer</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>message</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Do you want to delete all the data for this user?</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Do you want to delete all the data for this user?</string>
+								<key>fr</key>
+								<string>Est-ce que vous désirez effacer toutes les données de cet utilisateur?</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Edit User page title</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Edit user</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Edit user</string>
+								<key>fr</key>
+								<string>Editition</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Tip for th label of the name entry field</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>In a medical environnement choose a username that preserve nonymity.</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>In a medical environnement choose a username that preserve nonymity.</string>
+								<key>fr</key>
+								<string>Dans un environnement médical, choisissez un nom qui préserve votre anonymat.</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Tip for the password entry field</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Leave empty for no password</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Leave empty for no password</string>
+								<key>fr</key>
+								<string>Facultatif</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Left nav Button</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Menu</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Menu</string>
+								<key>fr</key>
+								<string>Menu</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of the name entry field</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Name</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Name</string>
+								<key>fr</key>
+								<string>Nom</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Name of a newly created user</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>New user</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>New user</string>
+								<key>fr</key>
+								<string>Nouvel utilisateur</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Info Text</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Only the owner may remove or edit user. 
+You may switch to another identity by choosing the coresponding username.</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Only the owner may remove or edit user. 
+You may switch to another identity by choosing the coresponding username.</string>
+								<key>fr</key>
+								<string>Seul le propriétaire peu enlever ou modifier un utilisateur. pouvez changer d'identité en choisissant un autre nom d'utilisateur.</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Label of the password entry field</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Password</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Password</string>
+								<key>fr</key>
+								<string>Mot de passe</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
 						<dict>
 							<key>change date</key>
 							<date>2001-01-01T00:00:00Z</date>
@@ -2102,6 +2529,31 @@ microphone to start</string>
 								<string>Users</string>
 								<key>fr</key>
 								<string>Utilisateurs</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Info Text</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>You may switch to another identity by choosing the coresponding username. Only the owner may add or remove user.</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>You may switch to another identity by choosing the coresponding username. Only the owner may add or remove user.</string>
+								<key>fr</key>
+								<string>Vous pouvez changer d'identité en choisissant un autre nom d'utilisateur. Seul le propriétaire peut ajouter ou enlever des utilisateurs.</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>

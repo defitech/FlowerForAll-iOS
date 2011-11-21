@@ -183,7 +183,7 @@ static NSMutableDictionary* appList;
     // iPad Tweak
     if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad) {
         actionSheet.cancelButtonIndex = 
-        [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"Action Popup Menu")];
+        [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
     }
     [actionSheet showInView:singleton.view];
     

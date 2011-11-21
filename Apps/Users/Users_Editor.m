@@ -73,11 +73,11 @@
     
     // Show the confirmation.
     UIAlertView *alert = [[UIAlertView alloc] 
-                          initWithTitle:NSLocalizedStringFromTable(@"Delete",@"Users",@"Title of the confirm deletion alert box")
+                          initWithTitle:NSLocalizedStringFromTable(@"Delete",@"Users",nil)
                           message:NSLocalizedStringFromTable(@"Do you want to delete all the data for this user?",@"Users",@"message")
                           delegate: self
                           cancelButtonTitle: NSLocalizedStringFromTable(@"Cancel",@"Users",nil)
-                          otherButtonTitles: NSLocalizedStringFromTable(@"Delete",@"Users",@"Button title for the Delete action"), nil];
+                          otherButtonTitles: NSLocalizedStringFromTable(@"Delete",@"Users",nil), nil];
     [alert show];
     [alert release];
 }
