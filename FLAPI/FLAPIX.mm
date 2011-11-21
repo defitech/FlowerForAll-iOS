@@ -264,25 +264,24 @@ NSMutableArray *blowFrequencies;
     
     
     // we do always save blows..
-    
+    [DB saveBlow:blow];
     
     // WE MUST SEND END BLOW EVENT BEFORE _ END EXERCICE EVENT
     // BUT! WE NEED TO ADD BLOWS TO EXERCICES BEFORE END BLOW EVENT
     //      FOR APPS READING duration_exercice_done_s ON EXERCICE
     if ([self exerciceInCourse]) {
-        [DB saveBlow:blow];
+ 
         // exercice management
         [[self currentExercice] addBlow:blow];
-        [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_BLOW_STOP object:blow];
+        [[NSNotificationCenter defaultCenter] 
+            postNotificationName:FLAPIX_EVENT_BLOW_STOP object:blow];
         if ([[self currentExercice] percent_done] >= 1) {
             [self exerciceStop];
         }
     } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_BLOW_STOP object:blow];
+        [[NSNotificationCenter defaultCenter] 
+         postNotificationName:FLAPIX_EVENT_BLOW_STOP object:blow];
     }
-    
-    
-   
     
     
     [blow autorelease];
