@@ -191,6 +191,8 @@
 		4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEED18D141E3E3100F56102 /* CalibrationApp.m */; };
 		4EEED198141E3E7F00F56102 /* VolcanoApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4EEED196141E3E7F00F56102 /* VolcanoApp.strings */; };
 		4EF0469114434DD200665E23 /* FlowerHowTo-Calibration_FR.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF0469014434DD200665E23 /* FlowerHowTo-Calibration_FR.png */; };
+		4EF33961147AAB7F00E77A65 /* ResultsApp_MailerOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3395F147AAB7F00E77A65 /* ResultsApp_MailerOptions.m */; };
+		4EF33962147AAB7F00E77A65 /* ResultsApp_MailerOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EF33960147AAB7F00E77A65 /* ResultsApp_MailerOptions.xib */; };
 		4EF52A38143F47B1007068CD /* FlowerHowTo-mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EF52A37143F47B1007068CD /* FlowerHowTo-mic.png */; };
 		4EFC3EBB14064911002F0BF7 /* DoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB814064911002F0BF7 /* DoubleSlider.m */; };
 		4EFC3EBC14064911002F0BF7 /* handle_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EFC3EB914064911002F0BF7 /* handle_highlight.png */; };
@@ -549,6 +551,9 @@
 		4EEED197141E3E7F00F56102 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
 		4EEED199141E3E8700F56102 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
 		4EF0469014434DD200665E23 /* FlowerHowTo-Calibration_FR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-Calibration_FR.png"; sourceTree = "<group>"; };
+		4EF3395E147AAB7F00E77A65 /* ResultsApp_MailerOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsApp_MailerOptions.h; sourceTree = "<group>"; };
+		4EF3395F147AAB7F00E77A65 /* ResultsApp_MailerOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsApp_MailerOptions.m; sourceTree = "<group>"; };
+		4EF33960147AAB7F00E77A65 /* ResultsApp_MailerOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsApp_MailerOptions.xib; sourceTree = "<group>"; };
 		4EF52A37143F47B1007068CD /* FlowerHowTo-mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-mic.png"; sourceTree = "<group>"; };
 		4EFC3EB714064911002F0BF7 /* DoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleSlider.h; sourceTree = "<group>"; };
 		4EFC3EB814064911002F0BF7 /* DoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleSlider.m; sourceTree = "<group>"; };
@@ -766,6 +771,9 @@
 			children = (
 				4E4301301433AE330066ED6F /* ResultsApp_Mailer.h */,
 				4E4301311433AE330066ED6F /* ResultsApp_Mailer.m */,
+				4EF3395E147AAB7F00E77A65 /* ResultsApp_MailerOptions.h */,
+				4EF3395F147AAB7F00E77A65 /* ResultsApp_MailerOptions.m */,
+				4EF33960147AAB7F00E77A65 /* ResultsApp_MailerOptions.xib */,
 			);
 			path = Mailer;
 			sourceTree = "<group>";
@@ -1561,6 +1569,7 @@
 				4E3073C01474244E0035BFB9 /* Users-greenButton.png in Resources */,
 				4E3073C11474244E0035BFB9 /* Users-redButton.png in Resources */,
 				4E3073C31474250C0035BFB9 /* Users-greyButton.png in Resources */,
+				4EF33962147AAB7F00E77A65 /* ResultsApp_MailerOptions.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1705,6 +1714,7 @@
 				4E7CDA171471232600047C99 /* Users_CellView.m in Sources */,
 				4E43002A147158F800BCBDD9 /* Users_TextCell.m in Sources */,
 				4E3073BC147422900035BFB9 /* Users_Editor.m in Sources */,
+				4EF33961147AAB7F00E77A65 /* ResultsApp_MailerOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

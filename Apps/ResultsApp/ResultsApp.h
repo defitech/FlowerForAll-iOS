@@ -11,7 +11,7 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
-@interface ResultsApp : FlowerApp <MFMailComposeViewControllerDelegate>  {
+@interface ResultsApp : FlowerApp <MFMailComposeViewControllerDelegate,UINavigationControllerDelegate>  {
     IBOutlet UIView* controllerView; 
     IBOutlet UIToolbar* toolbar; 
     ResultsApp_Nav* statViewController;
@@ -24,5 +24,8 @@
 @property (nonatomic, retain) UIBarButtonItem *sendButton;
 
 - (IBAction)sendButtonPressed:(id)sender;
+
+- (void)refreshSendButton;
+
 
 @end

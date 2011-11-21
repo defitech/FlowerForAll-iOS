@@ -8,11 +8,14 @@
 
 #import "ResultsApp.h"
 #import "ResultsApp_Mailer.h"
+#import "ResultsApp_MailerOptions.h"
 #import "UserManager.h"
 
 @implementation ResultsApp
 
 @synthesize controllerView, toolbar, sendButton;
+
+BOOL optionShowing;
 
 # pragma mark FlowerApp overriding
 
@@ -36,13 +39,14 @@
 {
     [super viewDidLoad];
     
-    [sendButton setTitle:
-      NSLocalizedStringFromTable(@"Send results",@"ResultsApp",@"Button that open the mailer")];
+   
     
 
-
+    optionShowing = NO;
+    [self refreshSendButton];
     
     statViewController = [[ResultsApp_Nav alloc] init];
+    [statViewController setDelegate:self];
     statViewController.view.frame = CGRectMake(0,0,
                                                self.controllerView.frame.size.width,
                                                self.controllerView.frame.size.height);
@@ -51,6 +55,23 @@
 
 }
 
+- (void)navigationController:(UINavigationController *)navigationController 
+      willShowViewController:(UIViewController *)viewController animated:(BOOL)animated 
+{
+    optionShowing = ([viewController class] == [ResultsApp_MailerOptions class]);
+    [self refreshSendButton];
+}
+
+
+- (void)refreshSendButton {
+    if (optionShowing) {
+        [sendButton setTitle:
+         NSLocalizedStringFromTable(@"Continue",@"ResultsApp",@"Button that open the mailer Step2")];
+    } else {
+        [sendButton setTitle:
+         NSLocalizedStringFromTable(@"Send results",@"ResultsApp",@"Button that open the mailer")];
+    }
+}
 
 - (void)viewDidUnload
 {
@@ -74,8 +95,18 @@
 # pragma mark mailer stuff
 
 
+
 - (IBAction)sendButtonPressed:(id)sender {
-    NSLog(@"sendButtonPressed");
+    
+    if (! optionShowing) {
+        optionShowing = YES;
+        ResultsApp_MailerOptions* optionView = [[ResultsApp_MailerOptions alloc] init];
+        [statViewController pushViewController:optionView animated:YES];
+        [self refreshSendButton];
+        [optionView release];
+        return;
+    }
+    
     
     if ([MFMailComposeViewController canSendMail]) {
         
@@ -103,7 +134,7 @@
     }  else {
         
     }
-    
+    [statViewController popViewControllerAnimated:NO];
 }
 
 
