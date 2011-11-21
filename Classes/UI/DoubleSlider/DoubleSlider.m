@@ -67,7 +67,7 @@ static const CGFloat innerColors [] = {
 }
 
 -(void) initValues:(float)aMinValue maxValue:(float)aMaxValue  {
-    NSLog(@"DoubleSlider: initWithValue%f %f",aMinValue,aMaxValue);
+    NSLog(@"DoubleSlider: initWithValue %f %f",aMinValue,aMaxValue);
     if (aMinValue < aMaxValue) {
         minValue = aMinValue;
         maxValue = aMaxValue;
@@ -104,6 +104,15 @@ static const CGFloat innerColors [] = {
 
 
 -(void) setSelectedValues:(float)aMinValue maxValue:(float)aMaxValue {
+    if (aMinValue < minValue) aMinValue = minValue;
+    if (aMinValue > maxValue) aMinValue = maxValue;
+    if (aMaxValue > maxValue) aMaxValue = maxValue;
+    if (aMaxValue < minValue) aMaxValue = minValue;
+    if (aMaxValue < aMinValue) {
+        float z = aMaxValue;
+        aMaxValue = aMinValue;
+        aMinValue = z;
+    }
     self.minHandle.center = CGPointMake([self valueToX:aMinValue] , sliderBarHeight * 0.5+sliderBarDeltaY);
     self.maxHandle.center = CGPointMake([self valueToX:aMaxValue], sliderBarHeight * 0.5+sliderBarDeltaY);
     [self updateValues];

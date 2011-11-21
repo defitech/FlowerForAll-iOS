@@ -40,7 +40,7 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
         // Init Values
         gParams.frequency_max				= 26;
         gParams.frequency_min				= 4;
-        gParams.target_frequency			= 18.0f;
+        gParams.target_frequency			= 14.0f;
         gParams.frequency_tolerance			= 4.0f;
         gParams.target_duration				= 1500;
         
@@ -84,6 +84,12 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
 
 
 - (void) SetTargetFrequency:(double)target_frequency frequency_tolerance:(double)tolerance {
+    if ((target_frequency - tolerance) < gParams.frequency_min || 
+        (target_frequency + tolerance) > gParams.frequency_max) {
+        gParams.target_frequency	= (gParams.frequency_max - gParams.frequency_min) * 0.9;
+        gParams.frequency_tolerance	= (gParams.frequency_max - gParams.frequency_min) * 1.1;
+        return ;
+    }
     gParams.target_frequency	= target_frequency;
 	gParams.frequency_tolerance	= tolerance;
 }
@@ -132,7 +138,10 @@ double exerice_duration_s = -1.0f;
 
 - (double) frequenceTolerance { return gParams.frequency_tolerance; }
 
-- (double) frequenceTarget { return gParams.target_frequency; }
+- (double) frequenceTarget { 
+    NSLog(@"FLPAIX: frequenceTarget: %f",gParams.target_frequency);
+    return gParams.target_frequency; 
+}
 
 
 BOOL demo_mode = NO;
