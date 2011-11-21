@@ -369,7 +369,7 @@ double blow_timestamp = 0.0f; // temporary timestamp for work on
 double blow_max_duration = 30.0f; //(seconds) when a blowing is declared as invalid because too long
 double blow_min_duration = 2.0f; //(seconds) when a blowing is declared as invalid because too small
 
-float blow_frequency_trigger = 0.0f;
+double blow_frequency_trigger = 0.0f;
 
 // Internal Subsystem function
 // ===========================
@@ -379,8 +379,8 @@ int SendWinMsg( int msg, int lparam, int hparam ){
 	//NSLog(@"SendWinMsg msg:%i lparam:%i hparam:%i",msg,lparam,hparam);
     
     // blow_frequency_trigger is normaly 7 .. but we lower it in case minFrequency -2 is smaller
-    blow_frequency_trigger = gParams.target_frequency - gParams.frequency_tolerance - 2 ;
-    if (blow_frequency_trigger > 7) blow_frequency_trigger = 7;
+    blow_frequency_trigger = FLAPI_GetTargetFrequency() - FLAPI_GetFrequencyTolerance() - 2.0f ;
+    if (blow_frequency_trigger > 7.0f) blow_frequency_trigger = 7.0f;
     
 	switch (msg) {
 		case FLAPI_WINMSG_ON_STOP:
@@ -412,8 +412,10 @@ int SendWinMsg( int msg, int lparam, int hparam ){
             if (blow_last_start > 0.0f) { // blowing
                 
                 // in-range detection occures whiles blowing
-                if ((FLAPI_GetFrequency() > (gParams.target_frequency - gParams.frequency_tolerance)) && 
-                    (FLAPI_GetFrequency() < (gParams.target_frequency + gParams.frequency_tolerance))) { // in range
+                if ((FLAPI_GetFrequency() > 
+                     (FLAPI_GetTargetFrequency() - FLAPI_GetFrequencyTolerance())) && 
+                    (FLAPI_GetFrequency() < 
+                     (FLAPI_GetTargetFrequency() + FLAPI_GetFrequencyTolerance()))) { // in range
                    
                     if (blow_last_freq > 0.0f) // skip first lap
                         blow_in_range_duration += (blow_timestamp - blow_last_freq); // add duration from last frequency

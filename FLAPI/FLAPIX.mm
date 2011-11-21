@@ -38,16 +38,13 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
         FLAPI_SUBSYS_IOS_init_and_registerFLAPIX(self); // register this object for events callbacks
        
         // Init Values
-        gParams.frequency_max				= 26;
+        gParams.frequency_max				= 30;
         gParams.frequency_min				= 4;
-        gParams.target_frequency			= 14.0f;
-        gParams.frequency_tolerance			= 4.0f;
-        gParams.target_duration				= 1500;
-
+        FLAPI_SetTargetBlowingDuration(1500);
+        FLAPI_SetTargetFrequency(14.0f, 4.0f);
+        FLAPI_SetThreshold(10.0f);
         UpdateAudioInfo();
         
-        NSLog(@"gParams frequency_max:%i frequency_min:%i\n",gParams.frequency_max,gParams.frequency_min);
-        // -- write your own code here to do some more init stuff
         
         current_exercice = nil;
         
@@ -90,6 +87,7 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
         return ;
     }
     FLAPI_SetTargetFrequency(target_frequency,tolerance);
+    NSLog(@"SetTargetFrequency %1.1f   tol: %1.1f",target_frequency,tolerance);
 }
 
 
@@ -115,7 +113,7 @@ double exerice_duration_s = -1.0f;
 
 // return durationTarget(s)
 - (double) expirationDurationTarget {
-    return (double)gParams.target_duration / 1000.0f;
+    return FLAPI_GetTargetBlowingDuration() / 1000.0f;
 }
 
 // return durationTarget(s)
@@ -134,9 +132,9 @@ double exerice_duration_s = -1.0f;
 }
 
 
-- (double) frequenceTolerance { return gParams.frequency_tolerance; }
+- (double) frequenceTolerance { return FLAPI_GetFrequencyTolerance(); }
 
-- (double) frequenceTarget { return gParams.target_frequency;  }
+- (double) frequenceTarget { return FLAPI_GetTargetFrequency();  }
 
 
 BOOL demo_mode = NO;
@@ -191,7 +189,7 @@ BOOL demo_mode = NO;
 - (void) EventLevel:(float) level {
    // NSLog(@"New Level %f",level);
      NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-     lastlevel = level / gParams.mic_calibration ;
+     lastlevel = level / FLAPI_GetLevelMax() ;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:FLAPIX_EVENT_LEVEL  object:self];
     [pool drain]; 
@@ -263,6 +261,9 @@ NSMutableArray *blowFrequencies;
     FLAPIBlow* blow = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal medianFrequency:medianFrequency];
     blow.medianTolerance = medianTolerance;
     lastBlow = blow;
+    
+    
+    // we do always save blows..
     
     
     // WE MUST SEND END BLOW EVENT BEFORE _ END EXERCICE EVENT

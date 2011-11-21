@@ -30,6 +30,9 @@
 /** get the current profil **/
 +(Profil*)current;
 
+/** reload current profil **/
++(void)reloadCurrent ;
+
 /** get the current profil **/
 +(Profil*)getFromId:(int)profil_id;
 

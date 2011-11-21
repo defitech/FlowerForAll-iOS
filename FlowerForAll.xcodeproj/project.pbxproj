@@ -131,7 +131,6 @@
 		4E78A107145ED9F800D4EF28 /* _CPTSlateTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0BA145ED9F800D4EF28 /* _CPTSlateTheme.m */; };
 		4E78A108145ED9F800D4EF28 /* _CPTStocksTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A0BC145ED9F800D4EF28 /* _CPTStocksTheme.m */; };
 		4E7CDA09147114DD00047C99 /* Users.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CDA07147114DD00047C99 /* Users.strings */; };
-		4E7CDA0B147114E800047C99 /* Users.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CDA07147114DD00047C99 /* Users.strings */; };
 		4E7CDA0F1471153000047C99 /* Users.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDA0D1471153000047C99 /* Users.m */; };
 		4E7CDA101471153000047C99 /* Users.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CDA0E1471153000047C99 /* Users.xib */; };
 		4E7CDA12147115FC00047C99 /* Users-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CDA11147115FC00047C99 /* Users-Icon.png */; };
@@ -565,9 +564,9 @@
 		D701908A141618510072D020 /* VolcanoApp_goal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = VolcanoApp_goal.wav; sourceTree = "<group>"; };
 		D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VolcanoApp_volcano.png; sourceTree = "<group>"; };
 		D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsApp-Icon.png"; sourceTree = "<group>"; };
-		D72E0286139E448200F3687C /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
-		D72E0287139E448200F3687C /* filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filter.h; sourceTree = "<group>"; };
-		D72E0288139E448200F3687C /* flapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flapi.h; sourceTree = "<group>"; };
+		D72E0286139E448200F3687C /* common.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = common.h; sourceTree = "<group>"; };
+		D72E0287139E448200F3687C /* filter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = filter.h; sourceTree = "<group>"; };
+		D72E0288139E448200F3687C /* flapi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = flapi.h; sourceTree = "<group>"; };
 		D72E0289139E448200F3687C /* FLAPIX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAPIX.h; sourceTree = "<group>"; };
 		D72E028A139E448200F3687C /* FLAPIX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FLAPIX.mm; sourceTree = "<group>"; };
 		D72E028C139E448200F3687C /* subsys_ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subsys_ios.h; sourceTree = "<group>"; };
@@ -1464,7 +1463,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FlowerForAll" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1553,7 +1552,6 @@
 				4E26BA921459AA7600612F28 /* FlowerForAll.html in Resources */,
 				4E26BA931459AA7600612F28 /* Localizable.strings in Resources */,
 				4E7CDA09147114DD00047C99 /* Users.strings in Resources */,
-				4E7CDA0B147114E800047C99 /* Users.strings in Resources */,
 				4E7CDA101471153000047C99 /* Users.xib in Resources */,
 				4E7CDA12147115FC00047C99 /* Users-Icon.png in Resources */,
 				4E7CDA14147122DD00047C99 /* Users_CellView.xib in Resources */,
@@ -1827,7 +1825,6 @@
 					"\"$(SRCROOT)/FLAPI\"",
 				);
 				PRODUCT_NAME = FlowerForAll;
-				SDKROOT = iphoneos4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1847,7 +1844,6 @@
 					"\"$(SRCROOT)/FLAPI\"",
 				);
 				PRODUCT_NAME = FlowerForAll;
-				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1858,7 +1854,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pierre-Mikael Legris (LQ8J2GTYRU)";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1873,6 +1869,7 @@
 					"-all_load",
 					"-ObjC",
 				);
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5E904A1A-86D1-4FF4-871D-257F58755BA2";
 				SDKROOT = iphoneos3.2;
 				SKIP_INSTALL = NO;
 			};
