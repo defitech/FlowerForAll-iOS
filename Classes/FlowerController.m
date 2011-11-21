@@ -11,7 +11,10 @@
 #import "ParametersApp.h"
 #import "FlutterApp2AppDelegate.h"
 #import "ParametersManager.h"
-#import "BlowHistory.h"
+
+#import "UserManager.h"
+
+#import "DataAccess.h"
 
 
 @implementation FlowerController
@@ -54,32 +57,6 @@ static NSMutableDictionary* appList;
 }
 
 
-
-/** Promote an App as current Main Controller **/ 
-+ (void) pushApp:(NSString*) flowerApp {
-   // [FlowerController pushMail];
-    [FlowerController pushApp:flowerApp withUIViewAnimation:UIViewAnimationTransitionNone];
-}
-
-/** Promote an App as current Main Controller **/ 
-+ (void) pushApp:(NSString*) flowerApp withUIViewAnimation:(UIViewAnimationTransition)transition{
-    if ([appList objectForKey:flowerApp] == nil) {
-        NSLog(@"FlowerController:pushApp unkown app: %@",flowerApp);
-        return;
-    }
-    if ([[[appList objectForKey:flowerApp] class] isSubclassOfClass:[FlowerApp class]]) {
-        NSLog(@"FlowerController:pushApp retrieving %@ from Dictionnary",flowerApp);
-    } else {
-        Class flowerAppClass = NSClassFromString(flowerApp);
-        if (! [flowerAppClass isSubclassOfClass:[FlowerApp class]]) {
-            NSLog(@"FlowerController:pushApp Requesting %@ which is not a FlowerAppClass",flowerApp);
-            return;
-        }
-        NSLog(@"FlowerController:pushApp Init %@",flowerApp);
-        [appList setValue:[flowerAppClass autoInit] forKey:flowerApp];
-    }
-    [FlowerController setCurrentMainController:[appList objectForKey:flowerApp] withUIViewAnimation:transition];
-}
 
 
 
@@ -132,6 +109,43 @@ static NSMutableDictionary* appList;
     [previousViewController.view removeFromSuperview];
     [singleton.mainView setNeedsLayout];
     [currentMainController viewDidAppear:animated];
+}
+
+
+# pragma user chooser
+
+/** show User chooser **/
++ (void)chooseUser {
+   
+}
+
+
+# pragma mark window management
+
+/** Promote an App as current Main Controller **/ 
++ (void) pushApp:(NSString*) flowerApp {
+    // [FlowerController pushMail];
+    [FlowerController pushApp:flowerApp withUIViewAnimation:UIViewAnimationTransitionNone];
+}
+
+/** Promote an App as current Main Controller **/ 
++ (void) pushApp:(NSString*) flowerApp withUIViewAnimation:(UIViewAnimationTransition)transition{
+    if ([appList objectForKey:flowerApp] == nil) {
+        NSLog(@"FlowerController:pushApp unkown app: %@",flowerApp);
+        return;
+    }
+    if ([[[appList objectForKey:flowerApp] class] isSubclassOfClass:[FlowerApp class]]) {
+        NSLog(@"FlowerController:pushApp retrieving %@ from Dictionnary",flowerApp);
+    } else {
+        Class flowerAppClass = NSClassFromString(flowerApp);
+        if (! [flowerAppClass isSubclassOfClass:[FlowerApp class]]) {
+            NSLog(@"FlowerController:pushApp Requesting %@ which is not a FlowerAppClass",flowerApp);
+            return;
+        }
+        NSLog(@"FlowerController:pushApp Init %@",flowerApp);
+        [appList setValue:[flowerAppClass autoInit] forKey:flowerApp];
+    }
+    [FlowerController setCurrentMainController:[appList objectForKey:flowerApp] withUIViewAnimation:transition];
 }
 
 
@@ -224,17 +238,18 @@ static NSMutableDictionary* appList;
     }
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     if (singleton != nil)  return ;
     singleton = self;
     
-    // Start FLAPIX
+    // init any data if needed
+    [DataAccess initOrUpgrade];
+    
+    
     NSLog(@"FlowerController viewDidLoad");
-    // Do any additional setup after loading the view from its nib.
-    [FlowerController currentFlapix];
+ 
     
     // init App list
     appList = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
@@ -242,13 +257,11 @@ static NSMutableDictionary* appList;
                [NSNull alloc], @"ParametersApp",
                [NSNull alloc], @"CalibrationApp",
                [NSNull alloc], @"ResultsApp",
+               [NSNull alloc], @"Users",
                nil];
     
     
-    //historyViewController = [ [ HistoryViewController alloc ] init ];
-    //[self.view addSubview:historyViewController.view];
-    
-    [FlowerController pushMenu]; //will init the MenuView
+       [FlowerController pushMenu]; //will init the MenuView
     [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
     
     // Plug an iPhone
@@ -265,9 +278,11 @@ static NSMutableDictionary* appList;
     [startButton setOpaque:NO];
     [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:startButton];
-    [self startStopButtonRefresh:nil];
+    
     [buttonImageHighlighted release];
  
+    // depend of flapix state
+    [self startStopButtonRefresh:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(startStopButtonRefresh:)
@@ -280,16 +295,26 @@ static NSMutableDictionary* appList;
 
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    // check for user
+    [UserManager requireUser];
+}
+
+
 +(FlowerController*) currentFlower {
     return singleton;
 }
 
+/** normally called when a use is set **/
++ (void) initFlapix {
+    if (flapix == nil && [UserManager currentUser] != nil) {
+        flapix = [FLAPIX new];
+    }
+    [ParametersManager loadParameters:flapix];
+}
+
 // get the currentFlapix Controller
 + (FLAPIX*) currentFlapix {
-    if (flapix == nil) {
-        flapix = [FLAPIX new];
-        [ParametersManager loadParameters:flapix];
-    }
     return flapix;
 }
 

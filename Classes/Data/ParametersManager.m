@@ -41,7 +41,6 @@
     }
     [flapix SetTargetFrequency:profil.frequency_target_hz frequency_tolerance:profil.frequency_tolerance_hz];
     
-    
     if (profil.duration_expiration_s < 0.5f || profil.duration_expiration_s > 12.0f) {
          NSLog(@"loadParameters: invalid expiration duration:%f parameter reseting to defaults",profil.duration_expiration_s );
         profil.duration_expiration_s = 1.0f;

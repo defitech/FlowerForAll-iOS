@@ -30,6 +30,9 @@
  **/
 -(BOOL) setDuration:(int)duration_m;
 
+/** fill the history with the value in the db matching the interval **/
+-(void) reloadFromDB ;
+
 /** get the actual history array **/
 -(NSMutableArray*) getHistoryArray;
 

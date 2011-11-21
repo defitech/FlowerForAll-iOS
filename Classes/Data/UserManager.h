@@ -20,6 +20,18 @@
  **/
 +(User*) currentUser;
 
+
+/** 
+ * change or set the actual current user
+ * - will set the correct database and restart FLAPIX if needed
+ **/
++(void) setCurrentUser:(int)uid;
+
+/** 
+ * bloc process until a user is choosen
+ **/
++(void) requireUser;
+
 // user dir String
 +(NSString*) uDir:(int)uid;
 
@@ -28,6 +40,9 @@
 
 //Creates a new user return id of this new user
 + (int)createUser:(NSString *)name password:(NSString *)password;
+
+//Drop a user
++ (void)dropUser:(int)uid;
 
 
 

@@ -28,4 +28,6 @@
 
 -(void) historyChange:(id*) history;
 
+-(void) reloadFromDB;
+
 @end

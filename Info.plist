@@ -46,5 +46,7 @@
 	<array/>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>

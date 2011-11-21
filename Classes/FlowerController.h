@@ -22,8 +22,8 @@
     HistoryView *historyView;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *historyView;
-@property (nonatomic, retain) IBOutlet UIView *needleGL;
+@property (nonatomic, retain) IBOutlet HistoryView *historyView;
+@property (nonatomic, retain) IBOutlet NeedleGL *needleGL;
 @property (nonatomic, retain) IBOutlet UIView *mainView;
 @property (nonatomic, retain) IBOutlet UIButton *menuButton;
 
@@ -36,6 +36,8 @@
 // current State and shortcuts
 + (FlowerController*) currentFlower;
 + (FLAPIX*) currentFlapix;
+/** normally called when a use is set **/
++ (void) initFlapix ;
 
 // utils to monitor FLowerController State
 /** return true is a start Button should be shown **/
@@ -49,6 +51,10 @@
 
 /** show The Menu **/
 + (void)pushMenu ;
+
+
+/** show User chooser **/
++ (void)chooseUser ;
 
 /** Promote an App as current Main COntroller **/ 
 + (void) pushApp:(NSString*) flowerApp ;

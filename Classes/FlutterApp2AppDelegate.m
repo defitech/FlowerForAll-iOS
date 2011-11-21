@@ -10,11 +10,10 @@
 
 #import "FlutterApp2AppDelegate.h"
 
-#import "DB.h"
 #import "ConnectionManager.h"
 
 #import "User.h"
-
+#import "DB.h"
 
 @implementation FlutterApp2AppDelegate
 
@@ -32,8 +31,8 @@
 // - Calls the checkAndCreateDatabase method (to cpoy the DB from the app bundle to the file system, if it has not already been done)
 // - Creates the main user (with ID 0) if it does not already exist
 // - Then adds the tab bar controller view to the main window
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	[DB db]; // init and open the database
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions { 
+   
    	[self.window addSubview:viewController.view];
     [self.window makeKeyAndVisible];
     return YES;
@@ -53,7 +52,7 @@
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // ping server
+ // ping server
     ConnectionManager *cm = [[ConnectionManager alloc] init]; 
     
     NSMutableDictionary *infos = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"applicationDidBecomeActive",@"event",nil];
