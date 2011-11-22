@@ -406,7 +406,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-10-06T16:31:04Z</date>
+					<date>2011-11-22T17:12:50Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -416,7 +416,7 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>26a20b8739c19bcd061a6b955db1e4d9
+					<string>8d195079b1ed1bebdb5892e487ce3cb5
 </string>
 					<key>name</key>
 					<string>ResultsApp.strings</string>
@@ -467,6 +467,31 @@
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
+							<string>Average frequency of blows</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Average frequency of blows</string>
+								<key>fr</key>
+								<string>Fréquence moyennes des expirations</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Data column title</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
 							<string>Blows</string>
 							<key>localizations</key>
 							<dict>
@@ -474,6 +499,31 @@
 								<string>Blows</string>
 								<key>fr</key>
 								<string>Expiration</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Display result table tip</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Display the result table:</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Display the result table:</string>
+								<key>fr</key>
+								<string>Afficher le tableau de résultat</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -574,6 +624,31 @@
 								<string>Expected exercice duration (s)</string>
 								<key>fr</key>
 								<string>Objectif: durée de l'exercice (s)</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Mail subject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Flower-Breath data for %@</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Flower-Breath data for %@</string>
+								<key>fr</key>
+								<string>Données Flower-Breath de %@</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -786,6 +861,106 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
+							<string>Mail option title</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Send results by e-mail</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Send results by e-mail</string>
+								<key>fr</key>
+								<string>Envoyer les résultats par mail</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Button that open the mailer Step2</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Send the results of %i exercices</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Send the results of %i exercices</string>
+								<key>fr</key>
+								<string>Envoyer les résultats de %i exercices</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>start date picker tip</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Set date from first exercice</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Set date from first exercice</string>
+								<key>fr</key>
+								<string>Utiliser la date du premier exercice</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>mail date picker tip</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Set date from last e-mail</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Set date from last e-mail</string>
+								<key>fr</key>
+								<string>Utiliser la date du dernier e-mail</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
 							<string>Data column title</string>
 							<key>errors</key>
 							<array/>
@@ -824,6 +999,31 @@
 								<string>Target Freq. Hz</string>
 								<key>fr</key>
 								<string>Freq. objectif Hz</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Button that open the mailer Step - no result</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>There is no result from this date</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>There is no result from this date</string>
+								<key>fr</key>
+								<string>Il n'y a pas de résultats pour cette date</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
