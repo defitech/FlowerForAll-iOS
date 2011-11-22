@@ -14,10 +14,10 @@
 
 
 // will take dates as parameter * return exercices and an HTML version
-+ (int) exercicesToCSV:(NSMutableData*)data html:(NSMutableString*)html {
++ (int) exercicesToCSV:(NSMutableData*)data html:(NSMutableString*)html fromDate:(NSDate*)from toDate:(NSDate*)to; {
     int count = 0;
-    float dayBeginAbsoluteTime = 0;
-    float dayEndAbsoluteTime = 1000000000000000;
+    float dayBeginAbsoluteTime = [from timeIntervalSinceReferenceDate];
+    float dayEndAbsoluteTime = [to timeIntervalSinceReferenceDate];
     
     NSArray* headersTitles = [[NSArray alloc] initWithObjects:
                             NSLocalizedStringFromTable(@"Start",@"ResultsApp", @"Data column title"),

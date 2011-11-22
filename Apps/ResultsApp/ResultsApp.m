@@ -10,6 +10,7 @@
 #import "ResultsApp_Mailer.h"
 #import "ResultsApp_MailerOptions.h"
 #import "UserManager.h"
+#import "DB.h"
 
 @implementation ResultsApp
 
@@ -129,14 +130,18 @@ ResultsApp_MailerOptions* mailerOptions;
         
         
         NSMutableData *data = [[NSMutableData alloc] init];
+        NSMutableString *HTMLtable = ![DB getInfoBOOLForKey:@"hideResultTableInMails"] ? [[NSMutableString alloc] init] : nil ;
+        [ResultsApp_Mailer exercicesToCSV:data html:HTMLtable fromDate:[mailerOptions selectedStartDate] toDate:[[NSDate alloc] init]];
+        
+        
         
         NSMutableString *message = [[NSMutableString alloc] init];
         [message appendString:
          NSLocalizedStringFromTable(@"<br>....Data enclosed to this mail.\n<br><br>\n", @"ResultsApp", @"Mail introduction")];
         
-        [ResultsApp_Mailer exercicesToCSV:data html:message];
-        [mailViewController setMessageBody:message isHTML:YES];
+        if (HTMLtable != nil) [message appendString:HTMLtable];
         
+        [mailViewController setMessageBody:message isHTML:YES];
         [mailViewController addAttachmentData:data mimeType:@"text/csv" 
                                      fileName:[NSString stringWithFormat:@"FlutterData %@.csv",[UserManager currentUser].name]];
         
