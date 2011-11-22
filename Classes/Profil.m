@@ -73,14 +73,25 @@ static Profil* currentProfil;
 +(Profil*)current {
    
     if (currentProfil == nil) {
-        // get the currentProfileId
-        int currentProfileID = [[DB getInfoValueForKey:@"currentProfile"] intValue];
-        if (currentProfileID < 0) currentProfileID = 0; 
-        currentProfil = [Profil getFromId:currentProfileID];
-        [currentProfil retain];
+        [self reloadCurrent];
     }    
     return currentProfil;
 }
+
+/** reload current profil **/
++(void)reloadCurrent {
+    if (currentProfil != nil) {
+        [currentProfil release];
+        currentProfil = nil;
+    }
+    // get the currentProfileId
+    int currentProfileID = [[DB getInfoValueForKey:@"currentProfile"] intValue];
+    if (currentProfileID < 0) currentProfileID = 0; 
+    currentProfil = [Profil getFromId:currentProfileID];
+    [currentProfil retain];
+}
+
+
 
 /** get for ID **/
 +(Profil*)getFromId:(int)profil_id {

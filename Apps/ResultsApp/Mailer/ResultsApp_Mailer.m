@@ -13,11 +13,11 @@
 
 
 
-// will take dates as parameter * return exerices and an HTML version
-+ (int) exericesToCSV:(NSMutableData*)data html:(NSMutableString*)html {
+// will take dates as parameter * return exercices and an HTML version
++ (int) exercicesToCSV:(NSMutableData*)data html:(NSMutableString*)html fromDate:(NSDate*)from toDate:(NSDate*)to; {
     int count = 0;
-    float dayBeginAbsoluteTime = 0;
-    float dayEndAbsoluteTime = 1000000000000000;
+    float dayBeginAbsoluteTime = [from timeIntervalSinceReferenceDate];
+    float dayEndAbsoluteTime = [to timeIntervalSinceReferenceDate];
     
     NSArray* headersTitles = [[NSArray alloc] initWithObjects:
                             NSLocalizedStringFromTable(@"Start",@"ResultsApp", @"Data column title"),
@@ -25,6 +25,7 @@
                             NSLocalizedStringFromTable(@"Done %", @"ResultsApp", @"Data column title"),
                             NSLocalizedStringFromTable(@"Blows", @"ResultsApp", @"Data column title"),  
                             NSLocalizedStringFromTable(@"Good Blows",@"ResultsApp", @"Data column title"),
+                            NSLocalizedStringFromTable(@"Average frequency of blows",@"ResultsApp", @"Data column title"),
                             NSLocalizedStringFromTable(@"Profile",  @"ResultsApp", @"Data column title"),
                             NSLocalizedStringFromTable(@"Target Freq. Hz",@"ResultsApp", @"Data column title"),
                             NSLocalizedStringFromTable(@"Freq. Tolerance Hz", @"ResultsApp", @"Data column title"),
@@ -34,9 +35,9 @@
     
     NSArray* headersDB = [[NSArray alloc] initWithObjects:
                         @"start_ts", @"stop_ts", @"duration_exercice_done_p", 
-                        @"blow_count",   @"blow_star_count",@"profile_name",  @"frequency_target_hz",
+                        @"blow_count", @"blow_star_count",  @"avg_median_frequency_hz", @"profile_name",  @"frequency_target_hz",
                         @"frequency_tolerance_hz", @"duration_expiration_s", @"duration_exercice_s", nil ];
-    char* typesC = "TDPIISFFFI";
+    char* typesC = "TDPIIFSFFFI";
     int typeL = strlen(typesC);
     
     if (data != nil) {

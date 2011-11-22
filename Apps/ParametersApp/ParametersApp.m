@@ -41,11 +41,11 @@ exerciceLabel, exerciceTimeLabel, exerciceSlider, buttonProfile, goToCalibration
 float maxExerciceDuration_s = 480.0;
 float minExerciceDuration_s = 7.0;
 
-- (float)exericeDurationSliderToSystem:(float)sliderValue {
+- (float)exerciceDurationSliderToSystem:(float)sliderValue {
     return roundf(sliderValue*sliderValue*(maxExerciceDuration_s-minExerciceDuration_s)+minExerciceDuration_s);
 }
 
-- (float)exericeDurationSystemToSlider:(float)systemValue {
+- (float)exerciceDurationSystemToSlider:(float)systemValue {
     return sqrtf((systemValue-minExerciceDuration_s)/(maxExerciceDuration_s-minExerciceDuration_s));
 }
 
@@ -93,10 +93,10 @@ float minExerciceDuration_s = 7.0;
     exerciceLabel.text = 
         NSLocalizedStringFromTable(@"Exercice duration target",@"ParametersApp",@"Exercice duration target");
     
-    [exerciceSlider addTarget:self action:@selector(valueChangedForExericeSlider:) 
+    [exerciceSlider addTarget:self action:@selector(valueChangedForExerciceSlider:) 
                forControlEvents:UIControlEventValueChanged];
     
-    [exerciceSlider addTarget:self action:@selector(editingEndForExericeSlider:) 
+    [exerciceSlider addTarget:self action:@selector(editingEndForExerciceSlider:) 
                forControlEvents:UIControlEventTouchUpInside];
     
     [exerciceSlider setMinimumValue:0.0f];
@@ -112,10 +112,10 @@ float minExerciceDuration_s = 7.0;
 
 - (void)reloadValues {
     [expirationSlider setValue:[[FlowerController currentFlapix] expirationDurationTarget] animated:true];
-    [exerciceSlider setValue:[self exericeDurationSystemToSlider:[[FlowerController currentFlapix] exerciceDurationTarget]] animated:true];
+    [exerciceSlider setValue:[self exerciceDurationSystemToSlider:[[FlowerController currentFlapix] exerciceDurationTarget]] animated:true];
     [playBackSlider setValue:[[FlowerController currentFlapix] playBackVolume] animated:true];
     [self  valueChangedForExpirationSlider:expirationSlider];
-    [self  valueChangedForExericeSlider:exerciceSlider];
+    [self  valueChangedForExerciceSlider:exerciceSlider];
     
     [buttonProfile setTitle:[NSString stringWithFormat:@"%@ : %@",NSLocalizedStringFromTable(@"Profile",@"ParametersApp",@" Profile Button with title"),[[Profil current] name ]] forState:UIControlStateNormal];
 }
@@ -160,9 +160,9 @@ float minExerciceDuration_s = 7.0;
     
 }
 
-- (void)valueChangedForExericeSlider:(UISlider *)aSlider
+- (void)valueChangedForExerciceSlider:(UISlider *)aSlider
 {
-    int s = (int)[self exericeDurationSliderToSystem:(float) aSlider.value];
+    int s = (int)[self exerciceDurationSliderToSystem:(float) aSlider.value];
     int m = (int) (s/60);
     s = s - (60 * m);
     //NSLog(@"%i m %i s",m,s);
@@ -171,10 +171,10 @@ float minExerciceDuration_s = 7.0;
     
 }
 
-- (void)editingEndForExericeSlider:(UISlider *)aSlider
+- (void)editingEndForExerciceSlider:(UISlider *)aSlider
 {
-    [self   valueChangedForExericeSlider:aSlider];
-    [ParametersManager saveExerciceDuration:[self exericeDurationSliderToSystem:(float) aSlider.value]];
+    [self   valueChangedForExerciceSlider:aSlider];
+    [ParametersManager saveExerciceDuration:[self exerciceDurationSliderToSystem:(float) aSlider.value]];
     
 }
 

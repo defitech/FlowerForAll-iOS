@@ -153,6 +153,7 @@
     UILabel *profile;
     UILabel *blow;
     UILabel *blowRatio;
+    UILabel *avgFrequency;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -219,6 +220,13 @@
     blowRatio.adjustsFontSizeToFitWidth = YES;
     [cell.contentView addSubview:blowRatio];
     
+    
+    avgFrequency = [[[UILabel alloc] initWithFrame:CGRectMake(profileAlignment, cellHeight/2.2, cellWidth/5.33, cellHeight/2.75)] autorelease];
+    avgFrequency.font = [UIFont systemFontOfSize:cellWidth/26.6];
+    avgFrequency.textAlignment = UITextAlignmentLeft;
+    avgFrequency.adjustsFontSizeToFitWidth = YES;
+    [cell.contentView addSubview:avgFrequency];
+    
     profile = [[[UILabel alloc] initWithFrame:CGRectMake(profileAlignment, cellHeight/7.33, cellWidth/4.57, cellHeight/4.4)] autorelease];
     profile.font = [UIFont boldSystemFontOfSize:cellWidth/26.66];
     profile.textColor = [UIColor grayColor];
@@ -258,6 +266,9 @@
     blow.text = NSLocalizedStringFromTable(@"Good Blows",@"ResultsApp",nil);
     blowRatio.text = [NSString stringWithFormat:@"%i %@ %i", ex.blow_star_count, NSLocalizedStringFromTable(@"over",@"ResultsApp",nil), ex.blow_count];
     profile.text = ex.profile_name;
+    
+    
+    avgFrequency.text = [NSString stringWithFormat:@"%1.1f Hz", ex.avg_median_frequency_hz];
     
     return cell;
 }

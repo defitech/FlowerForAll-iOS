@@ -11,6 +11,7 @@
 #import "DataAccess.h"
 #import "User.h"
 #import "UserPicker.h"
+#import "Profil.h"
 #import "FlowerController.h"
 #import "ParametersManager.h"
 
@@ -44,6 +45,8 @@ static User* currentU;
     }
     currentU = [[User alloc] initWithId:uid];
     [DB db]; // load database
+    // load user Profile
+    [Profil reloadCurrent];
     // refresh flapix (if needed)
     [FlowerController initFlapix];
     // refresh history view

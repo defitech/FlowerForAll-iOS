@@ -60,19 +60,19 @@ static sqlite3 *database;
                                                  frequency_tolerance_hz NUM, \
                                                  duration_expiration_s NUM, \
                                                  duration_exercice_s NUM);"];
-                [DB executeWF:@"INSERT INTO profils VALUES (0,'%@',16,6,3,40)",
+                [DB executeWF:@"INSERT INTO profils VALUES (0,'%@',14,6,3,40)",
                     NSLocalizedString(@"Normal", @"Name of the standard Profile")];
-                [DB executeWF:@"INSERT INTO profils VALUES (1,'%@',16,8,3,30)",
+                [DB executeWF:@"INSERT INTO profils VALUES (1,'%@',14,8,3,30)",
                     NSLocalizedString(@"Easy", @"Name of the easy Profile")];
-                [DB executeWF:@"INSERT INTO profils VALUES (2,'%@',18,4,10,100)",
+                [DB executeWF:@"INSERT INTO profils VALUES (2,'%@',14,4,10,100)",
                     NSLocalizedString(@"Difficult", @"Name of the difficult Profile")];
                 
-                [DB execute:@"CREATE TABLE blows(timestamp NUM PRIMARY KEY, duration NUM, ir_duration NUM, goal INTEGER DEFAULT 0) ;"];
+                [DB execute:@"CREATE TABLE blows(timestamp NUM PRIMARY KEY, duration NUM, ir_duration NUM, goal INTEGER DEFAULT 0, median_frequency_hz NUM DEFAULT 0) ;"];
                 [DB execute:@"CREATE TABLE exercices(start_ts NUM PRIMARY KEY, stop_ts NUM, \
                                     frequency_target_hz NUM, frequency_tolerance_hz NUM, \
                                     duration_expiration_s NUM, duration_exercice_s NUM, \
-                                    duration_exercice_done_p NUM, blow_count NUM, blow_star_count NUM , profile_name TEXT) ;"];
-                actualVersion = @"4";
+                                    duration_exercice_done_p NUM, blow_count NUM, blow_star_count NUM , profile_name TEXT, avg_median_frequency_hz NUM DEFAULT 0) ;"];
+                actualVersion = @"5";
                 [DB setInfoValueForKey:@"db_version" value:actualVersion];
             } else {
                 actualVersion = [DB getInfoValueForKey:@"db_version"];
@@ -118,6 +118,18 @@ static sqlite3 *database;
                 actualVersion = @"4";
                 [DB setInfoValueForKey:@"db_version" value:actualVersion];
             }
+            
+            // update from 4 to 5
+            if ([actualVersion isEqualToString:@"4"]) {
+             
+                [DB execute:@"ALTER TABLE blows ADD COLUMN median_frequency_hz NUM DEFAULT 0;"];
+                [DB execute:@"ALTER TABLE exercices ADD COLUMN avg_median_frequency_hz NUM DEFAULT 0;"];
+                
+                actualVersion = @"5";
+                [DB setInfoValueForKey:@"db_version" value:actualVersion];
+            }
+            
+            
             NSLog(@"DB VERSION: %@", [DB getInfoValueForKey:@"db_version"] );
         } else {
             NSAssert1(0, @"** FAILED ** DB OPEN %@", dbFilePath);
@@ -205,8 +217,33 @@ static sqlite3 *database;
     return [DB getSingleValueWF:@"SELECT value FROM infos WHERE key = '%@'",key];
 }
 
++(BOOL) getInfoBOOLForKey:(NSString*)key {
+    return [@"YES" isEqualToString:[DB getInfoValueForKey:key]];
+}
+
++(NSDate*) getInfoNSDateForKey:(NSString*)key defaultValue:(NSDate*)defaultDate{
+    NSString* date = [DB getInfoValueForKey:key];
+    if (date != nil) {
+        float f = [date floatValue];
+        if (f != 0 && f < HUGE_VAL && f > -HUGE_VAL) {
+            return [NSDate dateWithTimeIntervalSinceReferenceDate:f];
+        }
+    }
+    return defaultDate;
+}
+
+
 +(void) setInfoValueForKey:(NSString*)key value:(NSString*)value {
    [DB executeWF:@"REPLACE INTO infos (key, value) VALUES ('%@', '%@')",key,value];
+}
+
++(void) setInfoBOOLForKey:(NSString*)key value:(BOOL)value {
+    [DB setInfoValueForKey:key value:value ? @"YES" : @"NO"];
+   
+}
+
++(void) setInfoNSDateForKey:(NSString*)key value:(NSDate*)value{
+   [DB setInfoValueForKey:key value:[NSString stringWithFormat:@"%f",[value timeIntervalSinceReferenceDate]]];
 }
 
 // convenience shortcut to get a String at a defined index in a row
@@ -247,13 +284,14 @@ static sqlite3 *database;
     return [dateFormatter stringFromDate:[DB colT:cStatement index:index]];
 }
 
+# pragma mark  EXERCICES
 /******************************************** EXERCICES ****************************************************/
 
 + (void) saveExercice:(FLAPIExercice*)e {
     [DB executeWF:@"INSERT INTO exercices (start_ts,stop_ts,frequency_target_hz, frequency_tolerance_hz, \
-     duration_expiration_s, duration_exercice_s, duration_exercice_done_p , blow_count, blow_star_count , profile_name) \
-        VALUES ('%f', '%f', '%f', '%f', '%f', '%f','%f','%i','%i','%@')",
-        e.start_ts, e.stop_ts, e.frequency_target_hz, e.frequency_tolerance_hz, e.duration_expiration_s, e.duration_exercice_s, [e percent_done], e.blow_count, e.blow_star_count, [Profil current].name];
+     duration_expiration_s, duration_exercice_s, duration_exercice_done_p , blow_count, blow_star_count , profile_name, avg_median_frequency_hz) \
+        VALUES ('%f', '%f', '%f', '%f', '%f', '%f','%f','%i','%i','%@','%f')",
+        e.start_ts, e.stop_ts, e.frequency_target_hz, e.frequency_tolerance_hz, e.duration_expiration_s, e.duration_exercice_s, [e percent_done], e.blow_count, e.blow_star_count, [Profil current].name, e.avg_median_frequency_hz];
     
 }
 
@@ -351,12 +389,12 @@ static sqlite3 *database;
     
     //Execute query using dayBeginAbsoluteTime and dayEndAbsoluteTime as bounds
     sqlite3_stmt *cStatement = 
-    [DB genCStatementWF:@"SELECT start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s, duration_exercice_done_p, blow_count, blow_star_count, profile_name FROM exercices WHERE start_ts >= '%f' AND start_ts <= '%f' ORDER BY start_ts DESC", dayBeginAbsoluteTime, dayEndAbsoluteTime];
+    [DB genCStatementWF:@"SELECT start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s, duration_exercice_done_p, blow_count, blow_star_count, profile_name, avg_median_frequency_hz FROM exercices WHERE start_ts >= '%f' AND start_ts <= '%f' ORDER BY start_ts DESC", dayBeginAbsoluteTime, dayEndAbsoluteTime];
     
     //Add all exercises in the result set to the result's array
     while(sqlite3_step(cStatement) == SQLITE_ROW) {
         
-        Exercise *exercise = [[[Exercise alloc] init:[DB colD:cStatement index:0]:[DB colD:cStatement index:1]:[DB colD:cStatement index:2]:[DB colD:cStatement index:3]:[DB colD:cStatement index:4]:[DB colD:cStatement index:5]:[DB colD:cStatement index:6]:[DB colD:cStatement index:7]:[DB colD:cStatement index:8]:[DB colS:cStatement index:9]] autorelease];
+        Exercise *exercise = [[[Exercise alloc] init:[DB colD:cStatement index:0]:[DB colD:cStatement index:1]:[DB colD:cStatement index:2]:[DB colD:cStatement index:3]:[DB colD:cStatement index:4]:[DB colD:cStatement index:5]:[DB colD:cStatement index:6]:[DB colD:cStatement index:7]:[DB colD:cStatement index:8]:[DB colS:cStatement index:9]:[DB colD:cStatement index:10]] autorelease];
         
         [exercises addObject:exercise];
     }
@@ -398,19 +436,39 @@ static sqlite3 *database;
  */
 +(void) deleteExercise:(double)start_ts {
 	NSLog(@"Delete exercise");
-    
     [DB executeWF:@"DELETE FROM exercices WHERE start_ts = '%f'", start_ts];
 }
 
-/******************************************* EXERCICES DATA ***********************************/
-# pragma mark  EXERCICES DATA
+/** get the date of the first exercice **/
++(NSDate*) firstExerciceDate {
+    sqlite3_stmt *cStatement = [DB genCStatementWF:@"SELECT MIN(start_ts) FROM exercices"];
+    if (sqlite3_step(cStatement) == SQLITE_ROW) { // at least one row
+        NSDate* result = [DB colT:cStatement index:0];
+        sqlite3_finalize(cStatement);
+        return  result;
+    }
+    sqlite3_finalize(cStatement);
+    return [[NSDate alloc] init];
+}
+
+/** get the number of exercices between two dates **/
++(int) exercicesCountBetween:(NSDate*)start and:(NSDate*)end {
+    sqlite3_stmt *cStatement = [DB genCStatementWF:@"SELECT COUNT(start_ts) FROM exercices WHERE start_ts > '%f' AND stop_ts < '%f'",[start timeIntervalSinceReferenceDate],[end timeIntervalSinceReferenceDate]];
+    int res = 0;
+    if (sqlite3_step(cStatement) == SQLITE_ROW) { // at least one row
+        res =  [DB colI:cStatement index:0];
+    }
+    sqlite3_finalize(cStatement);
+    return res;
+}
+
 
 /*************************************************** BLOWS ***************************************************/
 # pragma mark  BLOWS
 
 + (void) saveBlow:(FLAPIBlow*)blow {
-    [DB executeWF:@"INSERT INTO blows (timestamp, duration, ir_duration, goal) VALUES ('%f', '%f', '%f', '%i')",
-     blow.timestamp,blow.duration,blow.in_range_duration,blow.goal];
+    [DB executeWF:@"INSERT INTO blows (timestamp, duration, ir_duration, goal, median_frequency_hz) VALUES ('%f', '%f', '%f', '%i','%f')",
+     blow.timestamp,blow.duration,blow.in_range_duration,blow.goal,blow.medianFrequency];
 }
 
 

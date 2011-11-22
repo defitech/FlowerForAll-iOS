@@ -50,7 +50,7 @@
     
 
     if (profil.duration_exercice_s < 5.0f || profil.duration_exercice_s > 1000.0f) {
-        NSLog(@"loadParameters: invalid exerice duration:%f parameter reseting to defaults",profil.duration_exercice_s );
+        NSLog(@"loadParameters: invalid exercice duration:%f parameter reseting to defaults",profil.duration_exercice_s );
         profil.duration_exercice_s = 20.0f;
         saveProfil = true;
     }

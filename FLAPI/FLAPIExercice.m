@@ -11,7 +11,7 @@
 
 @implementation FLAPIExercice
 
-@synthesize start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s, duration_exercice_done_s, blow_count, blow_star_count, current_blow_in_range_duration_s;
+@synthesize start_ts, stop_ts, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s, duration_exercice_done_s, blow_count, blow_star_count, current_blow_in_range_duration_s, avg_median_frequency_hz;
 
 - (id)initWithFlapix:(FLAPIX*)flapix
 {
@@ -24,6 +24,7 @@
         duration_exercice_done_s = 0;
         blow_star_count = 0;
         current_blow_in_range_duration_s = 0;
+        avg_median_frequency_hz = 0;
     }
     return self;
 }
@@ -41,6 +42,7 @@
 }
 
 -(void)addBlow:(FLAPIBlow*)blow {
+    avg_median_frequency_hz = ( avg_median_frequency_hz * blow_count + blow.medianFrequency ) / (blow_count + 1);
     blow_count++;
     if ([blow goal]) blow_star_count++;
     current_blow_in_range_duration_s = 0;

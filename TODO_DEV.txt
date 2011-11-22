@@ -20,7 +20,7 @@ to use is as a simpe monitoring device for their exercices.
 For exemple an Adult, would not do "games" with it but he will be interested in having
 historical statistics.
 This would be easily achived by recording every blows in the database, independently 
-of exerices start / stop. 
+of exercices start / stop. 
 But we need to create an interface for viewing this data..
 
 [ PARAMETERS - SETTINGS ]
@@ -33,22 +33,9 @@ But we need to create an interface for viewing this data..
 [ MONITORING ]
 - Rewrite the history monitor in OpenGL or Quartz
 
-[ MULTI USERS ]
-For use in hospital or by a physiotherapist 
-
-** The DataModel has a multi-user layer ready to be implemented
-- each user has it's own directory, with it's own database
-- actually the administrator (owner) account is auto created 
-
-** Some zombie code, such as UserPicker is waiting for a nice developer
-to be reused.
-
-** multiuser should be implemented in this way:
-- Only user "owner" can manage user
-- User choice is proposed at start of the application if there is more
-than one user in the database.
-- "owner" may log as any user using it's own password, this to implement
-simply a method for the administrator to consult other users data.
+- Add a current-blow percentage view.
+ in the needleGL view add a progress view (vertical) that shows the persent of
+ blowduration achieved.
 
 [ APPS MENU ]
 - Placement is now manual.
@@ -65,11 +52,11 @@ simply a method for the administrator to consult other users data.
 It would be nice to have someone exetrnal do some revieweing / refactoring
 
 [ AUDIO FEEDBACK ]
-- Add a nice audio feedback for someone who would do it's exerice without holding the iPhone.
+- Add a nice audio feedback for someone who would do it's exercice without holding the iPhone.
 
 [ SOUND PROCESSING ]
 - is not perfect but functionnal..
-- we will probably need to rewrite FLAPI if IAV does open their code
+- we will probably need to rewrite FLAPI if IAV does not open their code
 
 [ R & D ]
 - Possible with a bluetooth headset ?

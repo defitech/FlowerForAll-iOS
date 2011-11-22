@@ -23,9 +23,10 @@
     NSInteger blow_count;
     NSInteger blow_star_count;
     NSString* profile_name;
+    double avg_median_frequency_hz;
 }
 
--(id)init:(double)_start_ts:(double)_stop_ts:(double)_frequency_target_hz:(double)_frequency_tolerance_hz:(double)_duration_expiration_s:(double)_duration_exercice_s:(double)_duration_exercice_done_ps:(NSInteger)_blow_count:(NSInteger)_blow_star_count:(NSString*)_profile_name;
+-(id)init:(double)_start_ts:(double)_stop_ts:(double)_frequency_target_hz:(double)_frequency_tolerance_hz:(double)_duration_expiration_s:(double)_duration_exercice_s:(double)_duration_exercice_done_ps:(NSInteger)_blow_count:(NSInteger)_blow_star_count:(NSString*)_profile_name:(double)_avg_median_frequency_hz;
 
 
 //Properties
@@ -36,6 +37,7 @@
 @property  double duration_expiration_s;
 @property  double duration_exercice_s;
 @property  double duration_exercice_done_ps;
+@property  double avg_median_frequency_hz;
 @property  NSInteger blow_count;
 @property  NSInteger blow_star_count;
 @property (nonatomic, retain)  NSString* profile_name;

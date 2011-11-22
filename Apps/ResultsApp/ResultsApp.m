@@ -8,10 +8,16 @@
 
 #import "ResultsApp.h"
 #import "ResultsApp_Mailer.h"
+#import "ResultsApp_MailerOptions.h"
+#import "UserManager.h"
+#import "DB.h"
 
 @implementation ResultsApp
 
 @synthesize controllerView, toolbar, sendButton;
+
+BOOL optionShowing;
+ResultsApp_MailerOptions* mailerOptions;
 
 # pragma mark FlowerApp overriding
 
@@ -35,13 +41,12 @@
 {
     [super viewDidLoad];
     
-    [sendButton setTitle:
-      NSLocalizedStringFromTable(@"Send results",@"ResultsApp",@"Button that open the mailer")];
-    
 
-
+    optionShowing = NO;
+    [self refreshSendButton];
     
     statViewController = [[ResultsApp_Nav alloc] init];
+    [statViewController setDelegate:self];
     statViewController.view.frame = CGRectMake(0,0,
                                                self.controllerView.frame.size.width,
                                                self.controllerView.frame.size.height);
@@ -50,12 +55,41 @@
 
 }
 
+- (void)navigationController:(UINavigationController *)navigationController 
+      willShowViewController:(UIViewController *)viewController animated:(BOOL)animated 
+{
+    optionShowing = ([viewController class] == [ResultsApp_MailerOptions class]);
+    [self refreshSendButton];
+}
+
+
+- (void)refreshSendButton {
+    if (optionShowing) {
+        if ([mailerOptions selectedExerciceCount] == 0) {
+            [sendButton setEnabled:NO];
+            [sendButton setTitle:[NSString stringWithFormat:
+                                  NSLocalizedStringFromTable(@"There is no result from this date",@"ResultsApp",@"Button that open the mailer Step - no result"),[mailerOptions selectedExerciceCount]]];
+        } else {
+            [sendButton setEnabled:YES];
+            
+            [sendButton setTitle:[NSString stringWithFormat:
+                                  NSLocalizedStringFromTable(@"Send the results of %i exercices",@"ResultsApp",@"Button that open the mailer Step2"),[mailerOptions selectedExerciceCount]]];
+        }
+    } else {
+        [sendButton setEnabled:YES];
+        [sendButton setTitle:
+         NSLocalizedStringFromTable(@"Send results",@"ResultsApp",@"Button that open the mailer")];
+    }
+}
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    mailerOptions = nil;
+    controllerView = nil;
+    toolbar = nil;
+    statViewController = nil;
+    sendButton = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,26 +107,43 @@
 # pragma mark mailer stuff
 
 
+
 - (IBAction)sendButtonPressed:(id)sender {
-    NSLog(@"sendButtonPressed");
+    
+    if (! optionShowing) {
+        optionShowing = YES;
+        if (mailerOptions == nil)
+            mailerOptions = [[ResultsApp_MailerOptions alloc] initWithResultsApp:self];
+        
+        [statViewController pushViewController:mailerOptions animated:YES];
+        [self refreshSendButton];
+        return;
+    }
+    
     
     if ([MFMailComposeViewController canSendMail]) {
         
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = self;
-        [mailViewController setSubject:@"Flutter Data"];
+        [mailViewController setSubject:[NSString stringWithFormat:
+          NSLocalizedStringFromTable(@"Flower-Breath data for %@",@"ResultsApp", @"Mail subject"),[UserManager currentUser].name]];
         
         
         NSMutableData *data = [[NSMutableData alloc] init];
+        NSMutableString *HTMLtable = ![DB getInfoBOOLForKey:@"hideResultTableInMails"] ? [[NSMutableString alloc] init] : nil ;
+        [ResultsApp_Mailer exercicesToCSV:data html:HTMLtable fromDate:[mailerOptions selectedStartDate] toDate:[[NSDate alloc] init]];
+        
+        
         
         NSMutableString *message = [[NSMutableString alloc] init];
         [message appendString:
          NSLocalizedStringFromTable(@"<br>....Data enclosed to this mail.\n<br><br>\n", @"ResultsApp", @"Mail introduction")];
         
-        [ResultsApp_Mailer exericesToCSV:data html:message];
-        [mailViewController setMessageBody:message isHTML:YES];
+        if (HTMLtable != nil) [message appendString:HTMLtable];
         
-        [mailViewController addAttachmentData:data mimeType:@"text/csv" fileName:@"FlutterData.csv"];
+        [mailViewController setMessageBody:message isHTML:YES];
+        [mailViewController addAttachmentData:data mimeType:@"text/csv" 
+                                     fileName:[NSString stringWithFormat:@"FlutterData %@.csv",[UserManager currentUser].name]];
         
         [self presentModalViewController:mailViewController animated:YES];
         [mailViewController release];
@@ -100,7 +151,7 @@
     }  else {
         
     }
-    
+    [statViewController popViewControllerAnimated:NO];
 }
 
 
