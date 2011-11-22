@@ -217,8 +217,33 @@ static sqlite3 *database;
     return [DB getSingleValueWF:@"SELECT value FROM infos WHERE key = '%@'",key];
 }
 
++(BOOL) getInfoBOOLForKey:(NSString*)key {
+    return [@"YES" isEqualToString:[DB getInfoValueForKey:key]];
+}
+
++(NSDate*) getInfoNSDateForKey:(NSString*)key defaultValue:(NSDate*)defaultDate{
+    NSString* date = [DB getInfoValueForKey:key];
+    if (date != nil) {
+        float f = [date floatValue];
+        if (f != 0 && f < HUGE_VAL && f > -HUGE_VAL) {
+            return [NSDate dateWithTimeIntervalSinceReferenceDate:f];
+        }
+    }
+    return defaultDate;
+}
+
+
 +(void) setInfoValueForKey:(NSString*)key value:(NSString*)value {
    [DB executeWF:@"REPLACE INTO infos (key, value) VALUES ('%@', '%@')",key,value];
+}
+
++(void) setInfoBOOLForKey:(NSString*)key value:(BOOL)value {
+    [DB setInfoValueForKey:key value:value ? @"YES" : @"NO"];
+   
+}
+
++(void) setInfoNSDateForKey:(NSString*)key value:(NSDate*)value{
+   [DB setInfoValueForKey:key value:[NSString stringWithFormat:@"%f",[value timeIntervalSinceReferenceDate]]];
 }
 
 // convenience shortcut to get a String at a defined index in a row
@@ -259,6 +284,7 @@ static sqlite3 *database;
     return [dateFormatter stringFromDate:[DB colT:cStatement index:index]];
 }
 
+# pragma mark  EXERCICES
 /******************************************** EXERCICES ****************************************************/
 
 + (void) saveExercice:(FLAPIExercice*)e {
@@ -410,12 +436,32 @@ static sqlite3 *database;
  */
 +(void) deleteExercise:(double)start_ts {
 	NSLog(@"Delete exercise");
-    
     [DB executeWF:@"DELETE FROM exercices WHERE start_ts = '%f'", start_ts];
 }
 
-/******************************************* EXERCICES DATA ***********************************/
-# pragma mark  EXERCICES DATA
+/** get the date of the first exercice **/
++(NSDate*) firstExerciceDate {
+    sqlite3_stmt *cStatement = [DB genCStatementWF:@"SELECT MIN(start_ts) FROM exercices"];
+    if (sqlite3_step(cStatement) == SQLITE_ROW) { // at least one row
+        NSDate* result = [DB colT:cStatement index:0];
+        sqlite3_finalize(cStatement);
+        return  result;
+    }
+    sqlite3_finalize(cStatement);
+    return [[NSDate alloc] init];
+}
+
+/** get the number of exercices between two dates **/
++(int) exercicesCountBetween:(NSDate*)start and:(NSDate*)end {
+    sqlite3_stmt *cStatement = [DB genCStatementWF:@"SELECT COUNT(start_ts) FROM exercices WHERE start_ts > '%f' AND stop_ts < '%f'",[start timeIntervalSinceReferenceDate],[end timeIntervalSinceReferenceDate]];
+    int res = 0;
+    if (sqlite3_step(cStatement) == SQLITE_ROW) { // at least one row
+        res =  [DB colI:cStatement index:0];
+    }
+    sqlite3_finalize(cStatement);
+    return res;
+}
+
 
 /*************************************************** BLOWS ***************************************************/
 # pragma mark  BLOWS

@@ -13,7 +13,7 @@
 
 @interface FLAPIExercice : NSObject {
     /** 
-     * Timestamp that mark the start of this exerice 
+     * Timestamp that mark the start of this exercice 
      **/
     double start_ts;
     double stop_ts;

@@ -104,7 +104,7 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
     return FLAPI_SUBSYS_IOS_GET_PlayBackVolume();
 }
 
-// duration of an exerice
+// duration of an exercice
 double exerice_duration_s = -1.0f;
 
 - (void) SetTargetExerciceDuration:(float)durations_s {

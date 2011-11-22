@@ -16,6 +16,7 @@
 @synthesize controllerView, toolbar, sendButton;
 
 BOOL optionShowing;
+ResultsApp_MailerOptions* mailerOptions;
 
 # pragma mark FlowerApp overriding
 
@@ -38,8 +39,6 @@ BOOL optionShowing;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-   
     
 
     optionShowing = NO;
@@ -65,9 +64,18 @@ BOOL optionShowing;
 
 - (void)refreshSendButton {
     if (optionShowing) {
-        [sendButton setTitle:
-         NSLocalizedStringFromTable(@"Continue",@"ResultsApp",@"Button that open the mailer Step2")];
+        if ([mailerOptions selectedExerciceCount] == 0) {
+            [sendButton setEnabled:NO];
+            [sendButton setTitle:[NSString stringWithFormat:
+                                  NSLocalizedStringFromTable(@"There is no result from this date",@"ResultsApp",@"Button that open the mailer Step - no result"),[mailerOptions selectedExerciceCount]]];
+        } else {
+            [sendButton setEnabled:YES];
+            
+            [sendButton setTitle:[NSString stringWithFormat:
+                                  NSLocalizedStringFromTable(@"Send the results of %i exercices",@"ResultsApp",@"Button that open the mailer Step2"),[mailerOptions selectedExerciceCount]]];
+        }
     } else {
+        [sendButton setEnabled:YES];
         [sendButton setTitle:
          NSLocalizedStringFromTable(@"Send results",@"ResultsApp",@"Button that open the mailer")];
     }
@@ -76,8 +84,11 @@ BOOL optionShowing;
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    mailerOptions = nil;
+    controllerView = nil;
+    toolbar = nil;
+    statViewController = nil;
+    sendButton = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -100,10 +111,11 @@ BOOL optionShowing;
     
     if (! optionShowing) {
         optionShowing = YES;
-        ResultsApp_MailerOptions* optionView = [[ResultsApp_MailerOptions alloc] init];
-        [statViewController pushViewController:optionView animated:YES];
+        if (mailerOptions == nil)
+            mailerOptions = [[ResultsApp_MailerOptions alloc] initWithResultsApp:self];
+        
+        [statViewController pushViewController:mailerOptions animated:YES];
         [self refreshSendButton];
-        [optionView release];
         return;
     }
     

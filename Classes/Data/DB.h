@@ -44,12 +44,21 @@
 /** getSingleValue With Format **/
 +(NSString*) getSingleValueWF:(NSString*)sqlStatementFormat, ...;// NS_FORMAT_FUNCTION(1,2); // sugar implementation
 
+
 /** get values from the db info table **/
 +(NSString*) getInfoValueForKey:(NSString*)key;
 
 /** set info value for this (unique) key*/
 +(void) setInfoValueForKey:(NSString*)key value:(NSString*)value;
+/** shortcut to use the info system with BOOL **/
++(BOOL) getInfoBOOLForKey:(NSString*)key;
+/** shortcut to use the info system with BOOL **/
++(void) setInfoBOOLForKey:(NSString*)key value:(BOOL)value;
 
+/** shortcut to use the info system with NSDate **/
++(NSDate*) getInfoNSDateForKey:(NSString*)key defaultValue:(NSDate*)defaultDate;
+/** shortcut to use the info system with NSDate **/
++(void) setInfoNSDateForKey:(NSString*)key value:(NSDate*)value;
 
 /** convenience shortcut to get a String at a defined index in a row **/
 +(NSString*) colS:(sqlite3_stmt*)cStatement index:(int)index;
@@ -114,6 +123,12 @@
 
 +(void) deleteExercise:(double)start_ts;
 
+/** get the date of the first exercice **/
++(NSDate*) firstExerciceDate ;
+
+/** get the number of exercices between two dates **/
++(int) exercicesCountBetween:(NSDate*)start and:(NSDate*)end;
+    
 /*************************************************** BLOWS *******************************************************/
 + (void) saveBlow:(FLAPIBlow*)blow;  
 
