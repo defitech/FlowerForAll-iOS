@@ -11,6 +11,6 @@
 
 @interface ResultsApp_Mailer : NSObject
 
-+ (int) exericesToCSV:(NSMutableData*)data html:(NSMutableString*)html;
++ (int) exercicesToCSV:(NSMutableData*)data html:(NSMutableString*)html;
 
 @end

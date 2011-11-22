@@ -105,10 +105,10 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
 }
 
 // duration of an exercice
-double exerice_duration_s = -1.0f;
+double exercice_duration_s = -1.0f;
 
 - (void) SetTargetExerciceDuration:(float)durations_s {
-    exerice_duration_s = (double) durations_s;
+    exercice_duration_s = (double) durations_s;
 }
 
 // return durationTarget(s)
@@ -118,8 +118,8 @@ double exerice_duration_s = -1.0f;
 
 // return durationTarget(s)
 - (double) exerciceDurationTarget {
-    if (exerice_duration_s < -1.0f) exerice_duration_s = 10.0f;
-    return (double) exerice_duration_s;
+    if (exercice_duration_s < -1.0f) exercice_duration_s = 10.0f;
+    return (double) exercice_duration_s;
 }
 
 // return maxFrequence
@@ -174,7 +174,7 @@ BOOL demo_mode = NO;
 - (BOOL) Stop {
     NSLog(@"Stop");
     [self SetDemo:NO]; // we must quit Demo before we stop;
-    [self exerciceStop]; // maybe an exerice is going on
+    [self exerciceStop]; // maybe an exercice is going on
     
     if (! self.running) return NO;
     if (FLAPI_SUCCESS != FLAPI_Stop()) return NO; // This does stop the sound recording and processing
@@ -358,7 +358,7 @@ NSMutableArray *blowFrequencies;
 
 - (FLAPIExercice*)currentExercice {
     if (current_exercice == nil) {
-        NSLog(@"currentExerice called and is NULL!!");
+        NSLog(@"currentExercice called and is NULL!!");
     }
     return current_exercice;
 }

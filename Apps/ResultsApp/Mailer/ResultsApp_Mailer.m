@@ -13,8 +13,8 @@
 
 
 
-// will take dates as parameter * return exerices and an HTML version
-+ (int) exericesToCSV:(NSMutableData*)data html:(NSMutableString*)html {
+// will take dates as parameter * return exercices and an HTML version
++ (int) exercicesToCSV:(NSMutableData*)data html:(NSMutableString*)html {
     int count = 0;
     float dayBeginAbsoluteTime = 0;
     float dayEndAbsoluteTime = 1000000000000000;

@@ -49,12 +49,12 @@
 
 
 /**  
- * A new exerice start  
+ * A new exercice start  
  * Override this method to catch 
  **/
 -(void)flapixEventExerciceStart:(FLAPIExercice *)exercice;
 /** 
- * Exerice did finished  
+ * Exercice did finished  
  * Override this method to catch 
  **/
 -(void)flapixEventExerciceStop:(FLAPIExercice *)exercice;

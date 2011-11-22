@@ -17,8 +17,8 @@
 
 
 
-float lastExericeStartTimeStamp = 0;
-float lastExericeStopTimeStamp = 0;
+float lastExerciceStartTimeStamp = 0;
+float lastExerciceStopTimeStamp = 0;
 
 # pragma mark TIMERS
 NSTimer *repeatingTimer;
@@ -289,7 +289,7 @@ NSTimer *repeatingTimer;
 // This method is called twice per plot.. 
 - (NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
 	
-    double ds = (lastExericeStartTimeStamp - CFAbsoluteTimeGetCurrent() - 1 );
+    double ds = (lastExerciceStartTimeStamp - CFAbsoluteTimeGetCurrent() - 1 );
     if (plot.identifier == @"isStart") {
         if (ds > 0 || ds < -60*historyDuration)  return  nil;
         if (fieldEnum == CPTScatterPlotFieldY) return [ NSNumber numberWithDouble:0.0f];
@@ -297,7 +297,7 @@ NSTimer *repeatingTimer;
     }
             
     if (plot.identifier == @"isStop") {
-        double d = (lastExericeStopTimeStamp - CFAbsoluteTimeGetCurrent() );
+        double d = (lastExerciceStopTimeStamp - CFAbsoluteTimeGetCurrent() );
         if (d > 0 || d < -60*historyDuration)  return  nil;
         if (d < ds) return nil;
         if (fieldEnum == CPTScatterPlotFieldY) return [ NSNumber numberWithDouble:0.0f];
@@ -426,14 +426,14 @@ NSTimer *repeatingTimer;
 
 
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
-    lastExericeStartTimeStamp = [(FLAPIExercice*)[notification object] start_ts];
+    lastExerciceStartTimeStamp = [(FLAPIExercice*)[notification object] start_ts];
     higherBar = [history longestDuration];
 }
 
 
 
 - (void)flapixEventExerciceStop:(NSNotification *)notification {
-    lastExericeStopTimeStamp = [(FLAPIExercice*)[notification object] stop_ts];
+    lastExerciceStopTimeStamp = [(FLAPIExercice*)[notification object] stop_ts];
 }
 
 //The event handling method

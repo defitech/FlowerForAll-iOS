@@ -20,7 +20,7 @@ to use is as a simpe monitoring device for their exercices.
 For exemple an Adult, would not do "games" with it but he will be interested in having
 historical statistics.
 This would be easily achived by recording every blows in the database, independently 
-of exerices start / stop. 
+of exercices start / stop. 
 But we need to create an interface for viewing this data..
 
 [ PARAMETERS - SETTINGS ]
@@ -52,7 +52,7 @@ But we need to create an interface for viewing this data..
 It would be nice to have someone exetrnal do some revieweing / refactoring
 
 [ AUDIO FEEDBACK ]
-- Add a nice audio feedback for someone who would do it's exerice without holding the iPhone.
+- Add a nice audio feedback for someone who would do it's exercice without holding the iPhone.
 
 [ SOUND PROCESSING ]
 - is not perfect but functionnal..

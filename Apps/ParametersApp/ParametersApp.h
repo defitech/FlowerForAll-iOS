@@ -63,7 +63,7 @@
 - (void)reloadValues ;
 
 - (void)valueChangedForExpirationSlider:(UISlider *)aSlider;
-- (void)valueChangedForExericeSlider:(UISlider *)aSlider;
+- (void)valueChangedForExerciceSlider:(UISlider *)aSlider;
 
 
 

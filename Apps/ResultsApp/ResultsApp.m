@@ -134,7 +134,7 @@ ResultsApp_MailerOptions* mailerOptions;
         [message appendString:
          NSLocalizedStringFromTable(@"<br>....Data enclosed to this mail.\n<br><br>\n", @"ResultsApp", @"Mail introduction")];
         
-        [ResultsApp_Mailer exericesToCSV:data html:message];
+        [ResultsApp_Mailer exercicesToCSV:data html:message];
         [mailViewController setMessageBody:message isHTML:YES];
         
         [mailViewController addAttachmentData:data mimeType:@"text/csv" 
