@@ -33,7 +33,7 @@ User* onlyPasswordModeUser;
         onlyPasswordModeUser = nil;
         [[[UserPicker alloc] init] showUserPicker];
     } else {
-         NSLog(@"UserPicker:already showing");
+         // NSLog(@"UserPicker:already showing");
     }
 }
 
@@ -45,7 +45,7 @@ User* onlyPasswordModeUser;
         onlyPasswordModeUser = user;
         [[[UserPicker alloc] init] showPasswordSheet:@""];
     } else {
-        NSLog(@"UserPicker:already showing");
+        // NSLog(@"UserPicker:already showing");
     }
 }
 

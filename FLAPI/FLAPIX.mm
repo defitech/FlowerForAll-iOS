@@ -87,7 +87,7 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
         return ;
     }
     FLAPI_SetTargetFrequency(target_frequency,tolerance);
-    NSLog(@"SetTargetFrequency %1.1f   tol: %1.1f",target_frequency,tolerance);
+    //NSLog(@"SetTargetFrequency %1.1f   tol: %1.1f",target_frequency,tolerance);
 }
 
 
