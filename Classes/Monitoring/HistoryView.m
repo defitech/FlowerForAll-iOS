@@ -221,6 +221,18 @@ NSTimer *repeatingTimer;
 	 *	PLOTS
 	 */
       
+    // 
+	CPTScatterPlot *goalLine = [[CPTScatterPlot alloc]initWithFrame:self.bounds] ;
+    goalLine.identifier = @"goalLine";
+    CPTMutableLineStyle *gPlineStyle2 = [goalLine.dataLineStyle 
+                                        mutableCopy] ; 
+    gPlineStyle2.lineWidth = 1.1f; 
+    gPlineStyle2.lineColor = [CPTColor yellowColor]; 
+    goalLine.dataLineStyle = gPlineStyle2;
+	goalLine.dataSource = self;
+	[ graph addPlot:goalLine];
+    
+    
 	// isGood plot
 	CPTScatterPlot *goodPlot = [[CPTScatterPlot alloc]initWithFrame:self.bounds] ;
     goodPlot.identifier = @"isGood";
@@ -280,6 +292,7 @@ NSTimer *repeatingTimer;
 
 - (NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
     if (plot.identifier == @"isStart" || plot.identifier == @"isStop" ) return 1;
+    if (plot.identifier == @"goalLine" ) return 2;
     return [[history getHistoryArray] count];
     
 }
@@ -288,7 +301,18 @@ NSTimer *repeatingTimer;
 
 // This method is called twice per plot.. 
 - (NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
-	
+    if (plot.identifier == @"goalLine") {
+        if ( fieldEnum ==  CPTScatterPlotFieldY)
+            return [ NSNumber numberWithDouble:[[FlowerController currentFlapix] expirationDurationTarget]];
+        
+        // X
+        if (index == 0)
+            return [ NSNumber numberWithDouble:0.0f ];
+        
+        return [ NSNumber numberWithDouble:(- historyDuration * 60) ];
+    }
+    
+    
     double ds = (lastExerciceStartTimeStamp - CFAbsoluteTimeGetCurrent() - 1 );
     if (plot.identifier == @"isStart") {
         if (ds > 0 || ds < -60*historyDuration)  return  nil;
@@ -347,7 +371,12 @@ NSTimer *repeatingTimer;
 }
 
 -(CPTPlotSymbol *)symbolForScatterPlot:(CPTScatterPlot *)plot recordIndex:(NSUInteger)index {
-    
+    if (plot.identifier == @"goalLine") {
+        CPTPlotSymbol *symbol = [CPTPlotSymbol plotSymbol];
+        symbol.size = CGSizeMake(0,0);
+        symbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
+        return symbol;
+    }
     
     if (plot.identifier == @"isStart") {
         CPTPlotSymbol *symbol = [CPTPlotSymbol trianglePlotSymbol];
