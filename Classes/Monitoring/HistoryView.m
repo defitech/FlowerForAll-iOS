@@ -304,7 +304,6 @@ NSTimer *repeatingTimer;
     if (plot.identifier == @"goalLine") {
         if ( fieldEnum ==  CPTScatterPlotFieldY)
             return [ NSNumber numberWithDouble:[[FlowerController currentFlapix] expirationDurationTarget]];
-        
         // X
         if (index == 0)
             return [ NSNumber numberWithDouble:0.0f ];

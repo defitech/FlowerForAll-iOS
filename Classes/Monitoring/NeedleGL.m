@@ -121,7 +121,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
 //	NSLog(@"line %f,%f,%f %f,%f,%f",lineVertices[0],lineVertices[1],lineVertices[2],lineVertices[3],lineVertices[4],lineVertices[5]);	
 	
 	// line
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	
 	glVertexPointer(3, GL_FLOAT, 0, lineVertices);
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glDrawArrays(GL_LINES, 0, 2);
@@ -219,11 +219,13 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     glLoadIdentity();
     
     glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
+    glColor4f(1.0f, 9.0f, 0.0f, 1.0f);
     [self drawLine:-0.5 y1:2.0 z1:-5.002 x2:0.5  y2:2.0  z2:-5.002];
     
     // --- Needle
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    
     glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
     // Def needle
@@ -277,6 +279,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     
     
     glRotatef(angle_freqMax, 0.0f, 0.0f, -1.0f);
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
 
     glMatrixMode(GL_MODELVIEW);
@@ -284,6 +287,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
     glRotatef(angle_freqMin, 0.0f, 0.0f, -1.0f);
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
     
 	
