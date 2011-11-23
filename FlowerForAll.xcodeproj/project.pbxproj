@@ -1880,7 +1880,7 @@
 					"-ObjC",
 				);
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5E904A1A-86D1-4FF4-871D-257F58755BA2";
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = NO;
 			};
 			name = Debug;
@@ -1907,7 +1907,7 @@
 				);
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos3.2;
+				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

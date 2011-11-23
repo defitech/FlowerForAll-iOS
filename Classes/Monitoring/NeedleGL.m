@@ -129,6 +129,22 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
 }
 
 
+
+- (void)drawBox:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2 z:(float)z {
+	const GLfloat quadVertices[] = {
+        x1, y1, z,
+        x1, y2, z,
+        x2, y2, z,
+        x2, y1, z
+    };
+    glVertexPointer(3, GL_FLOAT, 0, quadVertices);
+	glEnableClientState(GL_VERTEX_ARRAY);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+	
+}
+
+
+
 - (void)drawView {
     FLAPIX* flapix = [FlowerController currentFlapix];
     if (flapix == nil) return;
@@ -154,7 +170,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     
     if (fabs(angle_toreach - angle_actual) < 2  && angle_freqMin == angle_freqMin_previous && angle_freqMax == angle_freqMax_previous) {
         //nothing to do
-        return;
+       // return;
     }
     angle_freqMin_previous = angle_freqMin;
     angle_freqMax_previous = angle_freqMax;
@@ -162,17 +178,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     
     /*************** Drawing code ******************/
     
-    // Def needle
-	const GLfloat quadVertices[] = {
-          0.0, 2.0, -5.0,                    // head
-          0.5, 0.0, -5.0,                    // left
-          0.0, -0.5, -5.0,                      // queue
-         -0.5, 0.0, -5.0                     // right
-      
-      
-      
-    };
-	
+    
     [EAGLContext setCurrentContext:context];    
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
     glViewport(0, 0, backingWidth, backingHeight);
@@ -180,13 +186,54 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    // --- Blowing vu-mter
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
+    glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
+    
+    
+    //glRotatef(angle_freqMax, 0.0f, 0.0f, -1.0f);
+    static float hPos = 0;
+    static float hSpeed = 0.01;
+    float h = [flapix currentBlowPercent];
+    if (! flapix.blowing) h = 0;
+    if (h > 1) {
+         glColor4f(0.1f,  0.7f, 0.7f, 1.0f);
+    } else {
+        glColor4f(0.1f,  0.5f, 0.3f, 1.0f);
+    }
+    
+    hSpeed = (h < hPos) ? 0.2 : 0.1;
+    
+    hPos = hPos + (h - hPos ) * hSpeed;
+    
+	[self drawBox:-1.5 y1:-0.5 x2:1.5 y2:(hPos*2.5) - 0.5 z:-5.001];
+    
+    // vu meter line
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
+    glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
+    [self drawLine:-1.5 y1:2.5 z1:-5.002 x2:1.5  y2:2.5  z2:-5.002];
+    
+    // --- Needle
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
+    // Def needle
+	const GLfloat quadVertices[] = {
+        0.0, 2.0, -5.0,                    // head
+        0.5, 0.0, -5.0,                    // left
+        0.0, -0.5, -5.0,                      // queue
+        -0.5, 0.0, -5.0                     // right
+    };
+
+    
     if(!flapix.blowing) {
         
-        glColor4f(0.f, 0.0f, 0.5f+[flapix lastlevel]/2, 1.0f);
+        glColor4f(0.2f, 0.2f, 0.5f+[flapix lastlevel]/2, 1.0f);
     } else { 
         speed = fabs((angle_toreach - angle_previous) / 10);
        // NSLog(@"speed = %f \n", speed);

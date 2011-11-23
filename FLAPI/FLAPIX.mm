@@ -305,7 +305,7 @@ NSMutableArray *blowFrequencies;
     NSLog(@"EventMicrophonePlugged %i",on);
 }
 
-# pragma mark lastBlow
+# pragma mark Blow
 -(FLAPIBlow*) lastBlow {
     if (lastBlow == nil) {
         lastBlow = [[FLAPIBlow alloc] initWith:0 
@@ -316,6 +316,12 @@ NSMutableArray *blowFrequencies;
         lastBlow.medianTolerance = [self frequenceTolerance];
     }
     return lastBlow;
+}
+
+/** return the percentage of achievement of currentBlow (if any) may be > 1 if blow is longer than targeted duration, 0 if none **/
+- (float) currentBlowPercent {
+    if ([self expirationDurationTarget] == 0) return 0;
+    return FLAPI_SUBSYS_IOS_get_current_blow_in_range_duration() / [self expirationDurationTarget];
 }
 
 
