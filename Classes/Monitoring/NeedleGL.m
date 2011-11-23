@@ -186,7 +186,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    // --- Blowing vu-mter
+    // --- Blowing gauge
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
@@ -196,10 +196,14 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     //glRotatef(angle_freqMax, 0.0f, 0.0f, -1.0f);
     static float hPos = 0;
     static float hSpeed = 0.01;
+    static BOOL goal = NO;
     float h = [flapix currentBlowPercent];
     if (! flapix.blowing) h = 0;
-    if (h > 1) {
-         glColor4f(0.1f,  0.7f, 0.7f, 1.0f);
+    if (h < 1 && (h > hPos)) goal = NO; // we keep goal value to descend the gauge
+    if (h > 1) goal = YES;
+    
+    if (goal) {
+        glColor4f(0.9f,  0.7f, 0.0f, 1.0f);
     } else {
         glColor4f(0.1f,  0.5f, 0.3f, 1.0f);
     }
@@ -210,12 +214,12 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     
 	[self drawBox:-1.5 y1:-0.5 x2:1.5 y2:(hPos*2.5) - 0.5 z:-5.001];
     
-    // vu meter line
+    // gauge line
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
     glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
-    [self drawLine:-1.5 y1:2.5 z1:-5.002 x2:1.5  y2:2.5  z2:-5.002];
+    [self drawLine:-0.5 y1:2.0 z1:-5.002 x2:0.5  y2:2.0  z2:-5.002];
     
     // --- Needle
     glMatrixMode(GL_MODELVIEW);
@@ -246,7 +250,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
         
         
         if ((angle_freqMax > angle_actual) && (angle_freqMin < angle_actual)) { // Good
-            glColor4f(0.0f,  1.0f, 0.0f, 1.0f);
+            glColor4f(0.1f,  0.9f, 0.1f, 1.0f);
         } else { // Bad
             glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
         }
