@@ -100,7 +100,7 @@ int selectedExerciceCount;
     NSDate* startDate = [DB firstExerciceDate];
     NSDate* now = [[NSDate alloc] init];
     mailDate = [DB getInfoNSDateForKey:@"lastResultMail" defaultValue:startDate];
-    
+    [mailDate retain];
     
     [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehavior10_4];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

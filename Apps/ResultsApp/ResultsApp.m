@@ -148,6 +148,8 @@ ResultsApp_MailerOptions* mailerOptions;
         [self presentModalViewController:mailViewController animated:YES];
         [mailViewController release];
         
+       
+        
     }  else {
         
     }
@@ -168,6 +170,7 @@ ResultsApp_MailerOptions* mailerOptions;
             break;
         case MFMailComposeResultSent:
             //message.text = @"Result: sent";
+             [DB setInfoNSDateForKey:@"lastResultMail" value:[[NSDate alloc] init]];
             break;
         case MFMailComposeResultFailed:
             //message.text = @"Result: failed";
