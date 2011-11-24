@@ -42,10 +42,8 @@
 }
 
 
-//Called when popping a child view controller. Ensure table is correctly reloaded.
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-	//Fetch list of all exercise days from the DB
+- (void)refreshData {
+    //Fetch list of all exercise days from the DB
 	exerciseDays = [DB getDays:currentMonth];
     if (currentMonth == nil) {
         exerciseMonthes = [DB getMonthes:YES]; // refreshes monthes informations
@@ -53,33 +51,52 @@
         exerciseMonthes = nil;
     }
 	[self.statisticListTableView reloadData];
-    
 }
+
+//Called when popping a child view controller. Ensure table is correctly reloaded.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+	
+    [self refreshData];
+}
+
 
 
 //The editing style of the table is always the delete style
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //if ([indexPath row] < [exerciseDays count]) { 
         return UITableViewCellEditingStyleDelete;
+    //}
+    
+    //    return UITableViewCellEditingStyleNone;
 }
 
 
 //Called when the user confirms deletion of a row
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger row = [indexPath row];
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (editingStyle != UITableViewCellEditingStyleDelete) return;
+    
+    int row_month = row - [exerciseDays count];
+    
+    if (row_month >= 0) {
+        [DB deleteMonth:(Month*)[exerciseMonthes objectAtIndex:row_month]];
+        [exerciseMonthes removeObjectAtIndex:row_month];
+    } else {
         
-        //Remove exercises of the given day
-        ExerciseDay* day = [exerciseDays objectAtIndex:row];
-        [DB deleteDay:day.formattedDate];
-        
-        //Update the model here (necessary to avoid inconsistency exception)
-        [exerciseDays removeObjectAtIndex:row];
-        
-        //Remove row from the table view
-        [statisticListTableView beginUpdates];
-        [statisticListTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-        [statisticListTableView endUpdates];
+        if ([indexPath row] < [exerciseDays count]) { 
+            [DB deleteDay:(ExerciseDay*)[exerciseDays objectAtIndex:row]];
+            
+            //Update the model here (necessary to avoid inconsistency exception)
+            [exerciseDays removeObjectAtIndex:row];
+        }
     }
+    
+    
+    //Remove row from the table view
+    [statisticListTableView beginUpdates];
+    [statisticListTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [statisticListTableView endUpdates];
 }
 
 
@@ -90,12 +107,12 @@
 	if (statisticListTableView.editing == NO) {
         [statisticListTableView setEditing:YES animated:YES];
 		modifyButton.style = UIBarButtonItemStyleDone;
-        modifyButton.title = NSLocalizedStringFromTable(@"OK",@"ResultsApp",@"Label of the modify table button in edit mode");
+        modifyButton.title = NSLocalizedStringFromTable(@"Done",@"ResultsApp",@"Label of the modify table button in edit mode");
 	}
 	else {
         [statisticListTableView setEditing:NO animated:YES];
 		modifyButton.style = UIBarButtonItemStylePlain;
-        modifyButton.title = NSLocalizedStringFromTable(@"Modify",@"ResultsApp",@"Label of the modify table button");
+        modifyButton.title = NSLocalizedStringFromTable(@"Delete",@"ResultsApp",@"Label of the modify table button");
 	}
     
 }
@@ -257,7 +274,7 @@
 
 	//Update self.currentlySelectedRow field
 	self.currentlySelectedRow = row;
-
+  
 	if (row < [exerciseDays count]) {
 
         ExerciseDay* day = [exerciseDays objectAtIndex:row];

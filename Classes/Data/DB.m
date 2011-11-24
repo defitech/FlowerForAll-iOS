@@ -150,6 +150,10 @@ static sqlite3 *database;
     return database;
 }
 
++(float) deltaSecond {
+    return [[DB getSingleValue:@"SELECT strftime('%s','now')"] intValue]-CFAbsoluteTimeGetCurrent();
+}
+
 +(void) close {
     if (database != nil) {
         sqlite3_close(database);
@@ -269,6 +273,7 @@ static sqlite3 *database;
      return sqlite3_column_int(cStatement, index);
 }
 
+
 +(double) colD:(sqlite3_stmt*)cStatement index:(int)index {
      if (sqlite3_column_text(cStatement, index) == nil) return 0.0f;
     return sqlite3_column_double(cStatement, index);
@@ -316,14 +321,13 @@ static sqlite3 *database;
     if (monthes != nil && ! refreshCache) return monthes;
     if (monthes == nil) monthes = [[NSMutableArray alloc] init] ; else [monthes removeAllObjects];
     
-    //Create a date formatter for date and time
-    NSDateFormatter* dateAndTimeFormatter = [[[NSDateFormatter alloc] init] autorelease];
-    [dateAndTimeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateAndTimeFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
-    //Create 2 NSDate for the beginning and the end of the day
-    NSDate *unixepoch = [dateAndTimeFormatter dateFromString:@"1970-01-01 00:00:00"];
-    sqlite3_stmt *cs = [DB genCStatementWF:@"SELECT count(*) as c, strftime('%%Y-%%m',start_ts+ %f ,'unixepoch') as dd, min(start_ts) as min_ts, max(start_ts) as max_ts FROM exercices GROUP BY dd ORDER BY dd DESC",-[unixepoch timeIntervalSinceReferenceDate]];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[[NSDate alloc] init]];
+    [comp setYear:1970]; [comp setMonth:1]; [comp setDay:1]; [comp setHour:0]; [comp setMinute:0]; [comp setSecond:0];
+    float utime = -[[cal dateFromComponents:comp] timeIntervalSinceReferenceDate];
+
+    sqlite3_stmt *cs = [DB genCStatementWF:@"SELECT count(*) as c, strftime('%%Y-%%m',start_ts+ %f ,'unixepoch') as dd, min(start_ts) as min_ts, max(start_ts) as max_ts FROM exercices GROUP BY dd ORDER BY dd DESC",[self deltaSecond]];
     
     while(sqlite3_step(cs) == SQLITE_ROW) {
         [monthes addObject:[[Month alloc] initWithData:[DB colS:cs index:1] 
@@ -345,8 +349,8 @@ static sqlite3 *database;
  * increments the day's good count if the exercise is successfull, the day's bad count otherwise.
  */
 +(NSMutableArray*) getDays:(Month*)month {
-    float max_ts = HUGE_VALF;
-    float min_ts = 0;
+    double max_ts = HUGE_VALF;
+    double min_ts = 0;
     if (month == nil) {
         max_ts = CFAbsoluteTimeGetCurrent();
         
@@ -463,7 +467,7 @@ static sqlite3 *database;
  * Delete all exercises in the given day.
  * The input parametter day is the day formatted as a string (ex: 12.10.2011)
  */
-+(void) deleteDay:(NSString*)day {
++(void) deleteDay:(ExerciseDay*)day {
 	NSLog(@"Delete exercises in the given day");
 	
     //Create a date formatter for date and time
@@ -472,8 +476,8 @@ static sqlite3 *database;
     [dateAndTimeFormatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
     
     //Create 2 NSDate for the beginning and the end of the day
-    NSDate *dayBegin = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day, @"00:00:00"]];
-    NSDate *dayEnd = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day, @"23:59:59"]];
+    NSDate *dayBegin = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day.formattedDate, @"00:00:00"]];
+    NSDate *dayEnd = [dateAndTimeFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",day.formattedDate, @"23:59:59"]];
     
     //Convert the NSDates to absolute time
     double dayBeginAbsoluteTime = [dayBegin timeIntervalSinceReferenceDate];
@@ -481,17 +485,27 @@ static sqlite3 *database;
     
     //Execute query using dayBeginAbsoluteTime and dayEndAbsoluteTime as bounds
     [DB executeWF:@"DELETE FROM exercices WHERE (start_ts >= '%f' AND start_ts <= '%f')", dayBeginAbsoluteTime, dayEndAbsoluteTime];
-
+    [DB executeWF:@"DELETE FROM blows WHERE timestamp >= '%f' AND timestamp <= '%f'", dayBeginAbsoluteTime, dayEndAbsoluteTime];
     [dateAndTimeFormatter release];
 }
 
 
 /**
+ * Delete all the exercise data given by its start_ts.
+ */
++(void) deleteExercise:(Exercise*)exercise {
+	NSLog(@"Delete exercise");
+    [DB executeWF:@"DELETE FROM exercices WHERE start_ts = '%f'", exercise.start_ts];
+    [DB executeWF:@"DELETE FROM blows WHERE timestamp >= '%f' AND timestamp <= '%f'", exercise.start_ts, exercise.stop_ts];
+}
+
+/**
  * Delete the exercises given by its start_ts.
  */
-+(void) deleteExercise:(double)start_ts {
-	NSLog(@"Delete exercise");
-    [DB executeWF:@"DELETE FROM exercices WHERE start_ts = '%f'", start_ts];
++(void) deleteMonth:(Month*)month {
+    NSLog(@"Delete month");
+    [DB executeWF:@"DELETE FROM exercices WHERE start_ts >= '%f' AND start_ts <= '%f'", month.min_ts, month.max_ts];
+    [DB executeWF:@"DELETE FROM blows WHERE timestamp >= '%f' AND timestamp <= '%f'", month.min_ts, month.max_ts];
 }
 
 /** get the date of the first exercice **/

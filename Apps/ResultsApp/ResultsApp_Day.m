@@ -82,8 +82,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         //Remove exercises of the given day
-        Exercise* ex = [exercises objectAtIndex:row];
-        [DB deleteExercise:ex.start_ts];
+        [DB deleteExercise:(Exercise*)[exercises objectAtIndex:row]];
         
         //Update the model here (necessary to avoid inconsistency exception)
         [exercises removeObjectAtIndex:row];

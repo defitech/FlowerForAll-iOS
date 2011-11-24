@@ -14,10 +14,16 @@
 #import "FLAPIBlow.h"
 #import "FLAPIExercice.h"
 #import "Month.h"
+#import "Exercise.h"
+#import "ExerciseDay.h"
 
 @interface DB : NSObject {
 	
 }
+
+/** return the number of seconds between system seconds and db unix time **/
++(float) deltaSecond ;
+
 /** return an open db.. and initialize it if needed **/
 +(sqlite3*) db;
 
@@ -122,9 +128,11 @@
 
 +(NSMutableArray*) getExercisesInDay:(NSString*) day;
 
-+(void) deleteDay:(NSString*) day;
++(void) deleteDay:(ExerciseDay*) day;
 
-+(void) deleteExercise:(double)start_ts;
++(void) deleteExercise:(Exercise*)exercise;
+
++(void) deleteMonth:(Month*)month;
 
 /** get the date of the first exercice **/
 +(NSDate*) firstExerciceDate ;
