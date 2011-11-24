@@ -12,10 +12,11 @@
 
 #import "DB.h"
 #import "ExerciseDay.h"
+#import "Month.h"
 
 @implementation ResultsApp_List
 
-@synthesize dayStatisticListViewController, exerciseDays, statisticListTableView, currentlySelectedRow, modifyButton;
+@synthesize dayStatisticListViewController, exerciseDays, exerciseMonthes, currentMonth, statisticListTableView, currentlySelectedRow, modifyButton;
 
 
 #pragma mark -
@@ -35,26 +36,24 @@
 #pragma mark -
 #pragma mark View lifecycle
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     NSLog(@"StatListViewController didload");
-	
     self.title = NSLocalizedStringFromTable(@"Results",@"ResultsApp",nil);
-	
-	//Fetch list of all exercise days from the DB
-	exerciseDays = [DB getDays];
-    
 }
 
 
 //Called when popping a child view controller. Ensure table is correctly reloaded.
 - (void)viewWillAppear:(BOOL)animated {
-	
     [super viewWillAppear:animated];
-	
-	[self viewDidLoad];
+	//Fetch list of all exercise days from the DB
+	exerciseDays = [DB getDays:currentMonth];
+    if (currentMonth == nil) {
+        exerciseMonthes = [DB getMonthes:YES]; // refreshes monthes informations
+    } else {
+        exerciseMonthes = nil;
+    }
 	[self.statisticListTableView reloadData];
-	
+    
 }
 
 
@@ -114,20 +113,40 @@
 
 //The table contains the exercises days
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return [exerciseDays count];
+    int count = [exerciseDays count];
+    if (exerciseMonthes != nil) count += [exerciseMonthes count];
+   
+    return count;
 }
 
 
 //Customize the appearance of table view cells
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"StarOnRightCell";
     
     NSUInteger row = [indexPath row];
+    int row_month = row - [exerciseDays count];
+    if (row_month >= 0) {
+        
+        UITableViewCell *cellS = [tableView dequeueReusableCellWithIdentifier:@"monthCell"];
+        
+        
+        
+        //If the cell is nil, create it, otherwise remove all its subviews
+        if (cellS == nil) {
+            cellS = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"monthCell"] autorelease];
+        }
+        Month* m = (Month*) [exerciseMonthes objectAtIndex:row_month];
+        cellS.textLabel.text = m.strDate;
+        return cellS;
+    }
+    
+
     
     //Get the day corresponding to the current cell
     ExerciseDay* day = [exerciseDays objectAtIndex:row];
     
-    static NSString *CellIdentifier = @"StarOnRightCell";
+    
     
     //Labels in the cell
     UILabel *date;

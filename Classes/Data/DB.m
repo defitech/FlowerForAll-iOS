@@ -24,7 +24,7 @@
 #import "ParametersManager.h"
 
 #import "ExerciseDay.h"
-
+#import "Month.h"
 
 @implementation DB
 
@@ -129,6 +129,18 @@ static sqlite3 *database;
                 [DB setInfoValueForKey:@"db_version" value:actualVersion];
             }
             
+            /**
+            // fill with junk
+            for (int i = 2400 ; i > 0 ; i--) {
+                [DB executeWF:@"INSERT INTO exercices (start_ts,stop_ts,frequency_target_hz, frequency_tolerance_hz, \
+                 duration_expiration_s, duration_exercice_s, duration_exercice_done_p , blow_count, blow_star_count , profile_name, avg_median_frequency_hz) \
+                 VALUES ('%f', '%f', '1.1', '1.1', '1.1', '1.1','1.1','2','3','bob','1.1')",
+                 CFAbsoluteTimeGetCurrent() - 21600*i];
+                NSLog(@"%i",i);
+
+            }**/
+            
+            [self getMonthes:YES];
             
             NSLog(@"DB VERSION: %@", [DB getInfoValueForKey:@"db_version"] );
         } else {
@@ -171,7 +183,7 @@ static sqlite3 *database;
  * !! don't forget to finalize it!
  */
 +(sqlite3_stmt*) genCStatement:(NSString*)sqlStatement {
-   // NSLog(@"genCStatement: %@",sqlStatement);
+    NSLog(@"genCStatement: %@",sqlStatement);
     sqlite3_stmt *cStatement;
     int res = sqlite3_prepare_v2([DB db], [sqlStatement UTF8String], -1, &cStatement, NULL);
     if(res == SQLITE_OK) {
@@ -297,6 +309,33 @@ static sqlite3 *database;
 
 
 /**
+ * get the Monthes to display // do not consider current month
+ */
++(NSMutableArray*) getMonthes:(BOOL)refreshCache {
+    static NSMutableArray* monthes = nil;
+    if (monthes != nil && ! refreshCache) return monthes;
+    if (monthes == nil) monthes = [[NSMutableArray alloc] init] ; else [monthes removeAllObjects];
+    
+    //Create a date formatter for date and time
+    NSDateFormatter* dateAndTimeFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    [dateAndTimeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    [dateAndTimeFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    //Create 2 NSDate for the beginning and the end of the day
+    NSDate *unixepoch = [dateAndTimeFormatter dateFromString:@"1970-01-01 00:00:00"];
+    sqlite3_stmt *cs = [DB genCStatementWF:@"SELECT count(*) as c, strftime('%%Y-%%m',start_ts+ %f ,'unixepoch') as dd, min(start_ts) as min_ts, max(start_ts) as max_ts FROM exercices GROUP BY dd ORDER BY dd DESC",-[unixepoch timeIntervalSinceReferenceDate]];
+    
+    while(sqlite3_step(cs) == SQLITE_ROW) {
+        [monthes addObject:[[Month alloc] initWithData:[DB colS:cs index:1] 
+                                                min_ts:[DB colD:cs index:3] 
+                                                max_ts:[DB colD:cs index:4] 
+                                                 count:[DB colI:cs index:0]]];
+    }
+    return monthes;
+}
+
+
+/**
  * Computes all days that contains exercises in the DB and return an array of ExerciseDay objects.
  * The algorithm first fetches all exercises (only start_ts and duration_exercice_done_p columns),
  * ordering by start_ts desc, in order to get exercise in the right order.
@@ -305,7 +344,22 @@ static sqlite3 *database;
  * If it is not the case, it adds a new exercise day in the array. In all cases, it
  * increments the day's good count if the exercise is successfull, the day's bad count otherwise.
  */
-+(NSMutableArray*) getDays {
++(NSMutableArray*) getDays:(Month*)month {
+    float stop_ts = HUGE_VALF;
+    float start_ts = 0;
+    if (month == nil) {
+        stop_ts = CFAbsoluteTimeGetCurrent();
+        
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[[NSDate alloc] init]];
+        [comp setDay:1];
+
+        start_ts = [[cal dateFromComponents:comp] timeIntervalSinceReferenceDate];
+    } else {
+        stop_ts = month.max_ts;
+        start_ts = month.min_ts;
+    }
+    
 	NSLog(@"Get all days");
 	
     //Array to store results
@@ -316,7 +370,7 @@ static sqlite3 *database;
     ExerciseDay* lastDay = nil;
     
     sqlite3_stmt *cStatement = 
-    [DB genCStatementWF:@"SELECT start_ts, duration_exercice_done_p FROM exercices ORDER BY start_ts DESC"];
+    [DB genCStatementWF:@"SELECT start_ts, duration_exercice_done_p FROM exercices WHERE start_ts >= '%f' AND stop_ts <= '%f' ORDER BY start_ts DESC",start_ts,stop_ts];
     
     //Iterate over the result set
     while(sqlite3_step(cStatement) == SQLITE_ROW) {

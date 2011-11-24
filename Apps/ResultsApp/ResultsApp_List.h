@@ -9,7 +9,7 @@
 
 
 #import <UIKit/UIKit.h>
-
+#import "Month.h"
 
 @class ResultsApp_Day;
 
@@ -19,8 +19,14 @@
 	//The table view
 	IBOutlet UITableView *statisticListTableView;
 	
+    // May be nil if now
+    Month* currentMonth;
+    
 	//Arrays used to store exercises days
     NSMutableArray* exerciseDays;
+    
+    //Arrays used to store exercises days
+    NSMutableArray* exerciseMonthes;
     
 	//Stores the currently selected row in the table
 	NSInteger currentlySelectedRow;
@@ -38,6 +44,8 @@
 @property (nonatomic, retain) IBOutlet UITableView *statisticListTableView;
 
 @property (nonatomic, retain) NSMutableArray *exerciseDays;
+@property (nonatomic, retain) NSMutableArray *exerciseMonthes;
+@property (nonatomic, retain) Month *currentMonth;
 
 @property NSInteger currentlySelectedRow;
 
