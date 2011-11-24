@@ -327,8 +327,8 @@ static sqlite3 *database;
     
     while(sqlite3_step(cs) == SQLITE_ROW) {
         [monthes addObject:[[Month alloc] initWithData:[DB colS:cs index:1] 
-                                                min_ts:[DB colD:cs index:3] 
-                                                max_ts:[DB colD:cs index:4] 
+                                                min_ts:[DB colD:cs index:2] 
+                                                max_ts:[DB colD:cs index:3] 
                                                  count:[DB colI:cs index:0]]];
     }
     return monthes;
@@ -345,19 +345,19 @@ static sqlite3 *database;
  * increments the day's good count if the exercise is successfull, the day's bad count otherwise.
  */
 +(NSMutableArray*) getDays:(Month*)month {
-    float stop_ts = HUGE_VALF;
-    float start_ts = 0;
+    float max_ts = HUGE_VALF;
+    float min_ts = 0;
     if (month == nil) {
-        stop_ts = CFAbsoluteTimeGetCurrent();
+        max_ts = CFAbsoluteTimeGetCurrent();
         
         NSCalendar *cal = [NSCalendar currentCalendar];
         NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[[NSDate alloc] init]];
         [comp setDay:1];
 
-        start_ts = [[cal dateFromComponents:comp] timeIntervalSinceReferenceDate];
+        min_ts = [[cal dateFromComponents:comp] timeIntervalSinceReferenceDate];
     } else {
-        stop_ts = month.max_ts;
-        start_ts = month.min_ts;
+        max_ts = month.max_ts;
+        min_ts = month.min_ts;
     }
     
 	NSLog(@"Get all days");
@@ -370,7 +370,7 @@ static sqlite3 *database;
     ExerciseDay* lastDay = nil;
     
     sqlite3_stmt *cStatement = 
-    [DB genCStatementWF:@"SELECT start_ts, duration_exercice_done_p FROM exercices WHERE start_ts >= '%f' AND stop_ts <= '%f' ORDER BY start_ts DESC",start_ts,stop_ts];
+    [DB genCStatementWF:@"SELECT start_ts, duration_exercice_done_p FROM exercices WHERE start_ts >= '%f' AND start_ts <= '%f' ORDER BY start_ts DESC",min_ts,max_ts];
     
     //Iterate over the result set
     while(sqlite3_step(cStatement) == SQLITE_ROW) {
@@ -416,6 +416,7 @@ static sqlite3 *database;
     }
     sqlite3_finalize(cStatement);
     [currentDay release];
+    
     return days;
 }
 

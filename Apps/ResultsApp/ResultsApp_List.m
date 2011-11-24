@@ -134,10 +134,16 @@
         
         //If the cell is nil, create it, otherwise remove all its subviews
         if (cellS == nil) {
-            cellS = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"monthCell"] autorelease];
+            cellS = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"monthCell"] autorelease];
         }
         Month* m = (Month*) [exerciseMonthes objectAtIndex:row_month];
         cellS.textLabel.text = m.strDate;
+        cellS.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedStringFromTable(@"%i exercices", @"ResultsApp", @"Comment in the Month list cell"),m.count];
+        cellS.imageView.image = [ UIImage imageNamed:@"ResultsApp-Box.png" ]; 
+        cellS.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+
+        
         return cellS;
     }
     
@@ -261,9 +267,17 @@
 		//}
 		
 		[[self navigationController] pushViewController:dayStatisticListViewController animated:YES];
-        
+        return; 
 	}
-	
+    
+	int row_month = row - [exerciseDays count];
+    if (row_month >= 0) {
+        ResultsApp_List* rapl = [[[ResultsApp_List alloc] initWithNibName:@"ResultsApp_List" bundle:[NSBundle mainBundle]] autorelease];
+        rapl.currentMonth = (Month*) [exerciseMonthes objectAtIndex:row_month];
+       [[self navigationController] pushViewController:rapl animated:YES];
+    }
+
+    
 }
 
 
