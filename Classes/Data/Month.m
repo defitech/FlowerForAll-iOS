@@ -18,7 +18,6 @@
         self.min_ts = mints;
         self.max_ts = maxts;
         self.count = c;
-        NSLog(@"Month: %@ %i %f %f",str,c,self.min_ts,self.max_ts);
     }
     return self;
 }

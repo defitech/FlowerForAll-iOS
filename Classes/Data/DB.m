@@ -187,7 +187,7 @@ static sqlite3 *database;
  * !! don't forget to finalize it!
  */
 +(sqlite3_stmt*) genCStatement:(NSString*)sqlStatement {
-    NSLog(@"genCStatement: %@",sqlStatement);
+    //NSLog(@"genCStatement: %@",sqlStatement);
     sqlite3_stmt *cStatement;
     int res = sqlite3_prepare_v2([DB db], [sqlStatement UTF8String], -1, &cStatement, NULL);
     if(res == SQLITE_OK) {
@@ -320,12 +320,6 @@ static sqlite3 *database;
     static NSMutableArray* monthes = nil;
     if (monthes != nil && ! refreshCache) return monthes;
     if (monthes == nil) monthes = [[NSMutableArray alloc] init] ; else [monthes removeAllObjects];
-    
-    
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[[NSDate alloc] init]];
-    [comp setYear:1970]; [comp setMonth:1]; [comp setDay:1]; [comp setHour:0]; [comp setMinute:0]; [comp setSecond:0];
-    float utime = -[[cal dateFromComponents:comp] timeIntervalSinceReferenceDate];
 
     sqlite3_stmt *cs = [DB genCStatementWF:@"SELECT count(*) as c, strftime('%%Y-%%m',start_ts+ %f ,'unixepoch') as dd, min(start_ts) as min_ts, max(start_ts) as max_ts FROM exercices GROUP BY dd ORDER BY dd DESC",[self deltaSecond]];
     
