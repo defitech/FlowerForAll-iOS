@@ -321,9 +321,10 @@ static sqlite3 *database;
     if (monthes != nil && ! refreshCache) return monthes;
     if (monthes == nil) monthes = [[NSMutableArray alloc] init] ; else [monthes removeAllObjects];
 
-    sqlite3_stmt *cs = [DB genCStatementWF:@"SELECT count(*) as c, strftime('%%Y-%%m',start_ts+ %f ,'unixepoch') as dd, min(start_ts) as min_ts, max(start_ts) as max_ts FROM exercices GROUP BY dd ORDER BY dd DESC",[self deltaSecond]];
+    sqlite3_stmt *cs = [DB genCStatementWF:@"SELECT count(*) as c, strftime('%%Y-%%m',start_ts+ %f ,'unixepoch') as dd, min(start_ts) as min_ts, max(start_ts) as max_ts FROM exercices WHERE strftime('%%Y-%%m',start_ts+ %f ,'unixepoch') != strftime('%%Y-%%m','now') GROUP BY dd ORDER BY dd DESC",[self deltaSecond],[self deltaSecond]];
     
     while(sqlite3_step(cs) == SQLITE_ROW) {
+        
         [monthes addObject:[[Month alloc] initWithData:[DB colS:cs index:1] 
                                                 min_ts:[DB colD:cs index:2] 
                                                 max_ts:[DB colD:cs index:3] 

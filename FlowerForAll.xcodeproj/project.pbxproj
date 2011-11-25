@@ -1876,10 +1876,8 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
 				ARCHS = (
-					Optimized,
-					"(armv6",
-					"armv7)",
-					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+					armv7,
 				);
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
@@ -1897,7 +1895,7 @@
 					"-ObjC",
 				);
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.3;
+				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = NO;
 			};
 			name = Debug;
@@ -1907,10 +1905,8 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
 				ARCHS = (
-					Optimized,
-					"(armv6",
-					"armv7)",
-					"$(ARCHS_STANDARD_32_BIT)",
+					armv6,
+					armv7,
 				);
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -1928,7 +1924,7 @@
 					"-ObjC",
 				);
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.3;
+				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

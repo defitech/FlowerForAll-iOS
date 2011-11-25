@@ -129,12 +129,11 @@ ResultsApp_MailerOptions* mailerOptions;
           NSLocalizedStringFromTable(@"Flower-Breath data for %@",@"ResultsApp", @"Mail subject"),[UserManager currentUser].name]];
         
         
-        NSMutableData *data = [[NSMutableData alloc] init];
+        NSMutableData *data = [[[NSMutableData alloc] init] autorelease];
         NSMutableString *HTMLtable = ![DB getInfoBOOLForKey:@"hideResultTableInMails"] ? [[NSMutableString alloc] init] : nil ;
         [ResultsApp_Mailer exercicesToCSV:data html:HTMLtable fromDate:[mailerOptions selectedStartDate] toDate:[[NSDate alloc] init]];
         
-        
-        
+               
         NSMutableString *message = [[NSMutableString alloc] init];
         [message appendString:
          NSLocalizedStringFromTable(@"<br>....Data enclosed to this mail.\n<br><br>\n", @"ResultsApp", @"Mail introduction")];
@@ -143,11 +142,26 @@ ResultsApp_MailerOptions* mailerOptions;
         
         [mailViewController setMessageBody:message isHTML:YES];
         [mailViewController addAttachmentData:data mimeType:@"text/csv" 
-                                     fileName:[NSString stringWithFormat:@"FlutterData %@.csv",[UserManager currentUser].name]];
+                                     fileName:[NSString stringWithFormat:@"FlowerExercises %@.csv",[UserManager currentUser].name]];
+        
+        
+        if ([DB getInfoBOOLForKey:@"includeBlowsInMails"]) { // add blows 
+            NSMutableData *data2 = [[[NSMutableData alloc] init] autorelease];
+            [ResultsApp_Mailer blowsToCSV:data2 html:nil fromDate:[mailerOptions selectedStartDate] toDate:[[NSDate alloc] init]];
+
+            
+            [mailViewController addAttachmentData:data2 mimeType:@"text/csv" 
+                                     fileName:[NSString stringWithFormat:@"FlowerBlows %@.csv",[UserManager currentUser].name]];
+        
+            
+        }
+        
+        
+        
         
         [self presentModalViewController:mailViewController animated:YES];
         [mailViewController release];
-        
+        [HTMLtable release];
        
         
     }  else {

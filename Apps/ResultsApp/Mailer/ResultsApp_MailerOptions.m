@@ -12,7 +12,7 @@
 
 @implementation ResultsApp_MailerOptions
 
-@synthesize  datePicker, fromStartLabel, fromStartButton, fromMailButton, fromMailLabel, displayTableLabel, displayTableSwitch;
+@synthesize  datePicker, includeBlowsSwitch, fromStartButton, fromMailButton, includeBlowsLabel, displayTableLabel, displayTableSwitch;
 
 ResultsApp* delegate;
 NSDate* mailDate ;
@@ -51,6 +51,10 @@ NSDate* mailDate ;
     [DB setInfoBOOLForKey:@"hideResultTableInMails" value:![displayTableSwitch isOn]];
 }
 
+- (IBAction)includeBlowsSwitchValueChange:(id)sender {
+    [DB setInfoBOOLForKey:@"includeBlowsInMails" value:[includeBlowsSwitch isOn]];
+}
+
 int selectedExerciceCount;
 - (IBAction)datePickerValueChange:(id)sender {
     selectedExerciceCount = [DB exercicesCountBetween:[self selectedStartDate] and:[datePicker maximumDate]];
@@ -79,15 +83,11 @@ int selectedExerciceCount;
     self.navigationItem.title = NSLocalizedStringFromTable(@"Send results by e-mail",@"ResultsApp", @"Mail option title");
        
     
+       
+    [includeBlowsLabel setText:NSLocalizedStringFromTable(@"Include expirations data",@"ResultsApp", @"Include expirations data switch tip")];
     
     
-    [fromStartLabel setText:NSLocalizedStringFromTable(@"Set date from first exercice",@"ResultsApp", @"start date picker tip")];
-   
-    
-    [fromMailLabel setText:NSLocalizedStringFromTable(@"Set date from last e-mail",@"ResultsApp", @"mail date picker tip")];
-    
-    
-    [displayTableLabel setText:NSLocalizedStringFromTable(@"Display the result table:",@"ResultsApp", @"Display result table tip")];
+    [displayTableLabel setText:NSLocalizedStringFromTable(@"Display the result table:",@"ResultsApp", @"Display result table switch tip")];
     
     
     
@@ -96,6 +96,7 @@ int selectedExerciceCount;
 
 - (void)viewWillAppear:(BOOL)animated {
     [displayTableSwitch setOn:![DB getInfoBOOLForKey:@"hideResultTableInMails"]];
+    [includeBlowsSwitch setOn:[DB getInfoBOOLForKey:@"includeBlowsInMails"]];
     
     NSDate* startDate = [DB firstExerciceDate];
     NSDate* now = [[NSDate alloc] init];
@@ -108,8 +109,10 @@ int selectedExerciceCount;
     [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     
     
-    [fromStartButton setTitle:[dateFormatter stringFromDate:startDate] forState:UIControlStateNormal];
-    [fromMailButton setTitle:[dateFormatter stringFromDate:mailDate] forState:UIControlStateNormal];
+    [fromStartButton setTitle:[NSString stringWithFormat:
+                               NSLocalizedStringFromTable(@"First exercise %@",@"ResultsApp", @"Set date to first exercise"), [dateFormatter stringFromDate:startDate]] forState:UIControlStateNormal];
+    [fromMailButton setTitle:[NSString stringWithFormat:
+                               NSLocalizedStringFromTable(@"Last e-mail %@",@"ResultsApp", @"Set date to last e-mail exercise"), [dateFormatter stringFromDate:mailDate]] forState:UIControlStateNormal];
     
     [dateFormatter release];
     
@@ -124,16 +127,16 @@ int selectedExerciceCount;
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    delegate = nil;
-    datePicker = nil;
-    fromStartLabel = nil;
-    fromStartButton = nil;
-    fromMailButton = nil;
-    fromMailLabel = nil;
-    displayTableLabel = nil;
-    displayTableSwitch = nil;
+    [delegate release];
+    self.datePicker = nil;
+    self.includeBlowsSwitch = nil;
+    self.fromStartButton = nil;
+    self.fromMailButton = nil;
+    self.includeBlowsLabel = nil;
+    self.displayTableLabel = nil;
+    self.displayTableSwitch = nil;
     
-    mailDate = nil;
+    [mailDate release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
