@@ -12,10 +12,11 @@
 
 #import "DB.h"
 #import "ExerciseDay.h"
+#import "Month.h"
 
 @implementation ResultsApp_List
 
-@synthesize dayStatisticListViewController, exerciseDays, statisticListTableView, currentlySelectedRow, modifyButton;
+@synthesize dayStatisticListViewController, exerciseDays, exerciseMonthes, currentMonth, statisticListTableView, currentlySelectedRow, modifyButton;
 
 
 #pragma mark -
@@ -35,52 +36,67 @@
 #pragma mark -
 #pragma mark View lifecycle
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     NSLog(@"StatListViewController didload");
-	
     self.title = NSLocalizedStringFromTable(@"Results",@"ResultsApp",nil);
-	
-	//Fetch list of all exercise days from the DB
-	exerciseDays = [DB getDays];
-    
 }
 
+
+- (void)refreshData {
+    //Fetch list of all exercise days from the DB
+	exerciseDays = [DB getDays:currentMonth];
+    if (currentMonth == nil) {
+        exerciseMonthes = [DB getMonthes:YES]; // refreshes monthes informations
+    } else {
+        exerciseMonthes = nil;
+    }
+	[self.statisticListTableView reloadData];
+}
 
 //Called when popping a child view controller. Ensure table is correctly reloaded.
 - (void)viewWillAppear:(BOOL)animated {
-	
     [super viewWillAppear:animated];
 	
-	[self viewDidLoad];
-	[self.statisticListTableView reloadData];
-	
+    [self refreshData];
 }
+
 
 
 //The editing style of the table is always the delete style
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //if ([indexPath row] < [exerciseDays count]) { 
         return UITableViewCellEditingStyleDelete;
+    //}
+    
+    //    return UITableViewCellEditingStyleNone;
 }
 
 
 //Called when the user confirms deletion of a row
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger row = [indexPath row];
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (editingStyle != UITableViewCellEditingStyleDelete) return;
+    
+    int row_month = row - [exerciseDays count];
+    
+    if (row_month >= 0) {
+        [DB deleteMonth:(Month*)[exerciseMonthes objectAtIndex:row_month]];
+        [exerciseMonthes removeObjectAtIndex:row_month];
+    } else {
         
-        //Remove exercises of the given day
-        ExerciseDay* day = [exerciseDays objectAtIndex:row];
-        [DB deleteDay:day.formattedDate];
-        
-        //Update the model here (necessary to avoid inconsistency exception)
-        [exerciseDays removeObjectAtIndex:row];
-        
-        //Remove row from the table view
-        [statisticListTableView beginUpdates];
-        [statisticListTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-        [statisticListTableView endUpdates];
+        if ([indexPath row] < [exerciseDays count]) { 
+            [DB deleteDay:(ExerciseDay*)[exerciseDays objectAtIndex:row]];
+            
+            //Update the model here (necessary to avoid inconsistency exception)
+            [exerciseDays removeObjectAtIndex:row];
+        }
     }
+    
+    
+    //Remove row from the table view
+    [statisticListTableView beginUpdates];
+    [statisticListTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [statisticListTableView endUpdates];
 }
 
 
@@ -91,12 +107,12 @@
 	if (statisticListTableView.editing == NO) {
         [statisticListTableView setEditing:YES animated:YES];
 		modifyButton.style = UIBarButtonItemStyleDone;
-        modifyButton.title = NSLocalizedStringFromTable(@"OK",@"ResultsApp",@"Label of the modify table button in edit mode");
+        modifyButton.title = NSLocalizedStringFromTable(@"Done",@"ResultsApp",@"Label of the modify table button in edit mode");
 	}
 	else {
         [statisticListTableView setEditing:NO animated:YES];
 		modifyButton.style = UIBarButtonItemStylePlain;
-        modifyButton.title = NSLocalizedStringFromTable(@"Modify",@"ResultsApp",@"Label of the modify table button");
+        modifyButton.title = NSLocalizedStringFromTable(@"Delete",@"ResultsApp",@"Label of the modify table button");
 	}
     
 }
@@ -114,20 +130,46 @@
 
 //The table contains the exercises days
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return [exerciseDays count];
+    int count = [exerciseDays count];
+    if (exerciseMonthes != nil) count += [exerciseMonthes count];
+   
+    return count;
 }
 
 
 //Customize the appearance of table view cells
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"StarOnRightCell";
     
     NSUInteger row = [indexPath row];
+    int row_month = row - [exerciseDays count];
+    if (row_month >= 0) {
+        
+        UITableViewCell *cellS = [tableView dequeueReusableCellWithIdentifier:@"monthCell"];
+        
+        
+        
+        //If the cell is nil, create it, otherwise remove all its subviews
+        if (cellS == nil) {
+            cellS = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"monthCell"] autorelease];
+        }
+        Month* m = (Month*) [exerciseMonthes objectAtIndex:row_month];
+        cellS.textLabel.text = m.strDate;
+        cellS.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedStringFromTable(@"%i exercices", @"ResultsApp", @"Comment in the Month list cell"),m.count];
+        cellS.imageView.image = [ UIImage imageNamed:@"ResultsApp-Box.png" ]; 
+        cellS.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+
+        
+        return cellS;
+    }
+    
+
     
     //Get the day corresponding to the current cell
     ExerciseDay* day = [exerciseDays objectAtIndex:row];
     
-    static NSString *CellIdentifier = @"StarOnRightCell";
+    
     
     //Labels in the cell
     UILabel *date;
@@ -232,7 +274,7 @@
 
 	//Update self.currentlySelectedRow field
 	self.currentlySelectedRow = row;
-
+  
 	if (row < [exerciseDays count]) {
 
         ExerciseDay* day = [exerciseDays objectAtIndex:row];
@@ -242,9 +284,17 @@
 		//}
 		
 		[[self navigationController] pushViewController:dayStatisticListViewController animated:YES];
-        
+        return; 
 	}
-	
+    
+	int row_month = row - [exerciseDays count];
+    if (row_month >= 0) {
+        ResultsApp_List* rapl = [[[ResultsApp_List alloc] initWithNibName:@"ResultsApp_List" bundle:[NSBundle mainBundle]] autorelease];
+        rapl.currentMonth = (Month*) [exerciseMonthes objectAtIndex:row_month];
+       [[self navigationController] pushViewController:rapl animated:YES];
+    }
+
+    
 }
 
 

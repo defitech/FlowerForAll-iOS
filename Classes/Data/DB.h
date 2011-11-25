@@ -13,11 +13,17 @@
 #import <sqlite3.h>
 #import "FLAPIBlow.h"
 #import "FLAPIExercice.h"
-
+#import "Month.h"
+#import "Exercise.h"
+#import "ExerciseDay.h"
 
 @interface DB : NSObject {
 	
 }
+
+/** return the number of seconds between system seconds and db unix time **/
++(float) deltaSecond ;
+
 /** return an open db.. and initialize it if needed **/
 +(sqlite3*) db;
 
@@ -26,7 +32,7 @@
 //Execute a statement 
 +(void)execute:(NSString*)sqlStatement;
 /** execute With Format **/
-+(void)executeWF:(NSString*)sqlStatementFormat, ...;// NS_FORMAT_FUNCTION(1,2);  // sugar implementation
++(void)executeWF:(NSString*)sqlStatementFormat, ... NS_FORMAT_FUNCTION(1,2);  // sugar implementation
 
 /**
  * Create Statement from NSTRing
@@ -34,7 +40,7 @@
  */
 +(sqlite3_stmt*) genCStatement:(NSString*)sqlStatement;
 /** genCStatement With Format **/
-+(sqlite3_stmt*) genCStatementWF:(NSString*)sqlStatementFormat, ...;// NS_FORMAT_FUNCTION(1,2); // sugar implementation
++(sqlite3_stmt*) genCStatementWF:(NSString*)sqlStatementFormat, ... NS_FORMAT_FUNCTION(1,2); // sugar implementation
 
 /**
  * shortcut to get a single value
@@ -42,7 +48,7 @@
  */
 +(NSString*) getSingleValue:(NSString*)sqlStatement;
 /** getSingleValue With Format **/
-+(NSString*) getSingleValueWF:(NSString*)sqlStatementFormat, ...;// NS_FORMAT_FUNCTION(1,2); // sugar implementation
++(NSString*) getSingleValueWF:(NSString*)sqlStatementFormat, ... NS_FORMAT_FUNCTION(1,2); // sugar implementation
 
 
 /** get values from the db info table **/
@@ -65,6 +71,7 @@
 
 /** convenience shortcut to get an integer at a defined index in a row **/
 +(int) colI:(sqlite3_stmt*)cStatement index:(int)index;
+
 
 /** convenience shortcut to get a double at a defined index in a row **/
 +(double) colD:(sqlite3_stmt*)cStatement index:(int)index;
@@ -115,13 +122,17 @@
 + (void) saveExercice:(FLAPIExercice*)exercice;
 
 
-+(NSMutableArray*) getDays;
++(NSMutableArray*) getDays:(Month*)month;
+
++(NSMutableArray*) getMonthes:(BOOL)refreshCache;
 
 +(NSMutableArray*) getExercisesInDay:(NSString*) day;
 
-+(void) deleteDay:(NSString*) day;
++(void) deleteDay:(ExerciseDay*) day;
 
-+(void) deleteExercise:(double)start_ts;
++(void) deleteExercise:(Exercise*)exercise;
+
++(void) deleteMonth:(Month*)month;
 
 /** get the date of the first exercice **/
 +(NSDate*) firstExerciceDate ;

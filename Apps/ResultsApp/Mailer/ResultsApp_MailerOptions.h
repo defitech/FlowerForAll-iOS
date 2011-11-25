@@ -13,12 +13,11 @@
     
     UIDatePicker* datePicker;
     
-    UILabel* fromStartLabel;
     UIButton* fromStartButton;
-    
-    UILabel* fromMailLabel;
     UIButton* fromMailButton;
     
+    UILabel* includeBlowsLabel;
+     UISwitch* includeBlowsSwitch;
     
     UILabel* displayTableLabel;
     UISwitch* displayTableSwitch;
@@ -28,14 +27,13 @@
 
 @property  (nonatomic, retain) IBOutlet  UIDatePicker* datePicker;
 
-@property  (nonatomic, retain) IBOutlet  UILabel* fromStartLabel;
 @property  (nonatomic, retain) IBOutlet  UIButton* fromStartButton;
-
-@property  (nonatomic, retain) IBOutlet  UILabel* fromMailLabel;
 @property  (nonatomic, retain) IBOutlet  UIButton* fromMailButton;
 
-@property  (nonatomic, retain) IBOutlet  UILabel* displayTableLabel;
+@property  (nonatomic, retain) IBOutlet  UILabel* includeBlowsLabel;
+@property  (nonatomic, retain) IBOutlet  UISwitch* includeBlowsSwitch;
 
+@property  (nonatomic, retain) IBOutlet  UILabel* displayTableLabel;
 @property  (nonatomic, retain) IBOutlet  UISwitch* displayTableSwitch;
 
 - (IBAction)fromStartButtonPressed:(id)sender;
@@ -43,6 +41,8 @@
 - (IBAction)fromMailButtonPressed:(id)sender;
 
 - (IBAction)displayTableSwitchValueChange:(id)sender;
+
+- (IBAction)includeBlowsSwitchValueChange:(id)sender;
 
 - (IBAction)datePickerValueChange:(id)sender;
 

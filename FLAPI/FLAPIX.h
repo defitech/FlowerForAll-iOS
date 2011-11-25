@@ -97,6 +97,9 @@ extern NSString * const FLAPIX_EVENT_MICROPHONE_STATE; // when microphone is plu
 /** Current Exercice return nil if not in course **/
 - (FLAPIExercice*)currentExercice;
 
+/** return the percentage of achievement of currentBlow (if any) , 0 if none **/
+- (float) currentBlowPercent;
+
 /** test if exercice is in course (! nil)**/
 - (BOOL)exerciceInCourse;
 

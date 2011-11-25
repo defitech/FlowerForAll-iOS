@@ -59,7 +59,7 @@ static User* currentU;
 // bloc process until a user is choosen
 +(void) requireUser {
     if ([self currentUser] == nil) {
-        NSLog(@"UserManager requireUser Loop");
+        //NSLog(@"UserManager requireUser Loop");
         [UserPicker show];
         [UserManager performSelector:@selector(requireUser) withObject:nil afterDelay:1];
     }

@@ -87,7 +87,7 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
         return ;
     }
     FLAPI_SetTargetFrequency(target_frequency,tolerance);
-    NSLog(@"SetTargetFrequency %1.1f   tol: %1.1f",target_frequency,tolerance);
+    //NSLog(@"SetTargetFrequency %1.1f   tol: %1.1f",target_frequency,tolerance);
 }
 
 
@@ -263,14 +263,12 @@ NSMutableArray *blowFrequencies;
     lastBlow = blow;
     
     
-    // we do always save blows..
-    [DB saveBlow:blow];
-    
+        
     // WE MUST SEND END BLOW EVENT BEFORE _ END EXERCICE EVENT
     // BUT! WE NEED TO ADD BLOWS TO EXERCICES BEFORE END BLOW EVENT
     //      FOR APPS READING duration_exercice_done_s ON EXERCICE
     if ([self exerciceInCourse]) {
- 
+        [DB saveBlow:blow];
         // exercice management
         [[self currentExercice] addBlow:blow];
         [[NSNotificationCenter defaultCenter] 
@@ -305,7 +303,7 @@ NSMutableArray *blowFrequencies;
     NSLog(@"EventMicrophonePlugged %i",on);
 }
 
-# pragma mark lastBlow
+# pragma mark Blow
 -(FLAPIBlow*) lastBlow {
     if (lastBlow == nil) {
         lastBlow = [[FLAPIBlow alloc] initWith:0 
@@ -316,6 +314,12 @@ NSMutableArray *blowFrequencies;
         lastBlow.medianTolerance = [self frequenceTolerance];
     }
     return lastBlow;
+}
+
+/** return the percentage of achievement of currentBlow (if any) may be > 1 if blow is longer than targeted duration, 0 if none **/
+- (float) currentBlowPercent {
+    if ([self expirationDurationTarget] == 0) return 0;
+    return FLAPI_SUBSYS_IOS_get_current_blow_in_range_duration() / [self expirationDurationTarget];
 }
 
 

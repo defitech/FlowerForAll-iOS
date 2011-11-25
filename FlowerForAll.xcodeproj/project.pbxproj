@@ -167,6 +167,8 @@
 		4EA1A3B41420E8B800B11705 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA1A3B51420E8B800B11705 /* MenuView.xib */; };
 		4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */; };
 		4EB510AB1418CFC6008FC46F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */; };
+		4EB6CEE7147E809500BABBC6 /* Month.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6CEE6147E809500BABBC6 /* Month.m */; };
+		4EB6CEE9147EA72800BABBC6 /* ResultsApp-Box.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB6CEE8147EA72800BABBC6 /* ResultsApp-Box.png */; };
 		4EB75E911442EA3400E886C3 /* FlowerHowTo-Flutter.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB75E901442EA3400E886C3 /* FlowerHowTo-Flutter.png */; };
 		4EB75E951442F7C800E886C3 /* FlowerHowTo-Nav-Num.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB75E941442F7C800E886C3 /* FlowerHowTo-Nav-Num.png */; };
 		4EB75E97144315FD00E886C3 /* FlowerHowTo-PlayVideo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB75E96144315FD00E886C3 /* FlowerHowTo-PlayVideo.png */; };
@@ -517,6 +519,9 @@
 		4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp_NeedleView.h; sourceTree = "<group>"; };
 		4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp_NeedleView.m; sourceTree = "<group>"; };
 		4EB510A31418C4AC008FC46F /* FlowerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlowerApp.h; path = AppsMenu/FlowerApp.h; sourceTree = "<group>"; };
+		4EB6CEE5147E809500BABBC6 /* Month.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Month.h; path = Data/Month.h; sourceTree = "<group>"; };
+		4EB6CEE6147E809500BABBC6 /* Month.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Month.m; path = Data/Month.m; sourceTree = "<group>"; };
+		4EB6CEE8147EA72800BABBC6 /* ResultsApp-Box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsApp-Box.png"; sourceTree = "<group>"; };
 		4EB75E901442EA3400E886C3 /* FlowerHowTo-Flutter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-Flutter.png"; sourceTree = "<group>"; };
 		4EB75E941442F7C800E886C3 /* FlowerHowTo-Nav-Num.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-Nav-Num.png"; sourceTree = "<group>"; };
 		4EB75E96144315FD00E886C3 /* FlowerHowTo-PlayVideo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-PlayVideo.png"; sourceTree = "<group>"; };
@@ -832,6 +837,8 @@
 				4E5110871428CBC600A464EA /* Profil.m */,
 				D73C131E1428B34D0006B28F /* ExerciseDay.h */,
 				D73C131F1428B34D0006B28F /* ExerciseDay.m */,
+				4EB6CEE5147E809500BABBC6 /* Month.h */,
+				4EB6CEE6147E809500BABBC6 /* Month.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -1438,6 +1445,7 @@
 		D7F6174B1430CA0E00C4475B /* Visual */ = {
 			isa = PBXGroup;
 			children = (
+				4EB6CEE8147EA72800BABBC6 /* ResultsApp-Box.png */,
 				D7397B29143478BB00C646D5 /* ResultsApp-blue_star.png */,
 				D7397B241434763900C646D5 /* ResultsApp-gold_star.png */,
 				D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */,
@@ -1570,6 +1578,7 @@
 				4E3073C11474244E0035BFB9 /* Users-redButton.png in Resources */,
 				4E3073C31474250C0035BFB9 /* Users-greyButton.png in Resources */,
 				4EF33962147AAB7F00E77A65 /* ResultsApp_MailerOptions.xib in Resources */,
+				4EB6CEE9147EA72800BABBC6 /* ResultsApp-Box.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1715,6 +1724,7 @@
 				4E43002A147158F800BCBDD9 /* Users_TextCell.m in Sources */,
 				4E3073BC147422900035BFB9 /* Users_Editor.m in Sources */,
 				4EF33961147AAB7F00E77A65 /* ResultsApp_MailerOptions.m in Sources */,
+				4EB6CEE7147E809500BABBC6 /* Month.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1835,6 +1845,7 @@
 					"\"$(SRCROOT)/FLAPI\"",
 				);
 				PRODUCT_NAME = FlowerForAll;
+				SDKROOT = iphoneos4.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1854,6 +1865,7 @@
 					"\"$(SRCROOT)/FLAPI\"",
 				);
 				PRODUCT_NAME = FlowerForAll;
+				SDKROOT = iphoneos4.3;
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1863,8 +1875,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pierre-Mikael Legris (LQ8J2GTYRU)";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1879,8 +1894,8 @@
 					"-all_load",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5E904A1A-86D1-4FF4-871D-257F58755BA2";
-				SDKROOT = iphoneos3.2;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = NO;
 			};
 			name = Debug;
@@ -1889,9 +1904,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fondation Defitech";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1905,9 +1923,8 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos3.2;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "110B0A3F-2AE5-4637-B5BB-501AFA210396";
+				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
