@@ -3013,6 +3013,7 @@ You may switch to another identity by choosing the coresponding username.</strin
 	<array>
 		<string>en</string>
 		<string>fr</string>
+		<string>de</string>
 	</array>
 	<key>preferences</key>
 	<dict>

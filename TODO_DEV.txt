@@ -4,7 +4,7 @@ If you want to write a game, please read:
  Apps/HOWTO_WRITE_A_GAME.txt
 
 [ KNOWN BUGS ]
-- they must be some memory leaks.. 
+- they must be some memory leaks.. and some crashes are caused by some runnning conditions that happend more often iPad and older iPhone models.
 - it would be nice to have an objective-c expert do some code review.. 
 
 [ iPAD VERSION ]
@@ -46,6 +46,9 @@ But we need to create an interface for viewing this data..
 [ VOLCANO APPS ]
 - It's nice but minimalist, 
 - It would be great to have some animations and litlle blows off 
+
+[ GAMES ! ]
+- Integrate some game engine such as unity and cocos2d
 
 [ FLAPI - FLAPIX ]
 - Is  "code spagetthi" fashionned
