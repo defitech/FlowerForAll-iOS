@@ -251,7 +251,7 @@
 		4E14401214C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/ResultsApp/de.lproj/ResultsApp.strings; sourceTree = "<absolute>"; };
 		4E14401314C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/VolcanoApp/de.lproj/VolcanoApp.strings; sourceTree = "<absolute>"; };
 		4E14401414C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/CalibrationApp/de.lproj/CalibrationApp.strings; sourceTree = "<absolute>"; };
-		4E14401514C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/de.lproj/Localizable.strings; sourceTree = "<absolute>"; };
+		4E14401514C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/de.lproj/Localizable.strings; sourceTree = "<absolute>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		4E14401614C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/de.lproj/FlowerForAll.html; sourceTree = "<absolute>"; };
 		4E14401714C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/ExampleApp/de.lproj/ExampleApp.strings; sourceTree = "<absolute>"; };
 		4E14401814C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/Users/de.lproj/Users.strings; sourceTree = "<absolute>"; };
@@ -263,7 +263,7 @@
 		4E1834B9141E568800E5AE1F /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParametersApp.strings; sourceTree = "<group>"; };
 		4E18C43A14333F76007C7AE7 /* ParametersApp-SoundOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ParametersApp-SoundOn.png"; sourceTree = "<group>"; };
 		4E26BA8F1459AA7600612F28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/FlowerForAll.html; sourceTree = "<group>"; };
-		4E26BA911459AA7600612F28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E26BA911459AA7600612F28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		4E26BA941459AA8400612F28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/FlowerForAll.html; sourceTree = "<group>"; };
 		4E26BA951459AA8400612F28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E2F4FFD1407D1F900C4C00C /* VolcanoApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolcanoApp.h; sourceTree = "<group>"; };
@@ -483,7 +483,7 @@
 		4E8F590B13A7AF6B00D9D3A7 /* Expiration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Expiration.h; path = Data/Expiration.h; sourceTree = "<group>"; };
 		4E8F590C13A7AF6B00D9D3A7 /* Expiration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Expiration.m; path = Data/Expiration.m; sourceTree = "<group>"; };
 		4E8F590F13A7AF6B00D9D3A7 /* FlowerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerController.h; sourceTree = "<group>"; };
-		4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowerController.m; sourceTree = "<group>"; };
+		4E8F591013A7AF6B00D9D3A7 /* FlowerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FlowerController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlowerController.xib; sourceTree = "<group>"; };
 		4E8F591213A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlutterApp2AppDelegate.h; sourceTree = "<group>"; };
 		4E8F591313A7AF6B00D9D3A7 /* FlutterApp2AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlutterApp2AppDelegate.m; sourceTree = "<group>"; };

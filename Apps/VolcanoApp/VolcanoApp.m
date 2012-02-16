@@ -78,7 +78,7 @@
         lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, lavaWidth, lavaHeight)];
         lavaHidder.backgroundColor = [UIColor whiteColor];
         
-         [start setTitle:NSLocalizedStringFromTable(@"Start Exercice",@"VolcanoApp",@"Start Button") 
+         [start setTitle:NSLocalizedStringFromTable(@"Start Exercise",@"VolcanoApp",@"Start Button") 
                 forState:UIControlStateNormal];
         
         [self initVariables];

@@ -162,11 +162,11 @@ static NSMutableDictionary* appList;
     actionSheet.title = NSLocalizedString(@"Choose an action",@"CalibrationApp Title");
     actionSheet.delegate = singleton;
     
-    // propose start / stop exercice only if running
+    // propose start / Stop Exercise only if running
     if ([[FlowerController currentFlapix] running]) {
         NSString *startstop =  
-        [[FlowerController currentFlapix] exerciceInCourse] ? NSLocalizedString(@"Stop Exercice", @"Action Popup Menu") :
-        NSLocalizedString(@"Start Exercice", @"Action Popup Menu") ;
+        [[FlowerController currentFlapix] exerciceInCourse] ? NSLocalizedString(@"Stop Exercise", @"Action Popup Menu") :
+        NSLocalizedString(@"Start Exercise", @"Action Popup Menu") ;
         [actionSheet addButtonWithTitle:startstop];
     }
     
@@ -270,7 +270,7 @@ static NSMutableDictionary* appList;
     startButton = [[UIButton alloc] initWithFrame:plugFrame];
     UIImage *buttonImageHighlighted = [UIImage imageNamed: @"jack.png"];
     [startButton setImage:buttonImageHighlighted forState:UIControlStateHighlighted];
-    [startButton setTitle:NSLocalizedString(@"Plug headphones with\nmicrophone to start",@"Displayed on the ToolBar") forState:UIControlStateNormal];
+    [startButton setTitle:NSLocalizedString(@"Plug in headphones with\nmicrophone to start",@"Displayed on the ToolBar") forState:UIControlStateNormal];
     startButton.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
     startButton.titleLabel.textAlignment = UITextAlignmentCenter;
     [startButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];

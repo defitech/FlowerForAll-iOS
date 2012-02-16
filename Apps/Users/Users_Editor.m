@@ -28,7 +28,7 @@
     self.title = NSLocalizedStringFromTable(@"Edit user",@"Users",@"Edit User page title");
     
     [nameLabel setText:NSLocalizedStringFromTable(@"Name",@"Users",@"Label of the name entry field")];
-    [nameTipLabel setText:NSLocalizedStringFromTable(@"In a medical environnement choose a username that preserve nonymity.",@"Users",@"Tip for th label of the name entry field")];
+    [nameTipLabel setText:NSLocalizedStringFromTable(@"In a medical environnement choose a username that preserves anonymity.",@"Users",@"Tip for th label of the name entry field")];
     
     [passwordLabel setText:NSLocalizedStringFromTable(@"Password",@"Users",@"Label of the password entry field")];
     [passwordField setPlaceholder:NSLocalizedStringFromTable(@"Leave empty for no password",@"Users",@"Tip for the password entry field")];

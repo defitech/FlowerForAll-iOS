@@ -339,7 +339,7 @@ NSMutableArray *blowFrequencies;
      [temp release];
 }
 
-/** start Exercice **/
+/** Start Exercise **/
 - (FLAPIExercice*)exerciceStart {
     [self exerciceStop];
     // not possible if not running

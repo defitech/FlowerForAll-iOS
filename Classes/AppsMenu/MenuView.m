@@ -19,11 +19,13 @@
 #import "FlowerHowTo.h"
 #import "ParametersApp.h"
 #import "ResultsApp.h"
+#import "CalibrationApp.h"
+#import "Users.h"
 
 @implementation MenuView
 
 
-@synthesize page2, web, scrollView, backItem, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel, usersLabel;
+@synthesize page2, web, scrollView, backItem, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel, usersLabel, calibrationLabel;
 
 
 - (IBAction)usersTouch:(id) sender {
@@ -79,6 +81,8 @@ FlowerHowTo *flowerHowTo;
     [videoPlayerLabel setText:[FlowerHowTo appTitle]];
     [settingsLabel setText:[ParametersApp appTitle]];
     [resultsLabel setText:[ResultsApp appTitle]];
+    [usersLabel setText:[Users  appTitle]];
+    [calibrationLabel setText:[CalibrationApp appTitle]];
 	
     int nb_pages = 2;
 	//scrollView.contentSize = CGSizeMake(960.0,0.0);
