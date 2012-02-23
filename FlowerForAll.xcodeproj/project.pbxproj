@@ -245,9 +245,9 @@
 		4E101E5514371947002BFDCC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FlowerHowTo.strings; sourceTree = "<group>"; };
 		4E141B0713B35F1900698F53 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4E141B0813B35F1900698F53 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		4E141B0913B35F1900698F53 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		4E141B0A13B35F1900698F53 /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-iPad.png"; sourceTree = "<group>"; };
-		4E141B0B13B35F1900698F53 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		4E141B0913B35F1900698F53 /* Icon.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = Icon.png; sourceTree = "<group>"; };
+		4E141B0A13B35F1900698F53 /* Icon-iPad.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = "Icon-iPad.png"; sourceTree = "<group>"; };
+		4E141B0B13B35F1900698F53 /* Icon@2x.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4E14401214C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/ResultsApp/de.lproj/ResultsApp.strings; sourceTree = "<absolute>"; };
 		4E14401314C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/VolcanoApp/de.lproj/VolcanoApp.strings; sourceTree = "<absolute>"; };
 		4E14401414C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/CalibrationApp/de.lproj/CalibrationApp.strings; sourceTree = "<absolute>"; };
@@ -1929,7 +1929,7 @@
 					armv7,
 				);
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pierre-Mikael Legris (G2M273GC54)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fondation Defitech";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1943,7 +1943,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5845C980-4E02-491C-B96B-9A62DE9BCC9F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "110B0A3F-2AE5-4637-B5BB-501AFA210396";
 				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = YES;
 			};
