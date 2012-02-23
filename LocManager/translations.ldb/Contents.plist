@@ -67,6 +67,8 @@
 							<string>Blow duration target</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Dauer einer Ausatmung</string>
 								<key>en</key>
 								<string>Blow duration target</string>
 								<key>fr</key>
@@ -92,6 +94,8 @@
 							<string>Calibration</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Kalibrierung</string>
 								<key>en</key>
 								<string>Calibration</string>
 								<key>fr</key>
@@ -117,6 +121,8 @@
 							<string>Done</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Fertig</string>
 								<key>en</key>
 								<string>Done</string>
 								<key>fr</key>
@@ -142,6 +148,8 @@
 							<string>Durations: periods when the Flutter® VRP1 vibrates in the targeted range of frequencies.</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Dauer: Abstände in denen Flutter® VRP1 im Frequenzzielbereich vibriert.</string>
 								<key>en</key>
 								<string>Durations: periods when the Flutter® VRP1 vibrates in the targeted range of frequencies.</string>
 								<key>fr</key>
@@ -167,6 +175,8 @@
 							<string>Exercice duration target</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Gesamtdauer einer Übung</string>
 								<key>en</key>
 								<string>Exercice duration target</string>
 								<key>fr</key>
@@ -192,6 +202,8 @@
 							<string>PlayBack Volume</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Lautstärke Wiedergabe</string>
 								<key>en</key>
 								<string>PlayBack Volume</string>
 								<key>fr</key>
@@ -217,6 +229,8 @@
 							<string>Profile</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Profil</string>
 								<key>en</key>
 								<string>Profile</string>
 								<key>fr</key>
@@ -242,6 +256,8 @@
 							<string>Profiles</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Profile</string>
 								<key>en</key>
 								<string>Profiles</string>
 								<key>fr</key>
@@ -267,6 +283,8 @@
 							<string>Settings</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Einstellungen</string>
 								<key>en</key>
 								<string>Settings</string>
 								<key>fr</key>
@@ -406,7 +424,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-11-25T17:01:57Z</date>
+					<date>2012-02-16T17:50:24Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -416,7 +434,7 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>cbd25aa3c8ee623aca2174be62c60b5c
+					<string>1bf8dd4a59c115772e16121b7bfd58c4
 </string>
 					<key>name</key>
 					<string>ResultsApp.strings</string>
@@ -439,6 +457,8 @@
 							<string>%i exercices</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>%i Übungen</string>
 								<key>en</key>
 								<string>%i exercices</string>
 								<key>fr</key>
@@ -461,17 +481,21 @@
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>&lt;br&gt;....Data enclosed to this mail.
+							<string>&lt;br&gt;....Data attached to this mail.
 &lt;br&gt;&lt;br&gt;
 </string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>&lt;br&gt;....Daen dieser e-Mail beigefüt.
+&lt;br&gt;&lt;br&gt;
+</string>
 								<key>en</key>
-								<string>&lt;br&gt;....Data enclosed to this mail.
+								<string>&lt;br&gt;....Data attached to this mail.
 &lt;br&gt;&lt;br&gt;
 </string>
 								<key>fr</key>
-								<string>&lt;br&gt;...Données attachées a ce mail.
+								<string>&lt;br&gt;....Données attachées a ce mail
 &lt;br&gt;&lt;br&gt;
 </string>
 							</dict>
@@ -495,6 +519,8 @@
 							<string>Average frequency of blows</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Durchschnittsfrequenz der Ausatmungen</string>
 								<key>en</key>
 								<string>Average frequency of blows</string>
 								<key>fr</key>
@@ -520,6 +546,8 @@
 							<string>Blows</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Ausatmung</string>
 								<key>en</key>
 								<string>Blows</string>
 								<key>fr</key>
@@ -545,6 +573,8 @@
 							<string>Delete</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Löschen</string>
 								<key>en</key>
 								<string>Delete</string>
 								<key>fr</key>
@@ -570,6 +600,8 @@
 							<string>Display the result table:</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Tabelle mit Ergebnissen anzeigen</string>
 								<key>en</key>
 								<string>Display the result table:</string>
 								<key>fr</key>
@@ -595,6 +627,8 @@
 							<string>Done</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Bestätigen</string>
 								<key>en</key>
 								<string>Done</string>
 								<key>fr</key>
@@ -620,6 +654,8 @@
 							<string>Done %</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>% Erledigt</string>
 								<key>en</key>
 								<string>Done %</string>
 								<key>fr</key>
@@ -645,6 +681,8 @@
 							<string>Duration (s)</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Dauer (s)</string>
 								<key>en</key>
 								<string>Duration (s)</string>
 								<key>fr</key>
@@ -670,6 +708,8 @@
 							<string>Expected blow duration (s)</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Erwartete Ausatmungsdauer (s)</string>
 								<key>en</key>
 								<string>Expected blow duration (s)</string>
 								<key>fr</key>
@@ -695,6 +735,8 @@
 							<string>Expected exercice duration (s)</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Erwartete Übungsdauer (s)</string>
 								<key>en</key>
 								<string>Expected exercice duration (s)</string>
 								<key>fr</key>
@@ -720,6 +762,8 @@
 							<string>First exercise %@</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Erste Übung %@</string>
 								<key>en</key>
 								<string>First exercise %@</string>
 								<key>fr</key>
@@ -745,6 +789,8 @@
 							<string>Flower-Breath data for %@</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Flower-Breath Daten für %@</string>
 								<key>en</key>
 								<string>Flower-Breath data for %@</string>
 								<key>fr</key>
@@ -770,6 +816,8 @@
 							<string>Freq. Tolerance Hz</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Freq. Toleranz Hz</string>
 								<key>en</key>
 								<string>Freq. Tolerance Hz</string>
 								<key>fr</key>
@@ -795,6 +843,8 @@
 							<string>Goal</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Ziel</string>
 								<key>en</key>
 								<string>Goal</string>
 								<key>fr</key>
@@ -820,6 +870,8 @@
 							<string>Good Blows</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Gute Ausatmungen</string>
 								<key>en</key>
 								<string>Good Blows</string>
 								<key>fr</key>
@@ -845,10 +897,12 @@
 							<string>In-Range Duration (s)</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Effektive Dauer (s)</string>
 								<key>en</key>
 								<string>In-Range Duration (s)</string>
 								<key>fr</key>
-								<string>Durée efficace</string>
+								<string>Durée efficace (s)</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -870,6 +924,8 @@
 							<string>Include expirations data</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Ausatmungsdaten einbeziehen</string>
 								<key>en</key>
 								<string>Include expirations data</string>
 								<key>fr</key>
@@ -895,6 +951,8 @@
 							<string>Last e-mail %@</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Letzte e-Mail %@</string>
 								<key>en</key>
 								<string>Last e-mail %@</string>
 								<key>fr</key>
@@ -920,6 +978,8 @@
 							<string>Median Freq. Hz</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Median Freq. Hz</string>
 								<key>en</key>
 								<string>Median Freq. Hz</string>
 								<key>fr</key>
@@ -945,6 +1005,8 @@
 							<string>Modify</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Ändern</string>
 								<key>en</key>
 								<string>Modify</string>
 								<key>fr</key>
@@ -970,6 +1032,8 @@
 							<string>OK</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>OK</string>
 								<key>en</key>
 								<string>OK</string>
 								<key>fr</key>
@@ -995,6 +1059,8 @@
 							<string>over</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>über</string>
 								<key>en</key>
 								<string>over</string>
 								<key>fr</key>
@@ -1020,6 +1086,8 @@
 							<string>Profile</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Profil</string>
 								<key>en</key>
 								<string>Profile</string>
 								<key>fr</key>
@@ -1045,6 +1113,8 @@
 							<string>Results</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Ergebnisse</string>
 								<key>en</key>
 								<string>Results</string>
 								<key>fr</key>
@@ -1070,6 +1140,8 @@
 							<string>Send results</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Ergebnisse senden</string>
 								<key>en</key>
 								<string>Send results</string>
 								<key>fr</key>
@@ -1095,6 +1167,8 @@
 							<string>Send results by e-mail</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Ergebnisse per e-Mail senden</string>
 								<key>en</key>
 								<string>Send results by e-mail</string>
 								<key>fr</key>
@@ -1120,6 +1194,8 @@
 							<string>Send the results of %i exercices</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Die Ergebnisse von %i Übungen senden</string>
 								<key>en</key>
 								<string>Send the results of %i exercices</string>
 								<key>fr</key>
@@ -1145,6 +1221,8 @@
 							<string>Start</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Start</string>
 								<key>en</key>
 								<string>Start</string>
 								<key>fr</key>
@@ -1170,6 +1248,8 @@
 							<string>Target Freq. Hz</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Freq. Zielbereich Hz</string>
 								<key>en</key>
 								<string>Target Freq. Hz</string>
 								<key>fr</key>
@@ -1195,6 +1275,8 @@
 							<string>There is no result from this date</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Für dieses Datum gibt es keine Resultate</string>
 								<key>en</key>
 								<string>There is no result from this date</string>
 								<key>fr</key>
@@ -1379,6 +1461,41 @@
 							<key>snapshots</key>
 							<dict/>
 						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Mail introduction</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>&lt;br&gt;....Data enclosed to this mail.
+&lt;br&gt;&lt;br&gt;
+</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>&lt;br&gt;…Daten dieser e-Mail beigefügt.
+&lt;br&gt;&lt;br&gt;
+</string>
+								<key>en</key>
+								<string>&lt;br&gt;....Data enclosed to this mail.
+&lt;br&gt;&lt;br&gt;
+</string>
+								<key>fr</key>
+								<string>&lt;br&gt;...Données attachées a ce mail.
+&lt;br&gt;&lt;br&gt;
+</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
 					</array>
 					<key>plist file</key>
 					<false/>
@@ -1465,6 +1582,8 @@
 							<string>Calibration</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Kalibrierung</string>
 								<key>en</key>
 								<string>Calibration</string>
 								<key>fr</key>
@@ -1490,6 +1609,8 @@
 							<string>Duration settings</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Dauer einstellen</string>
 								<key>en</key>
 								<string>Duration settings</string>
 								<key>fr</key>
@@ -1515,6 +1636,8 @@
 							<string>Last Blow's frequency</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Frequenz der letzten Ausatmung</string>
 								<key>en</key>
 								<string>Last Blow's frequency</string>
 								<key>fr</key>
@@ -1540,6 +1663,8 @@
 							<string>Range of frequencies</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Frequenzbereich</string>
 								<key>en</key>
 								<string>Range of frequencies</string>
 								<key>fr</key>
@@ -1603,7 +1728,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-10-06T16:25:17Z</date>
+					<date>2012-02-16T17:50:24Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -1613,7 +1738,7 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>6a1a88ca9018e025343b7eec0b5e9d25
+					<string>9647705770ca75d8539a1a73755dfb7c
 </string>
 					<key>name</key>
 					<string>VolcanoApp.strings</string>
@@ -1633,11 +1758,13 @@
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>Start Exercice</string>
+							<string>Start Exercise</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Übung starten</string>
 								<key>en</key>
-								<string>Start Exercice</string>
+								<string>Start Exercise</string>
 								<key>fr</key>
 								<string>Démarrer un exercice</string>
 							</dict>
@@ -1661,6 +1788,8 @@
 							<string>Volcano Game</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Vulkan Spiel</string>
 								<key>en</key>
 								<string>Volcano Game</string>
 								<key>fr</key>
@@ -1671,7 +1800,35 @@
 						</dict>
 					</array>
 					<key>old objects</key>
-					<array/>
+					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Start Button</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Start Exercice</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Übung starten</string>
+								<key>en</key>
+								<string>Start Exercice</string>
+								<key>fr</key>
+								<string>Démarrer un exercice</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+					</array>
 					<key>plist file</key>
 					<false/>
 					<key>snapshots</key>
@@ -1724,7 +1881,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-11-21T10:27:55Z</date>
+					<date>2012-02-16T17:50:23Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -1734,7 +1891,7 @@
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>50925be87a323f8f91ae9822c604c90b
+					<string>208a845841ea37635829c2fa525eb587
 </string>
 					<key>name</key>
 					<string>Localizable.strings</string>
@@ -1757,6 +1914,8 @@
 							<string>About Flower breath</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Über Flower breath</string>
 								<key>en</key>
 								<string>About Flower breath</string>
 								<key>fr</key>
@@ -1782,6 +1941,8 @@
 							<string>Back To Menu</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Zurück zum Menü</string>
 								<key>en</key>
 								<string>Back To Menu</string>
 								<key>fr</key>
@@ -1807,6 +1968,8 @@
 							<string>Cancel</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Abbrechen</string>
 								<key>en</key>
 								<string>Cancel</string>
 								<key>fr</key>
@@ -1832,6 +1995,8 @@
 							<string>Choose an action</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Aktion auswählen</string>
 								<key>en</key>
 								<string>Choose an action</string>
 								<key>fr</key>
@@ -1857,10 +2022,12 @@
 							<string>Difficult</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Schwierig</string>
 								<key>en</key>
 								<string>Difficult</string>
 								<key>fr</key>
-								<string>Difficle</string>
+								<string>Difficile</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1882,6 +2049,8 @@
 							<string>Done</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Fertig</string>
 								<key>en</key>
 								<string>Done</string>
 								<key>fr</key>
@@ -1907,6 +2076,8 @@
 							<string>Easy</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Einfach</string>
 								<key>en</key>
 								<string>Easy</string>
 								<key>fr</key>
@@ -1932,6 +2103,8 @@
 							<string>Enter password for %@</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Passwort für %@ eingeben</string>
 								<key>en</key>
 								<string>Enter password for %@</string>
 								<key>fr</key>
@@ -1957,6 +2130,8 @@
 							<string>Flower breath</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Flower breath</string>
 								<key>en</key>
 								<string>Flower breath</string>
 								<key>fr</key>
@@ -1982,6 +2157,8 @@
 							<string>Normal</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Normal</string>
 								<key>en</key>
 								<string>Normal</string>
 								<key>fr</key>
@@ -2007,6 +2184,8 @@
 							<string>OK</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>OK</string>
 								<key>en</key>
 								<string>OK</string>
 								<key>fr</key>
@@ -2032,6 +2211,8 @@
 							<string>Owner</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Besitzer</string>
 								<key>en</key>
 								<string>Owner</string>
 								<key>fr</key>
@@ -2057,6 +2238,8 @@
 							<string>Pick your profile name</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Profilnamen wählen</string>
 								<key>en</key>
 								<string>Pick your profile name</string>
 								<key>fr</key>
@@ -2079,15 +2262,17 @@
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>Plug headphones with
+							<string>Plug in headphones with
 microphone to start</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Kofhörer mit Mikrofon einstecken um zu beinnen</string>
 								<key>en</key>
-								<string>Plug headphones with
+								<string>Plug in headphones with
 microphone to start</string>
 								<key>fr</key>
-								<string>Brancher des écouteurs  avec un microphone</string>
+								<string>Brancher des écouteurs avec un microphone</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -2109,6 +2294,8 @@ microphone to start</string>
 							<string>Start Demo Mode</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Demo Modus starten</string>
 								<key>en</key>
 								<string>Start Demo Mode</string>
 								<key>fr</key>
@@ -2131,13 +2318,15 @@ microphone to start</string>
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>Start Exercice</string>
+							<string>Start Exercise</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Übung beginnen</string>
 								<key>en</key>
-								<string>Start Exercice</string>
+								<string>Start Exercise</string>
 								<key>fr</key>
-								<string>Démarrer l'exercice</string>
+								<string>Déamarrer l'exercice</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -2159,6 +2348,8 @@ microphone to start</string>
 							<string>Stop Demo Mode</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Demo Modus abbrechen</string>
 								<key>en</key>
 								<string>Stop Demo Mode</string>
 								<key>fr</key>
@@ -2181,11 +2372,13 @@ microphone to start</string>
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>Stop Exercice</string>
+							<string>Stop Exercise</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Übung abbrechen</string>
 								<key>en</key>
-								<string>Stop Exercice</string>
+								<string>Stop Exercise</string>
 								<key>fr</key>
 								<string>Arrêter l'exerice</string>
 							</dict>
@@ -2209,6 +2402,8 @@ microphone to start</string>
 							<string>Wrong password please retry.</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Falsches Passwort. Bitte erneut versuchen.</string>
 								<key>en</key>
 								<string>Wrong password please retry.</string>
 								<key>fr</key>
@@ -2470,6 +2665,89 @@ microphone to start</string>
 							<key>snapshots</key>
 							<dict/>
 						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Displayed on the ToolBar</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Plug headphones with
+microphone to start</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Kopfhörer mit Mikrofon einstecken um zu beginnen</string>
+								<key>en</key>
+								<string>Plug headphones with
+microphone to start</string>
+								<key>fr</key>
+								<string>Brancher des écouteurs  avec un microphone</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Action Popup Menu</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Start Exercice</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Übung beginnen</string>
+								<key>en</key>
+								<string>Start Exercice</string>
+								<key>fr</key>
+								<string>Démarrer l'exercice</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Action Popup Menu</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Stop Exercice</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Übung abbrechen</string>
+								<key>en</key>
+								<string>Stop Exercice</string>
+								<key>fr</key>
+								<string>Arrêter l'exerice</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
 					</array>
 					<key>plist file</key>
 					<false/>
@@ -2554,6 +2832,8 @@ microphone to start</string>
 							<string>Setup instructions</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Installation</string>
 								<key>en</key>
 								<string>Setup instructions</string>
 								<key>fr</key>
@@ -2615,7 +2895,7 @@ microphone to start</string>
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2011-11-21T10:27:55Z</date>
+					<date>2012-02-16T17:50:24Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -2625,7 +2905,7 @@ microphone to start</string>
 					<key>flags</key>
 					<integer>0</integer>
 					<key>hash</key>
-					<string>dd1d209ce9d230890856bc1ccc7352bb
+					<string>8eb40ae472e4ec5ee41d6326f25b5623
 </string>
 					<key>name</key>
 					<string>Users.strings</string>
@@ -2648,6 +2928,8 @@ microphone to start</string>
 							<string>Add users if this device is used by several persons. Use the + button on the top right corner.</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Weitere Benutzer hinzufügen, wenn dieses Gerät von mehreren Benutzern verwendet wird. Nutzen Sie hierfür den + Knopf oben rechts.</string>
 								<key>en</key>
 								<string>Add users if this device is used by several persons. Use the + button on the top right corner.</string>
 								<key>fr</key>
@@ -2673,6 +2955,8 @@ microphone to start</string>
 							<string>Cancel</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Abbrechen</string>
 								<key>en</key>
 								<string>Cancel</string>
 								<key>fr</key>
@@ -2698,6 +2982,8 @@ microphone to start</string>
 							<string>Delete</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Löschen</string>
 								<key>en</key>
 								<string>Delete</string>
 								<key>fr</key>
@@ -2723,6 +3009,8 @@ microphone to start</string>
 							<string>Do you want to delete all the data for this user?</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Möchten Sie alle Daten dieses Benutzers löschen?</string>
 								<key>en</key>
 								<string>Do you want to delete all the data for this user?</string>
 								<key>fr</key>
@@ -2748,6 +3036,8 @@ microphone to start</string>
 							<string>Edit user</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Benutzer editieren</string>
 								<key>en</key>
 								<string>Edit user</string>
 								<key>fr</key>
@@ -2770,11 +3060,13 @@ microphone to start</string>
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>In a medical environnement choose a username that preserve nonymity.</string>
+							<string>In a medical environnement choose a username that preserves anonymity.</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>In einem medizinischem Umfeld wählen Sie bitte einen Namen der Ihre Anonymität gewährleistet.</string>
 								<key>en</key>
-								<string>In a medical environnement choose a username that preserve nonymity.</string>
+								<string>In a medical environnement choose a username that preserves anonymity.</string>
 								<key>fr</key>
 								<string>Dans un environnement médical, choisissez un nom qui préserve votre anonymat.</string>
 							</dict>
@@ -2798,6 +3090,8 @@ microphone to start</string>
 							<string>Leave empty for no password</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Freiwillig</string>
 								<key>en</key>
 								<string>Leave empty for no password</string>
 								<key>fr</key>
@@ -2823,6 +3117,8 @@ microphone to start</string>
 							<string>Menu</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Menü</string>
 								<key>en</key>
 								<string>Menu</string>
 								<key>fr</key>
@@ -2848,6 +3144,8 @@ microphone to start</string>
 							<string>Name</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Name</string>
 								<key>en</key>
 								<string>Name</string>
 								<key>fr</key>
@@ -2873,6 +3171,8 @@ microphone to start</string>
 							<string>New user</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Neuer Benutzer</string>
 								<key>en</key>
 								<string>New user</string>
 								<key>fr</key>
@@ -2899,11 +3199,13 @@ microphone to start</string>
 You may switch to another identity by choosing the coresponding username.</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Nur der Besitzer kann Benutzer hinzufügen oder löschen. Sie können Ihre Identität wechseln indem Sie einen anderen Benutzernamen wählen.</string>
 								<key>en</key>
 								<string>Only the owner may remove or edit user. 
 You may switch to another identity by choosing the coresponding username.</string>
 								<key>fr</key>
-								<string>Seul le propriétaire peu enlever ou modifier un utilisateur. pouvez changer d'identité en choisissant un autre nom d'utilisateur.</string>
+								<string>Seul le propriétaire peut enlever ou modifier un utilisateur. Vous pouvez changer d'identité en choisissant un autre nom d'utilisateur.</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -2925,6 +3227,8 @@ You may switch to another identity by choosing the coresponding username.</strin
 							<string>Password</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Passwort</string>
 								<key>en</key>
 								<string>Password</string>
 								<key>fr</key>
@@ -2950,6 +3254,8 @@ You may switch to another identity by choosing the coresponding username.</strin
 							<string>Users</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Benutzer</string>
 								<key>en</key>
 								<string>Users</string>
 								<key>fr</key>
@@ -2975,6 +3281,8 @@ You may switch to another identity by choosing the coresponding username.</strin
 							<string>You may switch to another identity by choosing the coresponding username. Only the owner may add or remove user.</string>
 							<key>localizations</key>
 							<dict>
+								<key>de</key>
+								<string>Sie können Ihre Identität wechseln indem Sie einen anderen Benutzernamen wählen. Nur der Besitzer kann Benutzer hinzufügen oder löschen.</string>
 								<key>en</key>
 								<string>You may switch to another identity by choosing the coresponding username. Only the owner may add or remove user.</string>
 								<key>fr</key>
@@ -2985,7 +3293,35 @@ You may switch to another identity by choosing the coresponding username.</strin
 						</dict>
 					</array>
 					<key>old objects</key>
-					<array/>
+					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Tip for th label of the name entry field</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>In a medical environnement choose a username that preserve nonymity.</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>In einem medizinischem Umfeld wählen Sie bitte einen Namen der Ihre Anonymität gewährleistet.</string>
+								<key>en</key>
+								<string>In a medical environnement choose a username that preserve nonymity.</string>
+								<key>fr</key>
+								<string>Dans un environnement médical, choisissez un nom qui préserve votre anonymat.</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+					</array>
 					<key>plist file</key>
 					<false/>
 					<key>snapshots</key>

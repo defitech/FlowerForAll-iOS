@@ -136,7 +136,7 @@ ResultsApp_MailerOptions* mailerOptions;
                
         NSMutableString *message = [[NSMutableString alloc] init];
         [message appendString:
-         NSLocalizedStringFromTable(@"<br>....Data enclosed to this mail.\n<br><br>\n", @"ResultsApp", @"Mail introduction")];
+         NSLocalizedStringFromTable(@"<br>....Data attached to this mail.\n<br><br>\n", @"ResultsApp", @"Mail introduction")];
         
         if (HTMLtable != nil) [message appendString:HTMLtable];
         
