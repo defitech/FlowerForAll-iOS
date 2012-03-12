@@ -58,6 +58,9 @@ It would be nice to have someone exetrnal do some revieweing / refactoring
 - Add a nice audio feedback for someone who would do it's exercice without holding the iPhone.
 
 [ SOUND PROCESSING ]
+- Less latency could be achieved using remote i/o audio unit
+see: https://developer.apple.com/library/ios/#samplecode/aurioTouch/Introduction/Intro.html
+
 - is not perfect but functionnal..
 - we will probably need to rewrite FLAPI if IAV does not open their code
 

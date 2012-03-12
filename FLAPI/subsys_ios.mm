@@ -7,6 +7,10 @@
  *
  * ref: http://blog.boreal-kiss.net/2011/03/15/how-to-create-universal-static-libraries-on-xcode-4/
  * http://trailsinthesand.com/exploring-iphone-audio-part-3/
+ *
+ *
+ * low latency cold be achieved following the exemple
+ * https://developer.apple.com/library/ios/#samplecode/aurioTouch/Introduction/Intro.html
  */
 
 #include "subsys_ios.h"
