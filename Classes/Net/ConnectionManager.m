@@ -39,6 +39,7 @@
 
 #import "ConnectionManager.h"
 #import "SBJson.h"
+#include "OpenUDID.h"
 
 
 @implementation ConnectionManager
@@ -62,7 +63,9 @@ BOOL pinger = NO;
 	pinger = YES;
 	pinging = YES;
 	UIDevice *device = [UIDevice currentDevice];
-	NSString *udid = [device uniqueIdentifier];
+	//NSString *udid = [device uniqueIdentifier]; // removed because of new Apple Policy
+    NSString* openUDID = [OpenUDID value];
+    
 	NSString *sysname = [device systemName];
 	NSString *sysver = [device systemVersion];
 	NSString *model = [device model];
@@ -70,7 +73,7 @@ BOOL pinger = NO;
 	NSString *bundleV = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleVersion"];
     NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
 	
-	NSLog(@"id is:%@",udid);
+	NSLog(@"openID is:%@",openUDID);
 	NSLog(@"system name is :%@",sysname);
 	NSLog(@"System version is:%@",sysver);
 	NSLog(@"System model is:%@",model);
@@ -78,7 +81,7 @@ BOOL pinger = NO;
 	NSLog(@"Bundle Version:%@",bundleV);
     NSLog(@"System Language:%@",language);
 	
-	NSString *post = [NSString stringWithFormat:@"BundleID=%@&BundleV=%@&DeviceCode=%@&Firmware=%@&IMEI=%@&language=%@",bundleID,bundleV,model,sysver,udid,language];
+	NSString *post = [NSString stringWithFormat:@"BundleID=%@&BundleV=%@&DeviceCode=%@&Firmware=%@&openUDID=%@&language=%@",bundleID,bundleV,model,sysver,openUDID,language];
 	
 	if (infos != nil)
 	for (NSString* key in infos) {
