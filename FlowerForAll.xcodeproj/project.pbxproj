@@ -248,16 +248,16 @@
 		4E141B0913B35F1900698F53 /* Icon.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = Icon.png; sourceTree = "<group>"; };
 		4E141B0A13B35F1900698F53 /* Icon-iPad.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = "Icon-iPad.png"; sourceTree = "<group>"; };
 		4E141B0B13B35F1900698F53 /* Icon@2x.png */ = {isa = PBXFileReference; explicitFileType = image.icns; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		4E14401214C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/ResultsApp/de.lproj/ResultsApp.strings; sourceTree = "<absolute>"; };
-		4E14401314C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/VolcanoApp/de.lproj/VolcanoApp.strings; sourceTree = "<absolute>"; };
-		4E14401414C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/CalibrationApp/de.lproj/CalibrationApp.strings; sourceTree = "<absolute>"; };
-		4E14401514C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/de.lproj/Localizable.strings; sourceTree = "<absolute>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
-		4E14401614C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/de.lproj/FlowerForAll.html; sourceTree = "<absolute>"; };
-		4E14401714C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/ExampleApp/de.lproj/ExampleApp.strings; sourceTree = "<absolute>"; };
-		4E14401814C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/Users/de.lproj/Users.strings; sourceTree = "<absolute>"; };
-		4E14401914C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = "/Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/FlowerHowTo/documents/de.lproj/FlowerHowTo-index.html"; sourceTree = "<absolute>"; };
-		4E14401A14C9A0AC007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/ParametersApp/de.lproj/ParametersApp.strings; sourceTree = "<absolute>"; };
-		4E14401B14C9A0AC007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = /Dropbox/perki/Documents/xcode4/FlowerForAll/Apps/FlowerHowTo/de.lproj/FlowerHowTo.strings; sourceTree = "<absolute>"; };
+		4E14401214C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ResultsApp.strings; sourceTree = "<group>"; };
+		4E14401314C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/VolcanoApp.strings; sourceTree = "<group>"; };
+		4E14401414C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/CalibrationApp.strings; sourceTree = "<group>"; };
+		4E14401514C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
+		4E14401614C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = de.lproj/FlowerForAll.html; sourceTree = "<group>"; };
+		4E14401714C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ExampleApp.strings; sourceTree = "<group>"; };
+		4E14401814C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Users.strings; sourceTree = "<group>"; };
+		4E14401914C9A0AB007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = de; path = "de.lproj/FlowerHowTo-index.html"; sourceTree = "<group>"; };
+		4E14401A14C9A0AC007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ParametersApp.strings; sourceTree = "<group>"; };
+		4E14401B14C9A0AC007E6AAD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/FlowerHowTo.strings; sourceTree = "<group>"; };
 		4E16EA4A1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-Calibration_EN.png"; sourceTree = "<group>"; };
 		4E1834B7141E568100E5AE1F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ParametersApp.strings; sourceTree = "<group>"; };
 		4E1834B9141E568800E5AE1F /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParametersApp.strings; sourceTree = "<group>"; };
@@ -1896,6 +1896,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
 				ARCHS = (
+					i386,
 					armv6,
 					armv7,
 				);
@@ -1906,17 +1907,18 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"$(SRCROOT)/FLAPI\"";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.3;
 				SKIP_INSTALL = NO;
+				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -1925,6 +1927,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
 				ARCHS = (
+					i386,
 					armv6,
 					armv7,
 				);
@@ -1936,16 +1939,17 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "110B0A3F-2AE5-4637-B5BB-501AFA210396";
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.3;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = Release;
 		};
