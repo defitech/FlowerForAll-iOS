@@ -138,6 +138,7 @@
 		4E7CDA171471232600047C99 /* Users_CellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDA161471232500047C99 /* Users_CellView.m */; };
 		4E7CDA191471256000047C99 /* Users-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CDA181471256000047C99 /* Users-check.png */; };
 		4E800122143E0067001C15C7 /* VolcanoApp-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E800121143E0067001C15C7 /* VolcanoApp-star.png */; };
+		4E8068D1160B07D7000066FA /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8068D0160B07D7000066FA /* OpenUDID.m */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
 		4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DB.m */; };
 		4E8F593213A7AF6B00D9D3A7 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590A13A7AF6B00D9D3A7 /* Exercise.m */; };
@@ -475,6 +476,8 @@
 		4E7CDA161471232500047C99 /* Users_CellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Users_CellView.m; sourceTree = "<group>"; };
 		4E7CDA181471256000047C99 /* Users-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Users-check.png"; sourceTree = "<group>"; };
 		4E800121143E0067001C15C7 /* VolcanoApp-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolcanoApp-star.png"; sourceTree = "<group>"; };
+		4E8068CF160B07D7000066FA /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		4E8068D0160B07D7000066FA /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
 		4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataAccess.h; path = Data/DataAccess.h; sourceTree = "<group>"; };
 		4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataAccess.m; path = Data/DataAccess.m; sourceTree = "<group>"; };
 		4E8F590413A7AF6B00D9D3A7 /* DB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DB.m; path = Data/DB.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -1229,6 +1232,15 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
+		4E8068CE160B07D7000066FA /* OpenUID */ = {
+			isa = PBXGroup;
+			children = (
+				4E8068CF160B07D7000066FA /* OpenUDID.h */,
+				4E8068D0160B07D7000066FA /* OpenUDID.m */,
+			);
+			path = OpenUID;
+			sourceTree = "<group>";
+		};
 		4E8F595113A7AFA900D9D3A7 /* sqlite_database */ = {
 			isa = PBXGroup;
 			children = (
@@ -1240,6 +1252,7 @@
 		4E92E72213C72C630060FBF6 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				4E8068CE160B07D7000066FA /* OpenUID */,
 				4E92E74B13C72D3A0060FBF6 /* ConnectionManager.h */,
 				4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */,
 				4E92E72313C72C6F0060FBF6 /* SBJSON */,
@@ -1735,6 +1748,7 @@
 				4E3073BC147422900035BFB9 /* Users_Editor.m in Sources */,
 				4EF33961147AAB7F00E77A65 /* ResultsApp_MailerOptions.m in Sources */,
 				4EB6CEE7147E809500BABBC6 /* Month.m in Sources */,
+				4E8068D1160B07D7000066FA /* OpenUDID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
