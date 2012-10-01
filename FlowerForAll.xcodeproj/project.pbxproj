@@ -206,6 +206,7 @@
 		BC1E2C43160B0F6D00B82033 /* MainWindow~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1E2C42160B0F6D00B82033 /* MainWindow~ipad.xib */; };
 		BC1E2C45160B11EF00B82033 /* FlowerController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1E2C44160B11EF00B82033 /* FlowerController~ipad.xib */; };
 		BC229308160B23D60045E064 /* FlowerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */; };
+		BC36D08A1615F6F60013C863 /* Users_Editor~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC36D0891615F6F60013C863 /* Users_Editor~ipad.xib */; };
 		BC78E5E416103C2D00896275 /* CalibrationApp~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5E316103C2D00896275 /* CalibrationApp~ipad.xib */; };
 		BC78E5E61610472500896275 /* Users~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5E51610472500896275 /* Users~ipad.xib */; };
 		BC78E5E816104D1B00896275 /* ExampleApp~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5E716104D1B00896275 /* ExampleApp~ipad.xib */; };
@@ -215,6 +216,7 @@
 		BC78E5F0161056A400896275 /* FlowerHowTo~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5EF161056A400896275 /* FlowerHowTo~ipad.xib */; };
 		BC78E5F216105DE100896275 /* MenuView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5F116105DE100896275 /* MenuView~ipad.xib */; };
 		BC78E5F316119F7A00896275 /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5E216103B0A00896275 /* CalibrationApp.xib */; };
+		BCB849C91619F4B50054C747 /* ResultsApp_List~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB849C81619F4B40054C747 /* ResultsApp_List~ipad.xib */; };
 		D701908B141618510072D020 /* VolcanoApp_goal.wav in Resources */ = {isa = PBXBuildFile; fileRef = D701908A141618510072D020 /* VolcanoApp_goal.wav */; };
 		D702D18E14152C69005A1764 /* VolcanoApp_volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */; };
 		D70BFD4014332753004EABC2 /* ResultsApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */; };
@@ -597,6 +599,7 @@
 		BC1E2C42160B0F6D00B82033 /* MainWindow~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow~ipad.xib"; path = "iPad/MainWindow~ipad.xib"; sourceTree = "<group>"; };
 		BC1E2C44160B11EF00B82033 /* FlowerController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlowerController~ipad.xib"; sourceTree = "<group>"; };
 		BC229305160B1F9F0045E064 /* Flower breath copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Flower breath copy-Info.plist"; path = "/Users/adherent/Documents/FlowerForAll-by-Defitech/Flower breath copy-Info.plist"; sourceTree = "<absolute>"; };
+		BC36D0891615F6F60013C863 /* Users_Editor~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Users_Editor~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5E216103B0A00896275 /* CalibrationApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CalibrationApp.xib; path = ../../../../.Trash/CalibrationApp.xib; sourceTree = "<group>"; };
 		BC78E5E316103C2D00896275 /* CalibrationApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CalibrationApp~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5E51610472500896275 /* Users~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Users~ipad.xib"; sourceTree = "<group>"; };
@@ -606,6 +609,7 @@
 		BC78E5ED1610550600896275 /* VolcanoApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "VolcanoApp~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5EF161056A400896275 /* FlowerHowTo~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlowerHowTo~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5F116105DE100896275 /* MenuView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MenuView~ipad.xib"; sourceTree = "<group>"; };
+		BCB849C81619F4B40054C747 /* ResultsApp_List~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ResultsApp_List~ipad.xib"; path = "../../../../.Trash/ResultsApp_List~ipad.xib"; sourceTree = "<group>"; };
 		D701908A141618510072D020 /* VolcanoApp_goal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = VolcanoApp_goal.wav; sourceTree = "<group>"; };
 		D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VolcanoApp_volcano.png; sourceTree = "<group>"; };
 		D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsApp-Icon.png"; sourceTree = "<group>"; };
@@ -1255,6 +1259,7 @@
 				4E3073B9147422900035BFB9 /* Users_Editor.h */,
 				4E3073BA147422900035BFB9 /* Users_Editor.m */,
 				4E3073BB147422900035BFB9 /* Users_Editor.xib */,
+				BC36D0891615F6F60013C863 /* Users_Editor~ipad.xib */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -1474,6 +1479,7 @@
 				D73C1305142879050006B28F /* ResultsApp_Day.m */,
 				D73C1306142879050006B28F /* ResultsApp.strings */,
 				D73C130E142879050006B28F /* ResultsApp_List.xib */,
+				BCB849C81619F4B40054C747 /* ResultsApp_List~ipad.xib */,
 				D73C130F142879050006B28F /* ResultsApp_List.h */,
 				D73C1310142879050006B28F /* ResultsApp_List.m */,
 				D73C1311142879050006B28F /* ResultsApp_Nav.h */,
@@ -1645,6 +1651,8 @@
 				BC78E5F0161056A400896275 /* FlowerHowTo~ipad.xib in Resources */,
 				BC78E5F216105DE100896275 /* MenuView~ipad.xib in Resources */,
 				BC78E5F316119F7A00896275 /* CalibrationApp.xib in Resources */,
+				BC36D08A1615F6F60013C863 /* Users_Editor~ipad.xib in Resources */,
+				BCB849C91619F4B50054C747 /* ResultsApp_List~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
