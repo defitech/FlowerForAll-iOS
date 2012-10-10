@@ -3,14 +3,15 @@
 If you want to write a game, please read:
  Apps/HOWTO_WRITE_A_GAME.txt
 
-[ KNOWN BUGS ]
+## KNOWN BUGS 
 - they must be some memory leaks.. and some crashes are caused by some runnning conditions that happend more often iPad and older iPhone models.
 - it would be nice to have an objective-c expert do some code review.. 
+- change the CSV export to "," commas instead of semi-column
 
-[ iPAD VERSION ]
+## iPAD VERSION
 - This has to be done URGENTLY before we got too much UI elements
 
-[ DOCUMENTATION ]
+## DOCUMENTATION 
 - Complete "How To develop a game" document, with ergonomic guidlines and event sequence description
  
 
