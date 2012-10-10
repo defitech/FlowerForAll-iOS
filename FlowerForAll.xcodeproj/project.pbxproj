@@ -186,6 +186,7 @@
 		4ECC6CB11404E5F7005519C7 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB01404E5F7005519C7 /* UserManager.m */; };
 		4ECC6CB414053744005519C7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECC6CB314053744005519C7 /* User.m */; };
 		4ED2DC621432F9AE00A544E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED2DC611432F9AE00A544E3 /* MessageUI.framework */; };
+		4ED3290A1625BCC000C92603 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ED329091625BCC000C92603 /* Default-568h@2x.png */; };
 		4EDA57F7144833F1005C29EB /* ExampleApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA57F5144833F1005C29EB /* ExampleApp.m */; };
 		4EDA57F8144833F1005C29EB /* ExampleApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA57F6144833F1005C29EB /* ExampleApp.xib */; };
 		4EDA57F914485812005C29EB /* ParametersApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = D73EB4F1142233EF001AB2DE /* ParametersApp.xib */; };
@@ -557,6 +558,7 @@
 		4ECC6CB214053744005519C7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Data/User.h; sourceTree = "<group>"; };
 		4ECC6CB314053744005519C7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Data/User.m; sourceTree = "<group>"; };
 		4ED2DC611432F9AE00A544E3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		4ED329091625BCC000C92603 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4EDA57ED14481708005C29EB /* TODO_DEV.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO_DEV.md; sourceTree = "<group>"; };
 		4EDA57EE14482A16005C29EB /* HOWTO_WRITE_A_GAME.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = HOWTO_WRITE_A_GAME.txt; sourceTree = "<group>"; };
 		4EDA57F4144833F1005C29EB /* ExampleApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleApp.h; sourceTree = "<group>"; };
@@ -1296,6 +1298,7 @@
 		4EB510AA1418CCA7008FC46F /* Visual */ = {
 			isa = PBXGroup;
 			children = (
+				4ED329091625BCC000C92603 /* Default-568h@2x.png */,
 				4E3BEDB314442DA600D72705 /* Default-Portrait.png */,
 				4E141B0713B35F1900698F53 /* Default.png */,
 				4E141B0813B35F1900698F53 /* Default@2x.png */,
@@ -1602,6 +1605,7 @@
 				4E3073C31474250C0035BFB9 /* Users-greyButton.png in Resources */,
 				4EF33962147AAB7F00E77A65 /* ResultsApp_MailerOptions.xib in Resources */,
 				4EB6CEE9147EA72800BABBC6 /* ResultsApp-Box.png in Resources */,
+				4ED3290A1625BCC000C92603 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
