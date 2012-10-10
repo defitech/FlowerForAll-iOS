@@ -66,7 +66,7 @@
             if (data != nil) {
                 [data appendData:[value dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
                 if (i < (typeL - 1)) {
-                    [data appendData:[@";" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+                    [data appendData:[@"," dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
                 } else {
                     [data appendData:[@"\n" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
                 }
