@@ -557,7 +557,7 @@
 		4ECC6CB214053744005519C7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Data/User.h; sourceTree = "<group>"; };
 		4ECC6CB314053744005519C7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Data/User.m; sourceTree = "<group>"; };
 		4ED2DC611432F9AE00A544E3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		4EDA57ED14481708005C29EB /* TODO_DEV.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO_DEV.txt; sourceTree = "<group>"; };
+		4EDA57ED14481708005C29EB /* TODO_DEV.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO_DEV.md; sourceTree = "<group>"; };
 		4EDA57EE14482A16005C29EB /* HOWTO_WRITE_A_GAME.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = HOWTO_WRITE_A_GAME.txt; sourceTree = "<group>"; };
 		4EDA57F4144833F1005C29EB /* ExampleApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleApp.h; sourceTree = "<group>"; };
 		4EDA57F5144833F1005C29EB /* ExampleApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleApp.m; sourceTree = "<group>"; };
@@ -674,7 +674,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				4EDA57ED14481708005C29EB /* TODO_DEV.txt */,
+				4EDA57ED14481708005C29EB /* TODO_DEV.md */,
 				4E101E47143615EF002BFDCC /* Recordings */,
 				4EB510AA1418CCA7008FC46F /* Visual */,
 				D72E0285139E448200F3687C /* FLAPI */,
@@ -1869,7 +1869,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FLAPI\"",
@@ -1878,6 +1878,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/FLAPI\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = FlowerForAll;
 				SDKROOT = iphoneos4.3;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1893,11 +1894,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/FLAPI\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = FlowerForAll;
 				SDKROOT = iphoneos4.3;
 				SKIP_INSTALL = NO;
@@ -1914,6 +1916,7 @@
 					armv6,
 					armv7,
 				);
+				CLANG_LINK_OBJC_RUNTIME = FALSE;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1924,7 +1927,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"$(SRCROOT)/FLAPI\"";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1945,6 +1948,7 @@
 					armv6,
 					armv7,
 				);
+				CLANG_LINK_OBJC_RUNTIME = FALSE;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fondation Defitech";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
@@ -1955,7 +1959,7 @@
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1977,7 +1981,7 @@
 				1D6058950D05DD3E006BFB54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FlowerForAll" */ = {
 			isa = XCConfigurationList;
@@ -1986,7 +1990,7 @@
 				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
