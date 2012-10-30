@@ -15,6 +15,8 @@
 #import "UserManager.h"
 
 #import "DataAccess.h"
+#import "UserChooserViewController.h"
+
 
 
 @implementation FlowerController
@@ -43,7 +45,7 @@ static NSMutableDictionary* appList;
     [FlowerController pushMenu];
 }
 
-/** Promote the Menu as current Main Controller **/ 
+/** Promote the Menu as current Main Controller **/
 +(void) pushMenu {
     if (activitiesViewController == nil) {
         activitiesViewController = [[MenuView alloc] initWithNibName:@"MenuView" bundle:[NSBundle mainBundle]];
@@ -55,8 +57,6 @@ static NSMutableDictionary* appList;
     }
     [activitiesViewController backToMenu];
 }
-
-
 
 
 
@@ -261,8 +261,15 @@ static NSMutableDictionary* appList;
                nil];
     
     
-       [FlowerController pushMenu]; //will init the MenuView
-    [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
+    NSLog(@"currentUser:%@",[UserManager currentUser]);
+    //if ([UserManager currentUser] != nil) {
+        [FlowerController pushMenu];  //init the Menu View
+        [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
+    //} else {
+    //    UserChooserViewController *userchooser = [[UserChooserViewController alloc] init];
+   //     [userchooser showUserChooser];
+    //}
+    
     
     // Plug an iPhone
     CGRect plugFrame = historyView.frame; 

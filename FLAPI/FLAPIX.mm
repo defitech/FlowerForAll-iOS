@@ -245,7 +245,7 @@ NSMutableArray *blowFrequencies;
         NSArray *sorted = [blowFrequencies sortedArrayUsingSelector:@selector(compare:)];
         medianFrequency = [(NSNumber*)[sorted objectAtIndex:(int)([sorted count] / 2)] doubleValue];
         
-        // remove all the values that have a differnce of more that 20%
+        // remove all the values that have a difference of more that 20%
         double max = 0.0f;
         double min = 1000.0f;
         double v = 0.0f;

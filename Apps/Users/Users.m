@@ -57,6 +57,7 @@ Users_TextCell *cellh;
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"cell height in tableView: heightForRowAtIndexPath: %f",cellh.frame.size.height);
      NSUInteger section = [indexPath section];
     if (section == 0) return [cellh height];
     return 44;
@@ -104,7 +105,7 @@ Users_TextCell *cellh;
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = [indexPath row];
     User* user = (User*)[[UserManager listAllUser] objectAtIndex:row];
-	
+	NSLog(@"Users.m, user: %@:",user.description);
     [[self navController] pushViewController:[[Users_Editor alloc] initWithUser:user] animated:YES];
 
 }
@@ -137,17 +138,18 @@ Users_TextCell *cellh;
     
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"Users_TextCell" owner:self options:nil];
     cellh = (Users_TextCell *)[nib objectAtIndex:0];
-    
+     NSLog(@"cell height in viewdidload: %f",cellh.frame.size.height);
     navController.view.frame = CGRectMake(0,0,
                             self.view.frame.size.width,
                             self.view.frame.size.height);
     [self.view addSubview:navController.view];
+    NSLog(@"Users self, %@; navController: %@; cellh: %@",self.view.description, navController.view.description, cellh.description);
     
-    navItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+    navItem.leftBarButtonItem = [[UIBarButtonItem alloc]
           initWithTitle:NSLocalizedStringFromTable(@"Menu",@"Users",@"Left nav Button")
-                                                        style:UIBarButtonItemStyleBordered 
-                                                        target:[FlowerController currentFlower] 
-                                                        action:@selector(goToMenu:)]; 
+                                                        style:UIBarButtonItemStyleBordered
+                                                        target:[FlowerController currentFlower]
+                                                        action:@selector(goToMenu:)];
     
     
     plusButton =  navItem.rightBarButtonItem ;
@@ -163,6 +165,7 @@ Users_TextCell *cellh;
     
     
     [self refreshPlusButton];
+    
 }
 
 
