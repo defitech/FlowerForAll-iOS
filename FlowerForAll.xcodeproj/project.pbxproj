@@ -1968,7 +1968,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "110B0A3F-2AE5-4637-B5BB-501AFA210396";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CE105823-AEAC-48F6-91F4-E7B1766DAAB5";
 				SDKROOT = iphoneos4.3;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = "i386 armv6 armv7";
