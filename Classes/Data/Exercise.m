@@ -22,7 +22,7 @@
 	self.stop_ts = _stop_ts;
 	self.frequency_target_hz = _frequency_target_hz;
 	self.frequency_tolerance_hz = _frequency_tolerance_hz;
-    self.duration_expiration_s = duration_expiration_s;
+    self.duration_expiration_s = _duration_expiration_s;
 	self.duration_exercice_s = _duration_exercice_s;
 	self.duration_exercice_done_ps = _duration_exercice_done_ps;
 	self.blow_count = _blow_count;
