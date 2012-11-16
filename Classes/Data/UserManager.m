@@ -54,6 +54,7 @@ static User* currentU;
     [[[FlowerController currentFlower] historyView] reloadFromDB];
     NSLog(@"setCurrent User %i: %@",[currentU uid],[currentU name]);
     [[NSNotificationCenter defaultCenter] postNotificationName: @"userDataChangeEvent" object: Nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"userchooserDataChangeEvent" object: Nil];
 	
 }
 

@@ -34,7 +34,7 @@
 
 - (void) hideUserChooser ;
 
-- (IBAction) userDataChangeEvent:(id)sender;
+- (IBAction) userchooserDataChangeEvent:(id)sender;
 
 - (void) close:(id)sender;
 

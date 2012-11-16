@@ -222,8 +222,9 @@
 		BC78E5EE1610550600896275 /* VolcanoApp~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5ED1610550600896275 /* VolcanoApp~ipad.xib */; };
 		BC78E5F0161056A400896275 /* FlowerHowTo~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5EF161056A400896275 /* FlowerHowTo~ipad.xib */; };
 		BC78E5F216105DE100896275 /* MenuView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5F116105DE100896275 /* MenuView~ipad.xib */; };
-		BC78E5F316119F7A00896275 /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5E216103B0A00896275 /* CalibrationApp.xib */; };
-		BCB849C91619F4B50054C747 /* ResultsApp_List~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB849C81619F4B40054C747 /* ResultsApp_List~ipad.xib */; };
+		BC89EFA8165675C1007ADC4C /* ResultsApp_List~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFA7165675C1007ADC4C /* ResultsApp_List~ipad.xib */; };
+		BC89EFAA165676B1007ADC4C /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFA9165676B1007ADC4C /* CalibrationApp.xib */; };
+		BC89EFAC1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */; };
 		BCD8AD221625999A007A32B7 /* UserChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8AD201625999A007A32B7 /* UserChooserViewController.m */; };
 		BCD8AD231625999A007A32B7 /* UserChooserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD8AD211625999A007A32B7 /* UserChooserViewController.xib */; };
 		D701908B141618510072D020 /* VolcanoApp_goal.wav in Resources */ = {isa = PBXBuildFile; fileRef = D701908A141618510072D020 /* VolcanoApp_goal.wav */; };
@@ -617,7 +618,6 @@
 		BC59556916270C67002FA364 /* UserChooser.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = UserChooser.strings; sourceTree = "<group>"; };
 		BC59556D16271B3E002FA364 /* UserChooserViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserChooserViewController~ipad.xib"; sourceTree = "<group>"; };
 		BC59556F16271D1D002FA364 /* UserChooser_TextCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserChooser_TextCell~ipad.xib"; sourceTree = "<group>"; };
-		BC78E5E216103B0A00896275 /* CalibrationApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CalibrationApp.xib; path = ../../../../.Trash/CalibrationApp.xib; sourceTree = "<group>"; };
 		BC78E5E316103C2D00896275 /* CalibrationApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CalibrationApp~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5E51610472500896275 /* Users~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Users~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5E716104D1B00896275 /* ExampleApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ExampleApp~ipad.xib"; sourceTree = "<group>"; };
@@ -626,7 +626,9 @@
 		BC78E5ED1610550600896275 /* VolcanoApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "VolcanoApp~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5EF161056A400896275 /* FlowerHowTo~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlowerHowTo~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5F116105DE100896275 /* MenuView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MenuView~ipad.xib"; sourceTree = "<group>"; };
-		BCB849C81619F4B40054C747 /* ResultsApp_List~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ResultsApp_List~ipad.xib"; path = "../../../../.Trash/ResultsApp_List~ipad.xib"; sourceTree = "<group>"; };
+		BC89EFA7165675C1007ADC4C /* ResultsApp_List~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultsApp_List~ipad.xib"; sourceTree = "<group>"; };
+		BC89EFA9165676B1007ADC4C /* CalibrationApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalibrationApp.xib; sourceTree = "<group>"; };
+		BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ParametersAppPickerProfileCell~ipad.xib"; sourceTree = "<group>"; };
 		BCD8AD1F1625999A007A32B7 /* UserChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChooserViewController.h; sourceTree = "<group>"; };
 		BCD8AD201625999A007A32B7 /* UserChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserChooserViewController.m; sourceTree = "<group>"; };
 		BCD8AD211625999A007A32B7 /* UserChooserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserChooserViewController.xib; sourceTree = "<group>"; };
@@ -1433,7 +1435,7 @@
 			isa = PBXGroup;
 			children = (
 				4E91DCA41431CECC00C3780B /* CalibrationApp-Icon.png */,
-				BC78E5E216103B0A00896275 /* CalibrationApp.xib */,
+				BC89EFA9165676B1007ADC4C /* CalibrationApp.xib */,
 				BC78E5E316103C2D00896275 /* CalibrationApp~ipad.xib */,
 				4E4AE46A141FA57B004256DA /* CalibrationApp.strings */,
 				4EEED18C141E3E3100F56102 /* CalibrationApp.h */,
@@ -1448,6 +1450,7 @@
 			isa = PBXGroup;
 			children = (
 				4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */,
+				BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */,
 				4EFE7916142B53BA009EE121 /* ParametersAppPickerProfileCell.h */,
 				4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */,
 				4E18C43A14333F76007C7AE7 /* ParametersApp-SoundOn.png */,
@@ -1518,7 +1521,7 @@
 				D73C1305142879050006B28F /* ResultsApp_Day.m */,
 				D73C1306142879050006B28F /* ResultsApp.strings */,
 				D73C130E142879050006B28F /* ResultsApp_List.xib */,
-				BCB849C81619F4B40054C747 /* ResultsApp_List~ipad.xib */,
+				BC89EFA7165675C1007ADC4C /* ResultsApp_List~ipad.xib */,
 				D73C130F142879050006B28F /* ResultsApp_List.h */,
 				D73C1310142879050006B28F /* ResultsApp_List.m */,
 				D73C1311142879050006B28F /* ResultsApp_Nav.h */,
@@ -1689,9 +1692,7 @@
 				BC78E5EE1610550600896275 /* VolcanoApp~ipad.xib in Resources */,
 				BC78E5F0161056A400896275 /* FlowerHowTo~ipad.xib in Resources */,
 				BC78E5F216105DE100896275 /* MenuView~ipad.xib in Resources */,
-				BC78E5F316119F7A00896275 /* CalibrationApp.xib in Resources */,
 				BC36D08A1615F6F60013C863 /* Users_Editor~ipad.xib in Resources */,
-				BCB849C91619F4B50054C747 /* ResultsApp_List~ipad.xib in Resources */,
 				BC3E78AB161DE29D00368E91 /* UserPicker~ipad.xib in Resources */,
 				BC3E78AD161DE31C00368E91 /* UserPicker.xib in Resources */,
 				BCD8AD231625999A007A32B7 /* UserChooserViewController.xib in Resources */,
@@ -1699,6 +1700,9 @@
 				BC59556A16270C67002FA364 /* UserChooser.strings in Resources */,
 				BC59556E16271B3E002FA364 /* UserChooserViewController~ipad.xib in Resources */,
 				BC59557016271D1D002FA364 /* UserChooser_TextCell~ipad.xib in Resources */,
+				BC89EFA8165675C1007ADC4C /* ResultsApp_List~ipad.xib in Resources */,
+				BC89EFAA165676B1007ADC4C /* CalibrationApp.xib in Resources */,
+				BC89EFAC1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -78,11 +78,17 @@ static BOOL showing = false;
                                           self.view.frame.size.height);
     //[self.view addSubview:navController.view];
     [self.view addSubview:navController.view];
-    navItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+    /*navItem.leftBarButtonItem = [[UIBarButtonItem alloc]
                                  initWithTitle:NSLocalizedStringFromTable(@"Menu",@"UserChooser",@"Left nav Button")
                                  style:UIBarButtonItemStyleBordered
                                  target:self
-                                 action:@selector(close:)];
+                                 action:@selector(close:)];*/
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self
+        selector:@selector(userchooserDataChangeEvent:)
+        name: @"userchooserDataChangeEvent"
+        object: nil];
+    
 }
 
 - (void) close:(id)sender {
@@ -155,11 +161,11 @@ static BOOL showing = false;
     cell.selectedButton.hidden = [UserManager currentUser] == nil ||
     (user.uid != [UserManager currentUser].uid);
     
-    if ([UserManager currentUser].uid == 0 || [UserManager currentUser].uid == user.uid)  {
+    /*if ([UserManager currentUser].uid == 0 || [UserManager currentUser].uid == user.uid)  {
         [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
     } else {
         [cell setAccessoryType:UITableViewCellAccessoryNone];
-    }
+    }*/
     
     return cell;
 }
@@ -172,8 +178,9 @@ static BOOL showing = false;
     
 }
 
-- (IBAction) userDataChangeEvent:(id)sender {
-    [self.usersListTableView reloadData];
+- (IBAction) userchooserDataChangeEvent:(id)sender {
+    //[self.usersListTableView reloadData];
+    [self.view removeFromSuperview];
 }
 
 

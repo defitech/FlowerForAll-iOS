@@ -192,7 +192,7 @@
     
     //Get cell dimensions. All elements placed in the cell will then be placed relatively to those dimensions
     float cellHeight = cell.frame.size.height;
-    float cellWidth = cell.frame.size.width;
+    float cellWidth = 320.0;  // ugly hack to fix the police change (instead of cell.frame.size.width;)
     
     //Place and format labels
     date = [[[UILabel alloc] initWithFrame:CGRectMake(cellWidth/21.33, cellHeight/4.88, cellWidth/2.28, cellHeight/1.76)] autorelease];
