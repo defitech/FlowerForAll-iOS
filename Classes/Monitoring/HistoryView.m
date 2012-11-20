@@ -127,23 +127,44 @@ NSTimer *repeatingTimer;
 	[ self addSubview:graphView ];
     
     // Alloc Label View
-    labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/3, height/2) ];
-    [labelPercent setBackgroundColor:[UIColor blackColor]];
-    [labelPercent setTextColor:[UIColor whiteColor]];
-    [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
-    [labelPercent setText:@"%"];
+    if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
+        NSLog(@"running on iPad");
+        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/5, height/2) ];
+        [labelPercent setBackgroundColor:[UIColor blackColor]];
+        [labelPercent setTextColor:[UIColor whiteColor]];
+        [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelPercent setText:@"%"];
     
-    labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*5/6, 0.0, width*1/3, height/2) ];
-    [labelFrequency setBackgroundColor:[UIColor blackColor]];
-    [labelFrequency setTextColor:[UIColor whiteColor]];
-    [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
-    [labelFrequency setText:@"Hz"];
+        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*5/6, 0.0, width*1/5, height/2) ];
+        [labelFrequency setBackgroundColor:[UIColor blackColor]];
+        [labelFrequency setTextColor:[UIColor whiteColor]];
+        [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelFrequency setText:@"Hz"];
     
-    labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, height/2, width*1/3, height/2) ];
-    [labelDuration setBackgroundColor:[UIColor blackColor]];
-    [labelDuration setTextColor:[UIColor whiteColor]];
-    [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
-    [labelDuration setText:@"sec"];
+        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, height/2, width*1/4, height/2) ];
+        [labelDuration setBackgroundColor:[UIColor blackColor]];
+        [labelDuration setTextColor:[UIColor whiteColor]];
+        [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelDuration setText:@"sec"];
+    } else {
+        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/3, height/2) ];
+        [labelPercent setBackgroundColor:[UIColor blackColor]];
+        [labelPercent setTextColor:[UIColor whiteColor]];
+        [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelPercent setText:@"%"];
+        
+        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*5/6, 0.0, width*1/4, height/2) ];
+        [labelFrequency setBackgroundColor:[UIColor blackColor]];
+        [labelFrequency setTextColor:[UIColor whiteColor]];
+        [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelFrequency setText:@"Hz"];
+        
+        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, height/2, width*1/3, height/2) ];
+        [labelDuration setBackgroundColor:[UIColor blackColor]];
+        [labelDuration setTextColor:[UIColor whiteColor]];
+        [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelDuration setText:@"sec"];
+    }
     
     
     [ self addSubview:labelPercent ];
