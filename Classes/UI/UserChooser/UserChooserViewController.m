@@ -71,7 +71,7 @@ static BOOL showing = false;
     [super viewDidLoad];
     NSLog(@"SHOW USERCHOOSER");
     [[FlowerController currentFlower].view addSubview:self.view];
-    
+    self.view.frame = [FlowerController currentFlower].view.bounds;
     
     navController.view.frame = CGRectMake(0,0,
                                           self.view.frame.size.width,

@@ -50,6 +50,8 @@
 	</array>
 	<key>UTExportedTypeDeclarations</key>
 	<array/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleBlackOpaque</string>
 	<key>UTImportedTypeDeclarations</key>
 	<array/>
 </dict>

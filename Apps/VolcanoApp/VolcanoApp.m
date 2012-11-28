@@ -41,9 +41,20 @@
 
 
 - (void)initVariables {
-    float correctedHeight = self.view.frame.size.height - 40 - 20; // 40 for needle + 20 for padding
+    float correctedHeight;
+    float adjustBurst;
+    if ( [UIScreen mainScreen].bounds.size.height > 500 && [UIScreen mainScreen].bounds.size.height < 700 ) {
+        correctedHeight = [UIScreen mainScreen].bounds.size.height - 80; // for iphone 5
+        adjustBurst = self.view.frame.size.height/4.6; // kind of hack to adjust burst on top of volcano; for the moment, the burst is slightly higher on the ipad than on the iphone
+    } else if ( [UIScreen mainScreen].bounds.size.height > 900 ) {
+        correctedHeight = self.view.frame.size.height - 20; // 40 for needle + 20 for padding
+        adjustBurst = self.view.frame.size.height/3.8; // kind of hack to adjust burst on top of volcano; for the moment, the burst is slightly higher on the ipad than on the iphone
+    } else {
+        correctedHeight = self.view.frame.size.height - 20; // 40 for needle + 20 for padding
+        adjustBurst = self.view.frame.size.height/4.6; // kind of hack to adjust burst on top of volcano; for the moment, the burst is slightly higher on the ipad than on the iphone
+    }
     //float adjustBurst = 100.0f; // kind of hack to adjust burst on top of volcano
-    float adjustBurst = self.view.frame.size.height/4.6; // kind of hack to adjust burst on top of volcano; for the moment, the burst is slightly higher on the ipad than on the iphone
+
     
     volcano.center = CGPointMake(mainWidth / 2, correctedHeight - (lavaHeight / 2));
     burst.center = CGPointMake(mainWidth / 2, correctedHeight - lavaHeight - (burst.frame.size.height / 2) + adjustBurst);

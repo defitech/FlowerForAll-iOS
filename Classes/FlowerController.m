@@ -99,6 +99,7 @@ static NSMutableDictionary* appList;
                                  cache:YES];
     }
     [singleton.mainView addSubview:currentMainController.view];
+    currentMainController.view.frame = singleton.mainView.bounds;           //added to adapt for iphone 5
     if ( transition != UIViewAnimationTransitionNone) {
         [UIView commitAnimations];
     }
@@ -267,7 +268,7 @@ static NSMutableDictionary* appList;
 
     
     [FlowerController pushMenu];  //init the Menu View
-    currentMainController.view.frame = self.mainView.bounds;
+    currentMainController.view.frame = self.mainView.bounds;                //added to adapt for iphone 5
     NSLog(@"height of view: %f, of mainview: %f, of currentmaincontroller:%f, y of history:%f", self.view.frame.size.height, self.mainView.frame.size.height, currentMainController.view.frame.size.height, self.historyView.frame.origin.y);
     [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
     //currentMainController.view.subviews. = self.mainView.frame;
