@@ -241,6 +241,7 @@ static NSMutableDictionary* appList;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   
     if (singleton != nil)  return ;
     singleton = self;
     
@@ -262,15 +263,14 @@ static NSMutableDictionary* appList;
     
     
     NSLog(@"currentUser:%@",[UserManager currentUser]);
-    //if ([UserManager currentUser] != nil) {
-        [FlowerController pushMenu];  //init the Menu View
-        [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
-    //} else {
-    //    UserChooserViewController *userchooser = [[UserChooserViewController alloc] init];
-   //     [userchooser showUserChooser];
-    //}
+   
+
     
-    
+    [FlowerController pushMenu];  //init the Menu View
+    currentMainController.view.frame = self.mainView.bounds;
+    NSLog(@"height of view: %f, of mainview: %f, of currentmaincontroller:%f, y of history:%f", self.view.frame.size.height, self.mainView.frame.size.height, currentMainController.view.frame.size.height, self.historyView.frame.origin.y);
+    [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
+    //currentMainController.view.subviews. = self.mainView.frame;
     // Plug an iPhone
     CGRect plugFrame = historyView.frame; 
 

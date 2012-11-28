@@ -72,7 +72,7 @@ FlowerHowTo *flowerHowTo;
 - (void)viewDidLoad {
 	
     [super viewDidLoad];
-
+    NSLog(@"menu view super: %f", super.view.frame.size.height);
 	//Set title of the navigation bar
 	navigationBar.topItem.title = NSLocalizedString(@"Flower breath", @"Menu Title");
 	
