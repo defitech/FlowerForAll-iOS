@@ -23,6 +23,7 @@
 
 - (BOOL) createFramebuffer;
 - (void) destroyFramebuffer;
+- (void) drawRectangleDuration;
 
 @end
 
@@ -33,7 +34,13 @@
 @synthesize animationTimer;
 
 //array to contain historic blows
-//const NSArray *blows;
+NSMutableArray *BlowsArray;
+NSMutableArray *BlowsPosition;
+NSMutableArray *BlowsDurationGood;
+NSMutableArray *BlowsDurationTot;
+
+
+
 
 // You must implement this method
 + (Class)layerClass {
@@ -101,7 +108,10 @@
                                                  selector:@selector(flapixEventFrequency:)
                                                      name:FLAPIX_EVENT_FREQUENCY object:nil];
         
-        
+        BlowsArray = [[NSMutableArray alloc] initWithCapacity:0];
+        BlowsPosition = [[NSMutableArray alloc] initWithCapacity:0];
+        BlowsDurationGood = [[NSMutableArray alloc] initWithCapacity:0];
+        BlowsDurationTot = [[NSMutableArray alloc] initWithCapacity:0];
         
         animationInterval = 1.0 / 60.0;
 		[self setupView];
@@ -229,8 +239,9 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
     if (flapix == nil) return;
 
     /*************** Logic code ******************/
-    static float position_actual = 0.0f;
-    static float speed = 0.0003f;
+    //static float position_actual = 0.0f;
+    static float speed = 0.0005f;
+    static float HeightFactor = 0.1;
     
     /*************** Drawing code ******************/
     
@@ -242,7 +253,6 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    GLfloat xorigin = 0.0 - self.frame.size.width / 2;
     
     //draw axes
 	const GLfloat axes[] = {
@@ -270,28 +280,66 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
     
     
     //draw rectangles
-    position_actual = position_actual + speed;
-    const GLfloat rectangles[] = {
-        0.33, -1.0,
-        0.25, -1.0,
-        0.33, 0.5,
-        0.25, -1.0,
-        0.33, 0.5,
-        0.25, 0.5,
-    };
-    glColor4f(1.0f, 0.8f, 0.4f, 1.0f);
-    glLoadIdentity();
-    glTranslatef(-position_actual, 0.0, 0.0);
-    glVertexPointer(2, GL_FLOAT, 0, rectangles);
-	glDrawArrays(GL_TRIANGLES, 0, 12);
     
+    // determine the scaling factor for the rectangles height
+    float maxduration = 0.0f;
+    for (int i = 0; i < [BlowsDurationTot count]; i++) {
+        if (maxduration < [[BlowsDurationTot objectAtIndex:i]floatValue]) {
+            maxduration = [[BlowsDurationTot objectAtIndex:i]floatValue];
+        }
+        HeightFactor = 1.5 / maxduration;
+    }
     
+    //draw the rectangles for each blow
+    for (int i = 0; i < [BlowsArray count]; i++) {
+        [BlowsPosition replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:[[BlowsPosition objectAtIndex:i]floatValue] + speed]];
+        float height1 = HeightFactor * [[BlowsDurationGood objectAtIndex:i]floatValue];
+        float height2 = HeightFactor * ([[BlowsDurationTot objectAtIndex:i]floatValue] - [[BlowsDurationGood objectAtIndex:i]floatValue]);
+        
+        [self drawRectangleDuration:[[BlowsPosition objectAtIndex:i]floatValue] RectHeight: height1 offset: 0.0f color1:0.1f color2:0.9f color3:0.1f color4:1.0f];
+        [self drawRectangleDuration:[[BlowsPosition objectAtIndex:i]floatValue] RectHeight: height2 offset: height1 color1:1.0f color2:0.0f color3:0.0f color4:1.0f];
+        //[self drawStar:[[BlowsPosition objectAtIndex:i]floatValue]];
+    }
     
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
     
 
 }
+
+- (void)drawRectangleDuration: (float) PositionActual RectHeight:(float) RectangleHeight offset:(float) Offset color1:(float)col1 color2:(float)col2 color3:(float)col3 color4:(float)col4 {
+    const GLfloat rectangle[] = {
+        0.37f, -1.0f + Offset,
+        0.32f, -1.0f + Offset,
+        0.37f, -1.0f + RectangleHeight + Offset,
+        0.32f, -1.0f + Offset,
+        0.37f, -1.0f + RectangleHeight + Offset,
+        0.32f, -1.0f + RectangleHeight + Offset
+    };
+    glColor4f(col1, col2, col3, col4);
+    glLoadIdentity();
+    glTranslatef(-PositionActual, 0.0f, 0.0f);
+    glVertexPointer(2, GL_FLOAT, 0, rectangle);
+    glEnableClientState(GL_VERTEX_ARRAY);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+}
+- (void)drawStar: (float) PositionActual {
+    const GLfloat star[] = {
+        0.37f, -0.5f,
+        0.12f, -0.43f,
+        0.27f, -0.23f,
+        0.32f, -1.0f,
+        0.37f, -0.9f,
+        0.87f, -1.0f
+    };
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    glLoadIdentity();
+    glTranslatef(-PositionActual, 0.0f, 0.0f);
+    glVertexPointer(2, GL_FLOAT, 0, star);
+    glEnableClientState(GL_VERTEX_ARRAY);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+}
+
 
 - (void)flapixEventFrequency:(NSNotification *)notification {
     if ([[FlowerController currentFlapix] exerciceInCourse]) {
@@ -313,6 +361,11 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
     }
     [labelFrequency setText:[NSString stringWithFormat:@"%iHz",(int)blow.medianFrequency]];
     [labelDuration setText:[NSString stringWithFormat:@"%.2lf sec",blow.in_range_duration]];
+    [BlowsArray addObject:[NSNumber numberWithDouble:blow.in_range_duration]];
+    [BlowsPosition addObject:[NSNumber numberWithFloat:0.0f]];
+    [BlowsDurationGood addObject:[NSNumber numberWithFloat:blow.in_range_duration]];
+    [BlowsDurationTot addObject:[NSNumber numberWithFloat:blow.duration]];
+    
     //NSLog(@"blow duration:%f, in range duration:%f", blow.duration, blow.in_range_duration);
     //Resize Y axis if needed
     if (blow.duration > higherBar) {

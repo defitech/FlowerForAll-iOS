@@ -100,7 +100,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     const GLfloat zNear = 0.1, zFar = 1000.0, fieldOfView = 35.0;
     
     GLfloat size;
-	
+
     glEnable(GL_DEPTH_TEST);
     glMatrixMode(GL_PROJECTION);
     size = zNear * tanf(DEGREES_TO_RADIANS(fieldOfView) / 2.0);
