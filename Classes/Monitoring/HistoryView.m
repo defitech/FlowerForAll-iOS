@@ -128,7 +128,7 @@ NSTimer *repeatingTimer;
     
     // Alloc Label View
     if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
-        NSLog(@"running on iPad");
+
         labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/5, height/2) ];
         [labelPercent setBackgroundColor:[UIColor blackColor]];
         [labelPercent setTextColor:[UIColor whiteColor]];

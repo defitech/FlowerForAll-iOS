@@ -225,6 +225,7 @@
 		BC89EFA8165675C1007ADC4C /* ResultsApp_List~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFA7165675C1007ADC4C /* ResultsApp_List~ipad.xib */; };
 		BC89EFAA165676B1007ADC4C /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFA9165676B1007ADC4C /* CalibrationApp.xib */; };
 		BC89EFAC1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */; };
+		BC9732E216679705008E0ABE /* HistoryGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9732E116679705008E0ABE /* HistoryGL.m */; };
 		BCD0A619165CDDF5009F15E6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD0A618165CDDF5009F15E6 /* Default-568h@2x.png */; };
 		BCD8AD221625999A007A32B7 /* UserChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8AD201625999A007A32B7 /* UserChooserViewController.m */; };
 		BCD8AD231625999A007A32B7 /* UserChooserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD8AD211625999A007A32B7 /* UserChooserViewController.xib */; };
@@ -630,6 +631,8 @@
 		BC89EFA7165675C1007ADC4C /* ResultsApp_List~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultsApp_List~ipad.xib"; sourceTree = "<group>"; };
 		BC89EFA9165676B1007ADC4C /* CalibrationApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalibrationApp.xib; sourceTree = "<group>"; };
 		BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ParametersAppPickerProfileCell~ipad.xib"; sourceTree = "<group>"; };
+		BC9732E016679705008E0ABE /* HistoryGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryGL.h; sourceTree = "<group>"; };
+		BC9732E116679705008E0ABE /* HistoryGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryGL.m; sourceTree = "<group>"; };
 		BCD0A618165CDDF5009F15E6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BCD8AD1F1625999A007A32B7 /* UserChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChooserViewController.h; sourceTree = "<group>"; };
 		BCD8AD201625999A007A32B7 /* UserChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserChooserViewController.m; sourceTree = "<group>"; };
@@ -1544,6 +1547,8 @@
 				28FD14FD0DC6FC130079059D /* NeedleGL.m */,
 				D7ABFF85140B8227003B9F08 /* HistoryView.h */,
 				D7ABFF86140B8227003B9F08 /* HistoryView.m */,
+				BC9732E016679705008E0ABE /* HistoryGL.h */,
+				BC9732E116679705008E0ABE /* HistoryGL.m */,
 			);
 			path = Monitoring;
 			sourceTree = "<group>";
@@ -1856,6 +1861,7 @@
 				4E8068D1160B07D7000066FA /* OpenUDID.m in Sources */,
 				BCD8AD221625999A007A32B7 /* UserChooserViewController.m in Sources */,
 				BC59556716270126002FA364 /* UserChooser_TextCell.m in Sources */,
+				BC9732E216679705008E0ABE /* HistoryGL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

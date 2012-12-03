@@ -13,6 +13,7 @@
 #import "HistoryView.h"
 #import "ParametersApp.h"
 #import "HistoryView.h"
+#import "HistoryGL.h"
 
 
 @interface FlowerController : UIViewController <UIActionSheetDelegate> {
@@ -21,12 +22,14 @@
     IBOutlet UIButton *menuButton;
     UIButton *startButton;
     HistoryView *historyView;
+    HistoryGL *historyGL;
 }
 
 @property (nonatomic, retain) IBOutlet HistoryView *historyView;
 @property (nonatomic, retain) IBOutlet NeedleGL *needleGL;
 @property (nonatomic, retain) IBOutlet UIView *mainView;
 @property (nonatomic, retain) IBOutlet UIButton *menuButton;
+@property (nonatomic, retain) IBOutlet HistoryGL *historyGL;
 
 - (IBAction) showMenu: (id) sender;
 
