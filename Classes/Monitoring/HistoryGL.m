@@ -38,7 +38,12 @@ NSMutableArray *BlowsArray;
 NSMutableArray *BlowsPosition;
 NSMutableArray *BlowsDurationGood;
 NSMutableArray *BlowsDurationTot;
+NSMutableArray *StarsPosition;
+NSMutableArray *StartStopPosition;
 
+
+float lastExerciceStartTimeStamp2 = 0;
+float lastExerciceStopTimeStamp2 = 0;
 
 
 
@@ -112,6 +117,8 @@ NSMutableArray *BlowsDurationTot;
         BlowsPosition = [[NSMutableArray alloc] initWithCapacity:0];
         BlowsDurationGood = [[NSMutableArray alloc] initWithCapacity:0];
         BlowsDurationTot = [[NSMutableArray alloc] initWithCapacity:0];
+        StarsPosition = [[NSMutableArray alloc] initWithCapacity:0];
+        StartStopPosition = [[NSMutableArray alloc] initWithCapacity:0];
         
         animationInterval = 1.0 / 60.0;
 		[self setupView];
@@ -157,8 +164,6 @@ NSMutableArray *BlowsDurationTot;
 //    }
 }
 
-const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
-
 - (void)setupView {
     const GLfloat zNear = 0.1, zFar = 1000.0, fieldOfView = 60.0;
     GLfloat size;
@@ -181,6 +186,13 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
     float height = self.frame.size.height;
     
     // Alloc Label View
+    // Add Touch
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(handleSingleTap:)];
+    [self addGestureRecognizer:singleFingerTap];
+    [singleFingerTap release];
+    
     if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
         
         labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/5, height/2) ];
@@ -241,7 +253,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
     /*************** Logic code ******************/
     //static float position_actual = 0.0f;
     static float speed = 0.0005f;
-    static float HeightFactor = 0.1;
+    static float HeightFactor = 0.0f;
     
     /*************** Drawing code ******************/
     
@@ -284,22 +296,44 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
     // determine the scaling factor for the rectangles height
     float maxduration = 0.0f;
     for (int i = 0; i < [BlowsDurationTot count]; i++) {
-        if (maxduration < [[BlowsDurationTot objectAtIndex:i]floatValue]) {
+        if (maxduration < [[BlowsDurationTot objectAtIndex:i]floatValue] && [[BlowsPosition objectAtIndex:i]floatValue] < 1.4f) {
             maxduration = [[BlowsDurationTot objectAtIndex:i]floatValue];
         }
         HeightFactor = 1.5 / maxduration;
     }
     
+    
+    /*for (int i = outofrange; [[BlowsPosition objectAtIndex:i]floatValue] > -0.3f ; i++) {
+        outofrange = i;
+    }*/
+    
     //draw the rectangles for each blow
+    
     for (int i = 0; i < [BlowsArray count]; i++) {
-        [BlowsPosition replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:[[BlowsPosition objectAtIndex:i]floatValue] + speed]];
-        float height1 = HeightFactor * [[BlowsDurationGood objectAtIndex:i]floatValue];
-        float height2 = HeightFactor * ([[BlowsDurationTot objectAtIndex:i]floatValue] - [[BlowsDurationGood objectAtIndex:i]floatValue]);
+        if ([[BlowsPosition objectAtIndex:i]floatValue] < 1.4f) {
+            [BlowsPosition replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:[[BlowsPosition objectAtIndex:i]floatValue] + speed]];
+            float height1 = HeightFactor * [[BlowsDurationGood objectAtIndex:i]floatValue];
+            float height2 = HeightFactor * ([[BlowsDurationTot objectAtIndex:i]floatValue] - [[BlowsDurationGood objectAtIndex:i]floatValue]);
         
-        [self drawRectangleDuration:[[BlowsPosition objectAtIndex:i]floatValue] RectHeight: height1 offset: 0.0f color1:0.1f color2:0.9f color3:0.1f color4:1.0f];
-        [self drawRectangleDuration:[[BlowsPosition objectAtIndex:i]floatValue] RectHeight: height2 offset: height1 color1:1.0f color2:0.0f color3:0.0f color4:1.0f];
-        //[self drawStar:[[BlowsPosition objectAtIndex:i]floatValue]];
+            [self drawRectangleDuration:[[BlowsPosition objectAtIndex:i]floatValue] RectHeight: height1 offset: 0.0f color1:0.1f color2:0.9f color3:0.1f color4:1.0f];
+            [self drawRectangleDuration:[[BlowsPosition objectAtIndex:i]floatValue] RectHeight: height2 offset: height1 color1:1.0f color2:0.0f color3:0.0f color4:1.0f];
+        }
     }
+    
+    for (int i = 0; i < [StarsPosition count]; i++) {
+        if ([[StarsPosition objectAtIndex:i]floatValue] < 1.4f) {
+            [StarsPosition replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:[[StarsPosition objectAtIndex:i]floatValue] + speed]];
+            [self drawStar:[[StarsPosition objectAtIndex:i]floatValue]];
+        }
+    }
+    
+    for (int i = 0; i < [StartStopPosition count]; i++) {
+        if ([[StartStopPosition objectAtIndex:i]floatValue] < 1.4f) {
+            [StartStopPosition replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:[[StartStopPosition objectAtIndex:i]floatValue] + speed]];
+            [self drawStartStopTriangle:[[StartStopPosition objectAtIndex:i]floatValue]];
+        }
+    }
+    
     
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
@@ -324,20 +358,48 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 - (void)drawStar: (float) PositionActual {
-    const GLfloat star[] = {
-        0.37f, -0.5f,
-        0.12f, -0.43f,
-        0.27f, -0.23f,
-        0.32f, -1.0f,
-        0.37f, -0.9f,
-        0.87f, -1.0f
+    const GLfloat star_cover[] = {
+        0.33f, 0.55f,
+        0.36f, 0.55f,
+        0.345, 0.64
     };
-    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+    glLoadIdentity();
+    glTranslatef(-PositionActual, 0.0f, 0.0f);
+    glVertexPointer(2, GL_FLOAT, 0, star_cover);
+    glEnableClientState(GL_VERTEX_ARRAY);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+
+    
+    const GLfloat star[] = {
+        0.32f, 0.77f,
+        0.37f, 0.77f,
+        0.345f, 0.64f,
+        0.345f, 0.92f,
+        0.33f, 0.55f,
+        0.36f, 0.55f
+    };
+    glColor4f(1.0f, 1.0f, 0.0f, 1.0f);
     glLoadIdentity();
     glTranslatef(-PositionActual, 0.0f, 0.0f);
     glVertexPointer(2, GL_FLOAT, 0, star);
     glEnableClientState(GL_VERTEX_ARRAY);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
+    
+    }
+
+- (void)drawStartStopTriangle: (float) PositionActual {
+    const GLfloat triangle[] = {
+        0.37f, -1.0f,
+        0.32f, -1.0f,
+        0.345f, -0.3f
+    };
+    glColor4f(1.0, 1.0, 1.0, 1.0);
+    glLoadIdentity();
+    glTranslatef(-PositionActual, 0.0f, 0.0f);
+    glVertexPointer(2, GL_FLOAT, 0, triangle);
+    glEnableClientState(GL_VERTEX_ARRAY);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
 
@@ -365,6 +427,9 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
     [BlowsPosition addObject:[NSNumber numberWithFloat:0.0f]];
     [BlowsDurationGood addObject:[NSNumber numberWithFloat:blow.in_range_duration]];
     [BlowsDurationTot addObject:[NSNumber numberWithFloat:blow.duration]];
+    if (blow.goal) {
+        [StarsPosition addObject:[NSNumber numberWithFloat:0.0f]];
+    }
     
     //NSLog(@"blow duration:%f, in range duration:%f", blow.duration, blow.in_range_duration);
     //Resize Y axis if needed
@@ -374,33 +439,23 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
     }
 }
 
-
-- (void)drawLine:(float)x1 y1:(float)y1  z1:(float)z1 x2:(float)x2 y2:(float)y2 z2:(float)z2 {
-	const GLfloat lineVertices[] = {
-        x1, y1, z1,
-        x2, y2, z2,
-    };
-    //	NSLog(@"line %f,%f,%f %f,%f,%f",lineVertices[0],lineVertices[1],lineVertices[2],lineVertices[3],lineVertices[4],lineVertices[5]);
-	
-	// line
-	
-	glVertexPointer(3, GL_FLOAT, 0, lineVertices);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glDrawArrays(GL_LINES, 0, 2);
-	
+- (void)flapixEventExerciceStart:(NSNotification *)notification {
+    lastExerciceStartTimeStamp2 = [(FLAPIExercice*)[notification object] start_ts];
+    [StartStopPosition addObject:[NSNumber numberWithFloat:0.0f]];
 }
 
-- (void)drawBox:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2 z:(float)z {
-	const GLfloat quadVertices[] = {
-        x1, y1, z,
-        x1, y2, z,
-        x2, y2, z,
-        x2, y1, z
-    };
-    glVertexPointer(3, GL_FLOAT, 0, quadVertices);
-	glEnableClientState(GL_VERTEX_ARRAY);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-	
+
+
+- (void)flapixEventExerciceStop:(NSNotification *)notification {
+    lastExerciceStopTimeStamp2 = [(FLAPIExercice*)[notification object] stop_ts];
+    [StartStopPosition addObject:[NSNumber numberWithFloat:0.0f]];
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    [FlowerController showNav];
+    NSLog(@"Graph Touched");
+    //Do stuff here...
+    
 }
 
 - (void)layoutSubviews {
@@ -483,6 +538,10 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = 0.0f, needleCenterZ = 0.0f;
             NSLog(@"Unknown GL Error");
             break;
     }
+}
+
+-(void) reloadFromDB {
+    [history reloadFromDB];
 }
 
 - (void)dealloc {

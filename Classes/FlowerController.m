@@ -21,7 +21,7 @@
 
 @implementation FlowerController
 
-@synthesize mainView, menuButton, needleGL, historyView, historyGL;
+@synthesize mainView, menuButton, needleGL, /*historyView,*/ historyGL;
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
 static MenuView* activitiesViewController;
@@ -270,7 +270,6 @@ static NSMutableDictionary* appList;
     
     [FlowerController pushMenu];  //init the Menu View
     currentMainController.view.frame = self.mainView.bounds;                //added to adapt for iphone 5
-    NSLog(@"height of view: %f, of mainview: %f, of currentmaincontroller:%f, y of history:%f", self.view.frame.size.height, self.mainView.frame.size.height, currentMainController.view.frame.size.height, self.historyView.frame.origin.y);
     [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
     //currentMainController.view.subviews. = self.mainView.frame;
     // Plug an iPhone
@@ -342,7 +341,7 @@ static NSMutableDictionary* appList;
     mainView = nil;
     needleGL = nil;
     startButton = nil;
-    historyView = nil;
+    //historyView = nil;
     historyGL = nil;
 }
 

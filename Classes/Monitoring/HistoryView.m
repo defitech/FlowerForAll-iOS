@@ -4,14 +4,14 @@
 //  Created by Jerome on 29/08/11.
 //  Copyright 2010 Defitech. All rights reserved.
 //
-
+/*
 #import "HistoryView.h"
 #import "ParametersManager.h"
 #import "FLAPIBlow.h"
 #import "FlowerController.h"
 #import "FLAPIExercice.h"
 #import "FLAPIX.h"
-#import "CorePlot-CocoaTouch.h"
+
 
 @implementation HistoryView
 
@@ -186,6 +186,7 @@ NSTimer *repeatingTimer;
 	/*
 	 *	CPTXYGraph Prefs
 	 */
+/*
 	// Alloc CPTXYGraph
 	graph = [ [ CPTXYGraph alloc ] initWithFrame: self.bounds ];
 	// Link between the view and the Layer
@@ -195,10 +196,11 @@ NSTimer *repeatingTimer;
 	graph.paddingTop = graphPadding;
 	graph.paddingRight = graphPadding;
 	graph.paddingBottom = graphPadding;
-	
+	*/
 	/*
 	 *	Graph Prefs
 	 */
+/*
 	// Default X & Y Range for Plot Space
 	plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
 	// Set X Range
@@ -207,11 +209,12 @@ NSTimer *repeatingTimer;
                         length:CPTDecimalFromDouble(historyDuration * 60 + 1)];
 	// Set Y Range
 	plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(higherBar)];
-    
+    */
 	/*
 	 *	Axis Prefs
 	 */
 	// Line Style
+/*
 	CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
 	lineStyle.lineColor = [CPTColor whiteColor];
 	lineStyle.lineWidth = 1.0f;
@@ -236,12 +239,12 @@ NSTimer *repeatingTimer;
                                           [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-10) 
                                                                       length:CPTDecimalFromFloat(20)], nil];
 	
-   
+*/   
     
 	/*
 	 *	PLOTS
 	 */
-      
+      /*
     // 
 	CPTScatterPlot *goalLine = [[CPTScatterPlot alloc]initWithFrame:self.bounds] ;
     goalLine.identifier = @"goalLine";
@@ -501,4 +504,4 @@ NSTimer *repeatingTimer;
 	
 }
 
-@end
+@end*/

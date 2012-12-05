@@ -37,6 +37,8 @@
     UILabel *labelDuration;
     
     double higherBar;
+    
+    BlowHistory *history;
 }
 
 
