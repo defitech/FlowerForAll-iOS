@@ -5,7 +5,7 @@
 //  Copyright 2010 Defitech. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+/*#import <UIKit/UIKit.h>
 #import "CorePlot-CocoaTouch.h"
 #import "BlowHistory.h"
 
@@ -30,4 +30,4 @@
 
 -(void) reloadFromDB;
 
-@end
+@end*/

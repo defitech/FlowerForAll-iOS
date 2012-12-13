@@ -4,14 +4,14 @@
 //  Created by Jerome on 29/08/11.
 //  Copyright 2010 Defitech. All rights reserved.
 //
-
+/*
 #import "HistoryView.h"
 #import "ParametersManager.h"
 #import "FLAPIBlow.h"
 #import "FlowerController.h"
 #import "FLAPIExercice.h"
 #import "FLAPIX.h"
-#import "CorePlot-CocoaTouch.h"
+
 
 @implementation HistoryView
 
@@ -127,23 +127,44 @@ NSTimer *repeatingTimer;
 	[ self addSubview:graphView ];
     
     // Alloc Label View
-    labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/3, height/2) ];
-    [labelPercent setBackgroundColor:[UIColor blackColor]];
-    [labelPercent setTextColor:[UIColor whiteColor]];
-    [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
-    [labelPercent setText:@"%"];
+    if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
+
+        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/5, height/2) ];
+        [labelPercent setBackgroundColor:[UIColor blackColor]];
+        [labelPercent setTextColor:[UIColor whiteColor]];
+        [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelPercent setText:@"%"];
     
-    labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*5/6, 0.0, width*1/3, height/2) ];
-    [labelFrequency setBackgroundColor:[UIColor blackColor]];
-    [labelFrequency setTextColor:[UIColor whiteColor]];
-    [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
-    [labelFrequency setText:@"Hz"];
+        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*5/6, 0.0, width*1/5, height/2) ];
+        [labelFrequency setBackgroundColor:[UIColor blackColor]];
+        [labelFrequency setTextColor:[UIColor whiteColor]];
+        [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelFrequency setText:@"Hz"];
     
-    labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, height/2, width*1/3, height/2) ];
-    [labelDuration setBackgroundColor:[UIColor blackColor]];
-    [labelDuration setTextColor:[UIColor whiteColor]];
-    [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
-    [labelDuration setText:@"sec"];
+        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, height/2, width*1/4, height/2) ];
+        [labelDuration setBackgroundColor:[UIColor blackColor]];
+        [labelDuration setTextColor:[UIColor whiteColor]];
+        [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelDuration setText:@"sec"];
+    } else {
+        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/3, height/2) ];
+        [labelPercent setBackgroundColor:[UIColor blackColor]];
+        [labelPercent setTextColor:[UIColor whiteColor]];
+        [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelPercent setText:@"%"];
+        
+        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*5/6, 0.0, width*1/4, height/2) ];
+        [labelFrequency setBackgroundColor:[UIColor blackColor]];
+        [labelFrequency setTextColor:[UIColor whiteColor]];
+        [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelFrequency setText:@"Hz"];
+        
+        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, height/2, width*1/3, height/2) ];
+        [labelDuration setBackgroundColor:[UIColor blackColor]];
+        [labelDuration setTextColor:[UIColor whiteColor]];
+        [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
+        [labelDuration setText:@"sec"];
+    }
     
     
     [ self addSubview:labelPercent ];
@@ -165,6 +186,7 @@ NSTimer *repeatingTimer;
 	/*
 	 *	CPTXYGraph Prefs
 	 */
+/*
 	// Alloc CPTXYGraph
 	graph = [ [ CPTXYGraph alloc ] initWithFrame: self.bounds ];
 	// Link between the view and the Layer
@@ -174,10 +196,11 @@ NSTimer *repeatingTimer;
 	graph.paddingTop = graphPadding;
 	graph.paddingRight = graphPadding;
 	graph.paddingBottom = graphPadding;
-	
+	*/
 	/*
 	 *	Graph Prefs
 	 */
+/*
 	// Default X & Y Range for Plot Space
 	plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
 	// Set X Range
@@ -186,11 +209,12 @@ NSTimer *repeatingTimer;
                         length:CPTDecimalFromDouble(historyDuration * 60 + 1)];
 	// Set Y Range
 	plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0) length:CPTDecimalFromDouble(higherBar)];
-    
+    */
 	/*
 	 *	Axis Prefs
 	 */
 	// Line Style
+/*
 	CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
 	lineStyle.lineColor = [CPTColor whiteColor];
 	lineStyle.lineWidth = 1.0f;
@@ -215,12 +239,12 @@ NSTimer *repeatingTimer;
                                           [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-10) 
                                                                       length:CPTDecimalFromFloat(20)], nil];
 	
-   
+*/   
     
 	/*
 	 *	PLOTS
 	 */
-      
+      /*
     // 
 	CPTScatterPlot *goalLine = [[CPTScatterPlot alloc]initWithFrame:self.bounds] ;
     goalLine.identifier = @"goalLine";
@@ -480,4 +504,4 @@ NSTimer *repeatingTimer;
 	
 }
 
-@end
+@end*/

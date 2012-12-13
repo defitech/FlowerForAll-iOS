@@ -1,5 +1,5 @@
 ** Welcome to our advanced ticketing system. **
-
+**COPY**
 If you want to write a game, please read:
  Apps/HOWTO_WRITE_A_GAME.md
 

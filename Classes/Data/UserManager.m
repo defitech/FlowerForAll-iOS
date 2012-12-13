@@ -11,6 +11,7 @@
 #import "DataAccess.h"
 #import "User.h"
 #import "UserPicker.h"
+#import "UserChooserViewController.h"
 #import "Profil.h"
 #import "FlowerController.h"
 #import "ParametersManager.h"
@@ -50,18 +51,23 @@ static User* currentU;
     // refresh flapix (if needed)
     [FlowerController initFlapix];
     // refresh history view
-    [[[FlowerController currentFlower] historyView] reloadFromDB];
+    [[[FlowerController currentFlower] historyGL] reloadFromDB];
+    //[[[FlowerController currentFlower] historyView] reloadFromDB];
     NSLog(@"setCurrent User %i: %@",[currentU uid],[currentU name]);
     [[NSNotificationCenter defaultCenter] postNotificationName: @"userDataChangeEvent" object: Nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"userchooserDataChangeEvent" object: Nil];
 	
 }
 
 // bloc process until a user is choosen
 +(void) requireUser {
     if ([self currentUser] == nil) {
-        //NSLog(@"UserManager requireUser Loop");
-        [UserPicker show];
+        NSLog(@"UserManager requireUser Loop");
+        [UserChooserViewController show];
+//        [UserPicker show];
         [UserManager performSelector:@selector(requireUser) withObject:nil afterDelay:1];
+    } else {
+        NSLog(@"user already available");
     }
 }
 

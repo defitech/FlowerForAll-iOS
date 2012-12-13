@@ -72,7 +72,7 @@ FlowerHowTo *flowerHowTo;
 - (void)viewDidLoad {
 	
     [super viewDidLoad];
-
+    NSLog(@"menu view super: %f", super.view.frame.size.height);
 	//Set title of the navigation bar
 	navigationBar.topItem.title = NSLocalizedString(@"Flower breath", @"Menu Title");
 	
@@ -85,13 +85,16 @@ FlowerHowTo *flowerHowTo;
     [calibrationLabel setText:[CalibrationApp appTitle]];
 	
     int nb_pages = 2;
+    CGFloat pageWidth = self.view.frame.size.width;
+    
 	//scrollView.contentSize = CGSizeMake(960.0,0.0);
-    [scrollView setContentSize:CGSizeMake(320.0 * nb_pages,335.0)];
+    //[scrollView setContentSize:CGSizeMake(320.0 * nb_pages,335.0)];
+    [scrollView setContentSize:CGSizeMake(pageWidth * nb_pages,self.scrollView.frame.size.height)];
 	
     [pageControl setNumberOfPages:nb_pages];
     
     //add pages
-    page2.frame = CGRectMake(320.0f, 0.0f, 320.0f, 367.0f);
+    page2.frame = CGRectMake(pageWidth, 0.0f, pageWidth, self.pageControl.frame.origin.y-self.pageControl.frame.size.height);
     [scrollView addSubview:page2];
     
     NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
@@ -151,7 +154,7 @@ FlowerHowTo *flowerHowTo;
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {	
     //Switch the indicator when more than 50% of the previous/next page is visible
-    CGFloat pageWidth = 320.0f;
+    CGFloat pageWidth = self.view.frame.size.width;
     int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth)+1;
     pageControl.currentPage = page;
 	[pageControl updateCurrentPageDisplay];

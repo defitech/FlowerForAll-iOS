@@ -15,11 +15,13 @@
 #import "UserManager.h"
 
 #import "DataAccess.h"
+#import "UserChooserViewController.h"
+
 
 
 @implementation FlowerController
 
-@synthesize mainView, menuButton, needleGL, historyView; 
+@synthesize mainView, menuButton, needleGL, /*historyView,*/ historyGL;
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
 static MenuView* activitiesViewController;
@@ -43,7 +45,7 @@ static NSMutableDictionary* appList;
     [FlowerController pushMenu];
 }
 
-/** Promote the Menu as current Main Controller **/ 
+/** Promote the Menu as current Main Controller **/
 +(void) pushMenu {
     if (activitiesViewController == nil) {
         activitiesViewController = [[MenuView alloc] initWithNibName:@"MenuView" bundle:[NSBundle mainBundle]];
@@ -55,8 +57,6 @@ static NSMutableDictionary* appList;
     }
     [activitiesViewController backToMenu];
 }
-
-
 
 
 
@@ -99,6 +99,7 @@ static NSMutableDictionary* appList;
                                  cache:YES];
     }
     [singleton.mainView addSubview:currentMainController.view];
+    currentMainController.view.frame = singleton.mainView.bounds;           //added to adapt for iphone 5
     if ( transition != UIViewAnimationTransitionNone) {
         [UIView commitAnimations];
     }
@@ -230,7 +231,8 @@ static NSMutableDictionary* appList;
 
 - (void)startStopButtonRefresh:(NSNotification *)notification {
     if ([[FlowerController currentFlapix] running]) {
-        [self.view bringSubviewToFront:historyView];
+        //[self.view bringSubviewToFront:historyView];
+        [self.view bringSubviewToFront:historyGL];
         [self.view bringSubviewToFront:menuButton];
     } else {
         [self.view bringSubviewToFront:startButton];
@@ -241,6 +243,7 @@ static NSMutableDictionary* appList;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   
     if (singleton != nil)  return ;
     singleton = self;
     
@@ -261,11 +264,17 @@ static NSMutableDictionary* appList;
                nil];
     
     
-       [FlowerController pushMenu]; //will init the MenuView
-    [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
+    NSLog(@"currentUser:%@",[UserManager currentUser]);
+   
+
     
+    [FlowerController pushMenu];  //init the Menu View
+    currentMainController.view.frame = self.mainView.bounds;                //added to adapt for iphone 5
+    [self.mainView addSubview:currentMainController.view]; //needed to finish pushMenu int process
+    //currentMainController.view.subviews. = self.mainView.frame;
     // Plug an iPhone
-    CGRect plugFrame = historyView.frame; 
+    //CGRect plugFrame = historyView.frame;
+    CGRect plugFrame = historyGL.frame;
 
     startButton = [[UIButton alloc] initWithFrame:plugFrame];
     UIImage *buttonImageHighlighted = [UIImage imageNamed: @"jack.png"];
@@ -332,7 +341,8 @@ static NSMutableDictionary* appList;
     mainView = nil;
     needleGL = nil;
     startButton = nil;
-    historyView = nil;
+    //historyView = nil;
+    historyGL = nil;
 }
 
 # pragma mark Quit

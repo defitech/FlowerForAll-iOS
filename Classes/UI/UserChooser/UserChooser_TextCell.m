@@ -1,15 +1,16 @@
 //
-//  Users_TextCell.m
+//  UserChooser_TextCell.m
 //  FlowerForAll
 //
-//  Created by Pierre-Mikael Legris on 14.11.11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by adherent on 11.10.12.
+//
 //
 
-#import "Users_TextCell.h"
+#import "UserChooser_TextCell.h"
 #import "UserManager.h"
 
-@implementation Users_TextCell
+
+@implementation UserChooser_TextCell
 
 @synthesize textView;
 
@@ -22,38 +23,37 @@
     if ( (self = [super initWithCoder:coder]) ) {
         UIView *transparentBackground = [[UIView alloc] initWithFrame:CGRectZero];
         transparentBackground.backgroundColor = [UIColor clearColor];
-        self.backgroundView = transparentBackground;	
+        self.backgroundView = transparentBackground;
         
-
+        
         [[NSNotificationCenter defaultCenter]
          addObserver:self
          selector:@selector(userDataChangeEvent:)
          name: @"userDataChangeEvent"
          object: nil];
-      
+        
     }
     return self;
 }
 
-BOOL  textIsSet = NO;
+BOOL  textIsSet2 = NO;
 
 - (IBAction) userDataChangeEvent:(id)sender {
-     textIsSet = YES;
+    textIsSet2 = YES;
     
     if ([UserManager currentUser].uid == 0) {
         if ([[UserManager listAllUser] count] > 1) {
-             [textView setText:NSLocalizedStringFromTable(@"Only the owner may remove or edit user. \nYou may switch to another identity by choosing the coresponding username.",@"Users",@"Info Text")];
+            [textView setText:NSLocalizedStringFromTable(@"Only the owner may remove or edit user. \nYou may switch to another identity by choosing the coresponding username.",@"UserChooser",@"Info Text")];
         } else {
-            [textView setText:NSLocalizedStringFromTable(@"Add users if this device is used by several persons. Use the + button on the top right corner.",@"Users",@"Info Text")];
+            [textView setText:NSLocalizedStringFromTable(@"Add users if this device is used by several persons. Use the + button on the top right corner.",@"UserChooser",@"Info Text")];
         }
     } else {
-        [textView setText:NSLocalizedStringFromTable(@"You may switch to another identity by choosing the coresponding username. Only the owner may add or remove user.",@"Users",@"Info Text")];
+        [textView setText:NSLocalizedStringFromTable(@"You may switch to another identity by choosing the coresponding username. Only the owner may add or remove user.",@"UserChooser",@"Info Text")];
     }
 }
 
-
 - (CGFloat) height {
-    if (! textIsSet)   [self userDataChangeEvent:nil];
+    if (! textIsSet2)   [self userDataChangeEvent:nil];
     
     CGSize constraintSize = CGSizeMake(textView.frame.size.width, MAXFLOAT);
     
@@ -65,10 +65,10 @@ BOOL  textIsSet = NO;
     return textView.frame.size.height + 10;
 }
 
+
 - (void)dealloc {
-    NSLog(@"textView retain counter: %u", [textView retainCount]);
     [super dealloc];
-    //[textView release];           app crashes in the beginning
+    [textView release];
 }
 
 @end

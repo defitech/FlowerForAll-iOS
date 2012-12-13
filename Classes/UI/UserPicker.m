@@ -12,6 +12,7 @@
 #import "UserManager.h"
 #import "User.h"
 #import "FlowerController.h"
+#import "FlowerHowTo.h"
 
 #define kUserPickerOffScreen CGRectMake(0, 416, 325, 250)
 #define kUserPickerOnScreen CGRectMake(0, 170, 325, 250)
@@ -106,7 +107,7 @@ UIActionSheet* actionSheet;
     
     [actionSheet showInView:[FlowerController currentFlower].view];
     
-    [actionSheet setBounds:CGRectMake(0, 0, 320, 485)];        
+    [actionSheet setBounds:CGRectMake(0, 0, 320, 485)];       
     
 }
  
