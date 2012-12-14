@@ -41,6 +41,7 @@
 
 /********* GAME PARAMETERS *****************/
 float BikerSpeed;
+float BikerSpeedFromTime;
 int JumpType;
 const float gravity = 0.002;
 float gravity_accel;
@@ -68,6 +69,9 @@ bool ShowJump;
 bool DOwn;
 int unrotate;
 float unrotationSpeed;
+float GrassPosition;
+UILabel *StarCounterLabel;
+UIButton *StartButtonProg;
 /******* END GAME VARIABLES **************/
 
 
@@ -155,6 +159,34 @@ float unrotationSpeed;
         animationInterval = 1.0 / 60.0;
 		[self setupView];
 		[self startAnimation];
+        
+        //label for diplaying the number of stars
+        StarCounterLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 77, 56, 56)];
+        StarCounterLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
+        StarCounterLabel.text = [NSString stringWithFormat:@"%i",
+                                 [[[FlowerController currentFlapix] currentExercice] blow_star_count]];
+        //NSLog(@"blowstarcount:%i",[[[FlowerController currentFlapix] currentExercice] blow_star_count]);
+        StarCounterLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:StarCounterLabel];
+        
+        StartButtonProg = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+        StartButtonProg.frame = CGRectMake((self.frame.size.width - self.frame.size.width * 0.4479)/2, (self.frame.size.height - self.frame.size.height * 0.073)/2, self.frame.size.width * 0.4479, self.frame.size.height * 0.073);
+        StartButtonProg.backgroundColor = [UIColor clearColor];
+        [StartButtonProg setTitleColor:[UIColor colorWithRed:0.286 green:0.38 blue:0.592 alpha:1.0] forState:UIControlStateNormal];
+        StartButtonProg.titleLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
+        [StartButtonProg setTitle:@"Start Exercice" forState:UIControlStateNormal];
+        [StartButtonProg addTarget: self action:@selector(pressStart) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:StartButtonProg];
+        
+        //button for starting the game
+        //StartButtonProg = [[UIButton alloc] initWithFrame:CGRectMake(250, 177, 150, 56)];
+        //StartButtonProg.backgroundColor = [UIColor ]
+        //StartButtonProg.titleLabel.text = @"Start Exercice Button";
+        //StartButtonProg.titleLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
+        //[self addSubview:StartButtonProg];
+        //[StartButtonProg setTarget: self];
+        //[StartButtonProg setAction: @selector(myButtonWasHit:)];
+        //[StartButtonProg release];
     }
     
     return self;
@@ -307,17 +339,17 @@ float current_angle = 0.0;
     if (JumpType > 0 && JumpRotation < JumpMaxRotation && JumpPos < 0.3 && unrotate == 0) {
         JumpRotation = JumpRotation + 5.0;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
-        NSLog(@"first jumprot: %f",JumpRotation);
+        //NSLog(@"first jumprot: %f",JumpRotation);
     } else if (JumpRotation >= JumpMaxRotation) {
         JumpRotation = JumpRotation - 5.0;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
         unrotate++;
-        NSLog(@"second jumprot: %f",JumpRotation);
+        //NSLog(@"second jumprot: %f",JumpRotation);
     } else if (unrotate == 1) {
         JumpRotation = JumpRotation - unrotationSpeed;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
         if (JumpRotation < 0.0) unrotate++;
-        NSLog(@"third jumprot: %f",JumpRotation);
+        //NSLog(@"third jumprot: %f",JumpRotation);
     }
     glRotatef(180.0 + rot, 0.0, 0.0, 1.0);
     
@@ -337,10 +369,10 @@ float current_angle = 0.0;
     
     //          DRAW GRASS
     static const Vertex3D ground[] = {
-        {-1,  0.2, -0.05},
-        { 1,  0.2, -0.05},
-        {-1, -0.2, -0.05},
-        { 1, -0.2, -0.05}
+        {-2,  0.2, -0.05},
+        { 2,  0.2, -0.05},
+        {-2, -0.2, -0.05},
+        { 2, -0.2, -0.05}
     };
     static const GLfloat grassCoords[] = {
         0.0, 0.9,
@@ -352,7 +384,9 @@ float current_angle = 0.0;
     glDisable(GL_BLEND);
     glColor4f(1.0, 1.0, 1.0, 1.0);
     glLoadIdentity();
-    glTranslatef(0.0, -0.85, 0.0);
+    GrassPosition = GrassPosition - BikerSpeed;
+    if (GrassPosition <= -1.0) GrassPosition = 0.0;
+    glTranslatef(GrassPosition, -0.85, 0.0);
    //glBlendFunc(GL_ONE, GL_SRC_COLOR);
     //glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     
@@ -453,7 +487,9 @@ float current_angle = 0.0;
     if (lastDrawTime)
     {
         NSTimeInterval timeSinceLastDraw = [NSDate timeIntervalSinceReferenceDate] - lastDrawTime;
-        rot+=  60 * timeSinceLastDraw * BikerSpeed;
+        //rot+=  60 * timeSinceLastDraw * BikerSpeed;
+        BikerSpeedFromTime = BikerSpeed * timeSinceLastDraw * 60;
+        
     }
     lastDrawTime = [NSDate timeIntervalSinceReferenceDate];
     */
@@ -522,15 +558,30 @@ bool debug_events_bikerGL = NO;
     //Raise up lava
     //lavaHidder.frame = CGRectOffset(lavaFrame, 0, - lavaHeight * percent);
     //[self refreshStartButton];
+    StarCounterLabel.text = [NSString stringWithFormat:@"%i",
+                             [[[FlowerController currentFlapix] currentExercice] blow_star_count]];
     [self setNeedsDisplay];
+}
+
+- (IBAction) pressStart {
+    if ([[FlowerController currentFlapix] exerciceInCourse]) {
+        NSLog(@"pressStart: stop");
+        [[FlowerController currentFlapix] exerciceStop];
+    } else {
+        NSLog(@"pressStart: start");
+        [[FlowerController currentFlapix] exerciceStart];
+        [StartButtonProg removeFromSuperview];
+    }
 }
 
 - (void)refreshStartButton {
     if ([FlowerController shouldShowStartButton]) {
-        [self bringSubviewToFront:start];
+        [self bringSubviewToFront:StartButtonProg];
+        [self addSubview:StartButtonProg];
+        NSLog(@"shall bring to front");
     } else {
-        [self sendSubviewToBack:start];
-        
+        [self sendSubviewToBack:StartButtonProg];
+        NSLog(@"shall bring to back");
     }
 }
 
@@ -562,6 +613,7 @@ bool debug_events_bikerGL = NO;
     JumpPos = 1.3;
     ShowJump = false;
     DOwn = true;
+    GrassPosition = 0.0;
     
     
     //[self setupView];

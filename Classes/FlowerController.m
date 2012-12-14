@@ -236,7 +236,6 @@ static NSMutableDictionary* appList;
         [self.view bringSubviewToFront:menuButton];
     } else {
         [self.view bringSubviewToFront:startButton];
-        
     }
 }
 
