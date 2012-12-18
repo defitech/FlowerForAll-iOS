@@ -18,6 +18,8 @@
 #import <OpenGLES/EAGLDrawable.h>
 #import "ParametersManager.h"
 #import "OpenGLCommon.h"
+#import "DB.h"
+#import "UserManager.h"
 
 
 //#define USE_DEPTH_BUFFER 0
@@ -45,8 +47,10 @@ float BikerSpeedFromTime;
 int JumpType;
 const float gravity = 0.002;
 float gravity_accel;
+float gravity_accelFromTime;
 float up_accel;
 float rotation_speed;
+float unrotationSpeed;
 float rotation_angle_current;
 float JumpRotation;
 const float JumpMaxRotation = 45.0;
@@ -68,11 +72,19 @@ float JumpPos;
 bool ShowJump;
 bool DOwn;
 int unrotate;
-float unrotationSpeed;
+
 float GrassPosition;
 UILabel *StarCounterLabel;
 UIButton *StartButtonProg;
+UIButton *ItemsButtonProg;
+UIButton* ItemRotationProg;
+UILabel *ItemsLabel;
+
 /******* END GAME VARIABLES **************/
+/******* ITEMS VARIABLES **************/
+bool ItemsDisplayed;
+bool ItemRotation;
+/******* END ITEMS VARIABLES **************/
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -160,6 +172,13 @@ UIButton *StartButtonProg;
 		[self setupView];
 		[self startAnimation];
         
+        //initialize items bool
+        //int items_avail = [DB fetchItemsAvail:[UserManager currentUser].uid];
+        //NSString *items_string = [[NSNumber numberWithInt:items_avail] stringValue];
+        //if ([items_string characterAtIndex:0] == '0') {
+            ItemRotation = false;
+        //} else ItemRotation = true;
+        
         //label for diplaying the number of stars
         StarCounterLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 77, 56, 56)];
         StarCounterLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
@@ -169,6 +188,9 @@ UIButton *StartButtonProg;
         StarCounterLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:StarCounterLabel];
         
+    
+        
+        //button for starting the game
         StartButtonProg = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
         StartButtonProg.frame = CGRectMake((self.frame.size.width - self.frame.size.width * 0.4479)/2, (self.frame.size.height - self.frame.size.height * 0.073)/2, self.frame.size.width * 0.4479, self.frame.size.height * 0.073);
         StartButtonProg.backgroundColor = [UIColor clearColor];
@@ -177,27 +199,30 @@ UIButton *StartButtonProg;
         [StartButtonProg setTitle:@"Start Exercice" forState:UIControlStateNormal];
         [StartButtonProg addTarget: self action:@selector(pressStart) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:StartButtonProg];
+    
+        //button for displaying the items
+        ItemsButtonProg = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+        ItemsButtonProg.frame = CGRectMake(self.frame.size.width*0.85, self.frame.size.height/12, self.frame.size.height * 0.073, self.frame.size.height * 0.073);
+        ItemsButtonProg.backgroundColor = [UIColor clearColor];
+        [ItemsButtonProg setTitleColor:[UIColor colorWithRed:0.286 green:0.38 blue:0.592 alpha:1.0] forState:UIControlStateNormal];
+        ItemsButtonProg.titleLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
+        [ItemsButtonProg setTitle:@"Items" forState:UIControlStateNormal];
+        [ItemsButtonProg setBackgroundImage:[UIImage imageNamed:@"BikerTreee.png"] forState:UIControlStateNormal];
+        [ItemsButtonProg addTarget: self action:@selector(displayItems) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:ItemsButtonProg];
         
-        //button for starting the game
-        //StartButtonProg = [[UIButton alloc] initWithFrame:CGRectMake(250, 177, 150, 56)];
-        //StartButtonProg.backgroundColor = [UIColor ]
-        //StartButtonProg.titleLabel.text = @"Start Exercice Button";
-        //StartButtonProg.titleLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
-        //[self addSubview:StartButtonProg];
-        //[StartButtonProg setTarget: self];
-        //[StartButtonProg setAction: @selector(myButtonWasHit:)];
-        //[StartButtonProg release];
+        ItemsDisplayed = false;
     }
     
     return self;
 }
 
 - (void)setupView {
-    GLfloat size;
+    //GLfloat size;
     
     glEnable(GL_DEPTH_TEST);
     glMatrixMode(GL_PROJECTION);
-    size = 10;
+    //size = 10;
     
     // Nous donne la taille de l'écran de l'iPhone
     CGRect rect = self.bounds;
@@ -224,6 +249,10 @@ UIButton *StartButtonProg;
     
     glBindTexture(GL_TEXTURE_2D, texture[3]);
     [self LoadPic:@"BikerRondins"];
+    
+    for (int i = 0; i < 5; i++) {
+        TreesPositions[i] = 4.0;
+    }
 }
 
 - (void) LoadPic: (NSString*) PicName {
@@ -261,6 +290,20 @@ UIButton *StartButtonProg;
 float current_angle = 0.0;
 
 - (void)drawView {
+    /*static NSTimeInterval lastDrawTime;
+    NSTimeInterval timeSinceLastDraw;
+    if (lastDrawTime)
+    {
+        timeSinceLastDraw = [NSDate timeIntervalSinceReferenceDate] - lastDrawTime;
+        //rot+=  60 * timeSinceLastDraw * BikerSpeed;
+        BikerSpeedFromTime = BikerSpeed * timeSinceLastDraw * 33 ;
+        up_accelFromTime = up_accel * timeSinceLastDraw * 33 ;
+        gravity_accelFromTime = gravity_accel * timeSinceLastDraw * 33 ;
+        rotation_speedFromTime = rotation_speed * timeSinceLastDraw * 33 ;
+        unrotationSpeedFromTime = unrotationSpeed * timeSinceLastDraw * 33 ;
+        gravity_accel = gravity_accel * timeSinceLastDraw * 33 ;
+    }
+    lastDrawTime = [NSDate timeIntervalSinceReferenceDate];*/
 
     [EAGLContext setCurrentContext:context];
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
@@ -269,13 +312,6 @@ float current_angle = 0.0;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
-    
-    //glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-    //current_angle = current_angle + BikerSpeed;
-    //[self drawRectangleWithWidth:0.3f andHeight:0.3f AtX:0.2f AndY:-0.8f AndRotation:current_angle];
-    //glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
-    //[self drawRectangleWithWidth:2.0 andHeight:0.3 AtX:0.0 AndY:-0.85 AndRotation:0];
-    
     
     //              DRAW THE STAR
     static GLfloat rot = 0.0;
@@ -308,7 +344,7 @@ float current_angle = 0.0;
     if (JumpType == 1 && JumpPos < 0.2) {
         //NSLog(@"Ypos:%f",YPos);
         gravity_accel = gravity_accel + gravity;
-        YPos = YPos + up_accel - gravity_accel;
+        YPos = YPos + (up_accel - gravity_accel);
         if (YPos <= -0.45) {
             YPos = -0.45;
             JumpType = 0;
@@ -319,7 +355,7 @@ float current_angle = 0.0;
         
     } else if (JumpType == 2 && JumpPos < 0.2) {
         gravity_accel = gravity_accel + gravity;
-        YPos = YPos + up_accel - gravity_accel;
+        YPos = YPos + (up_accel - gravity_accel);
         rotation_angle_current = rotation_angle_current + rotation_speed;
         if (YPos <= -0.45) {
             YPos = -0.45;
@@ -328,7 +364,11 @@ float current_angle = 0.0;
             DOwn = true;
         }
         glTranslatef(0.0,YPos, 0.0);
-        glRotatef(rotation_angle_current, 0.0, 0.0, 1.0);
+        if (ItemRotation == false) {
+            glRotatef(rotation_angle_current, 0.0, 0.0, 1.0);
+        } else {
+            glRotatef(rotation_angle_current, 1.0, 1.0, 1.0);
+        }
     } else {
         glTranslatef(0.0, -0.45 + 0.005 * sin(1.5*frameNO), 0.0);
     }
@@ -468,7 +508,7 @@ float current_angle = 0.0;
         glNormalPointer(GL_FLOAT, 0, normals);
         glTexCoordPointer(2, GL_FLOAT, 0, jumpCoords);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
-        if (JumpPos < -1.8 && DOwn) {
+        if (JumpPos < -1.2 && DOwn) {
             ShowJump = false;
             JumpPos = 1.3;
         }
@@ -483,22 +523,12 @@ float current_angle = 0.0;
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
     
-    /*static NSTimeInterval lastDrawTime;
-    if (lastDrawTime)
-    {
-        NSTimeInterval timeSinceLastDraw = [NSDate timeIntervalSinceReferenceDate] - lastDrawTime;
-        //rot+=  60 * timeSinceLastDraw * BikerSpeed;
-        BikerSpeedFromTime = BikerSpeed * timeSinceLastDraw * 60;
-        
-    }
-    lastDrawTime = [NSDate timeIntervalSinceReferenceDate];
-    */
     
     if (TreeRuptor==true) frameNO = 1 + frameNO;
     if (frameNO == trees[trees_size-1] + 30) frameNO = 0;
 }
 
-- (void)drawRectangleWithWidth:(float)Width andHeight:(float) Height AtX:(float) x_translation AndY:(float) y_translation AndRotation:(float) RotAngle{
+/*- (void)drawRectangleWithWidth:(float)Width andHeight:(float) Height AtX:(float) x_translation AndY:(float) y_translation AndRotation:(float) RotAngle{
     const GLfloat rectangle[] = {
         -Width / 2, Height / 2, -0.057,
         Width / 2, Height / 2, -0.057,
@@ -513,7 +543,7 @@ float current_angle = 0.0;
     glVertexPointer(3, GL_FLOAT, 0, rectangle);
     glEnableClientState(GL_VERTEX_ARRAY);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-}
+}*/
 
 bool debug_events_bikerGL = NO;
 - (void)flapixEventFrequency:(NSNotification *)notification {
@@ -546,6 +576,14 @@ bool debug_events_bikerGL = NO;
         JumpType = 2;
         combo++;
         rotation_speed = 360.0 / (up_accel / gravity * 2) * combo;
+        int stars_nb = [DB fetchStarsCount:[UserManager currentUser].uid];
+        int items_avail = [DB fetchItemsAvail:[UserManager currentUser].uid];
+        stars_nb++;
+        NSLog(@"check stars_nb in flapixeventblowstop:%i", stars_nb);
+        [DB deleteStarsItems:[UserManager currentUser].uid];
+        [DB insertStarsItems:stars_nb withItems:items_avail atID:[UserManager currentUser].uid];
+        NSLog(@"check database in flapixeventblowstop:%i",[DB fetchStarsCount:[UserManager currentUser].uid]);
+        ItemsLabel.text = [NSString stringWithFormat:@"You have %i stars left", stars_nb];
     //    [self playSystemSound:@"/VolcanoApp_goal.wav"];
     } else {
         JumpType = 1;
@@ -563,7 +601,7 @@ bool debug_events_bikerGL = NO;
     [self setNeedsDisplay];
 }
 
-- (IBAction) pressStart {
+- (void) pressStart {
     if ([[FlowerController currentFlapix] exerciceInCourse]) {
         NSLog(@"pressStart: stop");
         [[FlowerController currentFlapix] exerciceStop];
@@ -651,6 +689,72 @@ bool debug_events_bikerGL = NO;
     [self destroyFramebuffer];
     [self createFramebuffer];
     [self drawView];
+}
+
+- (void) displayItems {
+    //button for displaying the items
+    if (ItemsDisplayed) {
+        [ItemsButtonProg setBackgroundImage:[UIImage imageNamed:@"BikerTreee.png"] forState:UIControlStateNormal];
+        [ItemsLabel removeFromSuperview];
+        [ItemRotationProg removeFromSuperview];
+        ItemsDisplayed = false;
+    } else {
+        //label for diplaying the number of stars
+        ItemsLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 100, 400, 120)];
+        ItemsLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
+        ItemsLabel.text = [NSString stringWithFormat:@"You have %i star(s) left", [DB fetchStarsCount:[UserManager currentUser].uid]];
+        //NSLog(@"blowstarcount:%i",[[[FlowerController currentFlapix] currentExercice] blow_star_count]);
+        ItemsLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:ItemsLabel];
+        
+        //[ItemsButtonProg setBackgroundImage:[UIImage imageNamed:@"BikerRondins.png"] forState:UIControlStateNormal];
+        
+        ItemRotationProg = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+        ItemRotationProg.frame = CGRectMake(self.frame.size.width*0.15, self.frame.size.height * 0.25, self.frame.size.height * 0.123, self.frame.size.height * 0.123);
+        ItemRotationProg.backgroundColor = [UIColor clearColor];
+        int items_avail = [DB fetchItemsAvail:[UserManager currentUser].uid];
+        NSString *items_string = [[NSNumber numberWithInt:items_avail] stringValue];
+        if ([items_string characterAtIndex:0] == 48) {
+            [ItemRotationProg setTitle:[NSString stringWithFormat:@"Item 1 \n \r Price: %i stars",2] forState:UIControlStateNormal];
+            ItemRotationProg.titleLabel.numberOfLines = 2;
+            ItemRotationProg.titleLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+            ItemRotationProg.titleLabel.textAlignment = UITextAlignmentCenter;
+        } else if (ItemRotation == true) {
+            [ItemRotationProg setBackgroundImage:[UIImage imageNamed:@"BikerTreee.png"] forState:UIControlStateNormal];
+        } else if (ItemRotation == false) {
+            [ItemRotationProg setBackgroundImage:[UIImage imageNamed:@"BikerStar.png"] forState:UIControlStateNormal];
+        }
+        [ItemRotationProg addTarget: self action:@selector(selectItemRotation) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:ItemRotationProg];
+        ItemsDisplayed = true;
+    }
+    
+}
+
+- (void) selectItemRotation {
+    int stars_nb = [DB fetchStarsCount:[UserManager currentUser].uid];
+    int items_avail = [DB fetchItemsAvail:[UserManager currentUser].uid];
+    NSString *items_string = [[NSNumber numberWithInt:items_avail] stringValue];
+    if ([items_string characterAtIndex:0] == 48 && stars_nb >= 2) {
+        stars_nb = stars_nb - 2;
+        ItemsLabel.text = [NSString stringWithFormat:@"You have %i stars left", stars_nb];
+        items_avail = 00001;
+        [DB deleteStarsItems:[UserManager currentUser].uid];
+        [DB insertStarsItems:stars_nb withItems:items_avail atID:[UserManager currentUser].uid];
+        ItemRotation = true;
+        [ItemRotationProg setBackgroundImage:[UIImage imageNamed:@"BikerStar.png"] forState:UIControlStateNormal];
+        [ItemRotationProg setTitle:@"" forState:UIControlStateNormal];
+        NSLog(@"check Items available in selectItemRotation:%i",[DB fetchItemsAvail:[UserManager currentUser].uid]);
+    } else if ([items_string characterAtIndex:0] == 49 && ItemRotation == true){
+        ItemRotation = false;
+        [ItemRotationProg setBackgroundImage:[UIImage imageNamed:@"BikerStar.png"] forState:UIControlStateNormal];
+        [ItemRotationProg setTitle:@"" forState:UIControlStateNormal];
+    } else if ([items_string characterAtIndex:0] == 49 && ItemRotation == false){
+        ItemRotation = true;
+        [ItemRotationProg setBackgroundImage:[UIImage imageNamed:@"BikerTreee.png"] forState:UIControlStateNormal];
+        [ItemRotationProg setTitle:@"" forState:UIControlStateNormal];
+    }
+    NSLog(@"ItemRotation = %s and character in string: %hu", ItemRotation ? "true" : "false", [items_string characterAtIndex:0]);
 }
 
 

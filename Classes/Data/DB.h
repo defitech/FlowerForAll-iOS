@@ -146,7 +146,13 @@
 /** fill **/
 + (void) fillWithBlows:(NSMutableArray*)history fromTimestamp:(double)timestamp;
 
+/*************************************************** STARS TOTAL *******************************************************/
++(int) fetchStarsCount:(NSInteger)ID;
 
++(int) fetchItemsAvail:(NSInteger)ID;
 
++(void)deleteStarsItems:(NSInteger)ID;
+
++(void)insertStarsItems:(int)nbOfStars withItems:(int)newItems atID:(NSInteger)ID;
 
 @end
