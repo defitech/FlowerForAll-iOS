@@ -191,7 +191,7 @@ bool ItemRotation;
     
         
         //button for starting the game
-        StartButtonProg = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+        StartButtonProg = [[UIButton buttonWithType:UIButtonTypeRoundedRect]retain];
         StartButtonProg.frame = CGRectMake((self.frame.size.width - self.frame.size.width * 0.4479)/2, (self.frame.size.height - self.frame.size.height * 0.073)/2, self.frame.size.width * 0.4479, self.frame.size.height * 0.073);
         StartButtonProg.backgroundColor = [UIColor clearColor];
         [StartButtonProg setTitleColor:[UIColor colorWithRed:0.286 green:0.38 blue:0.592 alpha:1.0] forState:UIControlStateNormal];
@@ -308,7 +308,6 @@ float current_angle = 0.0;
     [EAGLContext setCurrentContext:context];
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
     glViewport(0, 0, backingWidth, backingWidth);
-    //NSLog(@"backingw:%i, backingh: %i", backingWidth, backingHeight);
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
@@ -579,10 +578,10 @@ bool debug_events_bikerGL = NO;
         int stars_nb = [DB fetchStarsCount:[UserManager currentUser].uid];
         int items_avail = [DB fetchItemsAvail:[UserManager currentUser].uid];
         stars_nb++;
-        NSLog(@"check stars_nb in flapixeventblowstop:%i", stars_nb);
+        //NSLog(@"check stars_nb in flapixeventblowstop:%i", stars_nb);
         [DB deleteStarsItems:[UserManager currentUser].uid];
         [DB insertStarsItems:stars_nb withItems:items_avail atID:[UserManager currentUser].uid];
-        NSLog(@"check database in flapixeventblowstop:%i",[DB fetchStarsCount:[UserManager currentUser].uid]);
+        //NSLog(@"check database in flapixeventblowstop:%i",[DB fetchStarsCount:[UserManager currentUser].uid]);
         ItemsLabel.text = [NSString stringWithFormat:@"You have %i stars left", stars_nb];
     //    [self playSystemSound:@"/VolcanoApp_goal.wav"];
     } else {
@@ -608,27 +607,25 @@ bool debug_events_bikerGL = NO;
     } else {
         NSLog(@"pressStart: start");
         [[FlowerController currentFlapix] exerciceStart];
-        [StartButtonProg removeFromSuperview];
+        [StartButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
     }
 }
 
-- (void)refreshStartButton {
+/*- (void)refreshStartButton {
     if ([FlowerController shouldShowStartButton]) {
-        [self bringSubviewToFront:StartButtonProg];
+        //[self bringSubviewToFront:StartButtonProg];
         [self addSubview:StartButtonProg];
         NSLog(@"shall bring to front");
     } else {
-        [self sendSubviewToBack:StartButtonProg];
+        //[self sendSubviewToBack:StartButtonProg];
         NSLog(@"shall bring to back");
     }
-}
+}*/
 
 -(void)flapixEventStart:(FLAPIX *)flapix {
-    [self refreshStartButton];
 }
 
 -(void)flapixEventStop:(FLAPIX *)flapix {
-    [self refreshStartButton];
 }
 
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
@@ -652,12 +649,6 @@ bool debug_events_bikerGL = NO;
     ShowJump = false;
     DOwn = true;
     GrassPosition = 0.0;
-    
-    
-    //[self setupView];
-    //BikerApp *bikerapp_forbutton = [[BikerApp alloc]init];
-    //[bikerapp_forbutton. removeFromSuperview];
-    //[self initVariables];
 }
 
 - (void)flapixEventExerciceStop:(NSNotification *)notification {
@@ -670,7 +661,9 @@ bool debug_events_bikerGL = NO;
     //}
         
     [self setNeedsDisplay];
-    [self refreshStartButton];
+    //[self addSubview:StartButtonProg];
+    [StartButtonProg setFrame:CGRectMake((self.frame.size.width - self.frame.size.width * 0.4479)/2, (self.frame.size.height - self.frame.size.height * 0.073)/2, self.frame.size.width * 0.4479, self.frame.size.height * 0.073)];
+    //[self refreshStartButton];
 }
 
 
@@ -742,7 +735,7 @@ bool debug_events_bikerGL = NO;
         [DB deleteStarsItems:[UserManager currentUser].uid];
         [DB insertStarsItems:stars_nb withItems:items_avail atID:[UserManager currentUser].uid];
         ItemRotation = true;
-        [ItemRotationProg setBackgroundImage:[UIImage imageNamed:@"BikerStar.png"] forState:UIControlStateNormal];
+        [ItemRotationProg setBackgroundImage:[UIImage imageNamed:@"BikerTreee.png"] forState:UIControlStateNormal];
         [ItemRotationProg setTitle:@"" forState:UIControlStateNormal];
         NSLog(@"check Items available in selectItemRotation:%i",[DB fetchItemsAvail:[UserManager currentUser].uid]);
     } else if ([items_string characterAtIndex:0] == 49 && ItemRotation == true){
