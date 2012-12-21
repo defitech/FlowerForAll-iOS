@@ -11,7 +11,14 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
-
+//hack
+#define kAnimationDuration  0.3
+enum animationDirection {
+    kAnimationDirectionForward = YES,
+    kAnimationDirectionBackward = NO
+};
+typedef BOOL AnimationDirection;
+//hackend
 @interface BikerGL : UIView {
     IBOutlet UIButton *start;
 @private

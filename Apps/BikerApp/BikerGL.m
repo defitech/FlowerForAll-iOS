@@ -44,6 +44,7 @@
 /********* GAME PARAMETERS *****************/
 float BikerSpeed;
 float BikerSpeedFromTime;
+float TimeScaleFactor;
 int JumpType;
 const float gravity = 0.002;
 float gravity_accel;
@@ -57,16 +58,27 @@ const float JumpMaxRotation = 45.0;
 /******* END GAME PARAMETERS **************/
 /********* GAME VARIABLES *****************/
 float YPos;
-GLuint      texture[4];
+GLuint      texture[5];
 float StartTreePosition = 1.5;
+float StartCloudPosition = 1.5;
 float TreesPositions[5];
+float CloudsPositions[5];
 int frameNO = 0;
+int frameNO_clouds =  0;
 const int trees[] = {1, 37, 120, 169, 197, 250, 300, 330, 380, 451,
     500, 538, 560, 607, 680, 719, 813, 848, 883, 966};
+const int clouds[] = {19, 87, 160, 229, 297, 370, 410, 500, 680, 748,
+    822, 900, 941, 1026, 1110, 1192, 1283, 1379, 1444, 1555};
+const float cloudsYPos[] = {-0.1, 0.2, 0.13, 0.0, -0.2, -0.12, 0.02, -0.06, -0.18, 0.13,
+                           -0.15, 0.02, -0.13, 0.10, -0.12, -0.19, 0.12, 0.06, 0.18, -0.13};
 int NextTreePosition;
+int NextCloudPosition;
 const int trees_size = 20;
+const int clouds_size = 20;
 int NextTree;
+int NextCloud;
 bool TreeRuptor;
+bool CloudRuptor;
 int combo;
 float JumpPos;
 bool ShowJump;
@@ -210,6 +222,9 @@ bool ItemRotation;
         [ItemsButtonProg setBackgroundImage:[UIImage imageNamed:@"BikerTreee.png"] forState:UIControlStateNormal];
         [ItemsButtonProg addTarget: self action:@selector(displayItems) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:ItemsButtonProg];
+        //[ItemsButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+        
+        
         
         ItemsDisplayed = false;
     }
@@ -237,24 +252,29 @@ bool ItemRotation;
     
     
     //generate and bind texture
-    glGenTextures(4, &texture[0]);
+    glGenTextures(5, &texture[0]);
     
+    // the picture height and width in pixels must be powers of 2 !!!
     glBindTexture(GL_TEXTURE_2D, texture[0]);
     [self LoadPic:@"BikerStar"];
-    
     glBindTexture(GL_TEXTURE_2D, texture[1]);
-    [self LoadPic:@"BikerTreeeCopie"];
+    [self LoadPic:@"BikerGround"];    
     glBindTexture(GL_TEXTURE_2D, texture[2]);
-    [self LoadPic:@"BikerTreee"];
-    
+    [self LoadPic:@"BikerArbre"];
     glBindTexture(GL_TEXTURE_2D, texture[3]);
-    [self LoadPic:@"BikerRondins"];
+    [self LoadPic:@"BikerJump"];
+    glBindTexture(GL_TEXTURE_2D, texture[4]);
+    [self LoadPic:@"BikerCloud"];
     
     for (int i = 0; i < 5; i++) {
         TreesPositions[i] = 4.0;
     }
+    for (int i = 0; i < 5; i++) {
+        CloudsPositions[i] = 4.0;
+    }
 }
 
+//Function for loading png pictures taking the name (without .png) as parameter. Don't forget to change the number of textures!
 - (void) LoadPic: (NSString*) PicName {
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
@@ -289,28 +309,105 @@ bool ItemRotation;
 
 float current_angle = 0.0;
 
+//The function that draws each frame
 - (void)drawView {
-    /*static NSTimeInterval lastDrawTime;
+    
+    static NSTimeInterval lastDrawTime;
     NSTimeInterval timeSinceLastDraw;
     if (lastDrawTime)
     {
         timeSinceLastDraw = [NSDate timeIntervalSinceReferenceDate] - lastDrawTime;
         //rot+=  60 * timeSinceLastDraw * BikerSpeed;
-        BikerSpeedFromTime = BikerSpeed * timeSinceLastDraw * 33 ;
-        up_accelFromTime = up_accel * timeSinceLastDraw * 33 ;
-        gravity_accelFromTime = gravity_accel * timeSinceLastDraw * 33 ;
-        rotation_speedFromTime = rotation_speed * timeSinceLastDraw * 33 ;
-        unrotationSpeedFromTime = unrotationSpeed * timeSinceLastDraw * 33 ;
-        gravity_accel = gravity_accel * timeSinceLastDraw * 33 ;
+        //BikerSpeedFromTime = BikerSpeed * timeSinceLastDraw * 33 ;
+        TimeScaleFactor = timeSinceLastDraw * 40;
+        
     }
-    lastDrawTime = [NSDate timeIntervalSinceReferenceDate];*/
-
+    lastDrawTime = [NSDate timeIntervalSinceReferenceDate];
+    
     [EAGLContext setCurrentContext:context];
     glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
     glViewport(0, 0, backingWidth, backingWidth);
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
+    
+    //hack
+    static NSTimeInterval lastKeyframeTime = 0.0;
+    if (lastKeyframeTime == 0.0)
+        lastKeyframeTime = [NSDate timeIntervalSinceReferenceDate];
+    static AnimationDirection direction = kAnimationDirectionForward;
+    
+    //glClearColor(1.0, 1.0, 1.0, 1.0);
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+    glTranslatef(0.0,0.0,0.0);
+    glRotatef(-90.0, 1.0, 0.0, 0.0); // Blender uses Z-up, not Y-up like OpenGL ES
+    
+    //static VertexData3D ballVertexData[kBall1NumberOfVertices];
+    static const VertexData3D sourcevertices[] = {
+        {-0.2,  0.2, 0.41},
+        { 0.2,  0.2, 0.41},
+        {-0.2, -0.2, 0.41},
+        { 0.2, -0.2, 0.41}
+    };
+    static const VertexData3D destvertices[] = {
+        {-0.2,  0.2, 0.41},
+        { 0.2,  0.2, 0.41},
+        {-0.2, -0.2, 0.41},
+        { 0.2, -0.2, 0.41}
+    };
+    static VertexData3D drewvertices[4];
+    
+    glColor4f(0.0, 0.3, 1.0, 1.0);
+    glEnable(GL_COLOR_MATERIAL);
+    NSTimeInterval timeSinceLastKeyFrame = [NSDate timeIntervalSinceReferenceDate] - lastKeyframeTime;
+    if (timeSinceLastKeyFrame > kAnimationDuration) {
+        direction = !direction;
+        timeSinceLastKeyFrame = timeSinceLastKeyFrame - kAnimationDuration;
+        lastKeyframeTime = [NSDate timeIntervalSinceReferenceDate];
+    }
+    NSTimeInterval percentDone = timeSinceLastKeyFrame / kAnimationDuration;
+    
+    VertexData3D *source, *dest;
+    if (direction == kAnimationDirectionForward)
+    {
+        source = (VertexData3D *)sourcevertices;
+        dest = (VertexData3D *)destvertices;
+    }
+    else
+    {
+        source = (VertexData3D *)destvertices;
+        dest = (VertexData3D *)sourcevertices;
+    }
+    
+    for (int i = 0; i < 4; i++)
+    {
+        GLfloat diffX = dest[i].vertex.x - source[i].vertex.x;
+        GLfloat diffY = dest[i].vertex.y - source[i].vertex.y;
+        GLfloat diffZ = dest[i].vertex.z - source[i].vertex.z;
+        GLfloat diffNormalX = dest[i].normal.x - source[i].normal.x;
+        GLfloat diffNormalY = dest[i].normal.y - source[i].normal.y;
+        GLfloat diffNormalZ = dest[i].normal.z - source[i].normal.z;
+        
+        drewvertices[i].vertex.x = source[i].vertex.x + (percentDone * diffX);
+        drewvertices[i].vertex.y = source[i].vertex.y + (percentDone * diffY);
+        drewvertices[i].vertex.z = source[i].vertex.z + (percentDone * diffZ);
+        drewvertices[i].normal.x = source[i].normal.x + (percentDone * diffNormalX);
+        drewvertices[i].normal.y = source[i].normal.y + (percentDone * diffNormalY);
+        drewvertices[i].normal.z = source[i].normal.z + (percentDone * diffNormalZ);
+        
+    }
+    
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glVertexPointer(3, GL_FLOAT, sizeof(VertexData3D), &destvertices[0].vertex);
+    glNormalPointer(GL_FLOAT, sizeof(VertexData3D), &destvertices[0].normal);
+    glDrawArrays(GL_TRIANGLES, 0, 4);
+    //glDisableClientState(GL_VERTEX_ARRAY);
+    //glDisableClientState(GL_NORMAL_ARRAY);
+    //hackend
+    
+    
     
     //              DRAW THE STAR
     static GLfloat rot = 0.0;
@@ -320,6 +417,7 @@ float current_angle = 0.0;
     glEnableClientState(GL_NORMAL_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
     
+    // coordinates of the edges of the square
     static const Vertex3D vertices[] = {
         {-0.2,  0.2, -0.1},
         { 0.2,  0.2, -0.1},
@@ -332,6 +430,7 @@ float current_angle = 0.0;
         {0.0, 0.0, 1.0},
         {0.0, 0.0, 1.0}
     };
+    // coordinates used to crop the picture
     static const GLfloat texCoords[] = {
         0.0, 1.0,
         1.0, 1.0,
@@ -340,10 +439,12 @@ float current_angle = 0.0;
     };
     
     glLoadIdentity();
+    
+    //implementing the jump with of without backflip
     if (JumpType == 1 && JumpPos < 0.2) {
         //NSLog(@"Ypos:%f",YPos);
-        gravity_accel = gravity_accel + gravity;
-        YPos = YPos + (up_accel - gravity_accel);
+        gravity_accel = gravity_accel + gravity * TimeScaleFactor;
+        YPos = YPos + up_accel - gravity_accel;
         if (YPos <= -0.45) {
             YPos = -0.45;
             JumpType = 0;
@@ -354,7 +455,7 @@ float current_angle = 0.0;
         
     } else if (JumpType == 2 && JumpPos < 0.2) {
         gravity_accel = gravity_accel + gravity;
-        YPos = YPos + (up_accel - gravity_accel);
+        YPos = YPos + up_accel - gravity_accel;
         rotation_angle_current = rotation_angle_current + rotation_speed;
         if (YPos <= -0.45) {
             YPos = -0.45;
@@ -369,23 +470,25 @@ float current_angle = 0.0;
             glRotatef(rotation_angle_current, 1.0, 1.0, 1.0);
         }
     } else {
-        glTranslatef(0.0, -0.45 + 0.005 * sin(1.5*frameNO), 0.0);
+        glTranslatef(0.0, -0.45 + 0.005 * sin(1.5*frameNO) * TimeScaleFactor, 0.0);
     }
     
     if (combo >0) {
         glColor4f(1.0, 0.7, 0.7, 1.0);
     }
+    
+    //implementing the rotation when hitting the jump
     if (JumpType > 0 && JumpRotation < JumpMaxRotation && JumpPos < 0.3 && unrotate == 0) {
-        JumpRotation = JumpRotation + 5.0;
+        JumpRotation = JumpRotation + 5.0 * TimeScaleFactor;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
         //NSLog(@"first jumprot: %f",JumpRotation);
     } else if (JumpRotation >= JumpMaxRotation) {
-        JumpRotation = JumpRotation - 5.0;
+        JumpRotation = JumpRotation - 5.0 * TimeScaleFactor;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
         unrotate++;
         //NSLog(@"second jumprot: %f",JumpRotation);
     } else if (unrotate == 1) {
-        JumpRotation = JumpRotation - unrotationSpeed;
+        JumpRotation = JumpRotation - unrotationSpeed * TimeScaleFactor;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
         if (JumpRotation < 0.0) unrotate++;
         //NSLog(@"third jumprot: %f",JumpRotation);
@@ -408,26 +511,27 @@ float current_angle = 0.0;
     
     //          DRAW GRASS
     static const Vertex3D ground[] = {
-        {-2,  0.2, -0.05},
-        { 2,  0.2, -0.05},
-        {-2, -0.2, -0.05},
-        { 2, -0.2, -0.05}
+        {-2,  0.2, -0.1},
+        { 2,  0.2, -0.1},
+        {-2, -0.2, -0.1},
+        { 2, -0.2, -0.1}
     };
     static const GLfloat grassCoords[] = {
-        0.0, 0.9,
-        1.0, 0.9,
-        0.0, 0.1,
-        1.0, 0.1
+        0.0, 1.0,
+        1.0, 1.0,
+        0.0, 0.15,
+        1.0, 0.15
     };
     
     glDisable(GL_BLEND);
     glColor4f(1.0, 1.0, 1.0, 1.0);
     glLoadIdentity();
-    GrassPosition = GrassPosition - BikerSpeed;
-    if (GrassPosition <= -1.0) GrassPosition = 0.0;
-    glTranslatef(GrassPosition, -0.85, 0.0);
+    GrassPosition = GrassPosition - BikerSpeed * TimeScaleFactor;
+    if (GrassPosition <= -1.0) GrassPosition = 1.0;
+    glTranslatef(GrassPosition, -0.81, 0.0);
+    glRotatef(180.0, 0.0, 0.0, 1.0);
    //glBlendFunc(GL_ONE, GL_SRC_COLOR);
-    //glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     
     glBindTexture(GL_TEXTURE_2D, texture[1]);
     glVertexPointer(3, GL_FLOAT, 0, ground);
@@ -449,19 +553,19 @@ float current_angle = 0.0;
         if (TreesPositions[i] > -1.5 && TreesPositions[i] < 2.0) {
             
             static const Vertex3D tree[] = {
-                {-0.2,  0.3, -0.2},
-                { 0.2,  0.3, -0.2},
-                {-0.2, -0.2, -0.2},
-                { 0.2, -0.2, -0.2}
+                {-0.2,  0.3, -0.15},
+                { 0.2,  0.3, -0.15},
+                {-0.2, -0.2, -0.15},
+                { 0.2, -0.2, -0.15}
             };
             static const GLfloat treeCoords[] = {
-                0.0, 0.9,
-                1.0, 0.9,
+                0.0, 1.0,
+                0.8, 1.0,
                 0.0, 0.0,
-                1.0, 0.0
+                0.8, 0.0
             };
             glLoadIdentity();
-            glTranslatef(TreesPositions[i], -0.37, 0.0);
+            glTranslatef(TreesPositions[i], -0.40, 0.0);
             glRotatef(180.0, 0.0, 0.0, 1.0);
     
             glEnable(GL_BLEND);
@@ -474,8 +578,51 @@ float current_angle = 0.0;
             glTexCoordPointer(2, GL_FLOAT, 0, treeCoords);
             glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
             
-            TreesPositions[i] = TreesPositions[i] - BikerSpeed;
-           
+            TreesPositions[i] = TreesPositions[i] - BikerSpeed * TimeScaleFactor;
+        }
+        
+    }
+    
+    //          DRAW CLOUDS
+    if (frameNO_clouds == clouds[NextCloudPosition]) {
+        CloudsPositions[NextCloud] = 1.5;
+        NextCloudPosition = (NextCloudPosition + 1) % clouds_size;
+        NextCloud = (NextCloud + 1) % 5;
+        NSLog(@"NextCloud:%i; frameno: %i",NextCloud, frameNO_clouds);
+    }
+    
+    for (int i = 0; i < 5; i++) {
+        
+        if (CloudsPositions[i] > -1.5 && CloudsPositions[i] < 2.0) {
+            
+            static const Vertex3D cloud[] = {
+                {-0.4,  0.2, -0.2},
+                { 0.4,  0.2, -0.2},
+                {-0.4, -0.2, -0.2},
+                { 0.4, -0.2, -0.2}
+            };
+            static const GLfloat cloudCoords[] = {
+                0.0, 1.0,
+                1.0, 1.0,
+                0.0, 0.0,
+                1.0, 0.0
+            };
+            glLoadIdentity();
+            //NSLog(@"cloudsypos:%f",cloudsYPos[i]);
+            glTranslatef(CloudsPositions[i], 0.50 + cloudsYPos[i], 0.0);
+            glRotatef(180.0, 0.0, 0.0, 1.0);
+            
+            glEnable(GL_BLEND);
+            //glBlendFunc(GL_ONE, GL_SRC_COLOR);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            
+            glBindTexture(GL_TEXTURE_2D, texture[4]);
+            glVertexPointer(3, GL_FLOAT, 0, cloud);
+            glNormalPointer(GL_FLOAT, 0, normals);
+            glTexCoordPointer(2, GL_FLOAT, 0, cloudCoords);
+            glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+            
+            CloudsPositions[i] = CloudsPositions[i] - (BikerSpeed - 0.0007 + 0.0035 * (clouds[i] % 2)) * TimeScaleFactor;
         }
         
     }
@@ -483,21 +630,24 @@ float current_angle = 0.0;
     //      DRAW JUMP    
     if (ShowJump) {
         static const Vertex3D jump[] = {
-            {-0.2,  -0.3, -0.21},
-            { 0.2,  -0.3, -0.21},
-            {0.2, -0.1, -0.21}
+            {-0.3,  0.1, 0.2},
+            { 0.3,  0.1, 0.2},
+            {-0.3, -0.1, 0.2},
+            { 0.3, -0.1, 0.2}
         };
         static const GLfloat jumpCoords[] = {
-            0.0, 0.9,
-            1.0, 0.9,
+            0.0, 1.0,
+            1.0, 1.0,
             0.0, 0.0,
             1.0, 0.0
         };
-        JumpPos = JumpPos - BikerSpeed;
+        JumpPos = JumpPos - BikerSpeed * TimeScaleFactor;
         glLoadIdentity();
-        glTranslatef(JumpPos, -0.36, 0.0);
-        //glRotatef(180.0, 0.0, 0.0, 1.0);
-            
+        glTranslatef(JumpPos, -0.61, 0.0);
+        glRotatef(180.0, 0.0, 0.0, 1.0);
+        glRotatef(180.0, 0.0, 1.0, 0.0);
+        
+        //blending to make the object
         glEnable(GL_BLEND);
         //glBlendFunc(GL_ONE, GL_SRC_COLOR);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -506,7 +656,7 @@ float current_angle = 0.0;
         glVertexPointer(3, GL_FLOAT, 0, jump);
         glNormalPointer(GL_FLOAT, 0, normals);
         glTexCoordPointer(2, GL_FLOAT, 0, jumpCoords);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         if (JumpPos < -1.2 && DOwn) {
             ShowJump = false;
             JumpPos = 1.3;
@@ -523,26 +673,15 @@ float current_angle = 0.0;
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
     
     
-    if (TreeRuptor==true) frameNO = 1 + frameNO;
+    if (TreeRuptor==true) frameNO = 1 * TimeScaleFactor + frameNO;
     if (frameNO == trees[trees_size-1] + 30) frameNO = 0;
+    if (CloudRuptor==true) frameNO_clouds = 1 * TimeScaleFactor + frameNO_clouds;
+    if (frameNO_clouds == clouds[clouds_size-1] + 30) {
+        NSLog(@"frameno_clouds = 0");
+        frameNO_clouds = 0;
+    }
+    //NSLog(@"frameNO: %i, frameNO_clouds: %i, clouds[i]",frameNO,frameNO_clouds, clouds[i]);
 }
-
-/*- (void)drawRectangleWithWidth:(float)Width andHeight:(float) Height AtX:(float) x_translation AndY:(float) y_translation AndRotation:(float) RotAngle{
-    const GLfloat rectangle[] = {
-        -Width / 2, Height / 2, -0.057,
-        Width / 2, Height / 2, -0.057,
-        Width / 2, -Height / 2, -0.057,
-        -Width / 2, -Height / 2, -0.057
-    };
-    glLoadIdentity();
-    glTranslatef(x_translation, y_translation, 0.0f);
-    glRotatef(RotAngle, 0.0, 0.0, 1.0);
-    
-    //glBindTexture(GL_TEXTURE_2D, texture);
-    glVertexPointer(3, GL_FLOAT, 0, rectangle);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-}*/
 
 bool debug_events_bikerGL = NO;
 - (void)flapixEventFrequency:(NSNotification *)notification {
@@ -554,6 +693,7 @@ bool debug_events_bikerGL = NO;
     NSLog(@"flapixEVENTFREQUENCY!!!");
 }
 
+//function which executes stuffs after each blow
 - (void)flapixEventBlowStop:(NSNotification *)notification {
 	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
     ShowJump = true;
@@ -598,16 +738,17 @@ bool debug_events_bikerGL = NO;
     StarCounterLabel.text = [NSString stringWithFormat:@"%i",
                              [[[FlowerController currentFlapix] currentExercice] blow_star_count]];
     [self setNeedsDisplay];
+    //up_accel = up_accel * TimeScaleFactor;
 }
 
 - (void) pressStart {
     if ([[FlowerController currentFlapix] exerciceInCourse]) {
         NSLog(@"pressStart: stop");
         [[FlowerController currentFlapix] exerciceStop];
-    } else {
+    } else if ([[FlowerController currentFlapix] running]){
         NSLog(@"pressStart: start");
         [[FlowerController currentFlapix] exerciceStart];
-        [StartButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+        
     }
 }
 
@@ -628,16 +769,29 @@ bool debug_events_bikerGL = NO;
 -(void)flapixEventStop:(FLAPIX *)flapix {
 }
 
+// function which executes stuffs when an exercice is starting
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
+    [ItemsLabel removeFromSuperview];
+    [ItemRotationProg removeFromSuperview];
+    ItemsDisplayed = false;
+    [StartButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+    [ItemsButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
     if (debug_events_bikerGL) NSLog(@"BIKER flapixEvent  ExerciceStart");
     BikerSpeed = 0.02f;
     frameNO = 0;
+    frameNO_clouds = 0;
     NextTree = 0;
     TreeRuptor = true;
     NextTreePosition = 0;
+    NextCloud = 0;
+    CloudRuptor = true;
+    NextCloudPosition = 0;
     
     for (int i = 0; i < 5; i++) {
         TreesPositions[i] = 4.0;
+    }
+    for (int i = 0; i < 5; i++) {
+        CloudsPositions[i] = 4.0;
     }
     
     JumpType = 0;
@@ -663,6 +817,7 @@ bool debug_events_bikerGL = NO;
     [self setNeedsDisplay];
     //[self addSubview:StartButtonProg];
     [StartButtonProg setFrame:CGRectMake((self.frame.size.width - self.frame.size.width * 0.4479)/2, (self.frame.size.height - self.frame.size.height * 0.073)/2, self.frame.size.width * 0.4479, self.frame.size.height * 0.073)];
+    [ItemsButtonProg setFrame:CGRectMake(self.frame.size.width*0.85, self.frame.size.height/12, self.frame.size.height * 0.073, self.frame.size.height * 0.073)];
     //[self refreshStartButton];
 }
 
@@ -684,6 +839,7 @@ bool debug_events_bikerGL = NO;
     [self drawView];
 }
 
+//function that displays items when the button is hit
 - (void) displayItems {
     //button for displaying the items
     if (ItemsDisplayed) {

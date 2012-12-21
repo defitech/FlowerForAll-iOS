@@ -217,7 +217,6 @@
 		BC415D56167B30D400855354 /* BikerRondins.png in Resources */ = {isa = PBXBuildFile; fileRef = BC415D52167B30D400855354 /* BikerRondins.png */; };
 		BC415D57167B30D400855354 /* BikerStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC415D53167B30D400855354 /* BikerStar.png */; };
 		BC415D58167B30D400855354 /* BikerTreee.png in Resources */ = {isa = PBXBuildFile; fileRef = BC415D54167B30D400855354 /* BikerTreee.png */; };
-		BC415D59167B30D400855354 /* BikerTreeeCopie.png in Resources */ = {isa = PBXBuildFile; fileRef = BC415D55167B30D400855354 /* BikerTreeeCopie.png */; };
 		BC59556716270126002FA364 /* UserChooser_TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC59556516270126002FA364 /* UserChooser_TextCell.m */; };
 		BC59556816270126002FA364 /* UserChooser_TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC59556616270126002FA364 /* UserChooser_TextCell.xib */; };
 		BC59556A16270C67002FA364 /* UserChooser.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC59556916270C67002FA364 /* UserChooser.strings */; };
@@ -231,10 +230,14 @@
 		BC78E5EE1610550600896275 /* VolcanoApp~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5ED1610550600896275 /* VolcanoApp~ipad.xib */; };
 		BC78E5F0161056A400896275 /* FlowerHowTo~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5EF161056A400896275 /* FlowerHowTo~ipad.xib */; };
 		BC78E5F216105DE100896275 /* MenuView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5F116105DE100896275 /* MenuView~ipad.xib */; };
+		BC8715F916832DE30049B581 /* BikerGround.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8715F816832DE30049B581 /* BikerGround.png */; };
+		BC8715FB168470520049B581 /* BikerCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8715FA168470510049B581 /* BikerCloud.png */; };
+		BC8715FD1684747E0049B581 /* BikerJump.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8715FC1684747E0049B581 /* BikerJump.png */; };
 		BC89EFA8165675C1007ADC4C /* ResultsApp_List~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFA7165675C1007ADC4C /* ResultsApp_List~ipad.xib */; };
 		BC89EFAA165676B1007ADC4C /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFA9165676B1007ADC4C /* CalibrationApp.xib */; };
 		BC89EFAC1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */; };
 		BC9732E216679705008E0ABE /* HistoryGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9732E116679705008E0ABE /* HistoryGL.m */; };
+		BCCC705916821A56002D86F7 /* BikerArbre.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCC705816821A56002D86F7 /* BikerArbre.png */; };
 		BCD8AD221625999A007A32B7 /* UserChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8AD201625999A007A32B7 /* UserChooserViewController.m */; };
 		BCD8AD231625999A007A32B7 /* UserChooserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD8AD211625999A007A32B7 /* UserChooserViewController.xib */; };
 		D701908B141618510072D020 /* VolcanoApp_goal.wav in Resources */ = {isa = PBXBuildFile; fileRef = D701908A141618510072D020 /* VolcanoApp_goal.wav */; };
@@ -632,7 +635,6 @@
 		BC415D52167B30D400855354 /* BikerRondins.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerRondins.png; path = BikerApp/visual/BikerRondins.png; sourceTree = "<group>"; };
 		BC415D53167B30D400855354 /* BikerStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerStar.png; path = BikerApp/visual/BikerStar.png; sourceTree = "<group>"; };
 		BC415D54167B30D400855354 /* BikerTreee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerTreee.png; path = BikerApp/visual/BikerTreee.png; sourceTree = "<group>"; };
-		BC415D55167B30D400855354 /* BikerTreeeCopie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerTreeeCopie.png; path = BikerApp/visual/BikerTreeeCopie.png; sourceTree = "<group>"; };
 		BC415D5A167B320E00855354 /* ConstantsAndMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantsAndMacros.h; path = BikerApp/ConstantsAndMacros.h; sourceTree = "<group>"; };
 		BC415D5B167B320E00855354 /* OpenGLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenGLCommon.h; path = BikerApp/OpenGLCommon.h; sourceTree = "<group>"; };
 		BC59556416270126002FA364 /* UserChooser_TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChooser_TextCell.h; sourceTree = "<group>"; };
@@ -649,11 +651,15 @@
 		BC78E5ED1610550600896275 /* VolcanoApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "VolcanoApp~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5EF161056A400896275 /* FlowerHowTo~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlowerHowTo~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5F116105DE100896275 /* MenuView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MenuView~ipad.xib"; sourceTree = "<group>"; };
+		BC8715F816832DE30049B581 /* BikerGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerGround.png; path = BikerApp/visual/BikerGround.png; sourceTree = "<group>"; };
+		BC8715FA168470510049B581 /* BikerCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerCloud.png; path = BikerApp/visual/BikerCloud.png; sourceTree = "<group>"; };
+		BC8715FC1684747E0049B581 /* BikerJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerJump.png; path = BikerApp/visual/BikerJump.png; sourceTree = "<group>"; };
 		BC89EFA7165675C1007ADC4C /* ResultsApp_List~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultsApp_List~ipad.xib"; sourceTree = "<group>"; };
 		BC89EFA9165676B1007ADC4C /* CalibrationApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalibrationApp.xib; sourceTree = "<group>"; };
 		BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ParametersAppPickerProfileCell~ipad.xib"; sourceTree = "<group>"; };
 		BC9732E016679705008E0ABE /* HistoryGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryGL.h; sourceTree = "<group>"; };
 		BC9732E116679705008E0ABE /* HistoryGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryGL.m; sourceTree = "<group>"; };
+		BCCC705816821A56002D86F7 /* BikerArbre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerArbre.png; path = BikerApp/visual/BikerArbre.png; sourceTree = "<group>"; };
 		BCD0A618165CDDF5009F15E6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BCD8AD1F1625999A007A32B7 /* UserChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChooserViewController.h; sourceTree = "<group>"; };
 		BCD8AD201625999A007A32B7 /* UserChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserChooserViewController.m; sourceTree = "<group>"; };
@@ -1523,10 +1529,13 @@
 		BC415D51167B302A00855354 /* visual */ = {
 			isa = PBXGroup;
 			children = (
+				BC8715FC1684747E0049B581 /* BikerJump.png */,
+				BC8715FA168470510049B581 /* BikerCloud.png */,
+				BC8715F816832DE30049B581 /* BikerGround.png */,
+				BCCC705816821A56002D86F7 /* BikerArbre.png */,
 				BC415D52167B30D400855354 /* BikerRondins.png */,
 				BC415D53167B30D400855354 /* BikerStar.png */,
 				BC415D54167B30D400855354 /* BikerTreee.png */,
-				BC415D55167B30D400855354 /* BikerTreeeCopie.png */,
 			);
 			name = visual;
 			sourceTree = "<group>";
@@ -1767,7 +1776,10 @@
 				BC415D56167B30D400855354 /* BikerRondins.png in Resources */,
 				BC415D57167B30D400855354 /* BikerStar.png in Resources */,
 				BC415D58167B30D400855354 /* BikerTreee.png in Resources */,
-				BC415D59167B30D400855354 /* BikerTreeeCopie.png in Resources */,
+				BCCC705916821A56002D86F7 /* BikerArbre.png in Resources */,
+				BC8715F916832DE30049B581 /* BikerGround.png in Resources */,
+				BC8715FB168470520049B581 /* BikerCloud.png in Resources */,
+				BC8715FD1684747E0049B581 /* BikerJump.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
