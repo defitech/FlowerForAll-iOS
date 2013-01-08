@@ -236,7 +236,6 @@ static NSMutableDictionary* appList;
         [self.view bringSubviewToFront:menuButton];
     } else {
         [self.view bringSubviewToFront:startButton];
-        
     }
 }
 
@@ -257,6 +256,7 @@ static NSMutableDictionary* appList;
     // init App list
     appList = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                [NSNull alloc], @"VolcanoApp",
+               [NSNull alloc], @"BikerApp",
                [NSNull alloc], @"ParametersApp",
                [NSNull alloc], @"CalibrationApp",
                [NSNull alloc], @"ResultsApp",

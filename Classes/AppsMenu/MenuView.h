@@ -10,6 +10,7 @@
 
 #import <UIKit/UIKit.h>
 #import "VolcanoApp.h"
+#import "BikerApp.h"
 
 #import "RSPageControl.h"
 
@@ -25,10 +26,11 @@
     
     // Activities
     VolcanoApp *volcanoGame;
+    BikerApp * bikerGame;
     UIView *videoPlayerView;
 	
 	//The buttons inside each of the game sub views
-    IBOutlet UILabel *volcanoLabel, *videoPlayerLabel, *settingsLabel, *resultsLabel, *usersLabel, *calibrationLabel;
+    IBOutlet UILabel *bikerLabel,*volcanoLabel, *videoPlayerLabel, *settingsLabel, *resultsLabel, *usersLabel, *calibrationLabel;
 
 	
 	//There is no navigation controller here. So we add a navigation bar individually.
@@ -52,9 +54,10 @@
 
 //Activities Properties
 
-@property(nonatomic,retain) UILabel *volcanoLabel, *videoPlayerLabel, *settingsLabel, *resultsLabel, *usersLabel, *calibrationLabel;
+@property(nonatomic,retain) UILabel *bikerLabel, *volcanoLabel, *videoPlayerLabel, *settingsLabel, *resultsLabel, *usersLabel, *calibrationLabel;
 
 - (IBAction) volcanoTouch:(id) sender;
+- (IBAction) bikerTouch:(id) sender;
 - (IBAction) flowerHowTo:(id) sender;
 - (IBAction) settingsTouch:(id) sender;
 - (IBAction) calibrationTouch:(id) sender;

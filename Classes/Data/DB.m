@@ -68,6 +68,7 @@ static sqlite3 *database;
                     NSLocalizedString(@"Difficult", @"Name of the difficult Profile")];
                 
                 [DB execute:@"CREATE TABLE blows(timestamp NUM PRIMARY KEY, duration NUM, ir_duration NUM, goal INTEGER DEFAULT 0, median_frequency_hz NUM DEFAULT 0) ;"];
+                [DB execute:@"CREATE TABLE stars_items(userID NUM PRIMARY KEY, StarsCount INTEGER DEFAULT 0, ItemsAvailable INTEGER DEFAULT 0) ;"];
                 [DB execute:@"CREATE TABLE exercices(start_ts NUM PRIMARY KEY, stop_ts NUM, \
                                     frequency_target_hz NUM, frequency_tolerance_hz NUM, \
                                     duration_expiration_s NUM, duration_exercice_s NUM, \
@@ -604,5 +605,23 @@ static sqlite3 *database;
     [DB executeWF:@"DELETE FROM users WHERE id=%i",ID];
 }
 
+/*************************************************** STARS TOTAL *******************************************************/
++(int) fetchStarsCount:(NSInteger)ID {
+    NSString* stars_string = [DB getSingleValueWF:@"SELECT StarsCount FROM stars_items where userID = %i",ID];
+    return [stars_string intValue];
+}
+
++(int) fetchItemsAvail:(NSInteger)ID {
+    NSString* items_string = [DB getSingleValueWF:@"SELECT ItemsAvailable FROM stars_items where userID = %i",ID];
+    return [items_string intValue];
+}
+
++(void)deleteStarsItems:(NSInteger)ID {
+    [DB executeWF:@"DELETE FROM stars_items WHERE userID=%i",ID];
+}
+
++(void)insertStarsItems:(int)nbOfStars withItems:(int)newItems atID:(NSInteger)ID {
+    [DB executeWF:@"INSERT INTO stars_items(userID, StarsCount, ItemsAvailable) VALUES (%i, %i, %i)",ID,nbOfStars,newItems];
+}
 
 @end

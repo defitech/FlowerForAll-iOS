@@ -25,11 +25,15 @@
 @implementation MenuView
 
 
-@synthesize page2, web, scrollView, backItem, navigationBar, pageControl,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel, usersLabel, calibrationLabel;
+@synthesize page2, web, scrollView, backItem, navigationBar, pageControl, bikerLabel,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel, usersLabel, calibrationLabel;
 
 
 - (IBAction)usersTouch:(id) sender {
     [FlowerController pushApp:@"Users"];
+}
+
+- (IBAction) bikerTouch:(id) sender {
+    [FlowerController pushApp:@"BikerApp"];
 }
 
 - (IBAction) volcanoTouch:(id) sender {
@@ -77,6 +81,7 @@ FlowerHowTo *flowerHowTo;
 	navigationBar.topItem.title = NSLocalizedString(@"Flower breath", @"Menu Title");
 	
 	//Set title of game buttons for all states
+    [bikerLabel setText:[BikerApp appTitle]];
     [volcanoLabel setText:[VolcanoApp appTitle]];
     [videoPlayerLabel setText:[FlowerHowTo appTitle]];
     [settingsLabel setText:[ParametersApp appTitle]];
@@ -212,6 +217,7 @@ FlowerHowTo *flowerHowTo;
 - (void)dealloc {
     [backItem release];
 	[scrollView release];
+    [bikerGame release];
 	[volcanoGame release];
 	[videoPlayerView release];
     [super dealloc];
