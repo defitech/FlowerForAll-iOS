@@ -10,9 +10,7 @@
 
 #import "NeedleGL.h"
 #import "FLAPIX.h"
-#import "HistoryView.h"
 #import "ParametersApp.h"
-#import "HistoryView.h"
 #import "HistoryGL.h"
 
 
