@@ -408,7 +408,7 @@
 										<reference key="IBUINormalTitleShadowColor" ref="865084460"/>
 										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">BMXonBiker.png</string>
+											<string key="NSResourceName">BMXonBiker-Icon.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="259339275"/>
 										<reference key="IBUIFont" ref="83977446"/>
@@ -938,7 +938,7 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>BMXonBiker.png</string>
+				<string>BMXonBiker-Icon.png</string>
 				<string>CalibrationApp-Icon.png</string>
 				<string>FlowerHowTo-icon.png</string>
 				<string>ParametersApp-Icon.png</string>

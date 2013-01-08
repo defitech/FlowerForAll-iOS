@@ -12,7 +12,7 @@
 #else
 #import <OpenGL/OpenGL.h>
 #endif
-#import "ConstantsAndMacros.h"
+#import "BikerConstantsAndMacros.h"
 
 @class OpenGLWaveFrontMaterial;
 #pragma mark -

@@ -99,7 +99,7 @@
     }
 }
 
-bool debug_events_biker = NO;
+//bool debug_events_biker = NO;
 /*- (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good current_exercice:(double)percent_done {
     if (! [[FlowerController currentFlapix] exerciceInCourse]) return;
     if (percent_done > 0)

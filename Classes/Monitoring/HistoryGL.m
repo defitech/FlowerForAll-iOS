@@ -23,15 +23,14 @@
 
 - (BOOL) createFramebuffer;
 - (void) destroyFramebuffer;
-- (void) drawRectangleDuration;
+//- (void) drawRectangleDuration;
 
 @end
 
 
 @implementation HistoryGL
 
-@synthesize context;
-@synthesize animationTimer;
+@synthesize context, animationTimer, animationInterval;
 
 //array to contain historic blows
 NSMutableArray *BlowsArray;
@@ -144,25 +143,17 @@ float lastExerciceStopTimeStamp2 = 0;
 
 - (void) startReloadTimer {
     if ([FlowerController currentFlapix] == nil || ! [[FlowerController currentFlapix] running]) return;
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                                      target:self selector:@selector(timerFireMethod:)
-                                                    userInfo:nil  repeats:YES];
-//    repeatingTimer = timer;
+
     
 }
 
-- (void) stopReloadTimer {
-//    [repeatingTimer invalidate];
-//    repeatingTimer = nil;
+//- (void) stopReloadTimer {
     
-}
+//}
 
-- (void) timerFireMethod:(NSTimer*)theTimer {
-    if (! [[FlowerController currentFlapix] running]) [self stopReloadTimer];
-//    @synchronized([history getHistoryArray]) {
-//        [graph reloadData];
-//    }
-}
+//- (void) timerFireMethod:(NSTimer*)theTimer {
+//    if (! [[FlowerController currentFlapix] running]) [self stopReloadTimer];
+//}
 
 - (void)setupView {
     GLfloat size;

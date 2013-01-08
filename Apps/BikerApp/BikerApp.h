@@ -30,7 +30,7 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *starLabel;
 
-- (void)playSystemSound:(NSString *)soundFilename;
+//- (void)playSystemSound:(NSString *)soundFilename;
 - (IBAction) pressStart:(id) sender;
 
 

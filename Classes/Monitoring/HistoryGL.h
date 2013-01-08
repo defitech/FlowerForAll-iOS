@@ -45,7 +45,7 @@
 @property NSTimeInterval animationInterval;
 
 
-- (void)drawLine:(float)x1 y1:(float)y1  z1:(float)z1 x2:(float)x2 y2:(float)y2 z2:(float)z2 ;
+//- (void)drawLine:(float)x1 y1:(float)y1  z1:(float)z1 x2:(float)x2 y2:(float)y2 z2:(float)z2 ;
 
 - (void)startAnimation;
 - (void)stopAnimation;
@@ -53,7 +53,7 @@
 - (void)setupView;
 - (void)checkGLError:(BOOL)visibleCheck;
 
--(void) historyChange:(id*) history;
+//-(void) historyChange:(id*) history;
 
 -(void) reloadFromDB;
 

@@ -391,8 +391,8 @@
 		BC415D4A167B302400855354 /* BikerApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "BikerApp~ipad.xib"; path = "BikerApp/BikerApp~ipad.xib"; sourceTree = "<group>"; };
 		BC415D4B167B302400855354 /* BikerGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BikerGL.h; path = BikerApp/BikerGL.h; sourceTree = "<group>"; };
 		BC415D4C167B302400855354 /* BikerGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BikerGL.m; path = BikerApp/BikerGL.m; sourceTree = "<group>"; };
-		BC415D5A167B320E00855354 /* ConstantsAndMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantsAndMacros.h; path = BikerApp/ConstantsAndMacros.h; sourceTree = "<group>"; };
-		BC415D5B167B320E00855354 /* OpenGLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenGLCommon.h; path = BikerApp/OpenGLCommon.h; sourceTree = "<group>"; };
+		BC415D5A167B320E00855354 /* BikerConstantsAndMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BikerConstantsAndMacros.h; path = BikerApp/BikerConstantsAndMacros.h; sourceTree = "<group>"; };
+		BC415D5B167B320E00855354 /* BikerOpenGLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BikerOpenGLCommon.h; path = BikerApp/BikerOpenGLCommon.h; sourceTree = "<group>"; };
 		BC59556416270126002FA364 /* UserChooser_TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChooser_TextCell.h; sourceTree = "<group>"; };
 		BC59556516270126002FA364 /* UserChooser_TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserChooser_TextCell.m; sourceTree = "<group>"; };
 		BC59556616270126002FA364 /* UserChooser_TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserChooser_TextCell.xib; sourceTree = "<group>"; };
@@ -909,8 +909,8 @@
 		BC415D45167B2FFB00855354 /* BikerApp */ = {
 			isa = PBXGroup;
 			children = (
-				BC415D5A167B320E00855354 /* ConstantsAndMacros.h */,
-				BC415D5B167B320E00855354 /* OpenGLCommon.h */,
+				BC415D5A167B320E00855354 /* BikerConstantsAndMacros.h */,
+				BC415D5B167B320E00855354 /* BikerOpenGLCommon.h */,
 				BC415D47167B302400855354 /* BikerApp.h */,
 				BC415D48167B302400855354 /* BikerApp.m */,
 				BC415D49167B302400855354 /* BikerApp.xib */,

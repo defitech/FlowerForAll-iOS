@@ -17,7 +17,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGLDrawable.h>
 #import "ParametersManager.h"
-#import "OpenGLCommon.h"
+#import "BikerOpenGLCommon.h"
 #import "DB.h"
 #import "UserManager.h"
 
@@ -37,8 +37,7 @@
 
 @implementation BikerGL
 
-@synthesize context;
-@synthesize animationTimer;
+@synthesize context, animationTimer, animationInterval;
 
 
 /********* GAME PARAMETERS *****************/
