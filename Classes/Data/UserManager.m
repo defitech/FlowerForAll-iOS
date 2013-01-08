@@ -104,7 +104,7 @@ static User* currentU;
         return;
     }
     [DataAccess createDirectory:@"trash"];
-    NSString *dstDir = [NSString stringWithFormat:@"trash/%i.user",CFAbsoluteTimeGetCurrent()];
+    NSString *dstDir = [NSString stringWithFormat:@"trash/%i.user",(int)CFAbsoluteTimeGetCurrent()];
     [DataAccess moveItemAtPath:[self uDir:uid] toPath:dstDir];
     [[NSNotificationCenter defaultCenter] postNotificationName: @"userDataChangeEvent" object:nil];
 }

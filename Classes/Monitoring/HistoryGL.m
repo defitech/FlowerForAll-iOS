@@ -165,7 +165,6 @@ float lastExerciceStopTimeStamp2 = 0;
 }
 
 - (void)setupView {
-    const GLfloat zNear = 0.1, zFar = 1000.0, fieldOfView = 60.0;
     GLfloat size;
     
     glEnable(GL_DEPTH_TEST);
