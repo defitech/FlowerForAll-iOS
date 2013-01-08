@@ -316,7 +316,7 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="924984516"/>
-										<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="1003476823">
+										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">ResultsApp-Icon.png</string>
 										</object>
@@ -390,7 +390,10 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="924984516"/>
-										<reference key="IBUINormalBackgroundImage" ref="1003476823"/>
+										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">BMXonBiker.png</string>
+										</object>
 										<reference key="IBUIFontDescription" ref="903219407"/>
 										<reference key="IBUIFont" ref="882699345"/>
 									</object>
@@ -435,6 +438,7 @@
 						<string key="NSFrame">{{0, 841}, {768, 36}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:643</string>
 						<reference key="IBUIBackgroundColor" ref="610939233"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -992,6 +996,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="BMXonBiker.png">{1024, 1024}</string>
 			<string key="CalibrationApp-Icon.png">{124, 124}</string>
 			<string key="FlowerHowTo-icon.png">{512, 512}</string>
 			<string key="ParametersApp-Icon.png">{96, 96}</string>

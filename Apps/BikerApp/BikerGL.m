@@ -58,7 +58,7 @@ const float JumpMaxRotation = 45.0;
 /******* END GAME PARAMETERS **************/
 /********* GAME VARIABLES *****************/
 float YPos;
-GLuint      texture[5];
+GLuint      texture[6];
 float StartTreePosition = 1.5;
 float StartCloudPosition = 1.5;
 float TreesPositions[5];
@@ -191,12 +191,17 @@ bool ItemRotation;
             ItemRotation = false;
         //} else ItemRotation = true;
         
-        //label for diplaying the number of stars
-        StarCounterLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 77, 56, 56)];
-        StarCounterLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
+        //label for diplaying the number of stars on iPad or iPhone
+        if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
+            StarCounterLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 77, 56, 56)];
+            StarCounterLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
+        } else {
+            StarCounterLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.5, 27, 65, 65)];
+            StarCounterLabel.font = [UIFont fontWithName:@"Helvetica" size: 21.0];
+        }
+        
         StarCounterLabel.text = [NSString stringWithFormat:@"%i",
                                  [[[FlowerController currentFlapix] currentExercice] blow_star_count]];
-        //NSLog(@"blowstarcount:%i",[[[FlowerController currentFlapix] currentExercice] blow_star_count]);
         StarCounterLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:StarCounterLabel];
         
@@ -206,8 +211,13 @@ bool ItemRotation;
         StartButtonProg = [[UIButton buttonWithType:UIButtonTypeRoundedRect]retain];
         StartButtonProg.frame = CGRectMake((self.frame.size.width - self.frame.size.width * 0.4479)/2, (self.frame.size.height - self.frame.size.height * 0.073)/2, self.frame.size.width * 0.4479, self.frame.size.height * 0.073);
         StartButtonProg.backgroundColor = [UIColor clearColor];
+        
         [StartButtonProg setTitleColor:[UIColor colorWithRed:0.286 green:0.38 blue:0.592 alpha:1.0] forState:UIControlStateNormal];
-        StartButtonProg.titleLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
+        if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
+            StartButtonProg.titleLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
+        } else {
+             StartButtonProg.titleLabel.font = [UIFont fontWithName:@"Helvetica" size: 17.0];
+        }
         [StartButtonProg setTitle:@"Start Exercice" forState:UIControlStateNormal];
         [StartButtonProg addTarget: self action:@selector(pressStart) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:StartButtonProg];
@@ -221,7 +231,7 @@ bool ItemRotation;
         [ItemsButtonProg setTitle:@"Items" forState:UIControlStateNormal];
         [ItemsButtonProg setBackgroundImage:[UIImage imageNamed:@"BikerTreee.png"] forState:UIControlStateNormal];
         [ItemsButtonProg addTarget: self action:@selector(displayItems) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:ItemsButtonProg];
+        //[self addSubview:ItemsButtonProg];
         //[ItemsButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
         
         
@@ -252,11 +262,11 @@ bool ItemRotation;
     
     
     //generate and bind texture
-    glGenTextures(5, &texture[0]);
+    glGenTextures(6, &texture[0]);
     
     // the picture height and width in pixels must be powers of 2 !!!
     glBindTexture(GL_TEXTURE_2D, texture[0]);
-    [self LoadPic:@"BikerStar"];
+    [self LoadPic:@"BikerBiker"];
     glBindTexture(GL_TEXTURE_2D, texture[1]);
     [self LoadPic:@"BikerGround"];    
     glBindTexture(GL_TEXTURE_2D, texture[2]);
@@ -265,6 +275,8 @@ bool ItemRotation;
     [self LoadPic:@"BikerJump"];
     glBindTexture(GL_TEXTURE_2D, texture[4]);
     [self LoadPic:@"BikerCloud"];
+    glBindTexture(GL_TEXTURE_2D, texture[5]);
+    [self LoadPic:@"BikerandStar"];
     
     for (int i = 0; i < 5; i++) {
         TreesPositions[i] = 4.0;
@@ -409,7 +421,7 @@ float current_angle = 0.0;
     
     
     
-    //              DRAW THE STAR
+    //              DRAW THE BIKER
     static GLfloat rot = 0.0;
     
     glColor4f(1.0, 1.0, 1.0, 1.0);
@@ -421,8 +433,8 @@ float current_angle = 0.0;
     static const Vertex3D vertices[] = {
         {-0.2,  0.2, -0.1},
         { 0.2,  0.2, -0.1},
-        {-0.2, -0.2, -0.1},
-        { 0.2, -0.2, -0.1}
+        {-0.2, -0.6, -0.1},
+        { 0.2, -0.6, -0.1}
     };
     static const Vector3D normals[] = {
         {0.0, 0.0, 1.0},
@@ -453,7 +465,7 @@ float current_angle = 0.0;
         }
         glTranslatef(0.0,YPos, 0.0);
         
-    } else if (JumpType == 2 && JumpPos < 0.2) {
+    } else if (JumpType == 2 && JumpPos < 0.23) {
         gravity_accel = gravity_accel + gravity;
         YPos = YPos + up_accel - gravity_accel;
         rotation_angle_current = rotation_angle_current + rotation_speed;
@@ -494,6 +506,7 @@ float current_angle = 0.0;
         //NSLog(@"third jumprot: %f",JumpRotation);
     }
     glRotatef(180.0 + rot, 0.0, 0.0, 1.0);
+    glRotatef(180.0, 0.0, 1.0, 0.0);
     
     glEnable(GL_BLEND);
     //glBlendFunc(GL_ONE, GL_SRC_COLOR);
@@ -517,10 +530,10 @@ float current_angle = 0.0;
         { 2, -0.2, -0.1}
     };
     static const GLfloat grassCoords[] = {
-        0.0, 1.0,
-        1.0, 1.0,
-        0.0, 0.15,
-        1.0, 0.15
+        0.0, 0.8,
+        1.0, 0.8,
+        0.0, 0.18,
+        1.0, 0.18
     };
     
     glDisable(GL_BLEND);
