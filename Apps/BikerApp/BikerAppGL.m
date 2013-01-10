@@ -6,7 +6,7 @@
 //
 //
 
-#import "BikerGL.h"
+#import "BikerAppGL.h"
 #import "BikerApp.h"
 
 #import "FLAPIBlow.h"
@@ -17,7 +17,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGLDrawable.h>
 #import "ParametersManager.h"
-#import "BikerOpenGLCommon.h"
+#import "BikerAppOpenGLCommon.h"
 #import "DB.h"
 #import "UserManager.h"
 
@@ -41,11 +41,14 @@
 
 
 /********* GAME PARAMETERS *****************/
-float BikerSpeed;
-float BikerSpeedFromTime;
-float TimeScaleFactor;
-int JumpType;
 const float gravity = 0.002;
+const float JumpMaxRotation = 45.0;
+float StartTreePosition = 1.5;
+float StartCloudPosition = 1.5;
+const int trees_size = 20;
+const int clouds_size = 20;
+/******* END GAME PARAMETERS **************/
+/********* GAME VARIABLES *****************/
 float gravity_accel;
 float gravity_accelFromTime;
 float up_accel;
@@ -53,13 +56,12 @@ float rotation_speed;
 float unrotationSpeed;
 float rotation_angle_current;
 float JumpRotation;
-const float JumpMaxRotation = 45.0;
-/******* END GAME PARAMETERS **************/
-/********* GAME VARIABLES *****************/
+float BikerSpeed;
+float BikerSpeedFromTime;
+float TimeScaleFactor;
+int JumpType;
 float YPos;
 GLuint      texture[6];
-float StartTreePosition = 1.5;
-float StartCloudPosition = 1.5;
 float TreesPositions[5];
 float CloudsPositions[5];
 int frameNO = 0;
@@ -70,12 +72,10 @@ const int clouds[] = {19, 87, 160, 229, 297, 370, 410, 500, 680, 748,
     822, 900, 941, 1026, 1110, 1192, 1283, 1379, 1444, 1555};
 const float cloudsYPos[] = {-0.1, 0.2, 0.13, 0.0, -0.2, -0.12, 0.02, -0.06, -0.18, 0.13,
                            -0.15, 0.02, -0.13, 0.10, -0.12, -0.19, 0.12, 0.06, 0.18, -0.13};
-int NextTreePosition;
-int NextCloudPosition;
-const int trees_size = 20;
-const int clouds_size = 20;
-int NextTree;
-int NextCloud;
+int NextTreePosition;       //index of the next tree in the trees[] array
+int NextCloudPosition;      //index of the next cloud in the clouds[] array
+int NextTree;               //index of the next tree in the array which contains the positions on the screen
+int NextCloud;              //index of the next cloud in the array which contains the positions on the screen
 bool TreeRuptor;
 bool CloudRuptor;
 int combo;
@@ -265,17 +265,17 @@ bool ItemRotation;
     
     // the picture height and width in pixels must be powers of 2 !!!
     glBindTexture(GL_TEXTURE_2D, texture[0]);
-    [self LoadPic:@"BikerBiker"];
+    [self LoadPic:@"BikerAppBiker"];
     glBindTexture(GL_TEXTURE_2D, texture[1]);
-    [self LoadPic:@"BikerGround"];    
+    [self LoadPic:@"BikerAppGround"];    
     glBindTexture(GL_TEXTURE_2D, texture[2]);
-    [self LoadPic:@"BikerArbre"];
+    [self LoadPic:@"BikerAppArbre"];
     glBindTexture(GL_TEXTURE_2D, texture[3]);
-    [self LoadPic:@"BikerJump"];
+    [self LoadPic:@"BikerAppJump"];
     glBindTexture(GL_TEXTURE_2D, texture[4]);
-    [self LoadPic:@"BikerCloud"];
+    [self LoadPic:@"BikerAppCloud"];
     glBindTexture(GL_TEXTURE_2D, texture[5]);
-    [self LoadPic:@"BikerandStar"];
+    [self LoadPic:@"BikerAppBikerandStar"];
     
     for (int i = 0; i < 5; i++) {
         TreesPositions[i] = 4.0;
@@ -330,7 +330,7 @@ float current_angle = 0.0;
         timeSinceLastDraw = [NSDate timeIntervalSinceReferenceDate] - lastDrawTime;
         //rot+=  60 * timeSinceLastDraw * BikerSpeed;
         //BikerSpeedFromTime = BikerSpeed * timeSinceLastDraw * 33 ;
-        TimeScaleFactor = timeSinceLastDraw * 40;
+        TimeScaleFactor = timeSinceLastDraw * 60;
         
     }
     lastDrawTime = [NSDate timeIntervalSinceReferenceDate];
@@ -348,13 +348,10 @@ float current_angle = 0.0;
         lastKeyframeTime = [NSDate timeIntervalSinceReferenceDate];
     static AnimationDirection direction = kAnimationDirectionForward;
     
-    //glClearColor(1.0, 1.0, 1.0, 1.0);
-    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     glTranslatef(0.0,0.0,0.0);
     glRotatef(-90.0, 1.0, 0.0, 0.0); // Blender uses Z-up, not Y-up like OpenGL ES
     
-    //static VertexData3D ballVertexData[kBall1NumberOfVertices];
     static const VertexData3D sourcevertices[] = {
         {-0.2,  0.2, 0.41},
         { 0.2,  0.2, 0.41},
@@ -481,12 +478,12 @@ float current_angle = 0.0;
             glRotatef(rotation_angle_current, 1.0, 1.0, 1.0);
         }
     } else {
-        glTranslatef(0.0, -0.45 + 0.005 * sin(1.5*frameNO) * TimeScaleFactor, 0.0);
+        glTranslatef(0.0, -0.45 + 0.002 * sin(0.8*frameNO) * TimeScaleFactor, 0.0);
     }
     
-    if (combo >0) {
-        glColor4f(1.0, 0.7, 0.7, 1.0);
-    }
+    //if (combo >0) {
+    //    glColor4f(1.0, 0.7, 0.7, 1.0);
+    //}
     
     //implementing the rotation when hitting the jump
     if (JumpType > 0 && JumpRotation < JumpMaxRotation && JumpPos < 0.3 && unrotate == 0) {
@@ -511,7 +508,11 @@ float current_angle = 0.0;
     //glBlendFunc(GL_ONE, GL_SRC_COLOR);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    glBindTexture(GL_TEXTURE_2D, texture[0]);
+    if (combo >0) {
+        glBindTexture(GL_TEXTURE_2D, texture[5]);
+    } else {
+        glBindTexture(GL_TEXTURE_2D, texture[0]);
+    }
     glVertexPointer(3, GL_FLOAT, 0, vertices);
     glNormalPointer(GL_FLOAT, 0, normals);
     glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
@@ -553,11 +554,15 @@ float current_angle = 0.0;
     
     
     //          DRAW TREES
-    if (frameNO == trees[NextTreePosition]) {
+    if (frameNO >= trees[NextTreePosition]) {
         TreesPositions[NextTree] = 1.5;
-        NextTreePosition = (NextTreePosition + 1) % trees_size;
+        while ( frameNO >= trees[NextTreePosition] && frameNO < trees[trees_size-1]) {
+            NextTreePosition = (NextTreePosition + 1) % trees_size;
+            //NSLog(@"in the tree while loop");
+            //if (frameNO == trees[0]) frameNO = 0;
+        }
         NextTree = (NextTree + 1) % 5;
-        //NSLog(@"NextTree:%i; frameno: %i",NextTree, frameNO);
+        //NSLog(@"frameno: %i; NextTreePosition:%i", frameNO, NextTreePosition);
     }
 
     for (int i = 0; i < 5; i++) {
@@ -592,15 +597,19 @@ float current_angle = 0.0;
             
             TreesPositions[i] = TreesPositions[i] - BikerSpeed * TimeScaleFactor;
         }
-        
     }
     
     //          DRAW CLOUDS
-    if (frameNO_clouds == clouds[NextCloudPosition]) {
+    if (frameNO_clouds >= clouds[NextCloudPosition]) {
         CloudsPositions[NextCloud] = 1.5;
-        NextCloudPosition = (NextCloudPosition + 1) % clouds_size;
+        //NSLog(@"NextCloudbefore:%i; frameno: %i",NextCloud, frameNO_clouds);
+        while (frameNO_clouds >= clouds[NextCloudPosition] && frameNO_clouds < clouds[clouds_size-1]) {
+            NextCloudPosition = (NextCloudPosition + 1) % clouds_size;
+        }
+        //if (frameNO_clouds >= clouds[clouds_size-1]) frameNO_clouds = 0;
+        //NSLog(@"NextCloudafter:%i; frameno: %i", NextCloud, frameNO_clouds);
+        //frameNO_clouds++;
         NextCloud = (NextCloud + 1) % 5;
-        NSLog(@"NextCloud:%i; frameno: %i",NextCloud, frameNO_clouds);
     }
     
     for (int i = 0; i < 5; i++) {
@@ -686,13 +695,17 @@ float current_angle = 0.0;
     
     
     if (TreeRuptor==true) frameNO = 1 * TimeScaleFactor + frameNO;
-    if (frameNO == trees[trees_size-1] + 30) frameNO = 0;
+    if (frameNO >= trees[trees_size-1]) {
+        frameNO = 0;
+        NextTreePosition = 0;
+    }
     if (CloudRuptor==true) frameNO_clouds = 1 * TimeScaleFactor + frameNO_clouds;
-    if (frameNO_clouds == clouds[clouds_size-1] + 30) {
+    if (frameNO_clouds >= clouds[clouds_size-1]) {
         NSLog(@"frameno_clouds = 0");
         frameNO_clouds = 0;
+        NextCloudPosition = 0;
     }
-    //NSLog(@"frameNO: %i, frameNO_clouds: %i, clouds[i]",frameNO,frameNO_clouds, clouds[i]);
+    //NSLog(@"frameNO_clouds: %i, frameNO: %i, next cloud: %i, next tree: %i",frameNO_clouds, frameNO, clouds[NextCloudPosition], trees[NextTreePosition]);
 }
 
 bool debug_events_bikerGL = NO;
@@ -789,7 +802,7 @@ bool debug_events_bikerGL = NO;
     [StartButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
     [ItemsButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
     if (debug_events_bikerGL) NSLog(@"BIKER flapixEvent  ExerciceStart");
-    BikerSpeed = 0.02f;
+    BikerSpeed = 0.015f;
     frameNO = 0;
     frameNO_clouds = 0;
     NextTree = 0;

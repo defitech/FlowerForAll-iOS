@@ -379,7 +379,7 @@
 										<reference key="IBUINormalTitleShadowColor" ref="924984516"/>
 										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">BMXonBiker-Icon.png</string>
+											<string key="NSResourceName">BikerApp-Icon.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="903219407"/>
 										<reference key="IBUIFont" ref="882699345"/>
@@ -851,7 +851,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="BMXonBiker-Icon.png">{256, 256}</string>
+			<string key="BikerApp-Icon.png">{256, 256}</string>
 			<string key="CalibrationApp-Icon.png">{124, 124}</string>
 			<string key="FlowerHowTo-icon.png">{512, 512}</string>
 			<string key="ParametersApp-Icon.png">{96, 96}</string>
