@@ -195,7 +195,7 @@
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* FlowerForAll_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerForAll_Prefix.pch; sourceTree = "<group>"; };
-		4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-icon.png"; sourceTree = "<group>"; };
+		4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlowerHowTo-icon.png"; path = "../Apps/FlowerHowTo/FlowerHowTo-icon.png"; sourceTree = "<group>"; };
 		4E081DCF1419F4DD003C9178 /* FlowerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlowerApp.m; path = AppsMenu/FlowerApp.m; sourceTree = "<group>"; };
 		4E101E531437193B002BFDCC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FlowerHowTo.strings; sourceTree = "<group>"; };
 		4E101E5514371947002BFDCC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FlowerHowTo.strings; sourceTree = "<group>"; };
@@ -608,7 +608,6 @@
 				4EC7FF39143F269C00B534E0 /* documents */,
 				4E101E521437193B002BFDCC /* FlowerHowTo.strings */,
 				4E4B815A14165374009CC45D /* FlowerHowTo.m4v */,
-				4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */,
 				4EC7FF46143F2ACC00B534E0 /* FlowerHowTo.h */,
 				4EC7FF47143F2ACC00B534E0 /* FlowerHowTo.m */,
 				4EC7FF48143F2ACC00B534E0 /* FlowerHowTo.xib */,
@@ -837,6 +836,7 @@
 		4ED5F32B14346B0500520737 /* AppsMenu */ = {
 			isa = PBXGroup;
 			children = (
+				4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */,
 				4EA1A3B51420E8B800B11705 /* MenuView.xib */,
 				BC78E5F116105DE100896275 /* MenuView~ipad.xib */,
 				4E8F591613A7AF6B00D9D3A7 /* MenuView.h */,
