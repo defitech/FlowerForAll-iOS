@@ -1420,6 +1420,7 @@
 					armv7,
 				);
 				CLANG_LINK_OBJC_RUNTIME = FALSE;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Def defitech (LY7J875EWX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1436,6 +1437,7 @@
 					"-all_load",
 					"-ObjC",
 				);
+				PROVISIONING_PROFILE = "90C79CDB-7C75-483F-BF02-1E5970B130B6";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
@@ -1453,7 +1455,7 @@
 					armv7,
 				);
 				CLANG_LINK_OBJC_RUNTIME = FALSE;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Def defitech (LY7J875EWX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fondation Defitech";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1469,6 +1471,7 @@
 					"-all_load",
 					"-ObjC",
 				);
+				PROVISIONING_PROFILE = "90C79CDB-7C75-483F-BF02-1E5970B130B6";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CE105823-AEAC-48F6-91F4-E7B1766DAAB5";
 				SDKROOT = iphoneos4.3;
 				SKIP_INSTALL = YES;
