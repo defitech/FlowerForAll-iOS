@@ -157,7 +157,7 @@ float lastExerciceStopTimeStamp2 = 0;
     float widthHist = width * 0.893;
     float widthNeedle = width * 0.107;
     
-    const GLfloat needleCenterX = -1.0f + widthNeedle/2, needleCenterY = -1.0f, needleCenterZ = 0.0f;
+    //const GLfloat needleCenterX = -1.0f + widthNeedle/2, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     
     GLfloat size;
     
@@ -203,19 +203,19 @@ float lastExerciceStopTimeStamp2 = 0;
         [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelDuration setText:@"sec"];
     } else {
-        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/3, height/2) ];
+        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, 0.0, width*1/3, height/2) ];
         [labelPercent setBackgroundColor:[UIColor blackColor]];
         [labelPercent setTextColor:[UIColor whiteColor]];
         [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelPercent setText:@"%"];
         
-        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*5/6, 0.0, width*1/4, height/2) ];
+        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.85, 0.0, width*1/4, height/2) ];
         [labelFrequency setBackgroundColor:[UIColor blackColor]];
         [labelFrequency setTextColor:[UIColor whiteColor]];
         [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelFrequency setText:@"Hz"];
         
-        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, height/2, width*1/3, height/2) ];
+        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, height/2, width*1/3, height/2) ];
         [labelDuration setBackgroundColor:[UIColor blackColor]];
         [labelDuration setTextColor:[UIColor whiteColor]];
         [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
@@ -269,13 +269,8 @@ float lastExerciceStopTimeStamp2 = 0;
     if (flapix == nil) return;
 
     /*************** Logic code ******************/
-    // Frame dimensions
-    float width = self.frame.size.width;
-    float height = self.frame.size.height;
-    float widthHist = width * 0.893;
-    float widthNeedle = width * 0.107;
-    
-    const GLfloat needleCenterX = -1.411f, needleCenterY = -0.15f, needleCenterZ = 0.0f;
+    // Frame dimensions    
+    const GLfloat needleCenterX = -1.311f, needleCenterY = -0.15f, needleCenterZ = 0.0f;
     
     //static float position_actual = 0.0f;
     static float speed = 0.0005f;
@@ -331,9 +326,9 @@ float lastExerciceStopTimeStamp2 = 0;
         0.64, 0.15, -5.00,
         //x axis
         0.64, -0.14, -5.00,
-        -1.242, -0.15, -5.00,
-        -1.242, -0.14, -5.00,
-        -1.242, -0.15, -5.00,
+        -1.0, -0.15, -5.00,
+        -1.0, -0.14, -5.00,
+        -1.0, -0.15, -5.00,
         0.64, -0.15, -5.00,
         0.64, -0.14, -5.00
     };
@@ -367,15 +362,14 @@ float lastExerciceStopTimeStamp2 = 0;
     hPos = hPos + (h - hPos ) * hSpeed;
     
     //draws the box which shows the length of the current blow and is coloured in green if the blow is "in range"
-	[self drawBox:-1.54 y1:-0.15 x2:-1.282 y2:-0.15 + 0.07 * hPos z:-5.001];
+	[self drawBox:-1.44 y1:-0.15 x2:-1.182 y2:-0.15 + 0.07 * hPos z:-5.001];
     
     // gauge line (just a yellow line parallel to the screen bottom)
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
-    //glTranslatef(needleCenterX, needleCenterY, needleCenterZ);
     glColor4f(1.0f, 9.0f, 0.0f, 1.0f);
-    [self drawLine:-1.461 y1:0.07 z1:-5.002 x2:-1.361  y2:0.07  z2:-5.002];
+    [self drawLine:-1.361 y1:0.15 z1:-5.002 x2:-1.261  y2:0.15  z2:-5.002];
     
     // --- Needle
     glMatrixMode(GL_MODELVIEW);
@@ -446,7 +440,7 @@ float lastExerciceStopTimeStamp2 = 0;
     // determine the scaling factor for the rectangles height
     float maxduration = 0.0f;
     for (int i = 0; i < [BlowsDurationTot count]; i++) {
-        if (maxduration < [[BlowsDurationTot objectAtIndex:i]floatValue] && [[BlowsPosition objectAtIndex:i]floatValue] < 1.4f) {
+        if (maxduration < [[BlowsDurationTot objectAtIndex:i]floatValue] && [[BlowsPosition objectAtIndex:i]floatValue] < 1.7f) {
             maxduration = [[BlowsDurationTot objectAtIndex:i]floatValue];
         }
         HeightFactor = 0.25 / maxduration;
@@ -455,9 +449,22 @@ float lastExerciceStopTimeStamp2 = 0;
     
     
     //draw the rectangles for each blow
-    
+    //first, draw a rectangle to cover the other rectangles when they "go out of range"
+    const GLfloat rectangle[] = {
+        -1.1f, -0.15f, -5.0f,
+        -1.0f, 0.25f, -5.0f,
+        -1.1f, 0.25f, -5.0f,
+        -1.0f, 0.25f, -5.0f,
+        -1.1f, -0.15f, -5.0f,
+        -1.0f, -0.15f, -5.0f
+    };
+    glColor4f(0.0, 0.0, 0.0, 1.0);
+    glLoadIdentity();
+    glVertexPointer(3, GL_FLOAT, 0, rectangle);
+    glEnableClientState(GL_VERTEX_ARRAY);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
     for (int i = 0; i < [BlowsArray count]; i++) {
-        if ([[BlowsPosition objectAtIndex:i]floatValue] < 1.4f) {
+        if ([[BlowsPosition objectAtIndex:i]floatValue] < 1.7f) {
             [BlowsPosition replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:[[BlowsPosition objectAtIndex:i]floatValue] + speed]];
             float height1 = HeightFactor * [[BlowsDurationGood objectAtIndex:i]floatValue];
             float height2 = HeightFactor * ([[BlowsDurationTot objectAtIndex:i]floatValue] - [[BlowsDurationGood objectAtIndex:i]floatValue]);
@@ -467,15 +474,18 @@ float lastExerciceStopTimeStamp2 = 0;
         }
     }
     
+    //draw the stars
     for (int i = 0; i < [StarsPosition count]; i++) {
-        if ([[StarsPosition objectAtIndex:i]floatValue] < 1.4f) {
+        if ([[StarsPosition objectAtIndex:i]floatValue] < 1.7f) {
             [StarsPosition replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:[[StarsPosition objectAtIndex:i]floatValue] + speed]];
             [self drawStar:[[StarsPosition objectAtIndex:i]floatValue]];
         }
     }
     
+    
+    //draw the start/stop exercice triangles
     for (int i = 0; i < [StartStopPosition count]; i++) {
-        if ([[StartStopPosition objectAtIndex:i]floatValue] < 1.4f) {
+        if ([[StartStopPosition objectAtIndex:i]floatValue] < 1.7f) {
             [StartStopPosition replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:[[StartStopPosition objectAtIndex:i]floatValue] + speed]];
             [self drawStartStopTriangle:[[StartStopPosition objectAtIndex:i]floatValue]];
         }
@@ -506,8 +516,8 @@ float lastExerciceStopTimeStamp2 = 0;
 }
 - (void)drawStar: (float) PositionActual {
     const GLfloat star_cover[] = {
-        0.63f, 0.55f * 0.2, -5.0f,
-        0.66f, 0.55f * 0.2, -5.0f,
+        0.628f, 0.55f * 0.2, -5.0f,
+        0.662f, 0.55f * 0.2, -5.0f,
         0.645f, 0.64f * 0.2, -5.0f
     };
     glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
@@ -523,8 +533,8 @@ float lastExerciceStopTimeStamp2 = 0;
         0.67f, 0.77f * 0.2, -5.0f,
         0.645f, 0.64f * 0.2, -5.0f,
         0.645f, 0.92f * 0.2, -5.0f,
-        0.63f, 0.55f * 0.2, -5.0f,
-        0.66f, 0.55f * 0.2, -5.0f
+        0.628f, 0.55f * 0.2, -5.0f,
+        0.662f, 0.55f * 0.2, -5.0f
     };
     glColor4f(1.0f, 1.0f, 0.0f, 1.0f);
     glLoadIdentity();
