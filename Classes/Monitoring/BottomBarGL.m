@@ -1,22 +1,22 @@
 //
-//  HistoryGL.m
+//  BottomBarGL.m
 //  FlowerForAll
 //
 //  Created by adherent on 29.11.12.
 //
 //
 
-#import "HistoryGL.h"
+#import "BottomBarGL.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGLDrawable.h>
 #import "FlowerController.h"
 #import "ParametersManager.h"
-#define USE_DEPTH_BUFFER 0
+#define USE_DEPTH_BUFFER 1
 #define DEGREES_TO_RADIANS(__ANGLE) ((__ANGLE) / 180.0 * M_PI)
 
 // A class extension to declare private methods
-@interface HistoryGL ()
+@interface BottomBarGL ()
 
 @property (nonatomic, retain) EAGLContext *context;
 @property (nonatomic, assign) NSTimer *animationTimer;
@@ -28,7 +28,7 @@
 @end
 
 
-@implementation HistoryGL
+@implementation BottomBarGL
 
 @synthesize context, animationTimer, animationInterval;
 
@@ -147,57 +147,57 @@ float lastExerciceStopTimeStamp2 = 0;
     
 }
 
-//- (void) stopReloadTimer {
-    
-//}
 
-//- (void) timerFireMethod:(NSTimer*)theTimer {
-//    if (! [[FlowerController currentFlapix] running]) [self stopReloadTimer];
-//}
 
 - (void)setupView {
-    GLfloat size;
-    
-    glEnable(GL_DEPTH_TEST);
-    glMatrixMode(GL_PROJECTION);
-    size = 10;
-    
-    // Nous donne la taille de l'écran de l'iPhone
-    CGRect rect = self.bounds;
-    //glOrthof(0.0f, self.frame.size.width*2/3, 0.0f, self.frame.size.height , 0.0f, 0.0f);
-    //glOrthof(0.0f, self.frame.size.width, 0.0f, self.frame.size.height,0.0f, 0.0f);
-    glViewport(0, 0, rect.size.width, rect.size.height);
-    
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    
     
     // Frame dimensions
     float width = self.frame.size.width;
     float height = self.frame.size.height;
+    float widthHist = width * 0.893;
+    float widthNeedle = width * 0.107;
+    
+    const GLfloat needleCenterX = -1.0f + widthNeedle/2, needleCenterY = -1.0f, needleCenterZ = 0.0f;
+    
+    GLfloat size;
+    
+    const GLfloat zNear = 0.1, zFar = 1000.0, fieldOfView = 35.0;
+    
+    glEnable(GL_DEPTH_TEST);
+    glMatrixMode(GL_PROJECTION);
+    size = zNear * tanf(DEGREES_TO_RADIANS(fieldOfView) / 2.0);
+    
+    // Nous donne la taille de l'écran de l'iPhone
+    CGRect rect = self.bounds;
+    glFrustumf(-size, size, -size / (rect.size.width / rect.size.height), size / (rect.size.width / rect.size.height), zNear, zFar);
+    glViewport(0, 0, rect.size.width, rect.size.height);
+    
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    
     
     // Alloc Label View
     // Add Touch
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(handleSingleTap:)];
-    [self addGestureRecognizer:singleFingerTap];
+     [self addGestureRecognizer:singleFingerTap];
     [singleFingerTap release];
     
     if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
         
-        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, 0.0, width*1/5, height/2) ];
+        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, 0.0,  widthHist*1/5, height/2) ];
         [labelPercent setBackgroundColor:[UIColor blackColor]];
         [labelPercent setTextColor:[UIColor whiteColor]];
         [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelPercent setText:@"%"];
         
-        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*5/6, 0.0, width*1/5, height/2) ];
+        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*5/6, 0.0, widthHist*1/5, height/2) ];
         [labelFrequency setBackgroundColor:[UIColor blackColor]];
         [labelFrequency setTextColor:[UIColor whiteColor]];
         [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelFrequency setText:@"Hz"];
         
-        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*2/3, height/2, width*1/4, height/2) ];
+        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, height/2,  widthHist*1/4, height/2) ];
         [labelDuration setBackgroundColor:[UIColor blackColor]];
         [labelDuration setTextColor:[UIColor whiteColor]];
         [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
@@ -227,6 +227,34 @@ float lastExerciceStopTimeStamp2 = 0;
     [ self addSubview:labelDuration ];
 }
 
+- (void)drawLine:(float)x1 y1:(float)y1  z1:(float)z1 x2:(float)x2 y2:(float)y2 z2:(float)z2 {
+	const GLfloat lineVertices[] = {
+        x1, y1, z1,
+        x2, y2, z2,
+    };
+    //	NSLog(@"line %f,%f,%f %f,%f,%f",lineVertices[0],lineVertices[1],lineVertices[2],lineVertices[3],lineVertices[4],lineVertices[5]);
+	
+	// line
+	
+	glVertexPointer(3, GL_FLOAT, 0, lineVertices);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glDrawArrays(GL_LINES, 0, 2);
+	
+}
+
+- (void)drawBox:(float)x1 y1:(float)y1 x2:(float)x2 y2:(float)y2 z:(float)z {
+	const GLfloat quadVertices[] = {
+        x1, y1, z,
+        x1, y2, z,
+        x2, y2, z,
+        x2, y1, z
+    };
+    glVertexPointer(3, GL_FLOAT, 0, quadVertices);
+	glEnableClientState(GL_VERTEX_ARRAY);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+	
+}
+
 - (void)startAnimation {
     self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:animationInterval target:self selector:@selector(drawView) userInfo:nil repeats:YES];
 }
@@ -241,9 +269,40 @@ float lastExerciceStopTimeStamp2 = 0;
     if (flapix == nil) return;
 
     /*************** Logic code ******************/
+    // Frame dimensions
+    float width = self.frame.size.width;
+    float height = self.frame.size.height;
+    float widthHist = width * 0.893;
+    float widthNeedle = width * 0.107;
+    
+    const GLfloat needleCenterX = -1.411f, needleCenterY = -0.15f, needleCenterZ = 0.0f;
+    
     //static float position_actual = 0.0f;
     static float speed = 0.0005f;
     static float HeightFactor = 0.0f;
+    
+    
+    //for the needle
+    static float angle_actual = 0.1f;         // effective rotation angle in degrees
+    static float angle_toreach = 0.0f;         // current angle
+    static float angle_previous = 0.0f;           // previous angle
+    static float angle_freqMin = 0.0f;
+    static float angle_freqMax = 0.0f;
+    static float angle_freqMin_previous = 0.0f;
+    static float angle_freqMax_previous = 0.0f;
+    static float rotspeed = 0.0f;          // rotation speed
+    
+    
+    angle_freqMin = [BottomBarGL frequencyToAngle:([flapix frequenceTarget] - [flapix frequenceTolerance])]*180;
+    angle_freqMax = [BottomBarGL frequencyToAngle:([flapix frequenceTarget] + [flapix frequenceTolerance])]*180;
+    angle_toreach = [BottomBarGL frequencyToAngle:flapix.frequency]*180;
+    
+    if (fabs(angle_toreach - angle_actual) < 2  && angle_freqMin == angle_freqMin_previous && angle_freqMax == angle_freqMax_previous) {
+        //nothing to do
+        // return;
+    }
+    angle_freqMin_previous = angle_freqMin;
+    angle_freqMax_previous = angle_freqMax;
     
     /*************** Drawing code ******************/
     
@@ -255,31 +314,132 @@ float lastExerciceStopTimeStamp2 = 0;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    // --- Blowing gauge
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
+    //glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
     //draw axes
 	const GLfloat axes[] = {
         //y axis
-        0.33, -1.0,
-        0.32, -1.0,
-        0.33, 1.0,
-        0.32, -1.0,
-        0.33, 1.0,
-        0.32, 1.0,
+        0.64, 0.15, -5.00,
+        0.63, -0.15, -5.00,
+        0.63, 0.15, -5.00,
+        0.63, -0.15, -5.00,
+        0.64, -0.15, -5.00,
+        0.64, 0.15, -5.00,
         //x axis
-        0.33, -1.0,
-        0.33, -0.94,
-        -1.0, -1.0,
-        -1.0, -1.0,
-        -1.0, -0.94,
-        0.33, -0.94
+        0.64, -0.14, -5.00,
+        -1.242, -0.15, -5.00,
+        -1.242, -0.14, -5.00,
+        -1.242, -0.15, -5.00,
+        0.64, -0.15, -5.00,
+        0.64, -0.14, -5.00
     };
+     
     
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     glLoadIdentity();
-	glVertexPointer(2, GL_FLOAT, 0, axes);
+	glVertexPointer(3, GL_FLOAT, 0, axes);
     glEnableClientState(GL_VERTEX_ARRAY);
 	glDrawArrays(GL_TRIANGLES, 0, 12);
     
+    
+    
+    //"""""""""""""""""""""draw needle"""""""""""""""""""""
+    static float hPos = 0;
+    static float hSpeed = 0.01;
+    static BOOL goal = NO;
+    float h = [flapix currentBlowPercent];
+    if (! flapix.blowing) h = 0;
+    if (h < 1 && (h > hPos)) goal = NO; // we keep goal value to descend the gauge
+    if (h > 1) goal = YES;
+    
+    if (goal) {
+        glColor4f(0.9f,  0.7f, 0.0f, 1.0f);
+    } else {
+        glColor4f(0.1f,  0.5f, 0.3f, 1.0f);
+    }
+    
+    hSpeed = (h < hPos) ? 0.2 : 0.1;
+    
+    hPos = hPos + (h - hPos ) * hSpeed;
+    
+    //draws the box which shows the length of the current blow and is coloured in green if the blow is "in range"
+	[self drawBox:-1.54 y1:-0.15 x2:-1.282 y2:-0.15 + 0.07 * hPos z:-5.001];
+    
+    // gauge line (just a yellow line parallel to the screen bottom)
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
+    //glTranslatef(needleCenterX, needleCenterY, needleCenterZ);
+    glColor4f(1.0f, 9.0f, 0.0f, 1.0f);
+    [self drawLine:-1.461 y1:0.07 z1:-5.002 x2:-1.361  y2:0.07  z2:-5.002];
+    
+    // --- Needle
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
+    // Def needle
+	const GLfloat quadVertices[] = {
+        0.0, 0.3, -5.0,                    // head
+        -0.07, 0.08, -5.0,                    // left
+        0.0, 0.0, -5.0,                      // queue
+        0.07, 0.08, -5.0                     // right
+    };
+    
+    
+    if(!flapix.blowing) {
+        
+        glColor4f(0.2f, 0.2f, 0.5f+[flapix lastlevel]/2, 1.0f);
+    } else {
+        rotspeed = fabs((angle_toreach - angle_previous) / 10);
+        // NSLog(@"speed = %f \n", speed);
+        
+        if(angle_toreach > angle_previous) {
+            angle_actual = angle_previous + rotspeed;
+        } else {
+            angle_actual = angle_previous - rotspeed;
+        }
+        
+        
+        if ((angle_freqMax > angle_actual) && (angle_freqMin < angle_actual)) { // Good
+            glColor4f(0.1f,  0.9f, 0.1f, 1.0f);
+        } else { // Bad
+            glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+        }
+        
+        angle_previous = angle_actual;
+    }
+    glTranslatef(needleCenterX, needleCenterY, needleCenterZ);
+    glRotatef(angle_actual, 0.0f, 0.0f, -1.0f);
+	glVertexPointer(3, GL_FLOAT, 0, quadVertices);
+	glEnableClientState(GL_VERTEX_ARRAY);
+    if ([flapix running])
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    
+    //glTranslatef(0.5f,0.15f,0.0f);
+    
+    
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
+    glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
+    
+    
+    glRotatef(angle_freqMax, 0.0f, 0.0f, -1.0f);
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
+    
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
+    
+    glRotatef(angle_freqMin, 0.0f, 0.0f, -1.0f);
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
+    //"""""""""""""""""end draw needle""""""""""""""""""""""""
     
     //draw rectangles
     
@@ -289,13 +449,10 @@ float lastExerciceStopTimeStamp2 = 0;
         if (maxduration < [[BlowsDurationTot objectAtIndex:i]floatValue] && [[BlowsPosition objectAtIndex:i]floatValue] < 1.4f) {
             maxduration = [[BlowsDurationTot objectAtIndex:i]floatValue];
         }
-        HeightFactor = 1.5 / maxduration;
+        HeightFactor = 0.25 / maxduration;
     }
     
     
-    /*for (int i = outofrange; [[BlowsPosition objectAtIndex:i]floatValue] > -0.3f ; i++) {
-        outofrange = i;
-    }*/
     
     //draw the rectangles for each blow
     
@@ -333,61 +490,61 @@ float lastExerciceStopTimeStamp2 = 0;
 
 - (void)drawRectangleDuration: (float) PositionActual RectHeight:(float) RectangleHeight offset:(float) Offset color1:(float)col1 color2:(float)col2 color3:(float)col3 color4:(float)col4 {
     const GLfloat rectangle[] = {
-        0.37f, -1.0f + Offset,
-        0.32f, -1.0f + Offset,
-        0.37f, -1.0f + RectangleHeight + Offset,
-        0.32f, -1.0f + Offset,
-        0.37f, -1.0f + RectangleHeight + Offset,
-        0.32f, -1.0f + RectangleHeight + Offset
+        0.67f, -0.15f + Offset, -5.0f,
+        0.62f, -0.15f + Offset, -5.0f,
+        0.67f, -0.15f + RectangleHeight + Offset, -5.0f,
+        0.62f, -0.15f + Offset, -5.0f,
+        0.67f, -0.15f + RectangleHeight + Offset, -5.0f,
+        0.62f, -0.15f + RectangleHeight + Offset, -5.0f
     };
     glColor4f(col1, col2, col3, col4);
     glLoadIdentity();
     glTranslatef(-PositionActual, 0.0f, 0.0f);
-    glVertexPointer(2, GL_FLOAT, 0, rectangle);
+    glVertexPointer(3, GL_FLOAT, 0, rectangle);
     glEnableClientState(GL_VERTEX_ARRAY);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 - (void)drawStar: (float) PositionActual {
     const GLfloat star_cover[] = {
-        0.33f, 0.55f,
-        0.36f, 0.55f,
-        0.345, 0.64
+        0.63f, 0.55f * 0.2, -5.0f,
+        0.66f, 0.55f * 0.2, -5.0f,
+        0.645f, 0.64f * 0.2, -5.0f
     };
     glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
     glLoadIdentity();
     glTranslatef(-PositionActual, 0.0f, 0.0f);
-    glVertexPointer(2, GL_FLOAT, 0, star_cover);
+    glVertexPointer(3, GL_FLOAT, 0, star_cover);
     glEnableClientState(GL_VERTEX_ARRAY);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 
     
     const GLfloat star[] = {
-        0.32f, 0.77f,
-        0.37f, 0.77f,
-        0.345f, 0.64f,
-        0.345f, 0.92f,
-        0.33f, 0.55f,
-        0.36f, 0.55f
+        0.62f, 0.77f * 0.2, -5.0f,
+        0.67f, 0.77f * 0.2, -5.0f,
+        0.645f, 0.64f * 0.2, -5.0f,
+        0.645f, 0.92f * 0.2, -5.0f,
+        0.63f, 0.55f * 0.2, -5.0f,
+        0.66f, 0.55f * 0.2, -5.0f
     };
     glColor4f(1.0f, 1.0f, 0.0f, 1.0f);
     glLoadIdentity();
     glTranslatef(-PositionActual, 0.0f, 0.0f);
-    glVertexPointer(2, GL_FLOAT, 0, star);
+    glVertexPointer(3, GL_FLOAT, 0, star);
     glEnableClientState(GL_VERTEX_ARRAY);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
     
-    }
+}
 
 - (void)drawStartStopTriangle: (float) PositionActual {
     const GLfloat triangle[] = {
-        0.37f, -1.0f,
-        0.32f, -1.0f,
-        0.345f, -0.3f
+        0.68f, -0.15f, -5.0f,
+        0.61f, -0.15f, -5.0f,
+        0.645f, 0.0f, -5.0f
     };
     glColor4f(1.0, 1.0, 1.0, 1.0);
     glLoadIdentity();
     glTranslatef(-PositionActual, 0.0f, 0.0f);
-    glVertexPointer(2, GL_FLOAT, 0, triangle);
+    glVertexPointer(3, GL_FLOAT, 0, triangle);
     glEnableClientState(GL_VERTEX_ARRAY);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
@@ -445,7 +602,15 @@ float lastExerciceStopTimeStamp2 = 0;
     [FlowerController showNav];
     NSLog(@"Graph Touched");
     //Do stuff here...
+}
+
++(float)frequencyToAngle:(double)freq {
+    float longest = ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceTarget]) >
+    ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceMin]) ?
+    ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceTarget]) :
+    ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceMin]);
     
+    return (freq - [[FlowerController currentFlapix] frequenceTarget]) / (2 * longest );
 }
 
 - (void)layoutSubviews {
@@ -532,6 +697,11 @@ float lastExerciceStopTimeStamp2 = 0;
 
 -(void) reloadFromDB {
     [history reloadFromDB];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Touched");
+    [FlowerController showNav];
 }
 
 - (void)dealloc {

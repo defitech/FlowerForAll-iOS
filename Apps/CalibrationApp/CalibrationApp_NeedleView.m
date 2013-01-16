@@ -8,7 +8,7 @@
 
 #import "CalibrationApp_NeedleView.h"
 #import "FlowerController.h"
-#import "NeedleGL.h"
+#import "BottomBarGL.h"
 
 @implementation CalibrationApp_NeedleView
 
@@ -126,9 +126,9 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
     FLAPIX* flapix = [FlowerController currentFlapix];
     if (flapix == nil) return;
     
-    angle_freqMin = [NeedleGL frequencyToAngle:([flapix frequenceTarget] - [flapix frequenceTolerance])];
-    angle_freqMax = [NeedleGL frequencyToAngle:([flapix frequenceTarget] + [flapix frequenceTolerance])];
-    angle_toreach = [NeedleGL frequencyToAngle:flapix.frequency];
+    angle_freqMin = [BottomBarGL frequencyToAngle:([flapix frequenceTarget] - [flapix frequenceTolerance])];
+    angle_freqMax = [BottomBarGL frequencyToAngle:([flapix frequenceTarget] + [flapix frequenceTolerance])];
+    angle_toreach = [BottomBarGL frequencyToAngle:flapix.frequency];
     
     BOOL needle_needrefresh = (fabs(angle_toreach - angle_actual) < 0.02 ) || ! flapix.blowing;
     if ( lastBlowIdentical && needle_needrefresh && angle_freqMin == angle_freqMin_previous && angle_freqMax == angle_freqMax_previous) {
@@ -213,8 +213,8 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
    
     float angle[2];
   
-    angle[0] = [NeedleGL frequencyToAngle:(target - tolerance)];
-    angle[1] = [NeedleGL frequencyToAngle:(target + tolerance)];
+    angle[0] = [BottomBarGL frequencyToAngle:(target - tolerance)];
+    angle[1] = [BottomBarGL frequencyToAngle:(target + tolerance)];
     
     for (int i = 0; i < 2; i++) {
         CGContextSaveGState(ctx);

@@ -1,5 +1,5 @@
 //
-//  HistoryGL.h
+//  BottomBarGL.h
 //  FlowerForAll
 //
 //  Created by adherent on 29.11.12.
@@ -13,7 +13,7 @@
 #import "FLAPIX.h"
 #import "BlowHistory.h"
 
-@interface HistoryGL : UIView <BlowHistoryDelegate> {
+@interface BottomBarGL : UIView <BlowHistoryDelegate> {
 
 
 @private
@@ -56,5 +56,8 @@
 //-(void) historyChange:(id*) history;
 
 -(void) reloadFromDB;
+
+//function for the needle
++(float)frequencyToAngle:(double)freq;
 
 @end

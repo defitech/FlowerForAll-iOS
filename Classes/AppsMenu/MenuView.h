@@ -58,7 +58,7 @@
 
 - (IBAction) volcanoTouch:(id) sender;
 - (IBAction) bikerTouch:(id) sender;
-- (IBAction) flowerHowTo:(id) sender;
+- (IBAction) flowerHowTo;
 - (IBAction) settingsTouch:(id) sender;
 - (IBAction) calibrationTouch:(id) sender;
 - (IBAction) resultsTouch:(id) sender;
