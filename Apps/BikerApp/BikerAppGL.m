@@ -519,7 +519,7 @@ float current_angle = 0.0;
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
     
-   
+
     
     
     //          DRAW GRASS
@@ -668,7 +668,7 @@ float current_angle = 0.0;
         glRotatef(180.0, 0.0, 0.0, 1.0);
         glRotatef(180.0, 0.0, 1.0, 0.0);
         
-        //blending to make the object
+        //blending to make the object transparent
         glEnable(GL_BLEND);
         //glBlendFunc(GL_ONE, GL_SRC_COLOR);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -683,7 +683,7 @@ float current_angle = 0.0;
             JumpPos = 1.3;
         }
     }
-    
+
     //      FINISH DRAWING
 
     glDisableClientState(GL_VERTEX_ARRAY);
