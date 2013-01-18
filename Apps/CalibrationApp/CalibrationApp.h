@@ -9,6 +9,7 @@
 #import "FlowerApp.h"
 #import "DoubleSlider.h"
 #import "CalibrationApp_NeedleView.h"
+#import "CalibrationApp_NeedleGL.h"
 
 @interface CalibrationApp : FlowerApp {
     IBOutlet UILabel *targetFrequencyRangeLabel;
