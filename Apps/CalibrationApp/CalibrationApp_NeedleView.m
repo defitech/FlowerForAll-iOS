@@ -85,9 +85,6 @@ BOOL lastBlowIdentical = false; // if we nedd a redraw of last blow
 
 - (void)drawRect:(CGRect)rect
 {
-   
-    
-     
     FLAPIX* flapix = [FlowerController currentFlapix];
     if (flapix == nil) return;
     

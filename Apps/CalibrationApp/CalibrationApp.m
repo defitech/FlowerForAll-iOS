@@ -48,18 +48,16 @@
     NSLocalizedStringFromTable(@"Last Blow's frequency",@"CalibrationApp",@"Last Blow's frequency");
     [goToDurationButton setTitle:NSLocalizedStringFromTable(@"Duration settings",@"CalibrationApp",@"go to duration settings") forState:UIControlStateNormal];
     
-    targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",[[FlowerController currentFlapix]frequenceTarget]];
-    
 	    
     
     double target = [[FlowerController currentFlapix] frequenceTarget];
     double toleranceH =  [[FlowerController currentFlapix] frequenceTolerance] ;
     
     
-	
+	targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",target];
     lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", target];
     
-    [slider setSelectedValues:(target - toleranceH) maxValue:(target+ toleranceH)];
+    [slider setSelectedValues:(target - toleranceH) maxValue:(target + toleranceH)];
     
 	
 	//get the initial values

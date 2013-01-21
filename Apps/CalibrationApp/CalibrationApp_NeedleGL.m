@@ -21,7 +21,9 @@
 
 //some variables
 float angles[4];
-
+double frequencies[4];
+double freq_target_previous;
+double freq_tol_previous;
 
 // A class extension to declare private methods
 @interface CalibrationApp_NeedleGL ()
@@ -124,9 +126,11 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     
     angles[0] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceTolerance])]);
     angles[1] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([[FlowerController currentFlapix] frequenceTarget] + [[FlowerController currentFlapix] frequenceTolerance])]);
-    angles[2] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceTolerance])]);
-    angles[3] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([[FlowerController currentFlapix] frequenceTarget] + [[FlowerController currentFlapix] frequenceTolerance])]);
-    
+    angles[2] = 0;//angles[0];
+    angles[3] = 0;//angles[1];
+    //CalibrationApp* lastfreqValue = [[CalibrationApp alloc] init];
+    //angles[2] = lastfreqValue.lastFreqLabelValue. * 57.2957795 * M_PI;
+    //angles[3] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([blow medianFrequency] + [blow medianTolerance])]);
 }
 
 - (void)drawLine:(float)x1 y1:(float)y1  z1:(float)z1 x2:(float)x2 y2:(float)y2 z2:(float)z2 {
@@ -242,9 +246,9 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
         }
         
         angle_previous = angle_actual;
-        glRotatef(angle_actual, 0.0f, 0.0f, -1.0f);
+       
     }
-    
+     glRotatef(angle_actual, 0.0f, 0.0f, -1.0f);
     
 	
 	glVertexPointer(3, GL_FLOAT, 0, quadVertices);
@@ -259,9 +263,29 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     
     glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
-    angles[0] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceTolerance])]);
-    angles[1] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([[FlowerController currentFlapix] frequenceTarget] + [[FlowerController currentFlapix] frequenceTolerance])]);
+    //start calculate angle from freq values
+    frequencies[0] = [flapix frequenceTarget];
+    frequencies[1] = [flapix frequenceTolerance];
+
     
+    angles[0] = [BottomBarGL frequencyToAngle:(frequencies[0] - frequencies[1])]*180;
+    angles[1] = [BottomBarGL frequencyToAngle:(frequencies[0] + frequencies[1])]*180;
+    
+    
+    if (freq_tol_previous != frequencies[1]) {
+    if ((freq_target_previous < frequencies[0] && freq_tol_previous > frequencies[1]) || (freq_target_previous > frequencies[0] && freq_tol_previous < frequencies[1])) {
+        angles[2] = angles[0] + ((frequencies[0] - frequencies[1]) - (frequencies[2] - frequencies[3])) * 180/ ([flapix frequenceMax] - [flapix frequenceMin]);
+        angles[3] = angles[0] + ((frequencies[0] - frequencies[1]) - (frequencies[2] + frequencies[3])) * 180/ ([flapix frequenceMax] - [flapix frequenceMin]);
+    } else {
+        angles[2] = angles[1] + ((frequencies[0] + frequencies[1]) - (frequencies[2] - frequencies[3])) * 180/ ([flapix frequenceMax] - [flapix frequenceMin]);
+        angles[3] = angles[1] + ((frequencies[0] + frequencies[1]) - (frequencies[2] + frequencies[3])) * 180/ ([flapix frequenceMax] - [flapix frequenceMin]);
+    }
+    }
+    
+    //ends calculate angles from freq values
+    //[self CalFreqsToAnglesWithtarget:flapix.frequenceTarget Andtolerance:flapix.frequenceTolerance WithMin:flapix.frequenceMin AndMax:flapix.frequenceMax];
+    
+    NSLog(@"mindiff:%f,maxdiff:%f, angles0:%f, angles1:%f, angles2:%f, angles3:%f",(frequencies[0] - frequencies[1]) - (frequencies[2] - frequencies[3]),(frequencies[0] + frequencies[1]) - (frequencies[2] + frequencies[3]), angles[0], angles[1], angles[2], angles[3]);
     glRotatef(angles[0], 0.0f, 0.0f, -1.0f);
     glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.999];
@@ -282,7 +306,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     
     glRotatef(angles[2], 0.0f, 0.0f, -1.0f);
     glColor4f(1.0f, 0.5f, 0.0f, 1.0f);
-	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.999];
+	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.989];
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -290,7 +314,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     
     glRotatef(angles[3], 0.0f, 0.0f, -1.0f);
     glColor4f(1.0f, 0.5f, 0.0f, 1.0f);
-	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.999];
+	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.989];
     
     
 	
@@ -298,14 +322,16 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
 	
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
+    
+    freq_target_previous = flapix.frequenceTarget;
+    freq_tol_previous = flapix.frequenceTolerance;
 }
 
 //function which executes stuffs after each blow
 - (void)flapixEventBlowStop:(NSNotification *)notification {
     FLAPIBlow* blow = (FLAPIBlow*)[notification object];
-    angles[2] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([blow medianFrequency] - [blow medianTolerance])]);
-    angles[3] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([blow medianFrequency] + [blow medianTolerance])]);
-    NSLog(@"angles[0]:%f, angles[1]:%f",angles[0],angles[1]);
+    frequencies[2] = blow.medianFrequency;
+    frequencies[3] = blow.medianTolerance;
     [self setNeedsDisplay];
 }
 

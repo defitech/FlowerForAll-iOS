@@ -424,7 +424,7 @@ float lastExerciceStopTimeStamp2 = 0;
     
     glRotatef(angle_freqMax, 0.0f, 0.0f, -1.0f);
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
+	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:0.3  z2:-4.999];
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -432,7 +432,7 @@ float lastExerciceStopTimeStamp2 = 0;
     
     glRotatef(angle_freqMin, 0.0f, 0.0f, -1.0f);
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
+	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:0.3  z2:-4.999];
     //"""""""""""""""""end draw needle""""""""""""""""""""""""
     
     //draw rectangles
