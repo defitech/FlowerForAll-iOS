@@ -24,6 +24,7 @@ float angles[4];
 double frequencies[4];
 double freq_target_previous;
 double freq_tol_previous;
+bool first_blow;
 
 // A class extension to declare private methods
 @interface CalibrationApp_NeedleGL ()
@@ -90,6 +91,9 @@ double freq_tol_previous;
                                                      name:FLAPIX_EVENT_BLOW_STOP object:nil];
         
         animationInterval = 1.0 / 60.0;
+        
+        first_blow = false;
+        
 		[self setupView];
 		[self startAnimation];
     }
@@ -124,10 +128,13 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     glViewport(0, 0, rect.size.width, rect.size.height);
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
-    angles[0] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceTolerance])]);
-    angles[1] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([[FlowerController currentFlapix] frequenceTarget] + [[FlowerController currentFlapix] frequenceTolerance])]);
-    angles[2] = 0;//angles[0];
-    angles[3] = 0;//angles[1];
+    angles[0] = ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceTolerance]) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
+    angles[1] = ([[FlowerController currentFlapix] frequenceTarget] + [[FlowerController currentFlapix] frequenceTolerance]) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);;
+    angles[2] = ([[FlowerController currentFlapix] lastBlow].medianFrequency - [[FlowerController currentFlapix] lastBlow].medianTolerance) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
+    angles[3] = ([[FlowerController currentFlapix] lastBlow].medianTolerance + [[FlowerController currentFlapix] lastBlow].medianTolerance) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
+    NSLog(@"angles2:%f, angles3:%f, freq2:%f, freq3:%f",angles[2], angles[3], [[FlowerController currentFlapix] lastBlow].medianFrequency, [[FlowerController currentFlapix] lastBlow].medianTolerance);
+    //angles[2] = angles[2] - (angles[0]+angles[1])/2;
+    //angles[3] = angles[3] - (angles[0]+angles[1])/2;
     //CalibrationApp* lastfreqValue = [[CalibrationApp alloc] init];
     //angles[2] = lastfreqValue.lastFreqLabelValue. * 57.2957795 * M_PI;
     //angles[3] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([blow medianFrequency] + [blow medianTolerance])]);
@@ -264,10 +271,10 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
     //start calculate angle from freq values
-    frequencies[0] = [flapix frequenceTarget];
-    frequencies[1] = [flapix frequenceTolerance];
-
-    
+    if (!([flapix frequenceTarget] < 23.41 && [flapix frequenceTarget] > 23.39)) {              // dirty fix for the bug when the slider is at one of the maximum values
+        frequencies[0] = [flapix frequenceTarget];
+        frequencies[1] = [flapix frequenceTolerance];
+    }
     /*angles[0] = [BottomBarGL frequencyToAngle:(frequencies[0] - frequencies[1])]*180;
     angles[1] = [BottomBarGL frequencyToAngle:(frequencies[0] + frequencies[1])]*180;*/
     angles[0] = (frequencies[0] - frequencies[1])*180 / ([flapix frequenceMax] - [flapix frequenceMin]);
@@ -276,20 +283,25 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     
     if (freq_tol_previous != frequencies[1]) {
         if ((freq_target_previous < frequencies[0] && freq_tol_previous > frequencies[1]) || (freq_target_previous > frequencies[0] && freq_tol_previous < frequencies[1])) {
-            angles[2] = angles[0] - ((frequencies[0] - frequencies[1]) - (frequencies[2] - frequencies[3])) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
-            angles[3] = angles[0] - ((frequencies[0] - frequencies[1]) - (frequencies[2] + frequencies[3])) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+            angles[2] = (frequencies[2] - frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+            angles[3] =  (frequencies[2] + frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
         } else {
-            angles[2] = angles[1] - ((frequencies[0] + frequencies[1]) - (frequencies[2] - frequencies[3])) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
-            angles[3] = angles[1] - ((frequencies[0] + frequencies[1]) - (frequencies[2] + frequencies[3])) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+            angles[2] = (frequencies[2] - frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+            angles[3] = (frequencies[2] + frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
         }
         angles[2] = angles[2] - angle_correction;
         angles[3] = angles[3] - angle_correction;
     }
     angles[0] = angles[0] - angle_correction;
     angles[1] = angles[1] - angle_correction;
-    //ends calculate angles from freq values
     
-    NSLog(@"mindiff:%f,maxdiff:%f, angles0:%f, angles1:%f, angles2:%f, angles3:%f",(frequencies[0] - frequencies[1]) - (frequencies[2] - frequencies[3]),(frequencies[0] + frequencies[1]) - (frequencies[2] + frequencies[3]), angles[0], angles[1], angles[2], angles[3]);
+    if (!first_blow) {
+        angles[2] = ([[FlowerController currentFlapix] lastBlow].medianFrequency - [[FlowerController currentFlapix] lastBlow].medianTolerance - frequencies[0]) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
+        angles[3] = ([[FlowerController currentFlapix] lastBlow].medianFrequency + [[FlowerController currentFlapix] lastBlow].medianTolerance - frequencies[0]) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
+    }
+    //end calculate angles from freq values
+    
+    if (frequencies[0] < 23.5 && frequencies[0] > 23.3) NSLog(@"freq0:%f,freq1:%f, freq2:%f, freq3:%f,angles0:%f, angles1:%f, angles2:%f, angles3:%f",frequencies[0], frequencies[1], frequencies[2], frequencies[3], angles[0], angles[1], angles[2], angles[3]);
     glRotatef(angles[0], 0.0f, 0.0f, -1.0f);
     glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.999];
@@ -336,6 +348,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     FLAPIBlow* blow = (FLAPIBlow*)[notification object];
     frequencies[2] = blow.medianFrequency;
     frequencies[3] = blow.medianTolerance;
+    first_blow = true;
     [self setNeedsDisplay];
 }
 
