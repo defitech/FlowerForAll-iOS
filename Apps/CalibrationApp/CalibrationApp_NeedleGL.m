@@ -268,22 +268,26 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     frequencies[1] = [flapix frequenceTolerance];
 
     
-    angles[0] = [BottomBarGL frequencyToAngle:(frequencies[0] - frequencies[1])]*180;
-    angles[1] = [BottomBarGL frequencyToAngle:(frequencies[0] + frequencies[1])]*180;
-    
+    /*angles[0] = [BottomBarGL frequencyToAngle:(frequencies[0] - frequencies[1])]*180;
+    angles[1] = [BottomBarGL frequencyToAngle:(frequencies[0] + frequencies[1])]*180;*/
+    angles[0] = (frequencies[0] - frequencies[1])*180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+    angles[1] = (frequencies[0] + frequencies[1])*180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+    float angle_correction = frequencies[0] * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
     
     if (freq_tol_previous != frequencies[1]) {
-    if ((freq_target_previous < frequencies[0] && freq_tol_previous > frequencies[1]) || (freq_target_previous > frequencies[0] && freq_tol_previous < frequencies[1])) {
-        angles[2] = angles[0] + ((frequencies[0] - frequencies[1]) - (frequencies[2] - frequencies[3])) * 180/ ([flapix frequenceMax] - [flapix frequenceMin]);
-        angles[3] = angles[0] + ((frequencies[0] - frequencies[1]) - (frequencies[2] + frequencies[3])) * 180/ ([flapix frequenceMax] - [flapix frequenceMin]);
-    } else {
-        angles[2] = angles[1] + ((frequencies[0] + frequencies[1]) - (frequencies[2] - frequencies[3])) * 180/ ([flapix frequenceMax] - [flapix frequenceMin]);
-        angles[3] = angles[1] + ((frequencies[0] + frequencies[1]) - (frequencies[2] + frequencies[3])) * 180/ ([flapix frequenceMax] - [flapix frequenceMin]);
+        if ((freq_target_previous < frequencies[0] && freq_tol_previous > frequencies[1]) || (freq_target_previous > frequencies[0] && freq_tol_previous < frequencies[1])) {
+            angles[2] = angles[0] - ((frequencies[0] - frequencies[1]) - (frequencies[2] - frequencies[3])) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+            angles[3] = angles[0] - ((frequencies[0] - frequencies[1]) - (frequencies[2] + frequencies[3])) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+        } else {
+            angles[2] = angles[1] - ((frequencies[0] + frequencies[1]) - (frequencies[2] - frequencies[3])) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+            angles[3] = angles[1] - ((frequencies[0] + frequencies[1]) - (frequencies[2] + frequencies[3])) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+        }
+        angles[2] = angles[2] - angle_correction;
+        angles[3] = angles[3] - angle_correction;
     }
-    }
-    
+    angles[0] = angles[0] - angle_correction;
+    angles[1] = angles[1] - angle_correction;
     //ends calculate angles from freq values
-    //[self CalFreqsToAnglesWithtarget:flapix.frequenceTarget Andtolerance:flapix.frequenceTolerance WithMin:flapix.frequenceMin AndMax:flapix.frequenceMax];
     
     NSLog(@"mindiff:%f,maxdiff:%f, angles0:%f, angles1:%f, angles2:%f, angles3:%f",(frequencies[0] - frequencies[1]) - (frequencies[2] - frequencies[3]),(frequencies[0] + frequencies[1]) - (frequencies[2] + frequencies[3]), angles[0], angles[1], angles[2], angles[3]);
     glRotatef(angles[0], 0.0f, 0.0f, -1.0f);
