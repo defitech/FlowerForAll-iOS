@@ -128,16 +128,11 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     glViewport(0, 0, rect.size.width, rect.size.height);
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
-    angles[0] = ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceTolerance]) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
+    /*angles[0] = ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceTolerance]) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
     angles[1] = ([[FlowerController currentFlapix] frequenceTarget] + [[FlowerController currentFlapix] frequenceTolerance]) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);;
     angles[2] = ([[FlowerController currentFlapix] lastBlow].medianFrequency - [[FlowerController currentFlapix] lastBlow].medianTolerance) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
     angles[3] = ([[FlowerController currentFlapix] lastBlow].medianTolerance + [[FlowerController currentFlapix] lastBlow].medianTolerance) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
-    NSLog(@"angles2:%f, angles3:%f, freq2:%f, freq3:%f",angles[2], angles[3], [[FlowerController currentFlapix] lastBlow].medianFrequency, [[FlowerController currentFlapix] lastBlow].medianTolerance);
-    //angles[2] = angles[2] - (angles[0]+angles[1])/2;
-    //angles[3] = angles[3] - (angles[0]+angles[1])/2;
-    //CalibrationApp* lastfreqValue = [[CalibrationApp alloc] init];
-    //angles[2] = lastfreqValue.lastFreqLabelValue. * 57.2957795 * M_PI;
-    //angles[3] = 57.2957795 * M_PI * ([BottomBarGL frequencyToAngle:([blow medianFrequency] + [blow medianTolerance])]);
+    NSLog(@"angles2:%f, angles3:%f, freq2:%f, freq3:%f",angles[2], angles[3], [[FlowerController currentFlapix] lastBlow].medianFrequency, [[FlowerController currentFlapix] lastBlow].medianTolerance);*/
 }
 
 - (void)drawLine:(float)x1 y1:(float)y1  z1:(float)z1 x2:(float)x2 y2:(float)y2 z2:(float)z2 {
@@ -145,7 +140,6 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
         x1, y1, z1,
         x2, y2, z2,
     };
-    //	NSLog(@"line %f,%f,%f %f,%f,%f",lineVertices[0],lineVertices[1],lineVertices[2],lineVertices[3],lineVertices[4],lineVertices[5]);
 	
 	// line
     
@@ -275,8 +269,6 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
         frequencies[0] = [flapix frequenceTarget];
         frequencies[1] = [flapix frequenceTolerance];
     }
-    /*angles[0] = [BottomBarGL frequencyToAngle:(frequencies[0] - frequencies[1])]*180;
-    angles[1] = [BottomBarGL frequencyToAngle:(frequencies[0] + frequencies[1])]*180;*/
     angles[0] = (frequencies[0] - frequencies[1])*180 / ([flapix frequenceMax] - [flapix frequenceMin]);
     angles[1] = (frequencies[0] + frequencies[1])*180 / ([flapix frequenceMax] - [flapix frequenceMin]);
     float angle_correction = frequencies[0] * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
@@ -301,7 +293,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     }
     //end calculate angles from freq values
     
-    if (frequencies[0] < 23.5 && frequencies[0] > 23.3) NSLog(@"freq0:%f,freq1:%f, freq2:%f, freq3:%f,angles0:%f, angles1:%f, angles2:%f, angles3:%f",frequencies[0], frequencies[1], frequencies[2], frequencies[3], angles[0], angles[1], angles[2], angles[3]);
+    //if (frequencies[0] < 23.5 && frequencies[0] > 23.3) NSLog(@"freq0:%f,freq1:%f, freq2:%f, freq3:%f,angles0:%f, angles1:%f, angles2:%f, angles3:%f",frequencies[0], frequencies[1], frequencies[2], frequencies[3], angles[0], angles[1], angles[2], angles[3]);
     glRotatef(angles[0], 0.0f, 0.0f, -1.0f);
     glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.999];

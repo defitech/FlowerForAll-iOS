@@ -61,7 +61,7 @@ float BikerSpeedFromTime;
 float TimeScaleFactor;
 int JumpType;
 float YPos;
-GLuint      texture[6];
+GLuint      texture[8];
 float TreesPositions[5];
 float CloudsPositions[5];
 int frameNO = 0;
@@ -83,6 +83,10 @@ float JumpPos;
 bool ShowJump;
 bool DOwn;
 int unrotate;
+FLAPIX* flapixBiker;
+static float hPos;
+static BOOL goal;
+float h;
 
 float GrassPosition;
 UILabel *StarCounterLabel;
@@ -261,7 +265,7 @@ bool ItemRotation;
     
     
     //generate and bind texture
-    glGenTextures(6, &texture[0]);
+    glGenTextures(8, &texture[0]);
     
     // the picture height and width in pixels must be powers of 2 !!!
     glBindTexture(GL_TEXTURE_2D, texture[0]);
@@ -276,6 +280,10 @@ bool ItemRotation;
     [self LoadPic:@"BikerAppCloud"];
     glBindTexture(GL_TEXTURE_2D, texture[5]);
     [self LoadPic:@"BikerAppBikerandStar"];
+    glBindTexture(GL_TEXTURE_2D, texture[6]);
+    [self LoadPic:@"BikerAppBikerBlue"];
+    glBindTexture(GL_TEXTURE_2D, texture[7]);
+    [self LoadPic:@"BikerAppBikerBlowing"];
     
     for (int i = 0; i < 5; i++) {
         TreesPositions[i] = 4.0;
@@ -283,6 +291,8 @@ bool ItemRotation;
     for (int i = 0; i < 5; i++) {
         CloudsPositions[i] = 4.0;
     }
+    
+    flapixBiker = [FlowerController currentFlapix];
 }
 
 //Function for loading png pictures taking the name (without .png) as parameter. Don't forget to change the number of textures!
@@ -319,7 +329,6 @@ bool ItemRotation;
 }
 
 float current_angle = 0.0;
-
 //The function that draws each frame
 - (void)drawView {
     
@@ -341,7 +350,7 @@ float current_angle = 0.0;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
-    
+    /*
     //hack
     static NSTimeInterval lastKeyframeTime = 0.0;
     if (lastKeyframeTime == 0.0)
@@ -414,12 +423,111 @@ float current_angle = 0.0;
     //glDisableClientState(GL_VERTEX_ARRAY);
     //glDisableClientState(GL_NORMAL_ARRAY);
     //hackend
+    */
     
     
-    
-    //              DRAW THE BIKER
+    //              DRAW THE BIKER BLUE
     static GLfloat rot = 0.0;
     
+    glColor4f(1.0, 1.0, 1.0, 1.0);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    int p=0;
+    if ([[FlowerController currentFlapix] currentExercice]) {
+        p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
+    }
+    // coordinates of the edges of the square
+    const Vertex3D verticesblue[] = {
+        {-0.2,  -0.2 + 0.004 * p, -0.1},
+        { 0.2,  -0.2 + 0.004 * p, -0.1},
+        {-0.2, -0.6, -0.1},
+        { 0.2, -0.6, -0.1}
+    };
+    static const Vector3D normals[] = {
+        {0.0, 0.0, 1.0},
+        {0.0, 0.0, 1.0},
+        {0.0, 0.0, 1.0},
+        {0.0, 0.0, 1.0}
+    };
+    // coordinates used to crop the picture
+    const GLfloat texCoordsblue[] = {
+        0.0, 0.5 + 0.005 * p,
+        1.0, 0.5 + 0.005 * p,
+        0.0, 0.0,
+        1.0, 0.0
+    };
+    
+    glLoadIdentity();
+    
+    //implementing the jump with of without backflip
+    if (JumpType == 1 && JumpPos < 0.2) {
+        //NSLog(@"Ypos:%f",YPos);
+        gravity_accel = gravity_accel + gravity * TimeScaleFactor;
+        YPos = YPos + up_accel - gravity_accel;
+        if (YPos <= -0.45) {
+            YPos = -0.45;
+            JumpType = 0;
+            gravity_accel = 0.0;
+            DOwn = true;
+        }
+        glTranslatef(0.0,YPos, 0.0);
+        
+    } else if (JumpType == 2 && JumpPos < 0.23) {
+        gravity_accel = gravity_accel + gravity;
+        YPos = YPos + up_accel - gravity_accel;
+        rotation_angle_current = rotation_angle_current + rotation_speed;
+        if (YPos <= -0.45) {
+            YPos = -0.45;
+            JumpType = 0;
+            gravity_accel = 0.0;
+            DOwn = true;
+        }
+        glTranslatef(0.0,YPos, 0.0);
+        if (ItemRotation == false) {
+            glRotatef(rotation_angle_current, 0.0, 0.0, 1.0);
+        } else {
+            glRotatef(rotation_angle_current, 1.0, 1.0, 1.0);
+        }
+    } else {
+        glTranslatef(0.0, -0.45 + 0.002 * sin(0.8*frameNO) * TimeScaleFactor, 0.0);
+    }
+    
+    //if (combo >0) {
+    //    glColor4f(1.0, 0.7, 0.7, 1.0);
+    //}
+    
+    //implementing the rotation when hitting the jump
+    if (JumpType > 0 && JumpRotation < JumpMaxRotation && JumpPos < 0.3 && unrotate == 0) {
+        JumpRotation = JumpRotation + 5.0 * TimeScaleFactor;
+        glRotatef(JumpRotation, 0.0, 0.0, 1.0);
+        //NSLog(@"first jumprot: %f",JumpRotation);
+    } else if (JumpRotation >= JumpMaxRotation) {
+        JumpRotation = JumpRotation - 5.0 * TimeScaleFactor;
+        glRotatef(JumpRotation, 0.0, 0.0, 1.0);
+        unrotate++;
+        //NSLog(@"second jumprot: %f",JumpRotation);
+    } else if (unrotate == 1) {
+        JumpRotation = JumpRotation - unrotationSpeed * TimeScaleFactor;
+        glRotatef(JumpRotation, 0.0, 0.0, 1.0);
+        if (JumpRotation < 0.0) unrotate++;
+        //NSLog(@"third jumprot: %f",JumpRotation);
+    }
+    glRotatef(180.0 + rot, 0.0, 0.0, 1.0);
+    glRotatef(180.0, 0.0, 1.0, 0.0);
+    
+    glEnable(GL_BLEND);
+    //glBlendFunc(GL_ONE, GL_SRC_COLOR);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    glBindTexture(GL_TEXTURE_2D, texture[6]);
+    glVertexPointer(3, GL_FLOAT, 0, verticesblue);
+    glNormalPointer(GL_FLOAT, 0, normals);
+    glTexCoordPointer(2, GL_FLOAT, 0, texCoordsblue);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+    
+    //              DRAW THE BIKER
     glColor4f(1.0, 1.0, 1.0, 1.0);
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
@@ -431,12 +539,6 @@ float current_angle = 0.0;
         { 0.2,  0.2, -0.1},
         {-0.2, -0.6, -0.1},
         { 0.2, -0.6, -0.1}
-    };
-    static const Vector3D normals[] = {
-        {0.0, 0.0, 1.0},
-        {0.0, 0.0, 1.0},
-        {0.0, 0.0, 1.0},
-        {0.0, 0.0, 1.0}
     };
     // coordinates used to crop the picture
     static const GLfloat texCoords[] = {
@@ -508,18 +610,30 @@ float current_angle = 0.0;
     //glBlendFunc(GL_ONE, GL_SRC_COLOR);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
+    /*hPos = 0;
+    goal = NO;
+    h = [flapixBiker currentBlowPercent];
+    static float hSpeed = 0.01;
+    if (! flapixBiker.blowing) h = 0;
+    [flapixBiker 
+    if (h < 1 && (h > hPos)) goal = NO; // we keep goal value to descend the gauge
+    if (h > 1) goal = YES;*/
     if (combo >0) {
         glBindTexture(GL_TEXTURE_2D, texture[5]);
-    } else {
+    } else if (flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance) {
+        glBindTexture(GL_TEXTURE_2D, texture[7]);
+    }else {
         glBindTexture(GL_TEXTURE_2D, texture[0]);
     }
+    
+    /*hSpeed = (h < hPos) ? 0.2 : 0.1;
+    
+    hPos = hPos + (h - hPos ) * hSpeed;*/
+    
     glVertexPointer(3, GL_FLOAT, 0, vertices);
     glNormalPointer(GL_FLOAT, 0, normals);
     glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
-    
-
     
     
     //          DRAW GRASS

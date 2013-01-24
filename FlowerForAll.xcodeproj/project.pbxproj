@@ -155,9 +155,11 @@
 		BC89EFAA165676B1007ADC4C /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFA9165676B1007ADC4C /* CalibrationApp.xib */; };
 		BC89EFAC1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */; };
 		BC9732E216679705008E0ABE /* BottomBarGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9732E116679705008E0ABE /* BottomBarGL.m */; };
+		BCAC8E9416B01E4F00E088B9 /* BikerAppBikerBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC8E9316B01E4F00E088B9 /* BikerAppBikerBlue.png */; };
 		BCBC88D2169B3417005F7179 /* BikerApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBC88D1169B3417005F7179 /* BikerApp-Icon.png */; };
 		BCC0BE0416A85B1000D1BD0C /* CalibrationApp_NeedleGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0BE0316A85B1000D1BD0C /* CalibrationApp_NeedleGL.m */; };
 		BCCC705916821A56002D86F7 /* BikerAppArbre.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCC705816821A56002D86F7 /* BikerAppArbre.png */; };
+		BCCDCC8F16B141B0002C7C25 /* BikerAppBikerBlowing.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCDCC8E16B141B0002C7C25 /* BikerAppBikerBlowing.png */; };
 		BCD8AD221625999A007A32B7 /* UserChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8AD201625999A007A32B7 /* UserChooserViewController.m */; };
 		BCD8AD231625999A007A32B7 /* UserChooserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD8AD211625999A007A32B7 /* UserChooserViewController.xib */; };
 		BCDB1237169C17DA002DDF60 /* BikerAppBikerandStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDB1235169C17DA002DDF60 /* BikerAppBikerandStar.png */; };
@@ -415,10 +417,12 @@
 		BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ParametersAppPickerProfileCell~ipad.xib"; sourceTree = "<group>"; };
 		BC9732E016679705008E0ABE /* BottomBarGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBarGL.h; sourceTree = "<group>"; };
 		BC9732E116679705008E0ABE /* BottomBarGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBarGL.m; sourceTree = "<group>"; };
+		BCAC8E9316B01E4F00E088B9 /* BikerAppBikerBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppBikerBlue.png; path = BikerApp/visual/BikerAppBikerBlue.png; sourceTree = "<group>"; };
 		BCBC88D1169B3417005F7179 /* BikerApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BikerApp-Icon.png"; path = "../Classes/AppsMenu/BikerApp-Icon.png"; sourceTree = "<group>"; };
 		BCC0BE0216A85B1000D1BD0C /* CalibrationApp_NeedleGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp_NeedleGL.h; sourceTree = "<group>"; };
 		BCC0BE0316A85B1000D1BD0C /* CalibrationApp_NeedleGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp_NeedleGL.m; sourceTree = "<group>"; };
 		BCCC705816821A56002D86F7 /* BikerAppArbre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppArbre.png; path = BikerApp/visual/BikerAppArbre.png; sourceTree = "<group>"; };
+		BCCDCC8E16B141B0002C7C25 /* BikerAppBikerBlowing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppBikerBlowing.png; path = BikerApp/visual/BikerAppBikerBlowing.png; sourceTree = "<group>"; };
 		BCD0A618165CDDF5009F15E6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BCD8AD1F1625999A007A32B7 /* UserChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChooserViewController.h; sourceTree = "<group>"; };
 		BCD8AD201625999A007A32B7 /* UserChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserChooserViewController.m; sourceTree = "<group>"; };
@@ -928,6 +932,8 @@
 		BC415D51167B302A00855354 /* visual */ = {
 			isa = PBXGroup;
 			children = (
+				BCCDCC8E16B141B0002C7C25 /* BikerAppBikerBlowing.png */,
+				BCAC8E9316B01E4F00E088B9 /* BikerAppBikerBlue.png */,
 				BCBC88D1169B3417005F7179 /* BikerApp-Icon.png */,
 				BCDB1235169C17DA002DDF60 /* BikerAppBikerandStar.png */,
 				BCDB1236169C17DA002DDF60 /* BikerAppBiker.png */,
@@ -1177,6 +1183,8 @@
 				BCBC88D2169B3417005F7179 /* BikerApp-Icon.png in Resources */,
 				BCDB1237169C17DA002DDF60 /* BikerAppBikerandStar.png in Resources */,
 				BCDB1238169C17DA002DDF60 /* BikerAppBiker.png in Resources */,
+				BCAC8E9416B01E4F00E088B9 /* BikerAppBikerBlue.png in Resources */,
+				BCCDCC8F16B141B0002C7C25 /* BikerAppBikerBlowing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
