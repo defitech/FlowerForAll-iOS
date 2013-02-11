@@ -125,6 +125,7 @@
 		4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4EFCD46814448EAA00FDECE9 /* Mix.raw */; };
 		4EFE7915142B5369009EE121 /* ParametersAppPickerProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */; };
 		4EFE7918142B53BA009EE121 /* ParametersAppPickerProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */; };
+		BC1D4D7816C941FA005070A7 /* TODO_DEV.md in Resources */ = {isa = PBXBuildFile; fileRef = BC1D4D7716C941FA005070A7 /* TODO_DEV.md */; };
 		BC1E2C43160B0F6D00B82033 /* MainWindow~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1E2C42160B0F6D00B82033 /* MainWindow~ipad.xib */; };
 		BC1E2C45160B11EF00B82033 /* FlowerController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1E2C44160B11EF00B82033 /* FlowerController~ipad.xib */; };
 		BC229308160B23D60045E064 /* FlowerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */; };
@@ -381,6 +382,7 @@
 		4EFE7916142B53BA009EE121 /* ParametersAppPickerProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersAppPickerProfileCell.h; sourceTree = "<group>"; };
 		4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersAppPickerProfileCell.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC1D4D7716C941FA005070A7 /* TODO_DEV.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO_DEV.md; sourceTree = "<group>"; };
 		BC1E2C42160B0F6D00B82033 /* MainWindow~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow~ipad.xib"; path = "iPad/MainWindow~ipad.xib"; sourceTree = "<group>"; };
 		BC1E2C44160B11EF00B82033 /* FlowerController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlowerController~ipad.xib"; sourceTree = "<group>"; };
 		BC229305160B1F9F0045E064 /* Flower breath copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Flower breath copy-Info.plist"; path = "/Users/adherent/Documents/FlowerForAll-by-Defitech/Flower breath copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -517,6 +519,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				BC1D4D7716C941FA005070A7 /* TODO_DEV.md */,
 				4EDA57ED14481708005C29EB /* README.md */,
 				BCD0A618165CDDF5009F15E6 /* Default-568h@2x.png */,
 				4E101E47143615EF002BFDCC /* Recordings */,
@@ -1185,6 +1188,7 @@
 				BCDB1238169C17DA002DDF60 /* BikerAppBiker.png in Resources */,
 				BCAC8E9416B01E4F00E088B9 /* BikerAppBikerBlue.png in Resources */,
 				BCCDCC8F16B141B0002C7C25 /* BikerAppBikerBlowing.png in Resources */,
+				BC1D4D7816C941FA005070A7 /* TODO_DEV.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

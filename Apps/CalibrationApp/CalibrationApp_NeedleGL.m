@@ -415,7 +415,6 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
 }
 
 - (void)setAnimationInterval:(NSTimeInterval)interval {
-    
     animationInterval = interval;
     if (animationTimer) {
         [self stopAnimation];
