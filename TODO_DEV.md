@@ -51,8 +51,6 @@ But we need to create an interface for viewing this data..
 - When someone is blowing, it should be directly visible in the game: a sketch is already implemented, but is not functional, and it is not necessarily the best way to do it
 - Add sound
 
-## CALIBRATION APP
-- the angle for the orange lines is adapting only when we touch the slider
 
 ## FLAPI - FLAPIX
 - Is  "code spagetthi" fashionned

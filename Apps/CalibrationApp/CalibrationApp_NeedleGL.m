@@ -273,17 +273,16 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     angles[1] = (frequencies[0] + frequencies[1])*180 / ([flapix frequenceMax] - [flapix frequenceMin]);
     float angle_correction = frequencies[0] * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
     
-    if (freq_tol_previous != frequencies[1]) {
-        if ((freq_target_previous < frequencies[0] && freq_tol_previous > frequencies[1]) || (freq_target_previous > frequencies[0] && freq_tol_previous < frequencies[1])) {
-            angles[2] = (frequencies[2] - frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
-            angles[3] =  (frequencies[2] + frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
-        } else {
-            angles[2] = (frequencies[2] - frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
-            angles[3] = (frequencies[2] + frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
-        }
-        angles[2] = angles[2] - angle_correction;
-        angles[3] = angles[3] - angle_correction;
+    if ((freq_target_previous < frequencies[0] && freq_tol_previous > frequencies[1]) || (freq_target_previous > frequencies[0] && freq_tol_previous < frequencies[1])) {
+        angles[2] = (frequencies[2] - frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+        angles[3] =  (frequencies[2] + frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+    } else {
+        angles[2] = (frequencies[2] - frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
+        angles[3] = (frequencies[2] + frequencies[3]) * 180 / ([flapix frequenceMax] - [flapix frequenceMin]);
     }
+    angles[2] = angles[2] - angle_correction;
+    angles[3] = angles[3] - angle_correction;
+
     angles[0] = angles[0] - angle_correction;
     angles[1] = angles[1] - angle_correction;
     
@@ -292,8 +291,6 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
         angles[3] = ([[FlowerController currentFlapix] lastBlow].medianFrequency + [[FlowerController currentFlapix] lastBlow].medianTolerance - frequencies[0]) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
     }
     //end calculate angles from freq values
-    
-    //if (frequencies[0] < 23.5 && frequencies[0] > 23.3) NSLog(@"freq0:%f,freq1:%f, freq2:%f, freq3:%f,angles0:%f, angles1:%f, angles2:%f, angles3:%f",frequencies[0], frequencies[1], frequencies[2], frequencies[3], angles[0], angles[1], angles[2], angles[3]);
     glRotatef(angles[0], 0.0f, 0.0f, -1.0f);
     glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.999];
