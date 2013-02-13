@@ -835,6 +835,8 @@ bool debug_events_bikerGL = NO;
 //function which executes stuffs after each blow
 - (void)flapixEventBlowStop:(NSNotification *)notification {
 	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
+    [blow retain];
+    //NSLog(@"blow retain count:%i",[blow retainCount]);
     ShowJump = true;
     DOwn = false;
     JumpRotation = 0;
@@ -1134,6 +1136,9 @@ bool debug_events_bikerGL = NO;
         [EAGLContext setCurrentContext:nil];
     }
     
+    [StartButtonProg release];
+    [ItemsButtonProg release];
+    [ItemRotationProg release];
     //[context release];
     [super dealloc];
 }
