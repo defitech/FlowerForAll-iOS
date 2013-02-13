@@ -84,8 +84,8 @@ bool ShowJump;
 bool DOwn;
 int unrotate;
 FLAPIX* flapixBiker;
-static float hPos;
-static BOOL goal;
+//static float hPos;
+//static BOOL goal;
 float h;
 
 float GrassPosition;
@@ -913,7 +913,7 @@ bool debug_events_bikerGL = NO;
     [ItemsLabel removeFromSuperview];
     [ItemRotationProg removeFromSuperview];
     ItemsDisplayed = false;
-    [StartButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
+    [StartButtonProg setHidden:true];
     [ItemsButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
     if (debug_events_bikerGL) NSLog(@"BIKER flapixEvent  ExerciceStart");
     BikerSpeed = 0.015f;
@@ -954,10 +954,8 @@ bool debug_events_bikerGL = NO;
     //}
         
     [self setNeedsDisplay];
-    //[self addSubview:StartButtonProg];
-    [StartButtonProg setFrame:CGRectMake((self.frame.size.width - self.frame.size.width * 0.4479)/2, (self.frame.size.height - self.frame.size.height * 0.073)/2, self.frame.size.width * 0.4479, self.frame.size.height * 0.073)];
+    [StartButtonProg setHidden:false];
     [ItemsButtonProg setFrame:CGRectMake(self.frame.size.width*0.85, self.frame.size.height/12, self.frame.size.height * 0.073, self.frame.size.height * 0.073)];
-    //[self refreshStartButton];
 }
 
 
@@ -1136,7 +1134,7 @@ bool debug_events_bikerGL = NO;
         [EAGLContext setCurrentContext:nil];
     }
     
-    [context release];
+    //[context release];
     [super dealloc];
 }
 

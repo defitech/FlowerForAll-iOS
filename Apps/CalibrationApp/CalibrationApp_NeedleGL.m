@@ -477,7 +477,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
         [EAGLContext setCurrentContext:nil];
     }
     
-    [context release];
+    //[context release];
     [super dealloc];
 }
 

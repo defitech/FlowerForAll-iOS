@@ -722,7 +722,7 @@ float lastExerciceStopTimeStamp2 = 0;
         [EAGLContext setCurrentContext:nil];
     }
     
-    [context release];
+    //[context release];
     [super dealloc];
 }
 

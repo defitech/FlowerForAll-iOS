@@ -46,7 +46,7 @@ But we need to create an interface for viewing this data..
 - Integrate some game engine such as unity and cocos2d
 
 ## BIKERAPP
-- Debug the app which is crashing after some time (memory leaks?)
+- check if crashing after some time
 - Frame rate problems
 - When someone is blowing, it should be directly visible in the game: a sketch is already implemented, but is not functional, and it is not necessarily the best way to do it
 - Add sound
