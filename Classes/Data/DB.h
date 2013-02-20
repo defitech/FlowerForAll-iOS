@@ -97,7 +97,7 @@
 + (NSInteger)generateUserID;
 
 //Creates a user
-+ (void)createUser:(NSInteger)ID:(NSString *)name:(NSString *)password;
++ (void)createUser:(NSInteger)ID :(NSString *)name :(NSString *)password;
 
 //Lists all user IDs
 +(NSArray*)listOfAllUserIDs;
@@ -109,10 +109,10 @@
 +(NSString*)getUserPassword:(NSInteger)ID;
 
 //Set a new name to a user
-+(void)setUserName:(NSInteger)ID:(NSString *)newName;
++(void)setUserName:(NSInteger)ID :(NSString *)newName;
 
 //Set a new password to a user
-+(void)setUserPassword:(NSInteger)ID:(NSString *)newPassword;
++(void)setUserPassword:(NSInteger)ID :(NSString *)newPassword;
 
 //Deletes a user
 +(void)deleteUser:(NSInteger)ID;

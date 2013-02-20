@@ -32,7 +32,7 @@
 
 
 //Used to initialize a User object. Simply copies the values passed as parameters to the instance fields
--(id)init:(NSInteger)_expirationId:(NSInteger)_exerciseId:(NSInteger)_deltaTime:(NSInteger)_inTargetDuration:(NSInteger)_outOfTargetDuration:(double)_goodPercentage; 
+-(id)init:(NSInteger)_expirationId :(NSInteger)_exerciseId :(NSInteger)_deltaTime :(NSInteger)_inTargetDuration :(NSInteger)_outOfTargetDuration :(double)_goodPercentage; 
 
 
 @end
