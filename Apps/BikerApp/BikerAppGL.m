@@ -61,7 +61,7 @@ float BikerSpeedFromTime;
 float TimeScaleFactor;
 int JumpType;
 float YPos;
-GLuint      texture[8];
+GLuint      texture[12];
 float TreesPositions[5];
 float CloudsPositions[5];
 int frameNO = 0;
@@ -265,7 +265,7 @@ bool ItemRotation;
     
     
     //generate and bind texture
-    glGenTextures(8, &texture[0]);
+    glGenTextures(12, &texture[0]);
     
     // the picture height and width in pixels must be powers of 2 !!!
     glBindTexture(GL_TEXTURE_2D, texture[0]);
@@ -279,11 +279,19 @@ bool ItemRotation;
     glBindTexture(GL_TEXTURE_2D, texture[4]);
     [self LoadPic:@"BikerAppCloud"];
     glBindTexture(GL_TEXTURE_2D, texture[5]);
-    [self LoadPic:@"BikerAppBikerandStar"];
+    [self LoadPic:@"BikerAppBikerStar"];
     glBindTexture(GL_TEXTURE_2D, texture[6]);
-    [self LoadPic:@"BikerAppBikerBlue"];
+    [self LoadPic:@"BikerAppBikerStrokes"];
     glBindTexture(GL_TEXTURE_2D, texture[7]);
-    [self LoadPic:@"BikerAppBikerBlowing"];
+    [self LoadPic:@"BikerAppBikerStrokesStar"];
+    glBindTexture(GL_TEXTURE_2D, texture[8]);
+    [self LoadPic:@"BikerAppBikerBlue"];
+    glBindTexture(GL_TEXTURE_2D, texture[9]);
+    [self LoadPic:@"BikerAppBikerBlueStar"];
+    glBindTexture(GL_TEXTURE_2D, texture[10]);
+    [self LoadPic:@"BikerAppBikerBlueStrokes"];
+    glBindTexture(GL_TEXTURE_2D, texture[11]);
+    [self LoadPic:@"BikerAppBikerBlueStrokesStar"];
     
     for (int i = 0; i < 5; i++) {
         TreesPositions[i] = 4.0;
@@ -340,7 +348,6 @@ float current_angle = 0.0;
         //rot+=  60 * timeSinceLastDraw * BikerSpeed;
         //BikerSpeedFromTime = BikerSpeed * timeSinceLastDraw * 33 ;
         TimeScaleFactor = timeSinceLastDraw * 60;
-        
     }
     lastDrawTime = [NSDate timeIntervalSinceReferenceDate];
     
@@ -439,10 +446,10 @@ float current_angle = 0.0;
     }
     // coordinates of the edges of the square
     const Vertex3D verticesblue[] = {
-        {-0.2,  -0.2 + 0.004 * p, -0.1},
-        { 0.2,  -0.2 + 0.004 * p, -0.1},
-        {-0.2, -0.6, -0.1},
-        { 0.2, -0.6, -0.1}
+        {-0.23,  -0.2 + 0.4 * p/100, -0.1},
+        { 0.23,  -0.2 + 0.4 * p/100, -0.1},
+        {-0.23, -0.3, -0.1},
+        { 0.23, -0.3, -0.1}
     };
     static const Vector3D normals[] = {
         {0.0, 0.0, 1.0},
@@ -452,11 +459,12 @@ float current_angle = 0.0;
     };
     // coordinates used to crop the picture
     const GLfloat texCoordsblue[] = {
-        0.0, 0.5 + 0.005 * p,
-        1.0, 0.5 + 0.005 * p,
+        0.0, 0.2 + 0.8 * p/100,
+        1.0, 0.2 + 0.8 * p/100,
         0.0, 0.0,
         1.0, 0.0
     };
+
     
     glLoadIdentity();
     
@@ -517,15 +525,26 @@ float current_angle = 0.0;
     glRotatef(180.0, 0.0, 1.0, 0.0);
     
     glEnable(GL_BLEND);
-    //glBlendFunc(GL_ONE, GL_SRC_COLOR);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    glBindTexture(GL_TEXTURE_2D, texture[6]);
+    
+    if (combo > 0 && !(flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance)) {
+        glBindTexture(GL_TEXTURE_2D, texture[9]);
+    } else if (combo == 0 && (flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance)) {
+        glBindTexture(GL_TEXTURE_2D, texture[10]);
+    } else if (combo > 0 && (flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance)) {
+        glBindTexture(GL_TEXTURE_2D, texture[11]);
+    } else {
+        glBindTexture(GL_TEXTURE_2D, texture[8]);
+    }
+    
     glVertexPointer(3, GL_FLOAT, 0, verticesblue);
     glNormalPointer(GL_FLOAT, 0, normals);
     glTexCoordPointer(2, GL_FLOAT, 0, texCoordsblue);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
+    
+    
+    
     
     //              DRAW THE BIKER
     glColor4f(1.0, 1.0, 1.0, 1.0);
@@ -535,10 +554,10 @@ float current_angle = 0.0;
     
     // coordinates of the edges of the square
     static const Vertex3D vertices[] = {
-        {-0.2,  0.2, -0.1},
-        { 0.2,  0.2, -0.1},
-        {-0.2, -0.6, -0.1},
-        { 0.2, -0.6, -0.1}
+        {-0.23,  0.2, -0.1},
+        { 0.23,  0.2, -0.1},
+        {-0.23, -0.3, -0.1},
+        { 0.23, -0.3, -0.1}
     };
     // coordinates used to crop the picture
     static const GLfloat texCoords[] = {
@@ -606,6 +625,8 @@ float current_angle = 0.0;
     glRotatef(180.0 + rot, 0.0, 0.0, 1.0);
     glRotatef(180.0, 0.0, 1.0, 0.0);
     
+    
+    
     glEnable(GL_BLEND);
     //glBlendFunc(GL_ONE, GL_SRC_COLOR);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -618,23 +639,30 @@ float current_angle = 0.0;
     [flapixBiker 
     if (h < 1 && (h > hPos)) goal = NO; // we keep goal value to descend the gauge
     if (h > 1) goal = YES;*/
-    if (combo >0) {
+    if (combo > 0 && !(flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance)) {
         glBindTexture(GL_TEXTURE_2D, texture[5]);
-    } else if (flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance) {
+    } else if (combo == 0 && (flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance)) {
+        glBindTexture(GL_TEXTURE_2D, texture[6]);
+    } else if (combo > 0 && (flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance)) {
         glBindTexture(GL_TEXTURE_2D, texture[7]);
-    }else {
+    } else {
         glBindTexture(GL_TEXTURE_2D, texture[0]);
     }
-    
+
     /*hSpeed = (h < hPos) ? 0.2 : 0.1;
     
     hPos = hPos + (h - hPos ) * hSpeed;*/
+    //Color3D     *colors = malloc(sizeof(Color3D) * 4);
+    //Color3DSet(&colors[0], 1.0, 0.0, 0.0, 1.0);
+    //Color3DSet(&colors[1], 0.0, 1.0, 0.0, 1.0);
+    //Color3DSet(&colors[2], 1.0, 1.0, 1.0, 0.0);
+    //Color3DSet(&colors[3], 1.0, 1.0, 1.0, 0.0);
     
     glVertexPointer(3, GL_FLOAT, 0, vertices);
     glNormalPointer(GL_FLOAT, 0, normals);
     glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    
+    glDisableClientState(GL_COLOR_ARRAY);
     
     //          DRAW GRASS
     static const Vertex3D ground[] = {
