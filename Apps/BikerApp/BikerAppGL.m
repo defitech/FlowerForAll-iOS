@@ -41,7 +41,7 @@
 
 
 /********* GAME PARAMETERS *****************/
-const float gravity = 0.002;
+const float gravity = 0.0015;
 const float JumpMaxRotation = 45.0;
 float StartTreePosition = 1.5;
 float StartCloudPosition = 1.5;
@@ -874,10 +874,10 @@ bool debug_events_bikerGL = NO;
     if (! [[FlowerController currentFlapix] exerciceInCourse]) return;
     
     //Add sound when the goal has been reached for the last blow
-    up_accel = 0.04 + blow.in_range_duration / 160;
+    up_accel = 0.033 + blow.in_range_duration / 180;
     unrotationSpeed = 45.0 / (up_accel / gravity * 1.75);
-    if (up_accel > 0.04 + 5.0 / 160) {
-        up_accel = 0.04 + 5.0 / 160;
+    if (up_accel > 0.033 + 5.0 / 180) {
+        up_accel = 0.033 + 5.0 / 180;
         combo = 0;
     }
     if (blow.goal) {
@@ -946,7 +946,7 @@ bool debug_events_bikerGL = NO;
     [StartButtonProg setHidden:true];
     [ItemsButtonProg setFrame:CGRectMake(0.0, 0.0, 0.0, 0.0)];
     if (debug_events_bikerGL) NSLog(@"BIKER flapixEvent  ExerciceStart");
-    BikerSpeed = 0.015f;
+    BikerSpeed = 0.0125f;
     frameNO = 0;
     frameNO_clouds = 0;
     NextTree = 0;
