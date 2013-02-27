@@ -542,7 +542,7 @@ float current_angle = 0.0;
     glNormalPointer(GL_FLOAT, 0, normals);
     glTexCoordPointer(2, GL_FLOAT, 0, texCoordsblue);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    
+    glDisable(GL_TEXTURE_2D);
     
     
     
@@ -559,6 +559,12 @@ float current_angle = 0.0;
         {-0.23, -0.3, -0.1},
         { 0.23, -0.3, -0.1}
     };
+    static const Vertex3D verticesbis[] = {
+        { 0.23,  0.2, -0.1},
+        { 0.46,  0.2, -0.1},
+        { 0.23, -0.3, -0.1},
+        { 0.46, -0.3, -0.1}
+    };
     // coordinates used to crop the picture
     static const GLfloat texCoords[] = {
         0.0, 1.0,
@@ -568,7 +574,7 @@ float current_angle = 0.0;
     };
     
     glLoadIdentity();
-    
+    /*
     //implementing the jump with of without backflip
     if (JumpType == 1 && JumpPos < 0.2) {
         //NSLog(@"Ypos:%f",YPos);
@@ -624,7 +630,7 @@ float current_angle = 0.0;
     }
     glRotatef(180.0 + rot, 0.0, 0.0, 1.0);
     glRotatef(180.0, 0.0, 1.0, 0.0);
-    
+    */
     
     
     glEnable(GL_BLEND);
@@ -639,7 +645,7 @@ float current_angle = 0.0;
     [flapixBiker 
     if (h < 1 && (h > hPos)) goal = NO; // we keep goal value to descend the gauge
     if (h > 1) goal = YES;*/
-    if (combo > 0 && !(flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance)) {
+    /*if (combo > 0 && !(flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance)) {
         glBindTexture(GL_TEXTURE_2D, texture[5]);
     } else if (combo == 0 && (flapixBiker.frequency < flapixBiker.frequenceTarget+flapixBiker.frequenceTolerance && flapixBiker.frequency > flapixBiker.frequenceTarget-flapixBiker.frequenceTolerance)) {
         glBindTexture(GL_TEXTURE_2D, texture[6]);
@@ -647,7 +653,8 @@ float current_angle = 0.0;
         glBindTexture(GL_TEXTURE_2D, texture[7]);
     } else {
         glBindTexture(GL_TEXTURE_2D, texture[0]);
-    }
+    }*/
+    
 
     /*hSpeed = (h < hPos) ? 0.2 : 0.1;
     
@@ -658,12 +665,25 @@ float current_angle = 0.0;
     //Color3DSet(&colors[2], 1.0, 1.0, 1.0, 0.0);
     //Color3DSet(&colors[3], 1.0, 1.0, 1.0, 0.0);
     
-    glVertexPointer(3, GL_FLOAT, 0, vertices);
+    glClientActiveTexture(GL_TEXTURE0); // first texture
+    glTexCoordPointer(3, GL_FLOAT, 0, vertices);
+    glClientActiveTexture(GL_TEXTURE1); // second texture
+    //glTexCoordPointer(3, GL_FLOAT, 0, verticesbis);
+    
+    glActiveTexture(GL_TEXTURE0);
+	glEnable(GL_TEXTURE_2D);
+    //glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D,  texture[0]);
+    
+    //glVertexPointer(3, GL_FLOAT, 0, vertices);
     glNormalPointer(GL_FLOAT, 0, normals);
     glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     glDisableClientState(GL_COLOR_ARRAY);
-    
+    glDisable(GL_TEXTURE_2D);
+    glDisableClientState(GL_TEXTURE0);
+    glDisableClientState(GL_TEXTURE1);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     //          DRAW GRASS
     static const Vertex3D ground[] = {
         {-2,  0.2, -0.1},
@@ -687,7 +707,7 @@ float current_angle = 0.0;
     glRotatef(180.0, 0.0, 0.0, 1.0);
    //glBlendFunc(GL_ONE, GL_SRC_COLOR);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-    
+    glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texture[1]);
     glVertexPointer(3, GL_FLOAT, 0, ground);
     glNormalPointer(GL_FLOAT, 0, normals);

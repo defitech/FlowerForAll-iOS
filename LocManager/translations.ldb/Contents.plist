@@ -3344,6 +3344,102 @@ You may switch to another identity by choosing the coresponding username.</strin
 			<key>user name</key>
 			<string>Users</string>
 		</dict>
+		<dict>
+			<key>associated Xcode projects</key>
+			<array/>
+			<key>change date</key>
+			<date>2001-01-01T00:00:00Z</date>
+			<key>changed values</key>
+			<array/>
+			<key>class</key>
+			<string>BLBundleObject</string>
+			<key>errors</key>
+			<array/>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>attachments</key>
+					<dict>
+						<key>backup</key>
+						<dict>
+							<key>1</key>
+							<dict>
+								<key>class</key>
+								<string>BLWrapperHandle</string>
+								<key>name</key>
+								<string>BikerApp/BikerApp/1/BikerApp.strings</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>change date</key>
+					<date>2013-02-27T09:49:17Z</date>
+					<key>changed values</key>
+					<array/>
+					<key>class</key>
+					<string>BLStringsFileObject</string>
+					<key>errors</key>
+					<array/>
+					<key>flags</key>
+					<integer>0</integer>
+					<key>hash</key>
+					<string>5b9f2e8646f9d01d7865ae45479f5034
+</string>
+					<key>name</key>
+					<string>BikerApp.strings</string>
+					<key>objects</key>
+					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>BikerApp Title</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Biker Game</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Biker Spiel</string>
+								<key>en</key>
+								<string>Biker Game</string>
+								<key>fr</key>
+								<string>Jeu du vélo</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+					</array>
+					<key>old objects</key>
+					<array/>
+					<key>plist file</key>
+					<false/>
+					<key>snapshots</key>
+					<dict/>
+					<key>versions</key>
+					<dict>
+						<key>en</key>
+						<string>1</string>
+					</dict>
+				</dict>
+			</array>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>../Apps/BikerApp</string>
+			<key>naming style</key>
+			<integer>1</integer>
+			<key>referencing style</key>
+			<integer>1</integer>
+			<key>user name</key>
+			<string>BikerApp</string>
+		</dict>
 	</array>
 	<key>languages</key>
 	<array>
@@ -3371,6 +3467,8 @@ You may switch to another identity by choosing the coresponding username.</strin
 		<false/>
 		<key>deactivateEmptyStrings</key>
 		<true/>
+		<key>deactivatePlaceholderStrings</key>
+		<true/>
 		<key>defaultBundleNaming</key>
 		<integer>1</integer>
 		<key>defaultBundleReferencing</key>
@@ -3385,6 +3483,8 @@ You may switch to another identity by choosing the coresponding username.</strin
 		<true/>
 		<key>markAutotranslatedAsNotChanged</key>
 		<true/>
+		<key>rescanXcodeProjects</key>
+		<false/>
 		<key>saveCompressed</key>
 		<false/>
 		<key>updateXcodeProjects</key>
