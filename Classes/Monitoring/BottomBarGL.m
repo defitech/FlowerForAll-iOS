@@ -362,7 +362,7 @@ float lastExerciceStopTimeStamp2 = 0;
     hPos = hPos + (h - hPos ) * hSpeed;
     
     //draws the box which shows the length of the current blow and is coloured in green if the blow is "in range"
-	[self drawBox:-1.44 y1:-0.15 x2:-1.182 y2:-0.15 + 0.07 * hPos z:-5.001];
+	[self drawBox:-1.44 y1:-0.15 x2:-1.182 y2:-0.15 + 0.305 * hPos z:-5.001];
     
     // gauge line (just a yellow line parallel to the screen bottom)
     glMatrixMode(GL_MODELVIEW);
@@ -377,10 +377,10 @@ float lastExerciceStopTimeStamp2 = 0;
     
     // Def needle
 	const GLfloat quadVertices[] = {
-        0.0, 0.3, -5.0,                    // head
-        -0.07, 0.08, -5.0,                    // left
-        0.0, 0.0, -5.0,                      // queue
-        0.07, 0.08, -5.0                     // right
+        0.0, 0.25, -5.0,                    // head
+        -0.07, 0.03, -5.0,                    // left
+        0.0, -0.05, -5.0,                      // queue
+        0.07, 0.03, -5.0                     // right
     };
     
     
@@ -406,7 +406,7 @@ float lastExerciceStopTimeStamp2 = 0;
         
         angle_previous = angle_actual;
     }
-    glTranslatef(needleCenterX, needleCenterY, needleCenterZ);
+    glTranslatef(needleCenterX, needleCenterY+0.05, needleCenterZ);
     glRotatef(angle_actual, 0.0f, 0.0f, -1.0f);
 	glVertexPointer(3, GL_FLOAT, 0, quadVertices);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -419,7 +419,7 @@ float lastExerciceStopTimeStamp2 = 0;
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
-    glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
+    glTranslatef(needleCenterX,needleCenterY+0.05,needleCenterZ);
     
     
     glRotatef(angle_freqMax, 0.0f, 0.0f, -1.0f);
@@ -428,7 +428,7 @@ float lastExerciceStopTimeStamp2 = 0;
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
+    glTranslatef(needleCenterX,needleCenterY+0.05,needleCenterZ);
     
     glRotatef(angle_freqMin, 0.0f, 0.0f, -1.0f);
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);

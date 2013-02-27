@@ -559,12 +559,12 @@ float current_angle = 0.0;
         {-0.23, -0.3, -0.1},
         { 0.23, -0.3, -0.1}
     };
-    static const Vertex3D verticesbis[] = {
+    /*static const Vertex3D verticesbis[] = {
         { 0.23,  0.2, -0.1},
         { 0.46,  0.2, -0.1},
         { 0.23, -0.3, -0.1},
         { 0.46, -0.3, -0.1}
-    };
+    };*/
     // coordinates used to crop the picture
     static const GLfloat texCoords[] = {
         0.0, 1.0,
