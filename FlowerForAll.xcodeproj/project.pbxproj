@@ -144,7 +144,6 @@
 		BC415D50167B302400855354 /* BikerAppGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BC415D4C167B302400855354 /* BikerAppGL.m */; };
 		BC59556716270126002FA364 /* UserChooser_TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC59556516270126002FA364 /* UserChooser_TextCell.m */; };
 		BC59556816270126002FA364 /* UserChooser_TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC59556616270126002FA364 /* UserChooser_TextCell.xib */; };
-		BC59556A16270C67002FA364 /* UserChooser.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC59556916270C67002FA364 /* UserChooser.strings */; };
 		BC59556E16271B3E002FA364 /* UserChooserViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC59556D16271B3E002FA364 /* UserChooserViewController~ipad.xib */; };
 		BC59557016271D1D002FA364 /* UserChooser_TextCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC59556F16271D1D002FA364 /* UserChooser_TextCell~ipad.xib */; };
 		BC78E5E416103C2D00896275 /* CalibrationApp~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5E316103C2D00896275 /* CalibrationApp~ipad.xib */; };
@@ -164,6 +163,7 @@
 		BC9732E216679705008E0ABE /* BottomBarGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9732E116679705008E0ABE /* BottomBarGL.m */; };
 		BCAC8E9416B01E4F00E088B9 /* BikerAppBikerBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC8E9316B01E4F00E088B9 /* BikerAppBikerBlue.png */; };
 		BCAE877616DE0DCA00D8FB5C /* BikerApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCAE877416DE0DCA00D8FB5C /* BikerApp.strings */; };
+		BCAE877916DE109800D8FB5C /* UserChooser.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCAE877B16DE109800D8FB5C /* UserChooser.strings */; };
 		BCBC88D2169B3417005F7179 /* BikerApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBC88D1169B3417005F7179 /* BikerApp-Icon.png */; };
 		BCC0BE0416A85B1000D1BD0C /* CalibrationApp_NeedleGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0BE0316A85B1000D1BD0C /* CalibrationApp_NeedleGL.m */; };
 		BCCC705916821A56002D86F7 /* BikerAppArbre.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCC705816821A56002D86F7 /* BikerAppArbre.png */; };
@@ -411,7 +411,6 @@
 		BC59556416270126002FA364 /* UserChooser_TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChooser_TextCell.h; sourceTree = "<group>"; };
 		BC59556516270126002FA364 /* UserChooser_TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserChooser_TextCell.m; sourceTree = "<group>"; };
 		BC59556616270126002FA364 /* UserChooser_TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserChooser_TextCell.xib; sourceTree = "<group>"; };
-		BC59556916270C67002FA364 /* UserChooser.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = UserChooser.strings; sourceTree = "<group>"; };
 		BC59556D16271B3E002FA364 /* UserChooserViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserChooserViewController~ipad.xib"; sourceTree = "<group>"; };
 		BC59556F16271D1D002FA364 /* UserChooser_TextCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserChooser_TextCell~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5E316103C2D00896275 /* CalibrationApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CalibrationApp~ipad.xib"; sourceTree = "<group>"; };
@@ -434,6 +433,9 @@
 		BCAE877516DE0DCA00D8FB5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = BikerApp/en.lproj/BikerApp.strings; sourceTree = "<group>"; };
 		BCAE877716DE0DFF00D8FB5C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = BikerApp/fr.lproj/BikerApp.strings; sourceTree = "<group>"; };
 		BCAE877816DE0FBB00D8FB5C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = BikerApp/de.lproj/BikerApp.strings; sourceTree = "<group>"; };
+		BCAE877A16DE109800D8FB5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/UserChooser.strings; sourceTree = "<group>"; };
+		BCAE877C16DE10A400D8FB5C /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/UserChooser.strings; sourceTree = "<group>"; };
+		BCAE877D16DE10A500D8FB5C /* de */ = {isa = PBXFileReference; lastKnownFileType = file; name = de; path = de.lproj/UserChooser.strings; sourceTree = "<group>"; };
 		BCBC88D1169B3417005F7179 /* BikerApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BikerApp-Icon.png"; path = "../Classes/AppsMenu/BikerApp-Icon.png"; sourceTree = "<group>"; };
 		BCC0BE0216A85B1000D1BD0C /* CalibrationApp_NeedleGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp_NeedleGL.h; sourceTree = "<group>"; };
 		BCC0BE0316A85B1000D1BD0C /* CalibrationApp_NeedleGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp_NeedleGL.m; sourceTree = "<group>"; };
@@ -976,7 +978,7 @@
 				BCD8AD201625999A007A32B7 /* UserChooserViewController.m */,
 				BCD8AD211625999A007A32B7 /* UserChooserViewController.xib */,
 				BC59556D16271B3E002FA364 /* UserChooserViewController~ipad.xib */,
-				BC59556916270C67002FA364 /* UserChooser.strings */,
+				BCAE877B16DE109800D8FB5C /* UserChooser.strings */,
 			);
 			path = UserChooser;
 			sourceTree = "<group>";
@@ -1188,7 +1190,7 @@
 				BC3E78AD161DE31C00368E91 /* UserPicker.xib in Resources */,
 				BCD8AD231625999A007A32B7 /* UserChooserViewController.xib in Resources */,
 				BC59556816270126002FA364 /* UserChooser_TextCell.xib in Resources */,
-				BC59556A16270C67002FA364 /* UserChooser.strings in Resources */,
+				BCAE877916DE109800D8FB5C /* UserChooser.strings in Resources */,
 				BC59556E16271B3E002FA364 /* UserChooserViewController~ipad.xib in Resources */,
 				BC59557016271D1D002FA364 /* UserChooser_TextCell~ipad.xib in Resources */,
 				BC89EFA8165675C1007ADC4C /* ResultsApp_List~ipad.xib in Resources */,
@@ -1387,6 +1389,16 @@
 				BCAE877816DE0FBB00D8FB5C /* de */,
 			);
 			name = BikerApp.strings;
+			sourceTree = "<group>";
+		};
+		BCAE877B16DE109800D8FB5C /* UserChooser.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCAE877A16DE109800D8FB5C /* en */,
+				BCAE877C16DE10A400D8FB5C /* fr */,
+				BCAE877D16DE10A500D8FB5C /* de */,
+			);
+			name = UserChooser.strings;
 			sourceTree = "<group>";
 		};
 		D73C1306142879050006B28F /* ResultsApp.strings */ = {
