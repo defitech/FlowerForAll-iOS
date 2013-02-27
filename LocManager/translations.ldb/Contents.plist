@@ -3509,6 +3509,8 @@ Info Text</string>
 							<dict>
 								<key>en</key>
 								<string>Add users if this device is used by several persons.</string>
+								<key>fr</key>
+								<string>Ajouter des utilisateurs si cet appareil est utilisé par plusieurs personnes</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3532,6 +3534,8 @@ Info Text</string>
 							<dict>
 								<key>en</key>
 								<string>Cancel</string>
+								<key>fr</key>
+								<string>Annuler</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3555,6 +3559,8 @@ Info Text</string>
 							<dict>
 								<key>en</key>
 								<string>Delete</string>
+								<key>fr</key>
+								<string>Supprimer</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3578,6 +3584,8 @@ Info Text</string>
 							<dict>
 								<key>en</key>
 								<string>Do you want to delete all the data for this user?</string>
+								<key>fr</key>
+								<string>Voulez-vous supprimer toutes les données de cet utilisateur?</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3601,6 +3609,8 @@ Info Text</string>
 							<dict>
 								<key>en</key>
 								<string>Edit user</string>
+								<key>fr</key>
+								<string>Modifier</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3624,6 +3634,8 @@ Info Text</string>
 							<dict>
 								<key>en</key>
 								<string>In a medical environnement choose a username that preserves anonymity.</string>
+								<key>fr</key>
+								<string>Dans un environnement médicla, choisissez un nom d'utilisateur préservant l'anonymat.</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3672,6 +3684,8 @@ Info Text</string>
 							<dict>
 								<key>en</key>
 								<string>Menu</string>
+								<key>fr</key>
+								<string>Menu</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3695,6 +3709,8 @@ Info Text</string>
 							<dict>
 								<key>en</key>
 								<string>Name</string>
+								<key>fr</key>
+								<string>Nom</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3718,6 +3734,8 @@ Info Text</string>
 							<dict>
 								<key>en</key>
 								<string>New user</string>
+								<key>fr</key>
+								<string>Nouvel utilisateur</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3742,6 +3760,8 @@ You may switch to another identity by choosing the coresponding username.</strin
 							<dict>
 								<key>en</key>
 								<string>You may switch to another identity by choosing the coresponding username.</string>
+								<key>fr</key>
+								<string>Vous pouvez changer d'identité en choisissant le nom d'utilisateur correspondant.</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3765,6 +3785,8 @@ You may switch to another identity by choosing the coresponding username.</strin
 							<dict>
 								<key>en</key>
 								<string>Password</string>
+								<key>fr</key>
+								<string>Mot de passe</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3788,6 +3810,8 @@ You may switch to another identity by choosing the coresponding username.</strin
 							<dict>
 								<key>en</key>
 								<string>Users</string>
+								<key>fr</key>
+								<string>Utilisateurs</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3811,6 +3835,8 @@ You may switch to another identity by choosing the coresponding username.</strin
 							<dict>
 								<key>en</key>
 								<string>You may switch to another identity by choosing the coresponding username</string>
+								<key>fr</key>
+								<string>Vous pouvez changer d'identité en choisissant le nom d'utilisateur correspondant.</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
