@@ -594,6 +594,7 @@ float lastExerciceStopTimeStamp2 = 0;
         higherBar = blow.duration;
         // if too high blow, resize y axis
     }
+    [blow retain];              //dirty hack to fix the crash when starting CalibrationApp after at least 1 blow
 }
 
 - (void)flapixEventExerciceStart:(NSNotification *)notification {

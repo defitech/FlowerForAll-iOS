@@ -11,7 +11,6 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		28FD14FE0DC6FC130079059D /* NeedleGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* NeedleGL.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		4E018F7813BB2D6B00333528 /* FlowerHowTo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */; };
@@ -86,7 +85,6 @@
 		4E92E74A13C72C9C0060FBF6 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E73E13C72C9C0060FBF6 /* SBJsonWriter.m */; };
 		4E92E74D13C72D3A0060FBF6 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */; };
 		4EA1A3B41420E8B800B11705 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA1A3B51420E8B800B11705 /* MenuView.xib */; };
-		4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */; };
 		4EB510AB1418CFC6008FC46F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */; };
 		4EB6CEE7147E809500BABBC6 /* Month.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6CEE6147E809500BABBC6 /* Month.m */; };
 		4EB6CEE9147EA72800BABBC6 /* ResultsApp-Box.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB6CEE8147EA72800BABBC6 /* ResultsApp-Box.png */; };
@@ -198,8 +196,6 @@
 		1D6058910D05DD3D006BFB54 /* FlowerForAll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowerForAll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		28FD14FC0DC6FC130079059D /* NeedleGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeedleGL.h; sourceTree = "<group>"; };
-		28FD14FD0DC6FC130079059D /* NeedleGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeedleGL.m; sourceTree = "<group>"; };
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -331,8 +327,6 @@
 		4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		4EA076E314331EFF00638C4E /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DB.h; path = Data/DB.h; sourceTree = "<group>"; };
 		4EA1A3B51420E8B800B11705 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MenuView.xib; path = AppsMenu/MenuView.xib; sourceTree = "<group>"; };
-		4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp_NeedleView.h; sourceTree = "<group>"; };
-		4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp_NeedleView.m; sourceTree = "<group>"; };
 		4EB510A31418C4AC008FC46F /* FlowerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlowerApp.h; path = AppsMenu/FlowerApp.h; sourceTree = "<group>"; };
 		4EB6CEE5147E809500BABBC6 /* Month.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Month.h; path = Data/Month.h; sourceTree = "<group>"; };
 		4EB6CEE6147E809500BABBC6 /* Month.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Month.m; path = Data/Month.m; sourceTree = "<group>"; };
@@ -433,9 +427,9 @@
 		BCAE877516DE0DCA00D8FB5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = BikerApp/en.lproj/BikerApp.strings; sourceTree = "<group>"; };
 		BCAE877716DE0DFF00D8FB5C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = BikerApp/fr.lproj/BikerApp.strings; sourceTree = "<group>"; };
 		BCAE877816DE0FBB00D8FB5C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = BikerApp/de.lproj/BikerApp.strings; sourceTree = "<group>"; };
-		BCAE877A16DE109800D8FB5C /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/UserChooser.strings; sourceTree = "<group>"; };
-		BCAE877C16DE10A400D8FB5C /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/UserChooser.strings; sourceTree = "<group>"; };
-		BCAE877D16DE10A500D8FB5C /* de */ = {isa = PBXFileReference; lastKnownFileType = file; name = de; path = de.lproj/UserChooser.strings; sourceTree = "<group>"; };
+		BCAE877A16DE109800D8FB5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UserChooser.strings; sourceTree = "<group>"; };
+		BCAE877C16DE10A400D8FB5C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/UserChooser.strings; sourceTree = "<group>"; };
+		BCAE877D16DE10A500D8FB5C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/UserChooser.strings; sourceTree = "<group>"; };
 		BCBC88D1169B3417005F7179 /* BikerApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BikerApp-Icon.png"; path = "../Classes/AppsMenu/BikerApp-Icon.png"; sourceTree = "<group>"; };
 		BCC0BE0216A85B1000D1BD0C /* CalibrationApp_NeedleGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp_NeedleGL.h; sourceTree = "<group>"; };
 		BCC0BE0316A85B1000D1BD0C /* CalibrationApp_NeedleGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp_NeedleGL.m; sourceTree = "<group>"; };
@@ -893,8 +887,6 @@
 				4E4AE46A141FA57B004256DA /* CalibrationApp.strings */,
 				4EEED18C141E3E3100F56102 /* CalibrationApp.h */,
 				4EEED18D141E3E3100F56102 /* CalibrationApp.m */,
-				4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */,
-				4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */,
 				BCC0BE0216A85B1000D1BD0C /* CalibrationApp_NeedleGL.h */,
 				BCC0BE0316A85B1000D1BD0C /* CalibrationApp_NeedleGL.m */,
 			);
@@ -1029,8 +1021,6 @@
 		D7ABFF7C140B75A1003B9F08 /* Monitoring */ = {
 			isa = PBXGroup;
 			children = (
-				28FD14FC0DC6FC130079059D /* NeedleGL.h */,
-				28FD14FD0DC6FC130079059D /* NeedleGL.m */,
 				BC9732E016679705008E0ABE /* BottomBarGL.h */,
 				BC9732E116679705008E0ABE /* BottomBarGL.m */,
 			);
@@ -1224,7 +1214,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				28FD14FE0DC6FC130079059D /* NeedleGL.m in Sources */,
 				D72E028E139E448200F3687C /* FLAPIX.mm in Sources */,
 				D72E0290139E448200F3687C /* subsys_ios.mm in Sources */,
 				4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */,
@@ -1261,7 +1250,6 @@
 				4E713C2B1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m in Sources */,
 				4E081DD01419F4DD003C9178 /* FlowerApp.m in Sources */,
 				4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */,
-				4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */,
 				D7F59A6914286D06006FE244 /* PickerEditor.m in Sources */,
 				4E5110881428CBC600A464EA /* Profil.m in Sources */,
 				D73C1313142879050006B28F /* ResultsApp_Day.m in Sources */,

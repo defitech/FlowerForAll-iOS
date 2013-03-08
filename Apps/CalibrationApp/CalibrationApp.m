@@ -54,7 +54,7 @@
     double toleranceH =  [[FlowerController currentFlapix] frequenceTolerance] ;
     
     
-	targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",target];
+	targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",target];     //????
     lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", target];
     
     [slider setSelectedValues:(target - toleranceH) maxValue:(target + toleranceH)];
@@ -109,7 +109,6 @@
 }
 
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {
-    [needle refreshLastBlow:blow];
     lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", blow.medianFrequency];
     NSArray* marks = [[[NSArray alloc] 
                         initWithObjects:[NSNumber numberWithFloat:(blow.medianFrequency - blow.medianTolerance)], 

@@ -128,11 +128,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     glViewport(0, 0, rect.size.width, rect.size.height);
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
-    /*angles[0] = ([[FlowerController currentFlapix] frequenceTarget] - [[FlowerController currentFlapix] frequenceTolerance]) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
-    angles[1] = ([[FlowerController currentFlapix] frequenceTarget] + [[FlowerController currentFlapix] frequenceTolerance]) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);;
-    angles[2] = ([[FlowerController currentFlapix] lastBlow].medianFrequency - [[FlowerController currentFlapix] lastBlow].medianTolerance) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
-    angles[3] = ([[FlowerController currentFlapix] lastBlow].medianTolerance + [[FlowerController currentFlapix] lastBlow].medianTolerance) * 180 / ([[FlowerController currentFlapix] frequenceMax] - [[FlowerController currentFlapix] frequenceMin]);
-    NSLog(@"angles2:%f, angles3:%f, freq2:%f, freq3:%f",angles[2], angles[3], [[FlowerController currentFlapix] lastBlow].medianFrequency, [[FlowerController currentFlapix] lastBlow].medianTolerance);*/
+
 }
 
 - (void)drawLine:(float)x1 y1:(float)y1  z1:(float)z1 x2:(float)x2 y2:(float)y2 z2:(float)z2 {

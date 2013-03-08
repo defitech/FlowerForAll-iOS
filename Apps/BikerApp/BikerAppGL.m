@@ -180,7 +180,6 @@ bool ItemRotation;
                                                  selector:@selector(flapixEventExerciceStop:)
                                                      name:FLAPIX_EVENT_EXERCICE_STOP object:nil];
         
-        //BlowsArray = [[NSMutableArray alloc] initWithCapacity:0];
         
         
         animationInterval = 1.0 / 60.0;

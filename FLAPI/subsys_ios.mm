@@ -507,8 +507,8 @@ void FLAPI_SUBSYS_IOS_file_dev(const char* filepath,bool read){
     }
     
     filedev = fopen(filepath, read ? "rb" : "wb");
-    // may cause memory leak.. when using a lot Demo modes.. but we do not care..
-	if (read ) myBuff = (short*) malloc (sizeof(short)*gAudioInfo.buffer_sample);
+    // may cause memory leak.. when using a lot Demo modes.. but we do not care.. (OK up to 1510000 allocations)
+    if (read ) myBuff = (short*) malloc (sizeof(short)*gAudioInfo.buffer_sample);
 	filedevtag = read ? 1 : -1;
 	
 	printf(read ? "Reading data to file %s\n" : "Writing data to file %s\n",filepath);
