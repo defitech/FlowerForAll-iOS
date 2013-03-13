@@ -43,6 +43,7 @@ extern NSString * const FLAPIX_EVENT_MICROPHONE_STATE; // when microphone is plu
 
 @property (nonatomic) float lastlevel;
 @property (nonatomic) BOOL blowing;
+@property (nonatomic, retain) FLAPIBlow* lastBlow;
 
 // System !!
 - (BOOL) Start;

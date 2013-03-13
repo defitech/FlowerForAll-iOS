@@ -33,7 +33,6 @@
 @synthesize context, animationTimer, animationInterval;
 
 //array to contain historic blows
-NSMutableArray *BlowsArray;
 NSMutableArray *BlowsPosition;
 NSMutableArray *BlowsDurationGood;
 NSMutableArray *BlowsDurationTot;
@@ -112,7 +111,6 @@ float lastExerciceStopTimeStamp2 = 0;
                                                  selector:@selector(flapixEventFrequency:)
                                                      name:FLAPIX_EVENT_FREQUENCY object:nil];
         
-        BlowsArray = [[NSMutableArray alloc] initWithCapacity:0];
         BlowsPosition = [[NSMutableArray alloc] initWithCapacity:0];
         BlowsDurationGood = [[NSMutableArray alloc] initWithCapacity:0];
         BlowsDurationTot = [[NSMutableArray alloc] initWithCapacity:0];
@@ -463,7 +461,7 @@ float lastExerciceStopTimeStamp2 = 0;
     glVertexPointer(3, GL_FLOAT, 0, rectangle);
     glEnableClientState(GL_VERTEX_ARRAY);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
-    for (int i = 0; i < [BlowsArray count]; i++) {
+    for (int i = 0; i < [BlowsPosition count]; i++) {
         if ([[BlowsPosition objectAtIndex:i]floatValue] < 1.7f) {
             [BlowsPosition replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:[[BlowsPosition objectAtIndex:i]floatValue] + speed]];
             float height1 = HeightFactor * [[BlowsDurationGood objectAtIndex:i]floatValue];
@@ -571,30 +569,30 @@ float lastExerciceStopTimeStamp2 = 0;
 
 
 - (void)flapixEventEndBlow:(NSNotification *)notification {
-	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
-    if ([[FlowerController currentFlapix] exerciceInCourse]) {
-        int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
-        [labelPercent setText:[NSString stringWithFormat:@"%i%%",p]];
-    } else {
-        [labelPercent setText:@"---"];
-    }
-    [labelFrequency setText:[NSString stringWithFormat:@"%iHz",(int)blow.medianFrequency]];
-    [labelDuration setText:[NSString stringWithFormat:@"%.2lf sec",blow.in_range_duration]];
-    [BlowsArray addObject:[NSNumber numberWithDouble:blow.in_range_duration]];
-    [BlowsPosition addObject:[NSNumber numberWithFloat:0.0f]];
-    [BlowsDurationGood addObject:[NSNumber numberWithFloat:blow.in_range_duration]];
-    [BlowsDurationTot addObject:[NSNumber numberWithFloat:blow.duration]];
-    if (blow.goal) {
-        [StarsPosition addObject:[NSNumber numberWithFloat:0.0f]];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{            // this block will run on the main thread
+        FLAPIBlow* blow = (FLAPIBlow*)[notification object];
+        if ([[FlowerController currentFlapix] exerciceInCourse]) {
+            int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
+            [labelPercent setText:[NSString stringWithFormat:@"%i%%",p]];
+        } else {
+            [labelPercent setText:@"---"];
+        }
+        [labelFrequency setText:[NSString stringWithFormat:@"%iHz",(int)blow.medianFrequency]];
+        [labelDuration setText:[NSString stringWithFormat:@"%.2lf sec",blow.in_range_duration]];
+        [BlowsPosition addObject:[NSNumber numberWithFloat:0.0f]];
+        [BlowsDurationGood addObject:[NSNumber numberWithFloat:blow.in_range_duration]];
+        [BlowsDurationTot addObject:[NSNumber numberWithFloat:blow.duration]];
+        if (blow.goal) {
+            [StarsPosition addObject:[NSNumber numberWithFloat:0.0f]];
+        }
     
-    //NSLog(@"blow duration:%f, in range duration:%f", blow.duration, blow.in_range_duration);
-    //Resize Y axis if needed
-    if (blow.duration > higherBar) {
-        higherBar = blow.duration;
-        // if too high blow, resize y axis
-    }
-    [blow retain];              //dirty hack to fix the crash when starting CalibrationApp after at least 1 blow
+        //NSLog(@"blow duration:%f, in range duration:%f", blow.duration, blow.in_range_duration);
+        //Resize Y axis if needed
+        if (blow.duration > higherBar) {
+            higherBar = blow.duration;
+            // if too high blow, resize y axis
+        } 
+    });
 }
 
 - (void)flapixEventExerciceStart:(NSNotification *)notification {
