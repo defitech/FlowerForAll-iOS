@@ -317,9 +317,9 @@ float lastExerciceStopTimeStamp2 = 0;
 	const GLfloat axes[] = {
         //y axis
         0.64, 0.15, -5.00,
-        0.63, -0.15, -5.00,
-        0.63, 0.15, -5.00,
-        0.63, -0.15, -5.00,
+        0.62, -0.15, -5.00,
+        0.62, 0.15, -5.00,
+        0.62, -0.15, -5.00,
         0.64, -0.15, -5.00,
         0.64, 0.15, -5.00,
         //x axis
@@ -489,11 +489,16 @@ float lastExerciceStopTimeStamp2 = 0;
         }
     }
     
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
+    //draw line for blow length    
+    glColor4f(1.0f, 9.0f, 0.0f, 1.0f);
+    glLoadIdentity();
+    [self drawLine:-1.0 y1:-0.15 + HeightFactor * [flapix expirationDurationTarget] z1:-5.00 x2:0.64  y2:-0.15 + HeightFactor * [flapix expirationDurationTarget]  z2:-5.00];
     
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
-    
-
 }
 
 - (void)drawRectangleDuration: (float) PositionActual RectHeight:(float) RectangleHeight offset:(float) Offset color1:(float)col1 color2:(float)col2 color3:(float)col3 color4:(float)col4 {
@@ -559,12 +564,14 @@ float lastExerciceStopTimeStamp2 = 0;
 
 
 - (void)flapixEventFrequency:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{            // this block will run on the main thread
     if ([[FlowerController currentFlapix] exerciceInCourse]) {
         int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
         [labelPercent setText:[NSString stringWithFormat:@"%i%%",p]];
     } else {
         [labelPercent setText:@"---"];
     }
+    });
 }
 
 

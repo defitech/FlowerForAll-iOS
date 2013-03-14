@@ -289,7 +289,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     //end calculate angles from freq values
     glRotatef(angles[0], 0.0f, 0.0f, -1.0f);
     glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
-	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.999];
+	[self drawBox:0.0 y1:1.25 x2:0.02 y2:0.05 z:-4.999];
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -297,7 +297,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     
     glRotatef(angles[1], 0.0f, 0.0f, -1.0f);
     glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
-	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.999];
+	[self drawBox:0.0 y1:1.25 x2:0.02 y2:0.05 z:-4.999];
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -307,7 +307,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     
     glRotatef(angles[2], 0.0f, 0.0f, -1.0f);
     glColor4f(1.0f, 0.5f, 0.0f, 1.0f);
-	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.989];
+	[self drawBox:0.0 y1:1.25 x2:0.02 y2:0.05 z:-4.999];
     
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -315,8 +315,8 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
     
     glRotatef(angles[3], 0.0f, 0.0f, -1.0f);
     glColor4f(1.0f, 0.5f, 0.0f, 1.0f);
-	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.989];
-    
+	//[self drawLine:0.05 y1:0.0 z1:-4.999 x2:0.0  y2:1.3  z2:-4.989];
+    [self drawBox:0.0 y1:1.25 x2:0.02 y2:0.05 z:-4.999];
     
 	
 	//""""""""""""""""" Fin du nouveau code """""""""""""""""""

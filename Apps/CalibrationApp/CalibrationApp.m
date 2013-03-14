@@ -80,6 +80,7 @@
 
 - (void)valueChangedForDoubleSlider:(DoubleSlider *)aSlider
 {
+    dispatch_async(dispatch_get_main_queue(), ^{            // this block will run on the main thread
 	minLabel.text = [NSString stringWithFormat:@"%1.1f Hz", aSlider.minSelectedValue];
 	maxLabel.text = [NSString stringWithFormat:@"%1.1f Hz", aSlider.maxSelectedValue];
     
@@ -89,6 +90,7 @@
     [[FlowerController currentFlapix] SetTargetFrequency:target frequency_tolerance:tolerance];
     
     [needle setNeedsDisplay];
+    });
 }
 
 
@@ -105,16 +107,18 @@
 
 
 - (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good current_exercice:(double)percent_done {    
-    [needle setNeedsDisplay];
+    //[needle setNeedsDisplay];
 }
 
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {
+    dispatch_async(dispatch_get_main_queue(), ^{            // this block will run on the main thread
     lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", blow.medianFrequency];
     NSArray* marks = [[[NSArray alloc] 
                         initWithObjects:[NSNumber numberWithFloat:(blow.medianFrequency - blow.medianTolerance)], 
                               [NSNumber numberWithFloat:(blow.medianFrequency + blow.medianTolerance)],
                               nil] autorelease];
     [slider setMarks:marks];
+    });
 }
 
 - (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {
