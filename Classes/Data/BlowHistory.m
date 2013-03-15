@@ -54,9 +54,9 @@
             [history removeObjectAtIndex:0];
         }
     }
-    if (delegate != nil) {
+    /*if (delegate != nil) {
         [delegate  historyChange:(id*)self];
-    }
+    }*/
 }
 
 -(NSMutableArray*) getHistoryArray {

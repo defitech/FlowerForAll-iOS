@@ -84,7 +84,12 @@
         [burst setFrame:CGRectMake(0, 0, mainWidth * 0.9, burst.frame.size.height * mainWidth * 0.9 / burst.frame.size.width)];
         burst.contentMode = UIViewContentModeScaleAspectFit;
         
-        lavaWidth = 19; //depending of volcano image
+        
+        if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
+            lavaWidth = 46;
+        } else {
+            lavaWidth = 19; //depending of volcano image
+        }
         lavaHeight = volcano.frame.size.height;
         
         lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, lavaWidth, lavaHeight)];

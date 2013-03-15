@@ -21,7 +21,7 @@
 
 @implementation FlowerController
 
-@synthesize mainView, menuButton, needleGL, /*historyView,*/ historyGL;
+@synthesize mainView, menuButton, /*historyView,*/ bottomBarGL;
 static FlowerController *singleton;
 static UIViewController *currentMainController ;
 static MenuView* activitiesViewController;
@@ -232,7 +232,7 @@ static NSMutableDictionary* appList;
 - (void)startStopButtonRefresh:(NSNotification *)notification {
     if ([[FlowerController currentFlapix] running]) {
         //[self.view bringSubviewToFront:historyView];
-        [self.view bringSubviewToFront:historyGL];
+        [self.view bringSubviewToFront:bottomBarGL];
         [self.view bringSubviewToFront:menuButton];
     } else {
         [self.view bringSubviewToFront:startButton];
@@ -274,7 +274,7 @@ static NSMutableDictionary* appList;
     //currentMainController.view.subviews. = self.mainView.frame;
     // Plug an iPhone
     //CGRect plugFrame = historyView.frame;
-    CGRect plugFrame = historyGL.frame;
+    CGRect plugFrame = bottomBarGL.frame;
 
     startButton = [[UIButton alloc] initWithFrame:plugFrame];
     UIImage *buttonImageHighlighted = [UIImage imageNamed: @"jack.png"];
@@ -339,10 +339,8 @@ static NSMutableDictionary* appList;
     [singleton release];
     menuButton = nil;
     mainView = nil;
-    needleGL = nil;
     startButton = nil;
-    //historyView = nil;
-    historyGL = nil;
+    bottomBarGL = nil;
 }
 
 # pragma mark Quit

@@ -5,7 +5,7 @@
 //
 
 
-
+/*
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGLDrawable.h>
 
@@ -150,7 +150,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     if (flapix == nil) return;
     
 	    
-	/*************** Logic code ******************/
+	//""""""""""""""""""" Logic code """""""""""""""""""/
     
     
     static float angle_actual = 0.1f;         // effective rotation angle in degrees
@@ -176,7 +176,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
     angle_freqMax_previous = angle_freqMax;
     
     
-    /*************** Drawing code ******************/
+    //"""""""""""""""""" Drawing code """"""""""""""""""""""/
     
     
     [EAGLContext setCurrentContext:context];    
@@ -291,7 +291,7 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
 	[self drawLine:0.0 y1:0.0 z1:-4.999 x2:0.0  y2:4.0  z2:-4.999];
     
 	
-	/*************** Fin du nouveau code ********************/ 
+	//""""""""""""""""" Fin du nouveau code """""""""""""""""""
 	
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
@@ -440,3 +440,4 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -1.0f, needleCenterZ = 0.0f;
 }
 
 @end
+*/

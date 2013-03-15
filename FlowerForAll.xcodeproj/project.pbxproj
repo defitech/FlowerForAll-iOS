@@ -11,7 +11,6 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		28FD14FE0DC6FC130079059D /* NeedleGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* NeedleGL.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
 		4E018F7813BB2D6B00333528 /* FlowerHowTo-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */; };
@@ -85,9 +84,7 @@
 		4E92E74913C72C9C0060FBF6 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E73C13C72C9C0060FBF6 /* SBJsonUTF8Stream.m */; };
 		4E92E74A13C72C9C0060FBF6 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E73E13C72C9C0060FBF6 /* SBJsonWriter.m */; };
 		4E92E74D13C72D3A0060FBF6 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */; };
-		4E9BD6DB169C367800BA8743 /* BMXonBiker.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBC88CA169B0DF7005F7179 /* BMXonBiker.png */; };
 		4EA1A3B41420E8B800B11705 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EA1A3B51420E8B800B11705 /* MenuView.xib */; };
-		4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */; };
 		4EB510AB1418CFC6008FC46F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8F596413A7B67D00D9D3A7 /* CoreGraphics.framework */; };
 		4EB6CEE7147E809500BABBC6 /* Month.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6CEE6147E809500BABBC6 /* Month.m */; };
 		4EB6CEE9147EA72800BABBC6 /* ResultsApp-Box.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EB6CEE8147EA72800BABBC6 /* ResultsApp-Box.png */; };
@@ -126,19 +123,25 @@
 		4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */ = {isa = PBXBuildFile; fileRef = 4EFCD46814448EAA00FDECE9 /* Mix.raw */; };
 		4EFE7915142B5369009EE121 /* ParametersAppPickerProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */; };
 		4EFE7918142B53BA009EE121 /* ParametersAppPickerProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */; };
+		BC1D4D7816C941FA005070A7 /* TODO_DEV.md in Resources */ = {isa = PBXBuildFile; fileRef = BC1D4D7716C941FA005070A7 /* TODO_DEV.md */; };
 		BC1E2C43160B0F6D00B82033 /* MainWindow~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1E2C42160B0F6D00B82033 /* MainWindow~ipad.xib */; };
 		BC1E2C45160B11EF00B82033 /* FlowerController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1E2C44160B11EF00B82033 /* FlowerController~ipad.xib */; };
 		BC229308160B23D60045E064 /* FlowerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8F591113A7AF6B00D9D3A7 /* FlowerController.xib */; };
+		BC2E278816CD2A8C00EE305C /* BikerAppBikerBlueStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2E278716CD2A8C00EE305C /* BikerAppBikerBlueStar.png */; };
+		BC2E278A16CD2A9900EE305C /* BikerAppBikerBlueStrokes.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2E278916CD2A9900EE305C /* BikerAppBikerBlueStrokes.png */; };
+		BC2E278C16CD4E3D00EE305C /* BikerAppBikerBlueStrokesStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2E278B16CD4E3D00EE305C /* BikerAppBikerBlueStrokesStar.png */; };
+		BC2E278E16CD4E7000EE305C /* BikerAppBikerStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2E278D16CD4E7000EE305C /* BikerAppBikerStar.png */; };
+		BC2E279016CD4E7D00EE305C /* BikerAppBikerStrokes.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2E278F16CD4E7D00EE305C /* BikerAppBikerStrokes.png */; };
+		BC2E279216CD4E8800EE305C /* BikerAppBikerStrokesStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2E279116CD4E8800EE305C /* BikerAppBikerStrokesStar.png */; };
 		BC36D08A1615F6F60013C863 /* Users_Editor~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC36D0891615F6F60013C863 /* Users_Editor~ipad.xib */; };
 		BC3E78AB161DE29D00368E91 /* UserPicker~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC3E78AA161DE29B00368E91 /* UserPicker~ipad.xib */; };
 		BC3E78AD161DE31C00368E91 /* UserPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC3E78AC161DE31C00368E91 /* UserPicker.xib */; };
 		BC415D4D167B302400855354 /* BikerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC415D48167B302400855354 /* BikerApp.m */; };
 		BC415D4E167B302400855354 /* BikerApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC415D49167B302400855354 /* BikerApp.xib */; };
 		BC415D4F167B302400855354 /* BikerApp~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC415D4A167B302400855354 /* BikerApp~ipad.xib */; };
-		BC415D50167B302400855354 /* BikerGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BC415D4C167B302400855354 /* BikerGL.m */; };
+		BC415D50167B302400855354 /* BikerAppGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BC415D4C167B302400855354 /* BikerAppGL.m */; };
 		BC59556716270126002FA364 /* UserChooser_TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC59556516270126002FA364 /* UserChooser_TextCell.m */; };
 		BC59556816270126002FA364 /* UserChooser_TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC59556616270126002FA364 /* UserChooser_TextCell.xib */; };
-		BC59556A16270C67002FA364 /* UserChooser.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC59556916270C67002FA364 /* UserChooser.strings */; };
 		BC59556E16271B3E002FA364 /* UserChooserViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC59556D16271B3E002FA364 /* UserChooserViewController~ipad.xib */; };
 		BC59557016271D1D002FA364 /* UserChooser_TextCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC59556F16271D1D002FA364 /* UserChooser_TextCell~ipad.xib */; };
 		BC78E5E416103C2D00896275 /* CalibrationApp~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5E316103C2D00896275 /* CalibrationApp~ipad.xib */; };
@@ -149,19 +152,22 @@
 		BC78E5EE1610550600896275 /* VolcanoApp~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5ED1610550600896275 /* VolcanoApp~ipad.xib */; };
 		BC78E5F0161056A400896275 /* FlowerHowTo~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5EF161056A400896275 /* FlowerHowTo~ipad.xib */; };
 		BC78E5F216105DE100896275 /* MenuView~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC78E5F116105DE100896275 /* MenuView~ipad.xib */; };
-		BC8715F916832DE30049B581 /* BikerGround.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8715F816832DE30049B581 /* BikerGround.png */; };
-		BC8715FB168470520049B581 /* BikerCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8715FA168470510049B581 /* BikerCloud.png */; };
-		BC8715FD1684747E0049B581 /* BikerJump.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8715FC1684747E0049B581 /* BikerJump.png */; };
+		BC8715F916832DE30049B581 /* BikerAppGround.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8715F816832DE30049B581 /* BikerAppGround.png */; };
+		BC8715FB168470520049B581 /* BikerAppCloud.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8715FA168470510049B581 /* BikerAppCloud.png */; };
+		BC8715FD1684747E0049B581 /* BikerAppJump.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8715FC1684747E0049B581 /* BikerAppJump.png */; };
 		BC89EFA8165675C1007ADC4C /* ResultsApp_List~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFA7165675C1007ADC4C /* ResultsApp_List~ipad.xib */; };
 		BC89EFAA165676B1007ADC4C /* CalibrationApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFA9165676B1007ADC4C /* CalibrationApp.xib */; };
 		BC89EFAC1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */; };
-		BC9732E216679705008E0ABE /* HistoryGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9732E116679705008E0ABE /* HistoryGL.m */; };
-		BCBC88D2169B3417005F7179 /* BMXonBiker-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBC88D1169B3417005F7179 /* BMXonBiker-Icon.png */; };
-		BCCC705916821A56002D86F7 /* BikerArbre.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCC705816821A56002D86F7 /* BikerArbre.png */; };
+		BC9732E216679705008E0ABE /* BottomBarGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9732E116679705008E0ABE /* BottomBarGL.m */; };
+		BCAC8E9416B01E4F00E088B9 /* BikerAppBikerBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAC8E9316B01E4F00E088B9 /* BikerAppBikerBlue.png */; };
+		BCAE877616DE0DCA00D8FB5C /* BikerApp.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCAE877416DE0DCA00D8FB5C /* BikerApp.strings */; };
+		BCAE877916DE109800D8FB5C /* UserChooser.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCAE877B16DE109800D8FB5C /* UserChooser.strings */; };
+		BCBC88D2169B3417005F7179 /* BikerApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBC88D1169B3417005F7179 /* BikerApp-Icon.png */; };
+		BCC0BE0416A85B1000D1BD0C /* CalibrationApp_NeedleGL.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0BE0316A85B1000D1BD0C /* CalibrationApp_NeedleGL.m */; };
+		BCCC705916821A56002D86F7 /* BikerAppArbre.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCC705816821A56002D86F7 /* BikerAppArbre.png */; };
 		BCD8AD221625999A007A32B7 /* UserChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8AD201625999A007A32B7 /* UserChooserViewController.m */; };
 		BCD8AD231625999A007A32B7 /* UserChooserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD8AD211625999A007A32B7 /* UserChooserViewController.xib */; };
-		BCDB1237169C17DA002DDF60 /* BikerandStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDB1235169C17DA002DDF60 /* BikerandStar.png */; };
-		BCDB1238169C17DA002DDF60 /* BikerBiker.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDB1236169C17DA002DDF60 /* BikerBiker.png */; };
+		BCDB1238169C17DA002DDF60 /* BikerAppBiker.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDB1236169C17DA002DDF60 /* BikerAppBiker.png */; };
 		D701908B141618510072D020 /* VolcanoApp_goal.wav in Resources */ = {isa = PBXBuildFile; fileRef = D701908A141618510072D020 /* VolcanoApp_goal.wav */; };
 		D702D18E14152C69005A1764 /* VolcanoApp_volcano.png in Resources */ = {isa = PBXBuildFile; fileRef = D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */; };
 		D70BFD4014332753004EABC2 /* ResultsApp-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */; };
@@ -190,13 +196,11 @@
 		1D6058910D05DD3D006BFB54 /* FlowerForAll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowerForAll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		28FD14FC0DC6FC130079059D /* NeedleGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeedleGL.h; sourceTree = "<group>"; };
-		28FD14FD0DC6FC130079059D /* NeedleGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeedleGL.m; sourceTree = "<group>"; };
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* FlowerForAll_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerForAll_Prefix.pch; sourceTree = "<group>"; };
-		4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlowerHowTo-icon.png"; sourceTree = "<group>"; };
+		4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FlowerHowTo-icon.png"; path = "../Apps/FlowerHowTo/FlowerHowTo-icon.png"; sourceTree = "<group>"; };
 		4E081DCF1419F4DD003C9178 /* FlowerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlowerApp.m; path = AppsMenu/FlowerApp.m; sourceTree = "<group>"; };
 		4E101E531437193B002BFDCC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FlowerHowTo.strings; sourceTree = "<group>"; };
 		4E101E5514371947002BFDCC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FlowerHowTo.strings; sourceTree = "<group>"; };
@@ -323,8 +327,6 @@
 		4E92E74C13C72D3A0060FBF6 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		4EA076E314331EFF00638C4E /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DB.h; path = Data/DB.h; sourceTree = "<group>"; };
 		4EA1A3B51420E8B800B11705 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MenuView.xib; path = AppsMenu/MenuView.xib; sourceTree = "<group>"; };
-		4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp_NeedleView.h; sourceTree = "<group>"; };
-		4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp_NeedleView.m; sourceTree = "<group>"; };
 		4EB510A31418C4AC008FC46F /* FlowerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlowerApp.h; path = AppsMenu/FlowerApp.h; sourceTree = "<group>"; };
 		4EB6CEE5147E809500BABBC6 /* Month.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Month.h; path = Data/Month.h; sourceTree = "<group>"; };
 		4EB6CEE6147E809500BABBC6 /* Month.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Month.m; path = Data/Month.m; sourceTree = "<group>"; };
@@ -379,9 +381,16 @@
 		4EFE7916142B53BA009EE121 /* ParametersAppPickerProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersAppPickerProfileCell.h; sourceTree = "<group>"; };
 		4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersAppPickerProfileCell.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC1D4D7716C941FA005070A7 /* TODO_DEV.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO_DEV.md; sourceTree = "<group>"; };
 		BC1E2C42160B0F6D00B82033 /* MainWindow~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow~ipad.xib"; path = "iPad/MainWindow~ipad.xib"; sourceTree = "<group>"; };
 		BC1E2C44160B11EF00B82033 /* FlowerController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlowerController~ipad.xib"; sourceTree = "<group>"; };
 		BC229305160B1F9F0045E064 /* Flower breath copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Flower breath copy-Info.plist"; path = "/Users/adherent/Documents/FlowerForAll-by-Defitech/Flower breath copy-Info.plist"; sourceTree = "<absolute>"; };
+		BC2E278716CD2A8C00EE305C /* BikerAppBikerBlueStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppBikerBlueStar.png; path = BikerApp/visual/BikerAppBikerBlueStar.png; sourceTree = "<group>"; };
+		BC2E278916CD2A9900EE305C /* BikerAppBikerBlueStrokes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppBikerBlueStrokes.png; path = BikerApp/visual/BikerAppBikerBlueStrokes.png; sourceTree = "<group>"; };
+		BC2E278B16CD4E3D00EE305C /* BikerAppBikerBlueStrokesStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppBikerBlueStrokesStar.png; path = BikerApp/visual/BikerAppBikerBlueStrokesStar.png; sourceTree = "<group>"; };
+		BC2E278D16CD4E7000EE305C /* BikerAppBikerStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppBikerStar.png; path = BikerApp/visual/BikerAppBikerStar.png; sourceTree = "<group>"; };
+		BC2E278F16CD4E7D00EE305C /* BikerAppBikerStrokes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppBikerStrokes.png; path = BikerApp/visual/BikerAppBikerStrokes.png; sourceTree = "<group>"; };
+		BC2E279116CD4E8800EE305C /* BikerAppBikerStrokesStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppBikerStrokesStar.png; path = BikerApp/visual/BikerAppBikerStrokesStar.png; sourceTree = "<group>"; };
 		BC36D0891615F6F60013C863 /* Users_Editor~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Users_Editor~ipad.xib"; sourceTree = "<group>"; };
 		BC3E78AA161DE29B00368E91 /* UserPicker~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserPicker~ipad.xib"; sourceTree = "<group>"; };
 		BC3E78AC161DE31C00368E91 /* UserPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserPicker.xib; sourceTree = "<group>"; };
@@ -389,14 +398,13 @@
 		BC415D48167B302400855354 /* BikerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BikerApp.m; path = BikerApp/BikerApp.m; sourceTree = "<group>"; };
 		BC415D49167B302400855354 /* BikerApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BikerApp.xib; path = BikerApp/BikerApp.xib; sourceTree = "<group>"; };
 		BC415D4A167B302400855354 /* BikerApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "BikerApp~ipad.xib"; path = "BikerApp/BikerApp~ipad.xib"; sourceTree = "<group>"; };
-		BC415D4B167B302400855354 /* BikerGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BikerGL.h; path = BikerApp/BikerGL.h; sourceTree = "<group>"; };
-		BC415D4C167B302400855354 /* BikerGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BikerGL.m; path = BikerApp/BikerGL.m; sourceTree = "<group>"; };
-		BC415D5A167B320E00855354 /* ConstantsAndMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantsAndMacros.h; path = BikerApp/ConstantsAndMacros.h; sourceTree = "<group>"; };
-		BC415D5B167B320E00855354 /* OpenGLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenGLCommon.h; path = BikerApp/OpenGLCommon.h; sourceTree = "<group>"; };
+		BC415D4B167B302400855354 /* BikerAppGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BikerAppGL.h; path = BikerApp/BikerAppGL.h; sourceTree = "<group>"; };
+		BC415D4C167B302400855354 /* BikerAppGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BikerAppGL.m; path = BikerApp/BikerAppGL.m; sourceTree = "<group>"; };
+		BC415D5A167B320E00855354 /* BikerAppConstantsAndMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BikerAppConstantsAndMacros.h; path = BikerApp/BikerAppConstantsAndMacros.h; sourceTree = "<group>"; };
+		BC415D5B167B320E00855354 /* BikerAppOpenGLCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BikerAppOpenGLCommon.h; path = BikerApp/BikerAppOpenGLCommon.h; sourceTree = "<group>"; };
 		BC59556416270126002FA364 /* UserChooser_TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChooser_TextCell.h; sourceTree = "<group>"; };
 		BC59556516270126002FA364 /* UserChooser_TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserChooser_TextCell.m; sourceTree = "<group>"; };
 		BC59556616270126002FA364 /* UserChooser_TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserChooser_TextCell.xib; sourceTree = "<group>"; };
-		BC59556916270C67002FA364 /* UserChooser.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = UserChooser.strings; sourceTree = "<group>"; };
 		BC59556D16271B3E002FA364 /* UserChooserViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserChooserViewController~ipad.xib"; sourceTree = "<group>"; };
 		BC59556F16271D1D002FA364 /* UserChooser_TextCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "UserChooser_TextCell~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5E316103C2D00896275 /* CalibrationApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "CalibrationApp~ipad.xib"; sourceTree = "<group>"; };
@@ -407,23 +415,30 @@
 		BC78E5ED1610550600896275 /* VolcanoApp~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "VolcanoApp~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5EF161056A400896275 /* FlowerHowTo~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlowerHowTo~ipad.xib"; sourceTree = "<group>"; };
 		BC78E5F116105DE100896275 /* MenuView~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MenuView~ipad.xib"; sourceTree = "<group>"; };
-		BC8715F816832DE30049B581 /* BikerGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerGround.png; path = BikerApp/visual/BikerGround.png; sourceTree = "<group>"; };
-		BC8715FA168470510049B581 /* BikerCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerCloud.png; path = BikerApp/visual/BikerCloud.png; sourceTree = "<group>"; };
-		BC8715FC1684747E0049B581 /* BikerJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerJump.png; path = BikerApp/visual/BikerJump.png; sourceTree = "<group>"; };
+		BC8715F816832DE30049B581 /* BikerAppGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppGround.png; path = BikerApp/visual/BikerAppGround.png; sourceTree = "<group>"; };
+		BC8715FA168470510049B581 /* BikerAppCloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppCloud.png; path = BikerApp/visual/BikerAppCloud.png; sourceTree = "<group>"; };
+		BC8715FC1684747E0049B581 /* BikerAppJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppJump.png; path = BikerApp/visual/BikerAppJump.png; sourceTree = "<group>"; };
 		BC89EFA7165675C1007ADC4C /* ResultsApp_List~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ResultsApp_List~ipad.xib"; sourceTree = "<group>"; };
 		BC89EFA9165676B1007ADC4C /* CalibrationApp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalibrationApp.xib; sourceTree = "<group>"; };
 		BC89EFAB1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ParametersAppPickerProfileCell~ipad.xib"; sourceTree = "<group>"; };
-		BC9732E016679705008E0ABE /* HistoryGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryGL.h; sourceTree = "<group>"; };
-		BC9732E116679705008E0ABE /* HistoryGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryGL.m; sourceTree = "<group>"; };
-		BCBC88CA169B0DF7005F7179 /* BMXonBiker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BMXonBiker.png; path = BikerApp/visual/BMXonBiker.png; sourceTree = "<group>"; };
-		BCBC88D1169B3417005F7179 /* BMXonBiker-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BMXonBiker-Icon.png"; path = "../Classes/AppsMenu/BMXonBiker-Icon.png"; sourceTree = "<group>"; };
-		BCCC705816821A56002D86F7 /* BikerArbre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerArbre.png; path = BikerApp/visual/BikerArbre.png; sourceTree = "<group>"; };
+		BC9732E016679705008E0ABE /* BottomBarGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBarGL.h; sourceTree = "<group>"; };
+		BC9732E116679705008E0ABE /* BottomBarGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBarGL.m; sourceTree = "<group>"; };
+		BCAC8E9316B01E4F00E088B9 /* BikerAppBikerBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppBikerBlue.png; path = BikerApp/visual/BikerAppBikerBlue.png; sourceTree = "<group>"; };
+		BCAE877516DE0DCA00D8FB5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = BikerApp/en.lproj/BikerApp.strings; sourceTree = "<group>"; };
+		BCAE877716DE0DFF00D8FB5C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = BikerApp/fr.lproj/BikerApp.strings; sourceTree = "<group>"; };
+		BCAE877816DE0FBB00D8FB5C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = BikerApp/de.lproj/BikerApp.strings; sourceTree = "<group>"; };
+		BCAE877A16DE109800D8FB5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UserChooser.strings; sourceTree = "<group>"; };
+		BCAE877C16DE10A400D8FB5C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/UserChooser.strings; sourceTree = "<group>"; };
+		BCAE877D16DE10A500D8FB5C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/UserChooser.strings; sourceTree = "<group>"; };
+		BCBC88D1169B3417005F7179 /* BikerApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BikerApp-Icon.png"; path = "../Classes/AppsMenu/BikerApp-Icon.png"; sourceTree = "<group>"; };
+		BCC0BE0216A85B1000D1BD0C /* CalibrationApp_NeedleGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalibrationApp_NeedleGL.h; sourceTree = "<group>"; };
+		BCC0BE0316A85B1000D1BD0C /* CalibrationApp_NeedleGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalibrationApp_NeedleGL.m; sourceTree = "<group>"; };
+		BCCC705816821A56002D86F7 /* BikerAppArbre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppArbre.png; path = BikerApp/visual/BikerAppArbre.png; sourceTree = "<group>"; };
 		BCD0A618165CDDF5009F15E6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BCD8AD1F1625999A007A32B7 /* UserChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChooserViewController.h; sourceTree = "<group>"; };
 		BCD8AD201625999A007A32B7 /* UserChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserChooserViewController.m; sourceTree = "<group>"; };
 		BCD8AD211625999A007A32B7 /* UserChooserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserChooserViewController.xib; sourceTree = "<group>"; };
-		BCDB1235169C17DA002DDF60 /* BikerandStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerandStar.png; path = BikerApp/visual/BikerandStar.png; sourceTree = "<group>"; };
-		BCDB1236169C17DA002DDF60 /* BikerBiker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerBiker.png; path = BikerApp/visual/BikerBiker.png; sourceTree = "<group>"; };
+		BCDB1236169C17DA002DDF60 /* BikerAppBiker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikerAppBiker.png; path = BikerApp/visual/BikerAppBiker.png; sourceTree = "<group>"; };
 		D701908A141618510072D020 /* VolcanoApp_goal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = VolcanoApp_goal.wav; sourceTree = "<group>"; };
 		D702D18D14152C69005A1764 /* VolcanoApp_volcano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VolcanoApp_volcano.png; sourceTree = "<group>"; };
 		D70BFD3F14332753004EABC2 /* ResultsApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ResultsApp-Icon.png"; sourceTree = "<group>"; };
@@ -512,6 +527,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				BC1D4D7716C941FA005070A7 /* TODO_DEV.md */,
 				4EDA57ED14481708005C29EB /* README.md */,
 				BCD0A618165CDDF5009F15E6 /* Default-568h@2x.png */,
 				4E101E47143615EF002BFDCC /* Recordings */,
@@ -610,7 +626,6 @@
 				4EC7FF39143F269C00B534E0 /* documents */,
 				4E101E521437193B002BFDCC /* FlowerHowTo.strings */,
 				4E4B815A14165374009CC45D /* FlowerHowTo.m4v */,
-				4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */,
 				4EC7FF46143F2ACC00B534E0 /* FlowerHowTo.h */,
 				4EC7FF47143F2ACC00B534E0 /* FlowerHowTo.m */,
 				4EC7FF48143F2ACC00B534E0 /* FlowerHowTo.xib */,
@@ -839,6 +854,7 @@
 		4ED5F32B14346B0500520737 /* AppsMenu */ = {
 			isa = PBXGroup;
 			children = (
+				4E018F7713BB2D6B00333528 /* FlowerHowTo-icon.png */,
 				4EA1A3B51420E8B800B11705 /* MenuView.xib */,
 				BC78E5F116105DE100896275 /* MenuView~ipad.xib */,
 				4E8F591613A7AF6B00D9D3A7 /* MenuView.h */,
@@ -871,8 +887,8 @@
 				4E4AE46A141FA57B004256DA /* CalibrationApp.strings */,
 				4EEED18C141E3E3100F56102 /* CalibrationApp.h */,
 				4EEED18D141E3E3100F56102 /* CalibrationApp.m */,
-				4EA1A3BA1420FB3D00B11705 /* CalibrationApp_NeedleView.h */,
-				4EA1A3BB1420FB3D00B11705 /* CalibrationApp_NeedleView.m */,
+				BCC0BE0216A85B1000D1BD0C /* CalibrationApp_NeedleGL.h */,
+				BCC0BE0316A85B1000D1BD0C /* CalibrationApp_NeedleGL.m */,
 			);
 			path = CalibrationApp;
 			sourceTree = "<group>";
@@ -909,14 +925,15 @@
 		BC415D45167B2FFB00855354 /* BikerApp */ = {
 			isa = PBXGroup;
 			children = (
-				BC415D5A167B320E00855354 /* ConstantsAndMacros.h */,
-				BC415D5B167B320E00855354 /* OpenGLCommon.h */,
+				BCAE877416DE0DCA00D8FB5C /* BikerApp.strings */,
+				BC415D5A167B320E00855354 /* BikerAppConstantsAndMacros.h */,
+				BC415D5B167B320E00855354 /* BikerAppOpenGLCommon.h */,
 				BC415D47167B302400855354 /* BikerApp.h */,
 				BC415D48167B302400855354 /* BikerApp.m */,
 				BC415D49167B302400855354 /* BikerApp.xib */,
 				BC415D4A167B302400855354 /* BikerApp~ipad.xib */,
-				BC415D4B167B302400855354 /* BikerGL.h */,
-				BC415D4C167B302400855354 /* BikerGL.m */,
+				BC415D4B167B302400855354 /* BikerAppGL.h */,
+				BC415D4C167B302400855354 /* BikerAppGL.m */,
 				BC415D51167B302A00855354 /* visual */,
 			);
 			name = BikerApp;
@@ -925,14 +942,19 @@
 		BC415D51167B302A00855354 /* visual */ = {
 			isa = PBXGroup;
 			children = (
-				BCBC88D1169B3417005F7179 /* BMXonBiker-Icon.png */,
-				BCDB1235169C17DA002DDF60 /* BikerandStar.png */,
-				BCDB1236169C17DA002DDF60 /* BikerBiker.png */,
-				BC8715FC1684747E0049B581 /* BikerJump.png */,
-				BCBC88CA169B0DF7005F7179 /* BMXonBiker.png */,
-				BC8715FA168470510049B581 /* BikerCloud.png */,
-				BC8715F816832DE30049B581 /* BikerGround.png */,
-				BCCC705816821A56002D86F7 /* BikerArbre.png */,
+				BC2E279116CD4E8800EE305C /* BikerAppBikerStrokesStar.png */,
+				BC2E278F16CD4E7D00EE305C /* BikerAppBikerStrokes.png */,
+				BC2E278D16CD4E7000EE305C /* BikerAppBikerStar.png */,
+				BC2E278916CD2A9900EE305C /* BikerAppBikerBlueStrokes.png */,
+				BC2E278B16CD4E3D00EE305C /* BikerAppBikerBlueStrokesStar.png */,
+				BC2E278716CD2A8C00EE305C /* BikerAppBikerBlueStar.png */,
+				BCAC8E9316B01E4F00E088B9 /* BikerAppBikerBlue.png */,
+				BCBC88D1169B3417005F7179 /* BikerApp-Icon.png */,
+				BCDB1236169C17DA002DDF60 /* BikerAppBiker.png */,
+				BC8715FC1684747E0049B581 /* BikerAppJump.png */,
+				BC8715FA168470510049B581 /* BikerAppCloud.png */,
+				BC8715F816832DE30049B581 /* BikerAppGround.png */,
+				BCCC705816821A56002D86F7 /* BikerAppArbre.png */,
 			);
 			name = visual;
 			sourceTree = "<group>";
@@ -948,7 +970,7 @@
 				BCD8AD201625999A007A32B7 /* UserChooserViewController.m */,
 				BCD8AD211625999A007A32B7 /* UserChooserViewController.xib */,
 				BC59556D16271B3E002FA364 /* UserChooserViewController~ipad.xib */,
-				BC59556916270C67002FA364 /* UserChooser.strings */,
+				BCAE877B16DE109800D8FB5C /* UserChooser.strings */,
 			);
 			path = UserChooser;
 			sourceTree = "<group>";
@@ -999,10 +1021,8 @@
 		D7ABFF7C140B75A1003B9F08 /* Monitoring */ = {
 			isa = PBXGroup;
 			children = (
-				28FD14FC0DC6FC130079059D /* NeedleGL.h */,
-				28FD14FD0DC6FC130079059D /* NeedleGL.m */,
-				BC9732E016679705008E0ABE /* HistoryGL.h */,
-				BC9732E116679705008E0ABE /* HistoryGL.m */,
+				BC9732E016679705008E0ABE /* BottomBarGL.h */,
+				BC9732E116679705008E0ABE /* BottomBarGL.m */,
 			);
 			path = Monitoring;
 			sourceTree = "<group>";
@@ -1044,7 +1064,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FlowerForAll" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1160,7 +1180,7 @@
 				BC3E78AD161DE31C00368E91 /* UserPicker.xib in Resources */,
 				BCD8AD231625999A007A32B7 /* UserChooserViewController.xib in Resources */,
 				BC59556816270126002FA364 /* UserChooser_TextCell.xib in Resources */,
-				BC59556A16270C67002FA364 /* UserChooser.strings in Resources */,
+				BCAE877916DE109800D8FB5C /* UserChooser.strings in Resources */,
 				BC59556E16271B3E002FA364 /* UserChooserViewController~ipad.xib in Resources */,
 				BC59557016271D1D002FA364 /* UserChooser_TextCell~ipad.xib in Resources */,
 				BC89EFA8165675C1007ADC4C /* ResultsApp_List~ipad.xib in Resources */,
@@ -1168,14 +1188,21 @@
 				BC89EFAC1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib in Resources */,
 				BC415D4E167B302400855354 /* BikerApp.xib in Resources */,
 				BC415D4F167B302400855354 /* BikerApp~ipad.xib in Resources */,
-				BCCC705916821A56002D86F7 /* BikerArbre.png in Resources */,
-				BC8715F916832DE30049B581 /* BikerGround.png in Resources */,
-				BC8715FB168470520049B581 /* BikerCloud.png in Resources */,
-				BC8715FD1684747E0049B581 /* BikerJump.png in Resources */,
-				BCBC88D2169B3417005F7179 /* BMXonBiker-Icon.png in Resources */,
-				BCDB1237169C17DA002DDF60 /* BikerandStar.png in Resources */,
-				BCDB1238169C17DA002DDF60 /* BikerBiker.png in Resources */,
-				4E9BD6DB169C367800BA8743 /* BMXonBiker.png in Resources */,
+				BCCC705916821A56002D86F7 /* BikerAppArbre.png in Resources */,
+				BC8715F916832DE30049B581 /* BikerAppGround.png in Resources */,
+				BC8715FB168470520049B581 /* BikerAppCloud.png in Resources */,
+				BC8715FD1684747E0049B581 /* BikerAppJump.png in Resources */,
+				BCBC88D2169B3417005F7179 /* BikerApp-Icon.png in Resources */,
+				BCDB1238169C17DA002DDF60 /* BikerAppBiker.png in Resources */,
+				BCAC8E9416B01E4F00E088B9 /* BikerAppBikerBlue.png in Resources */,
+				BC1D4D7816C941FA005070A7 /* TODO_DEV.md in Resources */,
+				BC2E278816CD2A8C00EE305C /* BikerAppBikerBlueStar.png in Resources */,
+				BC2E278A16CD2A9900EE305C /* BikerAppBikerBlueStrokes.png in Resources */,
+				BC2E278C16CD4E3D00EE305C /* BikerAppBikerBlueStrokesStar.png in Resources */,
+				BC2E278E16CD4E7000EE305C /* BikerAppBikerStar.png in Resources */,
+				BC2E279016CD4E7D00EE305C /* BikerAppBikerStrokes.png in Resources */,
+				BC2E279216CD4E8800EE305C /* BikerAppBikerStrokesStar.png in Resources */,
+				BCAE877616DE0DCA00D8FB5C /* BikerApp.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,7 +1214,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				28FD14FE0DC6FC130079059D /* NeedleGL.m in Sources */,
 				D72E028E139E448200F3687C /* FLAPIX.mm in Sources */,
 				D72E0290139E448200F3687C /* subsys_ios.mm in Sources */,
 				4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */,
@@ -1224,7 +1250,6 @@
 				4E713C2B1416703D00BF7099 /* subsys_ios_AVAudioSessionDelegate.m in Sources */,
 				4E081DD01419F4DD003C9178 /* FlowerApp.m in Sources */,
 				4EEED18F141E3E3100F56102 /* CalibrationApp.m in Sources */,
-				4EA1A3BC1420FB3D00B11705 /* CalibrationApp_NeedleView.m in Sources */,
 				D7F59A6914286D06006FE244 /* PickerEditor.m in Sources */,
 				4E5110881428CBC600A464EA /* Profil.m in Sources */,
 				D73C1313142879050006B28F /* ResultsApp_Day.m in Sources */,
@@ -1245,9 +1270,10 @@
 				4E8068D1160B07D7000066FA /* OpenUDID.m in Sources */,
 				BCD8AD221625999A007A32B7 /* UserChooserViewController.m in Sources */,
 				BC59556716270126002FA364 /* UserChooser_TextCell.m in Sources */,
-				BC9732E216679705008E0ABE /* HistoryGL.m in Sources */,
+				BC9732E216679705008E0ABE /* BottomBarGL.m in Sources */,
 				BC415D4D167B302400855354 /* BikerApp.m in Sources */,
-				BC415D50167B302400855354 /* BikerGL.m in Sources */,
+				BC415D50167B302400855354 /* BikerAppGL.m in Sources */,
+				BCC0BE0416A85B1000D1BD0C /* CalibrationApp_NeedleGL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1343,6 +1369,26 @@
 			name = VolcanoApp.strings;
 			sourceTree = "<group>";
 		};
+		BCAE877416DE0DCA00D8FB5C /* BikerApp.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCAE877516DE0DCA00D8FB5C /* en */,
+				BCAE877716DE0DFF00D8FB5C /* fr */,
+				BCAE877816DE0FBB00D8FB5C /* de */,
+			);
+			name = BikerApp.strings;
+			sourceTree = "<group>";
+		};
+		BCAE877B16DE109800D8FB5C /* UserChooser.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCAE877A16DE109800D8FB5C /* en */,
+				BCAE877C16DE10A400D8FB5C /* fr */,
+				BCAE877D16DE10A500D8FB5C /* de */,
+			);
+			name = UserChooser.strings;
+			sourceTree = "<group>";
+		};
 		D73C1306142879050006B28F /* ResultsApp.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1424,12 +1470,18 @@
 					armv7,
 				);
 				CLANG_LINK_OBJC_RUNTIME = FALSE;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Def defitech (LY7J875EWX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -1440,6 +1492,7 @@
 					"-all_load",
 					"-ObjC",
 				);
+				PROVISIONING_PROFILE = "90C79CDB-7C75-483F-BF02-1E5970B130B6";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
@@ -1457,13 +1510,18 @@
 					armv7,
 				);
 				CLANG_LINK_OBJC_RUNTIME = FALSE;
-				CODE_SIGN_IDENTITY = "";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Def defitech (LY7J875EWX)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fondation Defitech";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -1473,8 +1531,9 @@
 					"-all_load",
 					"-ObjC",
 				);
+				PROVISIONING_PROFILE = "90C79CDB-7C75-483F-BF02-1E5970B130B6";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CE105823-AEAC-48F6-91F4-E7B1766DAAB5";
-				SDKROOT = iphoneos4.3;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = "i386 armv6 armv7";
 			};

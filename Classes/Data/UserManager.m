@@ -51,7 +51,7 @@ static User* currentU;
     // refresh flapix (if needed)
     [FlowerController initFlapix];
     // refresh history view
-    [[[FlowerController currentFlower] historyGL] reloadFromDB];
+    [[[FlowerController currentFlower] bottomBarGL] reloadFromDB];
     //[[[FlowerController currentFlower] historyView] reloadFromDB];
     NSLog(@"setCurrent User %i: %@",[currentU uid],[currentU name]);
     [[NSNotificationCenter defaultCenter] postNotificationName: @"userDataChangeEvent" object: Nil];

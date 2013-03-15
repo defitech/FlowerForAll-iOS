@@ -26,7 +26,7 @@
     double avg_median_frequency_hz;
 }
 
--(id)init:(double)_start_ts:(double)_stop_ts:(double)_frequency_target_hz:(double)_frequency_tolerance_hz:(double)_duration_expiration_s:(double)_duration_exercice_s:(double)_duration_exercice_done_ps:(NSInteger)_blow_count:(NSInteger)_blow_star_count:(NSString*)_profile_name:(double)_avg_median_frequency_hz;
+-(id)init:(double)_start_ts :(double)_stop_ts :(double)_frequency_target_hz :(double)_frequency_tolerance_hz :(double)_duration_expiration_s :(double)_duration_exercice_s :(double)_duration_exercice_done_ps :(NSInteger)_blow_count :(NSInteger)_blow_star_count :(NSString*)_profile_name :(double)_avg_median_frequency_hz;
 
 
 //Properties

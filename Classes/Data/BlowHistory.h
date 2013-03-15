@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol BlowHistoryDelegate <NSObject>
--(void) historyChange:(id*) history;
+//-(void) historyChange:(id*) history;
 @end
 
 @interface BlowHistory : NSObject {

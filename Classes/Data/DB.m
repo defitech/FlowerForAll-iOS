@@ -562,7 +562,7 @@ static sqlite3 *database;
 }
 
 //Creates a user
-+ (void)createUser:(NSInteger)ID:(NSString *)name:(NSString *)password {
++ (void)createUser:(NSInteger)ID :(NSString *)name :(NSString *)password {
     [DB executeWF:@"INSERT INTO users (id, name, password) VALUES (%i, '%@', '%@')",ID,name,password];
     
 }
@@ -591,12 +591,12 @@ static sqlite3 *database;
 }
 
 //Set a new name to a user
-+(void)setUserName:(NSInteger)ID:(NSString *)newName {
++(void)setUserName:(NSInteger)ID :(NSString *)newName {
 	[DB executeWF:@"UPDATE users SET NAME='%@' WHERE id=%i",newName,ID];
 }
 
 //Set a new password to a user
-+(void)setUserPassword:(NSInteger)ID:(NSString *)newPassword {
++(void)setUserPassword:(NSInteger)ID :(NSString *)newPassword {
     [DB executeWF:@"UPDATE users SET password='%@' WHERE id=%i",newPassword,ID] ;
 }
 
