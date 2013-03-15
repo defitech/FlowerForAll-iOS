@@ -48,18 +48,16 @@
     NSLocalizedStringFromTable(@"Last Blow's frequency",@"CalibrationApp",@"Last Blow's frequency");
     [goToDurationButton setTitle:NSLocalizedStringFromTable(@"Duration settings",@"CalibrationApp",@"go to duration settings") forState:UIControlStateNormal];
     
-    targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",[[FlowerController currentFlapix]frequenceTarget]];
-    
 	    
     
     double target = [[FlowerController currentFlapix] frequenceTarget];
     double toleranceH =  [[FlowerController currentFlapix] frequenceTolerance] ;
     
     
-	
+	targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",target];     //????
     lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", target];
     
-    [slider setSelectedValues:(target - toleranceH) maxValue:(target+ toleranceH)];
+    [slider setSelectedValues:(target - toleranceH) maxValue:(target + toleranceH)];
     
 	
 	//get the initial values
@@ -82,6 +80,7 @@
 
 - (void)valueChangedForDoubleSlider:(DoubleSlider *)aSlider
 {
+    dispatch_async(dispatch_get_main_queue(), ^{            // this block will run on the main thread
 	minLabel.text = [NSString stringWithFormat:@"%1.1f Hz", aSlider.minSelectedValue];
 	maxLabel.text = [NSString stringWithFormat:@"%1.1f Hz", aSlider.maxSelectedValue];
     
@@ -91,6 +90,7 @@
     [[FlowerController currentFlapix] SetTargetFrequency:target frequency_tolerance:tolerance];
     
     [needle setNeedsDisplay];
+    });
 }
 
 
@@ -107,17 +107,18 @@
 
 
 - (void)flapixEventFrequency:(double)frequency in_target:(BOOL)good current_exercice:(double)percent_done {    
-    [needle setNeedsDisplay];
+    //[needle setNeedsDisplay];
 }
 
 - (void)flapixEventBlowStop:(FLAPIBlow *)blow {
-    [needle refreshLastBlow:blow];
+    dispatch_async(dispatch_get_main_queue(), ^{            // this block will run on the main thread
     lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", blow.medianFrequency];
     NSArray* marks = [[[NSArray alloc] 
                         initWithObjects:[NSNumber numberWithFloat:(blow.medianFrequency - blow.medianTolerance)], 
                               [NSNumber numberWithFloat:(blow.medianFrequency + blow.medianTolerance)],
                               nil] autorelease];
     [slider setMarks:marks];
+    });
 }
 
 - (void)flapixEventExerciceStart:(FLAPIExercice *)exercice {

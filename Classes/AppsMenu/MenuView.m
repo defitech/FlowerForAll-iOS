@@ -53,7 +53,7 @@
 }
 
 FlowerHowTo *flowerHowTo;
-- (IBAction) flowerHowTo:(id) sender {
+- (IBAction) flowerHowTo {
     NSLog(@"flowerHowToTouch: %@",[flowerHowTo class]);
     if (flowerHowTo == nil) {
         flowerHowTo = [[FlowerHowTo alloc] initWithNibName:@"FlowerHowTo" bundle:[NSBundle mainBundle]];
@@ -88,6 +88,16 @@ FlowerHowTo *flowerHowTo;
     [resultsLabel setText:[ResultsApp appTitle]];
     [usersLabel setText:[Users  appTitle]];
     [calibrationLabel setText:[CalibrationApp appTitle]];
+    
+    UIImage* image3 = [UIImage imageNamed:@"FlowerHowTo-icon.png"];
+    CGRect frameimg = CGRectMake(self.view.frame.size.width-self.navigationBar.frame.size.height, 0, self.navigationBar.frame.size.height, self.navigationBar.frame.size.height);
+    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+    [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
+    [someButton addTarget:self action:@selector(flowerHowTo)
+         forControlEvents:UIControlEventTouchUpInside];
+    [someButton setShowsTouchWhenHighlighted:YES];
+    [someButton setFrame:frameimg];
+    [self.view addSubview:someButton];
 	
     int nb_pages = 2;
     CGFloat pageWidth = self.view.frame.size.width;

@@ -1,0 +1,49 @@
+/* 
+  UserChooser.strings
+  FlowerForAll
+
+  Created by adherent on 11.10.12.
+
+*/
+
+/* Info Text */
+"Add users if this device is used by several persons. Use the + button on the top right corner." = "Ajouter des utilisateurs si cet appareil est utilisé par plusieurs personnes";
+
+/* No comment provided by engineer. */
+"Cancel" = "Annuler";
+
+/* Label of delete button */
+"Delete" = "Supprimer";
+
+/* message */
+"Do you want to delete all the data for this user?" = "Voulez-vous supprimer toutes les données de cet utilisateur?";
+
+/* Edit User page title */
+"Edit user" = "Modifier";
+
+/* Tip for th label of the name entry field */
+"In a medical environnement choose a username that preserves anonymity." = "Dans un environnement médicla, choisissez un nom d'utilisateur préservant l'anonymat.";
+
+/* Tip for the password entry field */
+"Leave empty for no password" = "Laissez vide si aucun mot de passe";
+
+/* Left nav Button */
+"Menu" = "Menu";
+
+/* Label of the name entry field */
+"Name" = "Nom";
+
+/* Name of a newly created user */
+"New user" = "Nouvel utilisateur";
+
+/* Info Text */
+"Only the owner may remove or edit user. \nYou may switch to another identity by choosing the coresponding username." = "Vous pouvez changer d'identité en choisissant le nom d'utilisateur correspondant.";
+
+/* Label of the password entry field */
+"Password" = "Mot de passe";
+
+/* App Title */
+"Users" = "Utilisateurs";
+
+/* Info Text */
+"You may switch to another identity by choosing the coresponding username. Only the owner may add or remove user." = "Vous pouvez changer d'identité en choisissant le nom d'utilisateur correspondant.";

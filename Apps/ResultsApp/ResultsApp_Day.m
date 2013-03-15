@@ -167,8 +167,8 @@
     }
     
     //Get cell dimensions. All elements placed in the cell will then be placed relatively to those dimensions
-    float cellHeight = cell.frame.size.height;
-    float cellWidth = cell.frame.size.width;
+    float cellHeight = 44.0; //to keep the police size on the ipad when scrolling
+    float cellWidth = 320.0; //to keep the police size on the ipad when scrolling
     
     float starAlignment = cellWidth/21.33;
     float timeAlignment = cellWidth/4.57;

@@ -26,7 +26,7 @@ NSString * const FLAPIX_EVENT_MICROPHONE_STATE = @"FlapixEventMicrophoneState";
 
 @implementation FLAPIX
 
-@synthesize running, frequency, blowing, lastlevel;
+@synthesize running, frequency, blowing, lastlevel, lastBlow;
 
 - (id)init
 {
@@ -260,7 +260,7 @@ NSMutableArray *blowFrequencies;
     // send messages
     FLAPIBlow* blow = [[FLAPIBlow alloc] initWith:timestamp duration:length in_range_duration:ir_length goal:goal medianFrequency:medianFrequency];
     blow.medianTolerance = medianTolerance;
-    lastBlow = blow;
+    self.lastBlow = blow;
     
     
         
@@ -379,6 +379,7 @@ NSMutableArray *blowFrequencies;
     [self Stop]; // just in case it's running
     FLAPI_Exit();
     [super dealloc];
+    [lastBlow release];
 }
 
 @end
