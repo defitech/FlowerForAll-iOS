@@ -190,7 +190,7 @@ static BOOL showing = false;
 //Push a ResultsApp_Day controller when the user touches a row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     User* user = (User*)[[UserManager listAllUser] objectAtIndex:[indexPath row]];
-	[UserPicker askPasswordFor:user];
+	[UserPicker askPasswordFor:user atindex:[indexPath row]];
 }
 
 #pragma mark - View lifecycle
