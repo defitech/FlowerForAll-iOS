@@ -28,14 +28,14 @@
 /** show the password test on top of FLowerController view **/
 +(void)askPasswordFor:(User*)user;
 
-+(void)askPasswordFor:(User*)user atindex:(int) indexUP;
-    
 - (void) showUserPicker ;
 
 - (void) dismissAndPickSelectedUser;
 
 
 -(IBAction)dismissActionSheet:(id)sender;
+
+- (User*) selectedUser;
 
 - (void) showPasswordSheet:(NSString*)extraMessage ;
 
@@ -46,3 +46,4 @@
 
 
 @end
+
