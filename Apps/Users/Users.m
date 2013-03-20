@@ -57,7 +57,7 @@ Users_TextCell *cellh;
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"cell height in tableView: heightForRowAtIndexPath: %f",cellh.frame.size.height);
+    //NSLog(@"cell height in tableView: heightForRowAtIndexPath: %f",cellh.frame.size.height);
      NSUInteger section = [indexPath section];
     if (section == 0) return [cellh height];
     return 44;

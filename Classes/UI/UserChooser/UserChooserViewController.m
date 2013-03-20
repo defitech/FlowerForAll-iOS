@@ -18,17 +18,17 @@
 
 @implementation UserChooserViewController
 
-@synthesize navController, usersListTableView, navItem ;
+@synthesize navController, usersListTableView, navItem, userArrayforChooser, passwordTextFieldforChooser;
 
 UserChooser_TextCell *cellh;
-
+int IndexforUserinChooser;
 
 static BOOL showing = false;
 /** show the user picker on top of FLowerController view **/
 +(void)show {
     if (! showing) {
         showing = true;
-         [[[UserChooserViewController alloc] init] showUserChooser];
+        [[[UserChooserViewController alloc] init] showUserChooser];
     } else {
         // NSLog(@"UserPicker:already showing");
     }
@@ -36,7 +36,7 @@ static BOOL showing = false;
 
 
 
-    
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -79,15 +79,15 @@ static BOOL showing = false;
     //[self.view addSubview:navController.view];
     [self.view addSubview:navController.view];
     /*navItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                 initWithTitle:NSLocalizedStringFromTable(@"Menu",@"UserChooser",@"Left nav Button")
-                                 style:UIBarButtonItemStyleBordered
-                                 target:self
-                                 action:@selector(close:)];*/
+     initWithTitle:NSLocalizedStringFromTable(@"Menu",@"UserChooser",@"Left nav Button")
+     style:UIBarButtonItemStyleBordered
+     target:self
+     action:@selector(close:)];*/
     [[NSNotificationCenter defaultCenter]
-        addObserver:self
-        selector:@selector(userchooserDataChangeEvent:)
-        name: @"userchooserDataChangeEvent"
-        object: nil];
+     addObserver:self
+     selector:@selector(userchooserDataChangeEvent:)
+     name: @"userchooserDataChangeEvent"
+     object: nil];
     
 }
 
@@ -162,10 +162,10 @@ static BOOL showing = false;
     (user.uid != [UserManager currentUser].uid);
     
     /*if ([UserManager currentUser].uid == 0 || [UserManager currentUser].uid == user.uid)  {
-        [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
-    } else {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
-    }*/
+     [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+     } else {
+     [cell setAccessoryType:UITableViewCellAccessoryNone];
+     }*/
     
     return cell;
 }
@@ -183,14 +183,75 @@ static BOOL showing = false;
     [self.view removeFromSuperview];
 }
 
+- (void) showPasswordSheet:(NSString*)extraMessage {
+    
+    //Creates an alert for the user to enter his password
+    UIAlertView *myAlertView = [[UIAlertView alloc]
+                                initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Enter password for %@", @"Label of the password alert"),[[self selectedUser] name]]
+                                message:[NSString stringWithFormat:@"%@\n\n",extraMessage]
+                                delegate:self
+                                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+    
+    self.passwordTextFieldforChooser = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 70.0, 260.0, 25.0)];
+    [self.passwordTextFieldforChooser setBackgroundColor:[UIColor whiteColor]];
+    self.passwordTextFieldforChooser.secureTextEntry = YES;
+    [self.passwordTextFieldforChooser setKeyboardType:UIKeyboardTypeNumberPad];
+    
+    [self.passwordTextFieldforChooser becomeFirstResponder];
+    [myAlertView addSubview:self.passwordTextFieldforChooser];
+    [myAlertView show];
+    [myAlertView release];
+    
+}
 
+- (User*) selectedUser {
+    int i;
+    for (i = 0; i < [self.userArrayforChooser count]; i++) {
+        if ( [[self.userArrayforChooser objectAtIndex:i] uid] == IndexforUserinChooser) {
+            return [self.userArrayforChooser objectAtIndex:i];
+        }
+    }
+    NSLog(@"Problem: could not find user in UserPicker.m, function selectedUser");
+    return [self.userArrayforChooser objectAtIndex:0];
+}
+
+//Check password if clicked on OK button
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	
+	if (buttonIndex == 1){
+        if ([[[self selectedUser] password] isEqualToString:self.passwordTextFieldforChooser.text]) {
+            
+            NSLog(@"Choose User %@",[[self selectedUser] name] );
+            [self dismissAndPickSelectedUser];
+            showing = false;
+        } else {
+            NSLog(@"Password for User %@ is %@",[[self selectedUser] name],[[self selectedUser] password]);
+            [self showPasswordSheet:NSLocalizedString(@"Wrong password please retry.", @"Message to display in the alert box.")];
+        }
+        
+	} else {
+        showing = false;
+    }
+}
+
+-(void)askPasswordFor:(User*)user {
+    showing = true;
+    IndexforUserinChooser = [user uid];
+    [self showPasswordSheet:@""];
+}
+- (void) dismissAndPickSelectedUser {
+    [UserManager setCurrentUser:[[self selectedUser] uid]];
+    showing = false;
+}
 
 #pragma mark -
 #pragma mark Table view delegate
 //Push a ResultsApp_Day controller when the user touches a row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    User* user = (User*)[[UserManager listAllUser] objectAtIndex:[indexPath row]];
-	[UserPicker askPasswordFor:user];
+    self.userArrayforChooser = [UserManager listAllUser];
+    //User* user = (User*)[[UserManager listAllUser] objectAtIndex:[indexPath row]];
+	[self askPasswordFor:[self.userArrayforChooser objectAtIndex:[indexPath row]]];
 }
 
 #pragma mark - View lifecycle
@@ -198,3 +259,4 @@ static BOOL showing = false;
 
 
 @end
+

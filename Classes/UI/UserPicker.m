@@ -23,18 +23,18 @@
 
 @synthesize  userArray,  selectedRow, passwordTextField;
 
-User* onlyPasswordModeUser;
+int IndexforUser;
+NSArray *tempArray;
 
 
- static BOOL showing = false;
+static BOOL showing = false;
 /** show the user picker on top of FLowerController view **/
 +(void)show {
     if (! showing) {
         showing = true;
-        onlyPasswordModeUser = nil;
         [[[UserPicker alloc] init] showUserPicker];
     } else {
-         // NSLog(@"UserPicker:already showing");
+        // NSLog(@"UserPicker:already showing");
     }
 }
 
@@ -43,7 +43,7 @@ User* onlyPasswordModeUser;
 +(void)askPasswordFor:(User*)user {
     if (! showing) {
         showing = true;
-        onlyPasswordModeUser = user;
+        IndexforUser = [user uid];
         [[[UserPicker alloc] init] showPasswordSheet:@""];
     } else {
         // NSLog(@"UserPicker:already showing");
@@ -56,6 +56,7 @@ User* onlyPasswordModeUser;
 - (void) dismissAndPickSelectedUser {
     [UserManager setCurrentUser:[[self selectedUser] uid]];
     showing = false;
+    [tempArray release];
 }
 
 UIActionSheet* actionSheet;
@@ -66,8 +67,8 @@ UIActionSheet* actionSheet;
     if (self) {
         
         //Construct an array of user names based on the array of user IDs, and store into instance variables
-        self.userArray = [UserManager listAllUser];
-
+        tempArray = [UserManager listAllUser];
+        self.userArray = tempArray;
     }
     
     return self;
@@ -77,7 +78,7 @@ UIActionSheet* actionSheet;
     if (actionSheet != nil) {
         NSLog(@"UserPicker: showUserPicker actionSheet is not nil.. strange situation" );
     }
-    actionSheet = [[UIActionSheet alloc] initWithTitle:nil 
+    actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                               delegate:nil
                                      cancelButtonTitle:nil
                                 destructiveButtonTitle:nil
@@ -96,7 +97,7 @@ UIActionSheet* actionSheet;
     [pickerView release];
     
     UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:NSLocalizedString(@"Done", @"Button to validate user selection")]];
-    closeButton.momentary = YES; 
+    closeButton.momentary = YES;
     closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
     closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
     closeButton.tintColor = [UIColor blackColor];
@@ -107,10 +108,10 @@ UIActionSheet* actionSheet;
     
     [actionSheet showInView:[FlowerController currentFlower].view];
     
-    [actionSheet setBounds:CGRectMake(0, 0, 320, 485)];       
+    [actionSheet setBounds:CGRectMake(0, 0, 320, 485)];
     
 }
- 
+
 
 -(IBAction)dismissActionSheet:(id)sender {
     // hiden picker
@@ -130,11 +131,11 @@ UIActionSheet* actionSheet;
 - (void) showPasswordSheet:(NSString*)extraMessage {
     
     //Creates an alert for the user to enter his password
-    UIAlertView *myAlertView = [[UIAlertView alloc] 
-                                initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Enter password for %@", @"Label of the password alert"),[[self selectedUser] name]] 
+    UIAlertView *myAlertView = [[UIAlertView alloc]
+                                initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Enter password for %@", @"Label of the password alert"),[[self selectedUser] name]]
                                 message:[NSString stringWithFormat:@"%@\n\n",extraMessage]
-                                delegate:self 
-                                cancelButtonTitle:NSLocalizedString(@"Cancel", nil) 
+                                delegate:self
+                                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                 otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
     
     self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(12.0, 70.0, 260.0, 25.0)];
@@ -158,7 +159,7 @@ UIActionSheet* actionSheet;
 	return [self.userArray count];
 }
 
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)componen { 
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)componen {
 	return [(User*)[self.userArray objectAtIndex:row] name];
 }
 
@@ -169,10 +170,14 @@ UIActionSheet* actionSheet;
 
 
 - (User*) selectedUser {
-    if (onlyPasswordModeUser == nil)
-        return (User*)[self.userArray objectAtIndex:self.selectedRow];
-    
-    return onlyPasswordModeUser;
+    int i;
+    for (i = 0; i < [self.userArray count]; i++) {
+        if ( [[self.userArray objectAtIndex:i] uid] == IndexforUser) {
+            return [self.userArray objectAtIndex:i];
+        }
+    }
+    NSLog(@"Problem: could not find user in UserPicker.m, function selectedUser");
+    return [self.userArray objectAtIndex:0];
 }
 
 
@@ -191,8 +196,9 @@ UIActionSheet* actionSheet;
         }
         
 	} else {
-         showing = false;
+        showing = false;
     }
 }
 
 @end
+

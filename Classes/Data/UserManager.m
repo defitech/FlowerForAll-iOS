@@ -139,7 +139,7 @@ static User* currentU;
 +(NSArray*)listAllUser {
     NSMutableArray* ids = [[[NSMutableArray alloc] init] autorelease];
     for (NSString* strId in [DataAccess arrayOfFilesInFolder:@"/users"]) {
-        [ids addObject:[[User alloc] initWithId:[strId intValue]]];
+        [ids addObject:[[[User alloc] initWithId:[strId intValue]] autorelease]];
     }
     return ids;
 }
