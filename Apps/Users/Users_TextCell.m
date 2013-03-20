@@ -22,7 +22,8 @@
     if ( (self = [super initWithCoder:coder]) ) {
         UIView *transparentBackground = [[UIView alloc] initWithFrame:CGRectZero];
         transparentBackground.backgroundColor = [UIColor clearColor];
-        self.backgroundView = transparentBackground;	
+        self.backgroundView = transparentBackground;
+        [transparentBackground release];
         
 
         [[NSNotificationCenter defaultCenter]
