@@ -39,7 +39,6 @@ NSMutableArray *BlowsDurationTot;
 NSMutableArray *StarsPosition;
 NSMutableArray *StartStopPosition;
 
-
 float lastExerciceStartTimeStamp2 = 0;
 float lastExerciceStopTimeStamp2 = 0;
 
@@ -268,7 +267,7 @@ float lastExerciceStopTimeStamp2 = 0;
 
     /*************** Logic code ******************/
     // Frame dimensions    
-    const GLfloat needleCenterX = -1.311f, needleCenterY = -0.15f, needleCenterZ = 0.0f;
+    static const GLfloat needleCenterX = -1.311f, needleCenterY = -0.15f, needleCenterZ = 0.0f;
     
     //static float position_actual = 0.0f;
     static float speed = 0.0005f;
@@ -314,7 +313,7 @@ float lastExerciceStopTimeStamp2 = 0;
     //glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
     //draw axes
-	const GLfloat axes[] = {
+	static const GLfloat axes[] = {
         //y axis
         0.64, 0.15, -5.00,
         0.62, -0.15, -5.00,
@@ -374,7 +373,7 @@ float lastExerciceStopTimeStamp2 = 0;
     glLoadIdentity();
     
     // Def needle
-	const GLfloat quadVertices[] = {
+	static const GLfloat quadVertices[] = {
         0.0, 0.25, -5.0,                    // head
         -0.07, 0.03, -5.0,                    // left
         0.0, -0.05, -5.0,                      // queue
@@ -448,7 +447,7 @@ float lastExerciceStopTimeStamp2 = 0;
     
     //draw the rectangles for each blow
     //first, draw a rectangle to cover the other rectangles when they "go out of range"
-    const GLfloat rectangle[] = {
+    static const GLfloat rectangle[] = {
         -1.1f, -0.15f, -5.0f,
         -1.0f, 0.25f, -5.0f,
         -1.1f, 0.25f, -5.0f,
@@ -598,7 +597,25 @@ float lastExerciceStopTimeStamp2 = 0;
         if (blow.duration > higherBar) {
             higherBar = blow.duration;
             // if too high blow, resize y axis
-        } 
+        }
+        
+        //remove objects when array reaches a certain count
+        if ([BlowsPosition count] >= 15) {
+            for (int i = 0; i < [BlowsPosition count]-1; i++) {
+                [BlowsPosition replaceObjectAtIndex:i withObject:[BlowsPosition objectAtIndex:i+1]];
+                [BlowsDurationGood replaceObjectAtIndex:i withObject:[BlowsDurationGood objectAtIndex:i+1]];
+                [BlowsDurationTot replaceObjectAtIndex:i withObject:[BlowsDurationTot objectAtIndex:i+1]];
+            }
+            [BlowsPosition removeLastObject];
+            [BlowsDurationGood removeLastObject];
+            [BlowsDurationTot removeLastObject];
+        }
+        if ([StarsPosition count] >= 15) {
+            for (int i = 0; i < [StarsPosition count]-1; i++) {
+                [StarsPosition replaceObjectAtIndex:i withObject:[StarsPosition objectAtIndex:i+1]];
+            }
+            [StarsPosition removeLastObject];
+        }
     });
 }
 
