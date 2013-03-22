@@ -182,37 +182,37 @@ float lastExerciceStopTimeStamp2 = 0;
     
     if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
         
-        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, 0.0,  widthHist*1/5, height/2) ];
+        labelPercent = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, 0.0,  widthHist*1/5, height/2) ] autorelease];
         [labelPercent setBackgroundColor:[UIColor blackColor]];
         [labelPercent setTextColor:[UIColor whiteColor]];
         [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelPercent setText:@"%"];
         
-        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*5/6, 0.0, widthHist*1/5, height/2) ];
+        labelFrequency = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*5/6, 0.0, widthHist*1/5, height/2) ] autorelease];
         [labelFrequency setBackgroundColor:[UIColor blackColor]];
         [labelFrequency setTextColor:[UIColor whiteColor]];
         [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelFrequency setText:@"Hz"];
         
-        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, height/2,  widthHist*1/4, height/2) ];
+        labelDuration = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, height/2,  widthHist*1/4, height/2) ] autorelease];
         [labelDuration setBackgroundColor:[UIColor blackColor]];
         [labelDuration setTextColor:[UIColor whiteColor]];
         [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelDuration setText:@"sec"];
     } else {
-        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, 0.0, width*1/3, height/2) ];
+        labelPercent = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, 0.0, width*1/3, height/2) ]autorelease];
         [labelPercent setBackgroundColor:[UIColor blackColor]];
         [labelPercent setTextColor:[UIColor whiteColor]];
         [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelPercent setText:@"%"];
         
-        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.85, 0.0, width*1/4, height/2) ];
+        labelFrequency = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.85, 0.0, width*1/4, height/2) ] autorelease];
         [labelFrequency setBackgroundColor:[UIColor blackColor]];
         [labelFrequency setTextColor:[UIColor whiteColor]];
         [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelFrequency setText:@"Hz"];
         
-        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, height/2, width*1/3, height/2) ];
+        labelDuration = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, height/2, width*1/3, height/2) ] autorelease];
         [labelDuration setBackgroundColor:[UIColor blackColor]];
         [labelDuration setTextColor:[UIColor whiteColor]];
         [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
@@ -264,8 +264,8 @@ float lastExerciceStopTimeStamp2 = 0;
 - (void)drawView {
     FLAPIX* flapix = [FlowerController currentFlapix];
     if (flapix == nil) return;
-
-    /*************** Logic code ******************/
+    
+    /////////////////////////Logic code /////////////////////
     // Frame dimensions    
     static const GLfloat needleCenterX = -1.311f, needleCenterY = -0.15f, needleCenterZ = 0.0f;
     
@@ -296,7 +296,7 @@ float lastExerciceStopTimeStamp2 = 0;
     angle_freqMin_previous = angle_freqMin;
     angle_freqMax_previous = angle_freqMax;
     
-    /*************** Drawing code ******************/
+    ///////////////////////// Drawing code /////////////////////////
     
     
     [EAGLContext setCurrentContext:context];
@@ -498,6 +498,7 @@ float lastExerciceStopTimeStamp2 = 0;
     
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
+    
 }
 
 - (void)drawRectangleDuration: (float) PositionActual RectHeight:(float) RectangleHeight offset:(float) Offset color1:(float)col1 color2:(float)col2 color3:(float)col3 color4:(float)col4 {
@@ -616,6 +617,12 @@ float lastExerciceStopTimeStamp2 = 0;
             }
             [StarsPosition removeLastObject];
         }
+        if ([StartStopPosition count] >= 15) {
+            for (int i = 0; i < [StartStopPosition count]-1; i++) {
+                [StartStopPosition replaceObjectAtIndex:i withObject:[StartStopPosition objectAtIndex:i+1]];
+            }
+            [StartStopPosition removeLastObject];
+        }
     });
 }
 
@@ -666,12 +673,12 @@ float lastExerciceStopTimeStamp2 = 0;
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth);
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight);
     
-    if (true) {
+    //if (true) {
         glGenRenderbuffersOES(1, &depthRenderbuffer);
         glBindRenderbufferOES(GL_RENDERBUFFER_OES, depthRenderbuffer);
         glRenderbufferStorageOES(GL_RENDERBUFFER_OES, GL_DEPTH_COMPONENT16_OES, backingWidth, backingHeight);
         glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, depthRenderbuffer);
-    }
+    //}
     
     if(glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
         NSLog(@"failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
@@ -745,7 +752,7 @@ float lastExerciceStopTimeStamp2 = 0;
         [EAGLContext setCurrentContext:nil];
     }
     
-    //[context release];
+    [context release];
     [super dealloc];
 }
 
