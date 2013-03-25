@@ -40,6 +40,7 @@
 @property (nonatomic, retain) UILabel *lastFreqLabelTitle;
 
 @property (nonatomic, retain)  UIButton *goToDurationButton;
+@property (nonatomic, retain) IBOutlet DoubleSlider *slider;
 
 - (IBAction) goToDurationAction:(id) sender;
 

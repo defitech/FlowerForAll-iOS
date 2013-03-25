@@ -25,7 +25,7 @@
 
 @implementation CalibrationApp
 
-@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, lastFreqLabelValue, targetFreqLabelValue, lastFreqLabelTitle, goToDurationButton;
+@synthesize targetFrequencyRangeLabel, minLabel, maxLabel, lastFreqLabelValue, targetFreqLabelValue, lastFreqLabelTitle, goToDurationButton, slider;
 
 # pragma mark FlowerApp overriding
 
@@ -57,7 +57,7 @@
 	targetFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz",target];     //????
     lastFreqLabelValue.text = [NSString stringWithFormat:@"%1.1f Hz", target];
     
-    [slider setSelectedValues:(target - toleranceH) maxValue:(target + toleranceH)];
+    [self.slider setSelectedValues:(target - toleranceH) maxValue:(target + toleranceH)];
     
 	
 	//get the initial values
@@ -69,7 +69,7 @@
 	[slider addTarget:self action:@selector(valueChangedForDoubleSlider:) 
      forControlEvents:UIControlEventValueChanged];
     
-    [slider addTarget:self action:@selector(editingEndForDoubleSlider:) 
+    [self.slider addTarget:self action:@selector(editingEndForDoubleSlider:)
      forControlEvents:UIControlEventEditingDidEnd];
     
     // set last values
@@ -117,7 +117,7 @@
                         initWithObjects:[NSNumber numberWithFloat:(blow.medianFrequency - blow.medianTolerance)], 
                               [NSNumber numberWithFloat:(blow.medianFrequency + blow.medianTolerance)],
                               nil] autorelease];
-    [slider setMarks:marks];
+    [self.slider setMarks:marks];
     });
 }
 
@@ -138,12 +138,17 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [self.targetFreqLabelValue release];
+    [self.targetFrequencyRangeLabel release];
+    [self.maxLabel release];
+    [self.minLabel release];
+    self.targetFreqLabelValue = nil;
     self.targetFrequencyRangeLabel = nil;
 	self.minLabel = nil;
 	self.maxLabel = nil;
     
     //double Slider
-    [slider release];
+    [self.slider release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

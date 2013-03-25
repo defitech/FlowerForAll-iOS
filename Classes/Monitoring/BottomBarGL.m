@@ -30,7 +30,7 @@
 
 @implementation BottomBarGL
 
-@synthesize context, animationTimer, animationInterval;
+@synthesize context, animationTimer, animationInterval, labelPercent, labelFrequency, labelDuration;
 
 //array to contain historic blows
 NSMutableArray *BlowsPosition;
@@ -182,37 +182,37 @@ float lastExerciceStopTimeStamp2 = 0;
     
     if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
         
-        labelPercent = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, 0.0,  widthHist*1/5, height/2) ] autorelease];
+        self.labelPercent = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, 0.0,  widthHist*1/5, height/2) ] autorelease];
         [labelPercent setBackgroundColor:[UIColor blackColor]];
         [labelPercent setTextColor:[UIColor whiteColor]];
         [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelPercent setText:@"%"];
         
-        labelFrequency = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*5/6, 0.0, widthHist*1/5, height/2) ] autorelease];
+        self.labelFrequency = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*5/6, 0.0, widthHist*1/5, height/2) ] autorelease];
         [labelFrequency setBackgroundColor:[UIColor blackColor]];
         [labelFrequency setTextColor:[UIColor whiteColor]];
         [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelFrequency setText:@"Hz"];
         
-        labelDuration = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, height/2,  widthHist*1/4, height/2) ] autorelease];
+        self.labelDuration = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, height/2,  widthHist*1/4, height/2) ] autorelease];
         [labelDuration setBackgroundColor:[UIColor blackColor]];
         [labelDuration setTextColor:[UIColor whiteColor]];
         [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelDuration setText:@"sec"];
     } else {
-        labelPercent = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, 0.0, width*1/3, height/2) ]autorelease];
+        self.labelPercent = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, 0.0, width*1/3, height/2) ]autorelease];
         [labelPercent setBackgroundColor:[UIColor blackColor]];
         [labelPercent setTextColor:[UIColor whiteColor]];
         [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelPercent setText:@"%"];
         
-        labelFrequency = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.85, 0.0, width*1/4, height/2) ] autorelease];
+        self.labelFrequency = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.85, 0.0, width*1/4, height/2) ] autorelease];
         [labelFrequency setBackgroundColor:[UIColor blackColor]];
         [labelFrequency setTextColor:[UIColor whiteColor]];
         [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelFrequency setText:@"Hz"];
         
-        labelDuration = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, height/2, width*1/3, height/2) ] autorelease];
+        self.labelDuration = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, height/2, width*1/3, height/2) ] autorelease];
         [labelDuration setBackgroundColor:[UIColor blackColor]];
         [labelDuration setTextColor:[UIColor whiteColor]];
         [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
@@ -270,7 +270,12 @@ float lastExerciceStopTimeStamp2 = 0;
     static const GLfloat needleCenterX = -1.311f, needleCenterY = -0.15f, needleCenterZ = 0.0f;
     
     //static float position_actual = 0.0f;
-    static float speed = 0.0005f;
+    static float speed;
+    if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
+        speed = 0.00075f;
+    } else
+        speed = 0.0005f;
+    
     static float HeightFactor = 0.0f;
     
     
@@ -580,10 +585,18 @@ float lastExerciceStopTimeStamp2 = 0;
         FLAPIBlow* blow = (FLAPIBlow*)[notification object];
         if ([[FlowerController currentFlapix] exerciceInCourse]) {
             int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
-            [labelPercent setText:[NSString stringWithFormat:@"%i%%",p]];
+            NSString *StringForLabelPercent = [[NSString alloc ] initWithFormat:@"%i%%",p];
+            [labelPercent setText:StringForLabelPercent];
+            [StringForLabelPercent release];
         } else {
             [labelPercent setText:@"---"];
         }
+        NSString *StringForLabelFrequency = [[NSString alloc ] initWithFormat:@"%iHz",(int)blow.medianFrequency];
+        [labelFrequency setText:StringForLabelFrequency];
+        [StringForLabelFrequency release];
+        NSString *StringForLabelDuration = [[NSString alloc ] initWithFormat:@"%.2lf sec",blow.in_range_duration];
+        [labelDuration setText:StringForLabelDuration];
+        [StringForLabelDuration release];
         [labelFrequency setText:[NSString stringWithFormat:@"%iHz",(int)blow.medianFrequency]];
         [labelDuration setText:[NSString stringWithFormat:@"%.2lf sec",blow.in_range_duration]];
         [BlowsPosition addObject:[NSNumber numberWithFloat:0.0f]];
@@ -601,7 +614,7 @@ float lastExerciceStopTimeStamp2 = 0;
         }
         
         //remove objects when array reaches a certain count
-        if ([BlowsPosition count] >= 15) {
+        if ([BlowsPosition count] >= 10) {
             for (int i = 0; i < [BlowsPosition count]-1; i++) {
                 [BlowsPosition replaceObjectAtIndex:i withObject:[BlowsPosition objectAtIndex:i+1]];
                 [BlowsDurationGood replaceObjectAtIndex:i withObject:[BlowsDurationGood objectAtIndex:i+1]];
@@ -611,13 +624,13 @@ float lastExerciceStopTimeStamp2 = 0;
             [BlowsDurationGood removeLastObject];
             [BlowsDurationTot removeLastObject];
         }
-        if ([StarsPosition count] >= 15) {
+        if ([StarsPosition count] >= 10) {
             for (int i = 0; i < [StarsPosition count]-1; i++) {
                 [StarsPosition replaceObjectAtIndex:i withObject:[StarsPosition objectAtIndex:i+1]];
             }
             [StarsPosition removeLastObject];
         }
-        if ([StartStopPosition count] >= 15) {
+        if ([StartStopPosition count] >= 10) {
             for (int i = 0; i < [StartStopPosition count]-1; i++) {
                 [StartStopPosition replaceObjectAtIndex:i withObject:[StartStopPosition objectAtIndex:i+1]];
             }
