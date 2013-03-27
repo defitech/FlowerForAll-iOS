@@ -30,7 +30,7 @@
 
 @implementation BottomBarGL
 
-@synthesize context, animationTimer, animationInterval, labelPercent, labelFrequency, labelDuration;
+@synthesize context, animationTimer, animationInterval, labelPercent, labelFrequency, labelDuration, higherBar;
 
 //array to contain historic blows
 NSMutableArray *BlowsPosition;
@@ -597,8 +597,6 @@ float lastExerciceStopTimeStamp2 = 0;
         NSString *StringForLabelDuration = [[NSString alloc ] initWithFormat:@"%.2lf sec",blow.in_range_duration];
         [labelDuration setText:StringForLabelDuration];
         [StringForLabelDuration release];
-        [labelFrequency setText:[NSString stringWithFormat:@"%iHz",(int)blow.medianFrequency]];
-        [labelDuration setText:[NSString stringWithFormat:@"%.2lf sec",blow.in_range_duration]];
         [BlowsPosition addObject:[NSNumber numberWithFloat:0.0f]];
         [BlowsDurationGood addObject:[NSNumber numberWithFloat:blow.in_range_duration]];
         [BlowsDurationTot addObject:[NSNumber numberWithFloat:blow.duration]];
@@ -609,7 +607,7 @@ float lastExerciceStopTimeStamp2 = 0;
         //NSLog(@"blow duration:%f, in range duration:%f", blow.duration, blow.in_range_duration);
         //Resize Y axis if needed
         if (blow.duration > higherBar) {
-            higherBar = blow.duration;
+            self.higherBar = blow.duration;
             // if too high blow, resize y axis
         }
         
