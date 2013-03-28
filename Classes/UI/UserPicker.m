@@ -21,7 +21,7 @@
 
 @implementation UserPicker
 
-@synthesize  userArray,  selectedRow, passwordTextField;
+@synthesize  userArray,  selectedRow, passwordTextField, namesArray, passwordsArray;
 
 int IndexforUser;
 NSArray *tempArray;
@@ -57,6 +57,7 @@ static BOOL showing = false;
     [UserManager setCurrentUser:[[self selectedUser] uid]];
     showing = false;
     [tempArray release];
+    tempArray = nil;
 }
 
 UIActionSheet* actionSheet;
@@ -69,6 +70,16 @@ UIActionSheet* actionSheet;
         //Construct an array of user names based on the array of user IDs, and store into instance variables
         tempArray = [UserManager listAllUser];
         self.userArray = tempArray;
+        NSMutableArray *tempnamesArray = [[NSMutableArray alloc] init];
+        self.namesArray = tempnamesArray;
+        [tempnamesArray release];
+        NSMutableArray *temppasswordsArray = [[NSMutableArray alloc] init];
+        self.passwordsArray = temppasswordsArray;
+        [temppasswordsArray release];
+        for (int i = 0; i < [tempArray count]; i++) {
+            [namesArray addObject:[[tempArray objectAtIndex:i] name]];
+            [passwordsArray addObject:[[tempArray objectAtIndex:i] password]];
+        }
     }
     
     return self;
@@ -132,7 +143,7 @@ UIActionSheet* actionSheet;
     
     //Creates an alert for the user to enter his password
     UIAlertView *myAlertView = [[UIAlertView alloc]
-                                initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Enter password for %@", @"Label of the password alert"),[[self selectedUser] name]]
+                                initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Enter password for %@", @"Label of the password alert"),[namesArray objectAtIndex:IndexforUser]]
                                 message:[NSString stringWithFormat:@"%@\n\n",extraMessage]
                                 delegate:self
                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -171,6 +182,7 @@ UIActionSheet* actionSheet;
 
 - (User*) selectedUser {
     int i;
+     NSLog(@"userarray in :%@",[[self.userArray objectAtIndex:1] name]);
     for (i = 0; i < [self.userArray count]; i++) {
         if ( [[self.userArray objectAtIndex:i] uid] == IndexforUser) {
             return [self.userArray objectAtIndex:i];
@@ -185,19 +197,28 @@ UIActionSheet* actionSheet;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	
 	if (buttonIndex == 1){
-        if ([[[self selectedUser] password] isEqualToString:self.passwordTextField.text]) {
-            
-            NSLog(@"Choose User %@",[[self selectedUser] name] );
+        if ([[passwordsArray objectAtIndex:IndexforUser] isEqualToString:self.passwordTextField.text]) {
             [self dismissAndPickSelectedUser];
             showing = false;
         } else {
-            NSLog(@"Password for User %@ is %@",[[self selectedUser] name],[[self selectedUser] password]);
             [self showPasswordSheet:NSLocalizedString(@"Wrong password please retry.", @"Message to display in the alert box.")];
         }
         
 	} else {
         showing = false;
     }
+}
+
+- (void)dealloc
+{
+    [userArray release];
+    userArray = nil;
+    [namesArray release];
+    namesArray = nil;
+    [passwordsArray release];
+    passwordsArray = nil;
+    [super dealloc];
+
 }
 
 @end

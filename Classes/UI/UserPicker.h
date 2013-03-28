@@ -14,7 +14,9 @@
 @interface UserPicker : NSObject  <UIPickerViewDataSource, UIPickerViewDelegate, UIAlertViewDelegate> {
     //Arrays containing the user informations (for the display and selection of users)
 	NSArray *userArray;
-	
+	NSMutableArray *namesArray;
+    NSMutableArray *passwordsArray;
+    
 	//Stores the currently selected row in the picker view
 	NSInteger selectedRow;
 	
@@ -41,6 +43,8 @@
 
 
 @property (nonatomic, retain) NSArray *userArray;
+@property (nonatomic, retain) NSMutableArray *namesArray;
+@property (nonatomic, retain) NSMutableArray *passwordsArray;
 @property NSInteger selectedRow;
 @property (nonatomic, retain) UITextField *passwordTextField;
 

@@ -18,10 +18,11 @@
 
 @implementation UserChooserViewController
 
-@synthesize navController, usersListTableView, navItem, userArrayforChooser, passwordTextFieldforChooser;
+@synthesize navController, usersListTableView, navItem, userArrayforChooser, passwordTextFieldforChooser, namesArrayforChooser, passwordsArrayforChooser;
 
 UserChooser_TextCell *cellh;
 int IndexforUserinChooser;
+NSArray *tempArray;
 
 static BOOL showing = false;
 /** show the user picker on top of FLowerController view **/
@@ -42,6 +43,19 @@ static BOOL showing = false;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+    }
+    
+    tempArray = [UserManager listAllUser];
+    self.userArrayforChooser = tempArray;
+    NSMutableArray *tempnamesArray = [[NSMutableArray alloc] init];
+    self.namesArrayforChooser = tempnamesArray;
+    [tempnamesArray release];
+    NSMutableArray *temppasswordsArray = [[NSMutableArray alloc] init];
+    self.passwordsArrayforChooser = temppasswordsArray;
+    [temppasswordsArray release];
+    for (int i = 0; i < [tempArray count]; i++) {
+        [tempnamesArray addObject:[[tempArray objectAtIndex:i] name]];
+        [temppasswordsArray addObject:[[tempArray objectAtIndex:i] password]];
     }
     return self;
 }
@@ -95,6 +109,7 @@ static BOOL showing = false;
     if ([UserManager currentUser] != nil) {
         [self hideUserChooser];
     }
+    [tempArray release];
 }
 - (void) hideUserChooser {
     NSLog(@"HIDE USERCHOOSER");
@@ -187,7 +202,7 @@ static BOOL showing = false;
     
     //Creates an alert for the user to enter his password
     UIAlertView *myAlertView = [[UIAlertView alloc]
-                                initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Enter password for %@", @"Label of the password alert"),[[self selectedUser] name]]
+                                initWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Enter password for %@", @"Label of the password alert"),[namesArrayforChooser objectAtIndex:IndexforUserinChooser]]
                                 message:[NSString stringWithFormat:@"%@\n\n",extraMessage]
                                 delegate:self
                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -220,13 +235,10 @@ static BOOL showing = false;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	
 	if (buttonIndex == 1){
-        if ([[[self selectedUser] password] isEqualToString:self.passwordTextFieldforChooser.text]) {
-            
-            NSLog(@"Choose User %@",[[self selectedUser] name] );
+        if ([[passwordsArrayforChooser objectAtIndex:IndexforUserinChooser] isEqualToString:self.passwordTextFieldforChooser.text]) {
             [self dismissAndPickSelectedUser];
             showing = false;
         } else {
-            NSLog(@"Password for User %@ is %@",[[self selectedUser] name],[[self selectedUser] password]);
             [self showPasswordSheet:NSLocalizedString(@"Wrong password please retry.", @"Message to display in the alert box.")];
         }
         
@@ -249,7 +261,6 @@ static BOOL showing = false;
 #pragma mark Table view delegate
 //Push a ResultsApp_Day controller when the user touches a row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.userArrayforChooser = [UserManager listAllUser];
     //User* user = (User*)[[UserManager listAllUser] objectAtIndex:[indexPath row]];
 	[self askPasswordFor:[self.userArrayforChooser objectAtIndex:[indexPath row]]];
 }
