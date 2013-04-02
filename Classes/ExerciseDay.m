@@ -17,7 +17,9 @@
     self = [super init];
     if (self) {
         //Init the date field
+        NSDate *dateForExercise = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:start_ts];
         self.date = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:start_ts];
+        [dateForExercise release];
         
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
