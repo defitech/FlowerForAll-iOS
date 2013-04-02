@@ -120,9 +120,12 @@ Users_TextCell *cellh;
 #pragma mark -
 #pragma mark Table view delegate
 //Push a ResultsApp_Day controller when the user touches a row
+UserPicker *UserPickeraskPassword;
+User* user;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    User* user = (User*)[[UserManager listAllUser] objectAtIndex:[indexPath row]];
-	[UserPicker askPasswordFor:user];
+    user = (User*)[[UserManager listAllUser] objectAtIndex:[indexPath row]];
+    
+	[UserPickeraskPassword askPasswordFor:user];
 }
 
 
@@ -135,7 +138,7 @@ Users_TextCell *cellh;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    UserPickeraskPassword = [[UserPicker alloc] init];
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"Users_TextCell" owner:self options:nil];
     cellh = (Users_TextCell *)[nib objectAtIndex:0];
      NSLog(@"cell height in viewdidload: %f",cellh.frame.size.height);
@@ -184,6 +187,8 @@ Users_TextCell *cellh;
     navController = nil;
     navItem = nil;
     usersListTableView = nil;
+    [UserPickeraskPassword release];
+    [user release];
 }
 
 

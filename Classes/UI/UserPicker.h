@@ -28,7 +28,7 @@
 +(void)show;
 
 /** show the password test on top of FLowerController view **/
-+(void)askPasswordFor:(User*)user;
+-(void)askPasswordFor:(User*)user;
 
 - (void) showUserPicker ;
 

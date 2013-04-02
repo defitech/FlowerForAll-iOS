@@ -40,11 +40,12 @@ static BOOL showing = false;
 
 
 /** show the password test on top of FLowerController view **/
-+(void)askPasswordFor:(User*)user {
+UserPicker *UserPickeraskPassword;
+-(void)askPasswordFor:(User*)user {
     if (! showing) {
         showing = true;
         IndexforUser = [user uid];
-        [[[UserPicker alloc] init] showPasswordSheet:@""];
+        [self showPasswordSheet:@""];
     } else {
         // NSLog(@"UserPicker:already showing");
     }
@@ -56,7 +57,6 @@ static BOOL showing = false;
 - (void) dismissAndPickSelectedUser {
     [UserManager setCurrentUser:[[self selectedUser] uid]];
     showing = false;
-    [tempArray release];
     tempArray = nil;
 }
 
@@ -211,6 +211,7 @@ UIActionSheet* actionSheet;
 
 - (void)dealloc
 {
+    [tempArray release];
     [userArray release];
     userArray = nil;
     [namesArray release];
