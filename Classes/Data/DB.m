@@ -363,7 +363,7 @@ static sqlite3 *database;
 	NSLog(@"Get all days");
 	
     //Array to store results
-    NSMutableArray *days = [[NSMutableArray alloc] init];
+    NSMutableArray *days = [[[NSMutableArray alloc] init] autorelease];
     
     //Objects used by the algorithm: the day of the current exercise (currentDay) and the last added day in the array (lastDay)
     ExerciseDay* currentDay = nil;

@@ -44,7 +44,7 @@
 
 - (void)refreshData {
     //Fetch list of all exercise days from the DB
-	exerciseDays = [DB getDays:currentMonth];
+	self.exerciseDays = [DB getDays:currentMonth];
     if (currentMonth == nil) {
         exerciseMonthes = [DB getMonthes:YES]; // refreshes monthes informations
     } else {
