@@ -351,7 +351,7 @@ static sqlite3 *database;
         max_ts = CFAbsoluteTimeGetCurrent();
         
         NSCalendar *cal = [NSCalendar currentCalendar];
-        NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[[NSDate alloc] init]];
+        NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[[[NSDate alloc] init] autorelease]];
         [comp setDay:1];
 
         min_ts = [[cal dateFromComponents:comp] timeIntervalSinceReferenceDate];
