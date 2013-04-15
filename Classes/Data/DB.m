@@ -243,7 +243,7 @@ static sqlite3 *database;
     if (date != nil) {
         float f = [date floatValue];
         if (f != 0 && f < HUGE_VAL && f > -HUGE_VAL) {
-            return [NSDate dateWithTimeIntervalSinceReferenceDate:f];
+            return [[NSDate dateWithTimeIntervalSinceReferenceDate:f] autorelease];
         }
     }
     return defaultDate;
