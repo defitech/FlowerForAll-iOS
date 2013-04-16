@@ -43,6 +43,18 @@ static BOOL showing = false;
 UserPicker *UserPickeraskPassword;
 -(void)askPasswordFor:(User*)user {
     if (! showing) {
+        tempArray = [UserManager listAllUser];
+        self.userArray = tempArray;
+        NSMutableArray *tempnamesArray = [[NSMutableArray alloc] init];
+        self.namesArray = tempnamesArray;
+        [tempnamesArray release];
+        NSMutableArray *temppasswordsArray = [[NSMutableArray alloc] init];
+        self.passwordsArray = temppasswordsArray;
+        [temppasswordsArray release];
+        for (int i = 0; i < [tempArray count]; i++) {
+            [namesArray addObject:[[tempArray objectAtIndex:i] name]];
+            [passwordsArray addObject:[[tempArray objectAtIndex:i] password]];
+        }
         showing = true;
         IndexforUser = [user uid];
         [self showPasswordSheet:@""];
