@@ -381,7 +381,7 @@ static sqlite3 *database;
         
         //Initialize currentDay with the start_ts of the current exercise
         currentDay = [[ExerciseDay alloc] init:start_ts];
-        
+        [currentDay autorelease];
         //Case where the current day is a new day (not already in the array)
         if (lastDay == nil || ![lastDay.formattedDate isEqualToString:currentDay.formattedDate]) {
             //Check if the current exercise is successfull, then increment the day's bad or good count,
@@ -415,7 +415,7 @@ static sqlite3 *database;
         
     }
     sqlite3_finalize(cStatement);
-    [currentDay release];
+    //[currentDay release];
     
     return days;
 }
