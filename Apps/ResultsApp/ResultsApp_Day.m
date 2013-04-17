@@ -54,7 +54,7 @@
 	self.title = formattedDate;
 	
     //Fetch exercises of the day from the DB
-	exercises = [DB getExercisesInDay:formattedDate];
+	self.exercises = [DB getExercisesInDay:formattedDate];
 	
 }
 

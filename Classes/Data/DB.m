@@ -455,7 +455,7 @@ static sqlite3 *database;
     }
     sqlite3_finalize(cStatement);
     [dateAndTimeFormatter release];
-    return exercises;
+    return [exercises autorelease];
 }
 
 
