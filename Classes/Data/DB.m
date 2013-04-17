@@ -326,10 +326,10 @@ static sqlite3 *database;
     
     while(sqlite3_step(cs) == SQLITE_ROW) {
         
-        [monthes addObject:[[Month alloc] initWithData:[DB colS:cs index:1] 
+        [monthes addObject:[[[Month alloc] initWithData:[DB colS:cs index:1]
                                                 min_ts:[DB colD:cs index:2] 
                                                 max_ts:[DB colD:cs index:3] 
-                                                 count:[DB colI:cs index:0]]];
+                                                 count:[DB colI:cs index:0]] autorelease]];
     }
     return monthes;
 }

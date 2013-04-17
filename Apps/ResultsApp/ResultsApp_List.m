@@ -46,7 +46,7 @@
     //Fetch list of all exercise days from the DB
 	self.exerciseDays = [DB getDays:currentMonth];
     if (currentMonth == nil) {
-        exerciseMonthes = [DB getMonthes:YES]; // refreshes monthes informations
+        self.exerciseMonthes = [DB getMonthes:YES]; // refreshes monthes informations
     } else {
         exerciseMonthes = nil;
     }
@@ -315,6 +315,7 @@
 
 - (void)dealloc {
 	[exerciseDays release];
+    [exerciseMonthes release]; 
     [dayStatisticListViewController release];
     [super dealloc];
 }
