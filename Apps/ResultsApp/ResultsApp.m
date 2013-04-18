@@ -143,7 +143,7 @@ ResultsApp_MailerOptions* mailerOptions;
         [ResultsApp_Mailer exercicesToCSV:data html:HTMLtable fromDate:[mailerOptions selectedStartDate] toDate:[[[NSDate alloc] init] autorelease]];
         
                
-        NSMutableString *message = [[NSMutableString alloc] init];
+        NSMutableString *message = [[[NSMutableString alloc] init] autorelease];
         [message appendString:
          NSLocalizedStringFromTable(@"<br>....Data attached to this mail.\n<br><br>\n", @"ResultsApp", @"Mail introduction")];
         
