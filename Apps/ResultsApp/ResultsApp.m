@@ -140,7 +140,7 @@ ResultsApp_MailerOptions* mailerOptions;
         
         NSMutableData *data = [[[NSMutableData alloc] init] autorelease];
         NSMutableString *HTMLtable = ![DB getInfoBOOLForKey:@"hideResultTableInMails"] ? [[NSMutableString alloc] init] : nil ;
-        [ResultsApp_Mailer exercicesToCSV:data html:HTMLtable fromDate:[mailerOptions selectedStartDate] toDate:[[NSDate alloc] init]];
+        [ResultsApp_Mailer exercicesToCSV:data html:HTMLtable fromDate:[mailerOptions selectedStartDate] toDate:[[[NSDate alloc] init] autorelease]];
         
                
         NSMutableString *message = [[NSMutableString alloc] init];
