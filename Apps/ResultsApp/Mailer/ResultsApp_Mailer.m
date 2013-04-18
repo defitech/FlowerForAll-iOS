@@ -103,7 +103,7 @@
     float dayBeginAbsoluteTime = [from timeIntervalSinceReferenceDate];
     float dayEndAbsoluteTime = [to timeIntervalSinceReferenceDate];
     
-    NSArray* headersTitles = [[NSArray alloc] initWithObjects:
+    NSArray* headersTitles = [[[NSArray alloc] initWithObjects:
                             NSLocalizedStringFromTable(@"Start",@"ResultsApp", @"Data column title"),
                             NSLocalizedStringFromTable(@"Duration (s)",@"ResultsApp", @"Data column title"), 
                             NSLocalizedStringFromTable(@"Done %", @"ResultsApp", @"Data column title"),
@@ -115,12 +115,12 @@
                             NSLocalizedStringFromTable(@"Freq. Tolerance Hz", @"ResultsApp", @"Data column title"),
                             NSLocalizedStringFromTable(@"Expected blow duration (s)",@"ResultsApp" , @"Data column title"),
                             NSLocalizedStringFromTable(@"Expected exercice duration (s)",@"ResultsApp" , @"Data column title"),
-                            nil ];
+                            nil ] autorelease];
     
-    NSArray* headersDB = [[NSArray alloc] initWithObjects:
+    NSArray* headersDB = [[[NSArray alloc] initWithObjects:
                         @"start_ts", @"stop_ts", @"duration_exercice_done_p", 
                         @"blow_count", @"blow_star_count",  @"avg_median_frequency_hz", @"profile_name",  @"frequency_target_hz",
-                        @"frequency_tolerance_hz", @"duration_expiration_s", @"duration_exercice_s", nil ];
+                        @"frequency_tolerance_hz", @"duration_expiration_s", @"duration_exercice_s", nil ] autorelease];
     char* typesC = "TDPIIFSFFFI";
         
      
