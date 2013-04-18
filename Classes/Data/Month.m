@@ -24,8 +24,7 @@
 
 -(void) dealloc {
     [super dealloc];
-    [self.strDate release];
-    self.strDate = nil ;
+    [strDate release];
 }
 
 @end
