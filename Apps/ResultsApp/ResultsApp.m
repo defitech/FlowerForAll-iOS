@@ -156,7 +156,7 @@ ResultsApp_MailerOptions* mailerOptions;
         
         if ([DB getInfoBOOLForKey:@"includeBlowsInMails"]) { // add blows 
             NSMutableData *data2 = [[[NSMutableData alloc] init] autorelease];
-            [ResultsApp_Mailer blowsToCSV:data2 html:nil fromDate:[mailerOptions selectedStartDate] toDate:[[NSDate alloc] init]];
+            [ResultsApp_Mailer blowsToCSV:data2 html:nil fromDate:[mailerOptions selectedStartDate] toDate:[[[NSDate alloc] init] autorelease]];
 
             
             [mailViewController addAttachmentData:data2 mimeType:@"text/csv" 
