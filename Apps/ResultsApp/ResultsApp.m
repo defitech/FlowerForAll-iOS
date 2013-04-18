@@ -193,7 +193,7 @@ ResultsApp_MailerOptions* mailerOptions;
             break;
         case MFMailComposeResultSent:
             //message.text = @"Result: sent";
-             [DB setInfoNSDateForKey:@"lastResultMail" value:[[NSDate alloc] init]];
+             [DB setInfoNSDateForKey:@"lastResultMail" value:[[[NSDate alloc] init] autorelease]];
             break;
         case MFMailComposeResultFailed:
             //message.text = @"Result: failed";
