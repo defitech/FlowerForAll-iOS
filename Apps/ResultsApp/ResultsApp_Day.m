@@ -256,6 +256,7 @@
     NSDate* exerciseDate = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:ex.start_ts];
     NSString *formattedTime = [self.timeFormatter stringFromDate:exerciseDate];
     time.text = formattedTime;
+    [exerciseDate release];
     
     duration.text = [NSString stringWithFormat:@"%i%@", (int)(ex.stop_ts - ex.start_ts), @"s"];
     if (ex.duration_exercice_done_ps < 1.0){
