@@ -136,17 +136,17 @@
     float dayBeginAbsoluteTime = [from timeIntervalSinceReferenceDate];
     float dayEndAbsoluteTime = [to timeIntervalSinceReferenceDate];
     
-    NSArray* headersTitles = [[NSArray alloc] initWithObjects:
+    NSArray* headersTitles = [[[NSArray alloc] initWithObjects:
                               NSLocalizedStringFromTable(@"Start",@"ResultsApp", @"Data column title"),
                               NSLocalizedStringFromTable(@"Duration (s)",@"ResultsApp", @"Data column title"), 
                               NSLocalizedStringFromTable(@"In-Range Duration (s)", @"ResultsApp", @"Data column title"),
                               NSLocalizedStringFromTable(@"Goal", @"ResultsApp", @"Data column title"),  
                               NSLocalizedStringFromTable(@"Median Freq. Hz",@"ResultsApp", @"Data column title"),
-                              nil ];
+                              nil ] autorelease];
     
-    NSArray* headersDB = [[NSArray alloc] initWithObjects:
+    NSArray* headersDB = [[[NSArray alloc] initWithObjects:
                           @"timestamp", @"duration", @"ir_duration", 
-                          @"goal", @"median_frequency_hz", nil ];
+                          @"goal", @"median_frequency_hz", nil ] autorelease];
     char* typesC = "TFFBF";
     
     NSString* headersS = [headersDB componentsJoinedByString:@", "];
