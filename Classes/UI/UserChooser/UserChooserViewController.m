@@ -221,12 +221,7 @@ static BOOL showing = false;
 }
 
 - (User*) selectedUser {
-    int i;
-    for (i = 0; i < [self.userArrayforChooser count]; i++) {
-        if ( [[self.userArrayforChooser objectAtIndex:i] uid] == IndexforUserinChooser) {
-            return [self.userArrayforChooser objectAtIndex:i];
-        }
-    }
+    return [self.userArrayforChooser objectAtIndex:IndexforUserinChooser];
     NSLog(@"Problem: could not find user in UserPicker.m, function selectedUser");
     return [self.userArrayforChooser objectAtIndex:0];
 }
@@ -249,7 +244,9 @@ static BOOL showing = false;
 
 -(void)askPasswordFor:(User*)user {
     showing = true;
-    IndexforUserinChooser = [user uid];
+    for (int i = 0; i < [self.userArrayforChooser count]; i++) {
+        if ([[self.userArrayforChooser objectAtIndex:i] uid] == [user uid]) IndexforUserinChooser = i;
+    }
     [self showPasswordSheet:@""];
 }
 - (void) dismissAndPickSelectedUser {

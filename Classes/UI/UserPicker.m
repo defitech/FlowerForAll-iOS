@@ -54,9 +54,9 @@ UserPicker *UserPickeraskPassword;
         for (int i = 0; i < [tempArray count]; i++) {
             [namesArray addObject:[[tempArray objectAtIndex:i] name]];
             [passwordsArray addObject:[[tempArray objectAtIndex:i] password]];
+            if ([[tempArray objectAtIndex:i] uid] == [user uid]) IndexforUser = i;
         }
         showing = true;
-        IndexforUser = [user uid];
         [self showPasswordSheet:@""];
     } else {
         // NSLog(@"UserPicker:already showing");
@@ -193,13 +193,8 @@ UIActionSheet* actionSheet;
 
 
 - (User*) selectedUser {
-    int i;
-     NSLog(@"userarray in :%@",[[self.userArray objectAtIndex:1] name]);
-    for (i = 0; i < [self.userArray count]; i++) {
-        if ( [[self.userArray objectAtIndex:i] uid] == IndexforUser) {
-            return [self.userArray objectAtIndex:i];
-        }
-    }
+    NSLog(@"userarray in :%@",[[self.userArray objectAtIndex:1] name]);
+    return [self.userArray objectAtIndex:IndexforUser];
     NSLog(@"Problem: could not find user in UserPicker.m, function selectedUser");
     return [self.userArray objectAtIndex:0];
 }
