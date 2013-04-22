@@ -251,6 +251,7 @@
         UIImage *theImage = [UIImage imageWithContentsOfFile:imagePath];
         
         star.image = theImage;
+        [star autorelease];
     }
     
     //Set text in the labels
