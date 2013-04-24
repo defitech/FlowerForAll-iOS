@@ -70,5 +70,14 @@ see: https://developer.apple.com/library/ios/#samplecode/aurioTouch/Introduction
 - Other microphone
 - Make a special piece of plastic to fix the microphone to the flutter
 
+## Known memory leaks
+### Monitoring on the simulator:
+- -[FLAPIX Start] : leak in SubSys_Start()
+- -[FLAPIX SetDemo] : leak in FLAPI_SUBSYS_IOS_file...
+- +[DB colS:index:] : if leak autoreleased, app crashes... might be fixed
+- -[FLAPIX init] : leak in FLAPI_SUBSYS_IOS_init...
+- +[DB getMonthes:] : if leak autoreleased, app crashes... might be fixed
 
+### Monitoring on the device:
+- many leaks detected but no one in objective c code: biggest one is in -[UIActionSheet(Private) _popoutAnimationDidStop:finished:]
 
