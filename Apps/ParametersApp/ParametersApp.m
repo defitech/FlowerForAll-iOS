@@ -207,9 +207,9 @@ float minExerciceDuration_s = 7.0;
 
 NSArray* myProfils;
 -(NSArray*)profils {
-    if (myProfils == nil) {
+    //if (myProfils == nil) {
         myProfils = [Profil getAll];
-    }
+    //}
     return myProfils;
 }
 

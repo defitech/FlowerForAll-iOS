@@ -72,24 +72,22 @@ static Profil* currentProfil = nil;
 /** get the current profil **/
 +(Profil*)current {
    
-    //if (currentProfil == nil) {
+    if (currentProfil == nil) {
         [self reloadCurrent];
-    //}
+    }
     return currentProfil;
 }
 
 /** reload current profil **/
 +(void)reloadCurrent {
-    /*if (currentProfil != nil) {
-        [currentProfil release];
+    if (currentProfil != nil) {
+        //[currentProfil release];
         currentProfil = nil;
-    }*/
+    }
     // get the currentProfileId
-    NSLog(@"currentProfil name in reloadCurrent 1: %@",[currentProfil name]);
     int currentProfileID = [[DB getInfoValueForKey:@"currentProfile"] intValue];
     if (currentProfileID < 0) currentProfileID = 0; 
     currentProfil = [Profil getFromId:currentProfileID];
-    NSLog(@"currentProfil name in reloadCurrent 2: %@",[currentProfil name]);
     //[currentProfil retain];
 }
 
@@ -129,20 +127,18 @@ static Profil* currentProfil = nil;
     sqlite3_stmt *cs =
     [DB genCStatementWF:@"SELECT pid, name, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s  FROM profils"];
     static NSMutableArray* profils = nil;
-    if (profils == nil) {
-        profils = [[NSMutableArray alloc] init];
-        while(sqlite3_step(cs) == SQLITE_ROW) {
-            [profils addObject:[[Profil alloc] initWidth:[DB colI:cs index:0] 
-                                            name:[DB colS:cs index:1] 
-                             frequency_target_hz:[DB colD:cs index:2] 
-                          frequency_tolerance_hz:[DB colD:cs index:3] 
-                           duration_expiration_s:[DB colD:cs index:4] 
-                             duration_exercice_s:[DB colD:cs index:5]]] ;
-        }
-        sqlite3_finalize(cs);
+    if (profils != nil) [profils removeAllObjects];
+    profils = [[NSMutableArray alloc] init];
+    while(sqlite3_step(cs) == SQLITE_ROW) {
+        [profils addObject:[[Profil alloc] initWidth:[DB colI:cs index:0] 
+                                        name:[DB colS:cs index:1] 
+                            frequency_target_hz:[DB colD:cs index:2] 
+                        frequency_tolerance_hz:[DB colD:cs index:3] 
+                        duration_expiration_s:[DB colD:cs index:4] 
+                            duration_exercice_s:[DB colD:cs index:5]]] ;
     }
+        sqlite3_finalize(cs);
     return profils;
-
 }
 
 @end

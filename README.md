@@ -14,6 +14,7 @@ If you want to write a game, please read:
 ## KNOWN BUGS 
 - they must be some memory leaks.. and some crashes are caused by some runnning conditions that happend more often iPad and older iPhone models.
 - it would be nice to have an objective-c expert do some code review.. 
+- in ParametersApp: it seems that UIControlEventTouchUpInside event is not called every time the slider is touched -> changes to the profile are not recorded
 
 
 ## DOCUMENTATION 
