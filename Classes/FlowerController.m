@@ -55,7 +55,7 @@ static NSMutableDictionary* appList;
     } else {
         [FlowerController setCurrentMainController:activitiesViewController];
     }
-    [activitiesViewController backToMenu];
+    //[activitiesViewController backToMenu];
 }
 
 
