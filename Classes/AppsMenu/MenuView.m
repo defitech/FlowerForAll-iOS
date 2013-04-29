@@ -104,7 +104,7 @@ FlowerHowTo *flowerHowTo;
     
 	//scrollView.contentSize = CGSizeMake(960.0,0.0);
     //[scrollView setContentSize:CGSizeMake(320.0 * nb_pages,335.0)];
-    [scrollView setContentSize:CGSizeMake(pageWidth * nb_pages,self.scrollView.frame.size.height)];
+    [scrollView setContentSize:CGSizeMake(pageWidth * nb_pages,335.0)];
 	
     [pageControl setNumberOfPages:nb_pages];
     
