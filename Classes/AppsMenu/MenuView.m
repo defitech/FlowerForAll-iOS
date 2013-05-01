@@ -160,7 +160,6 @@ FlowerHowTo *flowerHowTo;
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-    [flowerHowTo release];
 }
 
 
@@ -230,6 +229,7 @@ FlowerHowTo *flowerHowTo;
     [bikerGame release];
 	[volcanoGame release];
 	[videoPlayerView release];
+    [flowerHowTo release];
     [super dealloc];
 }
 
