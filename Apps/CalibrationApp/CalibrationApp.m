@@ -138,17 +138,23 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self.targetFreqLabelValue release];
-    [self.targetFrequencyRangeLabel release];
-    [self.maxLabel release];
-    [self.minLabel release];
-    self.targetFreqLabelValue = nil;
-    self.targetFrequencyRangeLabel = nil;
-	self.minLabel = nil;
-	self.maxLabel = nil;
+    id temp1 = targetFreqLabelValue;
+    targetFreqLabelValue = nil;
+    [temp1 release];
+    id temp2 = targetFrequencyRangeLabel;
+    targetFrequencyRangeLabel = nil;
+    [temp2 release];
+    id temp3 = maxLabel;
+    maxLabel = nil;
+    [temp3 release];
+    id temp4 = minLabel;
+    minLabel = nil;
+    [temp4 release];
     
     //double Slider
-    [self.slider release];
+    id temp5 = slider;
+    slider = nil;
+    [temp5 release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
