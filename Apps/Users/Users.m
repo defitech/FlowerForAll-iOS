@@ -188,7 +188,6 @@ User* user;
     navItem = nil;
     usersListTableView = nil;
     [UserPickeraskPassword release];
-    [user release];
 }
 
 

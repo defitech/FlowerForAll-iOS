@@ -218,15 +218,16 @@ UIActionSheet* actionSheet;
 
 - (void)dealloc
 {
-    [tempArray release];
-    [userArray release];
+    id temp1 = userArray;
     userArray = nil;
-    [namesArray release];
+    [temp1 release];
+    id temp2 = namesArray;
     namesArray = nil;
-    [passwordsArray release];
+    [temp2 release];
+    id temp3 = passwordsArray;
     passwordsArray = nil;
+    [temp3 release];
     [super dealloc];
-
 }
 
 @end
