@@ -288,6 +288,7 @@ static NSMutableDictionary* appList;
     [startButton addTarget:self action:@selector(startButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:startButton];
     
+    buttonImageHighlighted = nil;
     [buttonImageHighlighted release];
  
     // depend of flapix state
