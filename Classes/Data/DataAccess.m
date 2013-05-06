@@ -110,8 +110,10 @@ static NSString* dd;
         NSLog(@"**DataAccess readFromFile, file %@ does not exists",filePath);
         return nil;
     }
-	return [[NSString 
-            stringWithContentsOfFile:[self libDirectoryWithPath:filePath] encoding:NSUTF8StringEncoding error:nil] autorelease];
+    NSString *stringReadFromFile = [[NSString alloc] init];
+    stringReadFromFile = [NSString
+                           stringWithContentsOfFile:[self libDirectoryWithPath:filePath] encoding:NSUTF8StringEncoding error:nil];
+	return [stringReadFromFile autorelease];
 }
 
 
