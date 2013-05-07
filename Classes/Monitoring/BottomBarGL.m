@@ -30,7 +30,7 @@
 
 @implementation BottomBarGL
 
-@synthesize context, animationTimer, animationInterval;
+@synthesize context, animationTimer, animationInterval, labelPercent, labelFrequency, labelDuration, higherBar;
 
 //array to contain historic blows
 NSMutableArray *BlowsPosition;
@@ -38,7 +38,6 @@ NSMutableArray *BlowsDurationGood;
 NSMutableArray *BlowsDurationTot;
 NSMutableArray *StarsPosition;
 NSMutableArray *StartStopPosition;
-
 
 float lastExerciceStartTimeStamp2 = 0;
 float lastExerciceStopTimeStamp2 = 0;
@@ -183,37 +182,37 @@ float lastExerciceStopTimeStamp2 = 0;
     
     if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
         
-        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, 0.0,  widthHist*1/5, height/2) ];
+        self.labelPercent = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, 0.0,  widthHist*1/5, height/2) ] autorelease];
         [labelPercent setBackgroundColor:[UIColor blackColor]];
         [labelPercent setTextColor:[UIColor whiteColor]];
         [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelPercent setText:@"%"];
         
-        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*5/6, 0.0, widthHist*1/5, height/2) ];
+        self.labelFrequency = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*5/6, 0.0, widthHist*1/5, height/2) ] autorelease];
         [labelFrequency setBackgroundColor:[UIColor blackColor]];
         [labelFrequency setTextColor:[UIColor whiteColor]];
         [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelFrequency setText:@"Hz"];
         
-        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, height/2,  widthHist*1/4, height/2) ];
+        self.labelDuration = [[ [ UILabel alloc ] initWithFrame:CGRectMake(widthNeedle + widthHist*2/3, height/2,  widthHist*1/4, height/2) ] autorelease];
         [labelDuration setBackgroundColor:[UIColor blackColor]];
         [labelDuration setTextColor:[UIColor whiteColor]];
         [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelDuration setText:@"sec"];
     } else {
-        labelPercent = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, 0.0, width*1/3, height/2) ];
+        self.labelPercent = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, 0.0, width*1/3, height/2) ]autorelease];
         [labelPercent setBackgroundColor:[UIColor blackColor]];
         [labelPercent setTextColor:[UIColor whiteColor]];
         [labelPercent setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelPercent setText:@"%"];
         
-        labelFrequency = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.85, 0.0, width*1/4, height/2) ];
+        self.labelFrequency = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.85, 0.0, width*1/4, height/2) ] autorelease];
         [labelFrequency setBackgroundColor:[UIColor blackColor]];
         [labelFrequency setTextColor:[UIColor whiteColor]];
         [labelFrequency setFont:[UIFont systemFontOfSize:height*2/5]];
         [labelFrequency setText:@"Hz"];
         
-        labelDuration = [ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, height/2, width*1/3, height/2) ];
+        self.labelDuration = [[ [ UILabel alloc ] initWithFrame:CGRectMake(width*0.702, height/2, width*1/3, height/2) ] autorelease];
         [labelDuration setBackgroundColor:[UIColor blackColor]];
         [labelDuration setTextColor:[UIColor whiteColor]];
         [labelDuration setFont:[UIFont systemFontOfSize:height*2/5]];
@@ -265,13 +264,18 @@ float lastExerciceStopTimeStamp2 = 0;
 - (void)drawView {
     FLAPIX* flapix = [FlowerController currentFlapix];
     if (flapix == nil) return;
-
-    /*************** Logic code ******************/
+    
+    /////////////////////////Logic code /////////////////////
     // Frame dimensions    
-    const GLfloat needleCenterX = -1.311f, needleCenterY = -0.15f, needleCenterZ = 0.0f;
+    static const GLfloat needleCenterX = -1.311f, needleCenterY = -0.15f, needleCenterZ = 0.0f;
     
     //static float position_actual = 0.0f;
-    static float speed = 0.0005f;
+    static float speed;
+    if ([[UIDevice currentDevice].model isEqualToString:@"iPad"]) {
+        speed = 0.00075f;
+    } else
+        speed = 0.0005f;
+    
     static float HeightFactor = 0.0f;
     
     
@@ -297,7 +301,7 @@ float lastExerciceStopTimeStamp2 = 0;
     angle_freqMin_previous = angle_freqMin;
     angle_freqMax_previous = angle_freqMax;
     
-    /*************** Drawing code ******************/
+    ///////////////////////// Drawing code /////////////////////////
     
     
     [EAGLContext setCurrentContext:context];
@@ -314,7 +318,7 @@ float lastExerciceStopTimeStamp2 = 0;
     //glTranslatef(needleCenterX,needleCenterY,needleCenterZ);
     
     //draw axes
-	const GLfloat axes[] = {
+	static const GLfloat axes[] = {
         //y axis
         0.64, 0.15, -5.00,
         0.62, -0.15, -5.00,
@@ -374,7 +378,7 @@ float lastExerciceStopTimeStamp2 = 0;
     glLoadIdentity();
     
     // Def needle
-	const GLfloat quadVertices[] = {
+	static const GLfloat quadVertices[] = {
         0.0, 0.25, -5.0,                    // head
         -0.07, 0.03, -5.0,                    // left
         0.0, -0.05, -5.0,                      // queue
@@ -448,7 +452,7 @@ float lastExerciceStopTimeStamp2 = 0;
     
     //draw the rectangles for each blow
     //first, draw a rectangle to cover the other rectangles when they "go out of range"
-    const GLfloat rectangle[] = {
+    static const GLfloat rectangle[] = {
         -1.1f, -0.15f, -5.0f,
         -1.0f, 0.25f, -5.0f,
         -1.1f, 0.25f, -5.0f,
@@ -499,6 +503,7 @@ float lastExerciceStopTimeStamp2 = 0;
     
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [context presentRenderbuffer:GL_RENDERBUFFER_OES];
+    
 }
 
 - (void)drawRectangleDuration: (float) PositionActual RectHeight:(float) RectangleHeight offset:(float) Offset color1:(float)col1 color2:(float)col2 color3:(float)col3 color4:(float)col4 {
@@ -580,12 +585,18 @@ float lastExerciceStopTimeStamp2 = 0;
         FLAPIBlow* blow = (FLAPIBlow*)[notification object];
         if ([[FlowerController currentFlapix] exerciceInCourse]) {
             int p = (int)([[[FlowerController currentFlapix] currentExercice] percent_done]*100);
-            [labelPercent setText:[NSString stringWithFormat:@"%i%%",p]];
+            NSString *StringForLabelPercent = [[NSString alloc ] initWithFormat:@"%i%%",p];
+            [labelPercent setText:StringForLabelPercent];
+            [StringForLabelPercent release];
         } else {
             [labelPercent setText:@"---"];
         }
-        [labelFrequency setText:[NSString stringWithFormat:@"%iHz",(int)blow.medianFrequency]];
-        [labelDuration setText:[NSString stringWithFormat:@"%.2lf sec",blow.in_range_duration]];
+        NSString *StringForLabelFrequency = [[NSString alloc ] initWithFormat:@"%iHz",(int)blow.medianFrequency];
+        [labelFrequency setText:StringForLabelFrequency];
+        [StringForLabelFrequency release];
+        NSString *StringForLabelDuration = [[NSString alloc ] initWithFormat:@"%.2lf sec",blow.in_range_duration];
+        [labelDuration setText:StringForLabelDuration];
+        [StringForLabelDuration release];
         [BlowsPosition addObject:[NSNumber numberWithFloat:0.0f]];
         [BlowsDurationGood addObject:[NSNumber numberWithFloat:blow.in_range_duration]];
         [BlowsDurationTot addObject:[NSNumber numberWithFloat:blow.duration]];
@@ -596,9 +607,33 @@ float lastExerciceStopTimeStamp2 = 0;
         //NSLog(@"blow duration:%f, in range duration:%f", blow.duration, blow.in_range_duration);
         //Resize Y axis if needed
         if (blow.duration > higherBar) {
-            higherBar = blow.duration;
+            self.higherBar = blow.duration;
             // if too high blow, resize y axis
-        } 
+        }
+        
+        //remove objects when array reaches a certain count
+        if ([BlowsPosition count] >= 10) {
+            for (int i = 0; i < [BlowsPosition count]-1; i++) {
+                [BlowsPosition replaceObjectAtIndex:i withObject:[BlowsPosition objectAtIndex:i+1]];
+                [BlowsDurationGood replaceObjectAtIndex:i withObject:[BlowsDurationGood objectAtIndex:i+1]];
+                [BlowsDurationTot replaceObjectAtIndex:i withObject:[BlowsDurationTot objectAtIndex:i+1]];
+            }
+            [BlowsPosition removeLastObject];
+            [BlowsDurationGood removeLastObject];
+            [BlowsDurationTot removeLastObject];
+        }
+        if ([StarsPosition count] >= 10) {
+            for (int i = 0; i < [StarsPosition count]-1; i++) {
+                [StarsPosition replaceObjectAtIndex:i withObject:[StarsPosition objectAtIndex:i+1]];
+            }
+            [StarsPosition removeLastObject];
+        }
+        if ([StartStopPosition count] >= 10) {
+            for (int i = 0; i < [StartStopPosition count]-1; i++) {
+                [StartStopPosition replaceObjectAtIndex:i withObject:[StartStopPosition objectAtIndex:i+1]];
+            }
+            [StartStopPosition removeLastObject];
+        }
     });
 }
 
@@ -649,12 +684,12 @@ float lastExerciceStopTimeStamp2 = 0;
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth);
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight);
     
-    if (true) {
+    //if (true) {
         glGenRenderbuffersOES(1, &depthRenderbuffer);
         glBindRenderbufferOES(GL_RENDERBUFFER_OES, depthRenderbuffer);
         glRenderbufferStorageOES(GL_RENDERBUFFER_OES, GL_DEPTH_COMPONENT16_OES, backingWidth, backingHeight);
         glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, depthRenderbuffer);
-    }
+    //}
     
     if(glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
         NSLog(@"failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
@@ -728,7 +763,7 @@ float lastExerciceStopTimeStamp2 = 0;
         [EAGLContext setCurrentContext:nil];
     }
     
-    //[context release];
+    [context release];
     [super dealloc];
 }
 

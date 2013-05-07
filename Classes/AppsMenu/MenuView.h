@@ -39,13 +39,13 @@
 	//Page control for the ScrollView
 	IBOutlet RSPageControl *pageControl;
 	
-    UIBarButtonItem* backItem;
+    //UIBarButtonItem* backItem;
 }
 
 
 //Properties
 @property(nonatomic,retain) UIScrollView *scrollView;
-@property(nonatomic,retain) UIBarButtonItem *backItem;
+//@property(nonatomic,retain) UIBarButtonItem *backItem;
 
 @property (nonatomic, retain) UINavigationBar *navigationBar;
 @property (nonatomic, retain) RSPageControl *pageControl;
@@ -66,6 +66,6 @@
 
 - (IBAction) pageControlDidChangeValue:(id) sender;
 
--(void)backToMenu ;
+//-(void)backToMenu ;
 
 @end

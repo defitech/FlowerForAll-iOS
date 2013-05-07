@@ -99,7 +99,7 @@ int selectedExerciceCount;
     [includeBlowsSwitch setOn:[DB getInfoBOOLForKey:@"includeBlowsInMails"]];
     
     NSDate* startDate = [DB firstExerciceDate];
-    NSDate* now = [[NSDate alloc] init];
+    NSDate* now = [[[NSDate alloc] init] autorelease];
     mailDate = [DB getInfoNSDateForKey:@"lastResultMail" defaultValue:startDate];
     [mailDate retain];
     

@@ -243,7 +243,7 @@ static sqlite3 *database;
     if (date != nil) {
         float f = [date floatValue];
         if (f != 0 && f < HUGE_VAL && f > -HUGE_VAL) {
-            return [NSDate dateWithTimeIntervalSinceReferenceDate:f];
+            return [[NSDate dateWithTimeIntervalSinceReferenceDate:f] autorelease];
         }
     }
     return defaultDate;
@@ -326,10 +326,10 @@ static sqlite3 *database;
     
     while(sqlite3_step(cs) == SQLITE_ROW) {
         
-        [monthes addObject:[[Month alloc] initWithData:[DB colS:cs index:1] 
+        [monthes addObject:[[[Month alloc] initWithData:[DB colS:cs index:1]
                                                 min_ts:[DB colD:cs index:2] 
                                                 max_ts:[DB colD:cs index:3] 
-                                                 count:[DB colI:cs index:0]]];
+                                                 count:[DB colI:cs index:0]] autorelease]];
     }
     return monthes;
 }
@@ -351,7 +351,7 @@ static sqlite3 *database;
         max_ts = CFAbsoluteTimeGetCurrent();
         
         NSCalendar *cal = [NSCalendar currentCalendar];
-        NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[[NSDate alloc] init]];
+        NSDateComponents *comp = [cal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[[[NSDate alloc] init] autorelease]];
         [comp setDay:1];
 
         min_ts = [[cal dateFromComponents:comp] timeIntervalSinceReferenceDate];
@@ -363,7 +363,7 @@ static sqlite3 *database;
 	NSLog(@"Get all days");
 	
     //Array to store results
-    NSMutableArray *days = [[NSMutableArray alloc] init];
+    NSMutableArray *days = [[[NSMutableArray alloc] init] autorelease];
     
     //Objects used by the algorithm: the day of the current exercise (currentDay) and the last added day in the array (lastDay)
     ExerciseDay* currentDay = nil;
@@ -381,7 +381,7 @@ static sqlite3 *database;
         
         //Initialize currentDay with the start_ts of the current exercise
         currentDay = [[ExerciseDay alloc] init:start_ts];
-        
+        [currentDay autorelease];
         //Case where the current day is a new day (not already in the array)
         if (lastDay == nil || ![lastDay.formattedDate isEqualToString:currentDay.formattedDate]) {
             //Check if the current exercise is successfull, then increment the day's bad or good count,
@@ -415,7 +415,7 @@ static sqlite3 *database;
         
     }
     sqlite3_finalize(cStatement);
-    [currentDay release];
+    //[currentDay release];
     
     return days;
 }
@@ -455,7 +455,7 @@ static sqlite3 *database;
     }
     sqlite3_finalize(cStatement);
     [dateAndTimeFormatter release];
-    return exercises;
+    return [exercises autorelease];
 }
 
 

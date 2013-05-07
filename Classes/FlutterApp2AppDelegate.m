@@ -53,12 +53,13 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
  // ping server
-    ConnectionManager *cm = [[ConnectionManager alloc] init]; 
+    ConnectionManager *cm = [[ConnectionManager alloc] init];
     
     NSMutableDictionary *infos = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"applicationDidBecomeActive",@"event",nil];
     //[infos addEntriesFromDictionary:xxxxxxxxxxx];
     [cm ping:infos skipIfLastWasNSecondsAgo:3600];  // advertise presence
     [cm release];
+    [infos release];
     NSLog(@"applicationDidBecomeActive");
 }
 

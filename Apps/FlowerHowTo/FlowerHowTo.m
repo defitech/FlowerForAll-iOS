@@ -87,17 +87,20 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [player pause];    
+    [self stopVideo];
     [super viewWillDisappear:animated];
 }
 
 - (void)stopVideo {
-     if (player == nil) return ; // not playing
+    if (player == nil) {
+        NSLog(@"in stopVideo: player not running");
+        return ; // not playing
+    }
     [[NSNotificationCenter defaultCenter] 
      removeObserver:self
      name:MPMoviePlayerPlaybackDidFinishNotification
      object:player];    
-    
+    [player pause];
     [player.view removeFromSuperview];  
     [player release];
     player = nil;

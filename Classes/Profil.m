@@ -40,7 +40,7 @@ duration_exercice_s:(double)_duration_exercice_s {
         VALUES (%i, '%@', %f, %f, %f, %f)",self.pid, self.name, self.frequency_target_hz, self.frequency_tolerance_hz, self.duration_expiration_s, self.duration_exercice_s];
 }
 
-static Profil* currentProfil;
+static Profil* currentProfil = nil;
 /** set the current profil **/
 +(void)setCurrentS:(Profil*)profil {
     if (currentProfil != profil) {
@@ -74,21 +74,21 @@ static Profil* currentProfil;
    
     if (currentProfil == nil) {
         [self reloadCurrent];
-    }    
+    }
     return currentProfil;
 }
 
 /** reload current profil **/
 +(void)reloadCurrent {
     if (currentProfil != nil) {
-        [currentProfil release];
+        //[currentProfil release];
         currentProfil = nil;
     }
     // get the currentProfileId
     int currentProfileID = [[DB getInfoValueForKey:@"currentProfile"] intValue];
     if (currentProfileID < 0) currentProfileID = 0; 
     currentProfil = [Profil getFromId:currentProfileID];
-    [currentProfil retain];
+    //[currentProfil retain];
 }
 
 
@@ -97,14 +97,26 @@ static Profil* currentProfil;
 +(Profil*)getFromId:(int)profil_id {
     sqlite3_stmt *cs = 
     [DB genCStatementWF:@"SELECT pid, name, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s  FROM profils WHERE pid = %i",profil_id];
-    Profil* profile = nil;
+    static Profil* profile = nil;
+    if (profile != nil) {
+        if(sqlite3_step(cs) == SQLITE_ROW) {
+            profile.pid = [DB colI:cs index:0];
+            profile.name = [DB colS:cs index:1];
+            profile.frequency_target_hz = [DB colD:cs index:2];
+            profile.frequency_tolerance_hz = [DB colD:cs index:3];
+            profile.duration_expiration_s = [DB colD:cs index:4];
+            profile.duration_exercice_s = [DB colD:cs index:5];
+        } else NSLog(@"problem in getFromId !!");
+        sqlite3_finalize(cs);
+        return profile;
+    }
     if(sqlite3_step(cs) == SQLITE_ROW) {
-    profile = [[[Profil alloc] initWidth:[DB colI:cs index:0] 
-                                              name:[DB colS:cs index:1] 
-                               frequency_target_hz:[DB colD:cs index:2] 
-                            frequency_tolerance_hz:[DB colD:cs index:3] 
-                             duration_expiration_s:[DB colD:cs index:4] 
-                               duration_exercice_s:[DB colD:cs index:5]] autorelease] ;
+        profile = [[Profil alloc] initWidth:[DB colI:cs index:0]
+                                        name:[DB colS:cs index:1]
+                         frequency_target_hz:[DB colD:cs index:2]
+                      frequency_tolerance_hz:[DB colD:cs index:3]
+                       duration_expiration_s:[DB colD:cs index:4]
+                         duration_exercice_s:[DB colD:cs index:5]] ;
     }
     sqlite3_finalize(cs);
     return profile;
@@ -112,20 +124,71 @@ static Profil* currentProfil;
 
 /** get All profiles **/
 +(NSArray*)getAll {
-    sqlite3_stmt *cs = 
+    sqlite3_stmt *cs =
     [DB genCStatementWF:@"SELECT pid, name, frequency_target_hz, frequency_tolerance_hz, duration_expiration_s, duration_exercice_s  FROM profils"];
-    NSMutableArray* profils = [[NSMutableArray alloc] init ];
-    while(sqlite3_step(cs) == SQLITE_ROW) {
-        [profils addObject:[[Profil alloc] initWidth:[DB colI:cs index:0] 
-                                        name:[DB colS:cs index:1] 
-                         frequency_target_hz:[DB colD:cs index:2] 
-                      frequency_tolerance_hz:[DB colD:cs index:3] 
-                       duration_expiration_s:[DB colD:cs index:4] 
-                         duration_exercice_s:[DB colD:cs index:5]]] ;
+    static NSMutableArray* profils = nil;
+    static Profil* profile1 = nil;
+    static Profil* profile2 = nil;
+    static Profil* profile3 = nil;
+    if (profils != nil) {
+        if (sqlite3_step(cs) == SQLITE_ROW) {
+            profile1.pid = [DB colI:cs index:0];
+            profile1.name = [DB colS:cs index:1];
+            profile1.frequency_target_hz = [DB colD:cs index:2];
+            profile1.frequency_tolerance_hz = [DB colD:cs index:3];
+            profile1.duration_expiration_s = [DB colD:cs index:4];
+            profile1.duration_exercice_s = [DB colD:cs index:5];
+        }
+        if (sqlite3_step(cs) == SQLITE_ROW) {
+            profile2.pid = [DB colI:cs index:0];
+            profile2.name = [DB colS:cs index:1];
+            profile2.frequency_target_hz = [DB colD:cs index:2];
+            profile2.frequency_tolerance_hz = [DB colD:cs index:3];
+            profile2.duration_expiration_s = [DB colD:cs index:4];
+            profile2.duration_exercice_s = [DB colD:cs index:5];
+        }
+        if (sqlite3_step(cs) == SQLITE_ROW) {
+            profile3.pid = [DB colI:cs index:0];
+            profile3.name = [DB colS:cs index:1];
+            profile3.frequency_target_hz = [DB colD:cs index:2];
+            profile3.frequency_tolerance_hz = [DB colD:cs index:3];
+            profile3.duration_expiration_s = [DB colD:cs index:4];
+            profile3.duration_exercice_s = [DB colD:cs index:5];
+        }
+        sqlite3_finalize(cs);
+        return profils;
+    } else {
+        profils = [[NSMutableArray alloc] init];
+        if (sqlite3_step(cs) == SQLITE_ROW) {
+            profile1 = [[Profil alloc] initWidth:[DB colI:cs index:0]
+                                            name:[DB colS:cs index:1]
+                             frequency_target_hz:[DB colD:cs index:2]
+                          frequency_tolerance_hz:[DB colD:cs index:3]
+                           duration_expiration_s:[DB colD:cs index:4]
+                             duration_exercice_s:[DB colD:cs index:5]];
+        }
+        if (sqlite3_step(cs) == SQLITE_ROW) {
+            profile2 = [[Profil alloc] initWidth:[DB colI:cs index:0]
+                                            name:[DB colS:cs index:1]
+                             frequency_target_hz:[DB colD:cs index:2]
+                          frequency_tolerance_hz:[DB colD:cs index:3]
+                           duration_expiration_s:[DB colD:cs index:4]
+                             duration_exercice_s:[DB colD:cs index:5]];
+        }
+        if (sqlite3_step(cs) == SQLITE_ROW) {
+            profile3 = [[Profil alloc] initWidth:[DB colI:cs index:0]
+                                            name:[DB colS:cs index:1]
+                             frequency_target_hz:[DB colD:cs index:2]
+                          frequency_tolerance_hz:[DB colD:cs index:3]
+                           duration_expiration_s:[DB colD:cs index:4]
+                             duration_exercice_s:[DB colD:cs index:5]];
+        }
+        sqlite3_finalize(cs);
+        [profils addObject:profile1];
+        [profils addObject:profile2];
+        [profils addObject:profile3];
+        return profils;
     }
-    sqlite3_finalize(cs);
-    return profils;
-
 }
 
 @end

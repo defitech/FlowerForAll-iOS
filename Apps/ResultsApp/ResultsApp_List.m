@@ -44,9 +44,9 @@
 
 - (void)refreshData {
     //Fetch list of all exercise days from the DB
-	exerciseDays = [DB getDays:currentMonth];
+	self.exerciseDays = [DB getDays:currentMonth];
     if (currentMonth == nil) {
-        exerciseMonthes = [DB getMonthes:YES]; // refreshes monthes informations
+        self.exerciseMonthes = [DB getMonthes:YES]; // refreshes monthes informations
     } else {
         exerciseMonthes = nil;
     }
@@ -251,6 +251,7 @@
         UIImage *theImage = [UIImage imageWithContentsOfFile:imagePath];
         
         star.image = theImage;
+        [star autorelease];
     }
     
     //Set text in the labels
@@ -315,6 +316,7 @@
 
 - (void)dealloc {
 	[exerciseDays release];
+    [exerciseMonthes release]; 
     [dayStatisticListViewController release];
     [super dealloc];
 }

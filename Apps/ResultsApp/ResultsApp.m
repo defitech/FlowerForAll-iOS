@@ -14,9 +14,11 @@
 
 @implementation ResultsApp
 
-@synthesize controllerView, toolbar, sendButton;
+@synthesize controllerView, toolbar, sendButton, namesArrayforResult;
 
 BOOL optionShowing;
+int UserIndexForResults;
+NSArray *tempArray;
 ResultsApp_MailerOptions* mailerOptions;
 
 # pragma mark FlowerApp overriding
@@ -41,7 +43,6 @@ ResultsApp_MailerOptions* mailerOptions;
 {
     [super viewDidLoad];
     
-
     optionShowing = NO;
     [self refreshSendButton];
     
@@ -96,6 +97,14 @@ ResultsApp_MailerOptions* mailerOptions;
 	
     [super viewWillAppear:animated];
 	[statViewController viewWillAppear:animated];
+    UserIndexForResults = [[UserManager currentUser] uid];
+    tempArray = [UserManager listAllUser];
+    NSMutableArray *tempnamesArray = [[NSMutableArray alloc] init];
+    self.namesArrayforResult = tempnamesArray;
+    [tempnamesArray release];
+    for (int i = 0; i < [tempArray count]; i++) {
+        [namesArrayforResult addObject:[[tempArray objectAtIndex:i] name]];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -126,15 +135,15 @@ ResultsApp_MailerOptions* mailerOptions;
         MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
         mailViewController.mailComposeDelegate = self;
         [mailViewController setSubject:[NSString stringWithFormat:
-          NSLocalizedStringFromTable(@"Flower-Breath data for %@",@"ResultsApp", @"Mail subject"),[UserManager currentUser].name]];
+          NSLocalizedStringFromTable(@"Flower-Breath data for %@",@"ResultsApp", @"Mail subject"),[namesArrayforResult objectAtIndex:UserIndexForResults]]];
         
         
         NSMutableData *data = [[[NSMutableData alloc] init] autorelease];
         NSMutableString *HTMLtable = ![DB getInfoBOOLForKey:@"hideResultTableInMails"] ? [[NSMutableString alloc] init] : nil ;
-        [ResultsApp_Mailer exercicesToCSV:data html:HTMLtable fromDate:[mailerOptions selectedStartDate] toDate:[[NSDate alloc] init]];
+        [ResultsApp_Mailer exercicesToCSV:data html:HTMLtable fromDate:[mailerOptions selectedStartDate] toDate:[[[NSDate alloc] init] autorelease]];
         
                
-        NSMutableString *message = [[NSMutableString alloc] init];
+        NSMutableString *message = [[[NSMutableString alloc] init] autorelease];
         [message appendString:
          NSLocalizedStringFromTable(@"<br>....Data attached to this mail.\n<br><br>\n", @"ResultsApp", @"Mail introduction")];
         
@@ -142,16 +151,16 @@ ResultsApp_MailerOptions* mailerOptions;
         
         [mailViewController setMessageBody:message isHTML:YES];
         [mailViewController addAttachmentData:data mimeType:@"text/csv" 
-                                     fileName:[NSString stringWithFormat:@"FlowerExercises %@.csv",[UserManager currentUser].name]];
+                                     fileName:[NSString stringWithFormat:@"FlowerExercises %@.csv",[namesArrayforResult objectAtIndex:UserIndexForResults]]];
         
         
         if ([DB getInfoBOOLForKey:@"includeBlowsInMails"]) { // add blows 
             NSMutableData *data2 = [[[NSMutableData alloc] init] autorelease];
-            [ResultsApp_Mailer blowsToCSV:data2 html:nil fromDate:[mailerOptions selectedStartDate] toDate:[[NSDate alloc] init]];
+            [ResultsApp_Mailer blowsToCSV:data2 html:nil fromDate:[mailerOptions selectedStartDate] toDate:[[[NSDate alloc] init] autorelease]];
 
             
             [mailViewController addAttachmentData:data2 mimeType:@"text/csv" 
-                                     fileName:[NSString stringWithFormat:@"FlowerBlows %@.csv",[UserManager currentUser].name]];
+                                     fileName:[NSString stringWithFormat:@"FlowerBlows %@.csv", [namesArrayforResult objectAtIndex:UserIndexForResults]]];
         
             
         }
@@ -184,7 +193,7 @@ ResultsApp_MailerOptions* mailerOptions;
             break;
         case MFMailComposeResultSent:
             //message.text = @"Result: sent";
-             [DB setInfoNSDateForKey:@"lastResultMail" value:[[NSDate alloc] init]];
+             [DB setInfoNSDateForKey:@"lastResultMail" value:[[[NSDate alloc] init] autorelease]];
             break;
         case MFMailComposeResultFailed:
             //message.text = @"Result: failed";
@@ -194,6 +203,14 @@ ResultsApp_MailerOptions* mailerOptions;
             break;
     }
     [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)dealloc {
+    [sendButton release];
+    [controllerView release];
+    [toolbar release];
+    [namesArrayforResult release];
+    [super dealloc];
 }
 
 @end

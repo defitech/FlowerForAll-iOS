@@ -25,7 +25,7 @@
 @implementation MenuView
 
 
-@synthesize page2, web, scrollView, backItem, navigationBar, pageControl, bikerLabel,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel, usersLabel, calibrationLabel;
+@synthesize page2, web, scrollView, /*backItem,*/ navigationBar, pageControl, bikerLabel,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel, usersLabel, calibrationLabel;
 
 
 - (IBAction)usersTouch:(id) sender {
@@ -64,12 +64,12 @@ FlowerHowTo *flowerHowTo;
 
 
 
--(void)backToMenu {
+/*-(void)backToMenu {
     CGPoint offset;
     offset.x = 0;                                                                                               
     offset.y = 0;
     [scrollView setContentOffset:offset animated:YES];
-}
+}*/
  
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -104,7 +104,7 @@ FlowerHowTo *flowerHowTo;
     
 	//scrollView.contentSize = CGSizeMake(960.0,0.0);
     //[scrollView setContentSize:CGSizeMake(320.0 * nb_pages,335.0)];
-    [scrollView setContentSize:CGSizeMake(pageWidth * nb_pages,self.scrollView.frame.size.height)];
+    [scrollView setContentSize:CGSizeMake(pageWidth * nb_pages,335.0)];
 	
     [pageControl setNumberOfPages:nb_pages];
     
@@ -135,13 +135,13 @@ FlowerHowTo *flowerHowTo;
 
 	[UIView commitAnimations];
 
-	
+	/*
     UIButton* backButton = [UIButton buttonWithType:101]; // left-pointing shape
     [backButton addTarget:self action:@selector(backToMenu) forControlEvents:UIControlEventTouchUpInside];
     [backButton setTitle:NSLocalizedString(@"Back To Menu", @"Back To Menu") forState:UIControlStateNormal];
     
     // create button item
-    backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];*/
 }
 
 
@@ -160,7 +160,6 @@ FlowerHowTo *flowerHowTo;
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-    [flowerHowTo release];
 }
 
 
@@ -179,7 +178,7 @@ FlowerHowTo *flowerHowTo;
         navigationBar.topItem.title = NSLocalizedString(@"About Flower breath", @"About Title Page");
         
         // add the back button to navigation bar
-        navigationBar.topItem.leftBarButtonItem = backItem;
+        //navigationBar.topItem.leftBarButtonItem = backItem;
     } else {
         navigationBar.topItem.title = NSLocalizedString(@"Flower breath", @"Menu Title");
         
@@ -225,11 +224,12 @@ FlowerHowTo *flowerHowTo;
 
 
 - (void)dealloc {
-    [backItem release];
+    //[backItem release];
 	[scrollView release];
     [bikerGame release];
 	[volcanoGame release];
 	[videoPlayerView release];
+    [flowerHowTo release];
     [super dealloc];
 }
 
