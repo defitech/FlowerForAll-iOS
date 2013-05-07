@@ -28,6 +28,10 @@
     
 }
 
+@property (nonatomic, retain) UIImageView *volcano;
+@property (nonatomic, retain) UIImageView *burst;
+@property (nonatomic, retain) UIView *lavaHidder;
+
 - (void)playSystemSound:(NSString *)soundFilename;
 - (IBAction) pressStart:(id) sender;
 
