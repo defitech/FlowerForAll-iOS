@@ -2326,7 +2326,7 @@ microphone to start</string>
 								<key>en</key>
 								<string>Start Exercise</string>
 								<key>fr</key>
-								<string>Déamarrer l'exercice</string>
+								<string>Démarrer l'exercice</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -3361,15 +3361,7 @@ You may switch to another identity by choosing the coresponding username.</strin
 					<key>attachments</key>
 					<dict>
 						<key>backup</key>
-						<dict>
-							<key>1</key>
-							<dict>
-								<key>class</key>
-								<string>BLWrapperHandle</string>
-								<key>name</key>
-								<string>BikerApp/BikerApp/1/BikerApp.strings</string>
-							</dict>
-						</dict>
+						<dict/>
 					</dict>
 					<key>change date</key>
 					<date>2013-02-27T09:49:17Z</date>
@@ -3457,15 +3449,7 @@ You may switch to another identity by choosing the coresponding username.</strin
 					<key>attachments</key>
 					<dict>
 						<key>backup</key>
-						<dict>
-							<key>1</key>
-							<dict>
-								<key>class</key>
-								<string>BLWrapperHandle</string>
-								<key>name</key>
-								<string>UserChooser/UserChooser/1/UserChooser.strings</string>
-							</dict>
-						</dict>
+						<dict/>
 					</dict>
 					<key>change date</key>
 					<date>2013-01-08T11:24:28Z</date>

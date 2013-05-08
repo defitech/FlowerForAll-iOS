@@ -14,6 +14,7 @@ If you want to write a game, please read:
 ## KNOWN BUGS 
 - they must be some memory leaks.. and some crashes are caused by some runnning conditions that happend more often iPad and older iPhone models.
 - it would be nice to have an objective-c expert do some code review.. 
+- in ParametersApp: it seems that UIControlEventTouchUpInside event is not called every time the slider is touched -> changes to the profile are not recorded
 
 
 ## DOCUMENTATION 
@@ -70,5 +71,14 @@ see: https://developer.apple.com/library/ios/#samplecode/aurioTouch/Introduction
 - Other microphone
 - Make a special piece of plastic to fix the microphone to the flutter
 
+## Known memory leaks
+### Monitoring on the simulator:
+- -[FLAPIX Start] : leak in SubSys_Start()
+- -[FLAPIX SetDemo] : leak in FLAPI_SUBSYS_IOS_file...
+- +[DB colS:index:] : if leak autoreleased, app crashes... might be fixed
+- -[FLAPIX init] : leak in FLAPI_SUBSYS_IOS_init...
+- +[DB getMonthes:] : if leak autoreleased, app crashes... might be fixed
 
+### Monitoring on the device:
+- many leaks detected but no one in objective c code: biggest one is in -[UIActionSheet(Private) _popoutAnimationDidStop:finished:]
 

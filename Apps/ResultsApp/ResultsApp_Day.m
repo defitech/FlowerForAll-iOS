@@ -27,17 +27,17 @@
     NSLog(@"DayStatListViewController initWithNibName");
 	if (self) {
 		// Custom initialization. Initialize formattedDate, date and time formatters and modifyButton
-        formattedDate = _formattedDate;
+        self.formattedDate = _formattedDate;
         
-        dateFormatter = [[NSDateFormatter alloc] init];
+        self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
         [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
         [dateFormatter setDateFormat:@"dd.MM.yyyy"];
         
-        timeFormatter = [[NSDateFormatter alloc] init];
+        self.timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
         [timeFormatter setTimeZone:[NSTimeZone systemTimeZone]];
         [timeFormatter setDateFormat:@"HH:mm"];
         
-        modifyButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Modify", @"ResultsApp", @"Label of the modify table button") style:UIBarButtonItemStylePlain target:self action:@selector(modifyTable)];
+        self.modifyButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Modify", @"ResultsApp", @"Label of the modify table button") style:UIBarButtonItemStylePlain target:self action:@selector(modifyTable)];
         self.navigationItem.rightBarButtonItem = modifyButton;
 	}
 	return self;
@@ -54,7 +54,7 @@
 	self.title = formattedDate;
 	
     //Fetch exercises of the day from the DB
-	exercises = [DB getExercisesInDay:formattedDate];
+	self.exercises = [DB getExercisesInDay:formattedDate];
 	
 }
 
@@ -256,6 +256,7 @@
     NSDate* exerciseDate = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:ex.start_ts];
     NSString *formattedTime = [self.timeFormatter stringFromDate:exerciseDate];
     time.text = formattedTime;
+    [exerciseDate release];
     
     duration.text = [NSString stringWithFormat:@"%i%@", (int)(ex.stop_ts - ex.start_ts), @"s"];
     if (ex.duration_exercice_done_ps < 1.0){
@@ -302,6 +303,10 @@
 
 - (void)dealloc {
 	[exercises release];
+    [formattedDate release];
+    [dateFormatter release];
+    [timeFormatter release];
+    [modifyButton release];
     [super dealloc];
 }
 

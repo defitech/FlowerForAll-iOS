@@ -15,6 +15,7 @@
 
 @implementation VolcanoApp
 
+@synthesize volcano, lavaHidder, burst;
 # pragma mark FlowerApp overriding
 
 /** Used to put in as label on the App Menu (Localized)**/
@@ -76,11 +77,15 @@
         mainWidth = self.view.frame.size.width;
         mainHeight = self.view.frame.size.height;
         
-        volcano = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VolcanoApp_volcano.png"] ] autorelease];
+        UIImageView *tempvolcano = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VolcanoApp_volcano.png"]];
+        self.volcano = tempvolcano;
+        [tempvolcano release];
         [volcano setFrame:CGRectMake(0, 0, mainWidth * 0.9, volcano.frame.size.height * mainWidth * 0.9 / volcano.frame.size.width)];
         volcano.contentMode = UIViewContentModeScaleAspectFit;
         
-        burst = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VolcanoApp_burst.png"] ] autorelease];
+        UIImageView *tempburst = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VolcanoApp_burst.png"]];
+        self.burst = tempburst;
+        [tempburst release];
         [burst setFrame:CGRectMake(0, 0, mainWidth * 0.9, burst.frame.size.height * mainWidth * 0.9 / burst.frame.size.width)];
         burst.contentMode = UIViewContentModeScaleAspectFit;
         
@@ -92,7 +97,9 @@
         }
         lavaHeight = volcano.frame.size.height;
         
-        lavaHidder =[[UIView alloc] initWithFrame:CGRectMake(0, 0, lavaWidth, lavaHeight)];
+        UIView *templavaHider = [[UIView alloc] initWithFrame:CGRectMake(0, 0, lavaWidth, lavaHeight)];
+        self.lavaHidder = templavaHider;
+        [templavaHider release];
         lavaHidder.backgroundColor = [UIColor whiteColor];
         
          [start setTitle:NSLocalizedStringFromTable(@"Start Exercise",@"VolcanoApp",@"Start Button") 
@@ -189,9 +196,15 @@ bool debug_events = NO;
 
 
 - (void)dealloc {
-	[volcano release];
-	[burst release];
-	[lavaHidder release];
+    id temp1 = volcano;
+    volcano = nil;
+    [temp1 release];
+    id temp2 = burst;
+    burst = nil;
+    [temp2 release];
+    id temp3 = lavaHidder;
+    lavaHidder = nil;
+    [temp3 release];
 	
     [super dealloc];
 }

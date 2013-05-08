@@ -17,7 +17,9 @@
     self = [super init];
     if (self) {
         //Init the date field
-        self.date = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:start_ts];
+        NSDate *dateForExercise = [[NSDate alloc] initWithTimeIntervalSinceReferenceDate:start_ts];
+        self.date = dateForExercise;
+        [dateForExercise release];
         
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
@@ -33,6 +35,13 @@
     }
     
     return self;
+}
+
+- (void)dealloc {
+    [date release];
+    [formattedDate release];
+    [order release];
+    [super dealloc];
 }
 
 @end

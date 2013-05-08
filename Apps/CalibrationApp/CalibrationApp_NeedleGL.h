@@ -35,10 +35,6 @@
  
      NSTimer *animationTimer;
      NSTimeInterval animationInterval;
- 
-     double lastTarget;
-     double lastTolerance;
- 
  }
  
  @property NSTimeInterval animationInterval;

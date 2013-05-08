@@ -16,10 +16,12 @@
     IBOutlet UIToolbar* toolbar; 
     ResultsApp_Nav* statViewController;
     IBOutlet UIBarButtonItem *sendButton;
+    NSMutableArray *namesArrayforResult;
 }
 
 @property (nonatomic, retain)  IBOutlet UIView* controllerView;  
-@property (nonatomic, retain)  IBOutlet UIToolbar* toolbar; 
+@property (nonatomic, retain)  IBOutlet UIToolbar* toolbar;
+@property (nonatomic, retain) NSMutableArray *namesArrayforResult;
 
 @property (nonatomic, retain) UIBarButtonItem *sendButton;
 
