@@ -87,8 +87,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self stopVideo];
-    [super viewWillDisappear:animated];
+    if (player.isFullscreen != true) {
+        [self stopVideo];
+        [super viewWillDisappear:animated];
+    }
 }
 
 - (void)stopVideo {
