@@ -130,10 +130,8 @@ bool ItemRotation;
         {
             self.contentScaleFactor = [[UIScreen mainScreen] scale];
             eaglLayer.contentsScale = [[UIScreen mainScreen] scale];
-            NSLog(@"biker contentscalefactor:%f, eagllayercontentscale:%f", self.contentScaleFactor, eaglLayer.contentsScale);
         }
         
-        NSLog(@"self.layer.bounds.size.height:%f",self.layer.bounds.size.height);
         eaglLayer.opaque = YES;
         eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [NSNumber numberWithBool:NO], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, nil];
@@ -253,7 +251,6 @@ bool ItemRotation;
     
     // Nous donne la taille de l'écran de l'iPhone
     CGRect rect = self.bounds;
-    NSLog(@"rect width:%f, height:%f", rect.size.height, rect.size.width);
     glViewport(0, 0, rect.size.width, rect.size.width);
     
     glClearColor(0.25f, 0.5f, 0.9f, 1.0f);
@@ -469,7 +466,6 @@ float current_angle = 0.0;
     
     //implementing the jump with of without backflip
     if (JumpType == 1 && JumpPos < 0.2) {
-        //NSLog(@"Ypos:%f",YPos);
         gravity_accel = gravity_accel + gravity * TimeScaleFactor;
         YPos = YPos + up_accel - gravity_accel;
         if (YPos <= -0.45) {
@@ -508,17 +504,14 @@ float current_angle = 0.0;
     if (JumpType > 0 && JumpRotation < JumpMaxRotation && JumpPos < 0.3 && unrotate == 0) {
         JumpRotation = JumpRotation + 5.0 * TimeScaleFactor;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
-        //NSLog(@"first jumprot: %f",JumpRotation);
     } else if (JumpRotation >= JumpMaxRotation) {
         JumpRotation = JumpRotation - 5.0 * TimeScaleFactor;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
         unrotate++;
-        //NSLog(@"second jumprot: %f",JumpRotation);
     } else if (unrotate == 1) {
         JumpRotation = JumpRotation - unrotationSpeed * TimeScaleFactor;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
         if (JumpRotation < 0.0) unrotate++;
-        //NSLog(@"third jumprot: %f",JumpRotation);
     }
     glRotatef(180.0 + rot, 0.0, 0.0, 1.0);
     glRotatef(180.0, 0.0, 1.0, 0.0);
@@ -576,7 +569,6 @@ float current_angle = 0.0;
     /*
     //implementing the jump with of without backflip
     if (JumpType == 1 && JumpPos < 0.2) {
-        //NSLog(@"Ypos:%f",YPos);
         gravity_accel = gravity_accel + gravity * TimeScaleFactor;
         YPos = YPos + up_accel - gravity_accel;
         if (YPos <= -0.45) {
@@ -615,17 +607,14 @@ float current_angle = 0.0;
     if (JumpType > 0 && JumpRotation < JumpMaxRotation && JumpPos < 0.3 && unrotate == 0) {
         JumpRotation = JumpRotation + 5.0 * TimeScaleFactor;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
-        //NSLog(@"first jumprot: %f",JumpRotation);
     } else if (JumpRotation >= JumpMaxRotation) {
         JumpRotation = JumpRotation - 5.0 * TimeScaleFactor;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
         unrotate++;
-        //NSLog(@"second jumprot: %f",JumpRotation);
     } else if (unrotate == 1) {
         JumpRotation = JumpRotation - unrotationSpeed * TimeScaleFactor;
         glRotatef(JumpRotation, 0.0, 0.0, 1.0);
         if (JumpRotation < 0.0) unrotate++;
-        //NSLog(@"third jumprot: %f",JumpRotation);
     }
     glRotatef(180.0 + rot, 0.0, 0.0, 1.0);
     glRotatef(180.0, 0.0, 1.0, 0.0);
@@ -719,11 +708,9 @@ float current_angle = 0.0;
         TreesPositions[NextTree] = 1.5;
         while ( frameNO >= trees[NextTreePosition] && frameNO < trees[trees_size-1]) {
             NextTreePosition = (NextTreePosition + 1) % trees_size;
-            //NSLog(@"in the tree while loop");
             //if (frameNO == trees[0]) frameNO = 0;
         }
         NextTree = (NextTree + 1) % 5;
-        //NSLog(@"frameno: %i; NextTreePosition:%i", frameNO, NextTreePosition);
     }
 
     for (int i = 0; i < 5; i++) {
@@ -763,13 +750,10 @@ float current_angle = 0.0;
     //          DRAW CLOUDS
     if (frameNO_clouds >= clouds[NextCloudPosition]) {
         CloudsPositions[NextCloud] = 1.5;
-        //NSLog(@"NextCloudbefore:%i; frameno: %i",NextCloud, frameNO_clouds);
         while (frameNO_clouds >= clouds[NextCloudPosition] && frameNO_clouds < clouds[clouds_size-1]) {
             NextCloudPosition = (NextCloudPosition + 1) % clouds_size;
         }
         //if (frameNO_clouds >= clouds[clouds_size-1]) frameNO_clouds = 0;
-        //NSLog(@"NextCloudafter:%i; frameno: %i", NextCloud, frameNO_clouds);
-        //frameNO_clouds++;
         NextCloud = (NextCloud + 1) % 5;
     }
     
@@ -790,7 +774,6 @@ float current_angle = 0.0;
                 1.0, 0.0
             };
             glLoadIdentity();
-            //NSLog(@"cloudsypos:%f",cloudsYPos[i]);
             glTranslatef(CloudsPositions[i], 0.50 + cloudsYPos[i], 0.0);
             glRotatef(180.0, 0.0, 0.0, 1.0);
             
@@ -862,11 +845,9 @@ float current_angle = 0.0;
     }
     if (CloudRuptor==true) frameNO_clouds = 1 * TimeScaleFactor + frameNO_clouds;
     if (frameNO_clouds >= clouds[clouds_size-1]) {
-        NSLog(@"frameno_clouds = 0");
         frameNO_clouds = 0;
         NextCloudPosition = 0;
     }
-    //NSLog(@"frameNO_clouds: %i, frameNO: %i, next cloud: %i, next tree: %i",frameNO_clouds, frameNO, clouds[NextCloudPosition], trees[NextTreePosition]);
 }
 
 bool debug_events_bikerGL = NO;
@@ -876,14 +857,12 @@ bool debug_events_bikerGL = NO;
     } else {
         //[labelPercent setText:@"---"];
     }
-    NSLog(@"flapixEVENTFREQUENCY!!!");
 }
 
 //function which executes stuffs after each blow
 - (void)flapixEventBlowStop:(NSNotification *)notification {
 	FLAPIBlow* blow = (FLAPIBlow*)[notification object];
     [blow retain];
-    //NSLog(@"blow retain count:%i",[blow retainCount]);
     ShowJump = true;
     DOwn = false;
     JumpRotation = 0;
@@ -1038,7 +1017,6 @@ bool debug_events_bikerGL = NO;
         ItemsLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 100, 400, 120)];
         ItemsLabel.font = [UIFont fontWithName:@"Helvetica" size: 27.0];
         ItemsLabel.text = [NSString stringWithFormat:@"You have %i star(s) left", [DB fetchStarsCount:[UserManager currentUser].uid]];
-        //NSLog(@"blowstarcount:%i",[[[FlowerController currentFlapix] currentExercice] blow_star_count]);
         ItemsLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:ItemsLabel];
         
@@ -1079,7 +1057,6 @@ bool debug_events_bikerGL = NO;
         ItemRotation = true;
         [ItemRotationProg setBackgroundImage:[UIImage imageNamed:@"BikerTreee.png"] forState:UIControlStateNormal];
         [ItemRotationProg setTitle:@"" forState:UIControlStateNormal];
-        NSLog(@"check Items available in selectItemRotation:%i",[DB fetchItemsAvail:[UserManager currentUser].uid]);
     } else if ([items_string characterAtIndex:0] == 49 && ItemRotation == true){
         ItemRotation = false;
         [ItemRotationProg setBackgroundImage:[UIImage imageNamed:@"BikerStar.png"] forState:UIControlStateNormal];
@@ -1089,7 +1066,6 @@ bool debug_events_bikerGL = NO;
         [ItemRotationProg setBackgroundImage:[UIImage imageNamed:@"BikerTreee.png"] forState:UIControlStateNormal];
         [ItemRotationProg setTitle:@"" forState:UIControlStateNormal];
     }
-    NSLog(@"ItemRotation = %s and character in string: %hu", ItemRotation ? "true" : "false", [items_string characterAtIndex:0]);
 }
 
 
@@ -1116,7 +1092,6 @@ bool debug_events_bikerGL = NO;
         NSLog(@"failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
         return NO;
     }
-    NSLog(@"biker backingw:%i, backingh: %i", backingWidth, backingHeight);
     
     return YES;
 }

@@ -182,7 +182,6 @@ float minExerciceDuration_s = 7.0;
 
 - (void)showOptionView
 {
-    NSLog(@"ProfilPicker SHOW");
     PickerEditor* optionViewController = [[PickerEditor alloc] initWithDelegate:self useCellNib:@"ParametersAppPickerProfileCell"];
     [optionViewController showOnTopOfView:self.view];
 }
