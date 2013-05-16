@@ -227,7 +227,6 @@ const GLfloat needleCenterX = 0.0f, needleCenterY = -0.5f, needleCenterZ = 0.0f;
         glColor4f(0.2f, 0.2f, 0.5f+[flapix lastlevel]/2, 1.0f);
     } else {
         speed = fabs((angle_toreach - angle_previous) / 10);
-        // NSLog(@"speed = %f \n", speed);
         
         if(angle_toreach > angle_previous) {
             angle_actual = angle_previous + speed;

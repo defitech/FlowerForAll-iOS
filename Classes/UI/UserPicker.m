@@ -193,7 +193,6 @@ UIActionSheet* actionSheet;
 
 
 - (User*) selectedUser {
-    NSLog(@"userarray in :%@",[[self.userArray objectAtIndex:1] name]);
     return [self.userArray objectAtIndex:IndexforUser];
     NSLog(@"Problem: could not find user in UserPicker.m, function selectedUser");
     return [self.userArray objectAtIndex:0];

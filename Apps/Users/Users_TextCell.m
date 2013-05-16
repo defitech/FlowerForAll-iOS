@@ -67,7 +67,6 @@ BOOL  textIsSet = NO;
 }
 
 - (void)dealloc {
-    NSLog(@"textView retain counter: %u", [textView retainCount]);
     [super dealloc];
     //[textView release];           app crashes in the beginning
 }

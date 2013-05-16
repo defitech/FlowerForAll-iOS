@@ -57,7 +57,6 @@ Users_TextCell *cellh;
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //NSLog(@"cell height in tableView: heightForRowAtIndexPath: %f",cellh.frame.size.height);
      NSUInteger section = [indexPath section];
     if (section == 0) return [cellh height];            //*** -[Users_TextCell height]: message sent to deallocated instance 0xbcf6150
     return 44;
@@ -141,7 +140,6 @@ User* user;
     UserPickeraskPassword = [[UserPicker alloc] init];
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"Users_TextCell" owner:self options:nil];
     cellh = (Users_TextCell *)[nib objectAtIndex:0];
-     NSLog(@"cell height in viewdidload: %f",cellh.frame.size.height);
     navController.view.frame = CGRectMake(0,0,
                             self.view.frame.size.width,
                             self.view.frame.size.height);
