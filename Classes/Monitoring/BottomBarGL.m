@@ -133,7 +133,6 @@ float lastExerciceStopTimeStamp2 = 0;
 }
 
 - (void)eventFlapixStarted:(NSNotification *)notification {
-    NSLog(@"HISTORY VIEW flapix started");
     [self startReloadTimer];
 }
 
@@ -229,7 +228,6 @@ float lastExerciceStopTimeStamp2 = 0;
         x1, y1, z1,
         x2, y2, z2,
     };
-    //	NSLog(@"line %f,%f,%f %f,%f,%f",lineVertices[0],lineVertices[1],lineVertices[2],lineVertices[3],lineVertices[4],lineVertices[5]);
 	
 	// line
 	
@@ -391,7 +389,6 @@ float lastExerciceStopTimeStamp2 = 0;
         glColor4f(0.2f, 0.2f, 0.5f+[flapix lastlevel]/2, 1.0f);
     } else {
         rotspeed = fabs((angle_toreach - angle_previous) / 10);
-        // NSLog(@"speed = %f \n", speed);
         
         if(angle_toreach > angle_previous) {
             angle_actual = angle_previous + rotspeed;
@@ -604,7 +601,6 @@ float lastExerciceStopTimeStamp2 = 0;
             [StarsPosition addObject:[NSNumber numberWithFloat:0.0f]];
         }
     
-        //NSLog(@"blow duration:%f, in range duration:%f", blow.duration, blow.in_range_duration);
         //Resize Y axis if needed
         if (blow.duration > higherBar) {
             self.higherBar = blow.duration;
@@ -651,7 +647,6 @@ float lastExerciceStopTimeStamp2 = 0;
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
     [FlowerController showNav];
-    NSLog(@"Graph Touched");
     //Do stuff here...
 }
 

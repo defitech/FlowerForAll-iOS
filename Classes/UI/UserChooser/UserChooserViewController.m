@@ -31,7 +31,6 @@ static BOOL showing = false;
         showing = true;
         [[[UserChooserViewController alloc] init] showUserChooser];
     } else {
-        // NSLog(@"UserPicker:already showing");
     }
 }
 
@@ -83,7 +82,6 @@ static BOOL showing = false;
 
 - (void) showUserChooser {
     [super viewDidLoad];
-    NSLog(@"SHOW USERCHOOSER");
     [[FlowerController currentFlower].view addSubview:self.view];
     self.view.frame = [FlowerController currentFlower].view.bounds;
     
@@ -112,7 +110,6 @@ static BOOL showing = false;
     [tempArray release];
 }
 - (void) hideUserChooser {
-    NSLog(@"HIDE USERCHOOSER");
     
     [self.view removeFromSuperview];
 }
@@ -141,7 +138,6 @@ static BOOL showing = false;
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UserChooser_TextCell" owner:self options:nil];
     cellh = (UserChooser_TextCell *)[nib objectAtIndex:0];
     NSUInteger section = [indexPath section];
-    NSLog(@"cellh:%f", [cellh height]);
     if (section == 0) return [cellh height];
     return 44;
 }
@@ -188,7 +184,6 @@ static BOOL showing = false;
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = [indexPath row];
     User* user = (User*)[[UserManager listAllUser] objectAtIndex:row];
-	NSLog(@"Users.m, user: %@:",user.description);
     [[self navController] pushViewController:[[Users_Editor alloc] initWithUser:user] animated:YES];
     
 }
