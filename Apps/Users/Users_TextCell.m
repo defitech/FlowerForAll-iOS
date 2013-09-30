@@ -58,7 +58,7 @@ BOOL  textIsSet = NO;
     
     CGSize constraintSize = CGSizeMake(textView.frame.size.width, MAXFLOAT);
     
-    CGSize textViewSize = [[textView text] sizeWithFont:[textView font] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+    CGSize textViewSize = [[textView text] sizeWithFont:[textView font] constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
     
     if (textViewSize.height < 60) textViewSize.height = 60;
     

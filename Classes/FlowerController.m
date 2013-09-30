@@ -280,7 +280,7 @@ static NSMutableDictionary* appList;
     UIImage *buttonImageHighlighted = [UIImage imageNamed: @"jack.png"];
     [startButton setImage:buttonImageHighlighted forState:UIControlStateHighlighted];
     [startButton setTitle:NSLocalizedString(@"Plug in headphones with\nmicrophone to start",@"Displayed on the ToolBar") forState:UIControlStateNormal];
-    startButton.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
+    startButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     startButton.titleLabel.textAlignment = UITextAlignmentCenter;
     [startButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [startButton setBackgroundColor:[UIColor blackColor]];
