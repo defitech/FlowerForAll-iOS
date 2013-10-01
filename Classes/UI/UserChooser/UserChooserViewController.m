@@ -242,7 +242,12 @@ static BOOL showing = false;
     for (int i = 0; i < [self.userArrayforChooser count]; i++) {
         if ([[self.userArrayforChooser objectAtIndex:i] uid] == [user uid]) IndexforUserinChooser = i;
     }
-    [self showPasswordSheet:@""];
+    // If the Password is empty, don't ask for it, just go ahead
+    if (![[passwordsArrayforChooser objectAtIndex:IndexforUserinChooser] isEqualToString:@""]) {
+      [self showPasswordSheet:@""];
+    } else {
+      [self dismissAndPickSelectedUser];
+    }
 }
 - (void) dismissAndPickSelectedUser {
     [UserManager setCurrentUser:[[self selectedUser] uid]];

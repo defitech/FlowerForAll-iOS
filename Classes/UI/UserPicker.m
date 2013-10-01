@@ -57,7 +57,13 @@ UserPicker *UserPickeraskPassword;
             if ([[tempArray objectAtIndex:i] uid] == [user uid]) IndexforUser = i;
         }
         showing = true;
-        [self showPasswordSheet:@""];
+        // If the Password is empty, don't ask for it, just go ahead
+        if (![[passwordsArray objectAtIndex:IndexforUser] isEqualToString:@""]) {
+          [self showPasswordSheet:@""];
+        } else {
+          [self dismissAndPickSelectedUser];
+          showing = false;
+        }
     } else {
         // NSLog(@"UserPicker:already showing");
     }
