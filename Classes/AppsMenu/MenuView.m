@@ -22,6 +22,8 @@
 #import "CalibrationApp.h"
 #import "Users.h"
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 @implementation MenuView
 
 
@@ -107,6 +109,12 @@ FlowerHowTo *flowerHowTo;
     [scrollView setContentSize:CGSizeMake(pageWidth * nb_pages,335.0)];
 	
     [pageControl setNumberOfPages:nb_pages];
+    
+    if SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0") {
+      // PageIndicatorTintColors can only be set from iOS6 on. For earlier iOS'es, check Classes/UI/RSPageControl.m
+      [pageControl setCurrentPageIndicatorTintColor:[UIColor blueColor]];
+      [pageControl setPageIndicatorTintColor:[UIColor blackColor]];
+    }
     
     //add pages
     page2.frame = CGRectMake(pageWidth, 0.0f, pageWidth, self.pageControl.frame.origin.y-self.pageControl.frame.size.height);
