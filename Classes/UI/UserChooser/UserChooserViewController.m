@@ -138,7 +138,7 @@ static BOOL showing = false;
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UserChooser_TextCell" owner:self options:nil];
     cellh = (UserChooser_TextCell *)[nib objectAtIndex:0];
     NSUInteger section = [indexPath section];
-    if (section == 0) return [cellh height];
+    if (section == 0) return [cellh height] + 22;
     return 44;
 }
 
