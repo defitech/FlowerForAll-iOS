@@ -7,6 +7,8 @@
 //
 
 #import "FlowerHowTo.h"
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define STATUSBAR_HEIGHT 20
 
 @implementation FlowerHowTo
 
@@ -33,6 +35,13 @@
     NSString *fileText = [NSString stringWithContentsOfFile:fpath encoding:NSUTF8StringEncoding error:nil];
     //NSLog(@"%@ %@",baseURL,fpath);
     //NSLog(@"%@",fileText);
+    if SYSTEM_VERSION_LESS_THAN(@"7.0") {
+      // Make sure the webview is correctly displayed when there's a forced status bar
+      webView.frame = CGRectMake(webView.frame.origin.x,
+                                 webView.frame.origin.y - STATUSBAR_HEIGHT,
+                                 webView.frame.size.width,
+                                 webView.frame.size.height + STATUSBAR_HEIGHT);
+    }
     [webView loadHTMLString:fileText baseURL:baseURL];
     [webView setDelegate:self];
 
@@ -63,7 +72,8 @@
     
     //---play partial screen---
     player.view.frame =  CGRectMake(0, 0, webView.frame.size.height, webView.frame.size.width);
-    player.view.center = CGPointMake(webView.frame.size.width/2, webView.frame.size.height/2);
+    player.view.center = CGPointMake(webView.frame.size.width/2 + webView.frame.origin.x,
+                                     webView.frame.size.height/2 + webView.frame.origin.y);
     player.view.transform = CGAffineTransformMakeRotation(M_PI/ 2);
     
    
