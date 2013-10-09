@@ -22,10 +22,12 @@
 #import "CalibrationApp.h"
 #import "Users.h"
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 @implementation MenuView
 
 
-@synthesize page2, web, scrollView, /*backItem,*/ navigationBar, pageControl, bikerLabel,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel, usersLabel, calibrationLabel;
+@synthesize page2, web, scrollView, /*backItem,*/ navigationBar, pageControl, bikerLabel,  volcanoLabel, videoPlayerLabel, settingsLabel, resultsLabel, usersLabel, calibrationLabel, navController, navigItem;
 
 
 - (IBAction)usersTouch:(id) sender {
@@ -79,7 +81,11 @@ FlowerHowTo *flowerHowTo;
     NSLog(@"menu view super: %f", super.view.frame.size.height);
 	//Set title of the navigation bar
 	navigationBar.topItem.title = NSLocalizedString(@"Flower breath", @"Menu Title");
-	
+  navController.view.frame = CGRectMake(0,0,
+                                        self.view.frame.size.width,
+                                        self.view.frame.size.height);
+  [self.view addSubview:navController.view];
+  
 	//Set title of game buttons for all states
     [bikerLabel setText:[BikerApp appTitle]];
     [volcanoLabel setText:[VolcanoApp appTitle]];
@@ -90,14 +96,16 @@ FlowerHowTo *flowerHowTo;
     [calibrationLabel setText:[CalibrationApp appTitle]];
     
     UIImage* image3 = [UIImage imageNamed:@"FlowerHowTo-icon.png"];
-    CGRect frameimg = CGRectMake(self.view.frame.size.width-self.navigationBar.frame.size.height, 0, self.navigationBar.frame.size.height, self.navigationBar.frame.size.height);
-    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+    UIButton *someButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    someButton.bounds = CGRectMake( 0, 0, self.navigationBar.frame.size.height, self.navigationBar.frame.size.height );
+    [someButton setImage:image3 forState:UIControlStateNormal];
+    UIBarButtonItem *someBarButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+    navigItem.rightBarButtonItem = someBarButton;
+  
     [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
     [someButton addTarget:self action:@selector(flowerHowTo)
          forControlEvents:UIControlEventTouchUpInside];
     [someButton setShowsTouchWhenHighlighted:YES];
-    [someButton setFrame:frameimg];
-    [self.view addSubview:someButton];
 	
     int nb_pages = 2;
     CGFloat pageWidth = self.view.frame.size.width;
@@ -107,6 +115,12 @@ FlowerHowTo *flowerHowTo;
     [scrollView setContentSize:CGSizeMake(pageWidth * nb_pages,335.0)];
 	
     [pageControl setNumberOfPages:nb_pages];
+    
+    if SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0") {
+      // PageIndicatorTintColors can only be set from iOS6 on. For earlier iOS'es, check Classes/UI/RSPageControl.m
+      [pageControl setCurrentPageIndicatorTintColor:[UIColor blueColor]];
+      [pageControl setPageIndicatorTintColor:[UIColor blackColor]];
+    }
     
     //add pages
     page2.frame = CGRectMake(pageWidth, 0.0f, pageWidth, self.pageControl.frame.origin.y-self.pageControl.frame.size.height);

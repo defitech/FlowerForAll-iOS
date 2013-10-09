@@ -37,7 +37,7 @@
 "New user" = "New user";
 
 /* Info Text */
-"Only the owner may remove or edit user. \nYou may switch to another identity by choosing the coresponding username." = "You may switch to another identity by choosing the coresponding username.";
+"Only the owner may remove or edit user. \nYou may switch to another identity by choosing the corresponding username." = "You may switch to another identity by choosing the corresponding username.";
 
 /* Label of the password entry field */
 "Password" = "Password";
@@ -46,4 +46,4 @@
 "Users" = "Users";
 
 /* Info Text */
-"You may switch to another identity by choosing the coresponding username. Only the owner may add or remove user." = "You may switch to another identity by choosing the coresponding username";
+"You may switch to another identity by choosing the corresponding username. Only the owner may add or remove user." = "You may switch to another identity by choosing the corresponding username";

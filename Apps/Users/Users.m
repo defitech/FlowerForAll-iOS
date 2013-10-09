@@ -58,7 +58,7 @@ Users_TextCell *cellh;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
      NSUInteger section = [indexPath section];
-    if (section == 0) return [cellh height];            //*** -[Users_TextCell height]: message sent to deallocated instance 0xbcf6150
+    if (section == 0) return [cellh height] + 22;            //*** -[Users_TextCell height]: message sent to deallocated instance 0xbcf6150
     return 44;
 }
 

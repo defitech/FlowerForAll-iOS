@@ -138,7 +138,7 @@ static BOOL showing = false;
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"UserChooser_TextCell" owner:self options:nil];
     cellh = (UserChooser_TextCell *)[nib objectAtIndex:0];
     NSUInteger section = [indexPath section];
-    if (section == 0) return [cellh height];
+    if (section == 0) return [cellh height] + 22;
     return 44;
 }
 
@@ -242,7 +242,12 @@ static BOOL showing = false;
     for (int i = 0; i < [self.userArrayforChooser count]; i++) {
         if ([[self.userArrayforChooser objectAtIndex:i] uid] == [user uid]) IndexforUserinChooser = i;
     }
-    [self showPasswordSheet:@""];
+    // If the Password is empty, don't ask for it, just go ahead
+    if (![[passwordsArrayforChooser objectAtIndex:IndexforUserinChooser] isEqualToString:@""]) {
+      [self showPasswordSheet:@""];
+    } else {
+      [self dismissAndPickSelectedUser];
+    }
 }
 - (void) dismissAndPickSelectedUser {
     [UserManager setCurrentUser:[[self selectedUser] uid]];

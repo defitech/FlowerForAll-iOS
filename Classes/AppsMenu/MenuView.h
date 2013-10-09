@@ -17,6 +17,9 @@
 
 @interface MenuView : UIViewController <UIScrollViewDelegate, UIWebViewDelegate>{
 
+    // Using a NavigationController ensures that the info button is really a button and that it is always at the same place regardless of iOS versions
+    IBOutlet UINavigationController* navController;
+  
 	//The sub views include mainly the scroll view, which will include game1ChoiceView and game2ChoiceView (for the moment there are 2 games)
 	IBOutlet UIScrollView *scrollView;
     
@@ -35,6 +38,8 @@
 	
 	//There is no navigation controller here. So we add a navigation bar individually.
 	IBOutlet UINavigationBar *navigationBar;
+  
+  IBOutlet UINavigationItem *navigItem;
 	
 	//Page control for the ScrollView
 	IBOutlet RSPageControl *pageControl;
@@ -42,6 +47,9 @@
     //UIBarButtonItem* backItem;
 }
 
+
+@property (nonatomic, retain) IBOutlet UINavigationController* navController;
+@property (nonatomic, retain) IBOutlet UINavigationItem* navigItem;
 
 //Properties
 @property(nonatomic,retain) UIScrollView *scrollView;

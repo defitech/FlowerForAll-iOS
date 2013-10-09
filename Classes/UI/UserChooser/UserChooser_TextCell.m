@@ -43,12 +43,12 @@ BOOL  textIsSet2 = NO;
     
     if ([UserManager currentUser].uid == 0) {
         if ([[UserManager listAllUser] count] > 1) {
-            [textView setText:NSLocalizedStringFromTable(@"Only the owner may remove or edit user. \nYou may switch to another identity by choosing the coresponding username.",@"UserChooser",@"Info Text")];
+            [textView setText:NSLocalizedStringFromTable(@"Only the owner may remove or edit user. \nYou may switch to another identity by choosing the corresponding username.",@"UserChooser",@"Info Text")];
         } else {
             [textView setText:NSLocalizedStringFromTable(@"Add users if this device is used by several persons. Use the + button on the top right corner.",@"UserChooser",@"Info Text")];
         }
     } else {
-        [textView setText:NSLocalizedStringFromTable(@"You may switch to another identity by choosing the coresponding username. Only the owner may add or remove user.",@"UserChooser",@"Info Text")];
+        [textView setText:NSLocalizedStringFromTable(@"You may switch to another identity by choosing the corresponding username. Only the owner may add or remove user.",@"UserChooser",@"Info Text")];
     }
 }
 
@@ -57,7 +57,7 @@ BOOL  textIsSet2 = NO;
     
     CGSize constraintSize = CGSizeMake(textView.frame.size.width, MAXFLOAT);
     
-    CGSize textViewSize = [[textView text] sizeWithFont:[textView font] constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+    CGSize textViewSize = [[textView text] sizeWithFont:[textView font] constrainedToSize:constraintSize lineBreakMode:NSLineBreakByWordWrapping];
     
     if (textViewSize.height < 60) textViewSize.height = 60;
     
