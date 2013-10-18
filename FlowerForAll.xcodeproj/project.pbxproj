@@ -183,6 +183,9 @@
 		D73C1319142879050006B28F /* ResultsApp_List.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1310142879050006B28F /* ResultsApp_List.m */; };
 		D73C131A142879050006B28F /* ResultsApp_Nav.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C1312142879050006B28F /* ResultsApp_Nav.m */; };
 		D73C13201428B34D0006B28F /* ExerciseDay.m in Sources */ = {isa = PBXBuildFile; fileRef = D73C131F1428B34D0006B28F /* ExerciseDay.m */; };
+		D765DEFD18113302009F746F /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = D765DEFA18113302009F746F /* Icon-76.png */; };
+		D765DEFE18113302009F746F /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = D765DEFB18113302009F746F /* Icon-120.png */; };
+		D765DEFF18113302009F746F /* Icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = D765DEFC18113302009F746F /* Icon-152.png */; };
 		D77B109A140FC5A600897203 /* icon_contents_page_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1096140FC5A600897203 /* icon_contents_page_selected.png */; };
 		D77B109B140FC5A600897203 /* icon_contents_page_unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */; };
 		D77B109C140FC5A600897203 /* RSPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D77B1099140FC5A600897203 /* RSPageControl.m */; };
@@ -466,6 +469,9 @@
 		D73C131E1428B34D0006B28F /* ExerciseDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseDay.h; sourceTree = "<group>"; };
 		D73C131F1428B34D0006B28F /* ExerciseDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseDay.m; sourceTree = "<group>"; };
 		D73EB4F1142233EF001AB2DE /* ParametersApp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParametersApp.xib; sourceTree = "<group>"; };
+		D765DEFA18113302009F746F /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		D765DEFB18113302009F746F /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		D765DEFC18113302009F746F /* Icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-152.png"; sourceTree = "<group>"; };
 		D77B1096140FC5A600897203 /* icon_contents_page_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contents_page_selected.png; sourceTree = "<group>"; };
 		D77B1097140FC5A600897203 /* icon_contents_page_unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contents_page_unselected.png; sourceTree = "<group>"; };
 		D77B1098140FC5A600897203 /* RSPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPageControl.h; sourceTree = "<group>"; };
@@ -808,6 +814,9 @@
 		4EB510AA1418CCA7008FC46F /* Visual */ = {
 			isa = PBXGroup;
 			children = (
+				D765DEFA18113302009F746F /* Icon-76.png */,
+				D765DEFB18113302009F746F /* Icon-120.png */,
+				D765DEFC18113302009F746F /* Icon-152.png */,
 				4EA06AFF1744D83000B06839 /* Icon-iPad@2x.png */,
 				4ED329091625BCC000C92603 /* Default-568h@2x.png */,
 				4E3BEDB314442DA600D72705 /* Default-Portrait.png */,
@@ -1118,6 +1127,7 @@
 				D702D18E14152C69005A1764 /* VolcanoApp_volcano.png in Resources */,
 				D701908B141618510072D020 /* VolcanoApp_goal.wav in Resources */,
 				4E4B815B14165374009CC45D /* FlowerHowTo.m4v in Resources */,
+				D765DEFD18113302009F746F /* Icon-76.png in Resources */,
 				D7D64652141659B700F0DE4F /* VolcanoApp_explosion.wav in Resources */,
 				D7A9942B14165763000AA64A /* VolcanoApp-Icon.png in Resources */,
 				D7AD2ADC14174CA2004C6034 /* VolcanoApp_burst.png in Resources */,
@@ -1149,8 +1159,10 @@
 				4EB75E951442F7C800E886C3 /* FlowerHowTo-Nav-Num.png in Resources */,
 				4EB75E97144315FD00E886C3 /* FlowerHowTo-PlayVideo.png in Resources */,
 				4E6145BA144348C80056B84D /* default.css in Resources */,
+				D765DEFF18113302009F746F /* Icon-152.png in Resources */,
 				4EF0469114434DD200665E23 /* FlowerHowTo-Calibration_FR.png in Resources */,
 				4E3BEDB414442DA600D72705 /* Default-Portrait.png in Resources */,
+				D765DEFE18113302009F746F /* Icon-120.png in Resources */,
 				4E3BEDB714442FEF00D72705 /* About-banner.png in Resources */,
 				4EFCD46914448EAA00FDECE9 /* Mix.raw in Resources */,
 				4E16EA4B1445E5750048AA6D /* FlowerHowTo-Calibration_EN.png in Resources */,
