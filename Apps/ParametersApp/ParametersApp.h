@@ -32,6 +32,9 @@
     IBOutlet UIButton *buttonProfile;
     
     
+    IBOutlet UIButton *buttonPryvLogin;
+    
+    
     IBOutlet UIButton *goToCalibrationButton;
     
 }
@@ -56,6 +59,10 @@
 
 @property (nonatomic, retain) UIButton *buttonProfile;
 @property (nonatomic, retain) UIButton *goToCalibrationButton;
+
+@property (nonatomic, retain) UIButton *buttonPryvLogin;
+
+- (IBAction)pryvButtonPushed:(id)sender;
 
 - (IBAction)profileButtonPushed:(id)sender;
 - (IBAction)goToCalibration:(id)sender;

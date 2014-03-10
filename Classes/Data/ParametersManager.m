@@ -62,6 +62,7 @@
     [flapix SetPlayBackVolume:[[DB getInfoValueForKey:@"playBackVolume"] floatValue]];
 }
 
+
 +(void) savePlayBackVolume:(float)volume {
     [DB setInfoValueForKey:@"playBackVolume" value:[NSString stringWithFormat:@"%f",volume]];
 }

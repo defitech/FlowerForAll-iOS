@@ -16,6 +16,7 @@
 *.swp
 *.lock
 profile
+Pods/*
 
 
 ####

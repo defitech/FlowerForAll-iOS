@@ -15,6 +15,7 @@
 #import "Profil.h"
 #import "FlowerController.h"
 #import "ParametersManager.h"
+#import "PryvAccess.h"
 
 @implementation UserManager
 
@@ -48,6 +49,8 @@ static User* currentU;
     [DB db]; // load database
     // load user Profile
     [Profil reloadCurrent];
+    // load Pryv if known
+    [PryvAccess reloadFromDB];
     // refresh flapix (if needed)
     [FlowerController initFlapix];
     // refresh history view

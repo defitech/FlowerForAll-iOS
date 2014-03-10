@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A68C76A79CF4DA6B4DF9693 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D47433A4CD463EA3F61C8D /* libPods.a */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -59,6 +60,8 @@
 		4E7CDA191471256000047C99 /* Users-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E7CDA181471256000047C99 /* Users-check.png */; };
 		4E800122143E0067001C15C7 /* VolcanoApp-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E800121143E0067001C15C7 /* VolcanoApp-star.png */; };
 		4E8068D1160B07D7000066FA /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8068D0160B07D7000066FA /* OpenUDID.m */; };
+		4E84172818CDC8930053769C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 4E84172718CDC8930053769C /* Podfile */; };
+		4E84172C18CDEEA70053769C /* PryvAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E84172B18CDEEA70053769C /* PryvAccess.m */; };
 		4E8F592E13A7AF6B00D9D3A7 /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */; };
 		4E8F592F13A7AF6B00D9D3A7 /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590413A7AF6B00D9D3A7 /* DB.m */; };
 		4E8F593213A7AF6B00D9D3A7 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F590A13A7AF6B00D9D3A7 /* Exercise.m */; };
@@ -280,6 +283,9 @@
 		4E800121143E0067001C15C7 /* VolcanoApp-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolcanoApp-star.png"; sourceTree = "<group>"; };
 		4E8068CF160B07D7000066FA /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
 		4E8068D0160B07D7000066FA /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		4E84172718CDC8930053769C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4E84172A18CDEEA70053769C /* PryvAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PryvAccess.h; sourceTree = "<group>"; };
+		4E84172B18CDEEA70053769C /* PryvAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PryvAccess.m; sourceTree = "<group>"; };
 		4E8F590113A7AF6B00D9D3A7 /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataAccess.h; path = Data/DataAccess.h; sourceTree = "<group>"; };
 		4E8F590213A7AF6B00D9D3A7 /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataAccess.m; path = Data/DataAccess.m; sourceTree = "<group>"; };
 		4E8F590413A7AF6B00D9D3A7 /* DB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DB.m; path = Data/DB.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -385,6 +391,7 @@
 		4EFE7914142B5369009EE121 /* ParametersAppPickerProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParametersAppPickerProfileCell.xib; sourceTree = "<group>"; };
 		4EFE7916142B53BA009EE121 /* ParametersAppPickerProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersAppPickerProfileCell.h; sourceTree = "<group>"; };
 		4EFE7917142B53BA009EE121 /* ParametersAppPickerProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersAppPickerProfileCell.m; sourceTree = "<group>"; };
+		52A6AE907FAC4800BEABE84D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC1D4D7716C941FA005070A7 /* TODO_DEV.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO_DEV.md; sourceTree = "<group>"; };
 		BC1E2C42160B0F6D00B82033 /* MainWindow~ipad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow~ipad.xib"; path = "iPad/MainWindow~ipad.xib"; sourceTree = "<group>"; };
@@ -479,6 +486,7 @@
 		D7A9942914165763000AA64A /* VolcanoApp-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VolcanoApp-Icon.png"; sourceTree = "<group>"; };
 		D7AD2ADB14174CA2004C6034 /* VolcanoApp_burst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VolcanoApp_burst.png; sourceTree = "<group>"; };
 		D7D64651141659B700F0DE4F /* VolcanoApp_explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = VolcanoApp_explosion.wav; sourceTree = "<group>"; };
+		F6D47433A4CD463EA3F61C8D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -497,6 +505,7 @@
 				28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */,
 				4E8F596713A7B6FF00D9D3A7 /* libsqlite3.0.dylib in Frameworks */,
 				4EC68D9E145AB0A300D8B785 /* libFLAPISP.a in Frameworks */,
+				0A68C76A79CF4DA6B4DF9693 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +544,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4E84172718CDC8930053769C /* Podfile */,
 				BC1D4D7716C941FA005070A7 /* TODO_DEV.md */,
 				4EDA57ED14481708005C29EB /* README.md */,
 				BCD0A618165CDDF5009F15E6 /* Default-568h@2x.png */,
@@ -549,6 +559,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				BC229305160B1F9F0045E064 /* Flower breath copy-Info.plist */,
+				52A6AE907FAC4800BEABE84D /* Pods.xcconfig */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -590,6 +601,7 @@
 				28FD14FF0DC6FC520079059D /* OpenGLES.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				F6D47433A4CD463EA3F61C8D /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -719,6 +731,8 @@
 				D73C131F1428B34D0006B28F /* ExerciseDay.m */,
 				4EB6CEE5147E809500BABBC6 /* Month.h */,
 				4EB6CEE6147E809500BABBC6 /* Month.m */,
+				4E84172A18CDEEA70053769C /* PryvAccess.h */,
+				4E84172B18CDEEA70053769C /* PryvAccess.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -1057,9 +1071,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Flower breath" */;
 			buildPhases = (
+				C8AE97F871D04937BCE99BD3 /* Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				543BF22EA0374878AC46739E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1205,6 +1221,7 @@
 				BC59557016271D1D002FA364 /* UserChooser_TextCell~ipad.xib in Resources */,
 				BC89EFA8165675C1007ADC4C /* ResultsApp_List~ipad.xib in Resources */,
 				BC89EFAA165676B1007ADC4C /* CalibrationApp.xib in Resources */,
+				4E84172818CDC8930053769C /* Podfile in Resources */,
 				BC89EFAC1656973D007ADC4C /* ParametersAppPickerProfileCell~ipad.xib in Resources */,
 				BC415D4E167B302400855354 /* BikerApp.xib in Resources */,
 				BC415D4F167B302400855354 /* BikerApp~ipad.xib in Resources */,
@@ -1228,6 +1245,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		543BF22EA0374878AC46739E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8AE97F871D04937BCE99BD3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -1294,6 +1344,7 @@
 				BC9732E216679705008E0ABE /* BottomBarGL.m in Sources */,
 				BC415D4D167B302400855354 /* BikerApp.m in Sources */,
 				BC415D50167B302400855354 /* BikerAppGL.m in Sources */,
+				4E84172C18CDEEA70053769C /* PryvAccess.m in Sources */,
 				BCC0BE0416A85B1000D1BD0C /* CalibrationApp_NeedleGL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1425,10 +1476,12 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52A6AE907FAC4800BEABE84D /* Pods.xcconfig */;
 			buildSettings = {
 				"ADDITIONAL_SDKS[arch=*]" = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1448,16 +1501,19 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = FlowerForAll;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52A6AE907FAC4800BEABE84D /* Pods.xcconfig */;
 			buildSettings = {
 				"ADDITIONAL_SDKS[arch=*]" = "";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = FlowerForAll_Prefix.pch;
@@ -1470,6 +1526,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = FlowerForAll;
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1498,7 +1555,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"$(SRCROOT)/FLAPI\"";
 				ONLY_ACTIVE_ARCH = NO;
@@ -1536,7 +1593,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/FLAPI\"";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (

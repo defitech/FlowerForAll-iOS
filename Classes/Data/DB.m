@@ -26,6 +26,8 @@
 #import "ExerciseDay.h"
 #import "Month.h"
 
+#import "PryvAccess.h"
+
 @implementation DB
 
 
@@ -306,6 +308,8 @@ static sqlite3 *database;
 /******************************************** EXERCICES ****************************************************/
 
 + (void) saveExercice:(FLAPIExercice*)e {
+    PryvAccess* pryv = [PryvAccess current];
+    if (pryv) { [pryv saveExercice:e]; };
     [DB executeWF:@"INSERT INTO exercices (start_ts,stop_ts,frequency_target_hz, frequency_tolerance_hz, \
      duration_expiration_s, duration_exercice_s, duration_exercice_done_p , blow_count, blow_star_count , profile_name, avg_median_frequency_hz) \
         VALUES ('%f', '%f', '%f', '%f', '%f', '%f','%f','%i','%i','%@','%f')",

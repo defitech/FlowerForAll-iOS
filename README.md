@@ -7,6 +7,16 @@ By breathing out with a moderate force through a resistance, a positive pressure
 
 **Project Homepage: ** [http://www.defitech.ch/FlowerForAll-en](http://www.defitech.ch/FlowerForAll-en)
 
+## SETUP
+FLowerBreath reports its data on Pryv http://pryv.com/
+
+Install Pryv Pods with http://cocoapods.org/
+
+run `pod install` in the developpement folder.
+
+une `FlowerForAll.xcworkspace` after pod installation
+
+
 ## WRITE A GAME
 If you want to write a game, please read:
  [Apps/HOWTO_WRITE_A_GAME.md](https://github.com/defitech/FlowerForAll-iOs/blob/master/Apps/HOWTO_WRITE_A_GAME.md)

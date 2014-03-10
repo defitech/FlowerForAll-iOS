@@ -14,8 +14,10 @@
 #import "PickerEditor.h"
 #import "Profil.h"
 #import "ParametersAppPickerProfileCell.h"
+#import <PryvApiKit/PryvApiKit.h>
+#import "PryvAccess.h"
 
-@interface ParametersApp (PrivateMethods)
+@interface ParametersApp (PrivateMethods) <PYWebLoginDelegate>
 - (void)valueChangedForDurationSlider:(UISlider *)slider;
 - (void)editingEndForDurationSlider:(UISlider *)slider;
 @end
@@ -26,7 +28,7 @@
 
 @synthesize  durationLabel, playBackLabel, playBackSlider,
 expirationLabel, expirationTimeLabel, expirationSlider,
-exerciceLabel, exerciceTimeLabel, exerciceSlider, buttonProfile, goToCalibrationButton;
+exerciceLabel, exerciceTimeLabel, exerciceSlider, buttonProfile, goToCalibrationButton, buttonPryvLogin;
 
 # pragma mark FlowerApp overriding
 
@@ -106,6 +108,7 @@ float minExerciceDuration_s = 7.0;
 
     
     [self reloadValues];
+    [self refreshPryvButton];
    
  }
 
@@ -177,6 +180,64 @@ float minExerciceDuration_s = 7.0;
     [ParametersManager saveExerciceDuration:[self exerciceDurationSliderToSystem:(float) aSlider.value]];
     
 }
+
+
+# pragma mark Pryv
+
+- (void)pryvButtonPushed:(id)sender {
+    PryvAccess* pryv = [PryvAccess current];
+    if (pryv) { // logout
+        [PryvAccess disconnect];
+        [self refreshPryvButton];
+        return;
+    }
+    
+    
+    NSArray *permissions = @[ @{ kPYAPIConnectionRequestStreamId: @"flowerBreath",
+                                 @"defaultName": @"FlowerBreath",
+                                 kPYAPIConnectionRequestLevel: kPYAPIConnectionRequestManageLevel}];
+    
+    //[PYClient setDefaultDomainStaging];
+    
+    __unused
+    PYWebLoginViewController *webLoginController =
+    [PYWebLoginViewController requestConnectionWithAppId:@"defitech-flowerbreath"
+                                          andPermissions:permissions
+                                                delegate:self];
+}
+
+
+
+- (UIViewController *)pyWebLoginGetController {
+    return self;
+}
+
+- (void)pyWebLoginSuccess:(PYConnection*)pyAccess {
+    NSLog(@"Signin With Success %@ %@", pyAccess.userID, pyAccess.accessToken);
+   [pyAccess synchronizeTimeWithSuccessHandler:nil errorHandler:nil];
+   [PryvAccess setCurrent:pyAccess];
+   [self refreshPryvButton];
+}
+
+- (void)pyWebLoginAborted:(NSString*)reason {
+    NSLog(@"Signin Aborted: %@",reason);
+}
+
+- (void) pyWebLoginError:(NSError*)error {
+    NSLog(@"Signin Error: %@",error);
+}
+
+
+- (void) refreshPryvButton {
+    PryvAccess* pryv = [PryvAccess current];
+    if (pryv) { // logout
+        [self.buttonPryvLogin setTitle:[NSString stringWithFormat:@"%@ %@",NSLocalizedStringFromTable(@"Logout from Pryv:",@"ParametersApp",@" Pryv logout indicator"), [pryv userName]] forState:UIControlStateNormal];
+    } else {
+         [self.buttonPryvLogin setTitle:NSLocalizedStringFromTable(@"Use Pryv to save data",@"ParametersApp",@" Pryv login indicator") forState:UIControlStateNormal];
+    }
+    
+}
+
 
 # pragma mark profilPicker
 
